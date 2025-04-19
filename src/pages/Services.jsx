@@ -101,7 +101,7 @@ const Services = () => {
       <div className="content-with-image">
         <p className="large-text">
           Kodivian Technologies LLP, based in Chennai, specializes in digital
-          transformation and enterprise automation solutions
+          transformation and enterprise automation solutions.
         </p>
         <img
           src={image1} // Use the first imported image
