@@ -1,0 +1,270 @@
+.product-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.product-page h1 {
+  color: var(--primary-color, #333);
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.product-page p {
+  color: var(--secondary-color, #666);
+  margin-bottom: 40px;
+  max-width: 800px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.feature-boxes-container {
+  display: flex; /* Change to flexbox */
+  flex-direction: row; /* Arrange items in a row */
+  justify-content: space-around; /* Distribute space evenly around items */
+  align-items: stretch; /* Make items the same height */
+  gap: 20px; /* Adjust the gap between items */
+  margin-top: 50px;
+  width: 90%; /* Adjust width as needed */
+  max-width: 1200px; /* Set a maximum width for the container */
+}
+
+.feature-box {
+  background-color: var(--bg-color, #fff);
+  border-radius: 15px;
+  padding: 20px; /* Adjust padding */
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 0 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1; /* Allow boxes to grow and shrink equally */
+  min-width: 200px; /* Set a minimum width for each box */
+}
+
+.feature-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-box h2 {
+  color: var(--primary-color, #333);
+  margin-top: 10px; /* Adjust margin */
+  margin-bottom: 10px; /* Adjust margin */
+  font-size: 1.6rem; /* Adjust font size */
+  text-align: center;
+  width: 100%;
+}
+
+.feature-box .image-container {
+  flex-grow: 1;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 15px; /* Adjust margin */
+  width: 70%; /* Adjust image width */
+  max-width: 180px; /* Adjust max image width */
+}
+
+.feature-box .product-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease-in-out;
+}
+
+.feature-box:hover .product-image {
+  transform: scale(1.05);
+}
+
+.feature-box button.learn-more-button {
+  background-color: transparent;
+  color: var(--primary-color, #333);
+  border: 2px solid var(--primary-color, #333);
+  border-radius: 10px;
+  padding: 10px 20px; /* Adjust padding */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: auto;
+}
+
+.feature-box button.learn-more-button:hover {
+  background-color: var(--primary-color, #333);
+  color: var(--white-color, #fff);
+}
+
+.product-details {
+  grid-column: 1 / -1;
+  text-align: left;
+  padding: 30px;
+  background-color: var(--light-bg, #f9f9f9);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.product-details h2 {
+  color: var(--primary-color, #333);
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+}
+
+.product-details p {
+  color: var(--secondary-color, #666);
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.product-details strong {
+  color: var(--primary-color, #333);
+  font-weight: bold;
+}
+
+.product-details ul,
+.product-details ol {
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+
+.product-details li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.product-details button.back-button {
+  background-color: var(--primary-color, #333);
+  color: var(--white-color, #fff);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 30px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.product-details button.back-button:hover {
+  background-color: #555;
+}
+
+/* Style for individual product boxes */
+.feature-box.scanify-box,
+.feature-box.intellidocs-box,
+.feature-box.rpa-box,
+.feature-box.process-builder-box {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-box.scanify-box h2,
+.feature-box.intellidocs-box h2,
+.feature-box.rpa-box h2,
+.feature-box.process-builder-box h2 {
+  width: 100%;
+  margin-bottom: 10px; /* Adjust spacing */
+}
+
+.feature-box .image-container {
+  width: 70%; /* Adjust image container width */
+  max-width: 180px; /* Adjust max image container width */
+  margin-bottom: 15px; /* Adjust spacing */
+}
+
+.feature-box .product-image {
+  object-fit: contain;
+  height: auto;
+}
+
+.feature-box.scanify-box button.learn-more-button,
+.feature-box:not(.scanify-box) button.learn-more-button {
+  display: none;
+}
+
+/* Styles for the detailed views */
+.scanify-details,
+.rpa-details,
+.intellidocs-details,
+.process-builder-details {
+  grid-column: 1 / -1;
+  text-align: left;
+  padding: 30px;
+  background-color: var(--light-bg, #f9f9f9);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.scanify-details h2,
+.rpa-details h2,
+.intellidocs-details h2,
+.process-builder-details h2 {
+  color: var(--primary-color, #333);
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+}
+
+.scanify-details p,
+.rpa-details p,
+.intellidocs-details p,
+.process-builder-details p {
+  color: var(--secondary-color, #666);
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.scanify-details strong,
+.rpa-details strong,
+.intellidocs-details strong,
+.process-builder-details strong {
+  color: var(--primary-color, #333);
+  font-weight: bold;
+}
+
+.scanify-details ul,
+.rpa-details ul,
+.intellidocs-details ul,
+.process-builder-details ul,
+.scanify-details ol,
+.rpa-details ol,
+.intellidocs-details ol,
+.process-builder-details ol {
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+
+.scanify-details li,
+.rpa-details li,
+.intellidocs-details li,
+.process-builder-details li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.scanify-details button.back-button,
+.rpa-details button.back-button,
+.intellidocs-details button.back-button,
+.process-builder-details button.back-button {
+  background-color: var(--primary-color, #333);
+  color: var(--white-color, #fff);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 30px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.scanify-details button.back-button:hover,
+.rpa-details button.back-button:hover,
+.intellidocs-details button.back-button:hover,
+.process-builder-details button.back-button:hover {
+  background-color: #555;
+}

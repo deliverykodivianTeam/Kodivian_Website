@@ -1,0 +1,342 @@
+/* Services.css */
+.services-container {
+  padding: 20px;
+}
+
+.service-box h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  font-family: "Montserrat", sans-serif; /* Apply the desired font */
+  font-weight: 600; /* You might want to adjust the font weight as well */
+}
+
+.services-page {
+  padding: 40px 20px;
+  text-align: left;
+}
+
+.services-content {
+  max-width: 1200px; /* Increased max-width for wider layout */
+  margin: 0 auto;
+  text-align: left;
+}
+
+.services-content h2 {
+  color: var(--primary-color);
+  margin-top: 20px;
+  margin-bottom: 40px; /* Increased bottom margin */
+  font-size: 3em; /* Increased font size */
+  font-weight: bold;
+  text-align: center;
+}
+
+.services-content h3 {
+  color: var(--primary-color);
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 1.8em;
+}
+
+.services-content ul {
+  list-style-type: disc;
+  margin-left: 30px;
+  margin-bottom: 25px;
+}
+
+.services-content li {
+  margin-bottom: 8px;
+  line-height: 1.7;
+  font-size: 1.1em;
+}
+
+.services-content p {
+  color: var(--secondary-color);
+  line-height: 1.7;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
+
+.services-content strong {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.services-boxes {
+  display: flex;
+  flex-direction: column; /* Stack boxes vertically */
+  gap: 30px;
+  margin-top: 30px;
+  /* justify-content: space-around; */ /* Removed for vertical stacking */
+}
+
+.service-box {
+  border-radius: 10px;
+  padding: 30px;
+  position: relative;
+  text-align: center;
+  width: 100%; /* Make each box take full width */
+  box-sizing: border-box; /* Include padding and border in width */
+  /* flex-basis: calc(33% - 20px); */ /* Removed for vertical stacking */
+  /* min-height: 450px; */ /* Adjust if needed for vertical stacking */
+  transition: transform 0.3s ease-in-out;
+}
+
+.service-box:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 1024px) {
+  .services-boxes {
+    justify-content: space-between;
+  }
+  .service-box {
+    flex-basis: calc(50% - 15px);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-boxes {
+    flex-direction: column;
+  }
+  .service-box {
+    flex-basis: 100%;
+  }
+}
+
+.service-box h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.service-box ul {
+  list-style-type: disc;
+  margin-left: 40px;
+  text-align: left;
+}
+
+.services-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 20px;
+  margin-bottom: 30px;
+  background-color: var(--bg-light-color);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.text-container {
+  flex: 1;
+}
+
+.header-image {
+  width: 45%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-with-image {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: var(--bg-light-color);
+  gap: 60px; /* Added gap for spacing between image and text */
+}
+
+.content-image {
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.content-with-image .large-text {
+  text-align: left;
+  font-size: 1.3em;
+  line-height: 1.8;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transition for hover effect */
+}
+
+.content-with-image .large-text:hover {
+  color: var(--accent-color); /* Change text color on hover */
+  background-color: rgba(0, 0, 0, 0.05); /* Subtle background on hover */
+  cursor: default;
+}
+
+/* Add margin to the second image - this rule might be redundant */
+.large-text + .content-image {
+  margin-top: 0;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  font-family: "Montserrat", sans-serif; /* Apply the desired font */
+  font-weight: 600; /* You might want to adjust the font weight as well */
+}
+
+/* Style the bold text within the service boxes */
+.service-box strong.bold {
+  color: var(--accent-color);
+}
+
+/* Slider Styles */
+.slider-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: auto; /* Adjust height to content */
+}
+
+.slider {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transition: transform 0.6s ease-in-out;
+}
+
+.slider-item {
+  flex: 0 0 100%;
+  min-width: 100%;
+  padding: 20px; /* Add some padding around the content */
+  box-sizing: border-box;
+  background-color: var(--bg-light-color); /* Keep a background for the item */
+  display: flex;
+  flex-direction: column; /* Stack image and text */
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text within the item */
+}
+
+.slider-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider-image {
+  max-width: 60%; /* Further reduce image width in slider */
+  height: auto;
+  max-height: 150px; /* Further limit image height in slider */
+  object-fit: contain;
+  margin-bottom: 15px; /* Space between image and text */
+}
+
+.slider-content h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.slider-content p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: var(--secondary-color);
+}
+
+.slider-explore-link {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 15px;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 0.9em;
+}
+
+.slider-explore-link:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-light-color);
+}
+
+.slider-button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  color: var(--primary-color);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.slider-button:hover {
+  opacity: 1;
+}
+
+.slider-button.prev {
+  left: 20px;
+}
+
+.slider-button.next {
+  right: 20px;
+}
+
+.service-image {
+  max-width: 55%; /* Adjust the maximum width as needed */
+  height: auto;
+  border: 1px solid whites; /* Add a light border */
+  border-radius: 5px; /* Optional: add some rounded corners */
+  margin-bottom: 10px; /* Add some space below the image */
+  display: block; /* Ensure it behaves as a block-level element */
+  margin-left: auto; /* Center the image horizontally */
+  margin-right: auto;
+}
+
+.large-text {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  font-family: "Montserrat", sans-serif; /* Apply the desired font */
+  font-weight: 600; /* You might want to adjust the font weight as well */
+}
+
+/* Front-End and Back-End Section Styles */
+.front-back-end-container {
+  background-color: #f9f9f9; /* Light background */
+  padding: 40px 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.front-back-end-content h2 {
+  color: var(--primary-color);
+  font-size: 2em;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.tech-logos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.tech-logo {
+  height: 50px; /* Adjust size as needed */
+  width: auto;
+}
+
+.front-back-end-text {
+  color: var(--secondary-color);
+  font-size: 1.1em;
+}
