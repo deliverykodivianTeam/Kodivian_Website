@@ -58,10 +58,7 @@ body {
 }
 
 .content {
-<<<<<<< HEAD
-=======
   padding: 0px;
->>>>>>> c0e9173f02849dbd3341553454796999845de7f8
   flex-grow: 1;
   background-color: transparent;
 }
