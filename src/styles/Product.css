@@ -22,7 +22,7 @@
  }
 
  .hero-subtitle {
-  color: #00bcd4; /* Example accent color */
+  color: oklch(49.6% 0.265 301.924); /* Example accent color */
   font-size: 16px;
     margin-left: 100px;
     margin-top: -400px;
@@ -38,7 +38,7 @@
  }
 
  .hero-description {
-  color: #616161; /* Example text color */
+  color: #140101; /* Example text color */
   font-size: 18px;
   line-height: 1.6;
 
@@ -47,7 +47,7 @@
  }
 
  .hero-button {
-  background-color: #8bc34a; /* Example button color */
+  background-color: oklch(49.6% 0.265 301.924); /* Example button color */
   color: white;
   padding: 15px 30px;
   border: none;
@@ -60,7 +60,7 @@
  }
 
  .hero-button:hover {
-  background-color: #689f38;
+  background-color: rebeccapurple ;
  }
 
  .hero-image {
@@ -88,9 +88,7 @@
   }
  }
 
- /* ... your existing CSS for .hero-section, .hero-content, .hero-image, etc. ... */
-
-.sample-section {
+ .sample-section {
   display: flex; /* Arrange image and content side by side */
   align-items: center; /* Vertically align items in the center */
   padding: 40px; /* Add some padding around the section */
@@ -118,18 +116,18 @@
 .sample-title {
   font-size: 24px;
   font-weight: bold;
-  color: #333; /* Dark text color */
+  color: oklch(49.6% 0.265 301.924); /* Dark text color */
   margin-bottom: 15px;
 }
 
 .sample-description {
-  color: #666; /* Gray text color */
+  color: #060000; /* Gray text color */
   line-height: 1.6;
   margin-bottom: 20px;
 }
 
 .sample-button {
-  background-color: #007bff; /* Example button color */
+  background-color: oklch(49.6% 0.265 301.924); /* Example button color */
   color: white;
   padding: 12px 24px;
   border: none;
@@ -140,47 +138,194 @@
 }
 
 .sample-button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: rebeccapurple; /* Darker shade on hover */
 }
 
-/* New section styles */
-.left-image-section {
+/* sample 2 - Image Left, Text Right */
+.sample2-section {
   display: flex; /* Arrange image and content side by side */
   align-items: center; /* Vertically align items in the center */
   padding: 40px; /* Add some padding around the section */
+ /* Light background color similar to the sample */
   border-radius: 10px; /* Optional: Add rounded corners */
-  margin-top: 40px; /* Add some space between the previous section and this one */
+  margin-top: 25px; /* Adjust spacing as needed */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 
-.left-image-container {
+.sample2-image-container {
   flex: 1; /* Take up 1/2 of the available width */
-  margin-left: 30px; /* Add some space between the text and image */
-  order: 2; /* Place the image on the right */
+  margin-left: 20px; /* Add some space between the image and text */
 }
 
-.left-image {
+.sample2-image {
+  max-width: 100%; /* Make the image responsive */
+  height: auto;
+  border-radius: 8px; /* Optional: Add rounded corners to the image */
+}
+
+.sample2-content {
+  flex: 1; /* Take up the other 1/2 of the available width */
+  text-align: left; /* Align text to the left */
+}
+
+.sample2-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: oklch(49.6% 0.265 301.924); /* Dark text color */
+  margin-bottom: 15px;
+}
+
+.sample2-description {
+  color: #070000; /* Gray text color */
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.sample2-button {
+  background-color: oklch(49.6% 0.265 301.924); /* Example button color */
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.sample2-button:hover {
+  background-color: rebeccapurple; /* Darker shade on hover */
+}
+
+
+/* sample 1 */
+.sample1-section {
+  display: flex; /* Arrange image and content side by side */
+  align-items: center; /* Vertically align items in the center */
+  padding: 40px; /* Add some padding around the section */
+ /* Light background color similar to the sample */
+  border-radius: 10px; /* Optional: Add rounded corners */
+  margin-top: 25px; /* Add some space between the hero section and this section */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+.sample1-image-container {
+  flex: 1; /* Take up 1/2 of the available width */
+  margin-right: 30px; /* Add some space between the image and text */
+}
+
+.sample1-image {
   max-width: 80%; /* Make the image responsive */
   height: auto;
   border-radius: 8px; /* Optional: Add rounded corners to the image */
 }
 
-.left-content {
+.sample1-content {
   flex: 1; /* Take up the other 1/2 of the available width */
 }
+
+.sample1-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 15px;
+}
+
+.sample1-description {
+  color: #080000; /* Gray text color */
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.sample1-button {
+  background-color: oklch(49.6% 0.265 301.924);/* Example button color */
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.sample1-button:hover {
+  background-color: rebeccapurple; /* Darker shade on hover */
+}
+
+/* sample 2 - Image Left, Text Right */
+.sample3-section {
+  display: flex; /* Arrange image and content side by side */
+  align-items: center; /* Vertically align items in the center */
+  padding: 40px; /* Add some padding around the section */
+ /* Light background color similar to the sample */
+  border-radius: 10px; /* Optional: Add rounded corners */
+  margin-top: 25px; /* Adjust spacing as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+.sample3-image-container {
+  flex: 1; /* Take up 1/2 of the available width */
+  margin-left: 20px; /* Add some space between the image and text */
+}
+
+.sample3-image {
+  max-width: 100%; /* Make the image responsive */
+  height: auto;
+  border-radius: 8px; /* Optional: Add rounded corners to the image */
+}
+
+.sample3-content {
+  flex: 1; /* Take up the other 1/2 of the available width */
+  text-align: left; /* Align text to the left */
+}
+
+.sample3-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 15px;
+}
+
+.sample3-description {
+  color: #090000; /* Gray text color */
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.sample3-button {
+  background-color: oklch(49.6% 0.265 301.924); /* Example button color */
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.sample3-button:hover {
+  background-color: rebeccapurple; /* Darker shade on hover */
+}
+
+
 
 
 
 /* Responsive adjustments (optional) */
 @media (max-width: 768px) {
-  .sample-section {
+  .sample-section,
+  .Sample1-section,
+  .sample2-section,
+  .sample3-section {
     flex-direction: column; /* Stack image and content on smaller screens */
     text-align: center; /* Center text on smaller screens */
   }
 
+  .sample-image-container,
+  .sample1-image-container,
+  .sample2-image-container,
   .sample-image-container {
+    margin-left: 0;
     margin-right: 0;
     margin-bottom: 20px;
   }
-
 }

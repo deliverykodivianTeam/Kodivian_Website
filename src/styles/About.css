@@ -1,5 +1,6 @@
 /* About.css */
 .about-page {
+<<<<<<< HEAD
   text-align: center;
   background-color: var(--white-color);
   color: var(--primary-color);
@@ -61,6 +62,32 @@
 }
 
 @media (max-width: 768px) {
+=======
+  
+    background-color: var(--white-color);
+    color: var(--primary-color);
+  }
+  
+  .about-page h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+  
+  .about-page p {
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    max-width: 800px;
+    line-height: 1.6;
+  }
+  
+  .about-stats-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  
+>>>>>>> 2bb1715b227b6edac93a036abbed13e7c2460bb2
   .about-stat-box {
     width: calc(100% - 30px);
     max-width: none;
