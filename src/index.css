@@ -57,7 +57,6 @@ body {
 }
 
 .content {
-  padding: 40px 20px;
   flex-grow: 1;
   background-color: transparent;
 }
@@ -67,6 +66,5 @@ body {
 .services-page,
 .product-page,
 .contact-page {
-  padding: 20px;
   text-align: center;
 }
