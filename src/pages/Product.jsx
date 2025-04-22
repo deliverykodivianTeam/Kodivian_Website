@@ -1,4 +1,3 @@
-
 import "../styles/Product.css";
  import WaveImage from '../assets/WaveImage.png';
  import SampleImage from '../assets/Scanify.png'
@@ -6,7 +5,6 @@ import "../styles/Product.css";
  import rpa from '../assets/rpa.png';
 import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin, FaLocationArrow, FaPhone, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom'; // Import Link if you still need it
-
 
  const Product = () => {
   return (
@@ -160,4 +158,3 @@ import { Link } from 'react-router-dom'; // Import Link if you still need it
   );
  };
  export default Product;
-
