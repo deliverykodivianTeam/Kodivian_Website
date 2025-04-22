@@ -71,6 +71,7 @@ const Services = () => {
 
   return (
     <div>
+      <img src={PurpleWave} alt="Purple Wave Design" className="wave-header" />
       <div className="service-image">
         <button className="slider-button prev" onClick={handlePrev}>
           &lt;

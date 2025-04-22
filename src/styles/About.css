@@ -1,137 +1,141 @@
+/* About.css */
 .about-page {
-    text-align: center;
-    background-color: var(--white-color);
-    color: var(--primary-color);
-  }
-  
-  .about-page h1 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-  }
-  
-  .about-page p {
-    color: var(--secondary-color);
-    margin-bottom: 30px;
-    max-width: 800px;
-    line-height: 1.6;
-  }
-  
-  .about-stats-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 30px;
-  }
-  
+  text-align: center;
+  background-color: var(--white-color);
+  color: var(--primary-color);
+}
+
+.about-page h1 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.about-page p {
+  color: var(--secondary-color);
+  margin-bottom: 30px;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+.about-stats-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.about-stat-box {
+  background-color: var(--bg-color);
+  border-radius: 15px;
+  padding: 30px;
+  margin: 15px;
+  text-align: center;
+  width: calc(50% - 30px);
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.about-stat-box:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.stat-icon {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.stat-number {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  color: var(--secondary-color);
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
   .about-stat-box {
-    background-color: var(--bg-color);
-    border-radius: 15px;
-    padding: 30px;
-    margin: 15px;
-    text-align: center;
-    width: calc(50% - 30px);
-    max-width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    width: calc(100% - 30px);
+    max-width: none;
   }
-  
-  .about-stat-box:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .stat-icon {
-    color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .stat-number {
-    color: var(--primary-color);
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .stat-label {
-    color: var(--secondary-color);
-    font-size: 1rem;
-  }
-  
-  @media (max-width: 768px) {
-    .about-stat-box {
-      width: calc(100% - 30px);
-      max-width: none;
-    }
-  }
-  
-  .scrolling-logos-container {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px;
-    overflow: visible;
-  }
-  
-  .scrolling-logos {
-    display: flex;
-    overflow: hidden;
-    white-space: nowrap;
-    transition: animation-play-state 0.3s ease;
-  }
-  
-  .logos-set {
-    display: flex;
-    flex-shrink: 0;
-  }
-  
-  .logo {
-    height: 80px;
-    margin: 0 50px;
-    display: inline-block;
-  }
-  
-  @keyframes scrollLogos {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  
-  .rotating-solution-text {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    margin-top: 20px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 70px;
-  }
-  
-  .colored-solution {
-    color: var(--accent-color);
-    font-weight: bold;
-  }
+}
 
-  .framer-text {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 0.1em;
-    text-align: center;
-    color: rgb(124, 124, 135);
-  }
+.scrolling-logos-container {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  overflow: hidden; /* Changed to hidden to contain the scrolling */
+}
 
-  .wave-header {
-    width: 100%;
-   height: 595px;
-    margin-bottom: 20px;
-    display: block;
+.scrolling-logos {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollLogos 30s linear infinite; /* Adjusted animation duration */
+}
+
+.scrolling-logos:hover {
+  animation-play-state: paused;
+}
+
+.logos-set {
+  display: flex;
+}
+
+.logo {
+  height: 80px;
+  margin: 0 50px;
+  display: inline-block;
+}
+
+/* Increased the percentage to ensure smooth continuous scrolling */
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0%);
   }
-  
-  .geometric-footer {
-    width: 100%;
-    margin-top: 20px; /* Adjust as needed */
-    display: block;
+  100% {
+    transform: translateX(-100%);
   }
+}
+
+.rotating-solution-text {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 70px;
+}
+
+.colored-solution {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.framer-text {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 0.1em;
+  text-align: center;
+  color: rgb(124, 124, 135);
+}
+
+.wave-header {
+  width: 100%;
+  height: 595px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.geometric-footer {
+  width: 100%;
+  margin-top: 20px; /* Adjust as needed */
+  display: block;
+}

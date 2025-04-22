@@ -37,11 +37,11 @@ const Home = () => {
                     className="absolute top-2/3 left-0 transform -translate-y-1/2 text-white md:text-left md:max-w-md p-8"
                     style={{ width: '100%' }} >
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 transition-colors duration-300 hover:text-purple-400 text-black" style={{ marginRight: '10px' }}>
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 transition-colors duration-300 text-black" style={{ marginRight: '10px' }}>
                             Welcome
                         </h1>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-700 mb-4 transition-colors duration-300 hover:text-indigo-400">
-                            KODIVIAN
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-700 mb-4 transition-colors duration-300 ">
+                            Kodivian
                         </h1>
                     </div>
                     <p className="text-lg md:text-xl text-gray-600 mb-8 transition-colors duration-300 hover:text-gray-500">
