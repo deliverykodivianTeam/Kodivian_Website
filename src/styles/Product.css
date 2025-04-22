@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .product-page {
   display: flex;
   flex-direction: column;
@@ -60,207 +61,149 @@
 
 .feature-box .image-container {
   flex-grow: 1;
+=======
+/* Product.css */
+.hero-content {
+  /* align-items: center; */ /* Removed as the child is now positioned absolutely */
+  justify-content: space-between; /* Might not have a direct effect with absolute positioning */
+  /* background-repeat: no-repeat; */ /* Inherited from hero-section */
+  background-size: cover; /* Inherited from hero-section */
+  /* background-position: center; */ /* Inherited from hero-section */
+  position: relative; /* Needed for absolute positioning of children */
+>>>>>>> c0e9173f02849dbd3341553454796999845de7f8
   overflow: hidden;
-  border-radius: 10px;
-  margin-bottom: 15px; /* Adjust margin */
-  width: 70%; /* Adjust image width */
-  max-width: 180px; /* Adjust max image width */
-}
-
-.feature-box .product-image {
-  display: block;
+  padding: 0;
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  transition: transform 0.3s ease-in-out;
+  height: 958px; /* Matches the image height */
+  margin-bottom: 0px;
+  display: block; /* Changed to block to take full width */
 }
 
-.feature-box:hover .product-image {
-  transform: scale(1.05);
-}
+ .hero-section{
+      padding: 0;
+  /* Adjust spacing */
+  /* Adjust spacing */
+ }
 
-.feature-box button.learn-more-button {
-  background-color: transparent;
-  color: var(--primary-color, #333);
-  border: 2px solid var(--primary-color, #333);
-  border-radius: 10px;
-  padding: 10px 20px; /* Adjust padding */
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin-top: auto;
-}
+ .hero-subtitle {
+  color: #00bcd4; /* Example accent color */
+  font-size: 16px;
+    margin-left: 100px;
+    margin-top: -400px;
+ }
 
-.feature-box button.learn-more-button:hover {
-  background-color: var(--primary-color, #333);
-  color: var(--white-color, #fff);
-}
-
-.product-details {
-  grid-column: 1 / -1;
-  text-align: left;
-  padding: 30px;
-  background-color: var(--light-bg, #f9f9f9);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
-}
-
-.product-details h2 {
-  color: var(--primary-color, #333);
-  margin-bottom: 20px;
-  font-size: 2.2rem;
-}
-
-.product-details p {
-  color: var(--secondary-color, #666);
-  line-height: 1.7;
-  margin-bottom: 25px;
-}
-
-.product-details strong {
-  color: var(--primary-color, #333);
+ .hero-title {
+  font-size: 3.5em;
+  margin-top: 19px;
   font-weight: bold;
-}
-
-.product-details ul,
-.product-details ol {
-  margin-left: 25px;
+  line-height: 1.2;
   margin-bottom: 20px;
-}
+  margin-left: 100px;
+ }
 
-.product-details li {
-  margin-bottom: 8px;
+ .hero-description {
+  color: #616161; /* Example text color */
+  font-size: 18px;
   line-height: 1.6;
-}
 
-.product-details button.back-button {
-  background-color: var(--primary-color, #333);
-  color: var(--white-color, #fff);
+  margin-left: 100px;
+  margin-bottom: 30px;
+ }
+
+ .hero-button {
+  background-color: #8bc34a; /* Example button color */
+  color: white;
+  padding: 15px 30px;
   border: none;
-  border-radius: 10px;
-  padding: 14px 30px;
+  border-radius: 5px;
+  margin-top: 0px;
+  font-size: 18px;
   cursor: pointer;
-  font-size: 1.1rem;
+  margin-left: 100px;
   transition: background-color 0.3s ease;
-  margin-top: 20px;
-  display: inline-block;
+ }
+
+ .hero-button:hover {
+  background-color: #689f38;
+ }
+
+ .hero-image {
+  flex: 1;
+  /* Add styles to position and style the blurred image here */
+  /* Example: */
+  /* background: url('path/to/your/blurred-mobile-image.png') no-repeat center center;
+  background-size: contain;
+  height: 400px; Adjust as needed */
+ }
+
+ /* You might need to use media queries for responsiveness */
+ @media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+  }
+  .hero-content {
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+  .hero-image {
+    height: 300px; /* Adjust for smaller screens */
+  }
+ }
+
+ /* ... your existing CSS for .hero-section, .hero-content, .hero-image, etc. ... */
+
+.sample-section {
+  display: flex; /* Arrange image and content side by side */
+  align-items: center; /* Vertically align items in the center */
+  padding: 40px; /* Add some padding around the section */
+ /* Light background color similar to the sample */
+  border-radius: 10px; /* Optional: Add rounded corners */
+  margin-top: -300px; /* Add some space between the hero section and this section */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 
-.product-details button.back-button:hover {
-  background-color: #555;
+.sample-image-container {
+  flex: 1; /* Take up 1/2 of the available width */
+  margin-right: 30px; /* Add some space between the image and text */
 }
 
-/* Style for individual product boxes */
-.feature-box.scanify-box,
-.feature-box.intellidocs-box,
-.feature-box.rpa-box,
-.feature-box.process-builder-box {
-  text-align: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.feature-box.scanify-box h2,
-.feature-box.intellidocs-box h2,
-.feature-box.rpa-box h2,
-.feature-box.process-builder-box h2 {
-  width: 100%;
-  margin-bottom: 10px; /* Adjust spacing */
-}
-
-.feature-box .image-container {
-  width: 70%; /* Adjust image container width */
-  max-width: 180px; /* Adjust max image container width */
-  margin-bottom: 15px; /* Adjust spacing */
-}
-
-.feature-box .product-image {
-  object-fit: contain;
+.sample-image {
+  max-width: 80%; /* Make the image responsive */
   height: auto;
+  border-radius: 8px; /* Optional: Add rounded corners to the image */
 }
 
-.feature-box.scanify-box button.learn-more-button,
-.feature-box:not(.scanify-box) button.learn-more-button {
-  display: none;
+.sample-content {
+  flex: 1; /* Take up the other 1/2 of the available width */
 }
 
-/* Styles for the detailed views */
-.scanify-details,
-.rpa-details,
-.intellidocs-details,
-.process-builder-details {
-  grid-column: 1 / -1;
-  text-align: left;
-  padding: 30px;
-  background-color: var(--light-bg, #f9f9f9);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
-}
-
-.scanify-details h2,
-.rpa-details h2,
-.intellidocs-details h2,
-.process-builder-details h2 {
-  color: var(--primary-color, #333);
-  margin-bottom: 20px;
-  font-size: 2.2rem;
-}
-
-.scanify-details p,
-.rpa-details p,
-.intellidocs-details p,
-.process-builder-details p {
-  color: var(--secondary-color, #666);
-  line-height: 1.7;
-  margin-bottom: 25px;
-}
-
-.scanify-details strong,
-.rpa-details strong,
-.intellidocs-details strong,
-.process-builder-details strong {
-  color: var(--primary-color, #333);
+.sample-title {
+  font-size: 24px;
   font-weight: bold;
+  color: #333; /* Dark text color */
+  margin-bottom: 15px;
 }
 
-.scanify-details ul,
-.rpa-details ul,
-.intellidocs-details ul,
-.process-builder-details ul,
-.scanify-details ol,
-.rpa-details ol,
-.intellidocs-details ol,
-.process-builder-details ol {
-  margin-left: 25px;
+.sample-description {
+  color: #666; /* Gray text color */
+  line-height: 1.6;
   margin-bottom: 20px;
 }
 
-.scanify-details li,
-.rpa-details li,
-.intellidocs-details li,
-.process-builder-details li {
-  margin-bottom: 8px;
-  line-height: 1.6;
-}
-
-.scanify-details button.back-button,
-.rpa-details button.back-button,
-.intellidocs-details button.back-button,
-.process-builder-details button.back-button {
-  background-color: var(--primary-color, #333);
-  color: var(--white-color, #fff);
+.sample-button {
+  background-color: #007bff; /* Example button color */
+  color: white;
+  padding: 12px 24px;
   border: none;
-  border-radius: 10px;
-  padding: 14px 30px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 16px;
   transition: background-color 0.3s ease;
-  margin-top: 20px;
-  display: inline-block;
 }
 
+<<<<<<< HEAD
 .scanify-details button.back-button:hover,
 .rpa-details button.back-button:hover,
 .intellidocs-details button.back-button:hover,
@@ -279,4 +222,49 @@
   width: 100%;
   margin-top: 20px; /* Adjust as needed */
   display: block;
+=======
+.sample-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* New section styles */
+.left-image-section {
+  display: flex; /* Arrange image and content side by side */
+  align-items: center; /* Vertically align items in the center */
+  padding: 40px; /* Add some padding around the section */
+  border-radius: 10px; /* Optional: Add rounded corners */
+  margin-top: 40px; /* Add some space between the previous section and this one */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+.left-image-container {
+  flex: 1; /* Take up 1/2 of the available width */
+  margin-left: 30px; /* Add some space between the text and image */
+  order: 2; /* Place the image on the right */
+}
+
+.left-image {
+  max-width: 80%; /* Make the image responsive */
+  height: auto;
+  border-radius: 8px; /* Optional: Add rounded corners to the image */
+}
+
+.left-content {
+  flex: 1; /* Take up the other 1/2 of the available width */
+}
+
+
+
+/* Responsive adjustments (optional) */
+@media (max-width: 768px) {
+  .sample-section {
+    flex-direction: column; /* Stack image and content on smaller screens */
+    text-align: center; /* Center text on smaller screens */
+  }
+
+  .sample-image-container {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+>>>>>>> c0e9173f02849dbd3341553454796999845de7f8
 }
