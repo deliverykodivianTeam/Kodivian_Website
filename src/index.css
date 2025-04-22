@@ -20,6 +20,7 @@ body {
 .app-container {
   display: flex;
   flex-direction: column;
+
   min-height: 100vh;
 }
 
@@ -57,12 +58,14 @@ body {
 }
 
 .content {
-  padding: 40px 20px;
+  padding: 0px;
   flex-grow: 1;
   background-color: transparent;
 }
 
-.home-page,
+.home-page{
+  padding: 0;
+}
 .about-page,
 .services-page,
 .product-page,

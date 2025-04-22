@@ -1,34 +1,50 @@
 .home-page {
-    padding: 80px 20px;
-    text-align: center;
-    background-color: var(--white-color);
-    color: var(--primary-color);
-  }
-  
-  .home-title {
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .kodivian-title {
-    color: var(--accent-color);
-  }
-  
-  .home-subtitle {
-    font-size: 1.2rem;
-    color: var(--secondary-color);
-    margin-bottom: 30px;
-    font-family: 'Open Sans', sans-serif;
-  }
-  
-  .home-tools-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  background-color: var(--white-color);
+  color: var(--primary-color);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.banner-container {
+  padding: 0;
+width: 100%;
+height:890px;
+margin-bottom: 0px;
+display: block;
+}
+
+.home-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.kodivian-title {
+  color: var(--accent-color);
+}
+
+.home-subtitle {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin-bottom: 30px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.home-tools-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
