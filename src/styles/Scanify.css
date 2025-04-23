@@ -1,0 +1,379 @@
+/* Scanify.css */
+
+.scanify-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    /* background-color: #000;  Removed background color from here */
+    font-family: 'Arial', sans-serif;
+    margin: 0 auto;
+  }
+  
+  .left-content {
+    flex: 1;
+    padding: 65px;
+    margin-top: 60px;
+    align-items: center;
+    max-width: 50%;
+    /* background-color: transparent;  Added transparent background */
+  }
+  
+  .right-content {
+    flex: 1;
+    display: flex;
+    padding: 45px;
+    justify-content: right;
+    max-width: 50%;
+    /* background-color: transparent;  Added transparent background */
+  }
+  
+  .main-heading-container {
+    margin-bottom: 10px;
+   
+  }
+  
+  
+  .main-heading-button {
+    background-color: white ;
+    color:black;
+    border: none ;
+    padding: 1px 2px;
+    margin-top: 0px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .main-heading-button:hover {
+    background-color: rgba(39, 2, 69, 0.1);
+    color: #bd67d7;
+  }
+  
+  
+  .sub-heading {
+    font-size: 4rem;
+    color:  oklch(49.6% 0.265 301.924);
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .description {
+    font-size: 1rem;
+    color: #0c0000;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .get-started-button {
+    background-color: oklch(49.6% 0.265 301.924);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .get-started-button:hover {
+    background-color: #bd5ab8;
+  }
+  
+  .how-it-works-button {
+    background-color: transparent;
+    color: oklch(49.6% 0.265 301.924);
+    border: 2px solid #6e0377;
+    padding: 10px 20px;
+    border-radius: 47px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .how-it-works-button:hover {
+    color: #873e91;
+    border-color: #160000;
+  }
+  
+  
+  .trust-message {
+    font-size: 0.9rem;
+    color: #060000;
+  }
+  
+  .invoice-image {
+    max-width: 80%;
+    height: 80%;
+    margin-top: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px oklch(49.6% 0.265 301.924);
+  }
+  
+  .arrow-icon {
+    margin-left: 5px;
+  }
+  
+  .arrow-icon1 {
+    margin-left: 5px;
+    width: 50px;
+
+  }
+  
+  @media (max-width: 768px) {
+    .scanify-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .left-content,
+    .right-content {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .button-group {
+      flex-direction: column;
+    }
+  
+    .invoice-image {
+      max-width: 90%;
+    }
+  }
+
+  .hero-section-integrated {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px; /* Adjust padding as needed */
+    text-align: center;
+    /* You might want to add a background color here if needed */
+  }
+  
+  .hero1-heading-integrated {
+    font-size: 6rem;/* Adjust the size as needed */
+    color: black; /* Use your brand color */
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .hero1-heading-integrated {
+    font-size: 3rem;/* Adjust the size as needed */
+    color: oklch(49.6% 0.265 301.924); /* Use your brand color */
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .hero-heading-integrated {
+    font-size: 3rem;/* Adjust the size as needed */
+    color: black; /* Use your brand color */
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  
+  .hero-subheading-integrated {
+    font-size: 1rem; /* Adjust the size as needed */
+    color: #1a161a7f; /* Gray color */
+    line-height: 1.6;
+    max-width: 700px; /* Adjust the maximum width for better readability */
+    margin: 0 auto; /* Center the text */
+  }
+  
+
+  /* Styles for the OCR Functions Section */
+.ocr-functions-section {
+  padding: 40px 20px;
+  text-align: center;
+  margin: 10px auto; /* Add some margin above and below the section */
+  max-width: 2000px; /* Optional: Limit the maximum width of the section */
+}
+
+.ocr-functions-heading {
+  font-size: 3rem;
+  color: black;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.ocr-functions-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px; /* Space between image and text */
+  padding: 20px;
+}
+
+.ocr-functions-image-container {
+  flex: 1;
+  max-width: 55%; /* Adjust as needed */
+}
+
+.ocr-functions-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Optional: Add rounded corners */
+  box-shadow: 0 19px 14px rgba(0, 0, 0, 0.208); /* Optional: Add a subtle shadow */
+}
+
+.ocr-functions-text {
+  flex: 1;
+  max-width: 55%; /* Adjust as needed */
+  text-align: left;
+}
+
+.ocr-functions-text ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ocr-functions-text li {
+  margin-bottom: 20px;
+}
+
+.ocr-functions-text li:last-child {
+  margin-bottom: 0;
+}
+
+.ocr-functions-text p {
+  font-size: 1.3rem;
+  color: #333;
+  line-height: 2;
+}
+
+/* Responsive adjustments for OCR Functions Section */
+@media (max-width: 768px) {
+  .ocr-functions-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ocr-functions-image-container {
+    max-width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .ocr-functions-text {
+    max-width: 90%;
+    text-align: left; 
+/* Or center if preferred on small screens */
+  }
+}
+
+/* Styles for the Extractable Fields Section (Pill Buttons) */
+
+.extractable-fields-section-pill {
+  padding: 0px 30px;
+  text-align: center;
+  margin: 0px auto;
+  max-width: 1600px;
+}
+
+
+
+.extractable-fields-content-pill {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
+.extractable-fields-buttons-left {
+  flex: 1;
+  max-width: 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.flat-fields,
+.line-items {
+  margin-bottom: 0px;
+  width: 100%; /* Take full width to align left */
+  text-align: left;
+}
+
+.flat-fields h3,
+.line-items h3 {
+  font-size: 1.2rem;
+  color: #0b000be9;
+  margin-bottom: 10px;
+}
+
+.pill-button {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #b502d5;
+  border-radius: 20px; /* Creates the pill shape */
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 10px;
+  margin-bottom: 8px;
+  display: inline-flex; /* Align checkmark and text */
+  align-items: center;
+}
+
+.pill-button:hover {
+  background-color: #e0e0e0;
+}
+
+.checkmark {
+  color: rgb(159, 6, 189);
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.extractable-fields-image-container-pill {
+  flex: 1;
+  max-width: 65%;
+  margin-top: 45px;
+  display: flex;
+  justify-content: flex-end; /* Align image to the right */
+}
+
+.extractable-fields-image-pill {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 8px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .extractable-fields-content-pill {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .extractable-fields-buttons-left {
+    max-width: 90%;
+    align-items: center; /* Center buttons on smaller screens */
+    text-align: center;
+  }
+
+  .flat-fields,
+  .line-items {
+    text-align: center;
+  }
+
+  .pill-button {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+
+  .extractable-fields-image-container-pill {
+    max-width: 80%;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}

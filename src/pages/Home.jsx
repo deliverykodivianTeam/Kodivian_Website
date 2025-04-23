@@ -40,11 +40,8 @@ const Home = () => {
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 transition-colors duration-300 text-black" style={{ marginRight: '10px' }}>
                             Welcome
                         </h1>
-<<<<<<< HEAD
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-700 mb-4 transition-colors duration-300 ">
-=======
+
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-700 mb-4 transition-colors duration-300">
->>>>>>> 2bb1715b227b6edac93a036abbed13e7c2460bb2
                             Kodivian
                         </h1>
                     </div>

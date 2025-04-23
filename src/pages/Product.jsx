@@ -32,7 +32,7 @@ import { Link } from 'react-router-dom'; // Import Link if you still need it
         <div className="sample-content">
           <h2 className="sample-title">Conquering Your Invoicing Challenges with Scanify</h2>
           <p className="sample-description">Scanify is a powerful solution designed to simplify your invoice management process. It scans invoices with high accuracy, automatically extracts key data, and converts it into structured JSON and Excel formats. This data can be seamlessly pushed into SAP for efficient processing, eliminating the need for manual entry and reducing the risk of errors.Whether you're handling a few invoices or managing high volumes, Scanify scales with your business, helping you stay organized, compliant, and in control.</p>
-          <button className="sample-button">Explore features</button>
+          <Link to="/scanify" className="sample-button"> Explore features </Link>
         </div>
       </div>
 

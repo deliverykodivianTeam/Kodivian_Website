@@ -106,6 +106,9 @@
 .sample-image {
   max-width: 80%; /* Make the image responsive */
   height: auto;
+  float: left;
+  margin-left: 0;         /* Align to the left */
+  margin-right: auto;     /* Push it away from the right */
   border-radius: 8px; /* Optional: Add rounded corners to the image */
 }
 
@@ -160,6 +163,9 @@
 .sample2-image {
   max-width: 100%; /* Make the image responsive */
   height: auto;
+  float: right;
+  margin-right: 0;         /* Align to the left */
+  margin-left: 10px; 
   border-radius: 8px; /* Optional: Add rounded corners to the image */
 }
 
@@ -216,6 +222,9 @@
 .sample1-image {
   max-width: 80%; /* Make the image responsive */
   height: auto;
+  float: left;
+  margin-left: 0;         /* Align to the left */
+  margin-right: 10px; 
   border-radius: 8px; /* Optional: Add rounded corners to the image */
 }
 
@@ -270,6 +279,9 @@
 .sample3-image {
   max-width: 100%; /* Make the image responsive */
   height: auto;
+  float: right;
+  margin-right: 0;         /* Align to the left */
+  margin-left: 10px; 
   border-radius: 8px; /* Optional: Add rounded corners to the image */
 }
 
