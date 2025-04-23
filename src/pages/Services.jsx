@@ -11,8 +11,16 @@ import Front_Backend_ServicesImage from "../assets/frontend_backend.png";
 import Ai_Agents_Mobile_Apps_ServicesImage from "../assets/ai_agents_mobile_apps.png";
 import underbanner from "../assets/purple-geometric.jpg";
 import PurpleWave from "../assets/purple-wave.png";
-import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin, FaLocationArrow, FaPhone, FaEnvelope } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import {
+  FaInstagram,
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaLocationArrow,
+  FaPhone,
+  FaEnvelope,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -71,7 +79,32 @@ const Services = () => {
 
   return (
     <div>
-      <img src={PurpleWave} alt="Purple Wave Design" className="wave-header" />
+       <div className="services-page-layout">
+      {/* Hero Section with Services Info */}
+      <div className="hero-section relative w-full overflow-hidden">
+        <img
+          src={PurpleWave}
+          alt="Purple Wave Design"
+          className="wave-header"
+        />
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-black">
+          <div className="hero-services-info">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+              We simplify your infrastructure
+            </h1>
+            <p className="mb-2">
+              so you can focus on <span className="highlight">what</span>{" "}
+              <span className="highlight">matters</span>.
+            </p>
+            <div className="flex mt-6">
+              <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">
+                Learn More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
       <div className="service-image">
         <button className="slider-button prev" onClick={handlePrev}>
           &lt;
