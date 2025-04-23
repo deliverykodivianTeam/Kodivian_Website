@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "../styles/Contact.css"; // Import global styles
 import PurpleWave from "../assets/purple-wave.png"; // Import the image
 import underbanner from "../assets/purple-geometric.jpg";
-import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin, FaLocationArrow, FaPhone, FaEnvelope } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-
+import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { LiaPhoneSolid } from "react-icons/lia";
+import { MdOutlineMailOutline, MdOutlineLocationOn } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const locationData = [
@@ -58,8 +59,43 @@ const Contact = () => {
 
   return (
     <div className="contact-page-layout">
-      <img src={PurpleWave} alt="Purple Wave Design" className="wave-header" />
-      <div className="contact-map">
+      {/* Hero Section with Contact Info */}
+      <div className="hero-section relative w-full overflow-hidden">
+        <img
+          src={PurpleWave}
+          alt="Purple Wave Design"
+          className="wave-header"
+        />
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-white">
+          <div className="hero-contact-info">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">Contact Us</h1>
+            <p className="mb-2">
+              Feel free to use the form or drop us an email. Old-fashioned phone
+              calls work too.
+            </p>
+            <div className="flex items-center mb-2">
+              <a href="#call-1">
+                <LiaPhoneSolid className="mr-2 text-purple-300" />
+              </a>
+              <span>+91 88704 35343</span>
+            </div>
+            <div className="flex items-center mb-2">
+              <a href="#call-1">
+                <MdOutlineMailOutline className="mr-2 text-purple-300" />
+              </a>
+              <span>vijaysabari.m@kodivian.com</span>
+            </div>
+            <div className="flex items-start">
+              <a href="#call">
+                <MdOutlineLocationOn className="mr-2 text-purple-300 mt-0.5" />
+              </a>
+              <span>Kodivian Technologies</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="contact-map" id="call">
         <div className="location-header">
           <h2>Our Locations</h2>
           <div className="location-selector">
@@ -95,11 +131,11 @@ const Contact = () => {
           </>
         )}
       </div>
-      <div className="contact-form-container">
-        <h1>Contact Us</h1>
+      <div className="contact-form-container" id="call-1">
+        {/* The contact form will remain here */}
+        <h1>Send us a Message</h1>
         <p>We'd love to hear from you! Please fill out the form below.</p>
         <form className="contact-form">
-          {/* ... contact form fields ... */}
           <div className="form-group">
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" name="name" required />
@@ -197,7 +233,7 @@ const Contact = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaLocationArrow className="w-5 h-4" />
+                    <MdOutlineLocationOn className="w-5 h-4" />
                   </Link>
                 </div>
                 <div className="flex items-center">
@@ -205,7 +241,7 @@ const Contact = () => {
                     to="tel:+918870435343" // Corrected phone number format
                     className="text-gray-400 hover:text-white"
                   >
-                    <FaPhone className="w-5 h-4" />
+                    <LiaPhoneSolid className="w-5 h-4" />
                   </Link>
                 </div>
                 <div className="flex items-center">
@@ -214,7 +250,7 @@ const Contact = () => {
                     className="text-gray-400 hover:text-white"
                     title="Opens your default email" // Added a title attribute
                   >
-                    <FaEnvelope className="w-4 h-4" />
+                    <MdOutlineMailOutline className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
