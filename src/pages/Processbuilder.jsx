@@ -1,29 +1,83 @@
 import React, { useState } from 'react';
 import '../styles/Processbuilder.css';
 import website from '../assets/website.png'; // Default image
-import intuitiveImage from '../assets/website.png'; // Image for "Intuitive design tools"
-import familiarImage from '../assets/website.png'; // Image for "Familiar workflow"
-import groupsImage from '../assets/website.png'; // Image for "Groups and layers"
+import form from '../assets/form.png'; // Image for "Intuitive design tools"
+import workflow from '../assets/website.png'; // Image for "Familiar workflow"
+import groups from '../assets/website.png'; // Image for "Groups and layers"
+
+const faqData = [
+  {
+    question: 'What file types can I upload to Scanify?',
+    answer: 'You can upload PDFs, images (JPEG, PNG), and scanned invoice documents directly from your desktop and cloud storage services.',
+  },
+  {
+    question: 'Can I upload multiple invoices at once?',
+    answer: 'Yes! Our Invoice Processing allows you to upload and manage multiple invoices in a single batch.',
+  },
+  {
+    question: 'Is the invoice data extraction accurate?',
+    answer: 'Yes, Scanify uses advanced OCR and AI models to ensure high accuracy, even with multi-language support.',
+  },
+  {
+    question: 'Does Scanify support automatic data transfer to ERP platforms?',
+    answer: 'Yes, invoice data can be automatically pushed to your ERP system, eliminating manual entry and saving time.',
+  },
+  {
+    question: 'What can I do from the dashboard?',
+    answer: 'You can upload, view, manage, approve, and export invoices, monitor batch status, and initiate ERP data pushes—all from one smart dashboard.',
+  },
+]; 
 
 const Processbuilder = () => {
+
+  const [expandedQuestion, setExpandedQuestion] = useState(null);
+    const [isQueryOpen, setIsQueryOpen] = useState(false);
+    const [queryText, setQueryText] = useState('');
+  
+    const handleQuestionClick = (question) => {
+      setExpandedQuestion(expandedQuestion === question ? null : question);
+    };
+  
+    const openQueryBox = () => {
+      setIsQueryOpen(true);
+    };
+  
+    const handleQueryChange = (event) => {
+      setQueryText(event.target.value);
+    };
+
+    const handleSendQuery = () => {
+      if (queryText.trim()) {
+        // In a real application, you would implement the logic to send the query
+        // to your backend or directly trigger an email.
+        alert(`Your query "${queryText}" has been noted. We will get back to you via email.`);
+        setIsQueryOpen(false); // Close the query box after "sending"
+        setQueryText('');     // Clear the query text
+        // In a real scenario, you would use an API call here:
+        // fetch('/api/send-query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: queryText }) });
+      } else {
+        alert('Please enter your query.');
+      }
+    };
+
   const [expandedSection, setExpandedSection] = useState('intuitive'); // Initialize with 'intuitive' open
-  const [currentImg, setCurrentImg] = useState(intuitiveImage); // Initialize with the corresponding image
+  const [currentImg, setCurrentImg] = useState(form); // Initialize with the corresponding image
 
   const handleSectionClick = (section) => {
     if (expandedSection === section) {
       setExpandedSection(null);
-      setCurrentImg(website); // Revert to default image when collapsing (optional)
+      setCurrentImg(form); // Revert to default image when collapsing (optional)
     } else {
       setExpandedSection(section);
       switch (section) {
         case 'intuitive':
-          setCurrentImg(intuitiveImage);
+          setCurrentImg(form);
           break;
         case 'familiar':
-          setCurrentImg(familiarImage);
+          setCurrentImg(workflow);
           break;
         case 'groups':
-          setCurrentImg(groupsImage);
+          setCurrentImg(groups);
           break;
         default:
           setCurrentImg(website); // Fallback to default if needed
@@ -181,9 +235,94 @@ const Processbuilder = () => {
       <p className="feature-description">
       Manage user roles, permissions, and profiles effortlessly without coding.and personalized for every visitor. </p>
     </div>
-
+  </div>
+   
+  <div className="pro-section">
+  <div className="pro-content">
+    <p className="pro-intro">Introducing Repl.it Projects</p>
+    <h1 className="hero-title">
+      Build software <span className="pro-badge new">NEW</span>{' '}
+      <span className="pro-together">together</span>{' '}
+      <span className="pro-badge beta">BETA</span>
+    </h1>
+    <p className="pro-subtitle">
+      Projects are version control for fast-moving teams. Create a project to
+      collaborate seamlessly, securely, and asynchronously without the
+      frustration of learning Git.
+    </p>
+    <div className="pro-buttons">
+      <button className="button primary">Start building</button>
+      <button className="button secondary">Learn about Projects</button>
+    </div>
   </div>
 </div>
+
+</div>
+
+      {/* FAQ Section */}
+ <div className="pro-faq-section">
+        <h2 className="pro-faq-heading">Frequently Asked Questions</h2>
+        <ul className="pro-faq-list">
+          {faqData.map((faq, index) => (
+            <li key={index} className="faq-item">
+              <div
+                className="pro-faq-question"
+                onClick={() => handleQuestionClick(faq.question)}
+              >
+                {faq.question}
+                <span className="pro-faq-toggle">
+                  {expandedQuestion === faq.question ? '-' : '+'}
+                </span>
+              </div>
+              {expandedQuestion === faq.question && (
+                <div className="pro-faq-answer">{faq.answer}</div>
+              )}
+            </li>
+          ))}
+        </ul>
+        <div className="pro-faq-query-container">
+          {!isQueryOpen ? (
+            <button className="pro-faq-query-button" onClick={openQueryBox}>
+              Have a Question? Send us a Query
+            </button>
+          ) : (
+            <div className="pro-query-input-area">
+              <textarea
+                className="pro-query-textbox"
+                placeholder="Enter your query here..."
+                value={queryText}
+                onChange={handleQueryChange}
+              />
+              <button className="pro-query-submit-button" onClick={handleSendQuery}>
+                Submit Query
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+       
+         {/* New Bottom Section */}
+      <div className="pro-bottom-cta-section">
+        <div className="pro-bottom-cta-content">
+          <div className="pro-bottom-cta-left">
+            <h3>Streamline your business with Pixl’s AI Enabled Solutions</h3>
+          </div>
+          <div className="pro-bottom-cta-buttons">
+            <button className="pro-book-demo-button">Book a Demo</button>
+            <button className="pro-talk-sales-button">Talk with Sales</button>
+          </div>
+        </div>
+      {/* FAQ Section */}
+      <div className="pro-faq-section">
+      <p className="pro-faq-query-info">
+            © Kodivian.scanify 2024. All rights reserved.
+          </p>
+      </div>
+      </div>
+
+
+       
+
 
     </div>
   );
