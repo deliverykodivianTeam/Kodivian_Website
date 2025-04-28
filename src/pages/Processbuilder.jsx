@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import '../styles/Processbuilder.css';
 import website from '../assets/website.png'; // Default image
-import intuitiveImage from '../assets/ab.png'; // Image for "Intuitive design tools"
-import familiarImage from '../assets/ab.png'; // Image for "Familiar workflow"
-import groupsImage from '../assets/ab.png'; // Image for "Groups and layers"
+import intuitiveImage from '../assets/website.png'; // Image for "Intuitive design tools"
+import familiarImage from '../assets/website.png'; // Image for "Familiar workflow"
+import groupsImage from '../assets/website.png'; // Image for "Groups and layers"
 
 const Processbuilder = () => {
-  const [expandedSection, setExpandedSection] = useState(null);
-  const [currentImg, setCurrentImg] = useState(website); // Initialize with the default image
+  const [expandedSection, setExpandedSection] = useState('intuitive'); // Initialize with 'intuitive' open
+  const [currentImg, setCurrentImg] = useState(intuitiveImage); // Initialize with the corresponding image
 
   const handleSectionClick = (section) => {
     if (expandedSection === section) {
       setExpandedSection(null);
-      setCurrentImg(website); // Revert to default image when collapsing
+      setCurrentImg(website); // Revert to default image when collapsing (optional)
     } else {
       setExpandedSection(section);
       switch (section) {
@@ -54,19 +54,22 @@ const Processbuilder = () => {
       <div className="freehand-editor-section">
         <h1 className="freehand-editor-heading">Design without limits using <br />our powerful freehand editor</h1>
         <p className="freehand-editor-description">
-        Create stunning apps effortlessly with our drag-and-drop platform.No coding needed <br/> just customize, launch, and manage everything from one powerful interface.
+          Create stunning apps effortlessly with our drag-and-drop platform.No coding needed <br/> just customize, launch, and manage everything from one powerful interface.
         </p>
 
         <div className="freehand-editor-accordion-wrapper">
+          <div className="accordion-left-image">
+            <img src={currentImg} alt="Section specific" className="accordion-section-image-left" />
+          </div>
           <div className="freehand-editor-accordion">
             <div className="accordion-item">
               <div className="accordion-header" onClick={() => handleSectionClick('intuitive')}>
                 <span className="accordion-arrow">{expandedSection === 'intuitive' ? '▼' : '►'}</span>
-                <h2>Intuitive design tools</h2>
+                <h2> Smart Form Builder</h2>
               </div>
               {expandedSection === 'intuitive' && (
                 <div className="accordion-content">
-                  <p>The same editor tools and shortcuts you already know.</p>
+                  <p>Effortlessly create labels, buttons, conditions, and form elements in a dynamic, intuitive interface — no complexity, just creativity.</p>
                 </div>
               )}
             </div>
@@ -74,11 +77,11 @@ const Processbuilder = () => {
             <div className="accordion-item">
               <div className="accordion-header" onClick={() => handleSectionClick('familiar')}>
                 <span className="accordion-arrow">{expandedSection === 'familiar' ? '▼' : '►'}</span>
-                <h2>Familiar workflow</h2>
+                <h2> Seamless Workflow</h2>
               </div>
               {expandedSection === 'familiar' && (
                 <div className="accordion-content">
-                  <p>A workflow designed to feel natural and boost your productivity.</p>
+                  <p>Assign approvals, set rejections, manage user groups, and control page visibility — all through a streamlined, flexible workflow system built for productivity.</p>
                 </div>
               )}
             </div>
@@ -86,20 +89,102 @@ const Processbuilder = () => {
             <div className="accordion-item">
               <div className="accordion-header" onClick={() => handleSectionClick('groups')}>
                 <span className="accodion-arrow">{expandedSection === 'groups' ? '▼' : '►'}</span>
-                <h2>Groups and layers</h2>
+                <h2>User Group Layer</h2>
               </div>
               {expandedSection === 'groups' && (
                 <div className="accordion-content">
-                  <p>Organize your design elements with intuitive groups and layers.</p>
+                  <p>Create user groups, assign specific users to workflows, control page approvals or rejections, and manage statuses like Active or Inactive.</p>
                 </div>
               )}
             </div>
           </div>
-          <div className="accordion-right-image">
-            <img src={currentImg} alt="Section specific" className="accordion-section-image-right" />
-          </div>
         </div>
       </div>
+
+
+      <div className="freehand2-editor-section">
+  <h1 className="freehand2-editor-main-heading">Click. Build. Inspire. Repeat!</h1>
+  <p className="freehand2-editor-main-description">
+  With our flexible components and powerful features, you can create any website you imagine. Whether it’s setting intelligent payment gateways, managing user authentication, or integrating third-party apps, we make it easy to bring your vision to life. Our goal is to make building a no-code website seamless and effortless for you.
+  </p>
+
+  <div className="feature-cards-grid">
+    {/* Card 1 */}
+    <div className="feature-card">
+      <div className="feature-icon">
+        {/* You'll need to use an actual icon here, perhaps an image or an SVG */}
+        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
+      </div>
+      <h3 className="feature-title">AI Powered <span className="feature-badge">new</span></h3>
+      <p className="feature-description">
+      Simply input your preferences, and watch as our tool generates a stunning, fully-functional site to your needs.      </p>
+
+    </div>
+
+    {/* Card 2 */}
+    <div className="feature-card">
+      <div className="feature-icon">
+        {/* Icon for "Insert a code" */}
+        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
+      </div>
+      <h3 className="feature-title"> Gateway Integration</h3>
+      <p className="feature-description">
+      Set intelligent gateway permissions based on conditions  automatically approve specific actions. 
+      </p>
+    </div>
+
+    {/* Card 3 */}
+    <div className="feature-card">
+      <div className="feature-icon">
+        {/* Icon for "Unsplash" */}
+        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
+      </div>
+      <h3 className="feature-title">Database Connectivity</h3>
+      <p className="feature-description">
+      Connect your forms data to real-time cloud databases and manage data .
+      </p>
+    </div>
+
+    {/* Card 4 */}
+    <div className="feature-card">
+      <div className="feature-icon">
+        {/* Icon for the fourth feature */}
+        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
+      </div>
+      <h3 className="feature-title">Third-Party App Integrations</h3> {/* Replace with the actual title */}
+      <p className="feature-description">
+       Create smarter workflows by connecting your site with the tools you already use.
+      </p>
+    </div>
+
+    
+    {/* Card 5 */}
+    <div className="feature-card">
+      <div className="feature-icon">
+        {/* Icon for the fourth feature */}
+        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
+      </div>
+      <h3 className="feature-title">Dashboard Model</h3> {/* Replace with the actual title */}
+      <p className="feature-description">
+       Create smarter workflows by connecting your site with the tools you already use.
+      </p>
+    </div>
+
+    
+    {/* Card 6 */}
+    <div className="feature-card">
+      <div className="feature-icon">
+        {/* Icon for the fourth feature */}
+        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
+      </div>
+      <h3 className="feature-title">User Authentication</h3> {/* Replace with the actual title */}
+      <p className="feature-description">
+      Manage user roles, permissions, and profiles effortlessly without coding.and personalized for every visitor. </p>
+    </div>
+
+  </div>
+</div>
+
     </div>
   );
 };

@@ -55,7 +55,7 @@
     max-width: 90%;
   }
   
-  
+
   .process-button-group {
     display: flex;
     gap: 1rem;
@@ -133,28 +133,28 @@
     max-width: 80%; /* Adjust max width for readability */
   }
   .freehand-editor-accordion-wrapper {
-    display: flex;
-    width: 80%;
-    margin: 50px 0 0; /* Center the wrapper */
-    align-items: flex-start; /* Align image and accordion to the top */
-    flex-direction: row; /* Reverse the order of items */
-  }
-  
-  .accordion-right-image {
-    flex-shrink: 0; /* Prevent shrinking */
-    max-width: 60%; /* Adjust width of the right image */
-    margin-left: 600px; /* Space between accordion and image */
-  }
-  
-  .accordion-section-image-right {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.375rem;
-  }
-  
-  .freehand-editor-accordion {
-    flex: 1; /* Take remaining space */
-  }
+  display: flex;
+  width: 80%;
+  margin: 50px auto 0; /* Center the wrapper */
+  align-items: flex-start; /* Align image and accordion to the top */
+  flex-direction: row-reverse; /* Keep items in a row */
+}
+
+.accordion-left-image {
+  flex-shrink: 0; /* Prevent shrinking */
+  max-width: 60%; /* Adjust width of the left image */
+  margin-left: 110px; /* Space between image and accordion */
+}
+
+.accordion-section-image-left {
+  max-width: 100%;
+  height: 100%;
+  border-radius: 0.375rem;
+}
+
+.freehand-editor-accordion {
+  flex: 1; /* Take remaining space */
+}
   
   .accordion-item {
     margin-bottom: 10px;
@@ -165,8 +165,9 @@
   
   .accordion-header {
     background-color: none;
-    padding: 15px;
+    padding: 5px;
     display: flex;
+    margin-top: 70px;
     align-items: center;
     cursor: pointer;
     justify-content: flex-start; /* Align arrow and text to the left */
@@ -174,6 +175,7 @@
   
   .accordion-header h2 {
     font-size: 1.25rem;
+    align-items: center;
     color: #333;
     margin-left: 10px;
     font-weight: 600;
@@ -200,7 +202,77 @@
     transition: transform 0.2s ease-in-out; /* For smooth arrow animation if needed */
   }
   
-  
+  /* Styles for the new section */
+.freehand2-editor-main-heading {
+  font-size: 2.5rem; /* Adjust as needed */
+  color: #333; /* Adjust as needed */
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 15px;
+}
+
+.freehand2-editor-main-description {
+  font-size: 1rem; /* Adjust as needed */
+  color: #666; /* Adjust as needed */
+  text-align: center;
+  margin-bottom: 30px;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background-color: #f9f9f9; /* Light background for the cards */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0; /* Placeholder icon background */
+  border-radius: 50%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem; /* Adjust icon size if using text-based icons */
+  color: #555; /* Adjust icon color */
+}
+
+.feature-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.feature-badge {
+  background-color: #ff6b6b; /* Example badge color */
+  color: white;
+  font-size: 0.8rem;
+  padding: 2px 5px;
+  border-radius: 4px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.feature-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+}
+
 
   
   /* Media query for smaller screens */
@@ -290,5 +362,14 @@
   
     .accordion-section-image-right {
       max-width: 80%;
+    }
+
+    .freehand2-editor-section {
+      margin-top: 70px;
+      width: 100%;
+      padding: 30px 0; /* Add some vertical padding */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center the content within the section */
     }
   }
