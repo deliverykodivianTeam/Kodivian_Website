@@ -184,110 +184,6 @@
   color: var(--accent-color);
 }
 
-/* Slider Styles */
-.slider-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: auto; /* Adjust height to content */
-}
-
-.slider {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  transition: transform 0.6s ease-in-out;
-}
-
-.slider-item {
-  flex: 0 0 100%;
-  min-width: 100%;
-  padding: 20px; /* Add some padding around the content */
-  box-sizing: border-box;
-  background-color: var(--bg-light-color); /* Keep a background for the item */
-  display: flex;
-  flex-direction: column; /* Stack image and text */
-  align-items: center; /* Center items horizontally */
-  text-align: center; /* Center text within the item */
-}
-
-.slider-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.slider-image {
-  max-width: 60%; /* Further reduce image width in slider */
-  height: auto;
-  max-height: 150px; /* Further limit image height in slider */
-  object-fit: contain;
-  margin-bottom: 15px; /* Space between image and text */
-}
-
-.slider-content h3 {
-  font-size: 1.8em;
-  margin-bottom: 10px;
-  color: var(--primary-color);
-}
-
-.slider-content p {
-  font-size: 1.1em;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  color: var(--secondary-color);
-}
-
-.slider-explore-link {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-top: 15px;
-  color: var(--accent-color);
-  text-decoration: none;
-  font-weight: bold;
-  border: 2px solid var(--accent-color);
-  border-radius: 8px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-size: 0.9em;
-}
-
-.slider-explore-link:hover {
-  background-color: var(--accent-color);
-  color: var(--bg-light-color);
-}
-
-.slider-button {
-  background: none;
-  border: none;
-  font-size: 1.5em;
-  cursor: pointer;
-  padding: 10px;
-  position: absolute;
-  top: 925px;
-  transform: translateY(-50%);
-  z-index: 2;
-  color: var(--primary-color);
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-}
-
-.slider-button:hover {
-  opacity: 1;
-}
-
-.slider-button.prev {
-  left: 20px;
-}
-
-.slider-button.next {
-  right: 20px;
-}
-
 .service-image {
   max-width: 55%; /* Adjust the maximum width as needed */
   height: auto;
@@ -343,7 +239,7 @@
 
 .wave-header {
   width: 100%;
- height: 595px;
+  height: 595px;
   margin-bottom: 20px;
   display: block;
 }
@@ -352,4 +248,170 @@
   width: 100%;
   margin-top: 20px; /* Adjust as needed */
   display: block;
+}
+
+.hero-services-info {
+  padding-top: 20rem; /* Add some top padding to the container */
+}
+
+.hero-services-info h1 {
+  font-size: 3.5rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem; /* Adjust spacing below the main heading */
+}
+
+.hero-services-info p {
+  font-size: 1.25rem;
+  margin-bottom: 1rem; /* Adjust spacing below the subheading */
+}
+
+.hero-services-info button {
+  font-size: 1.1rem;
+  padding: 0.8rem 1.5rem;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.cloudSupportContainer {
+  background-color: white;
+  padding: 20px;
+  display: flex; /* Enable flexbox for the main container */
+  align-items: center; /* Vertically align the sections */
+  width: 100%;
+}
+
+.leftSection {
+  flex: 1; /* Take up 1 part of the available space */
+  display: flex;
+  justify-content: center; /* Center the icon grid horizontally */
+}
+
+.rightSection {
+  flex: 1; /* Take up 1 part of the available space */
+  padding-left: 20px; /* Add some spacing between the icons and text */
+  display: flex; /* Enable flexbox for vertical and horizontal centering */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  text-align: center; /* Ensure text itself is centered */
+}
+
+.cloudSupportTitle {
+  color: oklch(49.6% 0.265 301.924);
+  font-size: 2.5em;
+  margin-bottom: 0;
+}
+
+.cloudProviderLogos {
+  display: grid; /* Use grid layout for the icons */
+  grid-template-columns: repeat(2, 1fr); /* Create two equal columns */
+  gap: 20px; /* Spacing between grid items */
+  width: 80%; /* Adjust width as needed */
+}
+
+.cloudProviderItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white; /* Light background for the icon boxes */
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions for hover effects */
+}
+
+.cloudProviderItem:hover {
+  transform: scale(1.05); /* Slightly scale up on hover */
+   /* Slightly increase shadow on hover */
+  cursor: pointer; /* Change cursor to indicate interactivity */
+}
+
+.cloudProviderItem:hover .cloudProviderIcon {
+  color: oklch(49.6% 0.265 301.924); /* Change icon color on hover */
+}
+
+.cloudProviderIcon {
+  color: oklch(49.6% 0.265 301.924);
+  font-size: 2em; /* Adjust size as needed for the larger icons */
+  transition: color 0.2s ease-in-out; /* Smooth color transition on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cloudSupportContainer {
+    flex-direction: column; /* Stack sections vertically (icons on top) */
+    text-align: center;
+  }
+
+  .leftSection {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .rightSection {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px; /* Ensure it takes up some vertical space */
+  }
+
+  .cloudProviderLogos {
+    grid-template-columns: repeat(1, 1fr); /* Single column on smaller screens */
+    width: 80%;
+    margin: 0 auto; /* Center the grid */
+  }
+}
+
+
+.cloudProviderMongoDB {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white; /* Light background for the icon boxes */
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions for hover effects */
+}
+
+.cloudProviderMongoDB:hover {
+  transform: scale(1.05); /* Slightly scale up on hover */
+   /* Slightly increase shadow on hover */
+  cursor: pointer; /* Change cursor to indicate interactivity */
+}
+
+.cloudProviderMongoDB:hover .cloudProviderIcon {
+  color: oklch(49.6% 0.265 301.924); /* Change icon color on hover */
+}
+
+.buildScaleGrowContainer {
+  display: flex;
+  flex-direction: column; /* Stack the text vertically */
+  align-items: flex-start; /* Align text to the left */
+  /* Adjust positioning as needed based on your layout */
+  /* Example positioning: */
+  /* position: absolute; */
+  /* top: 50%; */
+  margin-left: 100px; 
+  /* transform: translateY(-50%); */
+}
+
+.buildScaleGrowText {
+  color: black; /* Match the teal color */
+  font-size: 13em; /* Adjust to match the large size */
+  line-height: 0.8; /* Reduce line height to stack closer */
+  margin: 0; /* Remove default margins */
+  /* Add some subtle spacing between the words */
+  margin-bottom: 0.1em;
+}
+
+/* Adjust for different screen sizes if needed */
+@media (max-width: 768px) {
+  .buildScaleGrowText {
+    font-size: 6em; /* Smaller font size on smaller screens */
+  }
 }

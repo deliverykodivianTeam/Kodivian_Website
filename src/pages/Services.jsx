@@ -2,15 +2,24 @@ import React, { useState, useEffect, useRef } from "react";
 import "../styles/Services.css";
 
 // Import your new images from the assets folder
-import image1 from "../assets/intro_0.png"; // Replace with your image paths
 import image2 from "../assets/intro_1.png";
-import cloudServicesImage from "../assets/cloud_services.png"; // Import the cloud services image
-import databaseServicesImage from "../assets/database_services.png";
-import rpaServicesImage from "../assets/rpa_nocode.png";
-import Front_Backend_ServicesImage from "../assets/frontend_backend.png";
-import Ai_Agents_Mobile_Apps_ServicesImage from "../assets/ai_agents_mobile_apps.png";
 import underbanner from "../assets/purple-geometric.jpg";
 import PurpleWave from "../assets/purple-wave.png";
+
+import { FaAws } from "react-icons/fa"; // For AWS
+import { VscAzure } from "react-icons/vsc";
+import { BiLogoGoogleCloud } from "react-icons/bi";
+import { GrOracle } from "react-icons/gr";
+
+import { GrMysql } from "react-icons/gr";
+import { BiLogoMongodb } from "react-icons/bi";
+import { BiLogoPostgresql } from "react-icons/bi";
+
+import { FaPython } from "react-icons/fa";
+import { BiLogoJavascript } from "react-icons/bi";
+import { FaJava } from "react-icons/fa";
+import { FaHtml5 } from "react-icons/fa";
+
 import {
   FaInstagram,
   FaFacebook,
@@ -23,129 +32,131 @@ import {
 import { Link } from "react-router-dom";
 
 const Services = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const sliderRef = useRef(null);
-
-  const slides = [
-    {
-      title: "Cloud Services",
-      image: cloudServicesImage, // Use the imported image variable
-      alt: "Cloud Services",
-      link: "../assets/cloud_services.png",
-    },
-    {
-      title: "Database Services",
-      image: databaseServicesImage, // Make sure this image exists in your assets or is correctly linked
-      alt: "Database Services",
-      link: "../assets/database_services.png",
-    },
-    {
-      title: "RPA & No Code Low Code",
-      image: rpaServicesImage, // Make sure this image exists in your assets or is correctly linked
-      alt: "RPA & No Code Low Code",
-      link: "../assets/rpa_nocode.png",
-    },
-    {
-      title: "Front-End & Back-End",
-      image: Front_Backend_ServicesImage, // Make sure this image exists in your assets or is correctly linked
-      alt: "Front-End & Back-End",
-      link: "../assets/frontend_backend.png",
-    },
-    {
-      title: "AI Agents & Mobile Applications",
-      image: Ai_Agents_Mobile_Apps_ServicesImage, // Make sure this image exists in your assets or is correctly linked
-      alt: "AI Agents & Mobile Applications",
-      link: "../assets/ai_agents_mobile_apps.png",
-    },
-  ];
+  const [typingText, setTypingText] = useState("");
+  const fullText = "We simplify your infrastructure";
+  const typingSpeed = 100; // milliseconds per character
+  const [typingComplete, setTypingComplete] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 5000); // Change slide every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [slides.length]);
-
-  const handlePrev = () => {
-    setCurrentSlide(
-      (prevSlide) => (prevSlide - 1 + slides.length) % slides.length
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-  };
+    let timer;
+    if (typingText.length < fullText.length) {
+      timer = setTimeout(() => {
+        setTypingText(fullText.substring(0, typingText.length + 1));
+      }, typingSpeed);
+    } else {
+      setTypingComplete(true);
+      clearTimeout(timer); // Ensure timer is cleared when typing is complete
+    }
+    return () => clearTimeout(timer);
+  }, [typingText, fullText]);
 
   return (
     <div>
-       <div className="services-page-layout">
-      {/* Hero Section with Services Info */}
-      <div className="hero-section relative w-full overflow-hidden">
-        <img
-          src={PurpleWave}
-          alt="Purple Wave Design"
-          className="wave-header"
-        />
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-black">
-          <div className="hero-services-info">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              We simplify your infrastructure
-            </h1>
-            <p className="mb-2">
-              so you can focus on <span className="highlight">what</span>{" "}
-              <span className="highlight">matters</span>.
-            </p>
-            <div className="flex mt-6">
-              <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">
-                Learn More
-              </button>
+      <div className="services-page-layout">
+        {/* Hero Section with Services Info */}
+        <div className="hero-section relative w-full overflow-hidden">
+          <img
+            src={PurpleWave}
+            alt="Purple Wave Design"
+            className="wave-header"
+          />
+          <div
+            className={`absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-black ${
+              typingComplete ? "typing-complete" : ""
+            }`}
+          >
+            <div className="hero-services-info">
+              <h1 className="text-3xl md:text-4xl font-bold mb-2">
+                {typingText}
+                {!typingComplete && (
+                  <span className="typed-cursor typed-cursor--blink">|</span>
+                )}
+                {typingComplete}
+              </h1>
+              <p className="mb-2">
+                so you can focus on <span className="highlight">what</span>{" "}
+                <span className="highlight">matters</span>.
+              </p>
+              <div className="flex mt-6">
+                <a href="#call">
+                <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">
+                  Learn More
+                </button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
-      <div className="service-image">
-        <button className="slider-button prev" onClick={handlePrev}>
-          &lt;
-        </button>
-        <ul
-          className="slider"
-          ref={sliderRef}
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          {slides.map((slide, index) => (
-            <li className="slider-item" key={index}>
-              <div className="service-box">
-                <img
-                  src={slide.image}
-                  alt={slide.alt}
-                  className="service-image"
-                />
-                <h3>{slide.title}</h3>
-                <p>{slide.description}</p>
-                <a href={slide.link} className="explore-link">
-                  Explore →
-                </a>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <button className="slider-button next" onClick={handleNext}>
-          &gt;
-        </button>
+      {/* REMOVED SLIDER SECTION */}
+
+      <div className="cloudSupportContainer" id="call">
+        <div className="leftSection">
+          <p className="cloudSupportTitle">Support for every cloud.</p>
+        </div>
+        <div className="rightSection">
+          <div className="cloudProviderLogos">
+            <div className="cloudProviderItem">
+              <BiLogoGoogleCloud size={250} className="cloudProviderIcon" />
+            </div>
+            <div className="cloudProviderItem">
+              <FaAws size={250} className="cloudProviderIcon" />
+            </div>
+            <div className="cloudProviderItem">
+              <VscAzure size={250} className="cloudProviderIcon" />
+            </div>
+            <div className="cloudProviderItem">
+              <GrOracle size={250} className="cloudProviderIcon" />
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="content-with-image">
-        <p className="large-text">
-          Kodivian Technologies LLP, based in Chennai, specializes in digital
-          transformation and enterprise automation solutions.
-        </p>
-        <img
-          src={image1} // Use the first imported image
-          alt="Description of image 1"
-          className="content-image"
-        />
+      <div className="buildScaleGrowContainer">
+        <p className="buildScaleGrowText">Build.</p>
+        <p className="buildScaleGrowText">Scale.</p>
+        <p className="buildScaleGrowText">Grow.</p>
+      </div>
+
+      <div className="cloudSupportContainer">
+        <div className="leftSection">
+          <div className="cloudProviderLogos">
+            <div className="cloudProviderItem">
+              <GrMysql size={250} className="cloudProviderIcon" />
+            </div>
+            <div className="cloudProviderItem">
+              <BiLogoPostgresql size={250} className="cloudProviderIcon" />
+            </div>
+            <div className="cloudProviderMongoDB">
+              <BiLogoMongodb size={250} className="cloudProviderIcon" />
+            </div>
+          </div>
+        </div>
+        <div className="rightSection">
+          <p className="cloudSupportTitle">Systems fade, but data remains.</p>
+        </div>
+      </div>
+
+      <div className="cloudSupportContainer">
+        <div className="leftSection">
+          <p className="cloudSupportTitle">No error is the best message.</p>
+        </div>
+        <div className="rightSection">
+          <div className="cloudProviderLogos">
+            <div className="cloudProviderItem">
+              <FaPython size={250} className="cloudProviderIcon" />
+            </div>
+            <div className="cloudProviderItem">
+              <FaJava size={250} className="cloudProviderIcon" />
+            </div>
+            <div className="cloudProviderItem">
+              <BiLogoJavascript size={250} className="cloudProviderIcon" />
+            </div>
+            <div className="cloudProviderItem">
+              <FaHtml5 size={250} className="cloudProviderIcon" />
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="content-with-image">
@@ -217,37 +228,6 @@ const Services = () => {
                   <strong className="bold">Testing & Launch:</strong> Conducts
                   thorough testing and delivers the product within the
                   timeframe.
-                </li>
-              </ul>
-            </div>
-
-            {/* Box 3: Technology Competencies */}
-            <div className="service-box">
-              <h3>Technology Competencies:</h3>
-              <ul>
-                <li>
-                  <strong className="bold">Programming Languages:</strong>
-                  Python, Ruby, PHP, Java, C, C++, C#.
-                </li>
-                <li>
-                  <strong className="bold">Databases:</strong> Oracle, MySQL,
-                  NoSQL, Microsoft SQL Server, IBM DB2, MongoDB, PostgreSQL.
-                </li>
-                <li>
-                  <strong className="bold">Middleware & Frameworks:</strong>
-                  WebLogic, WebSphere, Apache, Django.
-                </li>
-                <li>
-                  <strong className="bold">Analytics Tools:</strong> Oracle
-                  Analytic Cloud, Power BI, Tableau, Spark, QlikView.
-                </li>
-                <li>
-                  <strong className="bold">Cloud Infrastructure:</strong> AWS,
-                  Azure, Google Cloud Platform, Oracle Cloud.
-                </li>
-                <li>
-                  <strong className="bold">IoT Platforms:</strong> Node-RED,
-                  Eclipse IoT, OpenHAB, Zetta, Arduino.
                 </li>
               </ul>
             </div>
@@ -412,7 +392,7 @@ const Services = () => {
                 Framework
               </a>
             </div>
-            <div className="flex-1 flex flex-col space-y-4 space-x-4">
+            <div className="flex-1 flex flex-col space-y-4 space-x -4">
               <h3 className="text-purple-700 hover:text-gray-900 font-bold ">
                 PRODUCT
               </h3>

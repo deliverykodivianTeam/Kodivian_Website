@@ -32,12 +32,12 @@
   text-align: center;
   width: calc(50% - 30px);
   max-width: 300px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
 }
 
 .about-stat-box:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 8px oklch(49.6% 0.265 301.924);
 }
 
 .stat-icon {
