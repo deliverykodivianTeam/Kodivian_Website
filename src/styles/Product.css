@@ -107,11 +107,14 @@
   max-width: 80%; /* Make the image responsive */
   height: auto;
   float: left;
+  transition: transform 0.1s ease-in-out;
   margin-left: 0;         /* Align to the left */
   margin-right: auto;     /* Push it away from the right */
   border-radius: 8px; /* Optional: Add rounded corners to the image */
 }
-
+.sample-image:hover{
+  transform: scale(1.1);
+}
 .sample-content {
   flex: 1; /* Take up the other 1/2 of the available width */
 }
@@ -152,6 +155,7 @@
  /* Light background color similar to the sample */
   border-radius: 10px; /* Optional: Add rounded corners */
   margin-top: 25px; /* Adjust spacing as needed */
+  transition: transform 0.1s ease-in-out;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 

@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'; // Import Link if you still need it
 
  const Product = () => {
   return (
+    <div>
     <div className="hero-section">
       <div className="hero-content">
         <img src={WaveImage} alt="Wave Banner" className="w-full block transition-opacity duration-500 opacity-90 hover:opacity-100" style={{ height: '588px' }} />
@@ -41,7 +42,7 @@ import { Link } from 'react-router-dom'; // Import Link if you still need it
         <div className="sample2-content">
         <h2 className="sample3-title"> Turn Processes Into Powerful Applications with Process Builder</h2>
           <p className="sample3-description">Process Builder empowers you to create fully functional workflows and forms using an intuitive drag-and-drop interface—no coding required. In just seconds, you can design custom applications, assign them to specific clients or users, and instantly generate user pages, dashboards, reports, and charts. Whether you're automating internal processes or building client-facing solutions, Process Builder makes it incredibly easy, fast, and efficient. Bring your ideas to life and streamline your operations like never before.</p>
-          <button className="sample2-button">Explore features</button>
+          <Link to="/processbuilder" className="sample-button"> Explore features </Link>
         </div>
         <div className="sample2-image-container">
           <img src={processbuilder} alt="Intellidocs" className="sample2-image" />
@@ -74,7 +75,7 @@ import { Link } from 'react-router-dom'; // Import Link if you still need it
           <img src={intellidocs} alt="Intellidocs" className="sample2-image" />
         </div>
       </div>
-
+     </div>
       
 
       {/* Bottom Wave Image with Overlay Content */}

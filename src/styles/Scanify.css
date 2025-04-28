@@ -1,205 +1,187 @@
 /* Scanify.css */
 
 .scanify-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 0px;
-    /* background-color: #000;  Removed background color from here */
-    font-family: 'Arial', sans-serif;
-    margin: 0 auto;
-  }
-  
-  .left-content {
-    flex: 1;
-    padding: 65px;
-    margin-top: 60px;
-    align-items: center;
-    max-width: 50%;
-    /* background-color: transparent;  Added transparent background */
-  }
-  
-  .right-content {
-    flex: 1;
-    display: flex;
-    padding: 45px;
-    justify-content: right;
-    max-width: 50%;
-    /* background-color: transparent;  Added transparent background */
-  }
-  
-  .main-heading-container {
-    margin-bottom: 10px;
-   
-  }
-  
-  
-  .main-heading-button {
-    background-color: white ;
-    color:black;
-    border: none ;
-    padding: 1px 2px;
-    margin-top: 0px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-weight: bold;
-  }
-  
-  .main-heading-button:hover {
-    background-color: rgba(39, 2, 69, 0.1);
-    color: #bd67d7;
-  }
-  
-  
-  .sub-heading {
-    font-size: 4rem;
-    color:  oklch(49.6% 0.265 301.924);
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  .description {
-    font-size: 1rem;
-    color: #0c0000;
-    line-height: 1.5;
-    margin-bottom: 20px;
-  }
-  
-  .button-group {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .get-started-button {
-    background-color: oklch(49.6% 0.265 301.924);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .get-started-button:hover {
-    background-color: #bd5ab8;
-  }
-  
-  .how-it-works-button {
-    background-color: transparent;
-    color: oklch(49.6% 0.265 301.924);
-    border: 2px solid #6e0377;
-    padding: 10px 20px;
-    border-radius: 47px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  .how-it-works-button:hover {
-    color: #873e91;
-    border-color: #160000;
-  }
-  
-  
-  .trust-message {
-    font-size: 0.9rem;
-    color: #060000;
-  }
-  
-  .invoice-image {
-    max-width: 80%;
-    height: 80%;
-    margin-top: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px oklch(49.6% 0.265 301.924);
-  }
-  
-  .arrow-icon {
-    margin-left: 5px;
-  }
-  
-  .arrow-icon1 {
-    margin-left: 5px;
-    width: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+  font-family: 'Arial', sans-serif;
+  margin: 0 auto;
+}
 
-  }
-  
-  @media (max-width: 768px) {
-    .scanify-container {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .left-content,
-    .right-content {
-      width: 100%;
-      padding: 10px;
-    }
-  
-    .button-group {
-      flex-direction: column;
-    }
-  
-    .invoice-image {
-      max-width: 90%;
-    }
-  }
+.left-content {
+  flex: 1;
+  padding: 65px;
+  margin-top: 60px;
+  align-items: center;
+  max-width: 50%;
+}
 
-  .hero-section-integrated {
-    display: flex;
+.right-content {
+  flex: 1;
+  display: flex;
+  padding: 45px;
+  justify-content: right;
+  max-width: 50%;
+}
+
+.main-heading-container {
+  margin-bottom: 10px;
+}
+
+.main-heading-button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 1px 2px;
+  margin-top: 0px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: bold;
+}
+
+.main-heading-button:hover {
+  background-color: rgba(39, 2, 69, 0.1);
+  color: #bd67d7;
+}
+
+.sub-heading {
+  font-size: 4rem;
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 1rem;
+  color: #0c0000;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.get-started-button {
+  background-color: oklch(49.6% 0.265 301.924);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.get-started-button:hover {
+  background-color: #bd5ab8;
+}
+
+.how-it-works-button {
+  background-color: transparent;
+  color: oklch(49.6% 0.265 301.924);
+  border: 2px solid #6e0377;
+  padding: 10px 20px;
+  border-radius: 47px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.how-it-works-button:hover {
+  color: #873e91;
+  border-color: #160000;
+}
+
+.trust-message {
+  font-size: 0.9rem;
+  color: #060000;
+}
+
+.invoice-image {
+  max-width: 80%;
+  height: 80%;
+  margin-top: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px oklch(49.6% 0.265 301.924);
+}
+
+.arrow-icon {
+  margin-left: 5px;
+}
+
+.arrow-icon1 {
+  margin-left: 5px;
+  width: 50px;
+}
+
+@media (max-width: 768px) {
+  .scanify-container {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px; /* Adjust padding as needed */
     text-align: center;
-    /* You might want to add a background color here if needed */
-  }
-  
-  .hero1-heading-integrated {
-    font-size: 6rem;/* Adjust the size as needed */
-    color: black; /* Use your brand color */
-    margin-bottom: 10px;
-    font-weight: bold;
   }
 
-  .hero1-heading-integrated {
-    font-size: 3rem;/* Adjust the size as needed */
-    color: oklch(49.6% 0.265 301.924); /* Use your brand color */
-    margin-bottom: 10px;
-    font-weight: bold;
+  .left-content,
+  .right-content {
+    width: 100%;
+    padding: 10px;
   }
 
-  .hero-heading-integrated {
-    font-size: 3rem;/* Adjust the size as needed */
-    color: black; /* Use your brand color */
-    margin-bottom: 10px;
-    font-weight: bold;
+  .button-group {
+    flex-direction: column;
   }
 
-  
-  .hero-subheading-integrated {
-    font-size: 1rem; /* Adjust the size as needed */
-    color: #1a161a7f; /* Gray color */
-    line-height: 1.6;
-    max-width: 700px; /* Adjust the maximum width for better readability */
-    margin: 0 auto; /* Center the text */
+  .invoice-image {
+    max-width: 90%;
   }
-  
+}
 
-  /* Styles for the OCR Functions Section */
+.hero-section-integrated {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.hero1-heading-integrated {
+  font-size: 3rem;
+  color: rgb(12, 0, 12);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.hero-heading-integrated {
+  font-size: 3rem;
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.hero-subheading-integrated {
+  font-size: 1rem;
+  color: #1a161a7f;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Styles for the OCR Functions Section */
 .ocr-functions-section {
   padding: 40px 20px;
   text-align: center;
-  margin: 10px auto; /* Add some margin above and below the section */
-  max-width: 2000px; /* Optional: Limit the maximum width of the section */
+  margin: 10px auto;
+  max-width: 2000px;
 }
 
 .ocr-functions-heading {
   font-size: 3rem;
-  color: black;
+  color: oklch(49.6% 0.265 301.924);
   margin-bottom: 30px;
   font-weight: bold;
 }
@@ -208,26 +190,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 40px; /* Space between image and text */
+  gap: 40px;
   padding: 20px;
 }
 
 .ocr-functions-image-container {
   flex: 1;
-  max-width: 55%; /* Adjust as needed */
+  max-width: 55%;
+  order: 2;
 }
 
 .ocr-functions-image {
   width: 100%;
-  height: auto;
-  border-radius: 10px; /* Optional: Add rounded corners */
-  box-shadow: 0 19px 14px rgba(0, 0, 0, 0.208); /* Optional: Add a subtle shadow */
+  height: 570px;
+  border-radius: 10px;
 }
 
 .ocr-functions-text {
   flex: 1;
-  max-width: 55%; /* Adjust as needed */
+  max-width: 55%;
   text-align: left;
+  order: 1;
 }
 
 .ocr-functions-text ul {
@@ -259,32 +242,31 @@
   .ocr-functions-image-container {
     max-width: 80%;
     margin-bottom: 20px;
+    order: 1;
   }
 
   .ocr-functions-text {
     max-width: 90%;
-    text-align: left; 
-/* Or center if preferred on small screens */
+    text-align: left;
+    order: 2;
   }
 }
 
 /* Styles for the Extractable Fields Section (Pill Buttons) */
 
 .extractable-fields-section-pill {
-  padding: 0px 30px;
+  padding: 0px 10px;
   text-align: center;
   margin: 0px auto;
   max-width: 1600px;
 }
 
-
-
 .extractable-fields-content-pill {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 20px;
-  padding: 20px;
+  gap: 10px;
+  padding: 10px;
 }
 
 .extractable-fields-buttons-left {
@@ -298,7 +280,7 @@
 .flat-fields,
 .line-items {
   margin-bottom: 0px;
-  width: 100%; /* Take full width to align left */
+  width: 100%;
   text-align: left;
 }
 
@@ -313,13 +295,13 @@
   background-color: #f0f0f0;
   color: #333;
   border: 1px solid #b502d5;
-  border-radius: 20px; /* Creates the pill shape */
+  border-radius: 20px;
   padding: 8px 15px;
   cursor: pointer;
   font-size: 1rem;
   margin-right: 10px;
   margin-bottom: 8px;
-  display: inline-flex; /* Align checkmark and text */
+  display: inline-flex;
   align-items: center;
 }
 
@@ -335,18 +317,14 @@
 
 .extractable-fields-image-container-pill {
   flex: 1;
-  max-width: 65%;
-  margin-top: 45px;
-  display: flex;
-  justify-content: flex-end; /* Align image to the right */
+  margin-right: 0px;
 }
 
 .extractable-fields-image-pill {
-  width: auto;
-  max-width: 100%;
-  height: 100%;
+  width: 700px;
+  height: 630px;
+  margin-left: 65px;
   border-radius: 15px;
-  box-shadow: 0 8px 4px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -357,7 +335,7 @@
 
   .extractable-fields-buttons-left {
     max-width: 90%;
-    align-items: center; /* Center buttons on smaller screens */
+    align-items: center;
     text-align: center;
   }
 
@@ -372,8 +350,322 @@
   }
 
   .extractable-fields-image-container-pill {
-    max-width: 80%;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 0px;
+  }
+}
+
+/* Styles for the All-in-one Invoice Platform Section */
+.all-in-one-platform-section {
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.all-in-one-heading {
+  font-size: 3.5rem;
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.all-in-one-subheading {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.2;
+  max-width: 1100px;
+  margin: 0 auto 30px;
+}
+
+.all-in-one-features-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  border-color: #060000;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.all-in-one-feature {
+  flex: 1 0 300px;
+  text-align: center;
+  padding: 40px;
+  background-color: white;
+  border-radius: 45px;
+  box-shadow: 0 5px 8px rgba(199, 193, 193, 0.951);
+}
+
+.all-in-one-feature:hover{
+  box-shadow: 0 5px 8px oklch(49.6% 0.265 301.924);
+}
+
+.feature-icon-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgb(236, 228, 228);
+  color: #702cd0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+  font-size: 2rem;
+}
+
+.feature-icon {
+  max-width: 60%;
+  max-height: 60%;
+}
+
+.feature-header {
+  font-size: 1.5rem;
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 10px;
+}
+
+.feature-description {
+  font-size: 1rem;
+  color: #0b0000;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments for All-in-one section */
+@media (max-width: 768px) {
+  .all-in-one-features-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .all-in-one-feature {
+    width: 90%;
+  }
+}
+
+/* FAQ Section Styles */
+.faq-section {
+  text-align: center;
+  padding-bottom: 60px; 
+  background-color: none;
+}
+
+.faq-heading {
+  font-size: 2.5rem;
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.faq-list {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.faq-question {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px 0;
+}
+
+.faq-question:hover {
+  color: oklch(49.6% 0.265 301.924);
+}
+
+.faq-toggle {
+  font-size: 1.5rem;
+  color: #777;
+}
+
+.faq-answer {
+  padding-top: 15px;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.faq-query-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.faq-query-button {
+  background-color: oklch(49.6% 0.265 301.924);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.faq-query-button:hover {
+  background-color: #bd5ab8;
+}
+
+.faq-query-info {
+  font-size: 0.9rem;
+  color: #777;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background-color: none; /* Optional: Add a background color */
+  z-index: 10; /* Optional: Ensure it stays above other content */
+}
+
+/* Styles for the Query Input Area */
+.query-input-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.query-textbox {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  min-height: 80px;
+}
+
+.query-submit-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+.query-submit-button:hover {
+  opacity: 0.9;
+}
+
+
+/* Hide the info text when the query box is open */
+.faq-query-container > p.faq-query-info {
+  display: block; /* Initially show */
+}
+
+.faq-query-container.query-open > p.faq-query-info {
+  display: none; /* Hide when query box is open */
+}
+
+/* Responsive adjustments for FAQ section */
+@media (max-width: 768px) {
+  .faq-heading {
+    font-size: 2rem;
+  }
+
+  .faq-question {
+    font-size: 1.1rem;
+  }
+
+  .faq-answer {
+    font-size: 0.95rem;
+  }
+
+  .query-input-area {
+    width: 95%;
+  }
+}
+
+/* Styles for the Bottom CTA Section */
+.bottom-cta-section {
+  background-image: url('../assets/ban.png'); /* Set the background image to ban.png */
+  background-size: cover; /* Cover the entire section */
+  background-position: center; /* Center the image */
+  color: white; /* Set text color to be visible on the background */
+  padding: 60px 20px; /* Add padding around the content */
+  text-align: center; /* Center the content within the section */
+}
+
+.bottom-cta-content {
+  max-width: 1200px; /* Limit the width of the content */
+  margin: 0 auto; /* Center the content horizontally */
+  flex-direction: row; /* Stack left text and buttons on smaller screens */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+}
+
+.bottom-cta-left {
+  margin-bottom: 20px; /* Add space between text and buttons */
+}
+
+.bottom-cta-left h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.bottom-cta-buttons {
+  display: flex;
+  gap: 20px; /* Space between the buttons */
+}
+
+.book-demo-button,
+.talk-sales-button {
+  background-color: oklch(49.6% 0.265 301.924); /* Use your primary color */
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.book-demo-button:hover,
+.talk-sales-button:hover {
+  background-color: #bd5ab8; /* Darker shade on hover */
+}
+
+/* Responsive adjustments for the Bottom CTA Section */
+@media (min-width: 769px) {
+  .bottom-cta-content {
+    flex-direction: row; /* Arrange text and buttons in a row on larger screens */
+    justify-content: space-between; /* Space them out */
+    align-items: center; /* Vertically align items in the row */
+  }
+
+  .bottom-cta-left {
+    margin-bottom: 0; /* Remove bottom margin on larger screens */
+    text-align: left; /* Align text to the left */
+  }
+
+  .bottom-cta-buttons {
+    flex-shrink: 0; /* Prevent buttons from shrinking */
   }
 }
