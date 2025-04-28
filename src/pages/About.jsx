@@ -14,16 +14,44 @@ import sharatIndustriesLogo from "../assets/sharat-industries.png";
 import dabicoLogo from "../assets/dabico.png";
 import dmccLogo from "../assets/dmcc.png";
 import aavaBrandsLogo from "../assets/aava-brands.png";
+import tiMedicallogo from "../assets/ti_medical.png";
+import Innoventure_logo from "../assets/3xper_innoventure_limited_logo.png";
+import shanthigearslogo from "../assets/shanthi-gears.png";
 import underbanner from "../assets/purple-geometric.jpg";
 import PurpleWave from "../assets/purple-wave.png";
-import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin, FaLocationArrow, FaPhone, FaEnvelope } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-
+import {
+  FaInstagram,
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaLocationArrow,
+  FaPhone,
+  FaEnvelope,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { RxFontRoman } from "react-icons/rx";
 
 const About = () => {
   const solutions = ["IntelliDocs", "Scanify", "RPA", "Process Builder"];
   const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0);
   const scrollingLogosRef = useRef(null);
+  const [typingText, setTypingText] = useState("");
+  const fullText = "We grow your business";
+  const typingSpeed = 100; // milliseconds per character
+  const [typingComplete, setTypingComplete] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    if (typingText.length < fullText.length) {
+      timer = setTimeout(() => {
+        setTypingText(fullText.substring(0, typingText.length + 1));
+      }, typingSpeed);
+    } else {
+      setTypingComplete(true);
+      clearTimeout(timer); // Ensure timer is cleared when typing is complete
+    }
+    return () => clearTimeout(timer);
+  }, [typingText, fullText]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -49,75 +77,119 @@ const About = () => {
 
   return (
     <div>
-    <div className="about-page">
-      <img src={PurpleWave} alt="Purple Wave Design" className="wave-header" />
-      <div className="rotating-solution-text">
-        Shaping the future through innovative products {" "}
-        <span className="colored-solution">
-          {solutions[currentSolutionIndex]}
-        </span>
-      </div>
-
-      <div className="about-stats-container">
-        <div className="about-stat-box">
-          <div className="stat-icon">
-            <ClockIcon className="w-8 h-8 text-purple-500" />
-          </div>
-          <div className="stat-number">3</div>
-          <div className="stat-label">Years Experience</div>
-        </div>
-
-        <div className="about-stat-box">
-          <div className="stat-icon">
-            <UserGroupIcon className="w-8 h-8 text-purple-500" />
-          </div>
-          <div className="stat-number">30</div>
-          <div className="stat-label">Team Members</div>
-        </div>
-
-        <div className="about-stat-box">
-          <div className="stat-icon">
-            <HeartIcon className="w-8 h-8 text-purple-500" />
-          </div>
-          <div className="stat-number">25</div>
-          <div className="stat-label">Satisfied Clients</div>
-        </div>
-
-        <div className="about-stat-box">
-          <div className="stat-icon">
-            <CheckCircleIcon className="w-8 h-8 text-purple-500" />
-          </div>
-          <div className="stat-number">50</div>
-          <div className="stat-label">Complete Projects</div>
-        </div>
-      </div>
-
-      <div className="scrolling-logos-container">
-        <h1 className="framer-text">
-          Innovation. Trust. Delivered with excellence
-        </h1>
+      <div className="about-page">
+        <img
+          src={PurpleWave}
+          alt="Purple Wave Design"
+          className="wave-header"
+        />
         <div
-          ref={scrollingLogosRef}
-          className="scrolling-logos"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="logos-set">
-            <img src={ponpureLogo} alt="Ponpure Logo" className="logo" />
-            <img src={tiCycleLogo} alt="TI Cycle Logo" className="logo" />
-            <img src={murugappaLogo} alt="Murugappa Logo" className="logo" />
-            <img src={khazanaLogo} alt="Khazana Logo" className="logo" />
-            <img
-              src={sharatIndustriesLogo}
-              alt="Sharat Industries Logo"
-              className="logo"
-            />
-            <img src={dabicoLogo} alt="Dabico Logo" className="logo" />
-            <img src={dmccLogo} alt="DMCC Logo" className="logo" />
-            <img src={aavaBrandsLogo} alt="Aava Brands Logo" className="logo" />
+            className={`absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-black ${
+              typingComplete ? "typing-complete" : ""
+            }`}
+          >
+            <div className="hero-services-info">
+              <h1 className="text-3xl md:text-4xl font-bold mb-2">
+                {typingText}
+                {!typingComplete && (
+                  <span className="typed-cursor typed-cursor--blink">|</span>
+                )}
+                {typingComplete}
+              </h1>
+              <p className="para">
+                Start with a plan and finish with results
+              </p>
+              <div className="flex mt-6">
+                <a href="#call-1">
+                <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">
+                  Read More
+                </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        <div className="rotating-solution-text" id="call-1">
+          Shaping the future through innovative products{" "}
+          <span className="colored-solution">
+            {solutions[currentSolutionIndex]}
+          </span>
+        </div>
+
+        <div className="about-stats-container">
+          <div className="about-stat-box">
+            <div className="stat-icon">
+              <ClockIcon className="w-8 h-8 text-purple-500" />
+            </div>
+            <div className="stat-number">3</div>
+            <div className="stat-label">Years Experience</div>
+          </div>
+
+          <div className="about-stat-box">
+            <div className="stat-icon">
+              <UserGroupIcon className="w-8 h-8 text-purple-500" />
+            </div>
+            <div className="stat-number">30</div>
+            <div className="stat-label">Team Members</div>
+          </div>
+
+          <div className="about-stat-box">
+            <div className="stat-icon">
+              <HeartIcon className="w-8 h-8 text-purple-500" />
+            </div>
+            <div className="stat-number">25</div>
+            <div className="stat-label">Satisfied Clients</div>
+          </div>
+
+          <div className="about-stat-box">
+            <div className="stat-icon">
+              <CheckCircleIcon className="w-8 h-8 text-purple-500" />
+            </div>
+            <div className="stat-number">50</div>
+            <div className="stat-label">Complete Projects</div>
           </div>
         </div>
-      </div>
+
+        <div className="scrolling-logos-container">
+          <h1 className="framer-text">
+            Innovation. Trust. Delivered with excellence
+          </h1>
+          <div
+            ref={scrollingLogosRef}
+            className="scrolling-logos"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="logos-set">
+              <img src={ponpureLogo} alt="Ponpure Logo" className="logo" />
+              <img src={tiCycleLogo} alt="TI Cycle Logo" className="logo" />
+              <img src={murugappaLogo} alt="Murugappa Logo" className="logo" />
+              <img src={khazanaLogo} alt="Khazana Logo" className="logo" />
+              <img
+                src={sharatIndustriesLogo}
+                alt="Sharat Industries Logo"
+                className="logo"
+              />
+              <img src={dabicoLogo} alt="Dabico Logo" className="logo" />
+              <img src={dmccLogo} alt="DMCC Logo" className="logo" />
+              <img
+                src={aavaBrandsLogo}
+                alt="Aava Brands Logo"
+                className="logo"
+              />
+              <img src={tiMedicallogo} alt="Ti Medical" className="logo" />
+              <img
+                src={Innoventure_logo}
+                alt="Innoventure Logo"
+                className="logo"
+              />
+              <img
+                src={shanthigearslogo}
+                alt="Shanthi Gears Logo"
+                className="logo"
+              />
+            </div>
+          </div>
+        </div>
       </div>
       {/* Bottom Wave Image with Overlay Content */}
       <div className="relative w-full overflow-hidden">

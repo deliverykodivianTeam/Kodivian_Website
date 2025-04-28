@@ -139,3 +139,8 @@
   margin-top: 20px; /* Adjust as needed */
   display: block;
 }
+
+.hero-services-info p {
+  color: black;
+  text-align: left; /* Change this line to align text to the left */
+}

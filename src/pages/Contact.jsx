@@ -19,7 +19,7 @@ const Contact = () => {
     },
     {
       id: "location2",
-      name: "ABITS - UK",
+      name: "UK",
       addressLine1: "Old Hermitage, Hermitage Ln, Windsor SL4 4AZ",
       cityStateZip: "Little Acre, United Kngdom",
       mapEmbedUrl:
@@ -27,7 +27,7 @@ const Contact = () => {
     },
     {
       id: "location3",
-      name: "ABITS - AUSTRALIA",
+      name: "AUSTRALIA",
       addressLine1: "38 Cope St, Lane Cove NSW 2066",
       cityStateZip: "Australia",
       mapEmbedUrl:
@@ -35,7 +35,7 @@ const Contact = () => {
     },
     {
       id: "location4",
-      name: "ABITS - USA",
+      name: "USA",
       addressLine1: "16192 Coastal Hwy, Lewes, DE 19958",
       cityStateZip: "United States Of America",
       mapEmbedUrl:
