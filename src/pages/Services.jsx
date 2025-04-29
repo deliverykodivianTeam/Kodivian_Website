@@ -3,6 +3,9 @@ import "../styles/Services.css";
 
 // Import your new images from the assets folder
 import image2 from "../assets/intro_1.png";
+import intro_2 from "../assets/intro_2.png";
+import intro_3 from "../assets/intro_3.png";
+import intro_4 from "../assets/intro_4.png";
 import underbanner from "../assets/purple-geometric.jpg";
 import PurpleWave from "../assets/purple-wave.png";
 
@@ -79,9 +82,9 @@ const Services = () => {
               </p>
               <div className="flex mt-6">
                 <a href="#call">
-                <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">
-                  Learn More
-                </button>
+                  <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">
+                    Learn More
+                  </button>
                 </a>
               </div>
             </div>
@@ -89,76 +92,7 @@ const Services = () => {
         </div>
       </div>
       {/* REMOVED SLIDER SECTION */}
-
-      <div className="cloudSupportContainer" id="call">
-        <div className="leftSection">
-          <p className="cloudSupportTitle">Support for every cloud.</p>
-        </div>
-        <div className="rightSection">
-          <div className="cloudProviderLogos">
-            <div className="cloudProviderItem">
-              <BiLogoGoogleCloud size={250} className="cloudProviderIcon" />
-            </div>
-            <div className="cloudProviderItem">
-              <FaAws size={250} className="cloudProviderIcon" />
-            </div>
-            <div className="cloudProviderItem">
-              <VscAzure size={250} className="cloudProviderIcon" />
-            </div>
-            <div className="cloudProviderItem">
-              <GrOracle size={250} className="cloudProviderIcon" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="buildScaleGrowContainer">
-        <p className="buildScaleGrowText">Build.</p>
-        <p className="buildScaleGrowText">Scale.</p>
-        <p className="buildScaleGrowText">Grow.</p>
-      </div>
-
-      <div className="cloudSupportContainer">
-        <div className="leftSection">
-          <div className="cloudProviderLogos">
-            <div className="cloudProviderItem">
-              <GrMysql size={250} className="cloudProviderIcon" />
-            </div>
-            <div className="cloudProviderItem">
-              <BiLogoPostgresql size={250} className="cloudProviderIcon" />
-            </div>
-            <div className="cloudProviderMongoDB">
-              <BiLogoMongodb size={250} className="cloudProviderIcon" />
-            </div>
-          </div>
-        </div>
-        <div className="rightSection">
-          <p className="cloudSupportTitle">Systems fade, but data remains.</p>
-        </div>
-      </div>
-
-      <div className="cloudSupportContainer">
-        <div className="leftSection">
-          <p className="cloudSupportTitle">No error is the best message.</p>
-        </div>
-        <div className="rightSection">
-          <div className="cloudProviderLogos">
-            <div className="cloudProviderItem">
-              <FaPython size={250} className="cloudProviderIcon" />
-            </div>
-            <div className="cloudProviderItem">
-              <FaJava size={250} className="cloudProviderIcon" />
-            </div>
-            <div className="cloudProviderItem">
-              <BiLogoJavascript size={250} className="cloudProviderIcon" />
-            </div>
-            <div className="cloudProviderItem">
-              <FaHtml5 size={250} className="cloudProviderIcon" />
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <h2 className="head">Core Services</h2>
       <div className="content-with-image">
         <img
           src={image2} // Use the second imported image
@@ -172,87 +106,126 @@ const Services = () => {
           deep industry expertise and frictionless technology delivery.
         </p>
       </div>
-
-      <div className="services-page">
-        <div className="services-content">
-          <h2>Core Services</h2>
-          <div className="services-boxes">
-            {/* Box 1: Digital Workplace Automation */}
-            <div className="service-box">
-              <h3>Digital Workplace Automation with Kodivian Scanify:</h3>
-              <ul>
-                <li>
-                  <strong className="bold">Document Capture & Indexing:</strong>
-                  Efficiently captures and manages information from various
-                  sources.
-                </li>
-                <li>
-                  <strong className="bold">Workflow Automation:</strong>
-                  Implements workflows to automate business processes.
-                </li>
-                <li>
-                  <strong className="bold">Customizable Forms:</strong> Allows
-                  creation of tailored forms with e-signatures.
-                </li>
-                <li>
-                  <strong className="bold">Advanced Search & Retrieval:</strong>
-                  Provides secure access to information for quick
-                  decision-making.
-                </li>
-                <li>
-                  <strong className="bold">Integration Capabilities:</strong>
-                  Integrates with CRMs, ERPs, DocuSign, Adobe Sign, and Google
-                  Workspace.
-                </li>
-                <li>
-                  <strong className="bold">AI-Powered Bots:</strong> Deploys AI
-                  bots for workflow optimizations and process interactions.
-                </li>
-              </ul>
+      <div className="cloudSupportContainer" id="call">
+        <div className="leftSection">
+          <p className="cloudSupportTitle">Support for every cloud.</p>
+        </div>
+        <div className="rightSection">
+          <div className="cloudProviderLogos">
+            <div className="cloudProviderItem">
+              <BiLogoGoogleCloud size={250} style={{ color: '#4285F4' }} />
             </div>
-
-            {/* Box 2: Product Engineering Services */}
-            <div className="service-box">
-              <h3>Product Engineering Services:</h3>
-              <ul>
-                <li>
-                  <strong className="bold">Conceptualization & Design:</strong>
-                  Assists in preparing product specifications and creating
-                  ideas.
-                </li>
-                <li>
-                  <strong className="bold">Agile Development:</strong> Develops
-                  solutions using agile methodology for timely delivery.
-                </li>
-                <li>
-                  <strong className="bold">Testing & Launch:</strong> Conducts
-                  thorough testing and delivers the product within the
-                  timeframe.
-                </li>
-              </ul>
+            <div className="cloudProviderItem">
+              <FaAws size={250} />
             </div>
+            <div className="cloudProviderItem">
+              <GrOracle size={250} style={{ color: '#F80000' }} />
+            </div>
+            <div className="cloudProviderItem">
+              <VscAzure size={250} style={{ color: '#0078D4' }} />
+            </div>
+          </div>
+        </div>
+      </div>
 
-            {/* Box 4: Industry-Specific Solutions */}
-            <div className="service-box">
-              <h3>Industry-Specific Solutions:</h3>
-              <ul>
-                <li>
-                  <strong className="bold">IT Solutions:</strong> Tailored
-                  solutions for IT professionals.
-                </li>
-                <li>
-                  <strong className="bold">Logistics:</strong> Systems to
-                  optimize logistics and supply chain.
-                </li>
-                <li>
-                  <strong className="bold">Educational Institutions:</strong>
-                  Platforms to enhance education.
-                </li>
-                <li>
-                  <strong className="bold">Manufacturing & Telecom:</strong>
-                  Solutions to streamline processes.
-                </li>
-              </ul>
+      <div className="content-with-image">
+        <img
+          src={intro_3} // Use the second imported image
+          alt="Description of image 2"
+          className="content-image"
+        />
+        <p className="large-text">
+          Our Product Engineering Services provide comprehensive support
+          throughout the entire product lifecycle. From the initial
+          Conceptualization & Design phase, where we assist in preparing
+          detailed product specifications and generating innovative ideas,
+          through Agile Development, where we build robust solutions with timely
+          delivery in mind, to rigorous Testing & Launch, ensuring thorough
+          quality assurance and on-schedule product release. We are dedicated to
+          bringing your product vision to life with expertise and efficiency.
+        </p>
+      </div>
+
+      <div className="buildScaleGrowContainer">
+        <p className="buildScaleGrowText">Build.</p>
+        <p className="buildScaleGrowText">Scale.</p>
+        <p className="buildScaleGrowText">Grow.</p>
+      </div>
+
+      <div className="content-with-image">
+        <img
+          src={intro_2} // Use the second imported image
+          alt="Description of image 2"
+          className="content-image"
+        />
+        <p className="large-text">
+          Kodivian Scanify is our comprehensive solution for digital workplace
+          automation, streamlining business processes through intelligent
+          automation and efficient information management. Key features include
+          effortless document capture and indexing, robust workflow automation,
+          customizable forms with e-signatures, advanced search and retrieval,
+          seamless integration with CRMs, ERPs, DocuSign, Adobe Sign, and Google
+          Workspace, and AI-powered bots for workflow optimization. Designed to
+          accelerate business progress through expert knowledge and smooth
+          technology delivery, contact us to transform your digital workplace.
+        </p>
+      </div>
+
+      <div className="cloudSupportContainer">
+        <div className="leftSection">
+          <div className="cloudProviderLogos">
+            <div className="cloudProviderItem">
+              <GrMysql size={250} style={{ color: '#F29111' }} />
+            </div>
+            <div className="cloudProviderItem">
+              <BiLogoPostgresql size={250} style={{ color: '#336791' }} />
+            </div>
+            <div className="cloudProviderMongoDB">
+              <BiLogoMongodb size={250} style={{ color: '#47A248' }} />
+            </div>
+          </div>
+        </div>
+        <div className="rightSection">
+          <p className="cloudSupportTitle">Systems fade, but data remains.</p>
+        </div>
+      </div>
+
+      <div className="content-with-image">
+        <img
+          src={intro_4} // Use the second imported image
+          alt="Description of image 2"
+          className="content-image"
+        />
+        <p className="large-text">
+          Kodivian Scanify is our comprehensive solution for digital workplace
+          automation, streamlining business processes through intelligent
+          automation and efficient information management. Key features include
+          effortless document capture and indexing, robust workflow automation,
+          customizable forms with e-signatures, advanced search and retrieval,
+          seamless integration with CRMs, ERPs, DocuSign, Adobe Sign, and Google
+          Workspace, and AI-powered bots for workflow optimization. Designed to
+          accelerate business progress through expert knowledge and smooth
+          technology delivery, contact us to transform your digital workplace.
+        </p>
+      </div>
+
+      <div className="cloudSupportContainer">
+        <div className="leftSection">
+          <p className="cloudSupportTitle">No error is the best message.</p>
+        </div>
+        <div className="rightSection">
+          <div className="cloudProviderLogos">
+            <div className="cloudProviderItem">
+              <FaPython size={250} style={{ color: '#3776AB' }} />
+            </div>
+            <div className="cloudProviderItem">
+              <FaJava size={250} style={{ color: '#007396' }} />
+            </div>
+            <div className="cloudProviderItem">
+              <BiLogoJavascript size={250} style={{ color: '#F7DF1E' }} />
+            </div>
+            <div className="cloudProviderItem">
+              <FaHtml5 size={250} style={{ color: '#E34F26' }} />
             </div>
           </div>
         </div>

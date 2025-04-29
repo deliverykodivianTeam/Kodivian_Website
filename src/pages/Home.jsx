@@ -25,6 +25,17 @@ const Home = () => {
   const [currentImage, setCurrentImage] = useState(images[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const files = ["Scanify", "Process Builder", "RPA", "Intellidocs"];
+
+  const handleFileClick = (file) => {
+    setSelectedFile(file);
+  };
+
+  const handleGoBack = () => {
+    setSelectedFile(null);
+  };
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -47,6 +58,45 @@ const Home = () => {
           className="w-full block transition-opacity duration-500 opacity-90 hover:opacity-100"
           style={{ height: "588px" }}
         />
+        {/* Folder and Files UI - ADDED HERE */}
+        <div
+          className="absolute shadow-md rounded-md p-4"
+          style={{
+            display: selectedFile ? "none" : "block",
+            top: "70%",
+            left: "35%",
+            zIndex: 10,
+            backgroundColor: "#a020f0", // Example purple color
+            height: "125px", // Add your desired height here
+            width: "200px", // Add your desired width here
+          }}
+        >
+          {/* The "Tab" at the top */}
+          <div className="absolute top-[-10px] left-2 w-1/3 h-4 bg-purple-700 rounded-t-md">
+            {/* The White Line on the Tab */}
+            <div className="bg-white h-0.5 w-1/2 mt-1 ml-2 rounded"></div>
+          </div>
+        </div>
+        {/* File Content Popup */}
+        {selectedFile && (
+          <div
+            className="absolute top-1/3 left-1/3 bg-white shadow-lg rounded-md p-8"
+            style={{
+              top: "70%", // Adjust this value to control the vertical position of the popup
+              left: "55%", // Adjust this value to control the horizontal position of the popup
+              zIndex: 11, // Ensure it's above the folder and other elements
+            }}
+          >
+            <h3>{selectedFile} Content</h3>
+            <p>This is the content for {selectedFile}.</p>
+            <button
+              onClick={handleGoBack}
+              className="bg-purple-500 text-white rounded-md px-4 py-2 mt-4"
+            >
+              Go Back
+            </button>
+          </div>
+        )}
         <div
           className="absolute top-2/3 left-0 transform -translate-y-1/2 text-white md:text-left md:max-w-md p-8"
           style={{ width: "100%" }}
