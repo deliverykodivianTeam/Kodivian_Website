@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/Processbuilder.css';
 import website from '../assets/website.png'; // Default image
 import form from '../assets/form.png'; // Image for "Intuitive design tools"
-import workflow from '../assets/website.png'; // Image for "Familiar workflow"
+import workflow from '../assets/workflow.png'; // Image for "Familiar workflow"
 import groups from '../assets/website.png'; // Image for "Groups and layers"
 
 const faqData = [

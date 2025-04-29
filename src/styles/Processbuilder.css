@@ -361,6 +361,7 @@
 /* FAQ Section Styles */
 .pro-faq-section {
   text-align: center;
+  padding-left: 120px;
   padding-bottom: 60px; 
   background-color: none;
 }

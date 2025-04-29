@@ -8,6 +8,8 @@ import Product from './pages/Product';
 import Contact from './pages/Contact';
 import ScanifyDetail from './pages/ScanifyDetail';
 import Processbuilder from './pages/Processbuilder';
+import Document from './pages/Document';
+import Robort from './pages/Robort';
 import './index.css'; // Import global styles
 
 
@@ -24,6 +26,8 @@ function App() {
             <Route path="/product" element={<Product />} />
             <Route path="/scanify" element={<ScanifyDetail />} />
             <Route path="/processbuilder" element={<Processbuilder />} />
+            <Route path="/document" element={<Document />  }/>
+            <Route path="/robort" element={<Robort />  }/>
             <Route path="/contact" element={<Contact />} /> 
           </Routes>
         </div>

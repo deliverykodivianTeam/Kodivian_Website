@@ -58,7 +58,7 @@ import { Link } from 'react-router-dom'; // Import Link if you still need it
         <div className="sample1-content">
         <h2 className="sample2-title">Automating Repetitive Tasks with RPA</h2>
           <p className="sample2-description">Our RPA (Robotic Process Automation) solution is built to handle repetitive, rule-based tasks with speed and precision. Whether it's data entry, report generation, or invoice processing, RPA takes over these time-consuming processes and executes them automatically—no manual effort required. Just set the schedule, and RPA performs the task on time, every time, reducing human error and freeing up valuable manpower. It's the perfect tool for businesses looking to boost productivity, cut operational costs, and focus on strategic growth.</p>
-          <button className="sample1-button">Explore features</button>
+          <Link to="/robort" className="sample-button"> Explore features </Link>
         </div>
       </div>
 
@@ -69,7 +69,7 @@ import { Link } from 'react-router-dom'; // Import Link if you still need it
         <div className="sample3-content">
         <h2 className="sample1-title">Smarter Document Management with IntelliDoc</h2>
           <p className="sample1-description">IntelliDoc is your all-in-one solution for smart document handling and automation. It allows you to manage, process, and organize documents .With IntelliDoc, you can assign signature marks, apply approval status watermarks, and automate every step required for document completion. Whether you're managing contracts, invoices, or internal approvals, IntelliDoc ensures each file is processed accurately and moves through the workflow without delays. Say goodbye to manual follow-ups and hello to seamless, scheduled document automation.</p>
-          <button className="sample3-button">Explore features</button>
+          <Link to="/document" className="sample-button"> Explore features </Link>
         </div>
         <div className="sample3-image-container">
           <img src={intellidocs} alt="Intellidocs" className="sample2-image" />
