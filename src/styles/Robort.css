@@ -1,0 +1,79 @@
+.robort-layout-image-style-container {
+    display: flex;
+    min-height: 100vh; /* Make the container at least the height of the viewport */
+    background-color: #1e1e1e; /* Dark background for the whole page */
+    color: #fff; /* Default text color */
+    flex-direction: row-reverse;
+  }
+
+  
+  .robort-scrollable-left {
+    flex: 1; /* Takes up the available width */
+    overflow-y: auto; /* Enables vertical scrolling for the left side */
+    padding: 40px;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+  }
+  
+  .robort-left-content {
+    max-width: 600px; /* Limit the width of the content on the left */
+  }
+  
+  .robort-work-label {
+    color: #ffcc00; /* Example color for the "WORK" label */
+    margin-bottom: 10px;
+    font-size: 0.9em;
+  }
+  
+  .robort-left-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .robort-left-content p {
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #ccc;
+  }
+  
+  .robort-fixed-right {
+    flex: 0 0 40%; /* Fixed width for the right sidebar (adjust as needed) */
+    background-color: #2c2c2c; /* Darker background for the right sidebar */
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left in the sidebar */
+    position: sticky; /* Make the right sidebar fixed relative to the viewport */
+    top: 0; /* Stick to the top of the viewport */
+    height: 100vh; /* Make it full viewport height */
+    overflow-y: auto; /* Enable scrolling for the right side if content overflows */
+  }
+  
+  .robort-right-content {
+    width: 100%;
+  }
+  
+  .robort-right-content h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+  }
+  
+  .robort-electrax-description {
+    color: #999;
+    line-height: 1.4;
+    margin-bottom: 25px;
+  }
+  
+  .robort-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .robort-card {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 5px;
+    /* Add more styling for your cards */
+  }
