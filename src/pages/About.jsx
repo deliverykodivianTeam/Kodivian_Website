@@ -17,7 +17,12 @@ import aavaBrandsLogo from "../assets/aava-brands.png";
 import tiMedicallogo from "../assets/ti_medical.png";
 import Innoventure_logo from "../assets/3xper_innoventure_limited_logo.png";
 import shanthigearslogo from "../assets/shanthi-gears.png";
+import ezcloud from "../assets/ezcloud.png";
+import ionidea from "../assets/ionidea.png";
+import eastman from "../assets/eastman.png";
 import underbanner from "../assets/purple-geometric.jpg";
+import Chairman from "../assets/chairman.jpeg";
+import Director from "../assets/directer.jpeg";
 import PurpleWave from "../assets/purple-wave.png";
 import {
   FaInstagram,
@@ -29,7 +34,6 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { RxFontRoman } from "react-icons/rx";
 
 const About = () => {
   const solutions = ["IntelliDocs", "Scanify", "RPA", "Process Builder"];
@@ -84,30 +88,28 @@ const About = () => {
           className="wave-header"
         />
         <div
-            className={`absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-black ${
-              typingComplete ? "typing-complete" : ""
-            }`}
-          >
-            <div className="hero-services-info">
-              <h1 className="text-3xl md:text-4xl font-bold mb-2">
-                {typingText}
-                {!typingComplete && (
-                  <span className="typed-cursor typed-cursor--blink">|</span>
-                )}
-                {typingComplete}
-              </h1>
-              <p className="para">
-                Start with a plan and finish with results
-              </p>
-              <div className="flex mt-6">
-                <a href="#call-1">
+          className={`absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-black ${
+            typingComplete ? "typing-complete" : ""
+          }`}
+        >
+          <div className="hero-services-info">
+            <h1 className="text-3xl md:text-4xl font-bold mb-2">
+              {typingText}
+              {!typingComplete && (
+                <span className="typed-cursor typed-cursor--blink">|</span>
+              )}
+              {typingComplete}
+            </h1>
+            <p className="para">Start with a plan and finish with results</p>
+            <div className="flex mt-6">
+              <a href="#call-1">
                 <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">
                   Read More
                 </button>
-                </a>
-              </div>
+              </a>
             </div>
           </div>
+        </div>
         <div className="rotating-solution-text" id="call-1">
           Shaping the future through innovative products{" "}
           <span className="colored-solution">
@@ -164,6 +166,9 @@ const About = () => {
               <img src={tiCycleLogo} alt="TI Cycle Logo" className="logo" />
               <img src={murugappaLogo} alt="Murugappa Logo" className="logo" />
               <img src={khazanaLogo} alt="Khazana Logo" className="logo" />
+              <img src={ezcloud} alt="EZ Cloud Logo" className="logo" />
+              <img src={ionidea} alt="Ionidea Logo" className="logo" />
+              <img src={eastman} alt="Eastman Logo" className="logo" />
               <img
                 src={sharatIndustriesLogo}
                 alt="Sharat Industries Logo"
@@ -189,6 +194,31 @@ const About = () => {
               />
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="rotating-solution-text-1">
+        Where vision meets execution — get to know the team powering Kodivian.
+      </div>
+
+      <div className="flex justify-center gap-8 py-8">
+        <div className="text-center">
+          <img
+            src={Chairman}
+            alt="Kodivian Team Member 3"
+            className="w-100 h-100 rounded-full object-cover mb-2"
+          />
+          <h4 className="font-semibold">Sridhar Kamakoti</h4>
+          <p className="text-sm text-gray-600">Chairman</p>
+        </div>
+        <div className="text-center">
+          <img
+            src={Director}
+            alt="Kodivian Team Member 3"
+            className="w-100 h-100 rounded-full object-cover mb-2"
+          />
+          <h4 className="font-semibold">Vijay Sabari</h4>
+          <p className="text-sm text-gray-600">Director</p>
         </div>
       </div>
       {/* Bottom Wave Image with Overlay Content */}

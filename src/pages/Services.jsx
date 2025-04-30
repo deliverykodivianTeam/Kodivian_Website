@@ -68,7 +68,7 @@ const Services = () => {
               typingComplete ? "typing-complete" : ""
             }`}
           >
-            <div className="hero-services-info">
+            <div className="hero-services-info fade-up">
               <h1 className="text-3xl md:text-4xl font-bold mb-2">
                 {typingText}
                 {!typingComplete && (
@@ -92,7 +92,7 @@ const Services = () => {
         </div>
       </div>
       {/* REMOVED SLIDER SECTION */}
-      <h2 className="head">Core Services</h2>
+      <h2 className="head fade-up">Core Services</h2>
       <div className="content-with-image">
         <img
           src={image2} // Use the second imported image

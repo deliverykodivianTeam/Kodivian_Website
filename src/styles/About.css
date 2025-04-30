@@ -144,3 +144,12 @@
   color: black;
   text-align: left; /* Change this line to align text to the left */
 }
+
+.rotating-solution-text-1{
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 70px;
+}
