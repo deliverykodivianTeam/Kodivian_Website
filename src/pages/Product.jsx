@@ -2,7 +2,6 @@ import "../styles/Product.css";
  import WaveImage from '../assets/WaveImage.png';
  import SampleImage from '../assets/Scanify.png'
  import underbanner from '../assets/banner34.png';
- import useAnimateOnVisible from '../hooks/useAnimateOnVisible';
  import intellidocs from '../assets/intellidocs.png';
  import processbuilder from '../assets/process_builder.png';
  import rpa from '../assets/rpa.png';
@@ -10,14 +9,6 @@ import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin, FaLocationArrow, FaPhon
 import { Link } from 'react-router-dom'; // Import Link if you still need it
 
  const Product = () => {
-  const { ref: heroContentRef, isVisible: isHeroVisible } = useAnimateOnVisible({
-    threshold: 0.5,
-  });
-
-  const { ref: sampleSectionRef, isVisible: isSampleVisible } = useAnimateOnVisible({
-    threshold: 0.3, // Adjust threshold for when the sample section becomes visible
-  });
-
 
   return (
     <div>
@@ -25,8 +16,7 @@ import { Link } from 'react-router-dom'; // Import Link if you still need it
       <div className="hero-content">
         <img src={WaveImage} alt="Wave Banner" className="w-full block transition-opacity duration-500 opacity-90 hover:opacity-100" style={{ height: '588px' }} />
         <div
-          ref={heroContentRef}
-          className={`absolute ${isHeroVisible ? 'animate-slide-down' : ''}`}
+          className="absolute"
           style={{ width: '100%' }}
         >
         <p className="hero-subtitle">AI-powered productivity</p>

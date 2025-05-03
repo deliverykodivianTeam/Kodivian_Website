@@ -15,17 +15,6 @@
   display: block; /* Changed to block to take full width */
 }
 
-.absolute {
-  opacity: 0;
-  transform: translateY(-100px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.animate-slide-down {
-  opacity: 1;
-  transform: translateY(0);
-}
-
  .hero-section{
       padding: 0;
   /* Adjust spacing */
