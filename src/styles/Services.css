@@ -24,11 +24,10 @@
 
 .head {
   color: var(--primary-color);
-  margin-top: 20px;
-  margin-bottom: 40px; /* Increased bottom margin */
   font-size: 3em; /* Increased font size */
   font-weight: bold;
   text-align: center;
+  padding-top: 40px;
 }
 
 .services-content h3 {
@@ -383,14 +382,9 @@
 
 .buildScaleGrowContainer {
   display: flex;
-  flex-direction: column; /* Stack the text vertically */
-  align-items: flex-start; /* Align text to the left */
-  /* Adjust positioning as needed based on your layout */
-  /* Example positioning: */
-  /* position: absolute; */
-  /* top: 50%; */
+  flex-direction: column; 
+  align-items: flex-start; 
   margin-left: 100px; 
-  /* transform: translateY(-50%); */
 }
 
 .buildScaleGrowText {
@@ -398,11 +392,30 @@
   font-size: 13em; /* Adjust to match the large size */
   line-height: 0.8; /* Reduce line height to stack closer */
   margin: 0; /* Remove default margins */
-  /* Add some subtle spacing between the words */
   margin-bottom: 0.1em;
 }
 
-/* Adjust for different screen sizes if needed */
+.animated-element { /* You can apply this class to your HTML element */
+  animation: MoveUpDown 2s linear infinite;
+  display: inline-block;
+  max-width: 530px;
+  height: 500px;
+  position: relative; /* Important! */
+  left: 125px; /* Adjust as needed */
+}
+
+@keyframes MoveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* Adjust the value for the desired up movement */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 768px) {
   .buildScaleGrowText {
     font-size: 6em; /* Smaller font size on smaller screens */

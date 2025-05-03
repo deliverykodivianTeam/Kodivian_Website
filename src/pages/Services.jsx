@@ -6,6 +6,10 @@ import image2 from "../assets/intro_1.png";
 import intro_2 from "../assets/intro_2.png";
 import intro_3 from "../assets/intro_3.png";
 import intro_4 from "../assets/intro_4.png";
+import circle from "../assets/circle.png";
+import tick from "../assets/tick.png";
+import square from "../assets/square.png";
+import banner_image from "../assets/banner.svg";
 import underbanner from "../assets/purple-geometric.jpg";
 import PurpleWave from "../assets/purple-wave.png";
 
@@ -81,7 +85,7 @@ const Services = () => {
                 <span className="highlight">matters</span>.
               </p>
               <div className="flex mt-6">
-                <a href="#call">
+                <a href="#learn-more">
                   <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">
                     Learn More
                   </button>
@@ -92,7 +96,103 @@ const Services = () => {
         </div>
       </div>
       {/* REMOVED SLIDER SECTION */}
-      <h2 className="head fade-up">Core Services</h2>
+      <h2 className="head" id="learn-more">Taking Your Business to the Next Level</h2>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          padding: "20px",
+          backgroundColor: "white",
+        }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <div
+            style={{
+              position: "relative",
+              width: "250px", // Increased width to 250px
+              height: "250px", // Increased height to 250px
+              margin: "0 auto",
+            }}
+          >
+            <img
+              src={circle}
+              alt="Business Plans"
+              className="animated-element"
+              style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+              }}
+            />
+          </div>
+          <h3>Digital Transformation Strategy</h3>
+          <p style={{ color: "#777" }}>
+            Empowering businesses to embrace cutting-edge technology for
+            enhanced growth and efficiency.
+          </p>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <div
+            style={{
+              position: "relative",
+              width: "250px", // Increased width to 250px
+              height: "250px", // Increased height to 250px
+              margin: "0 auto",
+            }}
+          >
+            <img
+              src={tick}
+              alt="Business Plans"
+              className="animated-element"
+              style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+              }}
+            />
+          </div>
+          <h3>Cloud Integration Solutions</h3>
+          <p style={{ color: "#777" }}>
+          Seamlessly migrate your operations to the cloud, ensuring scalability, security, and optimized performance.
+          </p>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <div
+            style={{
+              position: "relative",
+              width: "250px", // Increased width to 250px
+              height: "250px", // Increased height to 250px
+              margin: "0 auto",
+            }}
+          >
+            <img
+              src={square}
+              alt="Business Plans"
+              className="animated-element"
+              style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+              }}
+            />
+          </div>
+          <h3>AI-Powered Process Automation</h3>
+          <p style={{ color: "#777" }}>
+          Leveraging AI and automation to streamline operations, reduce manual effort.
+          </p>
+        </div>
+      </div>
+
+      <h2 className="head">Core Services</h2>
       <div className="content-with-image">
         <img
           src={image2} // Use the second imported image
@@ -113,16 +213,16 @@ const Services = () => {
         <div className="rightSection">
           <div className="cloudProviderLogos">
             <div className="cloudProviderItem">
-              <BiLogoGoogleCloud size={250} style={{ color: '#4285F4' }} />
+              <BiLogoGoogleCloud size={250} style={{ color: "#4285F4" }} />
             </div>
             <div className="cloudProviderItem">
               <FaAws size={250} />
             </div>
             <div className="cloudProviderItem">
-              <GrOracle size={250} style={{ color: '#F80000' }} />
+              <GrOracle size={250} style={{ color: "#F80000" }} />
             </div>
             <div className="cloudProviderItem">
-              <VscAzure size={250} style={{ color: '#0078D4' }} />
+              <VscAzure size={250} style={{ color: "#0078D4" }} />
             </div>
           </div>
         </div>
@@ -146,10 +246,17 @@ const Services = () => {
         </p>
       </div>
 
-      <div className="buildScaleGrowContainer">
-        <p className="buildScaleGrowText">Build.</p>
-        <p className="buildScaleGrowText">Scale.</p>
-        <p className="buildScaleGrowText">Grow.</p>
+      <div className="content-with-image">
+        <div className="buildScaleGrowContainer">
+          <p className="buildScaleGrowText">Build.</p>
+          <p className="buildScaleGrowText">Scale.</p>
+          <p className="buildScaleGrowText">Grow.</p>
+        </div>
+        <img
+          src={banner_image} // Use the second imported image
+          alt="banner_image"
+          className="animated-element"
+        />
       </div>
 
       <div className="content-with-image">
@@ -175,13 +282,13 @@ const Services = () => {
         <div className="leftSection">
           <div className="cloudProviderLogos">
             <div className="cloudProviderItem">
-              <GrMysql size={250} style={{ color: '#F29111' }} />
+              <GrMysql size={250} style={{ color: "#F29111" }} />
             </div>
             <div className="cloudProviderItem">
-              <BiLogoPostgresql size={250} style={{ color: '#336791' }} />
+              <BiLogoPostgresql size={250} style={{ color: "#336791" }} />
             </div>
             <div className="cloudProviderMongoDB">
-              <BiLogoMongodb size={250} style={{ color: '#47A248' }} />
+              <BiLogoMongodb size={250} style={{ color: "#47A248" }} />
             </div>
           </div>
         </div>
@@ -216,16 +323,16 @@ const Services = () => {
         <div className="rightSection">
           <div className="cloudProviderLogos">
             <div className="cloudProviderItem">
-              <FaPython size={250} style={{ color: '#3776AB' }} />
+              <FaPython size={250} style={{ color: "#3776AB" }} />
             </div>
             <div className="cloudProviderItem">
-              <FaJava size={250} style={{ color: '#007396' }} />
+              <FaJava size={250} style={{ color: "#007396" }} />
             </div>
             <div className="cloudProviderItem">
-              <BiLogoJavascript size={250} style={{ color: '#F7DF1E' }} />
+              <BiLogoJavascript size={250} style={{ color: "#F7DF1E" }} />
             </div>
             <div className="cloudProviderItem">
-              <FaHtml5 size={250} style={{ color: '#E34F26' }} />
+              <FaHtml5 size={250} style={{ color: "#E34F26" }} />
             </div>
           </div>
         </div>

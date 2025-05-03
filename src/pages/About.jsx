@@ -6,6 +6,7 @@ import {
   HeartIcon,
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
+import pattern from "../assets/pattern.png";
 import ponpureLogo from "../assets/ponpure.png";
 import tiCycleLogo from "../assets/ti-cycle.png";
 import murugappaLogo from "../assets/murugappa.png";
