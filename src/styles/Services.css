@@ -428,13 +428,13 @@
 
 @keyframes MoveLeftRight { /* Changed keyframes name to match animation */
   0% {
-    transform: translateX(0); /* Start at the original horizontal position */
+    transform: translateY(0); /* Start at the original horizontal position */
   }
   50% {
-    transform: translateX(-20px); /* Move 20px to the left (negative value) */
+    transform: translateY(-20px); /* Move 20px to the left (negative value) */
   }
   100% {
-    transform: translateX(0); /* Return to the original horizontal position */
+    transform: translateY(0); /* Return to the original horizontal position */
   }
 }
 
