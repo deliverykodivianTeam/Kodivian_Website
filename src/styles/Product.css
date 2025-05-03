@@ -108,23 +108,27 @@
   height: auto;
   float: left;
   transition: transform 0.1s ease-in-out;
-  animation: MoveUpDown 7s linear infinite;
+  animation: moveUpDownOnView 7s linear infinite;
   margin-left: 0;         /* Align to the left */
   margin-right: auto;     /* Push it away from the right */
   border-radius: 8px; /* Optional: Add rounded corners to the image */
 }
 
-@keyframes MoveUpDown {
-  10% {
-  transform: translatey(910);
+@keyframes moveUpDownOnView {
+  0% {
+    transform: translateY(0);
   }
-  10% {
-  transform: translatey(-100px); /* Adjust the value for the desired up movement */
+  50% {
+    transform: translateY(-15px); /* Adjust the up movement distance */
   }
   100% {
-  transform: translatey(90);
+    transform: translateY(0);
   }
- }
+}
+
+.sample-image.animate-move-up-down {
+  animation: moveUpDownOnView 2s linear infinite; /* Apply the animation */
+}
 
  
 .sample-image:hover{
