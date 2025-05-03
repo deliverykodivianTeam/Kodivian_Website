@@ -255,7 +255,7 @@ const Services = () => {
         <img
           src={banner_image} // Use the second imported image
           alt="banner_image"
-          className="animated-element"
+          className="animated-element-1"
         />
       </div>
 

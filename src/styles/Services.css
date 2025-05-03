@@ -396,23 +396,45 @@
 }
 
 .animated-element { /* You can apply this class to your HTML element */
-  animation: MoveUpDown 2s linear infinite;
+  animation: MoveLeftRight 2s linear infinite; /* Changed animation name */
   display: inline-block;
   max-width: 530px;
   height: 500px;
   position: relative; /* Important! */
-  left: 125px; /* Adjust as needed */
+  /* left: 125px; Remove or adjust if you want it to start at a different horizontal position */
+  top: 100px; /* Added a top position for better visibility */
 }
 
-@keyframes MoveUpDown {
+@keyframes MoveLeftRight { /* Changed keyframes name to match animation */
   0% {
-    transform: translateY(0);
+    transform: translateX(0); /* Start at the original horizontal position */
   }
   50% {
-    transform: translateY(-20px); /* Adjust the value for the desired up movement */
+    transform: translateX(-20px); /* Move 20px to the left (negative value) */
   }
   100% {
-    transform: translateY(0);
+    transform: translateX(0); /* Return to the original horizontal position */
+  }
+}
+
+.animated-element-1 { /* You can apply this class to your HTML element */
+  animation: MoveLeftRight 2s linear infinite; /* Changed animation name */
+  display: inline-block;
+  max-width: 530px;
+  height: 500px;
+  position: relative; /* Important! */
+  left: 125px; 
+}
+
+@keyframes MoveLeftRight { /* Changed keyframes name to match animation */
+  0% {
+    transform: translateX(0); /* Start at the original horizontal position */
+  }
+  50% {
+    transform: translateX(-20px); /* Move 20px to the left (negative value) */
+  }
+  100% {
+    transform: translateX(0); /* Return to the original horizontal position */
   }
 }
 
