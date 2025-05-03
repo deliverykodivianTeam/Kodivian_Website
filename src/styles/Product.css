@@ -15,6 +15,17 @@
   display: block; /* Changed to block to take full width */
 }
 
+.absolute {
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.animate-slide-down {
+  opacity: 1;
+  transform: translateY(0);
+}
+
  .hero-section{
       padding: 0;
   /* Adjust spacing */
@@ -108,10 +119,25 @@
   height: auto;
   float: left;
   transition: transform 0.1s ease-in-out;
+  animation: MoveUpDown 7s linear infinite;
   margin-left: 0;         /* Align to the left */
   margin-right: auto;     /* Push it away from the right */
   border-radius: 8px; /* Optional: Add rounded corners to the image */
 }
+
+@keyframes MoveUpDown {
+  10% {
+  transform: translatey(910);
+  }
+  10% {
+  transform: translatey(-100px); /* Adjust the value for the desired up movement */
+  }
+  100% {
+  transform: translatey(90);
+  }
+ }
+
+ 
 .sample-image:hover{
   transform: scale(1.1);
 }
@@ -159,6 +185,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 
+
+
 .sample2-image-container {
   flex: 1; /* Take up 1/2 of the available width */
   margin-left: 20px; /* Add some space between the image and text */
@@ -168,6 +196,7 @@
   max-width: 100%; /* Make the image responsive */
   height: auto;
   float: right;
+  animation: MoveUpDown 7s linear infinite;
   margin-right: 0;         /* Align to the left */
   margin-left: 10px; 
   border-radius: 8px; /* Optional: Add rounded corners to the image */
@@ -227,6 +256,7 @@
   max-width: 80%; /* Make the image responsive */
   height: auto;
   float: left;
+  animation: MoveUpDown 7s linear infinite;
   margin-left: 0;         /* Align to the left */
   margin-right: 10px; 
   border-radius: 8px; /* Optional: Add rounded corners to the image */
@@ -284,6 +314,7 @@
   max-width: 100%; /* Make the image responsive */
   height: auto;
   float: right;
+  animation: MoveUpDown 7s linear infinite;
   margin-right: 0;         /* Align to the left */
   margin-left: 10px; 
   border-radius: 8px; /* Optional: Add rounded corners to the image */

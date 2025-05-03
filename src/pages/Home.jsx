@@ -27,12 +27,6 @@ const Home = () => {
 
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const files = ["Scanify", "Process Builder", "RPA", "Intellidocs"];
-
-  const handleFileClick = (file) => {
-    setSelectedFile(file);
-  };
-
   const handleGoBack = () => {
     setSelectedFile(null);
   };

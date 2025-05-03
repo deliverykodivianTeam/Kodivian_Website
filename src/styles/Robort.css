@@ -1,79 +1,692 @@
-.robort-layout-image-style-container {
+/* Robort.css - Violet Theme */
+.rob-top {
+  flex: 1;
+  padding: 40px;
+  margin-top: 0px;
+  height: 100vh;
+  background-image: none;
+  align-items: center;
+}
+
+.robort-1-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: -80px;
+  margin-left: 30px;
+  color: black;
+  gap: 15px;
+  font-size: 1.2em;
+  width: 97%;
+}
+.robort-1-container h2{
+  font-size: 3.9em;
+  color: #7c01f6; 
+}
+
+.robort-1-container p{
+  font-size: 1.0em;
+  color: #080010; 
+}
+
+.rob-heading {
+  font-size: 4rem;
+  margin-left: 600px;
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 20px;
+  margin-top: 60px;
+  font-weight: bold;
+}
+
+.rob-description {
+  font-size: 1.3rem;
+  color: #0c0000;
+  margin-left: 700px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 781px;
+}
+
+.rob-button-group {
+  display: flex;
+  margin-top: 70px;
+  margin-left: 700px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.rob-get-started-button {
+  background-color: oklch(49.6% 0.265 301.924);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.rob-get-started-button:hover {
+  background-color: #bd5ab8;
+}
+
+.rob-how-it-works-button {
+  background-color: transparent;
+  color: oklch(49.6% 0.265 301.924);
+  border: 2px solid #6e0377;
+  padding: 10px 20px;
+  border-radius: 47px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.rob-how-it-works-button:hover {
+  color: #873e91;
+  border-color: #160000;
+}
+.rob-arrow-icon {
+  margin-left: 5px;
+}
+.rob-img-right{
+    flex: 1;
     display: flex;
-    min-height: 100vh; /* Make the container at least the height of the viewport */
-    background-color: #1e1e1e; /* Dark background for the whole page */
-    color: #fff; /* Default text color */
-    flex-direction: row-reverse;
+    padding: 45px;
+    justify-content: right;
+    max-width: 50%;
+}
+.rob-image {
+  max-width: 80%;
+  animation: MoveUpDown 4s linear infinite;
+  height: 80%;
+  margin-top: -590px;
+  margin-right: 100px;
+  border-radius: 8px;
+  box-shadow: 0 0px 0px oklch(49.6% 0.265 301.924);
+}
+
+@keyframes MoveUpDown {
+  10% {
+  transform: translatex(10);
+  }
+  10% {
+  transform: translatex(-210px); /* Adjust the value for the desired up movement */
+  }
+  100% {
+  transform: translatex(10);
+  }
+ }
+
+
+.robort-layout-violet-theme-container {
+  display: flex;
+  min-height: 100vh;
+  min-width: none;
+  background-color: none; /* Dark violet background */
+  color: #f9058f; /* Light violet text */
+  margin-top: 60px;
+  flex-direction: row-reverse;
+}
+
+.robort-scrollable-left {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.robort-top-text {
+  color: #9b0dcf; /* Very light violet for emphasis */
+  margin-bottom: 20px;
+  font-size: 2.1em;
+}
+
+.robort-left-content {
+  max-width: none;
+}
+
+.robort-work-label {
+  color: #05000a; /* A lighter shade of violet */
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+
+.robort-left-content p {
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #040008af; /* Another light violet shade */
+}
+
+.rob-h3 {
+  font-size: 1.9em;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  color: rgb(11, 0, 11); /* Bright magenta for heading */
+}
+
+.rob2-h3{
+  font-size: 1.9em;
+  margin-bottom: 20px;
+  color: rgb(11, 0, 11); 
+  margin-left: 470px;
+}
+
+.rob-div{
+  width: 400px;
+  height: 400px;
+  background: rebeccapurple;
+  margin: 10px;
+  font-size: 1.5em;
+  margin-left: 20px;
+  color: beige;
+  padding: 10px ;
+}
+
+.rob-div1{
+  width: 400px;
+  height: 400px;
+  background: rebeccapurple;
+  margin-left: 470px;
+  font-size: 1.5em;
+  color: beige;
+  padding: 10px ;
+}
+
+.rob-div2{
+  width: 400px;
+  font-size: 1.5em;
+  height: 400px;
+  background: rebeccapurple;
+  margin: 10px;
+  margin-left: 20px;
+  color: beige;
+  padding: 10px ;
+}
+
+.rob-div3{
+  width: 400px;
+  font-size: 1.5em;
+  height: 400px;
+  background: rebeccapurple;
+  margin-left: 470px;
+  color: beige;
+  padding: 10px ;
+}
+
+.rob-div4{
+  width: 400px;
+  height: 400px;
+  font-size: 1.5em;
+  background: rebeccapurple;
+  margin: 10px;
+  margin-left: 20px;
+  color: beige;
+  padding: 10px ;
+}
+
+.robort-fixed-right {
+  flex: 0 0 40%;
+  background-color: none; /* Deeper violet background for the sidebar */
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: sticky;
+  top: 170px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.robort-right-content {
+  width: 100%;
+}
+
+.robort-right-content h3 {
+  font-size: 2.8em;
+  margin-bottom: 15px;
+  color: #060002b7; /* Pinkish-violet for sidebar heading */
+}
+
+.robort-electrax-description {
+  color: #05000d7a; /* Muted violet for description */
+  line-height: 1.9;
+  font-size: 1.0em;
+  margin-bottom: 25px;
+}
+
+.robort-card-container {
+  display: flex;
+  flex-direction: column;
+  color: #7c01f6;
+  gap: 15px;
+  width: 100%;
+}
+
+.robort-card-container p {
+  font-size: 1.6em;
+}
+
+
+.robort-card {
+  background-color: #0c0113d4; /* Another shade of violet for cards */
+  padding: 20px;
+  border-radius: 5px;
+  /* Add more styling for your cards */
+}
+.robort1-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 30px;
+  color: #7c01f6;
+  gap: 15px;
+  font-size: 0.5em;
+  width: 90%;
+}
+
+.robort1-container h2{
+  color: #05000a;
+  font-size: 6.5em;
+}
+
+.robort1-container p{
+  font-size: 2.7em;
+}
+
+.robort1-layout-violet-theme-container {
+  display: flex;
+  min-height: 100vh;
+  min-width: none;
+  padding: 20px;
+  margin-top: 90px;
+  background-color: none; /* Dark violet background */
+  color: #f9058f; /* Light violet text */
+  flex-direction: row;
+}
+
+.robort1-scrollable-left {
+  flex: 1;
+
+  overflow-y: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.robort1-top-text {
+  color: #0a000b; /* Very light violet for emphasis */
+  margin-bottom: 20px;
+  font-size: 2.1em;
+}
+
+.robort1-left-content {
+  max-width: none;
+}
+
+.robort1-work-label {
+  color: #920ab0; /* A lighter shade of violet */
+  margin-bottom: 10px;
+  font-size: 1.9em;
+}
+
+.robort1-left-content h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: rgb(11, 0, 11); /* Bright magenta for heading */
+}
+
+.robort1-left-content p {
+  line-height: 1.2;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #040008af; /* Another light violet shade */
+}
+
+.rob1-h3 {
+  font-size: 2.1em;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  color: rgb(11, 0, 11); /* Bright magenta for heading */
+}
+
+.rob11-h3{
+  font-size: 2.1em;
+  margin-bottom: 20px;
+  color: rgb(11, 0, 11); 
+  margin-left: 470px;
+}
+
+.rob1-div{
+  width: 400px;
+  font-size: 0.9em;
+  height: 400px;
+  background: none;
+  margin: 10px;
+  margin-left: 20px;
+  color: rgb(10, 2, 0);
+  padding: 10px ;
+}
+
+
+.rob1-div1{
+  width: 400px;
+  font-size: 0.9em;
+  height: 400px;
+  background: none;
+  margin-left: 470px;
+  color:  rgb(10, 2, 0);
+  padding: 5px ;
+}
+
+.rob1-div2{
+  width: 400px;
+  font-size: 0.9em;
+  height: 400px;
+  background: none;
+  margin: 10px;
+  margin-left: 20px;
+  color:  rgb(10, 2, 0);
+  padding: 5px ;
+}
+
+.rob1-div3{
+  width: 400px;
+  font-size: 0.9em;
+  height: 400px;
+  background: rebeccapurple;
+  margin-left: 470px;
+  color: beige;
+  padding: 5px ;
+}
+
+.rob1-div4{
+  width: 400px;
+  height: 400px;
+  background: rebeccapurple;
+  margin: 10px;
+  margin-left: 20px;
+  color: beige;
+  padding: 5px ;
+}
+
+.robort1-fixed-right {
+  flex: 0 0 40%;
+  background-color: #fdfdfe; /* Deeper violet background for the sidebar */
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: sticky;
+  top: 0;
+  top: 100px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.robort1-right-content {
+  width: 100%;
+}
+
+.robort1-right-content h3 {
+  font-size: 2.3em;
+  margin-bottom: 15px;
+  color: #060002b7; /* Pinkish-violet for sidebar heading */
+}
+
+.robort1-electrax-description {
+  color: #05000de6; /* Muted violet for description */
+  line-height: 1.4;
+  font-size: 1.9em;
+  margin-bottom: 25px;
+}
+
+.robort1-card-container {
+  display: flex;
+  flex-direction: column;
+  color: #7c01f6;
+  gap: 15px;
+  width: 100%;
+}
+
+.robort1-card-container h2{
+  line-height: 1.4;
+  font-size: 1.7em;
+}
+
+.robort1-card-container p{
+line-height: 1.4;
+  font-size: 1.3em;
+}
+
+/* FAQ Section Styles */
+.faq-section {
+  text-align: center;
+  padding-bottom: 60px; 
+  background-color: none;
+}
+
+.faq-heading {
+  font-size: 2.5rem;
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.faq-list {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.faq-question {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px 0;
+}
+
+.faq-question:hover {
+  color: oklch(49.6% 0.265 301.924);
+}
+
+.faq-toggle {
+  font-size: 1.5rem;
+  color: #777;
+}
+
+.faq-answer {
+  padding-top: 15px;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.faq-query-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.faq-query-button {
+  background-color: oklch(49.6% 0.265 301.924);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.faq-query-button:hover {
+  background-color: #bd5ab8;
+}
+
+.faq-query-info {
+  font-size: 0.9rem;
+  color: #777;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background-color: none; /* Optional: Add a background color */
+  z-index: 10; /* Optional: Ensure it stays above other content */
+}
+
+/* Styles for the Query Input Area */
+.query-input-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.query-textbox {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  min-height: 80px;
+}
+
+.query-submit-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+.query-submit-button:hover {
+  opacity: 0.9;
+}
+
+
+/* Hide the info text when the query box is open */
+.faq-query-container > p.faq-query-info {
+  display: block; /* Initially show */
+}
+
+.faq-query-container.query-open > p.faq-query-info {
+  display: none; /* Hide when query box is open */
+}
+
+/* Responsive adjustments for FAQ section */
+@media (max-width: 768px) {
+  .faq-heading {
+    font-size: 2rem;
   }
 
-  
-  .robort-scrollable-left {
-    flex: 1; /* Takes up the available width */
-    overflow-y: auto; /* Enables vertical scrolling for the left side */
-    padding: 40px;
-    box-sizing: border-box; /* Include padding in the element's total width and height */
+  .faq-question {
+    font-size: 1.1rem;
   }
-  
-  .robort-left-content {
-    max-width: 600px; /* Limit the width of the content on the left */
+
+  .faq-answer {
+    font-size: 0.95rem;
   }
-  
-  .robort-work-label {
-    color: #ffcc00; /* Example color for the "WORK" label */
-    margin-bottom: 10px;
-    font-size: 0.9em;
+
+  .query-input-area {
+    width: 95%;
   }
-  
-  .robort-left-content h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+}
+
+/* Styles for the Bottom CTA Section */
+.bottom-cta-section {
+  background-image: url('../assets/ban.png'); /* Set the background image to ban.png */
+  background-size: cover; /* Cover the entire section */
+  background-position: center; /* Center the image */
+  color: white; /* Set text color to be visible on the background */
+  padding: 60px 20px; /* Add padding around the content */
+  text-align: center; /* Center the content within the section */
+}
+
+.bottom-cta-content {
+  max-width: 1200px; /* Limit the width of the content */
+  margin: 0 auto; /* Center the content horizontally */
+  flex-direction: row; /* Stack left text and buttons on smaller screens */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+}
+
+.bottom-cta-left {
+  margin-bottom: 20px; /* Add space between text and buttons */
+}
+
+.bottom-cta-left h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.bottom-cta-buttons {
+  display: flex;
+  gap: 20px; /* Space between the buttons */
+}
+
+.book-demo-button,
+.talk-sales-button {
+  background-color: oklch(49.6% 0.265 301.924); /* Use your primary color */
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.book-demo-button:hover,
+.talk-sales-button:hover {
+  background-color: #bd5ab8; /* Darker shade on hover */
+}
+
+/* Responsive adjustments for the Bottom CTA Section */
+@media (min-width: 769px) {
+  .bottom-cta-content {
+    flex-direction: row; /* Arrange text and buttons in a row on larger screens */
+    justify-content: space-between; /* Space them out */
+    align-items: center; /* Vertically align items in the row */
   }
-  
-  .robort-left-content p {
-    line-height: 1.6;
-    margin-bottom: 30px;
-    color: #ccc;
+
+  .bottom-cta-left {
+    margin-bottom: 0; /* Remove bottom margin on larger screens */
+    text-align: left; /* Align text to the left */
   }
-  
-  .robort-fixed-right {
-    flex: 0 0 40%; /* Fixed width for the right sidebar (adjust as needed) */
-    background-color: #2c2c2c; /* Darker background for the right sidebar */
-    padding: 40px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align content to the left in the sidebar */
-    position: sticky; /* Make the right sidebar fixed relative to the viewport */
-    top: 0; /* Stick to the top of the viewport */
-    height: 100vh; /* Make it full viewport height */
-    overflow-y: auto; /* Enable scrolling for the right side if content overflows */
+
+  .bottom-cta-buttons {
+    flex-shrink: 0; /* Prevent buttons from shrinking */
   }
-  
-  .robort-right-content {
-    width: 100%;
-  }
-  
-  .robort-right-content h3 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-  }
-  
-  .robort-electrax-description {
-    color: #999;
-    line-height: 1.4;
-    margin-bottom: 25px;
-  }
-  
-  .robort-card-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-  }
-  
-  .robort-card {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 5px;
-    /* Add more styling for your cards */
-  }
+}
+
+
+
