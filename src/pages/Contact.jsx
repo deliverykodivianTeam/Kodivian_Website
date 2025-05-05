@@ -95,11 +95,42 @@ const Contact = () => {
         </div>
       </div>
 
+      <div className="contact-form-container" id="call-1">
+        {/* The contact form will remain here */}
+        <h1>Send us a Message</h1>
+        <p>We'd love to hear from you! Please fill out the form below.</p>
+        <form className="contact-form">
+          <div className="form-group">
+            <label htmlFor="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="phone">Phone Number (Optional):</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" className="submit-button">
+            Send Message
+          </button>
+        </form>
+      </div>
+
       <div className="contact-map" id="call">
         <div className="location-header">
-          <h2>Our Locations</h2>
+          <h2 className="locations-holder">OUR LOCATIONS</h2>
           <div className="location-selector">
-            <label htmlFor="location-select">Select Location:</label>
+            <label htmlFor="location-select">SELECT LOCATION :</label>
             <select
               id="location-select"
               value={selectedLocationId}
@@ -131,36 +162,7 @@ const Contact = () => {
           </>
         )}
       </div>
-      <div className="contact-form-container" id="call-1">
-        {/* The contact form will remain here */}
-        <h1>Send us a Message</h1>
-        <p>We'd love to hear from you! Please fill out the form below.</p>
-        <form className="contact-form">
-          <div className="form-group">
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="phone">Phone Number (Optional):</label>
-            <input type="tel" id="phone" name="phone" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button type="submit" className="submit-button">
-            Send Message
-          </button>
-        </form>
-      </div>
+
       {/* Bottom Wave Image with Overlay Content */}
       <div className="relative w-full overflow-hidden">
         <img

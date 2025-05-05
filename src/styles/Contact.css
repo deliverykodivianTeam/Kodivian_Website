@@ -59,11 +59,12 @@
   width: 840px;
   flex: 1 1 45%;
   margin: 20px;
-  padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: var(--bg-color);
   text-align: left;
+}
+
+.locations-holder {
+  font-weight: bold;
 }
 
 .location-header {
