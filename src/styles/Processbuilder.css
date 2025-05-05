@@ -1,670 +1,672 @@
 .process-container {
-    display: flex;
-    flex-direction: column; /* Stack items vertically by default */
-    align-items: flex-start; /* Align items to the left */
-    padding: 5px;
-    background-color: none;
-    font-family: Arial, sans-serif;
-    margin: 0 auto;
-    max-width: 1400px;
-  }
-  
-  .process-main-heading-top {
-    font-size: 6.0rem;
-    color: oklch(49.6% 0.265 301.924);
-    margin-bottom: 30px;
-    line-height: 1;
-    font-weight: bold;
-    text-align: left; /* Align to the left */
-  }
-  
-  .process-content-wrapper {
-    display: flex; /* Arrange left content and image horizontally */
-    width: 100%;
-    justify-content: space-between; /* Space out left content and image */
-    align-items: flex-start; /* Align items to the start vertically */
-  }
-  
-  .process-left1-content {
-    flex: 1; /* Take up available space */
- /* Add some spacing between text and image */
-    padding-top: 0; /* Remove top padding */
-  }
-  
-  .process-main-heading {
-    font-size: 6.0rem;
-    color: oklch(49.6% 0.265 301.924);
-    margin-bottom: 0.0rem;
-    line-height: 1.5;
-    font-weight: bold;
-  }
-  
-  .process-description {
-    font-size: 1.125rem;
-    color: #000307;
-    line-height: 1.75;
-    margin-bottom: 2rem;
-    max-width: 100%;
-  }
-  
-  .process-subdescription {
-    font-size: 1rem;
-    color: #d5b2dff6;
-    line-height: 1.5;
-    margin-bottom: 2rem;
-    max-width: 90%;
-  }
-  
-
-  .process-button-group {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .process-start-button,
-  .process-explore-button {
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.375rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    font-size: 1rem;
-    border: none;
-  }
-  
-  .process-start-button {
-    background-color: oklch(49.6% 0.265 301.924);
-    color: white;
-  }
-  
-  .process-start-button:hover {
-    background-color: #3182ce;
-  }
-  
-  .process-explore-button {
-    background-color: transparent;
-    color: #4a5568;
-    border: 1px solid #cbd5e0;
-  }
-  
-  .process-explore-button:hover {
-    color: #2d3748;
-  }
-  
-  .process-right-image {
-    flex-shrink: 0; /* Prevent image from shrinking */
-    max-width: 50%; /* Adjust as needed */
-  }
-  
-  .process-builder-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.375rem;
-  }
-  
-  .process-builder-image:hover {
-    box-shadow: 0 28px 16px 1px rgba(146, 0, 244, 0.534);
-  }
-
-  
-
-  /* Freehand editor section */
-  .freehand-editor-section {
-    margin-top: 70px; /* Add some space above the section */
-   /* Align text to the left */
-    width: 100%; /* Make it full width */
-  }
-  
-  .freehand-editor-heading {
-    font-size: 3.5rem; /* Adjust the font size as needed */
-    color: oklch(49.6% 0.265 301.924);
-    margin-bottom: 20px;
-    text-align: center;
-    line-height: 1.5;
-    font-weight: bold;
-  }
-  
-  .freehand-editor-description {
-    font-size: 1.3rem;
-    color: #000307;
-    margin-left: 150px;
-    text-align: center;
-    line-height: 1.75;
-    max-width: 80%; /* Adjust max width for readability */
-  }
-  .freehand-editor-accordion-wrapper {
   display: flex;
-  width: 80%;
-  margin: 50px auto 0; /* Center the wrapper */
-  align-items: flex-start; /* Align image and accordion to the top */
-  flex-direction: row-reverse; /* Keep items in a row */
+  flex-direction: column; /* Stack items vertically by default */
+  align-items: flex-start; /* Align items to the left */
+  padding: 5px;
+  background-color: none;
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  max-width: 1400px;
 }
 
-.accordion-left-image {
-  flex-shrink: 0; /* Prevent shrinking */
-  max-width: 60%; /* Adjust width of the left image */
-  margin-left: 110px; /* Space between image and accordion */
+.process-main-heading-top {
+  font-size: 6.0rem;
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 30px;
+  line-height: 1;
+  font-weight: bold;
+  text-align: left; /* Align to the left */
 }
 
-.accordion-section-image-left {
+.process-content-wrapper {
+  display: flex; /* Arrange left content and image horizontally */
+  width: 100%;
+  justify-content: space-between; /* Space out left content and image */
+  align-items: flex-start; /* Align items to the start vertically */
+}
+
+.process-left1-content {
+  flex: 1; /* Take up available space */
+/* Add some spacing between text and image */
+  padding-top: 0; /* Remove top padding */
+}
+
+.process-main-heading {
+  font-size: 6.0rem;
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 0.0rem;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.process-description {
+  font-size: 1.125rem;
+  color: #000307;
+  line-height: 1.75;
+  margin-bottom: 2rem;
   max-width: 100%;
-  height: 100%;
+}
+
+.process-subdescription {
+  font-size: 1rem;
+  color: #d5b2dff6;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  max-width: 90%;
+}
+
+
+.process-button-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.process-start-button,
+.process-explore-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  font-size: 1rem;
+  border: none;
+}
+
+.process-start-button {
+  background-color: oklch(49.6% 0.265 301.924);
+  color: white;
+}
+
+.process-start-button:hover {
+  background-color: #3182ce;
+}
+
+.process-explore-button {
+  background-color: transparent;
+  color: #4a5568;
+  border: 1px solid #cbd5e0;
+}
+
+.process-explore-button:hover {
+  color: #2d3748;
+}
+
+.process-right-image {
+  flex-shrink: 0; /* Prevent image from shrinking */
+  max-width: 50%; /* Adjust as needed */
+}
+
+.process-builder-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: -20px;
+  margin-left: 40px;
   border-radius: 0.375rem;
 }
 
-.freehand-editor-accordion {
-  flex: 1; /* Take remaining space */
+.process-builder-image:hover {
+  box-shadow: 0 28px 16px 1px rgba(146, 0, 244, 0.534);
 }
-  
-  .accordion-item {
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 0.375rem;
-    overflow: hidden; /* To contain the content within rounded borders */
-  }
-  
-  .accordion-header {
-    background-color: none;
-    padding: 5px;
-    display: flex;
-    margin-top: 70px;
-    align-items: center;
-    cursor: pointer;
-    justify-content: flex-start; /* Align arrow and text to the left */
-  }
-  
-  .accordion-header h2 {
-    font-size: 1.25rem;
-    align-items: center;
-    color: #333;
-    margin-left: 10px;
-    font-weight: 600;
-  }
-  
-  .accordion-content {
-    padding: 15px;
-    background-color: white;
-    border-top: 1px solid #5d5454;
-    width:420px;
-  }
-  
-  .accordion-content p {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 0;
-  }
-  
-  .accordion-arrow {
-    font-size: 1.25rem;
-    color: #555;
-    margin-right: 10px;
-    transition: transform 0.2s ease-in-out; /* For smooth arrow animation if needed */
-  }
-  
-  /* Styles for the new section */
-.freehand2-editor-main-heading {
-  font-size: 2.5rem; /* Adjust as needed */
-  color:oklch(49.6% 0.265 301.924); /* Adjust as needed */
+
+
+
+/* Freehand editor section */
+.freehand-editor-section {
+  margin-top: 70px; /* Add some space above the section */
+ /* Align text to the left */
+  width: 100%; /* Make it full width */
+}
+
+.freehand-editor-heading {
+  font-size: 3.5rem; /* Adjust the font size as needed */
+  color: oklch(49.6% 0.265 301.924);
+  margin-bottom: 20px;
   text-align: center;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.freehand-editor-description {
+  font-size: 1.3rem;
+  color: #000307;
+  margin-left: 150px;
+  text-align: center;
+  line-height: 1.75;
+  max-width: 80%; /* Adjust max width for readability */
+}
+.freehand-editor-accordion-wrapper {
+display: flex;
+width: 80%;
+margin: 50px auto 0; /* Center the wrapper */
+align-items: flex-start; /* Align image and accordion to the top */
+flex-direction: row-reverse; /* Keep items in a row */
+}
+
+.accordion-left-image {
+flex-shrink: 0; /* Prevent shrinking */
+max-width: 60%; /* Adjust width of the left image */
+margin-left: 110px; /* Space between image and accordion */
+}
+
+.accordion-section-image-left {
+max-width: 100%;
+height: 100%;
+border-radius: 0.375rem;
+}
+
+.freehand-editor-accordion {
+flex: 1; /* Take remaining space */
+}
+
+.accordion-item {
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 0.375rem;
+  overflow: hidden; /* To contain the content within rounded borders */
+}
+
+.accordion-header {
+  background-color: none;
+  padding: 5px;
+  display: flex;
   margin-top: 70px;
-  margin-bottom: 15px;
+  align-items: center;
+  cursor: pointer;
+  justify-content: flex-start; /* Align arrow and text to the left */
+}
+
+.accordion-header h2 {
+  font-size: 1.25rem;
+  align-items: center;
+  color: #333;
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+.accordion-content {
+  padding: 15px;
+  background-color: white;
+  border-top: 1px solid #5d5454;
+  width:420px;
+}
+
+.accordion-content p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.accordion-arrow {
+  font-size: 1.25rem;
+  color: #555;
+  margin-right: 10px;
+  transition: transform 0.2s ease-in-out; /* For smooth arrow animation if needed */
+}
+
+/* Styles for the new section */
+.freehand2-editor-main-heading {
+font-size: 2.5rem; /* Adjust as needed */
+color:oklch(49.6% 0.265 301.924); /* Adjust as needed */
+text-align: center;
+margin-top: 70px;
+margin-bottom: 15px;
 }
 
 .freehand2-editor-main-description {
-  font-size: 1rem; /* Adjust as needed */
-  color: black; /* Adjust as needed */
-  text-align: center;
-  margin-bottom: 30px;
-  max-width: 70%;
-  margin-left: auto;
-  margin-right: auto;
+font-size: 1rem; /* Adjust as needed */
+color: black; /* Adjust as needed */
+text-align: center;
+margin-bottom: 30px;
+max-width: 70%;
+margin-left: auto;
+margin-right: auto;
 }
 
 .feature-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-  gap: 20px;
-  width: 80%;
-  margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+gap: 20px;
+width: 80%;
+margin: 0 auto;
 }
 
 .feature-card {
-  background-color: #f9f9f9; /* Light background for the cards */
-  padding: 20px;
-  border-color: #000307;
-  border-radius: 25px;
-  text-align: left;
-  box-shadow: 0 5px 4px rgba(173, 20, 234, 0.1);
+background-color: #f9f9f9; /* Light background for the cards */
+padding: 20px;
+border-color: #000307;
+border-radius: 25px;
+text-align: left;
+box-shadow: 0 5px 4px rgba(173, 20, 234, 0.1);
 }
 
 .feature-icon {
-  width: 40px;
-  height: 40px;
-  background-color: #e0e0e0; /* Placeholder icon background */
-  border-radius: 50%;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem; /* Adjust icon size if using text-based icons */
-  color: gray; /* Adjust icon color */
+width: 40px;
+height: 40px;
+background-color: #e0e0e0; /* Placeholder icon background */
+border-radius: 50%;
+margin-bottom: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 1.5rem; /* Adjust icon size if using text-based icons */
+color: gray; /* Adjust icon color */
 }
 
 .feature-title {
-  font-size: 1.2rem;
-  color: oklch(49.6% 0.265 301.924);
-  margin-bottom: 5px;
-  font-weight: bold;
+font-size: 1.2rem;
+color: oklch(49.6% 0.265 301.924);
+margin-bottom: 5px;
+font-weight: bold;
 }
 
 .feature-badge {
-  background-color: #e61c1c; /* Example badge color */
-  color: white;
-  font-size: 0.8rem;
-  padding: 2px 5px;
-  border-radius: 4px;
-  margin-left: 5px;
-  vertical-align: middle;
+background-color: #e61c1c; /* Example badge color */
+color: white;
+font-size: 0.8rem;
+padding: 2px 5px;
+border-radius: 4px;
+margin-left: 5px;
+vertical-align: middle;
 }
 
 .feature-description {
-  font-size: 0.9rem;
-  color: black;
-  line-height: 1.5;
+font-size: 0.9rem;
+color: black;
+line-height: 1.5;
 }
 
 .pro-section {
-  background-color: none; /* Example background color */
-  padding: 80px 20px; /* Example padding */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+background-color: none; /* Example background color */
+padding: 80px 20px; /* Example padding */
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .pro-content {
-  text-align: center;
-  max-width: 800px; /* Example maximum width */
+text-align: center;
+max-width: 800px; /* Example maximum width */
 }
 
 .pro-intro {
-  color: #777; /* Example text color */
-  font-size: 1.1rem;
-  margin-bottom: 10px;
+color: #777; /* Example text color */
+font-size: 1.1rem;
+margin-bottom: 10px;
 }
 
 .pro-title {
-  font-size: 3rem;
-  font-weight: bold;
-  line-height: 1.2;
-  margin-bottom: 20px;
-  color: #333; /* Example text color */
+font-size: 3rem;
+font-weight: bold;
+line-height: 1.2;
+margin-bottom: 20px;
+color: #333; /* Example text color */
 }
 
 .pro-badge {
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-left: 10px;
+font-size: 0.8rem;
+font-weight: bold;
+color: white;
+padding: 5px 10px;
+border-radius: 5px;
+margin-left: 10px;
 }
 
 .pro-badge.new {
-  background-color: #2ecc71; /* Example "NEW" badge color */
+background-color: #2ecc71; /* Example "NEW" badge color */
 }
 
 .pro-badge.beta {
-  background-color: #f39c12; /* Example "BETA" badge color */
+background-color: #f39c12; /* Example "BETA" badge color */
 }
 
 
 .pro-subtitle {
-  color: #555; /* Example text color */
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 30px;
+color: #555; /* Example text color */
+font-size: 1.2rem;
+line-height: 1.6;
+margin-bottom: 30px;
 }
 
 .pro-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+display: flex;
+justify-content: center;
+gap: 20px;
 }
 
 .button.primary {
-  padding: 15px 30px;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-  background-color: #007bff; /* Example primary button color */
-  color: white;
+padding: 15px 30px;
+border-radius: 8px;
+font-size: 1rem;
+cursor: pointer;
+border: none;
+background-color: #007bff; /* Example primary button color */
+color: white;
 }
 
 .button.secondary {
-  padding: 15px 30px;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  color: #007bff; /* Example secondary button color */
-  border: 1px solid #007bff;
+padding: 15px 30px;
+border-radius: 8px;
+font-size: 1rem;
+cursor: pointer;
+border: none;
+background-color: transparent;
+color: #007bff; /* Example secondary button color */
+border: 1px solid #007bff;
 }
 
 .button.primary:hover,
 .button.secondary:hover {
-  opacity: 0.9;
+opacity: 0.9;
 }
 
 /* FAQ Section Styles */
 .pro-faq-section {
-  text-align: center;
-  padding-left: 120px;
-  padding-bottom: 60px; 
-  background-color: none;
+text-align: center;
+padding-left: 120px;
+padding-bottom: 60px; 
+background-color: none;
 }
 
 .pro-faq-heading {
-  font-size: 2.5rem;
-  color: oklch(49.6% 0.265 301.924);
-  margin-bottom: 30px;
-  font-weight: bold;
+font-size: 2.5rem;
+color: oklch(49.6% 0.265 301.924);
+margin-bottom: 30px;
+font-weight: bold;
 }
 
 .pro-faq-list {
-  list-style: none;
-  padding: 0;
-  max-width: 800px;
-  margin: 0 auto;
+list-style: none;
+padding: 0;
+max-width: 800px;
+margin: 0 auto;
 }
 
 .pro-faq-item {
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
+margin-bottom: 20px;
+border-bottom: 1px solid #ddd;
+padding-bottom: 20px;
 }
 
 .pro-faq-item:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
+border-bottom: none;
+margin-bottom: 0;
+padding-bottom: 0;
 }
 
 .pro-faq-question {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  padding: 15px 0;
+font-size: 1.2rem;
+font-weight: bold;
+color: #333;
+display: flex;
+justify-content: space-between;
+align-items: center;
+cursor: pointer;
+padding: 15px 0;
 }
 
 .pro-faq-question:hover {
-  color: oklch(49.6% 0.265 301.924);
+color: oklch(49.6% 0.265 301.924);
 }
 
 .pro-faq-toggle {
-  font-size: 1.5rem;
-  color: #777;
+font-size: 1.5rem;
+color: #777;
 }
 
 .pro-faq-answer {
-  padding-top: 15px;
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-  text-align: left;
+padding-top: 15px;
+font-size: 1rem;
+color: #555;
+line-height: 1.6;
+text-align: left;
 }
 
 .pro-faq-query-container {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+margin-top: 40px;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
 .pro-faq-query-button {
-  background-color: oklch(49.6% 0.265 301.924);
-  color: white;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
+background-color: oklch(49.6% 0.265 301.924);
+color: white;
+padding: 12px 25px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 1rem;
+transition: background-color 0.3s ease;
 }
 
 .pro-faq-query-button:hover {
-  background-color: #bd5ab8;
+background-color: #bd5ab8;
 }
 
 .pro-faq-query-info {
-  font-size: 0.9rem;
-  color: #777;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  padding: 10px 0;
-  background-color: none; /* Optional: Add a background color */
-  z-index: 10; /* Optional: Ensure it stays above other content */
+font-size: 0.9rem;
+color: #777;
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+text-align: center;
+padding: 10px 0;
+background-color: none; /* Optional: Add a background color */
+z-index: 10; /* Optional: Ensure it stays above other content */
 }
 
 /* Styles for the Query Input Area */
 .pro-query-input-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-  width: 80%;
-  max-width: 500px;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 20px;
+width: 80%;
+max-width: 500px;
 }
 
 .pro-query-textbox {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  min-height: 80px;
+width: 100%;
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 1rem;
+min-height: 80px;
 }
 
 .pro-query-submit-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #4caf50;
-  color: white;
-  transition: opacity 0.3s ease;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+font-size: 1rem;
+cursor: pointer;
+background-color: #4caf50;
+color: white;
+transition: opacity 0.3s ease;
 }
 
 .pro-query-submit-button:hover {
-  opacity: 0.9;
+opacity: 0.9;
 }
 
 
 /* Hide the info text when the query box is open */
 .pro-faq-query-container > p.pro-faq-query-info {
-  display: block; /* Initially show */
+display: block; /* Initially show */
 }
 
 .pro-faq-query-container.query-open > p.pro-faq-query-info {
-  display: none; /* Hide when query box is open */
+display: none; /* Hide when query box is open */
 }
 
 /* Responsive adjustments for FAQ section */
 @media (max-width: 768px) {
-  .pro-faq-heading {
-    font-size: 2rem;
-  }
+.pro-faq-heading {
+  font-size: 2rem;
+}
 
-  .pro-faq-question {
-    font-size: 1.1rem;
-  }
+.pro-faq-question {
+  font-size: 1.1rem;
+}
 
-  .pro-faq-answer {
-    font-size: 0.95rem;
-  }
+.pro-faq-answer {
+  font-size: 0.95rem;
+}
 
-  .pro-query-input-area {
-    width: 95%;
-  }
+.pro-query-input-area {
+  width: 95%;
+}
 }
 
 /* Styles for the Bottom CTA Section */
 .pro-bottom-cta-section {
-  background-image: url('../assets/ban.png'); /* Set the background image to ban.png */
-  background-size: cover; /* Cover the entire section */
-  background-position: center; /* Center the image */
-  color: white; /* Set text color to be visible on the background */
-  padding: 60px 20px; /* Add padding around the content */
-  text-align: center; /* Center the content within the section */
+background-image: url('../assets/ban.png'); /* Set the background image to ban.png */
+background-size: cover; /* Cover the entire section */
+background-position: center; /* Center the image */
+color: white; /* Set text color to be visible on the background */
+padding: 60px 20px; /* Add padding around the content */
+text-align: center; /* Center the content within the section */
 }
 
 .pro-bottom-cta-content {
-  max-width: 1200px; /* Limit the width of the content */
-  margin: 0 auto; /* Center the content horizontally */
-  flex-direction: row; /* Stack left text and buttons on smaller screens */
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
+max-width: 1200px; /* Limit the width of the content */
+margin: 0 auto; /* Center the content horizontally */
+flex-direction: row; /* Stack left text and buttons on smaller screens */
+align-items: center; /* Center items horizontally */
+justify-content: center; /* Center items vertically */
 }
 
 .pro-bottom-cta-left {
-  margin-bottom: 20px; /* Add space between text and buttons */
+margin-bottom: 20px; /* Add space between text and buttons */
 }
 
 .pro-bottom-cta-left h3 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+font-size: 2rem;
+font-weight: bold;
+margin-bottom: 10px;
 }
 
 .pro-bottom-cta-buttons {
-  display: flex;
-  gap: 20px; /* Space between the buttons */
+display: flex;
+gap: 20px; /* Space between the buttons */
 }
 
 .pro-book-demo-button,
 .pro-talk-sales-button {
-  background-color: oklch(49.6% 0.265 301.924); /* Use your primary color */
-  color: white;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
+background-color: oklch(49.6% 0.265 301.924); /* Use your primary color */
+color: white;
+padding: 12px 25px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 1rem;
+transition: background-color 0.3s ease;
 }
 
 .pro-book-demo-button:hover,
 .pro-talk-sales-button:hover {
-  background-color: #bd5ab8; /* Darker shade on hover */
+background-color: #bd5ab8; /* Darker shade on hover */
 }
 
-  
-  /* Media query for smaller screens */
-  @media (max-width: 768px) {
-    .process-container {
-      padding: 10px;
-      align-items: center; /* Center items on smaller screens */
-    }
-  
-    .process-main-heading-top {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-align: center; /* Center on smaller screens */
-    }
-  
-    .process-content-wrapper {
-      flex-direction: column; /* Stack left content and image vertically */
-      align-items: center; /* Center items on smaller screens */
-    }
-  
-    .process-left1-content {
-      padding-right: 0;
-      align-items: center; /* Center text content */
-      text-align: center;
-      margin-bottom: 30px;
-      padding-top: 0; /* Ensure no top padding on small screens as well */
-      max-width: 80%; /* Adjust max-width for better readability */
-    }
-  
-    .process-main-heading {
-      font-size: 2.5rem;
-      text-align: center;
-    }
-  
-    .process-description {
-      max-width: 100%;
-      margin-bottom: 0.5rem;
-      text-align: left; /* Align text to the left for better readability on smaller screens */
-    }
-  
-    .process-subdescription {
-      max-width: 100%;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-      text-align: left; /* Align text to the left */
-    }
-  
-    .process-button-group {
-      flex-direction: column;
-      width: 100%;
-    }
-  
-    .process-start-button,
-    .explore-button {
-      width: 100%;
-      padding: 1rem;
-    }
-  
-    .process-right-image {
-      max-width: 80%; /* Adjust image size for smaller screens */
-      margin-bottom: 20px; /* Add space below the image */
-    }
 
-    .freehand-editor-accordion-wrapper {
-      flex-direction: column; /* Stack image and accordion */
-      width: 95%;
-      align-items: center;
-    }
-  
-    .accordion-right-image {
-      max-width: 80%;
-      margin-left: 0;
-      margin-bottom: 20px;
-    }
-  
-    .freehand-editor-accordion {
-      width: 100%;
-    }
-  
-    .accordion-header h2 {
-      font-size: 1.1rem;
-    }
-  
-    .accordion-content p {
-      font-size: 0.9rem;
-    }
-  
-    .accordion-section-image-right {
-      max-width: 80%;
-    }
-
-    .freehand2-editor-section {
-      margin-top: 70px;
-      width: 100%;
-      padding: 30px 0; /* Add some vertical padding */
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center the content within the section */
-    }
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .process-container {
+    padding: 10px;
+    align-items: center; /* Center items on smaller screens */
   }
+
+  .process-main-heading-top {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center; /* Center on smaller screens */
+  }
+
+  .process-content-wrapper {
+    flex-direction: column; /* Stack left content and image vertically */
+    align-items: center; /* Center items on smaller screens */
+  }
+
+  .process-left1-content {
+    padding-right: 0;
+    align-items: center; /* Center text content */
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 0; /* Ensure no top padding on small screens as well */
+    max-width: 80%; /* Adjust max-width for better readability */
+  }
+
+  .process-main-heading {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .process-description {
+    max-width: 100%;
+    margin-bottom: 0.5rem;
+    text-align: left; /* Align text to the left for better readability on smaller screens */
+  }
+
+  .process-subdescription {
+    max-width: 100%;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: left; /* Align text to the left */
+  }
+
+  .process-button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .process-start-button,
+  .explore-button {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .process-right-image {
+    max-width: 80%; /* Adjust image size for smaller screens */
+    margin-bottom: 20px; /* Add space below the image */
+  }
+
+  .freehand-editor-accordion-wrapper {
+    flex-direction: column; /* Stack image and accordion */
+    width: 95%;
+    align-items: center;
+  }
+
+  .accordion-right-image {
+    max-width: 80%;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .freehand-editor-accordion {
+    width: 100%;
+  }
+
+  .accordion-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .accordion-content p {
+    font-size: 0.9rem;
+  }
+
+  .accordion-section-image-right {
+    max-width: 80%;
+  }
+
+  .freehand2-editor-section {
+    margin-top: 70px;
+    width: 100%;
+    padding: 30px 0; /* Add some vertical padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content within the section */
+  }
+}
