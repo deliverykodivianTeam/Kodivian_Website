@@ -97,7 +97,7 @@
 }
 .rob-image {
   max-width: 80%;
-  animation: MoveUpDown 4s linear infinite;
+  animation: MoveUpDown-rpa 4s linear infinite;
   height: 80%;
   margin-top: -590px;
   margin-right: 100px;
@@ -105,7 +105,7 @@
   box-shadow: 0 0px 0px oklch(49.6% 0.265 301.924);
 }
 
-@keyframes MoveUpDown {
+@keyframes MoveUpDown-rpa {
   10% {
   transform: translatex(10);
   }
