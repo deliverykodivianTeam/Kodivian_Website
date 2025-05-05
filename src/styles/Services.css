@@ -243,7 +243,7 @@
 }
 
 .hero-services-info {
-  padding-top: 20rem; /* Add some top padding to the container */
+  margin-top: -100px;
 }
 
 .hero-services-info h1 {

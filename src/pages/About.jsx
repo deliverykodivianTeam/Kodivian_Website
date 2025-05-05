@@ -6,7 +6,8 @@ import {
   HeartIcon,
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
-import pattern from "../assets/pattern.png";
+import constructionImage from "../assets/Animated-Isometric-Construction.gif";
+import about_intro from "../assets/about_intro.png";
 import ponpureLogo from "../assets/ponpure.png";
 import tiCycleLogo from "../assets/ti-cycle.png";
 import murugappaLogo from "../assets/murugappa.png";
@@ -110,6 +111,22 @@ const About = () => {
               </a>
             </div>
           </div>
+        </div>
+        <img // Add the previous image here
+                    src={constructionImage}
+                    alt="Construction Animation"
+                    className="styling_class" // You can add a CSS class for styling
+                />
+                <div className="styling_class_content">It serves to build trust and connection by showcasing who they are, what drives them, and the people behind their solutions.</div>
+        <div className="about_content_image">
+          <p className="intro_about_banner">
+          At the heart of our innovation lies a powerful suite of intelligent automation products — Scanify for seamless document scanning and data capture, Process Builder to streamline complex workflows with no-code logic, RPA to automate repetitive tasks and boost efficiency, and IntelliDocs to create, manage, and deliver smart, dynamic documents
+          </p>
+          <img
+            src={about_intro}
+            alt="about_intro"
+            className="about_content_image"
+          />
         </div>
         <div className="rotating-solution-text" id="call-1">
           Shaping the future through innovative products{" "}
