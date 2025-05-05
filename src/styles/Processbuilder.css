@@ -99,6 +99,8 @@
   .process-builder-image {
     max-width: 100%;
     height: auto;
+    margin-top: -20px;
+    margin-left: 40px;
     border-radius: 0.375rem;
   }
   

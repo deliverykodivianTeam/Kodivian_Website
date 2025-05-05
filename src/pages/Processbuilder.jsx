@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Processbuilder.css';
+import process from '../assets/processbuuild.png';
 import website from '../assets/website.png'; // Default image
 import form from '../assets/form.png'; // Image for "Intuitive design tools"
 import workflow from '../assets/workflow.png'; // Image for "Familiar workflow"
@@ -101,7 +102,7 @@ const Processbuilder = () => {
           </div>
         </div>
         <div className="process-right-image">
-          <img src={website} alt="No-code website builder" className="process-builder-image" />
+          <img src={process} alt="No-code website builder" className="process-builder-image" />
         </div>
       </div>
 
@@ -239,7 +240,7 @@ const Processbuilder = () => {
    
   <div className="pro-section">
   <div className="pro-content">
-    <p className="pro-intro">Introducing Repl.it Projects</p>
+    <p className="pro-intro">Introducing processbuilder Projects</p>
     <h1 className="hero-title">
       Build software <span className="pro-badge new">NEW</span>{' '}
       <span className="pro-together">together</span>{' '}
@@ -252,7 +253,7 @@ const Processbuilder = () => {
     </p>
     <div className="pro-buttons">
       <button className="button primary">Start building</button>
-      <button className="button secondary">Learn about Projects</button>
+      <button className="button secondary">BOOK DEMO</button>
     </div>
   </div>
 </div>
