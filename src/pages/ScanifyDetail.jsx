@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Scanify.css';
 import invoiceImage from '../assets/invoice.png';
+import DemoBookingPopup from '../components/DemoBookingPopup';
 import ocrFunctions from '../assets/ocrFunctions.png';
 import scannerImage from '../assets/Scannerimage.png';
 
@@ -71,6 +72,16 @@ const ScanifyDetail = () => {
     }
   };
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  
+    const handleOpenPopup = () => {
+      setIsPopupOpen(true);
+    };
+  
+    const handleClosePopup = () => {
+      setIsPopupOpen(false);
+    };
+
   return (
     <div>
     <div className="scanify-container">
@@ -85,7 +96,8 @@ const ScanifyDetail = () => {
           Customize your business journey effortlessly with our dashboard backed by a suite of powerful tools at your fingertips.
         </p>
         <div className="button-group">
-          <button className="get-started-button">Get Started</button>
+          <button onClick={handleOpenPopup} className="get-started-button">Get Started</button>
+          <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />  
           <button className="how-it-works-button">
             How it works <span className="arrow-icon">→</span>
           </button>
@@ -98,7 +110,7 @@ const ScanifyDetail = () => {
         <img src={invoiceImage} alt="Invoice" className="invoice-image" />
       </div>
       </div>
-      <div className="hero-section-integrated">
+      <div  className="hero-section-integrated">
         <h2 className="hero1-heading-integrated">Comprehensive</h2>
         <h1 className="hero-heading-integrated">
           Smart Invoice Extraction Platform Starts with SCANIFY </h1>
@@ -382,14 +394,14 @@ const ScanifyDetail = () => {
             <h3>Streamline your business with Pixl’s AI Enabled Solutions</h3>
           </div>
           <div className="bottom-cta-buttons">
-            <button className="book-demo-button">Book a Demo</button>
+            <button onClick={handleOpenPopup} className="book-demo-button">Book a Demo</button>
             <button className="talk-sales-button">Talk with Sales</button>
           </div>
         </div>
       {/* FAQ Section */}
       <div className="faq-section">
       <p className="faq-query-info">
-            © Kodivian.scanify 2024. All rights reserved.
+            © Kodivian.scanify 2025. All rights reserved.
           </p>
       </div>
       </div>

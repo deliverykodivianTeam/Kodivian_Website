@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
+import DemoBookingPopup from '../components/DemoBookingPopup';
 import WaveImage from "../assets/WaveImage.png";
 import underbanner from "../assets/underbanner.png";
 import {
@@ -11,9 +12,9 @@ import {
   FaPhone,
   FaEnvelope,
 } from "react-icons/fa";
-import { Link } from "react-router-dom"; // Import Link if you still need it
+import { Link } from "react-router-dom";
 
-import image1 from "../assets/image7.jpeg"; // Replace with your actual image paths
+import image1 from "../assets/image7.jpeg";
 import image2 from "../assets/image2.jpg";
 import image3 from "../assets/family.png";
 import image6 from "../assets/image4.jpg";
@@ -21,23 +22,88 @@ import image5 from "../assets/image5.jpg";
 import image4 from "../assets/image8.jpeg";
 
 const images = [image1, image2, image3, image4, image5, image6];
+
+const products = [
+  {
+    id: 1,
+    name: "Scanify",
+    description: "Revolutionize your document management with intelligent scanning.",
+    link: "/scanify",
+    image: image1,
+  },
+  {
+    id: 2,
+    name: "Intellidocs",
+    description: "Smart document processing for enhanced efficiency.",
+    link: "/document",
+    image: image2,
+  },
+  {
+    id: 3,
+    name: "Process Builder",
+    description: "Design and automate your business processes visually.",
+    link: "/processbuilder",
+    image: image3,
+  },
+  {
+    id: 4,
+    name: "RPA Automation",
+    description: "Automate repetitive tasks with robotic process automation.",
+    link: "/robort",
+    image: image4,
+  },
+];
+
 const Home = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   const [currentImage, setCurrentImage] = useState(images[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const [selectedFile, setSelectedFile] = useState(null);
+  const [productVisibility, setProductVisibility] = useState(
+    products.map(() => false)
+  );
+  const [productsContainerVisible, setProductsContainerVisible] = useState(false);
 
   const handleGoBack = () => {
     setSelectedFile(null);
   };
+
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    const imageInterval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
       setCurrentImage(images[currentIndex]);
     }, 5000);
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(imageInterval);
   }, [currentIndex, images]);
+
+  useEffect(() => {
+    // Fade in the entire product container first
+    const containerTimer = setTimeout(() => {
+      setProductsContainerVisible(true);
+      // Then fade in each product with a delay
+      products.forEach((_, index) => {
+        setTimeout(() => {
+          setProductVisibility((prevVisibility) => {
+            const newVisibility = [...prevVisibility];
+            newVisibility[index] = true;
+            return newVisibility;
+          });
+        }, 1000 * (index + 1)); // Adjust the delay (300ms) as needed
+      });
+    }, 8); // Adjust the initial delay as needed
+
+    return () => clearTimeout(containerTimer);
+  }, []);
 
   return (
     <div
@@ -45,40 +111,21 @@ const Home = () => {
       className="min-h-screen flex flex-col justify-between bg-white p-0"
     >
       {/* Top Wave Image */}
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full overflow-hidden" style={{ height: "948px" }}>
         <img
           src={WaveImage}
           alt="Wave Banner"
           className="w-full block transition-opacity duration-500 opacity-90 hover:opacity-100"
           style={{ height: "588px" }}
         />
-        {/* Folder and Files UI - ADDED HERE */}
-        <div
-          className="absolute shadow-md rounded-md p-4"
-          style={{
-            display: selectedFile ? "none" : "block",
-            top: "70%",
-            left: "35%",
-            zIndex: 10,
-            backgroundColor: "#a020f0", // Example purple color
-            height: "125px", // Add your desired height here
-            width: "200px", // Add your desired width here
-          }}
-        >
-          {/* The "Tab" at the top */}
-          <div className="absolute top-[-10px] left-2 w-1/3 h-4 bg-purple-700 rounded-t-md">
-            {/* The White Line on the Tab */}
-            <div className="bg-white h-0.5 w-1/2 mt-1 ml-2 rounded"></div>
-          </div>
-        </div>
-        {/* File Content Popup */}
+
         {selectedFile && (
           <div
             className="absolute top-1/3 left-1/3 bg-white shadow-lg rounded-md p-8"
             style={{
-              top: "70%", // Adjust this value to control the vertical position of the popup
-              left: "55%", // Adjust this value to control the horizontal position of the popup
-              zIndex: 11, // Ensure it's above the folder and other elements
+              top: "70%",
+              left: "55%",
+              zIndex: 11,
             }}
           >
             <h3>{selectedFile} Content</h3>
@@ -91,24 +138,29 @@ const Home = () => {
             </button>
           </div>
         )}
-        <div
-          className="absolute top-2/3 left-0 transform -translate-y-1/2 text-white md:text-left md:max-w-md p-8"
-          style={{ width: "100%" }}
-        >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 transition-colors duration-300 text-black"
-              style={{ marginRight: "10px" }}
-            >
-              Welcome
-            </h1>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-700 mb-4 transition-colors duration-300">
-              Kodivian
-            </h1>
-          </div>
-          <p className="text-lg md:text-xl text-gray-600 mb-8 transition-colors duration-300 hover:text-gray-500">
-            We build smart, scalable, and futuristic software solutions.
-          </p>
+       <div
+  className="absolute top-1/3 top-80 left-10 transform -translate-y-1/2 text-white md:text-left md:max-w-md p-8"
+  style={{ width: "100%" }}
+>
+  <div style={{ display: "flex", alignItems: "center" }}>
+    <h1
+      className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 transition-colors duration-300 text-purple-700"
+      style={{ marginRight: "10px", whiteSpace: "nowrap" }} // Added whiteSpace: "nowrap"
+    >
+      Welcome to{" "}
+      <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 transition-colors duration-300">
+        Kodivian Technology
+      </span>
+    </h1>
+  </div>
+  <p
+  className="text-lg md:text-xl text-gray-600 mb-8 transition-colors duration-300 hover:text-gray-500"
+  style={{ whiteSpace: "nowrap" }}
+>
+  Welcome to Kodivian is a friendly invitation to explore everything Kodivian offers — <br />
+  from innovative products and smart solutions to creative digital experiences,<br />
+   all designed to simplify and enhance your business journey.
+</p>
 
           <div className="flex flex-col sm:flex-row items-center md:justify-start gap-4">
             <input
@@ -124,10 +176,44 @@ const Home = () => {
             </button>
           </div>
         </div>
+        {/* Product Review Section */}
+        <div
+          className={`absolute top-46 left-0 w-full h-full flex items-center justify-center transition-opacity duration-500 ${
+            productsContainerVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <div className="bg-none bg-opacity-70 rounded-lg p-8 text-center">
+            <h2 className="text-2xl font-bold text-purple-700 mb-4">Our Range of Products </h2>
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {products.map((product, index) => (
+                <div
+                  key={product.id}
+                  className={`rounded-md  shadow-20g  p-4 transition-opacity duration-500 ${
+                    productVisibility[index] ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className=" w-full h-32 object-cover rounded-md mb-2"
+                  />
+                  <h3 className="text-lg font-semibold text-gray-800 mb-1">{product.name}</h3>
+                  <p className="text-sm text-gray-600 mb-2">{product.description}</p>
+                  <Link
+                    to={product.link}
+                    className="inline-block bg-purple-500 text-white rounded-full px-4 py-2 text-sm hover:bg-purple-600 transition-colors duration-300"
+                  >
+                    Learn More
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Optimize Your Strength Section - Added an ID for navigation */}
-      <div id="optimizeStrength" className="bg-white py-16">
+      <div id="optimizeStrength" className="bg-white py-0">
         <div className="container mx-auto px-4 text-center">
           <h2 id="frame" className="text-3xl font-bold text-purple-700 mb-6">
             Optimize Your Strength with Our Key Processing Framework
@@ -231,9 +317,12 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <button className="bg-purple-600 text-white rounded-full px-8 py-3 mt-8 font-semibold hover:bg-purple-500 transition-transform duration-300 hover:scale-105">
-            create an intelligent automation framework
+          <button  className="bg-purple-600 text-white rounded-full px-8 py-3 mt-8 font-semibold hover:bg-purple-500 transition-transform duration-300 hover:scale-105" onClick={handleOpenPopup} 
+          >
+          Schedule Your Free Live Demo Today
           </button>
+          <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />  
+
         </div>
       </div>
 

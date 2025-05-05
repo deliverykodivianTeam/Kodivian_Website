@@ -4,7 +4,9 @@ import process from '../assets/processbuuild.png';
 import website from '../assets/website.png'; // Default image
 import form from '../assets/form.png'; // Image for "Intuitive design tools"
 import workflow from '../assets/workflow.png'; // Image for "Familiar workflow"
-import groups from '../assets/website.png'; // Image for "Groups and layers"
+import groups from '../assets/user.png'; // Image for "Groups and layers"
+import DemoBookingPopup from '../components/DemoBookingPopup';
+
 
 const faqData = [
   {
@@ -30,6 +32,16 @@ const faqData = [
 ]; 
 
 const Processbuilder = () => {
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   const [expandedQuestion, setExpandedQuestion] = useState(null);
     const [isQueryOpen, setIsQueryOpen] = useState(false);
@@ -97,8 +109,9 @@ const Processbuilder = () => {
           </p>
           <h1 className="process-subdescription">Empower your team to work smarter, faster, and more creatively.</h1>
           <div className="process-button-group">
-            <button className="process-start-button">Start for free</button>
-            <button className="process-explore-button">Explore features</button>
+            <button className="process-start-button">Start for free</button><a  href="#explore">
+           <button className="process-explore-button"> Explore features</button>
+           </a>
           </div>
         </div>
         <div className="process-right-image">
@@ -118,9 +131,9 @@ const Processbuilder = () => {
           </div>
           <div className="freehand-editor-accordion">
             <div className="accordion-item">
-              <div className="accordion-header" onClick={() => handleSectionClick('intuitive')}>
+              <div className="accordion-header" onClick={() => handleSectionClick('intuitive')} id="explore">
                 <span className="accordion-arrow">{expandedSection === 'intuitive' ? '▼' : '►'}</span>
-                <h2> Smart Form Builder</h2>
+               <h2 > Smart Form Builder</h2>
               </div>
               {expandedSection === 'intuitive' && (
                 <div className="accordion-content">
@@ -253,7 +266,9 @@ const Processbuilder = () => {
     </p>
     <div className="pro-buttons">
       <button className="button primary">Start building</button>
-      <button className="button secondary">BOOK DEMO</button>
+      <button onClick={handleOpenPopup}  className="button secondary">BOOK DEMO</button>
+      <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />  
+
     </div>
   </div>
 </div>
