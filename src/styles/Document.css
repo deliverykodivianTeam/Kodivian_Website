@@ -80,9 +80,13 @@
   .doc-card-2 {
     z-index: 10;
     width: 440px; /* Slightly larger central card */
+    background-image: url('../assets/docimage.png');
+    background-size: cover; /* Ensures the image covers the entire box */
     height: 260px;
-    border-radius: 30px;
-    background-color: #f50de6; /* Light pink */
+    border-radius: none; /* Removes any border radius */
+    border: none; /* This line removes the border */
+    padding: 0; /* Ensure no padding is adding to the size */
+    margin: 0; /* Ensure no default margins are affecting it */
   }
   
   .doc-card-3 {
@@ -102,7 +106,7 @@
     width: 320px; /* Slightly smaller fourth card */
     height: 320px;
     margin-left: 620px;
-    background-image: url('../assets/doc3.png'); 
+    background-image: url('../assets/invoice.jpg'); 
     background-size: cover;
     border-radius: 0px;
     margin-top: -70px;
@@ -117,7 +121,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(189, 15, 198);
+    color: rgb(232, 4, 244);
     font-size: 3rem; /* Increased font size */
     font-weight: bold;
     position: absolute;
@@ -128,7 +132,7 @@
   
   .doc-central-icon {
     width: 80px; /* Increased icon size */
-    height: 80px; /* Increased icon size */
+    height: 90px; /* Increased icon size */
     background-color: #6e5d71f0; /* Pink for the 'D' */
     border-radius: 50%;
     display: flex;
@@ -138,7 +142,7 @@
     font-size: 3rem; /* Increased font size */
     font-weight: bold;
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
   }

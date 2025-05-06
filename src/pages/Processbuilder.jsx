@@ -6,6 +6,15 @@ import form from '../assets/form.png'; // Image for "Intuitive design tools"
 import workflow from '../assets/workflow.png'; // Image for "Familiar workflow"
 import groups from '../assets/user.png'; // Image for "Groups and layers"
 import DemoBookingPopup from '../components/DemoBookingPopup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBrain,
+  faNetworkWired,
+  faDatabase,
+  faLink,
+  faTachometerAlt,
+  faUserLock,
+} from '@fortawesome/free-solid-svg-icons';
 
 
 const faqData = [
@@ -59,19 +68,32 @@ const Processbuilder = () => {
       setQueryText(event.target.value);
     };
 
-    const handleSendQuery = () => {
+    const handleSendQuery = async () => {
       if (queryText.trim()) {
-        // In a real application, you would implement the logic to send the query
-        // to your backend or directly trigger an email.
-        alert(`Your query "${queryText}" has been noted. We will get back to you via email.`);
-        setIsQueryOpen(false); // Close the query box after "sending"
-        setQueryText('');     // Clear the query text
-        // In a real scenario, you would use an API call here:
-        // fetch('/api/send-query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: queryText }) });
+          try {
+            const response = await fetch('http://localhost:5173/processbuilder', {       method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ query: queryText }),
+              });
+
+              if (response.ok) {
+                  alert('Your query has been sent. We will get back to you via email.');
+                  setIsQueryOpen(false);
+                  setQueryText('');
+              } else {
+                  alert('Failed to send your query. Please try again later.');
+                  console.error('Error sending query:', response.status);
+              }
+          } catch (error) {
+              alert('An error occurred while sending your query.');
+              console.error('Fetch error:', error);
+          }
       } else {
-        alert('Please enter your query.');
+          alert('Please enter your query.');
       }
-    };
+  };
 
   const [expandedSection, setExpandedSection] = useState('intuitive'); // Initialize with 'intuitive' open
   const [currentImg, setCurrentImg] = useState(form); // Initialize with the corresponding image
@@ -99,6 +121,7 @@ const Processbuilder = () => {
   };
 
   return (
+    <div>
     <div className="process-container">
       <h1 className="process-main-heading-top">Click, Drag, Done.</h1>
       <div className="process-content-wrapper">
@@ -109,7 +132,10 @@ const Processbuilder = () => {
           </p>
           <h1 className="process-subdescription">Empower your team to work smarter, faster, and more creatively.</h1>
           <div className="process-button-group">
-            <button className="process-start-button">Start for free</button><a  href="#explore">
+            <button onClick={handleOpenPopup}  className="process-start-button">Start for free Demo</button><a  href="#explore">
+           <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />  
+
+
            <button className="process-explore-button"> Explore features</button>
            </a>
           </div>
@@ -177,78 +203,72 @@ const Processbuilder = () => {
   </p>
 
   <div className="feature-cards-grid">
-    {/* Card 1 */}
-    <div className="feature-card">
-      <div className="feature-icon">
-        {/* You'll need to use an actual icon here, perhaps an image or an SVG */}
-        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
+     {/* Card 1 */}
+     <div className="feature-card">
+        <div className="feature-icon">
+          <FontAwesomeIcon icon={faBrain} size="2x" style={{ color: '#007bff' }} /> {/* Example styling */}
+        </div>
+        <h3 className="feature-title">AI Powered <span className="feature-badge">new</span></h3>
+        <p className="feature-description">
+          Simply input your preferences, and watch as our tool generates a stunning, fully-functional site to your needs.
+        </p>
       </div>
-      <h3 className="feature-title">AI Powered <span className="feature-badge">new</span></h3>
-      <p className="feature-description">
-      Simply input your preferences, and watch as our tool generates a stunning, fully-functional site to your needs.      </p>
-
-    </div>
 
     {/* Card 2 */}
     <div className="feature-card">
-      <div className="feature-icon">
-        {/* Icon for "Insert a code" */}
-        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
+        <div className="feature-icon">
+          <FontAwesomeIcon icon={faNetworkWired} size="2x" style={{ color: '#28a745' }} /> {/* Example styling */}
+        </div>
+        <h3 className="feature-title"> Gateway Integration</h3>
+        <p className="feature-description">
+          Set intelligent gateway permissions based on conditions automatically approve specific actions.
+        </p>
       </div>
-      <h3 className="feature-title"> Gateway Integration</h3>
-      <p className="feature-description">
-      Set intelligent gateway permissions based on conditions  automatically approve specific actions. 
-      </p>
-    </div>
 
-    {/* Card 3 */}
-    <div className="feature-card">
-      <div className="feature-icon">
-        {/* Icon for "Unsplash" */}
-        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
+      {/* Card 3 */}
+      <div className="feature-card">
+        <div className="feature-icon">
+          <FontAwesomeIcon icon={faDatabase} size="2x" style={{ color: '#dc3545' }} /> {/* Example styling */}
+        </div>
+        <h3 className="feature-title">Database Connectivity</h3>
+        <p className="feature-description">
+          Connect your forms data to real-time cloud databases and manage data .
+        </p>
       </div>
-      <h3 className="feature-title">Database Connectivity</h3>
-      <p className="feature-description">
-      Connect your forms data to real-time cloud databases and manage data .
-      </p>
-    </div>
 
-    {/* Card 4 */}
-    <div className="feature-card">
-      <div className="feature-icon">
-        {/* Icon for the fourth feature */}
-        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
+      {/* Card 4 */}
+      <div className="feature-card">
+        <div className="feature-icon">
+          <FontAwesomeIcon icon={faLink} size="2x" style={{ color: '#ffc107' }} /> {/* Example styling */}
+        </div>
+        <h3 className="feature-title">Third-Party App Integrations</h3> {/* Replace with the actual title */}
+        <p className="feature-description">
+          Create smarter workflows by connecting your site with the tools you already use.
+        </p>
       </div>
-      <h3 className="feature-title">Third-Party App Integrations</h3> {/* Replace with the actual title */}
-      <p className="feature-description">
-       Create smarter workflows by connecting your site with the tools you already use.
-      </p>
-    </div>
 
+      {/* Card 5 */}
+      <div className="feature-card">
+        <div className="feature-icon">
+          <FontAwesomeIcon icon={faTachometerAlt} size="2x" style={{ color: '#17a2b8' }} /> {/* Example styling */}
+        </div>
+        <h3 className="feature-title">Dashboard Model</h3> {/* Replace with the actual title */}
+        <p className="feature-description">
+          Create smarter workflows by connecting your site with the tools you already use.
+        </p>
+      </div>
+
+      {/* Card 6 */}
+      <div className="feature-card">
+        <div className="feature-icon">
+          <FontAwesomeIcon icon={faUserLock} size="2x" style={{ color: '#6c757d' }} /> {/* Example styling */}
+        </div>
+        <h3 className="feature-title">User Authentication</h3> {/* Replace with the actual title */}
+        <p className="feature-description">
+          Manage user roles, permissions, and profiles effortlessly without coding and personalized for every visitor.
+        </p>
+      </div>
     
-    {/* Card 5 */}
-    <div className="feature-card">
-      <div className="feature-icon">
-        {/* Icon for the fourth feature */}
-        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
-      </div>
-      <h3 className="feature-title">Dashboard Model</h3> {/* Replace with the actual title */}
-      <p className="feature-description">
-       Create smarter workflows by connecting your site with the tools you already use.
-      </p>
-    </div>
-
-    
-    {/* Card 6 */}
-    <div className="feature-card">
-      <div className="feature-icon">
-        {/* Icon for the fourth feature */}
-        <div style={{ width: '40px', height: '40px', backgroundColor: '#f0f0f0' }}></div>
-      </div>
-      <h3 className="feature-title">User Authentication</h3> {/* Replace with the actual title */}
-      <p className="feature-description">
-      Manage user roles, permissions, and profiles effortlessly without coding.and personalized for every visitor. </p>
-    </div>
   </div>
    
   <div className="pro-section">
@@ -271,6 +291,8 @@ const Processbuilder = () => {
 
     </div>
   </div>
+</div>
+
 </div>
 
 </div>
@@ -324,14 +346,15 @@ const Processbuilder = () => {
             <h3>Streamline your business with Pixl’s AI Enabled Solutions</h3>
           </div>
           <div className="pro-bottom-cta-buttons">
-            <button className="pro-book-demo-button">Book a Demo</button>
-            <button className="pro-talk-sales-button">Talk with Sales</button>
+          <button onClick={handleOpenPopup} className="book-demo-button">Book a Demo</button>
+            <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
+            <button className="talk-sales-button">Talk with Sales</button>
           </div>
         </div>
       {/* FAQ Section */}
       <div className="pro-faq-section">
       <p className="pro-faq-query-info">
-            © Kodivian.scanify 2024. All rights reserved.
+            © Kodivian.processbuilder 2025. All rights reserved.
           </p>
       </div>
       </div>

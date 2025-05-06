@@ -1,28 +1,44 @@
-/* DemoBookingPopup.css */
+/* DemoBookingPopup.css - White Background, Black Text, Purple Borders, Orange Shadows */
+.popup-overlay-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
+  backdrop-filter: blur(1px); /* Apply the blur effect */
+  z-index: 999; /* Sit behind the popup */
+}
+
 .custom-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #f7fafc; /* Light background */
+  background-color: #fff; /* White background */
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px #ff8c00; /* Orange shadow */
   z-index: 1000;
   width: 600px;
   max-width: 95%;
   height: auto;
   display: flex;
   flex-direction: column;
-  border: 1px solid #e2e8f0; /* Light border */
+  border: 1px solid #8a2be2; /* Purple border */
 }
 
-.custom-heading {
+.custom-heading,
+.custom-stage-heading {
   margin-bottom: 24px;
   font-size: 24px;
   font-weight: 600;
-  color: #4a5568; /* Dark gray heading */
+  color: #000; /* Black heading */
   text-align: center;
+}
+
+.custom-stage-heading {
+  font-size: 1.5rem;
 }
 
 .custom-form-group {
@@ -31,10 +47,12 @@
 
 .custom-label {
   display: block;
+  text-align: left;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #718096; /* Medium gray label */
+  color: #333; /* Dark gray label */
   font-size: 1rem;
+  margin-left: 10px;
 }
 
 .custom-input,
@@ -43,10 +61,10 @@
   width: 100%;
   padding: 10px 12px;
   border-radius: 6px;
-  border: 1px solid #cbd5e0; /* Light gray border */
+  border: 1px solid #8a2be2; /* Purple border */
   font-size: 1rem;
-  background-color: #fff;
-  color: #2d3748; /* Dark text */
+  background-color: #fff; /* White input background */
+  color: #000; /* Black text */
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -54,8 +72,8 @@
 .custom-select:focus,
 .custom-textarea:focus {
   outline: none;
-  border-color: #4299e1; /* Blue focus border */
-  box-shadow: 0 0 0 0.2rem rgba(66, 153, 225, 0.25);
+  border-color: #9400d3; /* Dark violet focus border */
+  box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25); /* Orange focus shadow */
 }
 
 .custom-textarea {
@@ -67,18 +85,11 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="#a0aec0" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg fill="#333" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
   background-repeat: no-repeat;
   background-position-x: 97%;
   background-position-y: 50%;
   padding-right: 25px;
-}
-
-.custom-date-heading {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 16px;
-  color: #4a5568;
 }
 
 .custom-button-container {
@@ -91,122 +102,217 @@
 .custom-button {
   padding: 10px 20px;
   border-radius: 6px;
-  border: none;
+  border: 1px solid #8a2be2; /* Purple button border */
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.15s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-shadow: 0 2px 4px #ff8c00; /* Orange button shadow */
   font-weight: 500;
+  color: #000; /* Black button text */
+  background-color: #fff; /* White button background */
 }
 
 .custom-button:hover {
   opacity: 0.9;
   transform: translateY(-1px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 3px 6px #ff8c00; /* Orange hover shadow */
 }
 
 .custom-next-button {
-  background-color: #667eea; /* Indigo */
-  color: white;
+  background-color: #a020f0; /* Purple next button */
+  color: #fff; /* White next button text */
 }
 
 .custom-next-button:hover {
-  background-color: #5a67d8;
+  background-color: #9400d3; /* Dark violet next button hover */
 }
 
 .custom-book-button {
-  background-color: #48bb78; /* Green */
-  color: white;
+  background-color: #dda0dd; /* Plum book button */
+  color: #000; /* Black book button text */
 }
 
 .custom-book-button:hover:enabled {
-  background-color: #38a169;
+  background-color: #ff00ff; /* Magenta book button hover */
 }
 
 .custom-book-button:disabled {
-  background-color: #cbd5e0;
-  color: #718096;
+  background-color: #ccc;
+  color: #666;
   cursor: not-allowed;
+  border-color: #ccc;
 }
 
 .custom-previous-button {
-  background-color: #a0aec0; /* Gray */
-  color: white;
+  background-color: #ba55d3; /* Medium orchid previous button */
+  color: #fff; /* White previous button text */
+  border-color: #8a2be2; /* Ensure purple border */
 }
 
 .custom-previous-button:hover {
-  background-color: #718096;
+  background-color: #9932cc; /* Dark orchid previous button hover */
 }
 
 .custom-close-button {
-  background-color: #2d3748; /* Dark gray */
-  color: white;
+  background-color: #fff; /* White close button */
+  color: #000; /* Black close button text */
+  border-color: #8a2be2; /* Ensure purple border */
 }
 
 .custom-close-button:hover {
-  background-color: #1a202c;
+  background-color: #f0f0f0; /* Light gray close button hover */
 }
 
 .custom-error {
-  color: #e53e3e; /* Red */
+  color: #ff4500; /* Orange-red error color */
   margin-top: 12px;
   font-size: 0.9rem;
   font-weight: 500;
 }
 
 .custom-success {
-  color: #48bb78; /* Green */
+  color: #32cd32; /* Lime green success color */
   margin-top: 12px;
   font-size: 0.9rem;
   font-weight: 500;
 }
 
 .custom-confirmation {
-  background-color: #edf2f7; /* Light gray */
+  background-color: #f8f8ff; /* Ghost white confirmation background */
   padding: 20px;
   border-radius: 6px;
   margin-bottom: 20px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #8a2be2; /* Purple confirmation border */
+  box-shadow: 0 2px 4px #ff8c00; /* Orange confirmation shadow */
 }
 
 .custom-confirmation-heading {
   font-size: 1.2rem;
   font-weight: 500;
-  color: #4a5568;
+  color: #000; /* Black confirmation heading */
   margin-bottom: 16px;
 }
 
 .custom-confirmation-text {
   font-size: 1rem;
-  color: #2d3748;
+  color: #333; /* Dark gray confirmation text */
   margin-bottom: 8px;
 }
 
 .custom-confirmation-message {
   font-size: 0.9rem;
-  color: #718096;
+  color: #555; /* Medium gray confirmation message */
   margin-top: 12px;
   font-style: italic;
 }
 
-/* Style for disabled date input */
-.custom-input-disabled {
-  filter: blur(2px);
-  opacity: 0.7;
+.custom-calendar-container {
+  margin-bottom: 20px;
+}
+
+.custom-time-selection {
+  margin-top: 20px;
+}
+
+/* Styling for the react-calendar component with white/black/purple/orange theme */
+.react-calendar {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #8a2be2; /* Purple calendar border */
+  border-radius: 8px;
+  font-family: sans-serif;
+  line-height: 1.125em;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: 0 2px 4px #ff8c00; /* Orange calendar shadow */
+}
+
+.react-calendar__navigation button {
+  color: #8a2be2; /* Purple navigation buttons */
+  background: none;
+  border: none;
+  font-size: 1em;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.react-calendar__navigation button:disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #f0f0f0;
+}
+
+.react-calendar__month-view__weekdays {
+  color: #333; /* Dark gray weekdays */
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 8px;
+}
+
+.react-calendar__month-view__days__day {
+  color: #000;
+  font-size: 0.9em;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #8a2be2; /* Purple weekends */
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #999;
+}
+
+.react-calendar__month-view__days__day:enabled:hover,
+.react-calendar__month-view__days__day:enabled:focus {
+  background-color: #f0f0f0;
+}
+
+.react-calendar__tile--now {
+  background: #ffa07a; /* Light salmon for 'now' */
+  color: #fff;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #ff8c69;
+}
+
+.react-calendar__tile--hasActive {
+  background: #b0e0e6; /* Powder blue for active state */
+  color: #000;
+}
+
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  background: #add8e6;
+}
+
+.react-calendar__tile--active {
+  background: #8a2be2; /* Purple active day */
+  color: #fff;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #9400d3;
+}
+
+.react-calendar__tile--weekend-disabled {
+  background-color: #eee; /* Light gray for disabled weekends */
+  color: #ccc;
   cursor: not-allowed;
 }
 
-/* Style for inline error messages */
-.custom-error-inline {
-  color: #e53e3e; /* Red */
-  font-size: 0.8rem;
-  margin-top: 5px;
-}
-
-/* Remove manual input elements for date (browser-dependent) */
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-  -webkit-appearance: none;
-  appearance: none;
-  display: none;
+.react-calendar__tile--weekend-disabled:hover {
+  background-color: #eee !important;
 }

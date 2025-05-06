@@ -96,7 +96,7 @@ const ScanifyDetail = () => {
           Customize your business journey effortlessly with our dashboard backed by a suite of powerful tools at your fingertips.
         </p>
         <div className="button-group">
-          <button onClick={handleOpenPopup} className="get-started-button">Get Started</button>
+          <button onClick={handleOpenPopup} className="get-started-button">Get Started a demo</button>
           <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />  
           <button className="how-it-works-button">
             How it works <span className="arrow-icon">→</span>
@@ -394,7 +394,8 @@ const ScanifyDetail = () => {
             <h3>Streamline your business with Pixl’s AI Enabled Solutions</h3>
           </div>
           <div className="bottom-cta-buttons">
-            <button onClick={handleOpenPopup} className="book-demo-button">Book a Demo</button>
+          <button onClick={handleOpenPopup} className="book-demo-button">Book a Demo</button>
+            <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
             <button className="talk-sales-button">Talk with Sales</button>
           </div>
         </div>

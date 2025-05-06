@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DemoBookingPopup from '../components/DemoBookingPopup';
 import "../styles/Document.css";// You'll need to create this CSS file
 import pepping1 from "../assets/pepping1.png";
 import pepping2 from "../assets/pepping2.png";
@@ -30,6 +31,19 @@ const faqData = [
 
 
 const Document = () => {
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+
+
     const [activeStep, setActiveStep] = useState(0);
 
     const steps = [
@@ -268,7 +282,8 @@ const Document = () => {
             <h3>Streamline your business with Pixl’s AI Enabled Solutions</h3>
           </div>
           <div className="bottom-cta-buttons">
-            <button className="book-demo-button">Book a Demo</button>
+          <button onClick={handleOpenPopup} className="book-demo-button">Book a Demo</button>
+            <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
             <button className="talk-sales-button">Talk with Sales</button>
           </div>
         </div>

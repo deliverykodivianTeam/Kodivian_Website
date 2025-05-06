@@ -4,6 +4,7 @@ import rob from '../assets/aiimage.png';
 import automationrpa from "../assets/attended.png";
 import unattendedrpa from "../assets/unattended.png";
 import hybridrpa from "../assets/hybrid.png";
+import DemoBookingPopup from '../components/DemoBookingPopup';
 
 const faqData = [
   {
@@ -30,6 +31,17 @@ const faqData = [
 
 
 const Robort = () => {
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   
   const [expandedQuestion, setExpandedQuestion] = useState(null);
     const [isQueryOpen, setIsQueryOpen] = useState(false);
@@ -70,7 +82,8 @@ const Robort = () => {
         <p className="rob-description">
         Transformative AI-powered technology that enables businesses to automate repetitive, rule-based tasks across systems and applications—eliminating the need for manual data entry and reducing operational costs.        </p>
         <div className="rob-button-group">
-          <button className="rob-get-started-button">Get Started</button>
+          <button onClick={handleOpenPopup}   className="rob-get-started-button">Get Started</button>
+          <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />  
           <button className="rob-how-it-works-button">
             How it works <span className="rob-arrow-icon">→</span>
           </button>
@@ -214,14 +227,15 @@ const Robort = () => {
             <h3>Streamline your business with Pixl’s AI Enabled Solutions</h3>
           </div>
           <div className="bottom-cta-buttons">
-            <button className="book-demo-button">Book a Demo</button>
+            <button onClick={handleOpenPopup} className="book-demo-button">Book a Demo</button>
+            <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
             <button className="talk-sales-button">Talk with Sales</button>
           </div>
         </div>
       {/* FAQ Section */}
       <div className="faq-section">
       <p className="faq-query-info">
-            © Kodivian.scanify 2024. All rights reserved.
+            © Kodivian.rpa 2025. All rights reserved.
           </p>
       </div>
       </div>
