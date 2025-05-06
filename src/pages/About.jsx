@@ -94,7 +94,7 @@ const About = () => {
             typingComplete ? "typing-complete" : ""
           }`}
         >
-          <div className="hero-services-info">
+          <div className="hero-about-info">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">
               {typingText}
               {!typingComplete && (
@@ -102,7 +102,7 @@ const About = () => {
               )}
               {typingComplete}
             </h1>
-            <p className="para">Start with a plan and finish with results</p>
+            <p className="about-para">Start with a plan and finish with results</p>
             <div className="flex mt-6">
               <a href="#call-1">
                 <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">

@@ -13,6 +13,15 @@ import banner_image from "../assets/banner.svg";
 import underbanner from "../assets/purple-geometric.jpg";
 import PurpleWave from "../assets/purple-wave.png";
 
+import { BsArrowRepeat } from "react-icons/bs";
+import { FiPhoneCall } from "react-icons/fi";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { FaSheetPlastic } from "react-icons/fa6";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { TiTickOutline } from "react-icons/ti";
+import { IoMailOpenOutline } from "react-icons/io5";
+import { GiProcessor } from "react-icons/gi";
+
 import { FaAws } from "react-icons/fa"; // For AWS
 import { VscAzure } from "react-icons/vsc";
 import { BiLogoGoogleCloud } from "react-icons/bi";
@@ -95,17 +104,33 @@ const Services = () => {
           </div>
         </div>
       </div>
+      <div className="top_bar_icon">
+        <GiProcessor className="Processor" size={100} />
+        <FiPhoneCall className="Phone" size={100} />
+        <MdKeyboardDoubleArrowRight className="Arrow-1" size={100} />
+        <FaRegCalendarAlt className="Calendar" size={100} />
+        <MdKeyboardDoubleArrowRight className="Arrow-2" size={100} />
+        <FaSheetPlastic className="Sheet" size={100} />
+        <MdKeyboardDoubleArrowRight className="Arrow-3" size={100} />
+        <TiTickOutline className="Tick" size={100} />
+        <IoMailOpenOutline className="Mail" size={100} />
+        <IoMailOpenOutline className="Mail-2" size={100} />
+        <BsArrowRepeat className="Repeat" size={100} />
+      </div>
       {/* REMOVED SLIDER SECTION */}
-      <h2 className="head" id="learn-more">Taking Your Business to the Next Level</h2>
+      <h2 className="head" id="learn-more">
+        Taking Your Business to the Next Level
+      </h2>
       <div
         style={{
           display: "flex",
-          justifyContent: "space-around",
+          justifyContent: "space-between", // Changed to space-between
           padding: "20px",
           backgroundColor: "white",
+          gap: "5px", // Added gap of 5px between the direct children
         }}
       >
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", flex: 1  }}>
           <div
             style={{
               position: "relative",
@@ -134,7 +159,7 @@ const Services = () => {
             enhanced growth and efficiency.
           </p>
         </div>
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", flex: 1  }}>
           <div
             style={{
               position: "relative",
@@ -159,10 +184,11 @@ const Services = () => {
           </div>
           <h3>Cloud Integration Solutions</h3>
           <p style={{ color: "#777" }}>
-          Seamlessly migrate your operations to the cloud, ensuring scalability, security, and optimized performance.
+            Seamlessly migrate your operations to the cloud, ensuring
+            scalability, security, and optimized performance.
           </p>
         </div>
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", flex: 1  }}>
           <div
             style={{
               position: "relative",
@@ -187,7 +213,8 @@ const Services = () => {
           </div>
           <h3>AI-Powered Process Automation</h3>
           <p style={{ color: "#777" }}>
-          Leveraging AI and automation to streamline operations, reduce manual effort.
+            Leveraging AI and automation to streamline operations, reduce manual
+            effort.
           </p>
         </div>
       </div>

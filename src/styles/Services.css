@@ -27,7 +27,6 @@
   font-size: 3em; /* Increased font size */
   font-weight: bold;
   text-align: center;
-  padding-top: 40px;
 }
 
 .services-content h3 {
@@ -249,17 +248,18 @@
 .hero-services-info h1 {
   font-size: 3.5rem;
   line-height: 1.5;
-  margin-bottom: 0.5rem; /* Adjust spacing below the main heading */
+  margin-bottom: 0.2rem; /* Adjust spacing below the main heading */
 }
 
 .hero-services-info p {
   font-size: 1.25rem;
-  margin-bottom: 1rem; /* Adjust spacing below the subheading */
+  margin-bottom: 0.5rem; /* Adjust spacing below the subheading */
 }
 
 .hero-services-info button {
   font-size: 1.1rem;
   padding: 0.8rem 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero-section {
@@ -403,6 +403,108 @@
   position: relative; /* Important! */
   /* left: 125px; Remove or adjust if you want it to start at a different horizontal position */
   top: 100px; /* Added a top position for better visibility */
+}
+
+.Processor {
+  animation: MoveLeftRight 2s linear infinite;
+  left: 100px; /* Adjust horizontal position */
+  top: 150px;
+  transform: translateY(-50%);
+}
+
+.top_bar_icon {
+  position: relative; /* Needed for absolute positioning of child elements */
+  height: 200px; /* Adjust height to accommodate all icons and lines */
+  margin-top: -280px; /* Adjust as needed */
+  margin-bottom: 100px;
+}
+
+.Phone,
+.Calendar,
+.Sheet,
+.Tick,
+.Mail,
+.Mail-2,
+.Arrow-1,
+.Arrow-2,
+.Arrow-3,
+.Processor,
+.Repeat {
+  position: absolute;
+  font-size: 100px; /* Or adjust size as needed */
+}
+
+.Phone {
+  left: 19%; /* Adjust horizontal position */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Arrow-1 {
+  color: oklch(49.6% 0.265 301.924);
+  left: 27%; /* Adjust horizontal position */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Arrow-2 {
+  color: oklch(49.6% 0.265 301.924);
+  left: 43%; /* Adjust horizontal position */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Arrow-3 {
+  color: oklch(49.6% 0.265 301.924);
+  left: 58%; /* Adjust horizontal position */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Calendar {
+  left: 35%; /* Adjust horizontal position */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Sheet {
+  left: 50%; /* Adjust horizontal position */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Tick {
+  left: 65%; /* Adjust horizontal position */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Mail {
+  left: 59%; /* Same horizontal position */
+  top: 120%; /* Adjust vertical position for the second mail icon */
+  transform: translateY(-50%);
+}
+
+.Mail-2 {
+  left: 27%; /* Same horizontal position */
+  top: -15%; /* Adjust vertical position for the second mail icon */
+  transform: translateY(-50%);
+}
+
+.Repeat {
+  animation: rotate360 5s linear infinite;
+  left: 76%; /* Adjust horizontal position */
+  top: 150px;
+  transform: translateY(-50%);
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes MoveLeftRight1 { /* Changed keyframes name to match animation */
