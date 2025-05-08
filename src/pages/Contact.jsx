@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Contact.css"; // Import global styles
 import PurpleWave from "../assets/purple-wave.png"; // Import the image
 import underbanner from "../assets/purple-geometric.jpg";
+import location_pin from "../assets/location-pin.avif";
 import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { LiaPhoneSolid } from "react-icons/lia";
 import { MdOutlineMailOutline, MdOutlineLocationOn } from "react-icons/md";
@@ -90,6 +91,17 @@ const Contact = () => {
                 <MdOutlineLocationOn className="mr-2 text-purple-300 mt-0.5" />
               </a>
               <span>Kodivian Technologies</span>
+            </div>
+            <img src={location_pin} alt="location_pin" className="location_pin" />
+            <div className="why-contact-us-top">
+              <p>We'd Love to Hear From You.</p>
+              <ul>
+                <li>Inquiries about our services</li>
+                <li>Requesting a personalized quote</li>
+                <li>Technical support and assistance</li>
+                <li>Partnership opportunities</li>
+                <li>General feedback and suggestions</li>
+              </ul>
             </div>
           </div>
         </div>

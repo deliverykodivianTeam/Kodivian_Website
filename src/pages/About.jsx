@@ -25,6 +25,12 @@ import eastman from "../assets/eastman.png";
 import underbanner from "../assets/purple-geometric.jpg";
 import Chairman from "../assets/chairman.jpeg";
 import Director from "../assets/directer.jpeg";
+import Raja from "../assets/Raja.jpeg";
+import Anjana from "../assets/Anjana.jpeg";
+import Mothi from "../assets/Mothi.jpeg";
+import Suganthi from "../assets/Suganthi.jpeg";
+import Kaviya from "../assets/Kaviya.jpeg";
+import Preethi from "../assets/Preethi.jpeg";
 import PurpleWave from "../assets/purple-wave.png";
 import {
   FaInstagram,
@@ -102,7 +108,9 @@ const About = () => {
               )}
               {typingComplete}
             </h1>
-            <p className="about-para">Start with a plan and finish with results</p>
+            <p className="about-para">
+              Start with a plan and finish with results
+            </p>
             <div className="flex mt-6">
               <a href="#call-1">
                 <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">
@@ -113,26 +121,34 @@ const About = () => {
           </div>
         </div>
         <img // Add the previous image here
-                    src={constructionImage}
-                    alt="Construction Animation"
-                    className="styling_class" // You can add a CSS class for styling
-                />
-                <div className="styling_class_content">It serves to build trust and connection by showcasing who they are, what drives them, and the people behind their solutions.</div>
-        <div className="about_content_image">
-          <p className="intro_about_banner">
-          At the heart of our innovation lies a powerful suite of intelligent automation products — Scanify for seamless document scanning and data capture, Process Builder to streamline complex workflows with no-code logic, RPA to automate repetitive tasks and boost efficiency, and IntelliDocs to create, manage, and deliver smart, dynamic documents
-          </p>
-          <img
-            src={about_intro}
-            alt="about_intro"
-            className="about_content_image"
-          />
+          src={constructionImage}
+          alt="Construction Animation"
+          className="styling_class" // You can add a CSS class for styling
+        />
+        <div className="styling_class_content">
+          It serves to build trust and connection by showcasing who they are,
+          what drives them, and the people behind their solutions.
         </div>
         <div className="rotating-solution-text" id="call-1">
           Shaping the future through innovative products{" "}
           <span className="colored-solution">
             {solutions[currentSolutionIndex]}
           </span>
+        </div>
+        <div className="about_content_image">
+          <p className="intro_about_banner">
+            At the heart of our innovation lies a powerful suite of intelligent
+            automation products — Scanify for seamless document scanning and
+            data capture, Process Builder to streamline complex workflows with
+            no-code logic, RPA to automate repetitive tasks and boost
+            efficiency, and IntelliDocs to create, manage, and deliver smart,
+            dynamic documents
+          </p>
+          <img
+            src={about_intro}
+            alt="about_intro"
+            className="about_content_image"
+          />
         </div>
 
         <div className="about-stats-container">
@@ -238,7 +254,71 @@ const About = () => {
           <h4 className="font-semibold">Vijay Sabari</h4>
           <p className="text-sm text-gray-600">Director</p>
         </div>
+        <div className="text-center">
+          <img
+            src={Raja}
+            alt="Kodivian Team Member 3"
+            className="w-100 h-100 rounded-full object-cover mb-2"
+          />
+          <h4 className="font-semibold">Raja SM</h4>
+          <p className="text-sm text-gray-600">Business Analyst</p>
+        </div>
+        <div className="text-center">
+          <img
+            src={Anjana}
+            alt="Kodivian Team Member 3"
+            className="w-100 h-100 rounded-full object-cover mb-2"
+          />
+          <h4 className="font-semibold">Anjana</h4>
+          <p className="text-sm text-gray-600">Marketing & Branding Strategist</p>
+        </div>
+        <div className="text-center">
+          <img
+            src={Mothi}
+            alt="Kodivian Team Member 3"
+            className="w-100 h-100 rounded-full object-cover mb-2"
+          />
+          <h4 className="font-semibold">Mothi Kumaresan</h4>
+          <p className="text-sm text-gray-600">Business Development Manager</p>
+        </div>
+        <div className="text-center">
+          <img
+            src={Suganthi}
+            alt="Kodivian Team Member 3"
+            className="w-100 h-100 rounded-full object-cover mb-2"
+          />
+          <h4 className="font-semibold">Suganthi</h4>
+          <p className="text-sm text-gray-600">Technical Project Manager</p>
+        </div>
+        <div className="text-center">
+          <img
+            src={Kaviya}
+            alt="Kodivian Team Member 3"
+            className="w-100 h-100 rounded-full object-cover mb-2"
+          />
+          <h4 className="font-semibold">Kaviya</h4>
+          <p className="text-sm text-gray-600">Global PMO Executive</p>
+        </div>
+        <div className="text-center">
+          <img
+            src={Preethi}
+            alt="Kodivian Team Member 3"
+            className="w-100 h-100 rounded-full object-cover mb-2"
+          />
+          <h4 className="font-semibold">Preethi JB</h4>
+          <p className="text-sm text-gray-600">Technical Consultant</p>
+        </div>
+        <div className="text-center">
+          <img
+            src={Director}
+            alt="Kodivian Team Member 3"
+            className="w-100 h-100 rounded-full object-cover mb-2"
+          />
+          <h4 className="font-semibold">Rithish PG</h4>
+          <p className="text-sm text-gray-600">Technical Consultant</p>
+        </div>
       </div>
+      
       {/* Bottom Wave Image with Overlay Content */}
       <div className="relative w-full overflow-hidden">
         <img

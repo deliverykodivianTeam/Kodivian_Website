@@ -306,6 +306,9 @@ const Services = () => {
       </div>
 
       <div className="cloudSupportContainer">
+      <div className="rightSection">
+          <p className="cloudSupportTitle">Systems fade, but data remains.</p>
+        </div>
         <div className="leftSection">
           <div className="cloudProviderLogos">
             <div className="cloudProviderItem">
@@ -318,9 +321,6 @@ const Services = () => {
               <BiLogoMongodb size={250} style={{ color: "#47A248" }} />
             </div>
           </div>
-        </div>
-        <div className="rightSection">
-          <p className="cloudSupportTitle">Systems fade, but data remains.</p>
         </div>
       </div>
 
