@@ -56,7 +56,7 @@ def save_demo_data():
         # ✅ Automatic reply email to user
         thank_you_msg = Message(
             subject='Thank You for Booking a Demo!',
-            sender='vijaysabari.m@kodivian.com',
+            sender='preethi.jb@kodivian.com',
             recipients=[user_email]
         )
         thank_you_msg.body = f"""
