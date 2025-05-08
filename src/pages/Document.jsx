@@ -88,19 +88,33 @@ const Document = () => {
         setQueryText(event.target.value);
       };
       
-      const handleSendQuery = () => {
+      const handleSendQuery = async () => {
         if (queryText.trim()) {
-          // In a real application, you would implement the logic to send the query
-          // to your backend or directly trigger an email.
-          alert(`Your query "${queryText}" has been noted. We will get back to you via email.`);
-          setIsQueryOpen(false); // Close the query box after "sending"
-          setQueryText('');     // Clear the query text
-          // In a real scenario, you would use an API call here:
-          // fetch('/api/send-query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: queryText }) });
+          try {
+            const response = await fetch('/api/send-query', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ query: queryText }),
+            });
+      
+            if (!response.ok) {
+              throw new Error('Failed to send query');
+            }
+      
+            alert(`Your query "${queryText}" has been successfully sent. We will respond via email.`);
+            setIsQueryOpen(false);
+            setQueryText('');
+          } catch (error) {
+            console.error('Error sending query:', error);
+            alert('Something went wrong. Please try again later.');
+          }
         } else {
           alert('Please enter your query.');
         }
       };
+      
 
     return (
     <div className="doc-document-page">
