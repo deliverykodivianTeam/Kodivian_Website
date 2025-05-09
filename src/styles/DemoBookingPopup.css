@@ -18,7 +18,7 @@
   background-color: #fff; /* White background */
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px #ff8c00; /* Orange shadow */
+  box-shadow: 0 4px 12px #ff00bbc4; /* Orange shadow */
   z-index: 1000;
   width: 600px;
   max-width: 95%;
@@ -106,7 +106,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 0 2px 4px #ff8c00; /* Orange button shadow */
+  box-shadow: 0 2px 4px #ff00bbc4; /* Orange button shadow */
   font-weight: 500;
   color: #000; /* Black button text */
   background-color: #fff; /* White button background */
@@ -115,21 +115,37 @@
 .custom-button:hover {
   opacity: 0.9;
   transform: translateY(-1px);
-  box-shadow: 0 3px 6px #ff8c00; /* Orange hover shadow */
+  box-shadow: 0 3px 6px #ff00bbc4; /* Orange hover shadow */
 }
 
 .custom-next-button {
   background-color: #a020f0; /* Purple next button */
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #8a2be2; /* Purple button border */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-shadow: 0 2px 4px #ff00bbc4; /* Orange button shadow */
+  font-weight: 500;
   color: #fff; /* White next button text */
 }
 
 .custom-next-button:hover {
-  background-color: #9400d3; /* Dark violet next button hover */
+  background-color: #9400d3ae; /* Dark violet next button hover */
 }
 
 .custom-book-button {
-  background-color: #dda0dd; /* Plum book button */
-  color: #000; /* Black book button text */
+  background-color: #a020f0; /* Purple next button */
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #8a2be2; /* Purple button border */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-shadow: 0 2px 4px #ff00bbc4; /* Orange button shadow */
+  font-weight: 500;
+  color: #fff; /* White next button text */
 }
 
 .custom-book-button:hover:enabled {
@@ -144,10 +160,17 @@
 }
 
 .custom-previous-button {
-  background-color: #ba55d3; /* Medium orchid previous button */
-  color: #fff; /* White previous button text */
-  border-color: #8a2be2; /* Ensure purple border */
-}
+  background-color: #a020f0; /* Purple next button */
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #8a2be2; /* Purple button border */
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 39px;
+  transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-shadow: 0 2px 4px #ff00bbc4; /* Orange button shadow */
+  font-weight: 500;
+  color: #fff; /* White next button text */}
 
 .custom-previous-button:hover {
   background-color: #9932cc; /* Dark orchid previous button hover */
@@ -165,8 +188,9 @@
 
 .custom-error {
   color: #ff4500; /* Orange-red error color */
-  margin-top: 12px;
+  margin-top: 5px;
   font-size: 0.9rem;
+  margin-bottom: 5px;
   font-weight: 500;
 }
 
@@ -183,24 +207,27 @@
   border-radius: 6px;
   margin-bottom: 20px;
   border: 1px solid #8a2be2; /* Purple confirmation border */
-  box-shadow: 0 2px 4px #ff8c00; /* Orange confirmation shadow */
+  box-shadow: 0 2px 4px #ff00bbc4; /* Orange confirmation shadow */
 }
 
 .custom-confirmation-heading {
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1.9rem;
+  font-weight: 600;
   color: #000; /* Black confirmation heading */
   margin-bottom: 16px;
 }
 
 .custom-confirmation-text {
-  font-size: 1rem;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  font-size: 1.3rem;
   color: #333; /* Dark gray confirmation text */
-  margin-bottom: 8px;
+  margin-bottom: 25px;
 }
 
 .custom-confirmation-message {
-  font-size: 0.9rem;
+  font-size: 1.9rem;
   color: #555; /* Medium gray confirmation message */
   margin-top: 12px;
   font-style: italic;
@@ -224,7 +251,7 @@
   line-height: 1.125em;
   width: 100%;
   max-width: 100%;
-  box-shadow: 0 2px 4px #ff8c00; /* Orange calendar shadow */
+  box-shadow: 0 2px 4px #ff00bbc4; /* Orange calendar shadow */
 }
 
 .react-calendar__navigation button {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
 import DemoBookingPopup from '../components/DemoBookingPopup';
 import WaveImage from "../assets/WaveImage.png";
-import underbanner from "../assets/underbanner.png";
+import underbanner from "../assets/underbanner.jpg";
 import {
     FaInstagram,
     FaFacebook,
@@ -21,7 +21,16 @@ import image6 from "../assets/image4.jpg";
 import image5 from "../assets/image5.jpg";
 import image4 from "../assets/image8.jpeg";
 
+import icon1 from "../assets/scanimg.png";
+import icon2 from "../assets/docimg.jpg";
+import icon3 from "../assets/rpaimg.png";
+import icon4 from "../assets/proimg.png";
+
+
 const images = [image1, image2, image3, image4, image5, image6];
+
+
+
 
 const products = [
     {
@@ -29,28 +38,28 @@ const products = [
         name: "Scanify",
         description: "Revolutionize your document management with intelligent scanning.",
         link: "/scanify",
-        image: image1,
+        image: icon1,
     },
     {
         id: 2,
         name: "Intellidocs",
         description: "Smart document processing for enhanced efficiency.",
         link: "/document",
-        image: image2,
+        image: icon2,
     },
     {
         id: 3,
         name: "Process Builder",
         description: "Design and automate your business processes visually.",
         link: "/processbuilder",
-        image: image3,
+        image: icon4,
     },
     {
         id: 4,
         name: "RPA Automation",
         description: "Automate repetitive tasks with robotic process automation.",
         link: "/robort",
-        image: image4,
+        image: icon3,
     },
 ];
 
@@ -341,9 +350,9 @@ const Home = () => {
                 </div>
                 {/* Product Review Section */}
 
-                <div className="bg-none bg-opacity-70 rounded-lg p-2  text-center">
+                <div className="bg-none bg-opacity-70 rounded-lg p-2  text-center ">
                     <h2 className="text-2xl font-bold text-purple-700 mb-4">Our Range of Products </h2>
-                    <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
                         {products.map((product, index) => (
                             <div
                                 key={product.id}
@@ -354,10 +363,9 @@ const Home = () => {
                                 <img
                                     src={product.image}
                                     alt={product.name}
-                                    className=" w-full h-32 object-cover rounded-md mb-2"
+                                    className=" w-100 h-45 object-cover shadow-md-90 border border-purple-900 rounded-md mb-2 "
                                 />
-                                <h3 className="text-lg font-semibold text-gray-800 mb-1">{product.name}</h3>
-                                <p className="text-sm text-gray-600 mb-2">{product.description}</p>
+                                <p className="text-sm text-gray-900 mb-6">{product.description}</p>
                                 <Link
                                     to={product.link}
                                     className="inline-block bg-purple-500 text-white rounded-full px-4 py-2 text-sm hover:bg-purple-600 transition-colors duration-300"
@@ -372,8 +380,8 @@ const Home = () => {
             </div>
 
             {/* Optimize Your Strength Section - Added an ID for navigation */}
-            <div id="optimizeStrength" className="bg-white py-0">
-                <div className="container mx-auto px-4 text-center">
+            <div id="optimizeStrength" className="bg-white py-25 mb-4 ">
+                <div className="container mx-auto px-4 text-center mb-5">
                     <h2 id="frame" className="text-3xl font-bold text-purple-700 mb-6">
                         Optimize Your Strength with Our Key Processing Framework
                     </h2>
@@ -431,7 +439,7 @@ const Home = () => {
             </div>
 
             {/* Building AI Section */}
-            <div id="buildingAI" className="bg-white py-16 text-center">
+            <div id="buildingAI" className="bg-white py-8 text-center">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-purple-700 mb-6">
                         Building a better tomorrow with Artificial Intelligence (AI)
@@ -521,25 +529,25 @@ const Home = () => {
           alt="Wave Banner"
           className="w-full block transition-opacity duration-500 opacity-90 hover:opacity-100"
         />
-        <div className="absolute top-0 left-0 w-full p-8 md:p-12 text-white flex flex-col md:flex-row justify-between items-start ">
+        <div className="absolute top-0 left-0 w-full p-8 md:p-12 text-white flex flex-col md:flex-row justify-between items-start mb-2">
           {/* Left Side Content */}
-          <div className="mb-6 md:mb-0 top-0">
-            <h3 className="text-xl text-gray-800 hover:text-purple-700 font-bold mb-2">
+          <div className="mb-2 top-0">
+            <h3 className="text-xl text-white-900 hover:text-pink-400 font-bold mb-3">
               <p>
                 Design better and spend less time <br />
                 without restricting tools creative freedom.
               </p>
             </h3>
-            <h6 className="text-gray-800 uppercase text-xs mb-2">
+            <h6 className="text-white-900 hover:text-pink-400 uppercase text-xs mb-2">
               Sign-up to get interesting updates
             </h6>
-            <div className="flex flex-col sm:flex-row mb-4">
+            <div className="text-gray-900 flex flex-col sm:flex-row mb-3">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="bg-gray-800 border border-gray-700 rounded-md py-2 px-3 text-white text-sm w-full sm:w-auto mb-2 sm:mb-0 sm:mr-2 focus:outline-none focus:border-purple-500"
+                className="bg-gray-300 text-white border border-pink-700 rounded-md py-2 px-3 text-sm w-full sm:w-auto mb-2 sm:mb-0 sm:mr-2 focus:outline-none hover:bg-purple-400 focus:border-pink-500"
               />
-              <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded-md text-sm transition-colors duration-300">
+              <button className="bg-purple-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-md text-sm transition-colors duration-300">
                 Send
               </button>
             </div>
@@ -547,28 +555,28 @@ const Home = () => {
               {/* Add your social media icons/links here */}
               <Link
                 to="https://www.linkedin.com/company/kodivian-technologies/posts/?feedView=all"
-                className="text-gray-400 hover:text-white"
+                className="bg-purple-900 hover:bg-pink-600 hover:text-white mb-3"
               >
                 <FaLinkedin className="w-5 h-5 fill-current" />
               </Link>{" "}
               {/* Linkdin*/}
               <Link
                 to="https://x.com/i/flow/login?redirect_after_login=%2Fkodivian_tech"
-                className="text-gray-400 hover:text-white"
+                className="text-white-900  hover:bg-pink-600 m hover:text-white"
               >
                 <FaTwitter className="w-5 h-5 fill-current" />
               </Link>{" "}
               {/* Twitter */}
               <Link
                 to="https://www.instagram.com/kodivian_tech/"
-                className="text-gray-400 hover:text-white"
+                className="text-white-900  hover:bg-pink-600 hover:text-white"
               >
                 <FaInstagram className="w-5 h-5 fill-current" />
               </Link>{" "}
               {/*INstagram */}
               <Link
                 to="https://www.facebook.com/p/Kodivian-Technology-100075879827039"
-                className="text-gray-400 hover:text-white"
+                className="text-white-900 hover:bg-pink-600 hover:text-white"
               >
                 <FaFacebook className="w-5 h-5  fill-current" />
               </Link>{" "}
@@ -576,13 +584,13 @@ const Home = () => {
               <br />
             </div>
             <div className="flex  bottom-0">
-              <div className="flex flex-col bottom-0 space-y-3 pr-4">
+              <div className="flex flex-col bottom-0 space-y-3 pr-4 ">
                 {" "}
                 {/* Added pr-4 for spacing between icon and text */}
                 <div className="flex items-center">
                   <Link
                     to="https://maps.google.com/?q=Meenakshi+Towers,No.13+Rajamannar+St,T+Nagar,+Chennai,+600017" // Corrected Google Maps link
-                    className="text-gray-400 hover:text-white"
+                    className="text-white-900 hover:bg-pink-600 hover:text-white "
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -592,7 +600,7 @@ const Home = () => {
                 <div className="flex items-center">
                   <Link
                     to="tel:+918870435343" // Corrected phone number format
-                    className="text-gray-400 hover:text-white"
+                    className="text-white-900 hover:bg-pink-600 hover:text-white"
                   >
                     <FaPhone className="w-5 h-4" />
                   </Link>
@@ -600,20 +608,20 @@ const Home = () => {
                 <div className="flex items-center">
                   <Link
                     to="mailto:vijaysabari.m@kodivian.com?subject=Enquiry"
-                    className="text-gray-400 hover:text-white"
+                    className="ttext-white-900 hover:bg-pink-600 hover:text-white"
                     title="Opens your default email" // Added a title attribute
                   >
                     <FaEnvelope className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
-              <div className="flex flex-col bottom-0 space-y-0 pr-4">
-                <p className="text-gray-900 ">
+              <div className="flex flex-col bottom-0 space-y-0  pr-4">
+                <p className="text-white-900 hover:text-pink-400 mb-0">
                   Meenakshi Towers, No.13 Rajamannar St, T Nagar, Chennai,
                   600017
                 </p>
-                <p className="text-gray-900 ">+91 8870435343</p>
-                <p className="text-gray-900 ">vijaysabari.m@kodivian.com</p>
+                <p className="text-white-900 hover:text-pink-400">+91 8870435343</p>
+                <p className="text-white-900 hover:text-pink-400 ">vijaysabari.m@kodivian.com</p>
               </div>
             </div>
           </div>
@@ -621,82 +629,82 @@ const Home = () => {
           {/* Right Side Navigation Links */}
           <div className="flex">
             <div className="flex-1 flex flex-col space-y-4 space-x-4">
-              <h3 className="text-purple-700 hover:text-gray-900 font-bold ">
+              <h3 className="text-violet-300 hover:text-white font-bold ">
                 OVERALL
               </h3>
               <a
                 href="#welcome"
-                className="text-gray-800 hover:text-purple-700 duration-300 font-semibold"
+                className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
               >
                 Home
               </a>
               <a
                 href="#search"
-                className="text-gray-800 hover:text-purple-700 duration-300 font-semibold"
+                className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
               >
                 Search
               </a>
               <a
                 href="#optimizeStrength"
-                className="text-gray-800 hover:text-purple-700 duration-300 font-semibold"
+                className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
               >
                 Strength
               </a>
               <a
                 href="#frame"
-                className="text-gray-800 hover:text-purple-700 duration-300 font-semibold"
+                className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
               >
                 Framework
               </a>
             </div>
             <div className="flex-1 flex flex-col space-y-4 space-x-4">
-              <h3 className="text-purple-700 hover:text-gray-900 font-bold ">
+              <h3 className="text-violet-300 hover:text-white font-bold ">
                 PRODUCT
               </h3>
               <a
                 href="#link2-1"
-                className="text-gray-800 hover:text-purple-700 duration-300 font-semibold"
+                className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
               >
                 Scanify
               </a>
               <a
                 href="#link2-2"
-                className="text-gray-800 hover:text-purple-700 duration-300 font-semibold"
+                className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
               >
                 Intellidocs
               </a>
               <a
                 href="#link2-3"
-                className="text-gray-800 hover:text-purple-700 duration-300 font-semibold"
+                className="text-white-300 hover:text-pink-200 font-semibold"
               >
                 Process Builder
               </a>
               <a
                 href="#link2-4"
-                className="text-gray-800 hover:text-purple-700 duration-300 font-semibold"
+                className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
               >
                 RPA
               </a>
             </div>
             <div className="flex-1 flex flex-col space-y-5 space-x-0">
-              <h3 className="text-purple-700 hover:text-gray-900 font-bold ">
+              <h3 className="text-violet-300 hover:text-white font-bold ">
                 SERVICES
               </h3>
               <a
                 href="#ai"
-                className="text-gray-800 hover:text-purple-700 duration-300 font-semibold"
+                className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
               >
                 Artificial Intelligence
               </a>
               <a
                 href="#bpm"
-                className="text-gray-800 hover:text-purple-700 duration-300 font-semibold"
+                className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
               >
                 Business Process Management
               </a>
               <a
                 href="#rpa"
-                className="text-gray-800 hover:text-purple-700 duration-300 font-semibold"
+                className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
               >
                 Robotic Process Automation
               </a>
@@ -704,7 +712,7 @@ const Home = () => {
           </div>
         </div>
         {/* Copyright and Design Info */}
-        <div className="absolute bottom-0 font-semibold mb-6 md:mb-0 w-full text-white p-4 text-center text-xs">
+        <div className="absolute bottom-0 font-semibold  w-full text-white hover:text-pink-900 p-1 text-center text-xs">
           Copyright © 2025 All Right Reserved & Designed By KodivianTechnologies
         </div>
       </div>

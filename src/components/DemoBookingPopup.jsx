@@ -166,7 +166,7 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
 
                 {stage === 2 && (
                     <>
-                        <h3>Select Date & Time (IST)</h3>
+                        <h3  className="custom-calendar-container ">Select Date & Time (IST)</h3>
                         <Calendar
                             className="custom-calendar-container "
                             value={form.date}
@@ -190,7 +190,7 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
 
                 {stage === 3 && (
                     <>
-                        <h3>Confirm Your Booking</h3>
+                        <h3 className="custom-confirmation-heading">Confirm Your Booking</h3>
                         <p className="custom-confirmation-text"><strong>Name:</strong> {form.name}</p>
                         <p className="custom-confirmation-text"><strong>Email:</strong> {form.email}</p>
                         <p className="custom-confirmation-text"><strong>Company:</strong> {form.company}</p>

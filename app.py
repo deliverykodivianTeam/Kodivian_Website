@@ -19,6 +19,31 @@ app.config.update(
 
 mail = Mail(app)
 
+@app.route('/api/send-query', methods=['POST'])
+def send_query():
+    data = request.get_json()
+    email = data.get('email')
+    query = data.get('query')
+
+    if not email or not query:
+        return jsonify({"error": "Missing email or query"}), 400
+
+    try:
+        msg = Message(
+            subject="New FAQ Query from Website",
+            recipients=['preethi.jb@kodivian.com'],  # Or another receiver if needed
+            body=f"A user submitted a query:\n\nEmail: {email}\nQuery: {query}"
+        )
+        mail.send(msg)
+        return jsonify({"message": "Query sent successfully"}), 200
+
+    except Exception as e:
+        print("Email send error:", str(e))
+        return jsonify({"error": "Failed to send email"}), 500
+
+
+
+
 # ✅ Route to save data and send email
 @app.route('/save_demo_data', methods=['POST'])
 def save_demo_data():
