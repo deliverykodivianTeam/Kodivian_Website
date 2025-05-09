@@ -100,25 +100,53 @@ const Services = () => {
                   </button>
                 </a>
               </div>
+              <div className="service-us-top">
+                <ul>
+                  <li>Focus on simplifying complexity</li>
+                  <li>Highlighting their expertise</li>
+                  <li>Emphasizing their comprehensive approach</li>
+                  <li>Direct and benefit-oriented</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="top_bar_icon">
-        <GiProcessor className="Processor" size={100} />
-        <FiPhoneCall className="Phone" size={100} />
-        <MdKeyboardDoubleArrowRight className="Arrow-1" size={100} />
-        <FaRegCalendarAlt className="Calendar" size={100} />
-        <MdKeyboardDoubleArrowRight className="Arrow-2" size={100} />
-        <FaSheetPlastic className="Sheet" size={100} />
-        <MdKeyboardDoubleArrowRight className="Arrow-3" size={100} />
-        <TiTickOutline className="Tick" size={100} />
-        <IoMailOpenOutline className="Mail" size={100} />
-        <IoMailOpenOutline className="Mail-2" size={100} />
-        <BsArrowRepeat className="Repeat" size={100} />
+      <div className="cycle">OUR CYCLE</div>
+      <div className="process_explaination">
+        <div className="top_bar_icon">
+          <GiProcessor className="Processor" size={100} />
+          <FiPhoneCall className="Phone" size={100} />
+          <MdKeyboardDoubleArrowRight className="Arrow-1" size={100} />
+          <FaRegCalendarAlt className="Calendar" size={100} />
+          <MdKeyboardDoubleArrowRight className="Arrow-2" size={100} />
+          <FaSheetPlastic className="Sheet" size={100} />
+          <MdKeyboardDoubleArrowRight className="Arrow-3" size={100} />
+          <TiTickOutline className="Tick" size={100} />
+          <IoMailOpenOutline className="Mail" size={100} />
+          <IoMailOpenOutline className="Mail-2" size={100} />
+          <BsArrowRepeat className="Repeat" size={100} />
+        </div>
       </div>
       {/* REMOVED SLIDER SECTION */}
-      <h2 className="head" id="learn-more">
+      <div className="head">
+        <h2>Core Services</h2>
+      </div>
+      <div className="content-with-image">
+        <img
+          src={image2} // Use the second imported image
+          alt="Description of image 2"
+          className="content-image"
+        />
+        <p className="large-text">
+          We are an Amazon Web Services (AWS) Partnership company using the
+          power of Cloud technology to build better futures for our customers.
+          Kodivian Technologies helps business move forward, faster by combining
+          deep industry expertise and frictionless technology delivery.
+        </p>
+      </div>
+
+      <h2 className="head-2" id="learn-more">
         Taking Your Business to the Next Level
       </h2>
       <div
@@ -130,7 +158,7 @@ const Services = () => {
           gap: "5px", // Added gap of 5px between the direct children
         }}
       >
-        <div style={{ textAlign: "center", flex: 1  }}>
+        <div style={{ textAlign: "center", flex: 1 }}>
           <div
             style={{
               position: "relative",
@@ -159,7 +187,7 @@ const Services = () => {
             enhanced growth and efficiency.
           </p>
         </div>
-        <div style={{ textAlign: "center", flex: 1  }}>
+        <div style={{ textAlign: "center", flex: 1 }}>
           <div
             style={{
               position: "relative",
@@ -188,7 +216,7 @@ const Services = () => {
             scalability, security, and optimized performance.
           </p>
         </div>
-        <div style={{ textAlign: "center", flex: 1  }}>
+        <div style={{ textAlign: "center", flex: 1 }}>
           <div
             style={{
               position: "relative",
@@ -219,20 +247,6 @@ const Services = () => {
         </div>
       </div>
 
-      <h2 className="head">Core Services</h2>
-      <div className="content-with-image">
-        <img
-          src={image2} // Use the second imported image
-          alt="Description of image 2"
-          className="content-image"
-        />
-        <p className="large-text">
-          We are an Amazon Web Services (AWS) Partnership company using the
-          power of Cloud technology to build better futures for our customers.
-          Kodivian Technologies helps business move forward, faster by combining
-          deep industry expertise and frictionless technology delivery.
-        </p>
-      </div>
       <div className="cloudSupportContainer" id="call">
         <div className="leftSection">
           <p className="cloudSupportTitle">Support for every cloud.</p>
@@ -255,7 +269,7 @@ const Services = () => {
         </div>
       </div>
 
-      <div className="content-with-image">
+      <div className="content-with-image-2">
         <img
           src={intro_3} // Use the second imported image
           alt="Description of image 2"
@@ -286,7 +300,7 @@ const Services = () => {
         />
       </div>
 
-      <div className="content-with-image">
+      <div className="content-with-image-3">
         <img
           src={intro_2} // Use the second imported image
           alt="Description of image 2"
@@ -306,7 +320,7 @@ const Services = () => {
       </div>
 
       <div className="cloudSupportContainer">
-      <div className="rightSection">
+        <div className="rightSection">
           <p className="cloudSupportTitle">Systems fade, but data remains.</p>
         </div>
         <div className="leftSection">
@@ -324,7 +338,7 @@ const Services = () => {
         </div>
       </div>
 
-      <div className="content-with-image">
+      <div className="content-with-image-4">
         <img
           src={intro_4} // Use the second imported image
           alt="Description of image 2"

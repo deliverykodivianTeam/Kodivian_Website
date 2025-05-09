@@ -24,11 +24,80 @@
 
 .head {
   color: var(--primary-color);
-  font-size: 3em; /* Increased font size */
+  margin-top: 100px;
+  font-size: 5em; /* Increased font size */
   font-weight: bold;
   text-align: center;
-  margin-top: 20px;
 }
+
+.process_explaination {
+  margin-left: 125px;
+  margin-top: 400px;
+}
+
+.service-us-top {
+  font-size: 25px;
+  margin-left: 30rem;
+  margin-top: 50px;
+  margin-bottom: 2rem; /* Add more space below this section */
+  color: #333; /* Example text color */
+}
+
+.service-us-top p {
+  margin-bottom: 0.75rem; /* Space above the list */
+  font-size: 25px; /* Slightly larger font */
+}
+
+.service-us-top ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.service-us-top li {
+  margin-bottom: 0.5rem;
+  position: relative; /* Needed for absolute positioning of the after pseudo-element */
+}
+
+.service-us-top ul,
+.service-us-top ul {
+  list-style-type: none; /* Remove default bullets */
+  padding-left: 0; /* Remove default indentation */
+}
+
+.service-us-top li::before,
+.service-us-top li::before {
+  content: "❮"; /* Unicode tick symbol */
+  color: rgb(174, 0, 255); /* You can choose your tick color */
+  display: inline-block; /* Allows for spacing and alignment */
+  width: 1em; /* Adjust width for spacing */
+  margin-left: -1em; /* Move the tick to the left of the text */
+  margin-right: 0.5em; /* Add some spacing between the tick and the text */
+}
+
+.service-us-top li::after {
+  content: "❯"; /* Unicode back tick symbol */
+  color: rgb(174, 0, 255); /* Match the color of the opening tick */
+  position: absolute; /* Position it relative to the li */
+  right: -1em; /* Adjust to position it at the end, you might need to tweak this */
+}
+
+.head-2 {
+  color: var(--primary-color);
+  font-size: 3em; /* Increased font size */
+  margin-bottom: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cycle {
+  color: var(--primary-color);
+
+  font-size: 3em; /* Increased font size */
+  margin-bottom: 0px;
+  font-weight: bold;
+  text-align: center;
+}
+
 
 .services-content h3 {
   color: var(--primary-color);
@@ -141,7 +210,34 @@
 .content-with-image {
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  border-radius: 10px;
+  background-color: var(--bg-light-color);
+  gap: 60px; /* Added gap for spacing between image and text */
+}
+
+.content-with-image-2 {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  margin-bottom: 100px;
+  border-radius: 10px;
+  background-color: var(--bg-light-color);
+  gap: 60px; /* Added gap for spacing between image and text */
+}
+
+.content-with-image-3 {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  margin-top: 100px;
+  border-radius: 10px;
+  background-color: var(--bg-light-color);
+  gap: 60px; /* Added gap for spacing between image and text */
+}
+
+.content-with-image-4 {
+  display: flex;
+  align-items: center;
   padding: 30px;
   border-radius: 10px;
   background-color: var(--bg-light-color);
@@ -243,7 +339,7 @@
 }
 
 .hero-services-info {
-  margin-top: -100px;
+  margin-top: 200px;
 }
 
 .hero-services-info h1 {
@@ -409,7 +505,7 @@
 .Processor {
   animation: MoveLeftRight 2s linear infinite;
   left: 100px; /* Adjust horizontal position */
-  top: 150px;
+  top: 60px;
   transform: translateY(-50%);
 }
 
@@ -495,7 +591,7 @@
 .Repeat {
   animation: rotate360 5s linear infinite;
   left: 76%; /* Adjust horizontal position */
-  top: 150px;
+  top: 50px;
   transform: translateY(-50%);
 }
 
