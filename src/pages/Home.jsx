@@ -102,9 +102,9 @@ const Home = () => {
             className="min-h-screen flex flex-col justify-between bg-white p-0"
         >
             {/* Top Wave Image */}
-            <div className="relative w-full overflow-hidden" style={{ height: "948px" }}>
+            <div className="relative w-full overflow-hidden" style={{ height: "500px" }}>
                 <div
-                    className="absolute top-0/1 top-86 left-10 transform -translate-y-1/2 text-white md:text-left md:max-w-md p-8"
+                    className="absolute top-0/1 top-90 left-10 transform -translate-y-1/2 text-white md:text-left md:max-w-md p-8"
                     style={{ width: "100%" }}
                 >
                     <div style={{ display: "flex", alignItems: "center" }}>
@@ -112,9 +112,9 @@ const Home = () => {
                             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 transition-colors duration-300 text-black"
                             style={{ marginRight: "50px", whiteSpace: "nowrap" }}
                         >
-                            Transforming Ideas{" "}
+                            Welcome to {" "}
                             <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-700 mb-4 transition-colors duration-300">
-                                Into Digital Solutions
+                               Kodivian 
                             </span>
                         </h1>
                     </div>
@@ -133,11 +133,12 @@ const Home = () => {
                     </button>
                     <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
                 </div>
+                 </div> {/* Closing div for the top section's overflow hidden */}
 
 
             {/* New Hero Section */}
-            <div className="bg-white py-16 container mx-auto px-4 md:px-8 lg:px-12 flex items-center justify-between">
-                <div className="md:w-1/2 lg:w-5/12">
+            <div className="bg-white  py-16 container mx-auto px-4 md:px-8 lg:px-12 flex items-center justify-between">
+                <div className="md:w-1/2  lg:w-5/12">
                     <h4 className="uppercase text-purple-700 font-semibold mb-2">
                         SIGN UP
                     </h4>
@@ -163,7 +164,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            </div> {/* Closing div for the top section's overflow hidden */}
+           
 
             {/* Render the new Bottom component here */}
             <Bottombar />
