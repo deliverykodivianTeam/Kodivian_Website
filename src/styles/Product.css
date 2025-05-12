@@ -3,26 +3,24 @@
   /* align-items: center; */ /* Removed as the child is now positioned absolutely */
   justify-content: space-between; /* Might not have a direct effect with absolute positioning */
   /* background-repeat: no-repeat; */ /* Inherited from hero-section */
-  background-size: cover; /* Inherited from hero-section */
+  /* Inherited from hero-section */
   /* background-position: center; */ /* Inherited from hero-section */
-  position: relative; /* Needed for absolute positioning of children */
-  overflow: hidden;
+   /* Needed for absolute positioning of children */
+  
   padding: 0;
   width: 100%;
   height: 958px; /* Matches the image height */
   margin-bottom: 0px;
-  display: block; /* Changed to block to take full width */
+   /* Changed to block to take full width */
 }
 
  .hero-section{
-      padding: 0;
+      padding: 10px;
+      margin-top: 140px;
   /* Adjust spacing */
   /* Adjust spacing */
  }
 
- .absolute-pro {
-  animation: prodown 0.5s ease-in forwards; /* Adjust duration and easing as needed */
-}
 
 @keyframes prodown {
   from {
@@ -38,7 +36,7 @@
   color: oklch(49.6% 0.265 301.924); /* Example accent color */
   font-size: 16px;
     margin-left: 100px;
-    margin-top: -400px;
+    margin-top: -10px;
  }
 
  .hero-title {
@@ -76,15 +74,6 @@
   background-color: rebeccapurple ;
  }
 
- .hero-image {
-  flex: 1;
-  /* Add styles to position and style the blurred image here */
-  /* Example: */
-  /* background: url('path/to/your/blurred-mobile-image.png') no-repeat center center;
-  background-size: contain;
-  height: 400px; Adjust as needed */
- }
-
  /* You might need to use media queries for responsiveness */
  @media (max-width: 768px) {
   .hero-section {
@@ -107,7 +96,7 @@
   padding: 40px; /* Add some padding around the section */
  /* Light background color similar to the sample */
   border-radius: 10px; /* Optional: Add rounded corners */
-  margin-top: -300px; /* Add some space between the hero section and this section */
+  margin-top: 100px; /* Add some space between the hero section and this section */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 

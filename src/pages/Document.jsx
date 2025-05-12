@@ -122,9 +122,6 @@ const Document = () => {
   }
 };
 
-      
-      
-      
 
     return (
     <div className="doc-document-page">
