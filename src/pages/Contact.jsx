@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import "../styles/Contact.css"; // Import global styles
-import PurpleWave from "../assets/purple-wave.png"; // Import the image
-import underbanner from "../assets/purple-geometric.jpg";
+// Import the new Belowbar component
+import Belowbar from '../components/Belowbar'; // Adjust the path if necessary
 import location_pin from "../assets/location-pin.avif";
-import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { LiaPhoneSolid } from "react-icons/lia";
 import { MdOutlineMailOutline, MdOutlineLocationOn } from "react-icons/md";
-import { Link } from "react-router-dom";
+
 
 const Contact = () => {
   const locationData = [
@@ -169,6 +168,8 @@ const Contact = () => {
           </>
         )}
       </div>
+      {/* Render the new Belowbar component here */}
+            <Belowbar />
       </div>
   );
 };

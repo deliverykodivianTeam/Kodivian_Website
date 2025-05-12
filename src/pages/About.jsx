@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/About.css";
+// Import the new Belowbar component
+import Belowbar from '../components/Belowbar'; // Adjust the path if necessary
 import {
   ClockIcon,
   UserGroupIcon,
@@ -31,17 +33,6 @@ import Mothi from "../assets/Mothi.jpeg";
 import Suganthi from "../assets/Suganthi.jpeg";
 import Kaviya from "../assets/Kaviya.jpeg";
 import Preethi from "../assets/Preethi.jpeg";
-import PurpleWave from "../assets/purple-wave.png";
-import {
-  FaInstagram,
-  FaFacebook,
-  FaTwitter,
-  FaLinkedin,
-  FaLocationArrow,
-  FaPhone,
-  FaEnvelope,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 const About = () => {
   const solutions = ["IntelliDocs", "Scanify", "RPA", "Process Builder"];
@@ -314,6 +305,8 @@ const About = () => {
           <p className="text-sm text-gray-600">Technical Consultant</p>
         </div>
       </div>
+      {/* Render the new Belowbar component here */}
+            <Belowbar />
       </div>
   );
 };

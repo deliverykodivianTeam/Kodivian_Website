@@ -10,17 +10,8 @@ import circle from "../assets/circle.png";
 import tick from "../assets/tick.png";
 import square from "../assets/square.png";
 import banner_image from "../assets/banner.svg";
-import underbanner from "../assets/purple-geometric.jpg";
-import PurpleWave from "../assets/purple-wave.png";
-
-import { BsArrowRepeat } from "react-icons/bs";
-import { FiPhoneCall } from "react-icons/fi";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { FaSheetPlastic } from "react-icons/fa6";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import { TiTickOutline } from "react-icons/ti";
-import { IoMailOpenOutline } from "react-icons/io5";
-import { GiProcessor } from "react-icons/gi";
+// Import the new Belowbar component
+import Belowbar from '../components/Belowbar'; // Adjust the path if necessary
 
 import { FaAws } from "react-icons/fa"; // For AWS
 import { VscAzure } from "react-icons/vsc";
@@ -36,16 +27,6 @@ import { BiLogoJavascript } from "react-icons/bi";
 import { FaJava } from "react-icons/fa";
 import { FaHtml5 } from "react-icons/fa";
 
-import {
-  FaInstagram,
-  FaFacebook,
-  FaTwitter,
-  FaLinkedin,
-  FaLocationArrow,
-  FaPhone,
-  FaEnvelope,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 const Services = () => {
   const [typingText, setTypingText] = useState("");
@@ -342,6 +323,8 @@ const Services = () => {
           </div>
         </div>
       </div>
+      {/* Render the new Belowbar component here */}
+            <Belowbar />
     </div>
   );
 };
