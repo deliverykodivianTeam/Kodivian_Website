@@ -75,6 +75,7 @@ const Document = () => {
      const [expandedQuestion, setExpandedQuestion] = useState(null);
       const [isQueryOpen, setIsQueryOpen] = useState(false);
       const [queryText, setQueryText] = useState('');
+      const [queryEmail, setQueryEmail] = useState('');
     
       const handleQuestionClick = (question) => {
         setExpandedQuestion(expandedQuestion === question ? null : question);
@@ -87,33 +88,42 @@ const Document = () => {
       const handleQueryChange = (event) => {
         setQueryText(event.target.value);
       };
-      
-      const handleSendQuery = async () => {
-        if (queryText.trim()) {
-          try {
-            const response = await fetch('/api/send-query', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ query: queryText }),
-            });
-      
-            if (!response.ok) {
-              throw new Error('Failed to send query');
-            }
-      
-            alert(`Your query "${queryText}" has been successfully sent. We will respond via email.`);
-            setIsQueryOpen(false);
-            setQueryText('');
-          } catch (error) {
-            console.error('Error sending query:', error);
-            alert('Something went wrong. Please try again later.');
-          }
-        } else {
-          alert('Please enter your query.');
-        }
+
+      const handleEmailChange = (event) => {
+        setQueryEmail(event.target.value);
       };
+      
+   const handleSendQuery = async () => {
+  const email = queryEmail ; // ✅ get stored email
+  const query = queryText;
+
+  if (!query) {
+    alert("Please enter your query.");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:3001/api/send-query", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, query })
+    });
+
+    if (response.ok) {
+      alert("Query sent successfully!");
+      setQueryText('');
+      setIsQueryOpen(false);
+    } else {
+      alert("Failed to send query.");
+    }
+  } catch (error) {
+    alert("Error sending query.");
+    console.error("Send error:", error);
+  }
+};
+
+      
+      
       
 
     return (
@@ -280,6 +290,12 @@ const Document = () => {
                 placeholder="Enter your query here..."
                 value={queryText}
                 onChange={handleQueryChange}
+              />
+              <textarea
+                className="query-Emailbox"
+                placeholder="Enter your Email"
+                value={queryEmail}
+                onChange={handleEmailChange}
               />
               <button className="query-submit-button" onClick={handleSendQuery}>
                 Submit Query
