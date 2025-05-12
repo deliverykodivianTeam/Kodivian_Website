@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/About.css";
 // Import the new Belowbar component
-import Belowbar from '../components/Belowbar'; // Adjust the path if necessary
+import Belowbar from "../components/Belowbar"; // Adjust the path if necessary
 import {
   ClockIcon,
   UserGroupIcon,
@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import constructionImage from "../assets/Animated-Isometric-Construction.gif";
 import about_intro from "../assets/about_intro.png";
+import about_intro1 from "../assets/about_intro1.jpg";
 import ponpureLogo from "../assets/ponpure.png";
 import tiCycleLogo from "../assets/ti-cycle.png";
 import murugappaLogo from "../assets/murugappa.png";
@@ -24,7 +25,6 @@ import shanthigearslogo from "../assets/shanthi-gears.png";
 import ezcloud from "../assets/ezcloud.png";
 import ionidea from "../assets/ionidea.png";
 import eastman from "../assets/eastman.png";
-import underbanner from "../assets/purple-geometric.jpg";
 import Chairman from "../assets/chairman.jpeg";
 import Director from "../assets/directer.jpeg";
 import Raja from "../assets/Raja.jpeg";
@@ -42,6 +42,64 @@ const About = () => {
   const fullText = "We grow your business";
   const typingSpeed = 100; // milliseconds per character
   const [typingComplete, setTypingComplete] = useState(false);
+
+  // Dummy data for team members (replace with your actual data)
+  const teamMembers = [
+    {
+      name: "Sridhar Kamakoti",
+      role: "Chairman",
+      image: Chairman, // Use your imported images
+      linkedin: "https://www.linkedin.com/in/sridhar-kamakoti", // Replace with actual LinkedIn URLs
+    },
+    {
+      name: "Vijay Sabari",
+      role: "Managing Director",
+      image: Director,
+      linkedin: "https://www.linkedin.com/in/vijay-sabari",
+    },
+    {
+      name: "Raja SM",
+      role: "Business Analyst",
+      image: Raja,
+      linkedin: "https://www.linkedin.com/in/raja-sm",
+    },
+    {
+      name: "Anjana",
+      role: "Marketing & Branding Strategist",
+      image: Anjana,
+      linkedin: "https://www.linkedin.com/", // Add actual
+    },
+    {
+      name: "Mothi Kumaresan",
+      role: "Business Development Manager",
+      image: Mothi,
+      linkedin: "https://www.linkedin.com/", // Add actual
+    },
+    {
+      name: "Suganthi",
+      role: "Technical Project Manager",
+      image: Suganthi,
+      linkedin: "https://www.linkedin.com/", // Add actual
+    },
+    {
+      name: "Kaviya",
+      role: "Global PMO Executive",
+      image: Kaviya,
+      linkedin: "https://www.linkedin.com/", // Add actual
+    },
+    {
+      name: "Preethi JB",
+      role: "Technical Consultant",
+      image: Preethi,
+      linkedin: "https://www.linkedin.com/", // Add actual
+    },
+    {
+      name: "Rithish PG",
+      role: "Technical Consultant",
+      image: Director, // Assuming you want to reuse Director's image here.
+      linkedin: "https://www.linkedin.com/", // Add actual
+    },
+  ];
 
   useEffect(() => {
     let timer;
@@ -81,7 +139,6 @@ const About = () => {
   return (
     <div>
       <div className="about-page">
-        
         <div
           className={`absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-black ${
             typingComplete ? "typing-complete" : ""
@@ -98,13 +155,6 @@ const About = () => {
             <p className="about-para">
               Start with a plan and finish with results
             </p>
-            <div className="flex mt-6">
-              <a href="#call-1">
-                <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">
-                  Read More
-                </button>
-              </a>
-            </div>
           </div>
         </div>
         <img // Add the previous image here
@@ -122,7 +172,9 @@ const About = () => {
             {solutions[currentSolutionIndex]}
           </span>
         </div>
-        <div className="about_content_image">
+        <div
+          className="about_content_image"
+        >
           <p className="intro_about_banner">
             At the heart of our innovation lies a powerful suite of intelligent
             automation products — Scanify for seamless document scanning and
@@ -132,10 +184,29 @@ const About = () => {
             dynamic documents
           </p>
           <img
+            src={about_intro1}
+            alt="about_intro"
+            className="about_content_image"
+          />
+        </div>
+
+        <div
+          className="about_content_image"
+          style={{ backgroundColor: "black" }}
+        >
+          <img
             src={about_intro}
             alt="about_intro"
             className="about_content_image"
           />
+          <p className="intro_about_banner" style={{ color: "white" }}>
+            At the heart of our innovation lies a powerful suite of intelligent
+            automation products — Scanify for seamless document scanning and
+            data capture, Process Builder to streamline complex workflows with
+            no-code logic, RPA to automate repetitive tasks and boost
+            efficiency, and IntelliDocs to create, manage, and deliver smart,
+            dynamic documents
+          </p>
         </div>
 
         <div className="about-stats-container">
@@ -222,92 +293,30 @@ const About = () => {
         Where vision meets execution — get to know the team powering Kodivian.
       </div>
 
-      <div className="flex justify-center gap-8 py-8">
-        <div className="text-center">
-          <img
-            src={Chairman}
-            alt="Kodivian Team Member 3"
-            className="w-100 h-100 rounded-full object-cover mb-2"
-          />
-          <h4 className="font-semibold">Sridhar Kamakoti</h4>
-          <p className="text-sm text-gray-600">Chairman</p>
-        </div>
-        <div className="text-center">
-          <img
-            src={Director}
-            alt="Kodivian Team Member 3"
-            className="w-100 h-100 rounded-full object-cover mb-2"
-          />
-          <h4 className="font-semibold">Vijay Sabari</h4>
-          <p className="text-sm text-gray-600">Director</p>
-        </div>
-        <div className="text-center">
-          <img
-            src={Raja}
-            alt="Kodivian Team Member 3"
-            className="w-100 h-100 rounded-full object-cover mb-2"
-          />
-          <h4 className="font-semibold">Raja SM</h4>
-          <p className="text-sm text-gray-600">Business Analyst</p>
-        </div>
-        <div className="text-center">
-          <img
-            src={Anjana}
-            alt="Kodivian Team Member 3"
-            className="w-100 h-100 rounded-full object-cover mb-2"
-          />
-          <h4 className="font-semibold">Anjana</h4>
-          <p className="text-sm text-gray-600">Marketing & Branding Strategist</p>
-        </div>
-        <div className="text-center">
-          <img
-            src={Mothi}
-            alt="Kodivian Team Member 3"
-            className="w-100 h-100 rounded-full object-cover mb-2"
-          />
-          <h4 className="font-semibold">Mothi Kumaresan</h4>
-          <p className="text-sm text-gray-600">Business Development Manager</p>
-        </div>
-        <div className="text-center">
-          <img
-            src={Suganthi}
-            alt="Kodivian Team Member 3"
-            className="w-100 h-100 rounded-full object-cover mb-2"
-          />
-          <h4 className="font-semibold">Suganthi</h4>
-          <p className="text-sm text-gray-600">Technical Project Manager</p>
-        </div>
-        <div className="text-center">
-          <img
-            src={Kaviya}
-            alt="Kodivian Team Member 3"
-            className="w-100 h-100 rounded-full object-cover mb-2"
-          />
-          <h4 className="font-semibold">Kaviya</h4>
-          <p className="text-sm text-gray-600">Global PMO Executive</p>
-        </div>
-        <div className="text-center">
-          <img
-            src={Preethi}
-            alt="Kodivian Team Member 3"
-            className="w-100 h-100 rounded-full object-cover mb-2"
-          />
-          <h4 className="font-semibold">Preethi JB</h4>
-          <p className="text-sm text-gray-600">Technical Consultant</p>
-        </div>
-        <div className="text-center">
-          <img
-            src={Director}
-            alt="Kodivian Team Member 3"
-            className="w-100 h-100 rounded-full object-cover mb-2"
-          />
-          <h4 className="font-semibold">Rithish PG</h4>
-          <p className="text-sm text-gray-600">Technical Consultant</p>
-        </div>
+      <div className="team-members-grid">
+        {teamMembers.map((member, index) => (
+          <div className="team-member-card" key={index}>
+            <img
+              src={member.image}
+              alt={member.name}
+              className="member-image"
+            />
+            <h4 className="member-name">{member.name}</h4>
+            <p className="member-role">{member.role}</p>
+            <a
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="learn-more-button"
+            >
+              Learn More
+            </a>
+          </div>
+        ))}
       </div>
       {/* Render the new Belowbar component here */}
-            <Belowbar />
-      </div>
+      <Belowbar />
+    </div>
   );
 };
 

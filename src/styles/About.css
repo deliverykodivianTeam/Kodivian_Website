@@ -119,7 +119,6 @@
   padding: 0.8rem 1.5rem;
 }
 
-
 /* Increased the percentage to ensure smooth continuous scrolling */
 @keyframes scrollLogos {
   0% {
@@ -154,13 +153,6 @@
   color: rgb(124, 124, 135);
 }
 
-.wave-header {
-  width: 100%;
-  height: 595px;
-  margin-bottom: 20px;
-  display: block;
-}
-
 .geometric-footer {
   width: 100%;
   margin-top: 20px; /* Adjust as needed */
@@ -181,29 +173,8 @@
   font-size: 70px;
 }
 
-.pattern {
-  width: 400px; /* Adjust this value to make it wider or narrower */
-  height: 400px; /* Adjust this value to make it taller or shorter */
-}
-
-@keyframes rotateme {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.rotate-me {
-  animation-name: rotateme ;
-  animation-duration: 30s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
 .about_content_image {
-  height: 750px;
+  height: 550px;
   display: flex;
   align-items: center;
   margin-bottom: 40px;
@@ -236,4 +207,77 @@
   margin-top: -250px;
   margin-left: 400px;
   padding: 150px;
+}
+
+.team-members-grid {
+  margin-left: 50px;
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+  justify-content: center; /* Center the items horizontally */
+  gap: 16px; /* Adjust the gap between items as needed */
+  padding-top: 32px; /* Adjust padding as needed */
+  padding-bottom: 32px; /* Adjust padding as needed */
+}
+
+.team-member-card {
+  width: calc(20% - 16px); /* Adjust width for desired number of columns (here, ~5) and account for gap */
+  margin-bottom: 20px; /* Add some space below each profile */
+  text-align: center; /* Center the content within each card */
+}
+
+@media (max-width: 1024px) { /* Adjust for medium screens (e.g., tablets) */
+  .team-member-card {
+    width: calc(33.33% - 16px); /* Display in 3 columns */
+  }
+}
+
+@media (max-width: 768px) { /* Adjust for smaller screens (e.g., mobile) */
+  .team-member-card {
+    width: calc(50% - 16px); /* Display in 2 columns */
+  }
+}
+
+@media (max-width: 480px) { /* Adjust for even smaller screens */
+  .team-member-card {
+    width: 100%; /* Display in a single column */
+  }
+}
+
+.member-image {
+  width: 200px; /* Or any desired fixed width for the images */
+  height: 200px; /* Maintain a square aspect ratio */
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.member-name {
+  margin-right: 70px;
+  font-weight: 600;
+}
+
+.member-role {
+  margin-right: 70px;
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.learn-more-button {
+  background-color: white;
+  margin-right: 65px;
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #a0aec0;
+  border-radius: 50px;
+  color: black;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.learn-more-button:hover {
+  background-color: black;
+  border-color: #718096;
+  color: white;
 }

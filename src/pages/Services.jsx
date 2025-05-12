@@ -5,13 +5,13 @@ import "../styles/Services.css";
 import image2 from "../assets/intro_1.png";
 import intro_2 from "../assets/intro_2.png";
 import intro_3 from "../assets/intro_3.png";
-import intro_4 from "../assets/intro_4.png";
+import intro_5 from "../assets/intro_5.png";
 import circle from "../assets/circle.png";
 import tick from "../assets/tick.png";
 import square from "../assets/square.png";
 import banner_image from "../assets/banner.svg";
 // Import the new Belowbar component
-import Belowbar from '../components/Belowbar'; // Adjust the path if necessary
+import Belowbar from "../components/Belowbar"; // Adjust the path if necessary
 
 import { FaAws } from "react-icons/fa"; // For AWS
 import { VscAzure } from "react-icons/vsc";
@@ -26,7 +26,6 @@ import { FaPython } from "react-icons/fa";
 import { BiLogoJavascript } from "react-icons/bi";
 import { FaJava } from "react-icons/fa";
 import { FaHtml5 } from "react-icons/fa";
-
 
 const Services = () => {
   const [typingText, setTypingText] = useState("");
@@ -52,7 +51,6 @@ const Services = () => {
       <div className="services-page-layout">
         {/* Hero Section with Services Info */}
         <div className="services_page_info">
-       
           <div
             className={`absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-black ${
               typingComplete ? "typing-complete" : ""
@@ -70,13 +68,6 @@ const Services = () => {
                 so you can focus on <span className="highlight">what</span>{" "}
                 <span className="highlight">matters</span>.
               </p>
-              <div className="flex mt-6">
-                <a href="#learn-more">
-                  <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-md mr-4 transition-colors duration-300">
-                    Learn More
-                  </button>
-                </a>
-              </div>
               <div className="service-us-top">
                 <ul>
                   <li>Focus on simplifying complexity</li>
@@ -214,13 +205,13 @@ const Services = () => {
         </div>
       </div>
 
-      <div className="content-with-image-2">
+      <div className="content-with-image-2" style={{ background: 'black' }}>
         <img
           src={intro_3} // Use the second imported image
           alt="Description of image 2"
           className="content-image"
         />
-        <p className="large-text">
+        <p className="large-text" style={{ color: 'white' }}>
           Our Product Engineering Services provide comprehensive support
           throughout the entire product lifecycle. From the initial
           Conceptualization & Design phase, where we assist in preparing
@@ -252,54 +243,34 @@ const Services = () => {
           className="content-image"
         />
         <p className="large-text">
-          Kodivian Scanify is our comprehensive solution for digital workplace
-          automation, streamlining business processes through intelligent
-          automation and efficient information management. Key features include
-          effortless document capture and indexing, robust workflow automation,
-          customizable forms with e-signatures, advanced search and retrieval,
-          seamless integration with CRMs, ERPs, DocuSign, Adobe Sign, and Google
-          Workspace, and AI-powered bots for workflow optimization. Designed to
-          accelerate business progress through expert knowledge and smooth
-          technology delivery, contact us to transform your digital workplace.
+          Unlock the Future of Software Development with AI in the Cloud. This
+          dynamic illustration showcases the transformative power of integrating
+          Artificial Intelligence with cloud services. Imagine intelligent
+          systems seamlessly interacting with cloud infrastructure, analyzing
+          vast datasets, and automating complex development processes. From
+          AI-powered tools enhancing code creation to cloud platforms providing
+          scalable resources, this synergy is revolutionizing how software is
+          built, deployed, and managed.
         </p>
       </div>
 
-      <div className="cloudSupportContainer">
-        <div className="rightSection">
-          <p className="cloudSupportTitle">Systems fade, but data remains.</p>
-        </div>
-        <div className="leftSection">
-          <div className="cloudProviderLogos">
-            <div className="cloudProviderItem">
-              <GrMysql size={250} style={{ color: "#F29111" }} />
-            </div>
-            <div className="cloudProviderItem">
-              <BiLogoPostgresql size={250} style={{ color: "#336791" }} />
-            </div>
-            <div className="cloudProviderMongoDB">
-              <BiLogoMongodb size={250} style={{ color: "#47A248" }} />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="content-with-image-4">
+      <div className="content-with-image-4" style={{ backgroundColor: 'black' }}>
+        <p className="large-text" style={{ color: 'white' }}>
+          Strategize Your Digital Transformation for Growth and Efficiency. This
+          visual encapsulates the key elements of a successful digital
+          transformation strategy. Picture a clear target with focused
+          objectives, alongside the financial resources and strategic leadership
+          (symbolized by the chess king) necessary to achieve them. Data-driven
+          insights, represented by the charts on the clipboard and laptop,
+          inform your decisions, while technology empowers seamless execution.
+          Embrace a future where digital tools drive efficiency, unlock new
+          opportunities, and propel your business towards its goals.
+        </p>
         <img
-          src={intro_4} // Use the second imported image
+          src={intro_5} // Use the second imported image
           alt="Description of image 2"
           className="content-image"
         />
-        <p className="large-text">
-          Kodivian Scanify is our comprehensive solution for digital workplace
-          automation, streamlining business processes through intelligent
-          automation and efficient information management. Key features include
-          effortless document capture and indexing, robust workflow automation,
-          customizable forms with e-signatures, advanced search and retrieval,
-          seamless integration with CRMs, ERPs, DocuSign, Adobe Sign, and Google
-          Workspace, and AI-powered bots for workflow optimization. Designed to
-          accelerate business progress through expert knowledge and smooth
-          technology delivery, contact us to transform your digital workplace.
-        </p>
       </div>
 
       <div className="cloudSupportContainer">
@@ -324,7 +295,7 @@ const Services = () => {
         </div>
       </div>
       {/* Render the new Belowbar component here */}
-            <Belowbar />
+      <Belowbar />
     </div>
   );
 };

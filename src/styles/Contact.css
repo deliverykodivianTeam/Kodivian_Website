@@ -60,6 +60,7 @@
   margin-right: 75px;
   border-radius: 15px;
   text-align: left;
+  margin-bottom: 50px;
 }
 
 .contact-form-container {
@@ -68,6 +69,7 @@
   margin-left: 75px;
   border-radius: 15px;
   text-align: left;
+  margin-bottom: 50px;
 }
 
 .locations-holder {
@@ -246,5 +248,5 @@
 }
 
 .contact_hero_page {
-  padding: 450px;
+  padding: 400px;
 }
