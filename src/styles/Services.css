@@ -655,3 +655,7 @@
     transform: translateY(0);
   }
 }
+
+.services_page_info {
+  margin-top: 750px;
+}

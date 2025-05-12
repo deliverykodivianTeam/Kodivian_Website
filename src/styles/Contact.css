@@ -244,3 +244,7 @@
   margin-left: -1em; /* Move the tick to the left of the text */
   margin-right: 0.5em; /* Add some spacing between the tick and the text */
 }
+
+.contact_hero_page {
+  padding: 450px;
+}

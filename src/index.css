@@ -27,12 +27,11 @@ body {
 
 .navbar {
   color: var(--white-color); /* Keep white text */
-  padding: 1rem 2rem;
   position: fixed; /* Make the navbar fixed */
   top: 0; /* Stick it to the top of the viewport */
   left: 0; /* Extend to the left edge */
   right: 0; /* Extend to the right edge */
-  background-color: transparent; /* Ensure it has a background color */
+  background-color: white; /* Ensure it has a background color */
   z-index: 1000; /* Ensure it stays on top of other content */
   display: flex;
   justify-content: center; /* Center the content horizontally */
@@ -45,10 +44,6 @@ body {
   margin: 0;
   display: flex;
   justify-content: center; /* Center the list items horizontally */
-  background-color: white;
-  border: 1px solid #ccc; /* Added border */
-  border-radius: 50px; /* Keep the prominent rounded corners */
-  box-shadow: 0 4px 8px rgb(87, 83, 83);
 }
 
 .navbar-left {
@@ -76,22 +71,7 @@ body {
   transform: scale(1.1);
 }
 
-.get-in-touch {
-  margin-left: 10px;
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.1s ease-in-out;
-  padding: 0.5rem 1rem; /* Add some padding */
-  border: 1px solid #ccc; /* Optional: Add a border */
-  border-radius: 20px; /* Optional: Add rounded corners */
-  background-color: white; /* Optional: Set a background color */
-  box-shadow: 0 4px 8px grey; /* Optional: Add a subtle shadow */
-}
 
-.get-in-touch:hover {
-  transform: scale(1.1);
-}
 
 .navbar-button{
   color: black;
@@ -100,12 +80,10 @@ body {
   transition: transform 0.1s ease-in-out;
   padding: 0.5rem 1rem; /* Add some padding */
   border-radius: 20px; /* Optional: Add rounded corners */
-  background-color: white; /* Optional: Set a background color */
 }
 
 .navbar-button:hover {
   transform: scale(1.1);
-  background-color: white;
   color: black;
 }
 

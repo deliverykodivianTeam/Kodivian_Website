@@ -1,6 +1,7 @@
 /* About.css */
 .about-page {
   text-align: center;
+  margin-top: 650px;
   background-color: var(--white-color);
   color: var(--primary-color);
 }
