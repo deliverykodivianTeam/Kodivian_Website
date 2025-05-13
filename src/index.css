@@ -83,7 +83,7 @@ body {
 
 .navbar-button:hover {
   transform: scale(1.1);
-  color: black;
+  color: var(--primary-purple);
 }
 
 .demo-button{
