@@ -296,8 +296,44 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            
+            {/* Process Section */}
+            <div className="process-section">
+                <div className="process-header">
+                    <h4 className="process-subheading">Process</h4>
+                    <h2 className="process-main-heading">
+                        <span>We Follow An Excellent Work Process</span>
+                        
+                    </h2>
+                    <p className="process-description">
+                        Our services and solutions are always based on proven methodologies such as lean six sigma practices.
+                    </p>
+                </div>
+                <div className="process-steps-container">
+                    <div className="process-step">
+                        <div className="step-number">1</div>
+                        <h3>Product Demo</h3>
+                        <p>showcasing a live 4-step demo of the product.</p>
+                    </div>
+                    <div className="process-step">
+                        <div className="step-number">2</div>
+                        <h3>Discovery Phase</h3>
+                        <p>  your team to collect all project requirements. </p>
+                    </div>
+                    <div className="process-step">
+                        <div className="step-number">3</div>
+                        <h3> Design Diagram</h3>
+                        <p> the requirements are clear, we create a architecture diagram.</p>
+                    </div>
+                    <div className="process-step">
+                        <div className="step-number">4</div>
+                        <h3> Project Planning</h3>
+                        <p>we present a project plan that includes timelines, milestones.</p>
+                    </div>
+                </div>
+            </div>
 
-            {/* Sign Up Page Section - Remains after tabbed section */}
+             {/* Sign Up Page Section - Remains after tabbed section */}
             <div className="signupage">
                 <div className="page1">
                     <h4>
@@ -324,41 +360,6 @@ const Home = () => {
                             alt="AI Platform"
                             className="companyimgwel"
                         />
-                    </div>
-                </div>
-            </div>
-            
-            {/* Process Section */}
-            <div className="process-section">
-                <div className="process-header">
-                    <h4 className="process-subheading">Process</h4>
-                    <h2 className="process-main-heading">
-                        We Follow An {" "}Excellent Work Process
-                    </h2>
-                    <p className="process-description">
-                        Our services and solutions are always based on proven methodologies such as lean six sigma practices.
-                    </p>
-                </div>
-                <div className="process-steps-container">
-                    <div className="process-step">
-                        <div className="step-number">1</div>
-                        <h3>Discover & Consult</h3>
-                        <p>We pre-engage well with the stake holders.</p>
-                    </div>
-                    <div className="process-step">
-                        <div className="step-number">2</div>
-                        <h3>Test & Deploy</h3>
-                        <p>Our POCs are custom tested in each environment.</p>
-                    </div>
-                    <div className="process-step">
-                        <div className="step-number">3</div>
-                        <h3>Monitor & Report</h3>
-                        <p>We continuously monitor the results and report</p>
-                    </div>
-                    <div className="process-step">
-                        <div className="step-number">4</div>
-                        <h3>Deliver & Optimize</h3>
-                        <p>We deliver and constantly improve</p>
                     </div>
                 </div>
             </div>

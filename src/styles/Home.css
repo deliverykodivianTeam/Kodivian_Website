@@ -95,13 +95,13 @@ html, body {
 
 .home-logo {
     height: 100px; /* Adjust logo height as needed */
-    width: 500px; /* Maintain aspect ratio */
+    width: 870px; /* Maintain aspect ratio */
     /* --- Changes for Colorful, Distinct Look --- */
     /* Removed: filter: grayscale(100%); and opacity: 0.6; */
-    box-shadow: 0px 24px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for "box structure" elevation */
-    border-radius: 8px; /* Slightly rounded corners for the "box" effect */
-    padding: 15px 25px; /* Padding inside the "box" around the logo */
-    background-color: #ffffff; /* White background for the logo "box" */
+   
+    border-radius: 10px; /* Slightly rounded corners for the "box" effect */
+    padding: 10px 20px; /* Padding inside the "box" around the logo */
+    background-color: none; /* White background for the logo "box" */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
     /* Ensure image itself fits well within the padded box */
     display: block; /* Helps with centering if needed */
@@ -109,8 +109,8 @@ html, body {
 }
 
 .home-logo:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+    transform: translateY(-20px); /* Slight lift effect on hover */
+    box-shadow: 0px 8px 20px rgba(181, 60, 60, 0.15); /* More pronounced shadow on hover */
 }
 
 /* Keyframe animation for continuous horizontal scroll */
@@ -395,7 +395,7 @@ html, body {
 }
 
 .process-subheading {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #6a1b9a; /* Purple color */
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -403,14 +403,16 @@ html, body {
 }
 
 .process-main-heading {
-    font-size: 1.5rem;
+    
     color: #333;
     margin-bottom: 20px;
-    line-height: 1.2;
+   
 }
 
 .process-main-heading span {
-    color: #6a1b9a; /* Purple for highlighted text */
+  font-size: 4.9rem;  
+   line-height: 0.2;
+  color: #6a1b9a; /* Purple for highlighted text */
 }
 
 .process-description {
