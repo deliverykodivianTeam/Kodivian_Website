@@ -62,7 +62,7 @@ const Contact = () => {
       {/* Hero Section with Contact Info */}
       <div className="contact_hero_page">
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-white">
-          <div className="hero-contact-info">
+          <div className="hero-contact-info fade-up">
             <h1 className="text-3xl md:text-4xl font-bold mb-4">Contact Us</h1>
             <p className="mb-2">
               Feel free to use the form or drop us an email. Old-fashioned phone

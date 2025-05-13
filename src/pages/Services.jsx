@@ -85,98 +85,45 @@ const Services = () => {
       <h2 className="head-2" id="learn-more">
         Taking Your Business to the Next Level
       </h2>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between", // Changed to space-between
-          padding: "20px",
-          backgroundColor: "white",
-          gap: "5px", // Added gap of 5px between the direct children
-        }}
-      >
-        <div style={{ textAlign: "center", flex: 1 }}>
-          <div
-            style={{
-              position: "relative",
-              width: "250px", // Increased width to 250px
-              height: "250px", // Increased height to 250px
-              margin: "0 auto",
-            }}
-          >
+      <div className="services-container">
+        <div className="service-card">
+          <div className="service-image-wrapper">
             <img
               src={circle}
-              alt="Business Plans"
-              className="animated-element"
-              style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                width: "100%",
-                height: "100%",
-                objectFit: "contain",
-              }}
+              alt="Digital Transformation Strategy"
+              className="animated-element service-image"
             />
           </div>
-          <h3>Digital Transformation Strategy</h3>
-          <p style={{ color: "#777" }}>
+          <h3 className="services_floating_heading">Digital Transformation Strategy</h3>
+          <p className="service-description">
             Empowering businesses to embrace cutting-edge technology for
             enhanced growth and efficiency.
           </p>
         </div>
-        <div style={{ textAlign: "center", flex: 1 }}>
-          <div
-            style={{
-              position: "relative",
-              width: "250px", // Increased width to 250px
-              height: "250px", // Increased height to 250px
-              margin: "0 auto",
-            }}
-          >
+        <div className="service-card">
+          <div className="service-image-wrapper">
             <img
               src={tick}
-              alt="Business Plans"
-              className="animated-element"
-              style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                width: "100%",
-                height: "100%",
-                objectFit: "contain",
-              }}
+              alt="Cloud Integration Solutions"
+              className="animated-element service-image"
             />
           </div>
-          <h3>Cloud Integration Solutions</h3>
-          <p style={{ color: "#777" }}>
+          <h3 className="services_floating_heading">Cloud Integration Solutions</h3>
+          <p className="service-description">
             Seamlessly migrate your operations to the cloud, ensuring
             scalability, security, and optimized performance.
           </p>
         </div>
-        <div style={{ textAlign: "center", flex: 1 }}>
-          <div
-            style={{
-              position: "relative",
-              width: "250px", // Increased width to 250px
-              height: "250px", // Increased height to 250px
-              margin: "0 auto",
-            }}
-          >
+        <div className="service-card">
+          <div className="service-image-wrapper">
             <img
               src={square}
-              alt="Business Plans"
-              className="animated-element"
-              style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                width: "100%",
-                height: "100%",
-                objectFit: "contain",
-              }}
+              alt="AI-Powered Process Automation"
+              className="animated-element service-image"
             />
           </div>
-          <h3>AI-Powered Process Automation</h3>
-          <p style={{ color: "#777" }}>
+          <h3 className="services_floating_heading">AI-Powered Process Automation</h3>
+          <p className="service-description">
             Leveraging AI and automation to streamline operations, reduce manual
             effort.
           </p>
@@ -205,13 +152,13 @@ const Services = () => {
         </div>
       </div>
 
-      <div className="content-with-image-2" style={{ background: 'black' }}>
+      <div className="content-with-image-2" style={{ background: "black" }}>
         <img
           src={intro_3} // Use the second imported image
           alt="Description of image 2"
           className="content-image"
         />
-        <p className="large-text" style={{ color: 'white' }}>
+        <p className="large-text" style={{ color: "white" }}>
           Our Product Engineering Services provide comprehensive support
           throughout the entire product lifecycle. From the initial
           Conceptualization & Design phase, where we assist in preparing
@@ -254,8 +201,11 @@ const Services = () => {
         </p>
       </div>
 
-      <div className="content-with-image-4" style={{ backgroundColor: 'black' }}>
-        <p className="large-text" style={{ color: 'white' }}>
+      <div
+        className="content-with-image-4"
+        style={{ backgroundColor: "black" }}
+      >
+        <p className="large-text" style={{ color: "white" }}>
           Strategize Your Digital Transformation for Growth and Efficiency. This
           visual encapsulates the key elements of a successful digital
           transformation strategy. Picture a clear target with focused

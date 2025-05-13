@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../index.css"; // Import global styles
 import logo from "../assets/company_logo.png"; // Import your logo image
+import DemoBookingPopup from '../components/DemoBookingPopup';
 
 const Navbar = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   return (
     <nav className="navbar">
       <ul>
@@ -28,6 +39,8 @@ const Navbar = () => {
           <li className="navbar-button">
             <Link to="/contact">Contact</Link>
           </li>
+            <button onClick={handleOpenPopup} className="demo-button">Request a Demo</button>
+            <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
         </div>
       </ul>
     </nav>

@@ -38,10 +38,6 @@ const About = () => {
   const solutions = ["IntelliDocs", "Scanify", "RPA", "Process Builder"];
   const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0);
   const scrollingLogosRef = useRef(null);
-  const [typingText, setTypingText] = useState("");
-  const fullText = "We grow your business";
-  const typingSpeed = 100; // milliseconds per character
-  const [typingComplete, setTypingComplete] = useState(false);
 
   // Dummy data for team members (replace with your actual data)
   const teamMembers = [
@@ -102,24 +98,11 @@ const About = () => {
   ];
 
   useEffect(() => {
-    let timer;
-    if (typingText.length < fullText.length) {
-      timer = setTimeout(() => {
-        setTypingText(fullText.substring(0, typingText.length + 1));
-      }, typingSpeed);
-    } else {
-      setTypingComplete(true);
-      clearTimeout(timer); // Ensure timer is cleared when typing is complete
-    }
-    return () => clearTimeout(timer);
-  }, [typingText, fullText]);
-
-  useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentSolutionIndex(
         (prevIndex) => (prevIndex + 1) % solutions.length
       );
-    }, 2000);
+    }, 1000);
 
     return () => clearInterval(intervalId);
   }, [solutions.length]);
@@ -138,83 +121,19 @@ const About = () => {
 
   return (
     <div>
-      <div className="about-page">
-        <div
-          className={`absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-black ${
-            typingComplete ? "typing-complete" : ""
-          }`}
-        >
-          <div className="hero-about-info">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">
-              {typingText}
-              {!typingComplete && (
-                <span className="typed-cursor typed-cursor--blink">|</span>
-              )}
-              {typingComplete}
-            </h1>
-            <p className="about-para">
-              Start with a plan and finish with results
-            </p>
-          </div>
-        </div>
-        <img // Add the previous image here
-          src={constructionImage}
-          alt="Construction Animation"
-          className="styling_class" // You can add a CSS class for styling
-        />
-        <div className="styling_class_content">
-          It serves to build trust and connection by showcasing who they are,
-          what drives them, and the people behind their solutions.
-        </div>
+      <div className="about-page fade-up">
         <div className="rotating-solution-text" id="call-1">
           Shaping the future through innovative products{" "}
           <span className="colored-solution">
             {solutions[currentSolutionIndex]}
           </span>
         </div>
-        <div
-          className="about_content_image"
-        >
-          <p className="intro_about_banner">
-            At the heart of our innovation lies a powerful suite of intelligent
-            automation products — Scanify for seamless document scanning and
-            data capture, Process Builder to streamline complex workflows with
-            no-code logic, RPA to automate repetitive tasks and boost
-            efficiency, and IntelliDocs to create, manage, and deliver smart,
-            dynamic documents
-          </p>
-          <img
-            src={about_intro1}
-            alt="about_intro"
-            className="about_content_image"
-          />
-        </div>
-
-        <div
-          className="about_content_image"
-          style={{ backgroundColor: "black" }}
-        >
-          <img
-            src={about_intro}
-            alt="about_intro"
-            className="about_content_image"
-          />
-          <p className="intro_about_banner" style={{ color: "white" }}>
-            At the heart of our innovation lies a powerful suite of intelligent
-            automation products — Scanify for seamless document scanning and
-            data capture, Process Builder to streamline complex workflows with
-            no-code logic, RPA to automate repetitive tasks and boost
-            efficiency, and IntelliDocs to create, manage, and deliver smart,
-            dynamic documents
-          </p>
-        </div>
-
         <div className="about-stats-container">
           <div className="about-stat-box">
             <div className="stat-icon">
               <ClockIcon className="w-8 h-8 text-purple-500" />
             </div>
-            <div className="stat-number">3</div>
+            <div className="stat-number">4</div>
             <div className="stat-label">Years Experience</div>
           </div>
 
@@ -287,6 +206,50 @@ const About = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="about_content_image">
+        <img // Add the previous image here
+          src={constructionImage}
+          alt="Construction Animation"
+          className="about_content_image" // You can add a CSS class for styling
+        />
+        <p className="intro_about_banner_1">
+          Drive seamless operations and intelligent document management with our
+          innovative automation suite. Featuring Scanify for streamlined data
+          capture, Process Builder for codeless workflow creation, RPA for task
+          automation, and IntelliDocs for dynamic document generation and
+          delivery.
+        </p>
+      </div>
+      <div className="about_content_image">
+        <p className="intro_about_banner">
+          At the heart of our innovation lies a powerful suite of intelligent
+          automation products — Scanify for seamless document scanning and data
+          capture, Process Builder to streamline complex workflows with no-code
+          logic, RPA to automate repetitive tasks and boost efficiency, and
+          IntelliDocs to create, manage, and deliver smart, dynamic documents
+        </p>
+        <img
+          src={about_intro1}
+          alt="about_intro"
+          className="about_content_image_1"
+        />
+      </div>
+
+      <div className="about_content_image" style={{ backgroundColor: "black" }}>
+        <img
+          src={about_intro}
+          alt="about_intro"
+          className="about_content_image"
+        />
+        <p className="intro_about_banner" style={{ color: "white" }}>
+          Our innovation engine drives efficiency through a powerful suite of
+          intelligent automation tools. From Scannify's effortless document
+          scanning and data capture to Process Builder's intuitive no-code
+          workflow automation, RPA's ability to handle repetitive tasks, and
+          IntelliDocs' smart document lifecycle management, we offer
+          comprehensive solutions to elevate your operations.
+        </p>
       </div>
 
       <div className="rotating-solution-text-1">

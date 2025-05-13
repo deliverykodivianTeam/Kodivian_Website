@@ -10,15 +10,14 @@ import {
     FaPhone,
     FaEnvelope,
 } from "react-icons/fa";
-import underbanner from "../assets/underbanner.jpg"; // Make sure the path is correct relative to Bottom.jsx
+import under from "../assets/under.png"; // Make sure the path is correct relative to Bottom.jsx
 
 const Belowbar = () => {
     return (
         <div className="relative w-full overflow-hidden">
             <img
-                src={underbanner}
+                src={under}
                 alt="Wave Banner"
-                className="w-full block transition-opacity duration-500 opacity-90 hover:opacity-100"
             />
             <div className="absolute top-0 left-0 w-full p-8 md:p-12 text-white flex flex-col md:flex-row justify-between items-start mb-2">
                 {/* Left Side Content */}
