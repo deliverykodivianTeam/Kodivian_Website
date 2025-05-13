@@ -147,31 +147,31 @@ const Home = () => {
 
 
     // Effect for automatic tab advancement (remains unchanged in logic)
-    useEffect(() => {
-        const startAutoAdvance = () => {
-            if (autoAdvanceIntervalId) {
-                clearInterval(autoAdvanceIntervalId);
-            }
-            const interval = setInterval(() => {
-                setActiveTab(prevTabId => {
-                    const currentIdx = products.findIndex(p => p.id === prevTabId);
-                    const nextIdx = (currentIdx + 1) % products.length;
-                    return products[nextIdx].id;
-                });
-            }, 10000); // Advance every 10 seconds
-            setAutoAdvanceIntervalId(interval);
-        };
+   useEffect(() => {
+    let intervalId;
 
-        startAutoAdvance(); 
+    const startAutoAdvance = () => {
+        intervalId = setInterval(() => {
+            setActiveTab(prevTabId => {
+                const currentIdx = products.findIndex(p => p.id === prevTabId);
+                const nextIdx = (currentIdx + 1) % products.length;
+                return products[nextIdx].id;
+            });
+        }, 10000);
+    };
 
-        return () => {
-            if (autoAdvanceIntervalId) {
-                clearInterval(autoAdvanceIntervalId);
-            }
-        };
-    }, [products.length, autoAdvanceIntervalId]);
+    startAutoAdvance();
 
-    // Handle manual tab clicks - clear interval and restart
+    return () => {
+        if (intervalId) {
+            clearInterval(intervalId);
+        }
+    };
+}, [products.length, setActiveTab]); // Add setActiveTab to dependencies if it's defined outside the effect
+
+// Make sure setActiveTab is stable if defined outside the component,
+// otherwise, you might need to include it in the dependency array.
+// If setActiveTab is the standard useState setter, it's safe to include. // Handle manual tab clicks - clear interval and restart
     const handleTabClick = (productId) => {
         if (autoAdvanceIntervalId) {
             clearInterval(autoAdvanceIntervalId);
@@ -230,31 +230,6 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* NEW: Scrolling Logos Section - CLASSNAMES AND HANDLERS RENAMED */}
-            <div className="home-scrolling-logos-container">
-                <h2 className="home-framer-text">
-                    Trusted by thousands of agencies and consulting firms
-                </h2>
-                <div
-                    ref={homeScrollingLogosRef}
-                    className={`home-scrolling-logos ${isScrollingPaused ? 'paused' : ''}`}
-                    onMouseEnter={handleHomeLogosMouseEnter}
-                    onMouseLeave={handleHomeLogosMouseLeave}
-                >
-                    {/* Duplicate the logos-set for seamless scrolling */}
-                    <div className="home-logos-set">
-                        {clientLogos.map((logo, index) => (
-                            <img key={index} src={logo} alt={`Client Logo ${index}`} className="home-logo" />
-                        ))}
-                    </div>
-                    <div className="home-logos-set" aria-hidden="true"> {/* aria-hidden for accessibility */}
-                        {clientLogos.map((logo, index) => (
-                            <img key={index + clientLogos.length} src={logo} alt={`Client Logo ${index} (duplicate)`} className="home-logo" />
-                        ))}
-                    </div>
-                </div>
-            </div>
-
             {/* Existing: Tabbed Product Section (now sits below the intro) */}
             <div className="welcomepage-tabbed">
                 {/* Tab Navigation Bar */}
@@ -297,6 +272,31 @@ const Home = () => {
                 </div>
             </div>
 
+            {/* NEW: Scrolling Logos Section - CLASSNAMES AND HANDLERS RENAMED */}
+            <div className="home-scrolling-logos-container">
+                <h2 className="home-framer-text">
+                    Trusted by thousands of agencies and consulting firms
+                </h2>
+                <div
+                    ref={homeScrollingLogosRef}
+                    className={`home-scrolling-logos ${isScrollingPaused ? 'paused' : ''}`}
+                    onMouseEnter={handleHomeLogosMouseEnter}
+                    onMouseLeave={handleHomeLogosMouseLeave}
+                >
+                    {/* Duplicate the logos-set for seamless scrolling */}
+                    <div className="home-logos-set">
+                        {clientLogos.map((logo, index) => (
+                            <img key={index} src={logo} alt={`Client Logo ${index}`} className="home-logo" />
+                        ))}
+                    </div>
+                    <div className="home-logos-set" aria-hidden="true"> {/* aria-hidden for accessibility */}
+                        {clientLogos.map((logo, index) => (
+                            <img key={index + clientLogos.length} src={logo} alt={`Client Logo ${index} (duplicate)`} className="home-logo" />
+                        ))}
+                    </div>
+                </div>
+            </div>
+
             {/* Sign Up Page Section - Remains after tabbed section */}
             <div className="signupage">
                 <div className="page1">
@@ -333,10 +333,7 @@ const Home = () => {
                 <div className="process-header">
                     <h4 className="process-subheading">Process</h4>
                     <h2 className="process-main-heading">
-                        We Follow An {" "}
-                        <span>
-                            Excellent Work Process
-                        </span>
+                        We Follow An {" "}Excellent Work Process
                     </h2>
                     <p className="process-description">
                         Our services and solutions are always based on proven methodologies such as lean six sigma practices.
