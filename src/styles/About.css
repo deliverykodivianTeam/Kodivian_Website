@@ -235,6 +235,8 @@
   text-align: center; /* Center the content within each card */
 }
 
+
+
 @media (max-width: 1024px) { /* Adjust for medium screens (e.g., tablets) */
   .team-member-card {
     width: calc(33.33% - 16px); /* Display in 3 columns */
@@ -255,7 +257,7 @@
 
 .member-image {
   width: 200px; /* Or any desired fixed width for the images */
-  height: 200px; /* Maintain a square aspect ratio */
+  height: 250px; /* Maintain a square aspect ratio */
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 0.5rem;

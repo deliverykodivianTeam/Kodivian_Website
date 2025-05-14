@@ -28,6 +28,7 @@ import eastman from "../assets/eastman.png";
 import Chairman from "../assets/chairman.jpeg";
 import Director from "../assets/directer.jpeg";
 import Raja from "../assets/Raja.jpeg";
+import Rithish from "../assets/Rithish.jpg"
 import Anjana from "../assets/Anjana.jpeg";
 import Mothi from "../assets/Mothi.jpeg";
 import Suganthi from "../assets/Suganthi.jpeg";
@@ -92,7 +93,7 @@ const About = () => {
     {
       name: "Rithish PG",
       role: "Technical Consultant",
-      image: Director, // Assuming you want to reuse Director's image here.
+      image: Rithish, // Assuming you want to reuse Director's image here.
       linkedin: "https://www.linkedin.com/", // Add actual
     },
   ];
