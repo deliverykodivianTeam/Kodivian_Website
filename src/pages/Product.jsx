@@ -27,7 +27,7 @@ const Product = () => {
 
     return (
         <div>
-            <div className="hero-section">
+            <div className="hero-section fade-up">
                         <p className="hero-subtitle">AI-powered productivity</p>
                         <h1 className="hero-title">Work <br /> smarter, <br /> finish faster</h1>
                         <p className="hero-description">Take control of your tasks, automate workflows and stay focused with our all-in-one AI-driven platform.</p>
