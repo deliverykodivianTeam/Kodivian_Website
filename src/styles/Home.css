@@ -198,7 +198,7 @@ html, body {
     max-width: 1200px;
     margin: 50px auto 0;
     padding: 0 50px;
-    gap: 50px;
+    gap: 20px;
 
     opacity: 0;
     transform: translateY(20px);
@@ -212,7 +212,6 @@ html, body {
 
 .tab-content-left {
     flex: 1;
-    max-width: 55%;
     text-align: left;
     margin-left: -180px;
 }
@@ -220,7 +219,7 @@ html, body {
 .tab-content-heading h1 {
     font-size: 3.2rem;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 400px;
     line-height: 1.2;
 }
 
@@ -237,18 +236,16 @@ html, body {
 
 .tab-content-right {
     flex: 1;
-    max-width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .product-display-image {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 6900px;
+    margin-left: 400px;
+    margin-bottom: 320px;
+    height: 350px;
 }
 
 /* ---------------------------------------------------------- */
@@ -387,6 +384,7 @@ html, body {
     background-color: #fff; /* White background */
     padding: 80px 50px;
     text-align: center;
+    font-size: 1.1rem;
 }
 
 .process-header {
@@ -395,7 +393,6 @@ html, body {
 }
 
 .process-subheading {
-    font-size: 1.1rem;
     color: #6a1b9a; /* Purple color */
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -403,15 +400,13 @@ html, body {
 }
 
 .process-main-heading {
-    
-    color: #333;
+     font-size: 1.9rem;  
+    color: #161515;
     margin-bottom: 20px;
-   
 }
 
 .process-main-heading span {
   font-size: 4.9rem;  
-   line-height: 0.2;
   color: #6a1b9a; /* Purple for highlighted text */
 }
 
@@ -551,7 +546,7 @@ html, body {
 
     /* Process Section Responsive */
     .process-main-heading {
-        font-size: 2.8rem;
+        font-size: 2.9rem;
     }
     .process-description {
         font-size: 1rem;
@@ -695,4 +690,17 @@ html, body {
     .process-step h3 {
         font-size: 1.2rem;
     }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

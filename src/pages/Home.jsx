@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
 import "../styles/Home.css";
+import React, { useState, useEffect, useRef } from "react";
+// ... other imports
+import ScanifyContent from '../pages/ScanifyDetail'; // Adjust the path as needed
+// ... rest of your imports
 import DemoBookingPopup from '../components/DemoBookingPopup';
 import { Link, useNavigate } from "react-router-dom";
 
@@ -12,7 +15,7 @@ import image5 from "../assets/image5.jpg";
 import image4 from "../assets/image8.jpeg";
 
 // Icon imports for product tabs
-import icon1 from "../assets/scanimg.png";
+import icon1 from "../assets/scanifyprocess.png";
 import icon2 from "../assets/docimg.jpg";
 import icon3 from "../assets/rpaimg.png";
 import icon4 from "../assets/proimg.png";
@@ -204,7 +207,7 @@ const Home = () => {
     return (
         <div
             id="home-main-wrapper"
-            className="homemain"
+            className="homemain fade-up"
         >
             {/* NEW: Top Introduction Section */}
             <div className="intro-hero-section">
@@ -248,28 +251,25 @@ const Home = () => {
                 </div>
 
                 {/* Content Display Area for the Active Tab */}
-                <div className="tab-content-display">
-                    <div className="tab-content-left">
-                        {/* Display active product's dynamic title and description */}
-                        <div className="tab-content-heading">
-                            <h1>
-                                Accelerate your business with {" "}
-                                <span>
-                                    {activeProduct.name}
-                                </span>
-                            </h1>
-                        </div>
-                        <p>
-                            {activeProduct.description}
-                        </p>
+<div className="tab-content-display">
+    <div className="tab-content-left">
+        {/* Display active product's dynamic title and description */}
+        <div className="tab-content-heading">
+            <h1>
+                Accelerate your business with {" "}
+                <span>
+                    {activeProduct.name}
+                </span>
+            </h1>
+        </div>
+       
+    </div>
 
-                    </div>
-
-                    {/* Right side content - Active Product Image (or other related visuals) */}
-                    <div className="tab-content-right">
-                        <img src={activeProduct.image} alt={activeProduct.name} className="product-display-image" />
-                    </div>
-                </div>
+    {/* Right side content - Active Product Image (or other related visuals) */}
+    <div className="tab-content-right">
+        <img src={activeProduct.image} alt={activeProduct.name} className="product-display-image" />
+    </div>
+</div>
             </div>
 
             {/* NEW: Scrolling Logos Section - CLASSNAMES AND HANDLERS RENAMED */}
@@ -314,7 +314,7 @@ const Home = () => {
                         impact through intelligent innovation.
                     </p>
                     <button>
-                        Get Started
+                        Get Started 
                     </button>
                 </div>
                 <div className="imagewel">
@@ -330,15 +330,19 @@ const Home = () => {
             
             {/* Process Section */}
             <div className="process-section">
+               
                 <div className="process-header">
-                    <h4 className="process-subheading">Process</h4>
-                    <h2 className="process-main-heading">
-                        We Follow An {" "}Excellent Work Process
-                    </h2>
-                    <p className="process-description">
+                      <h4 className="process-subheading">Process</h4>
+                        <h1 className="process-main-heading">
+                           We Follow An Excellent{" "}
+                            <span>
+                                Work Process
+                            </span>
+                        </h1>
+                        <p className="process-description">
                         Our services and solutions are always based on proven methodologies such as lean six sigma practices.
                     </p>
-                </div>
+                    </div>
                 <div className="process-steps-container">
                     <div className="process-step">
                         <div className="step-number">1</div>
