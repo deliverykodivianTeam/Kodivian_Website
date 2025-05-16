@@ -40,7 +40,7 @@ const Product = () => {
 
     return (
         <div>
-            <div className="product-page">
+            <div className="product-page fade-up">
                 <div className="hero-section elevated">
                     <div className="hero-content">
                         <p className="hero-subtitle primary-text">Explore Our Leading Solutions</p>

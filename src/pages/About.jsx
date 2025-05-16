@@ -46,55 +46,55 @@ const About = () => {
       name: "Sridhar Kamakoti",
       role: "Chairman",
       image: Chairman, // Use your imported images
-      linkedin: "https://www.linkedin.com/in/sridhar-kamakoti", // Replace with actual LinkedIn URLs
+      linkedin: "https://www.linkedin.com/in/kamakoti-sridhar-27587724?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAUch7kBCCd8wTAX97TCLHtswuMIYbCqrwA&lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BMmw3evXEQMyueKiRC2BnZw%3D%3D", // Replace with actual LinkedIn URLs
     },
     {
       name: "Vijay Sabari",
       role: "Managing Director",
       image: Director,
-      linkedin: "https://www.linkedin.com/in/vijay-sabari",
+      linkedin: "https://www.linkedin.com/in/vijaysabari-mugunthan-16b57441?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAjN3uMBpbTq7jlVvOyYljD8N7eAobuAyFM&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
     },
     {
       name: "Raja SM",
       role: "Business Analyst",
       image: Raja,
-      linkedin: "https://www.linkedin.com/in/raja-sm",
+      linkedin: "https://www.linkedin.com/in/rajashanmugam3?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADeOfkgBeq5fczrDnHNTcFzKmaE0qTVIgTo&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
     },
     {
       name: "Anjana",
       role: "Marketing & Branding Strategist",
       image: Anjana,
-      linkedin: "https://www.linkedin.com/", // Add actual
+      linkedin: "https://www.linkedin.com/in/anjana-subramaniam-a4610313?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAKvVhYB9qzWJjiqOW6iOYYbhUOyy603gHQ&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe", // Add actual
     },
     {
       name: "Mothi Kumaresan",
       role: "Business Development Manager",
       image: Mothi,
-      linkedin: "https://www.linkedin.com/", // Add actual
+      linkedin: "https://www.linkedin.com/in/mothi-kumaresan-4a435b22?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAASt5fwBURhttUBecc5ESWUM-IEWPl3iLyY&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe", // Add actual
     },
     {
       name: "Suganthi",
       role: "Technical Project Manager",
       image: Suganthi,
-      linkedin: "https://www.linkedin.com/", // Add actual
+      linkedin: "https://www.linkedin.com/in/suganthi-s-91410124b?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAD3GB-ABmhGB1SJlO5H721Mj7aRK61shRa0&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe", // Add actual
     },
     {
       name: "Kaviya",
       role: "Global PMO Executive",
       image: Kaviya,
-      linkedin: "https://www.linkedin.com/", // Add actual
+      linkedin: "https://www.linkedin.com/in/kaviya-arivaratharaj-701436253?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAD6Iv3EBqYLk-gYm8vy1zSEloGtMluS_Ucw&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe", // Add actual
     },
     {
       name: "Preethi JB",
       role: "Technical Consultant",
       image: Preethi,
-      linkedin: "https://www.linkedin.com/", // Add actual
+      linkedin: "https://www.linkedin.com/in/preethijb03?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAE8SmBwBxakLMoqv_Rvvr7PShOA2griketE&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe", // Add actual
     },
     {
       name: "Rithish PG",
       role: "Technical Consultant",
       image: Rithish, // Assuming you want to reuse Director's image here.
-      linkedin: "https://www.linkedin.com/", // Add actual
+      linkedin: "https://www.linkedin.com/in/rithish-pg?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADkrY1gBCpFun1vpv5JXKS5mU82zUES0lMg&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe", // Add actual
     },
   ];
 
