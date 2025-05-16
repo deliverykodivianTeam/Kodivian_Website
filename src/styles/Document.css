@@ -1,46 +1,49 @@
-/* Document.css */
+/* DoctoDocument.css */
 
-.doc-document-page {
+.docto-document-page {
     font-family: sans-serif;
-    color: none;
-    background-color: none; /* Optional background color for the whole page */
+    color: none; /* Light gray text for better contrast on dark background */
+    background-color:none; /* Dark black background */
     margin: 0;
     padding: 0;
-  }
-  
-  /* Hero Section Styles */
-  .doc-hero {
-    background-color: none; /* Dark background as in the image */
-    color: black;
+}
+
+/* Hero Section Styles */
+.docto-hero {
+    background-color: none; /* Slightly lighter black for contrast */
+    color: #080000;
     margin-top: 50px;
     padding: 80px 30px;
     text-align: center;
     position: relative; /* For positioning the image cards */
     overflow: hidden; /* To contain absolutely positioned elements */
-  }
-  
-  .doc-hero-content {
+}
+
+.docto-hero-content {
     height: 250px;
-  }
-  
-  .doc-hero-h1 {
+}
+
+.docto-hero-h1 {
     font-size: 2.5rem;
     margin-bottom: 15px;
-  }
-  
-  .doc-hero-h2 {
+    color: #090110; /* Light violet */
+}
+
+.docto-hero-h2 {
     font-size: 1.8rem;
     font-weight: normal;
     margin-bottom: 10px;
-  }
-  
-  .doc-hero-p {
+    color: #ba14f7b5;
+}
+
+.docto-hero-p {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 8px;
-  }
-  
-  .doc-hero-image {
+    color: #1e0224e2;
+}
+
+.docto-hero-image {
     position: relative;
     display: flex;
     margin-top: 100px;
@@ -48,10 +51,10 @@
     padding: 100px;
     margin-right: 190px;
     height: 300px; /* Add some padding around the cards */
-  }
-  
-  .doc-hero-image-card {
-    background-color: #fff;
+}
+
+.docto-hero-image-card {
+    background-color: none; /* Darker gray card background */
     border-radius: 10px;
     box-shadow: 7px 10px 18px rgba(4, 0, 12, 0.849);
     padding: 50px; /* Increase padding inside the cards */
@@ -59,361 +62,493 @@
     height: 200px; /* Optional: set a fixed height */
     position: absolute;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  
-  .doc-hero-image-card:hover {
+    border: 1px solid #444; /* Subtle border */
+}
+
+.docto-hero-image-card:hover {
     transform: translateY(-8px); /* Slightly more lift on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  }
-  
-  .doc-card-1 {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.docto-card-1 {
     transform: translateX(-200px) translateY(-30px) rotate(-6deg); /* Adjust translation */
-    background-color: #ba33f4; /* Light blue */
+    background-color: #9370db; /* Medium violet */
     margin-right: 120px;
-    border-radius: 0px;
+    border-radius: 5px;
     margin-top: -100px;
-    background-image: url('../assets/doc.png'); 
+    background-image: url('../assets/doc.png');
     background-size: cover;
     height: 320px;
-  }
-  
-  .doc-card-2 {
+    border: none;
+    box-shadow: 5px 7px 12px rgba(147, 112, 219, 0.5);
+}
+
+.docto-card-2 {
     z-index: 10;
     width: 440px; /* Slightly larger central card */
     background-image: url('../assets/docimage.png');
     background-size: cover; /* Ensures the image covers the entire box */
     height: 260px;
-    border-radius: none; /* Removes any border radius */
-    border: none; /* This line removes the border */
+    border-radius: 5px; /* Add a slight border radius */
+    border: none; /* Remove default border */
     padding: 0; /* Ensure no padding is adding to the size */
     margin: 0; /* Ensure no default margins are affecting it */
-  }
-  
-  .doc-card-3 {
+    box-shadow: 8px 10px 15px rgba(0, 0, 0, 0.6);
+}
+
+.docto-card-3 {
     transform: translateX(200px) translatey(-20px) rotate(-29deg); /* Adjust translation */
-    background-color: #fd9904; /* Light orange */
+    background-color: #a352cc; /* Another shade of violet */
     height: 270px;
     width: 420px;
-    background-image: url('../assets/doc2.jpg'); 
+    background-image: url('../assets/doc2.jpg');
     background-size: cover;
-    border-radius: 0px;
+    border-radius: 5px;
     margin-top: -200px;
     margin-left: 250px;
-  }
-  
-  .doc-card-4 {
+    border: none;
+    box-shadow: 5px 7px 12px rgba(163, 82, 204, 0.5);
+}
+
+.docto-card-4 {
     transform: translateX(80px) translatex(70px) rotate(-3deg); /* Adjust translation */
     width: 320px; /* Slightly smaller fourth card */
     height: 320px;
     margin-left: 620px;
-    background-image: url('../assets/invoice.jpg'); 
+    background-image: url('../assets/invoice.jpg');
     background-size: cover;
-    border-radius: 0px;
+    border-radius: 5px;
     margin-top: -70px;
-    background-color: #000509b9; /* Another light blue */
-  }
-  
-  .hero-image-central-icon {
+    background-color: #333; /* Dark background overlay if needed */
+    border: none;
+    box-shadow: 5px 7px 12px rgba(0, 0, 0, 0.5);
+}
+
+.docto-hero-image-central-icon {
     width: 80px; /* Increased icon size */
     height: 80px; /* Increased icon size */
-    background-color: #6e5d71f0; /* Pink for the 'D' */
+    background-color: #6a1b9a; /* Darker violet for the 'K' */
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(232, 4, 244);
+    color: #f3e5f5; /* Very light violet */
     font-size: 3rem; /* Increased font size */
     font-weight: bold;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-  
-  .doc-central-icon {
+    border: 2px solid #d8b4fe; /* Light violet border */
+}
+
+.docto-central-icon {
     width: 80px; /* Increased icon size */
     height: 90px; /* Increased icon size */
-    background-color: #6e5d71f0; /* Pink for the 'D' */
+    background-color: #6a1b9a; /* Darker violet for the 'K' */
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(189, 15, 198);
+    color: #f3e5f5; /* Very light violet */
     font-size: 3rem; /* Increased font size */
     font-weight: bold;
     position: absolute;
     top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-  
+    border: 2px solid #d8b4fe; /* Light violet border */
+}
 
-  
-  /* Why Customers Choose Us Section Styles */
-  .doc-why-choose-us {
+
+/* Why Customers Choose Us Section Styles */
+.docto-why-choose-us {
     padding: 60px 80px;
     text-align: center;
-    background-color: none; /* Light gray background, adjust as needed */
-  }
-  
-  .doc-why-choose-us-h2 {
-    font-size: 2rem;
+    background-color: none; /* Keep the dark background */
+}
+
+.docto-why-choose-us-h2 {
+    font-size: 3rem;
     margin-bottom: 40px;
-    color: #333;
-  }
-  
-  .doc-features-grid {
+    color: #0a0015; /* Light violet heading */
+}
+
+.docto-features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Forces three equal columns */
     gap: 30px;
     margin-top: 20px;
-  }
-  
-  .doc-feature-item {
+}
+
+.docto-feature-item {
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(186, 175, 175, 0.964);
+    box-shadow: 0 2px 4px rgba(224, 224, 224, 0.1); /* Subtle shadow */
     text-align: center; /* Center content within each feature item */
-  }
-  
-  .doc-feature-icon {
+    background-color: none; /* Darker background for items */
+    border: 2px solid #444;
+}
+
+.docto-feature-icon {
     width: 50px;
     height: 50px;
     margin: 0 auto 20px; /* Center horizontally and add bottom margin */
-    color: #ffa600;
-  }
-    /* Document.css (Continued) */
+    color: #030006; /* Light violet icon color */
+}
 
-.doc-feature-icon svg {
+.docto-feature-icon svg {
     width: 100%;
     height: 100%;
-  }
-  
-  .doc-feature-item-h3 {
+}
+
+.docto-feature-item-h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .doc-feature-item-p {
+    color: #0a0000;
+}
+
+.docto-feature-item-p {
     font-size: 1rem;
     line-height: 1.6;
-    color: #555;
-  }
-  
+    color: #8714b1;
+}
 
-  .doc-how-to-get-started-layout {
-    display: flex;
-    gap: 30px; /* Space between left and right sections */
-    max-width: 1200px;
-    margin: 90px;
-    padding: 90px;
+
+.docto-how-to-get-started-left {
+    padding: 10px;
+    text-align: center;
     background-color: none;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  }
-  
-  .doc-how-to-get-started-left {
-    flex: 1; /* Takes up remaining space */
-    padding-right: 20px;
-    border-right: 1px solid #eee;
-  }
-  
-  .doc-how-to-get-started-right {
-    flex: 1; /* Takes up remaining space */
-    padding-left: 20px;
-  }
-  
-  .doc-how-to-get-started-h2 {
-    font-size: 4.0rem;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center; /* Align text to the left in the left section */
-  }
-  
-  .doc-how-to-get-started-intro {
-    color: #555;
+}
+
+.docto-how-to-get-started-h2 {
+    font-size: 3.5rem;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    color: #080011;
+}
+
+.docto-how-to-get-started-intro {
+    color: #23032db3;
     line-height: 1.6;
-    margin-bottom: 40px;
-    text-align: center; /* Align text to the left in the left section */
-  }
-  
-  .doc-steps-layout {
+    margin-bottom: 10px;
+}
+
+.docto-how-to-get-started-right {
+    background-color: none;
+    padding: 10px;
+}
+
+.docto-steps-layout {
     display: flex;
     gap: 35px; /* Space between sidebar and content */
     align-items: flex-start; /* Align sidebar and content to the top */
-  }
-  
-  .doc-steps-sidebar {
-    width: 750px;/* Adjust sidebar width as needed */
+    max-width: 1900px;
+    margin: 0 auto; /* Center the layout */
+}
+
+.docto-steps-sidebar {
+    width: 1800px; /* Adjust sidebar width as needed */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.docto-step-sidebar-item {
+    background-color: none;
+    border: 1px solid #0b0000;
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    
+    color: #100101;
+    font-size: 1.3rem;
+    text-align: left;
+}
+
+.docto-step-sidebar-item:hover {
+    background-color: none;
+    color: #9409b0;
+}
+
+.docto-steps-content {
+    flex-grow: 1; /* Take remaining width */
+    background-color: none;
+    border: 1px solid #807979;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.docto-step-explanation {
+    background-color: none;
+
+   
+    padding: 20px;
+    color: #160101;
+    font-size: 1.4rem;
+}
+
+.docto-step-explanation h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #09000cd4;
+    font-size: 2.9rem;
+}
+
+/* Active state for the sidebar item */
+.docto-steps-sidebar .docto-step-sidebar-item.docto-active {
+    background-color: none; /* Dark violet active */
+    color: #010118e2;
+    font-weight: bold;
+    border-color: #05000a;
+}
+
+/* FAQ Section */
+.docto-faq-section {
+    padding: 10px 80px;
+    background-color: rgba(6, 0, 8, 0.129);
+    color: #0b0000;
+    text-align: center;
+}
+
+.docto-faq-heading {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #460d7f;
+}
+
+.docto-faq-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.docto-faq-item {
+    margin-bottom: 15px;
+    border-bottom: 2px solid #080008;
+    padding: 20px;
+}
+
+.docto-faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    padding-right: 15px;
+}
+
+.docto-faq-toggle {
+    font-size: 1.2rem;
+    color: #620375;
+}
+
+.docto-faq-answer {
+    padding-top: 10px;
+    color: #74096c;
+    line-height: 1.6;
+}
+
+.docto-faq-query-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.docto-faq-query-button {
+    background-color: #6a1b9a;
+    color: #f3e5f5;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.docto-faq-query-button:hover {
+    background-color: #9370db;
+}
+
+.docto-query-input-area {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-  }
-  
-  .doc-step-sidebar-item {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    width: 350px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.docto-query-textbox,
+.docto-query-Emailbox {
     padding: 10px;
-    margin-left: 40px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    font-size: 0.9rem;
-  }
-  
-  .doc-step-sidebar-item:hover {
-    background-color: #f0f0f0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .doc-steps-content {
-    flex-grow: 1; /* Take remaining width */
-    gap: 10px;
-    background-color: #fff;
-    border: 1px solid #eee;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.docto-query-submit-button {
+    background-color: #d8b4fe;
+    color: #1a1a1a;
+    border: none;
+    padding: 12px 25px;
     border-radius: 8px;
-  }
-  
-  .doc-step-explanation {
-    background-color: none;
-    border-color: none;
-    border: 1px solid #141212;
-    border-radius: 8px;
-    width: 850px;
-    padding: 20px;
     cursor: pointer;
-    
-    font-size: 0.9rem;
-  }
-  
-  .doc-step-explanation h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.docto-query-submit-button:hover {
+    background-color: #f3e5f5;
     color: #333;
-    font-size: 1.2rem;
-  }
-  .doc-image{
-    width: 390%;
-    height: 350px;
-    margin-bottom: 20px;
-    margin-right: 320px;
-  }
-  /* Active state for the sidebar item */
-  .doc-steps-sidebar .doc-step-sidebar-item.doc-active {
-    background-color: #e0f7fa;
-    border-color: #4dd0e1;
-    gap: 90px;
-    font-weight: bold;
-  }
+}
 
+/* New Bottom Section */
+.docto-bottom-cta-section {
+    background-color: #1a1a1a;
+    padding: 1px;
+    text-align: bottom;
+    color: #4e08ff;
+    font-size: 0.9rem;
+}
 
-  
-  /* Responsive Design (Example for smaller screens) */
-  @media (max-width: 768px) {
-    .header {
-      padding: 15px 20px;
-    }
-  
-  
-    .hero {
-      padding: 60px 20px;
-    }
-  
-    .hero-h1 {
-      font-size: 2rem;
-    }
-  
-    .hero-h2 {
-      font-size: 1.4rem;
-    }
-  
-    .hero-image {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .hero-image-card {
-      width: 90%; /* Make cards take up more width on smaller screens */
-    }
-  
-    .doc-card-2 {
-      width: 95%;
-    }
-  
-    .doc-card-4 {
-      width: 85%;
+.docto-faq-query-info {
+    margin-bottom: 0px;
+    color: #fcf7f7;
+}
+
+/* Responsive Design (Example for smaller screens) */
+@media (max-width: 768px) {
+    .docto-hero {
+        padding: 60px 20px;
     }
 
-    .doc-central-icon {
+    .docto-hero-h1 {
+        font-size: 2rem;
+    }
+
+    .docto-hero-h2 {
+        font-size: 1.4rem;
+    }
+
+    .docto-hero-image {
+        flex-direction: column;
+        align-items: center;
+         margin-right: 0;
+        padding: 20px;
+        height: auto;
+    }
+
+    .docto-hero-image-card {
+        width: 90%; /* Make cards take up more width on smaller screens */
+        position: relative;
+        transform: none !important;
+        margin: 20px 0 !important;
+    }
+
+    .docto-card-2 {
+        width: 95%;
+    }
+
+    .docto-card-4 {
+        width: 85%;
+    }
+
+    .docto-central-icon {
         width: 60px; /* Revert to smaller size on mobile */
         height: 60px;
         font-size: 2rem;
-      }
-      .doc-features-grid {
-        grid-template-columns: 1fr; /* Stack on smaller screens */
-      }
+    }
 
-    .doc-feature-item {
+    .docto-features-grid {
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+    }
+
+    .docto-feature-item {
         text-align: center; /* Ensure text is centered */
         padding: 20px; /* Adjust padding */
     }
-    .doc-how-to-get-started {
+
+    .docto-how-to-get-started-left {
         padding: 40px 20px;
-        flex-direction: column; /* Stack steps and content */
-        align-items: center; /* Center items */
     }
 
-    .doc-how-to-get-started-h2 {
-        font-size: 1.8rem;
+    .docto-how-to-get-started-h2 {
+        font-size: 2rem;
         margin-bottom: 15px;
         text-align: center; /* Center heading */
     }
 
-    .doc-how-to-get-started-intro {
+    .docto-how-to-get-started-intro {
         text-align: center; /* Center intro text */
         margin-bottom: 30px;
     }
 
-    .doc-steps-layout {
+    .docto-steps-layout {
         flex-direction: column; /* Stack sidebar and content */
         align-items: stretch; /* Make them take full width */
         gap: 20px;
-       }
-    
-       .doc-steps-sidebar {
+    }
+
+    .docto-steps-sidebar {
         width: 100%; /* Full width */
         flex-direction: row; /* Arrange items horizontally */
         overflow-x: auto; /* Enable horizontal scrolling if needed */
-       }
-    
-       .doc-step-sidebar-item {
+    }
+
+    .docto-step-sidebar-item {
         margin-right: 10px;
         margin-bottom: 0; /* Remove bottom margin */
         flex-shrink: 0; /* Prevent items from shrinking */
         min-width: auto; /* Adjust as needed */
         text-align: center; /* Center text in buttons */
-       }
-    
-       .doc-steps-content {
+    }
+
+    .docto-steps-content {
         padding: 20px;
-       }
-    
-       .doc-cartoon-slide-in {
+    }
+
+    .docto-cartoon-slide-in {
         flex-direction: column;
         align-items: center;
         width: 80%;
         margin: 20px auto; /* Center the content */
-       }
-    
-       .doc-cartoon-slide-in img {
+    }
+
+    .docto-cartoon-slide-in img {
         max-width: 100%;
-       }
-    
-       .doc-cartoon-slide-in .doc-step-explanation {
-        text-align: center;
-       }
-     }
+    }
+
+    .docto-cartoon-slide-in .docto-step-explanation {
+        text-align: left; /* Adjust text alignment inside explanation */
+    }
+
+    .docto-faq-section {
+        padding: 40px 20px;
+    }
+
+    .docto-faq-heading {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .docto-faq-list {
+        max-width: 100%;
+    }
+
+    .docto-faq-query-container {
+        margin-top: 30px;
+    }
+
+    .docto-query-input-area {
+        max-width: 100%;
+    }
+
+    .docto-bottom-cta-section {
+        padding: 20px 0;
+        font-size: 0.8rem;
+    }
+}

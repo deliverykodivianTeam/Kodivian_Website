@@ -16,9 +16,9 @@ import image4 from "../assets/image8.jpeg";
 
 // Icon imports for product tabs
 import icon1 from "../assets/scanifyprocess.png";
-import icon2 from "../assets/docimg.jpg";
-import icon3 from "../assets/rpaimg.png";
-import icon4 from "../assets/proimg.png";
+import icon2 from "../assets/processbuilderpro.png";
+import icon3 from "../assets/rpapro.png";
+import icon4 from "../assets/docpro.png";
 
 // Updated imports for the scrolling client logos
 // YOU MUST ENSURE THESE IMAGE FILES ARE IN YOUR 'src/assets/' FOLDER
@@ -224,13 +224,11 @@ const Home = () => {
                         Kodivian is at the forefront of AI and RPA technology. Our products automate tasks, optimize workflows, and deliver innovative solutions that enable businesses to thrive in an increasingly automated world.
 
                     </p>
-
-                    <button className="bg-purple-600 text-white rounded-full px-8 py-3 mt-8 font-semibold hover:bg-purple-500 transition-transform duration-300 hover:scale-105" onClick={handleOpenPopup}
-                    >
-                        Schedule Your Free Live Demo Today
-                    </button>
-                    <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
-                </div>
+                     </div>
+                     <div className="drtop-details-container">
+                     <button onClick={handleOpenPopup} className="hrcss">Schedule Your Free Live Demo Today</button>
+                        <DemoBookingPopup className="hrrcss" isOpen={isPopupOpen} onClose={handleClosePopup} />
+                     </div>
             </div>
 
             {/* Existing: Tabbed Product Section (now sits below the intro) */}
@@ -252,7 +250,7 @@ const Home = () => {
 
                 {/* Content Display Area for the Active Tab */}
 <div className="tab-content-display">
-    <div className="tab-content-left">
+    <div className="tab-content-left-full">
         {/* Display active product's dynamic title and description */}
         <div className="tab-content-heading">
             <h1>
@@ -262,12 +260,17 @@ const Home = () => {
                 </span>
             </h1>
         </div>
-       
+        <div className="tab-content-paragraph">
+            <p>{activeProduct.description}</p>
+            <Link to={activeProduct.link} className="learn-more-link">
+                Learn More <span className="arrow">&rarr;</span>
+            </Link>
+        </div>
     </div>
 
-    {/* Right side content - Active Product Image (or other related visuals) */}
-    <div className="tab-content-right">
-        <img src={activeProduct.image} alt={activeProduct.name} className="product-display-image" />
+    {/* Right side content - Active Product Image (fills the screen width) */}
+    <div className="tab-content-right-full">
+        <img src={activeProduct.image} alt={activeProduct.name} className="product-display-image-full" />
     </div>
 </div>
             </div>

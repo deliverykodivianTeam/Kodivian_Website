@@ -1,377 +1,591 @@
-/* Product.css */
-.hero-content {
-  /* align-items: center; */ /* Removed as the child is now positioned absolutely */
-  justify-content: space-between; /* Might not have a direct effect with absolute positioning */
-  /* background-repeat: no-repeat; */ /* Inherited from hero-section */
-  /* Inherited from hero-section */
-  /* background-position: center; */ /* Inherited from hero-section */
-   /* Needed for absolute positioning of children */
-  
-  padding: 0;
-  width: 100%;
-  height: 958px; /* Matches the image height */
-  margin-bottom: 0px;
-   /* Changed to block to take full width */
+/* Product.css - Professional Styling */
+.product-page {
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    color: #333; /* Dark grey for general text */
+    line-height: 1.7; /* Improved line height for readability */
+    padding-bottom: 40px; /* More substantial bottom padding */
+    background: none;
 }
 
- .hero-section{
-      padding: 10px;
-      margin-top: 140px;
-  /* Adjust spacing */
-  /* Adjust spacing */
- }
-
-
-@keyframes prodown {
-  from {
-    transform: translatey(-100px); /* Start from 100% above */
-  }
-  to {
-    transform: translatey(0%);  /* End at its original vertical position */
-  }
+.elevated {
+    background-color: none; /* Clean white background for sections */
+    margin: 30px auto; /* Increased margin for better spacing */
+    padding: 40px; /* More padding inside sections */
+    max-width: 90%; /* Slightly reduced max-width for better centering on larger screens */
+   
 }
 
+.primary-text {
+    color: #7c3aed; /* Vibrant violet */
+}
 
- .hero-subtitle {
-  color: oklch(49.6% 0.265 301.924); /* Example accent color */
-  font-size: 16px;
-    margin-left: 100px;
-    margin-top: -10px;
- }
+.secondary-text {
+     font-size: 3rem; 
+    color: #080000; /* Dark grey/almost black for headings */
+}
 
- .hero-title {
-  font-size: 3.5em;
-  margin-top: 19px;
-  font-weight: bold;
-  line-height: 1.2;
-  margin-bottom: 20px;
-  margin-left: 100px;
- }
+.tertiary-text {
+    color: #4b5563; /* Medium grey for descriptions */
+    font-size: 1rem; /* Slightly larger base font size */
+}
 
- .hero-description {
-  color: #140101; /* Example text color */
-  font-size: 18px;
-  line-height: 1.6;
+.accent-text {
+    color: #7c3aed; /* Vibrant violet for links */
+    font-weight: 500; /* Semi-bold for emphasis */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
 
-  margin-left: 100px;
-  margin-bottom: 30px;
- }
+.accent-text:hover {
+    color: #5a189a; /* Darker violet on hover */
+    text-decoration: underline;
+}
 
- .hero-button {
-  background-color: oklch(49.6% 0.265 301.924); /* Example button color */
-  color: white;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 0px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-left: 100px;
-  transition: background-color 0.3s ease;
- }
+.primary-button {
+    background-color: #7c3aed; /* Vibrant violet button */
+    color: #fff;
+    padding: 14px 30px; /* Slightly larger button padding */
+    border: none;
+    border-radius: 8px; /* Rounded corners for buttons */
+    font-size: 1.1rem; /* Slightly larger button text */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Subtle button shadow */
+}
 
- .hero-button:hover {
-  background-color: rebeccapurple ;
- }
+.primary-button:hover {
+    background-color: #5a189a; /* Darker violet on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
 
- /* You might need to use media queries for responsiveness */
- @media (max-width: 768px) {
-  .hero-section {
+/* Hero Section */
+.hero-section {
+    padding: 10px; /* Increased vertical padding */
+    margin-top: 100px; /* Adjust top margin */
+    background-color:none; /* Very light grey/violet background for subtle contrast */
+    display: flex;
     flex-direction: column;
-    padding: 40px;
+    align-items: center;
     text-align: center;
-  }
-  .hero-content {
-    padding-right: 0;
-    margin-bottom: 30px;
-  }
-  .hero-image {
-    height: 300px; /* Adjust for smaller screens */
-  }
- }
-
- .sample-section {
-  display: flex; /* Arrange image and content side by side */
-  align-items: center; /* Vertically align items in the center */
-  padding: 40px; /* Add some padding around the section */
- /* Light background color similar to the sample */
-  border-radius: 10px; /* Optional: Add rounded corners */
-  margin-top: 100px; /* Add some space between the hero section and this section */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+   
 }
 
-
-.sample-image-container {
-  flex: 1; /* Take up 1/2 of the available width */
-  margin-right: 30px; /* Add some space between the image and text */
+.hero-content {
+    max-width: 900px;
+    margin-bottom: 50px; /* Increased bottom margin */
 }
 
-.sample-image {
-  max-width: 80%; /* Make the image responsive */
-  height: auto;
-  float: left;
-  animation: prodown 8.5s ease-in-out forwards;
-  margin-left: 0;         /* Align to the left */
-  margin-right: auto;     /* Push it away from the right */
-  border-radius: 8px; /* Optional: Add rounded corners to the image */
-}
-.sample-image:hover{
-  transform: scale(1.1);
-}
-.sample-content {
-  flex: 1; /* Take up the other 1/2 of the available width */
-  animation: prodown 8.5s ease-in-out forwards; /* Adjust duration and easing as needed */
-}
-
-@keyframes prodown {
-  from {
-    transform: translatey(-100px); /* Start from 100% above */
-  }
-  to {
-    transform: translatey(0%);  /* End at its original vertical position */
-  }
-}
-
-
-.sample-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: oklch(49.6% 0.265 301.924); /* Dark text color */
-  margin-bottom: 15px;
-}
-
-.sample-description {
-  color: #060000; /* Gray text color */
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.sample-button {
-  background-color: oklch(49.6% 0.265 301.924); /* Example button color */
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.sample-button:hover {
-  background-color: rebeccapurple; /* Darker shade on hover */
-}
-
-/* sample 2 - Image Left, Text Right */
-.sample2-section {
-  display: flex; /* Arrange image and content side by side */
-  align-items: center; /* Vertically align items in the center */
-  padding: 40px; /* Add some padding around the section */
- /* Light background color similar to the sample */
-  border-radius: 10px; /* Optional: Add rounded corners */
-  margin-top: 25px; /* Adjust spacing as needed */
-  transition: transform 0.1s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-}
-
-.sample2-image-container {
-  flex: 1; /* Take up 1/2 of the available width */
-  margin-left: 20px; /* Add some space between the image and text */
-}
-
-.sample2-image {
-  max-width: 100%; /* Make the image responsive */
-  height: auto;
-  float: right;
-  animation: prodown 8.5s ease-in-out forwards;
-  margin-right: 0;         /* Align to the left */
-  margin-left: 10px; 
-  border-radius: 8px; /* Optional: Add rounded corners to the image */
-}
-
-.sample2-content {
-  flex: 1; /* Take up the other 1/2 of the available width */
-  text-align: left; /* Align text to the left */
-  animation: prodown 8.5s ease-in forwards; /* Adjust duration and easing as needed */
-}
-
-.sample2-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: oklch(49.6% 0.265 301.924); /* Dark text color */
-  margin-bottom: 15px;
-}
-
-.sample2-description {
-  color: #070000; /* Gray text color */
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.sample2-button {
-  background-color: oklch(49.6% 0.265 301.924); /* Example button color */
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.sample2-button:hover {
-  background-color: rebeccapurple; /* Darker shade on hover */
-}
-
-
-/* sample 1 */
-.sample1-section {
-  display: flex; /* Arrange image and content side by side */
-  align-items: center; /* Vertically align items in the center */
-  padding: 40px; /* Add some padding around the section */
- /* Light background color similar to the sample */
-  border-radius: 10px; /* Optional: Add rounded corners */
-  margin-top: 25px; /* Add some space between the hero section and this section */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-}
-
-.sample1-image-container {
-  flex: 1; /* Take up 1/2 of the available width */
-  margin-right: 30px; /* Add some space between the image and text */
-}
-
-.sample1-image {
-  max-width: 80%; /* Make the image responsive */
-  height: auto;
-  animation: prodown 8.5s ease-in-out forwards;
-  float: left;
-  margin-left: 0;         /* Align to the left */
-  margin-right: 10px; 
-  border-radius: 8px; /* Optional: Add rounded corners to the image */
-}
-
-.sample1-content {
-  flex: 1; /* Take up the other 1/2 of the available width */
-  animation: prodown 8.5s ease-in-out forwards;
-}
-
-.sample1-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: oklch(49.6% 0.265 301.924);
-  margin-bottom: 15px;
-}
-
-.sample1-description {
-  color: #080000; /* Gray text color */
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.sample1-button {
-  background-color: oklch(49.6% 0.265 301.924);/* Example button color */
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.sample1-button:hover {
-  background-color: rebeccapurple; /* Darker shade on hover */
-}
-
-/* sample 2 - Image Left, Text Right */
-.sample3-section {
-  display: flex; /* Arrange image and content side by side */
-  align-items: center; /* Vertically align items in the center */
-  padding: 40px; /* Add some padding around the section */
- /* Light background color similar to the sample */
-  border-radius: 10px; /* Optional: Add rounded corners */
-  margin-top: 25px; /* Adjust spacing as needed */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-}
-
-.sample3-image-container {
-  flex: 1; /* Take up 1/2 of the available width */
-  margin-left: 20px; /* Add some space between the image and text */
-}
-
-.sample3-image {
-  max-width: 100%; /* Make the image responsive */
-  height: auto;
-  animation: prodown 8.5s ease-in-out forwards;
-  float: right;
-  margin-right: 0;         /* Align to the left */
-  margin-left: 10px; 
-  border-radius: 8px; /* Optional: Add rounded corners to the image */
-}
-
-.sample3-content {
-  flex: 1; /* Take up the other 1/2 of the available width */
-  text-align: left; /* Align text to the left */
-  animation: prodown 0.5s ease-in forwards; /* Adjust duration and easing as needed */
-}
-
-.sample3-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: oklch(49.6% 0.265 301.924);
-  margin-bottom: 15px;
-}
-
-.sample3-description {
-  color: #090000; /* Gray text color */
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.sample3-button {
-  background-color: oklch(49.6% 0.265 301.924); /* Example button color */
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.sample3-button:hover {
-  background-color: rebeccapurple; /* Darker shade on hover */
-}
-
-
-/* Responsive adjustments (optional) */
-@media (max-width: 768px) {
-  .sample-section,
-  .Sample1-section,
-  .sample2-section,
-  .sample3-section {
-    flex-direction: column; /* Stack image and content on smaller screens */
-    text-align: center; /* Center text on smaller screens */
-  }
-
-  .sample-image-container,
-  .sample1-image-container,
-  .sample2-image-container,
-  .sample-image-container {
-    margin-left: 0;
-    margin-right: 0;
+.hero-subtitle {
+    font-size: 1.2rem;
     margin-bottom: 20px;
-  }
+    color: #7c3aed; /* Vibrant violet */
+    font-weight: 500;
 }
 
+.hero-title {
+    font-size: 2.9rem; /* Slightly smaller, more refined title */
+    font-weight: 500; /* Bold font weight */
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: #1e293b; /* Dark grey/almost black */
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    color: #4b5563; /* Medium grey */
+}
+
+.hero-button {
+    font-size: 1.1rem;
+    padding: 16px 40px; /* Slightly larger hero button */
+}
+
+/* Product Showcase Redesigned Section */
+.product-showcase-redesigned {
+    padding: 10px;
+    text-align: center;
+}
+
+.featured-solution-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    }
+
+.featured-product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px; /* Increased gap */
+    max-width: 1000px;
+}
+
+.featured-image {
+    flex: 1;
+    max-width: 450px;
+}
+
+.featured-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded image corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.featured-content {
+    flex: 1;
+    text-align: left;
+}
+
+.featured-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #7c3aed; /* Vibrant violet */
+    font-weight: 600;
+}
+
+.featured-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: #4b5563; /* Medium grey */
+}
+
+.featured-learn-more {
+    font-size: 1.1rem;
+    margin-right: 25px;
+    color: #7c3aed; /* Vibrant violet */
+    font-weight: 500;
+}
+
+.featured-demo-button {
+    font-size: 1.1rem;
+    margin-top: 15px;
+    padding: 16px 32px;
+}
+
+.featured-solution-container .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 3rem;
+    color: #7c3aed;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+    opacity: 0.7;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.featured-solution-container .carousel-button:hover {
+    opacity: 1;
+}
+
+.featured-solution-container .prev {
+    left: 10px;
+}
+
+.featured-solution-container .next {
+    right: 10px;
+}
+
+.carousel-navigation {
+    display: none; /* Keep the bottom navigation hidden */
+}
+
+/* Process Flow Section */
+.process-flow {
+    padding: 10px;
+    text-align: center;
+
+     margin: 10px auto;
+    max-width: 90%;
+}
+
+
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Increased min width */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.process-step {
+    padding: 30px;
+    background-color: #fff;
+   
+   
+    transition: transform 0.3s ease-in-out;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.process-icon {
+    font-size: 2.5rem;
+    color: #7c3aed;
+    margin-bottom: 20px;
+}
+
+.process-step h4 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.process-step p {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.7;
+}
+
+/* Our Products Section */
+.our-products {
+    padding: 70px 30px;
+    text-align: center;
+    
+   
+    margin: 30px auto;
+    max-width: 90%;
+}
+
+.our-products .section-heading {
+    text-align: center; /* Keep content centered within the heading */
+    margin-bottom: 20px; /* Adjust spacing below the heading */
+}
+
+.our-products .section-heading .section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1e293b;
+    display: inline-block; /* Allows title and description to be on the same line if space allows */
+    margin-right: 15px; /* Add some space if they are on the same line */
+}
+
+.our-products .section-heading .section-description {
+    font-size: 1.15rem;
+    color: #961f9e;
+    line-height: 1.8;
+    display: inline-block; /* Allows title and description to be on the same line if space allows */
+    margin-top: 0; /* Adjust top margin to be closer to the title */
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted min width */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.product-card {
+    background-color: #e7e5f0; /* Light background for product cards */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.secondary-textpro {
+    margin-top: 15px;
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 10px rgba(16, 0, 0, 0.15);
+}
+
+.product-card-image {
+    margin-bottom: 20px;
+    max-height: 150px; /* Limit image height for consistency */
+    overflow: hidden; /* Ensure images fit within the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-card-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.product-card-content {
+    margin-bottom: 15px;
+}
+
+.product-card-content h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.product-card-content p {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.product-card-content a {
+    font-size: 1.1rem;
+    color: #7c3aed;
+    font-weight: 500;
+}
+
+/* Call to Action Section */
+.call-to-action {
+    padding: 80px 30px;
+    /* Light background */
+    text-align: center;
+    border-radius: 8px;
+    margin: 40px auto;
+    max-width: 85%;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+.cta-description {
+    font-size: 1.15rem;
+    color: #4b5563;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    font-size: 1.1rem;
+    padding: 18px 40px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 960px) {
+    .elevated {
+        padding: 30px;
+        margin: 20px auto;
+        max-width: 95%;
+    }
+
+    .hero-section {
+        padding: 60px 20px;
+        margin-top: 80px;
+    }
+
+    .hero-content {
+        margin-bottom: 40px;
+    }
+
+    .featured-solution-container {
+        padding: 30px;
+    }
+
+    .featured-product {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .featured-image {
+        max-width: 80%;
+        margin-bottom: 30px;
+    }
+
+    .featured-content {
+        text-align: center;
+    }
+
+    .featured-learn-more {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .featured-demo-button {
+        font-size: 1rem;
+        padding: 14px 28px;
+    }
+
+    .featured-solution-container .carousel-button {
+        font-size: 2.5rem;
+    }
+
+    .process-flow {
+        padding: 50px 20px;
+    }
+
+    .process-steps {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+    }
+
+    .process-step {
+        padding: 25px;
+    }
+
+    .process-icon {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .process-step h4 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+    .our-products {
+        padding: 50px 20px;
+    }
+
+    .our-products .section-heading {
+        margin-bottom: 15px;
+    }
+
+    .our-products .section-heading .section-title {
+        font-size: 1.8rem;
+        display: block; /* Ensure title takes full width on smaller screens */
+        margin-bottom: 10px; /* Add space below title */
+        text-align: center; /* Center the title */
+    }
+
+    .our-products .section-heading .section-description {
+        font-size: 1rem;
+        display: block; /* Ensure description takes full width on smaller screens */
+        text-align: center; /* Center the description */
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+
+    .product-card {
+        padding: 25px;
+    }
+
+    .product-card-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .call-to-action {
+        padding: 60px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-button {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .section-description {
+        font-size: 0.95rem;
+    }
+
+    .featured-title {
+        font-size: 1.6rem;
+    }
+
+    .featured-description {
+        font-size: 1rem;
+    }
+
+    .featured-solution-container .carousel-button {
+        font-size: 2rem;
+    }
+
+    .our-products .section-heading .section-title {
+        font-size: 1.6rem;
+    }
+
+    .our-products .section-heading .section-description {
+        font-size: 0.95rem;
+    }
+
+    .our-products .product-card-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .our-products .product-card-content p {
+        font-size: 0.9rem;
+    }
+
+    .call-to-action .cta-title {
+        font-size: 1.8rem;
+    }
+
+    .call-to-action .cta-description {
+        font-size: 0.95rem;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .process-step {
+        padding: 20px;
+    }
+
+    .process-icon {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+    }
+
+    .process-step h4 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .process-step p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Animation (Optional) - Keep if you had it and want it */
 .fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease-out forwards;
 }
 
 @keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

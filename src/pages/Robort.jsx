@@ -220,18 +220,7 @@ const Robort = () => {
         </div>
       </div>
        
-         {/* New Bottom Section */}
-      <div className="bottom-cta-section">
-        <div className="bottom-cta-content">
-          <div className="bottom-cta-left">
-            <h3>Streamline your business with Pixl’s AI Enabled Solutions</h3>
-          </div>
-          <div className="bottom-cta-buttons">
-            <button onClick={handleOpenPopup} className="book-demo-button">Book a Demo</button>
-            <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
-            <button className="talk-sales-button">Talk with Sales</button>
-          </div>
-        </div>
+      
       {/* FAQ Section */}
       <div className="faq-section">
       <p className="faq-query-info">
@@ -240,7 +229,7 @@ const Robort = () => {
       </div>
       </div>
 
-    </div>
+   
     
   );
 };

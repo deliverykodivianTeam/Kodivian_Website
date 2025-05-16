@@ -1,21 +1,24 @@
 import "../styles/Product.css";
-import WaveImage from '../assets/WaveImage.png';
-import SampleImage from '../assets/Scanify.png'
-// import underbanner from '../assets/underbanner.png'; // REMOVE this import
+import SampleImage from '../assets/Scanify.png';
 import intellidocs from '../assets/intellidocs.png';
 import processbuilder from '../assets/process_builder.png';
-import DemoBookingPopup from '../components/DemoBookingPopup';
 import rpa from '../assets/rpa.png';
-// import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin, FaLocationArrow, FaPhone, FaEnvelope } from 'react-icons/fa'; // REMOVE these imports
+import DemoBookingPopup from '../components/DemoBookingPopup';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-// Import the new Belowbar component
-import Belowbar from '../components/Belowbar'; // Adjust the path if necessary
+import Belowbar from '../components/Belowbar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight, faCogs, faFileAlt, faChartLine, faRocket } from '@fortawesome/free-solid-svg-icons';
 
 const Product = () => {
-
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [slideIndex, setSlideIndex] = useState(0);
+    const products = [
+        { name: "Scanify", description: "Intelligent Invoice Processing solution that automates data extraction from invoices, reducing manual effort and errors. It streamlines accounts payable workflows, improves accuracy, and accelerates processing times. Scanify integrates seamlessly with existing accounting systems for enhanced efficiency.", image: SampleImage, link: "/scanify" },
+        { name: "Process Builder", description: "A No-Code Workflow Automation platform empowering businesses to design and automate  workflows without writing any code. It enables seamless integration between various applications, improves operational efficiency, and provides real-time visibility into process execution. Process Builder is highly customizable and scalable to meet evolving business needs.", image: processbuilder, link: "/processbuilder" },
+        { name: "RPA", description: "Robotic Process Automation to automate repetitive, rule-based tasks across different applications and systems. RPA bots can handle data entry, form filling, report generation, and more, freeing up human employees for higher-value activities. Our RPA solution is designed for scalability, reliability, and ease of deployment, delivering significant cost savings and improved accuracy.", image: rpa, link: "/robort" },
+        { name: "IntelliDoc", description: "A Smart Document Management system that uses AI to organize, classify, and retrieve documents efficiently. It offers features like intelligent search, version control, and secure access, enhancing collaboration and compliance. IntelliDoc transforms unstructured data into actionable insights, improving decision-making and overall productivity.", image: intellidocs, link: "/document" },
+    ];
 
     const handleOpenPopup = () => {
         setIsPopupOpen(true);
@@ -25,69 +28,114 @@ const Product = () => {
         setIsPopupOpen(false);
     };
 
+    const nextSlide = () => {
+        setSlideIndex((prevIndex) => (prevIndex + 1) % products.length);
+    };
+
+    const prevSlide = () => {
+        setSlideIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
+    };
+
+    const visibleProduct = products[slideIndex];
+
     return (
         <div>
-            <div className="hero-section fade-up">
-                        <p className="hero-subtitle">AI-powered productivity</p>
-                        <h1 className="hero-title">Work <br /> smarter, <br /> finish faster</h1>
-                        <p className="hero-description">Take control of your tasks, automate workflows and stay focused with our all-in-one AI-driven platform.</p>
-                        <button onClick={handleOpenPopup} className="hero-button">Get started for free</button>
+            <div className="product-page">
+                <div className="hero-section elevated">
+                    <div className="hero-content">
+                        <p className="hero-subtitle primary-text">Explore Our Leading Solutions</p>
+                        <h1 className="hero-title secondary-text">Empowering Businesses with Automation, Intelligence, Simplicity, and Speed</h1>
+                        <p className="hero-description tertiary-text">Discover an integrated suite of smart tools designed to modernize your business, cut down manual work, and accelerate digital transformation — all without complexity.</p>
+                        <button onClick={handleOpenPopup} className="hero-button primary-button">Request a Demo</button>
                         <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
-                </div>
-                <div className="sample-section">
-                    <div className="sample-image-container">
-                        <img src={SampleImage} alt="Scanify" className="sample-image" />
-                    </div>
-                    <div className="sample-content">
-                        <h2 className="sample-title">Conquering Your Invoicing Challenges with Scanify</h2>
-                        <p className="sample-description">Scanify is a powerful solution designed to simplify your invoice management process. It scans invoices with high accuracy, automatically extracts key data, and converts it into structured JSON and Excel formats. This data can be seamlessly pushed into SAP for efficient processing, eliminating the need for manual entry and reducing the risk of errors.Whether you're handling a few invoices or managing high volumes, Scanify scales with your business, helping you stay organized, compliant, and in control.</p>
-                        <Link to="/scanify" className="sample-button"> Explore features </Link>
                     </div>
                 </div>
 
-                {/* New Section 2: Image Left, Text Right - Opposite of sample-section */}
-                <div className="sample2-section">
-                    <div className="sample2-content">
-                        <h2 className="sample3-title"> Turn Processes Into Powerful Applications with Process Builder</h2>
-                        <p className="sample3-description">Process Builder empowers you to create fully functional workflows and forms using an intuitive drag-and-drop interface—no coding required. In just seconds, you can design custom applications, assign them to specific clients or users, and instantly generate user pages, dashboards, reports, and charts. Whether you're automating internal processes or building client-facing solutions, Process Builder makes it incredibly easy, fast, and efficient. Bring your ideas to life and streamline your operations like never before.</p>
-                        <Link to="/processbuilder" className="sample-button"> Explore features </Link>
+                <section className="product-showcase-redesigned elevated">
+                    <div className="featured-solution-container">
+                        {visibleProduct && (
+                            <div className="featured-product">
+                                <div className="featured-image">
+                                    <img src={visibleProduct.image} alt={visibleProduct.name} />
+                                </div>
+                                <div className="featured-content">
+                                    <h3 className="secondary-text featured-title">{visibleProduct.name}</h3>
+                                    <p className="tertiary-text featured-description">{visibleProduct.description}</p>
+                                    {/* <Link to={visibleProduct.link} className="accent-text featured-learn-more">Learn More</Link>  */}
+                                    <button onClick={handleOpenPopup} className="primary-button featured-demo-button">Request a Demo</button>
+                                </div>
+                            </div>
+                        )}
+                        <button className="carousel-button prev" onClick={prevSlide}>
+                            <FontAwesomeIcon icon={faChevronLeft} />
+                        </button>
+                        <button className="carousel-button next" onClick={nextSlide}>
+                            <FontAwesomeIcon icon={faChevronRight} />
+                        </button>
                     </div>
-                    <div className="sample2-image-container">
-                        <img src={processbuilder} alt="Intellidocs" className="sample2-image" />
+                </section>
+
+                <section className="process-flow elevated">
+                    <h2 className="section-title secondary-text">Our Product Process Flow</h2>
+                    <div className="process-steps">
+                        <div className="process-step">
+                            <FontAwesomeIcon icon={faCogs} className="process-icon" />
+                            <h4 className="secondary-text">Integration</h4>
+                            <p className="tertiary-text">Seamlessly integrate our solutions with your existing systems and data sources.</p>
+                        </div>
+                        <div className="process-step">
+                            <FontAwesomeIcon icon={faFileAlt} className="process-icon" />
+                            <h4 className="secondary-text">Processing</h4>
+                            <p className="tertiary-text">Intelligent processing of data and documents using advanced AI algorithms.</p>
+                        </div>
+                        <div className="process-step">
+                            <FontAwesomeIcon icon={faChartLine} className="process-icon" />
+                            <h4 className="secondary-text">Analysis</h4>
+                            <p className="tertiary-text">Gain valuable insights and analytics from processed information.</p>
+                        </div>
+                        <div className="process-step">
+                            <FontAwesomeIcon icon={faRocket} className="process-icon" />
+                            <h4 className="secondary-text">Automation</h4>
+                            <p className="tertiary-text">Automate workflows and repetitive tasks for increased efficiency.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="our-products elevated">
+                    <div className="section-heading">
+                        <h2 className="section-title secondary-text">Our Range of Intelligent Solutions</h2>
+                        <p className="section-description tertiary-text">Explore our suite of AI-powered products designed to drive efficiency and innovation.</p>
+                    </div>
+                    <div className="product-grid">
+                        {products.map((product) => (
+                            <div key={product.name} className="product-card">
+                                 <Link to={product.link} className="accent-text">
+                                <div className="product-card-image">
+                                    <img src={product.image} alt={product.name} />
+                                </div>
+                                  </Link>
+                                <div className="product-card-content">
+                                    <h3 className="secondary-textpro">{product.name}</h3>
+                                    <p className="tertiary-text">{product.description.split('. ')[0]}.</p>
+                                    <Link to={product.link} className="accent-text">Learn More</Link>
+                                </div>
+                               
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <div className="call-to-action elevated">
+                    <div className="cta-content">
+                        <h2 className="cta-title secondary-text">Ready to Transform Your Business?</h2>
+                        <p className="cta-description tertiary-text">Contact us today to learn how our AI solutions can meet your specific needs.</p>
+                        <button onClick={handleOpenPopup} className="cta-button primary-button">Request a Consultation</button>
                     </div>
                 </div>
-
-
-                {/* New Section 3: Image Left, Text Right - Opposite of sample-section */}
-                <div className="sample1-section">
-                    <div className="sample1-image-container">
-                        <img src={rpa} alt="Scanify" className="sample1-image" />
-                    </div>
-                    <div className="sample1-content">
-                        <h2 className="sample2-title">Automating Repetitive Tasks with RPA</h2>
-                        <p className="sample2-description">Our RPA (Robotic Process Automation) solution is built to handle repetitive, rule-based tasks with speed and precision. Whether it's data entry, report generation, or invoice processing, RPA takes over these time-consuming processes and executes them automatically—no manual effort required. Just set the schedule, and RPA performs the task on time, every time, reducing human error and freeing up valuable manpower. It's the perfect tool for businesses looking to boost productivity, cut operational costs, and focus on strategic growth.</p>
-                        <Link to="/robort" className="sample-button"> Explore features </Link>
-                    </div>
-                </div>
-
-
-
-                {/* New Section 4: Image Left, Text Right - Opposite of sample-section */}
-                <div className="sample3-section">
-                    <div className="sample3-content">
-                        <h2 className="sample1-title">Smarter Document Management with IntelliDoc</h2>
-                        <p className="sample1-description">IntelliDoc is your all-in-one solution for smart document handling and automation. It allows you to manage, process, and organize documents .With IntelliDoc, you can assign signature marks, apply approval status watermarks, and automate every step required for document completion. Whether you're managing contracts, invoices, or internal approvals, IntelliDoc ensures each file is processed accurately and moves through the workflow without delays. Say goodbye to manual follow-ups and hello to seamless, scheduled document automation.</p>
-                        <Link to="/document" className="sample-button"> Explore features </Link>
-                    </div>
-                    <div className="sample3-image-container">
-                        <img src={intellidocs} alt="Intellidocs" className="sample2-image" />
-                    </div>
-                </div>
-           
-            {/* Render the new Belowbar component here */}
+            </div>
             <Belowbar />
-         </div>
-
+        </div>
     );
 };
+
 export default Product;

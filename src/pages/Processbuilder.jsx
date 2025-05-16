@@ -340,24 +340,14 @@ const Processbuilder = () => {
       </div>
        
          {/* New Bottom Section */}
-      <div className="pro-bottom-cta-section">
-        <div className="pro-bottom-cta-content">
-          <div className="pro-bottom-cta-left">
-            <h3>Streamline your business with Pixl’s AI Enabled Solutions</h3>
-          </div>
-          <div className="pro-bottom-cta-buttons">
-          <button onClick={handleOpenPopup} className="book-demo-button">Book a Demo</button>
-            <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
-            <button className="talk-sales-button">Talk with Sales</button>
-          </div>
-        </div>
+      
       {/* FAQ Section */}
       <div className="pro-faq-section">
       <p className="pro-faq-query-info">
             © Kodivian.processbuilder 2025. All rights reserved.
           </p>
       </div>
-      </div>
+     
 
 
        
