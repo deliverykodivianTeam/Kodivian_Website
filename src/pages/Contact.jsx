@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/Contact.css"; // Import global styles
 // Import the new Belowbar component
 import Belowbar from '../components/Belowbar'; // Adjust the path if necessary
-import location_pin from "../assets/location-pin.avif";
+import location_pin from "../assets/location-pin.png";
 import { LiaPhoneSolid } from "react-icons/lia";
 import { MdOutlineMailOutline, MdOutlineLocationOn } from "react-icons/md";
 

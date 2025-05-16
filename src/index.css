@@ -7,6 +7,7 @@
   --bg-color: #f0f0f0;
   --white-color: white;
   --primary-purple: #a020f0; /* Define the purple color */
+  --glow-color: #a020f0; /* Define the glow color (same as primary purple for consistency) */
 }
 
 body {
@@ -73,17 +74,21 @@ body {
   transform: scale(1.1);
 }
 
-.navbar-button{
+.navbar-button a { /* Target the link inside the button */
   color: black;
   text-decoration: none;
   font-weight: bold;
-  transition: transform 0.1s ease-in-out;
+  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease-in-out; /* Added transition for box-shadow */
   padding: 0.5rem 1rem; /* Add some padding */
   border-radius: 20px; /* Optional: Add rounded corners */
 }
 
-.navbar-button:hover {
+.navbar-button a:hover { /* Hover effect */
   transform: scale(1.1);
+  color: var(--primary-purple);
+}
+
+.navbar-button a.active-glow { /* Style for the active link */
   color: var(--primary-purple);
 }
 
@@ -93,7 +98,7 @@ body {
   text-decoration: none;
   font-weight: bold;
   margin-left: 10px;
-  transition: transform 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out, background-color 0.3s ease; /* Added transition for background-color */
   padding: 0.5rem 1rem; /* Add some padding */
   border-radius: 20px; /* Optional: Add rounded corners */
   cursor: pointer;
@@ -102,7 +107,7 @@ body {
 .demo-button:hover {
   transform: scale(1.1);
   color: white;
-  background-color: #a020f0;
+  background-color: var(--primary-purple);
   cursor: pointer;
 }
 
