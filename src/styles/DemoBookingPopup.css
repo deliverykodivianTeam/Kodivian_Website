@@ -1,7 +1,7 @@
 /* DemoBookingPopup.css - White Background, Black Text, Purple Borders, Orange Shadows */
 .popup-overlay-blur {
   position: fixed;
-  top: 0;
+  top: 10px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -12,13 +12,13 @@
 
 .custom-popup {
   position: fixed;
-  top: 50%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff; /* White background */
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px #ff00bbc4; /* Orange shadow */
+  box-shadow: 0 4px 12px #320b285d; /* Orange shadow */
   z-index: 1000;
   width: 600px;
   max-width: 95%;
@@ -73,7 +73,6 @@
 .custom-textarea:focus {
   outline: none;
   border-color: #9400d3; /* Dark violet focus border */
-  box-shadow: 0 0 0 0.2rem rgba(255, 140, 0, 0.25); /* Orange focus shadow */
 }
 
 .custom-textarea {
@@ -106,7 +105,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 0 2px 4px #ff00bbc4; /* Orange button shadow */
+  box-shadow: 0 2px 4px #0d000a85; /* Orange button shadow */
   font-weight: 500;
   color: #000; /* Black button text */
   background-color: #fff; /* White button background */
@@ -115,7 +114,7 @@
 .custom-button:hover {
   opacity: 0.9;
   transform: translateY(-1px);
-  box-shadow: 0 3px 6px #ff00bbc4; /* Orange hover shadow */
+  box-shadow: 0 3px 6px #21001929; /* Orange hover shadow */
 }
 
 .custom-next-button {
@@ -126,7 +125,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 0 2px 4px #ff00bbc4; /* Orange button shadow */
+  box-shadow: 0 2px 4px #16011181; /* Orange button shadow */
   font-weight: 500;
   color: #fff; /* White next button text */
 }
@@ -143,13 +142,13 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 0 2px 4px #ff00bbc4; /* Orange button shadow */
+  box-shadow: 0 2px 4px #1d011575; /* Orange button shadow */
   font-weight: 500;
   color: #fff; /* White next button text */
 }
 
 .custom-book-button:hover:enabled {
-  background-color: #ff00ff; /* Magenta book button hover */
+  background-color: #0d010d3d; /* Magenta book button hover */
 }
 
 .custom-book-button:disabled {
@@ -168,7 +167,7 @@
   cursor: pointer;
   margin-right: 39px;
   transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 0 2px 4px #ff00bbc4; /* Orange button shadow */
+  box-shadow: 0 2px 4px #03000275; /* Orange button shadow */
   font-weight: 500;
   color: #fff; /* White next button text */}
 
@@ -179,7 +178,7 @@
 .custom-close-button {
   background-color: #fff; /* White close button */
   color: #000; /* Black close button text */
-  border-color: #8a2be2; /* Ensure purple border */
+  border-color: #0a0113; /* Ensure purple border */
 }
 
 .custom-close-button:hover {
@@ -187,7 +186,7 @@
 }
 
 .custom-error {
-  color: #ff4500; /* Orange-red error color */
+  color: #f70808; /* Orange-red error color */
   margin-top: 5px;
   font-size: 0.9rem;
   margin-bottom: 5px;
@@ -207,7 +206,7 @@
   border-radius: 6px;
   margin-bottom: 20px;
   border: 1px solid #8a2be2; /* Purple confirmation border */
-  box-shadow: 0 2px 4px #ff00bbc4; /* Orange confirmation shadow */
+  box-shadow: 0 2px 4px #06000424; /* Orange confirmation shadow */
 }
 
 .custom-confirmation-heading {
@@ -251,7 +250,7 @@
   line-height: 1.125em;
   width: 100%;
   max-width: 100%;
-  box-shadow: 0 2px 4px #ff00bbc4; /* Orange calendar shadow */
+  box-shadow: 0 2px 4px #0b020922; /* Orange calendar shadow */
 }
 
 .react-calendar__navigation button {

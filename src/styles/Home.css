@@ -50,16 +50,9 @@ html, body {
     color: #6a1b9a; /* Purple color for "Kodivian" */
 }
 
-.drtop-details-container {
-  /* Or fixed, depending on your layout */
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
-  z-index: 10; /* Ensure it's above other content */
-  padding: 20px; /* Add some spacing */
-}
 
-.hrcss {
+
+.buhome {
     background-color: #7c3aed; /* Vibrant violet button */
     color: #fff;
     padding: 14px 30px; /* Slightly larger button padding */
@@ -69,10 +62,6 @@ html, body {
     cursor: pointer;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Subtle button shadow */
-}
-
-.hrrcss{
-   margin-bottom: 80px;
 }
 
 /* Styles for the 5-line descriptive paragraph */

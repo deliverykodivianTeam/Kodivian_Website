@@ -225,9 +225,9 @@ const Home = () => {
 
                     </p>
                      </div>
-                     <div className="drtop-details-container">
-                     <button onClick={handleOpenPopup} className="hrcss">Schedule Your Free Live Demo Today</button>
-                        <DemoBookingPopup className="hrrcss" isOpen={isPopupOpen} onClose={handleClosePopup} />
+                     <div className="top-details-container">
+                     <button className="buhome" onClick={handleOpenPopup} >Schedule Your Free Live Demo Today</button>
+                        <DemoBookingPopup  isOpen={isPopupOpen} onClose={handleClosePopup} />
                      </div>
             </div>
 
