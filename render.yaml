@@ -1,0 +1,4 @@
+# Option A: render.yaml
+build:
+  environment:
+    pythonVersion: 3.10
