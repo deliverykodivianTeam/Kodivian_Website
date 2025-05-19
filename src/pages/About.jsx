@@ -8,6 +8,7 @@ import {
   HeartIcon,
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
+import { FaLinkedin } from "react-icons/fa";
 import constructionImage from "../assets/Animated-Isometric-Construction.gif";
 import about_intro from "../assets/about_intro.png";
 import about_intro1 from "../assets/about_intro1.jpg";
@@ -56,7 +57,7 @@ const About = () => {
     },
     {
       name: "Raja SM",
-      role: "Business Analyst",
+      role: "Business Analyst/Solution Engineer",
       image: Raja,
       linkedin: "https://www.linkedin.com/in/rajashanmugam3?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADeOfkgBeq5fczrDnHNTcFzKmaE0qTVIgTo&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
     },
@@ -92,7 +93,7 @@ const About = () => {
     },
     {
       name: "Rithish PG",
-      role: "Technical Consultant",
+      role: "Software Developer",
       image: Rithish, // Assuming you want to reuse Director's image here.
       linkedin: "https://www.linkedin.com/in/rithish-pg?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADkrY1gBCpFun1vpv5JXKS5mU82zUES0lMg&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe", // Add actual
     },
@@ -273,7 +274,7 @@ const About = () => {
               rel="noopener noreferrer"
               className="learn-more-button"
             >
-              Learn More
+              <FaLinkedin size={50}/>
             </a>
           </div>
         ))}

@@ -1,9 +1,10 @@
 /* About.css */
 .about-page {
   text-align: center;
-  margin-top: 160px;
+  margin-top: 120px; /* Adjusted for better spacing on tablets */
   background-color: var(--white-color);
   color: var(--primary-color);
+  padding: 0 20px; /* Added side padding for tablets */
 }
 
 .about-page h1 {
@@ -14,8 +15,10 @@
 .about-page p {
   color: black;
   margin-bottom: 30px;
-  max-width: 800px;
+  max-width: 90%; /* Adjusted for better flow on tablets */
   line-height: 1.6;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about-stats-container {
@@ -61,10 +64,82 @@
   font-size: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) { /* Adjust for medium screens (e.g., tablets) */
   .about-stat-box {
-    width: calc(100% - 30px);
-    max-width: none;
+    width: calc(50% - 20px); /* Maintain two columns on larger tablets */
+  }
+
+  .about_content_image {
+    flex-direction: column; /* Stack content vertically on smaller screens */
+    align-items: center;
+    text-align: center;
+    height: auto; /* Adjust height automatically */
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .about_content_image_1 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .styling_class {
+    margin-left: 50px; /* Adjust left margin */
+    height: auto; /* Adjust height automatically */
+  }
+
+  .styling_class_content {
+    margin-top: 20px; /* Adjust top margin */
+    margin-left: 50px; /* Adjust left margin */
+    padding: 20px;
+    text-align: left; /* Adjust text alignment if needed */
+  }
+
+  .about-para {
+    margin-right: auto; /* Center the paragraph */
+  }
+
+  .hero-about-info {
+    margin-top: -80px; /* Adjust top margin */
+    text-align: center; /* Center hero text on smaller screens */
+  }
+
+  .team-members-grid {
+    margin-left: 0; /* Reset left margin */
+    padding-left: 20px; /* Add some padding */
+    padding-right: 20px; /* Add some padding */
+  }
+
+  .member-name {
+    margin-right: auto; /* Reset right margin */
+  }
+
+  .member-role {
+    margin-right: auto; /* Reset right margin */
+  }
+
+  .learn-more-button {
+    margin-right: auto; /* Reset right margin */
+  }
+}
+
+@media (max-width: 768px) { /* Adjust for smaller screens (e.g., mobile) */
+  .about-stat-box {
+    width: calc(100% - 30px); /* Single column on smaller screens */
+    margin: 10px 0;
+    padding: 20px;
+  }
+
+  .styling_class {
+    margin-left: 20px; /* Further adjust left margin */
+  }
+
+  .styling_class_content {
+    margin-left: 20px; /* Further adjust left margin */
   }
 }
 
@@ -220,7 +295,7 @@
 }
 
 .team-members-grid {
-  margin-left: 50px;
+  margin-left: 0; /* Adjusted for better centering on tablets */
   display: flex;
   flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
   justify-content: center; /* Center the items horizontally */
@@ -230,28 +305,27 @@
 }
 
 .team-member-card {
-  width: calc(20% - 16px); /* Adjust width for desired number of columns (here, ~5) and account for gap */
+  width: calc(33.33% - 16px); /* Display in 3 columns on larger tablets */
   margin-bottom: 20px; /* Add some space below each profile */
   text-align: center; /* Center the content within each card */
 }
 
-
-
-@media (max-width: 1024px) { /* Adjust for medium screens (e.g., tablets) */
+/* Media query for desktops */
+@media (min-width: 1025px) {
   .team-member-card {
-    width: calc(33.33% - 16px); /* Display in 3 columns */
+    width: calc(20% - 16px); /* Display in approximately 5 columns on desktops */
   }
 }
 
 @media (max-width: 768px) { /* Adjust for smaller screens (e.g., mobile) */
   .team-member-card {
-    width: calc(50% - 16px); /* Display in 2 columns */
+    width: calc(50% - 16px); /* Display in 2 columns on smaller tablets and phones */
   }
 }
 
 @media (max-width: 480px) { /* Adjust for even smaller screens */
   .team-member-card {
-    width: 100%; /* Display in a single column */
+    width: 100%; /* Display in a single column on small phones */
   }
 }
 
@@ -264,32 +338,79 @@
 }
 
 .member-name {
-  margin-right: 70px;
+  margin-right: auto; /* Adjusted for centering on smaller screens */
   font-weight: 600;
 }
 
 .member-role {
-  margin-right: 70px;
+  margin-right: auto; /* Adjusted for centering on smaller screens */
   font-size: 0.875rem;
   color: #718096;
 }
 
 .learn-more-button {
   background-color: white;
-  margin-right: 65px;
+  margin-right: auto; /* Adjusted for centering on smaller screens */
   display: inline-block;
   margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid #a0aec0;
-  border-radius: 50px;
   color: black;
   text-decoration: none;
   font-size: 0.875rem;
-  transition: all 0.2s ease-in-out;
+  transition: transform 0.1s ease-in-out, background-color 0.3s ease;
 }
 
 .learn-more-button:hover {
   background-color: black;
-  border-color: #718096;
   color: white;
+}
+
+@media (max-width: 1024px) {
+  /* ... other styles ... */
+
+  .intro_about_banner {
+    margin-bottom: 20px; /* Add some space below the first banner */
+  }
+
+  /* If the second banner also needs top margin */
+  .intro_about_banner_1 {
+    margin-top: 20px;
+  }
+
+  /* ... other styles ... */
+}
+
+@media (max-width: 1024px) {
+  .about_content_image {
+    flex-direction: column; /* Keep stacking for image and overall content */
+    align-items: center;
+    text-align: center;
+    height: auto;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .about_content_image > .intro_about_banner,
+  .about_content_image > .intro_about_banner_1 {
+    /* Adjust margins here if needed */
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  .about_content_image_1 {
+    flex-direction: column; /* Keep stacking for image and overall content */
+    align-items: center;
+    text-align: center;
+    height: auto;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .about_content_image_1 > .intro_about_banner,
+  .about_content_image_1 > .intro_about_banner_1 {
+    /* Adjust margins here if needed */
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  /* ... other styles ... */
 }
