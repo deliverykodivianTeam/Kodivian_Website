@@ -135,5 +135,6 @@ def test_email():
         return f'❌ Email send failed: {str(e)}', 500
 
 # ✅ Run the server
-if __name__ == '__main__':
-    app.run(debug=True, port=3001)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 3001))
+    app.run(host="0.0.0.0", port=port)
