@@ -3,3 +3,9 @@ build:
   environment:
    pythonVersion: 3.11.9 
 
+services:
+  - type: web
+    name: flask-backend
+    env: python
+    buildCommand: ""
+    startCommand: python app.py
