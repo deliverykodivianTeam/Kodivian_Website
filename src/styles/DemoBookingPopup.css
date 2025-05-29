@@ -1,31 +1,104 @@
 /* DemoBookingPopup.css - White Background, Black Text, Purple Borders, Orange Shadows */
+/* Your existing styles... */
+
+/* --- Success Message Styling --- */
+.custom-success-container {
+  display: flex;
+  flex-direction: column; /* Stack icon and text vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically in the container */
+  height: 100%; /* Take full height of the popup content area */
+  text-align: center; /* Ensure text is centered */
+  padding: 30px 20px; /* Add some padding */
+  box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.custom-success {
+  color: #28a745; /* A vibrant green for success */
+  margin-top: 20px; /* Space between icon and text */
+  font-size: 2.2rem; /* Much larger font size */
+  font-weight: 700; /* Extra bold */
+  text-align: center; /* Ensure text is centered within its own element */
+  padding: 15px 25px; /* Padding inside the success message box */
+  background-color: #e9ffe9; /* Very light green background */
+  border: 2px solid #28a745; /* Green border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.2); /* Subtle green shadow */
+  animation: fadeInPop 0.6s ease-out; /* Add a subtle animation */
+  width: fit-content; /* Shrink to content width */
+  max-width: 90%; /* Prevent overflow */
+  margin-left: auto; /* Center the block */
+  margin-right: auto; /* Center the block */
+}
+
+.custom-success-icon {
+  width: 100px; /* Size of the success icon */
+  height: 100px;
+  margin-bottom: 25px; /* Space between icon and the success message */
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy animation for the icon */
+}
+
+@keyframes fadeInPop {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Your existing styles for popup, inputs, buttons etc. */
+
 .popup-overlay-blur {
   position: fixed;
-  top: 10px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black overlay */
-  backdrop-filter: blur(1px); /* Apply the blur effect */
-  z-index: 999; /* Sit behind the popup */
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(1px);
+  z-index: 999;
 }
 
 .custom-popup {
   position: fixed;
-  top: 20%;
+  top: 50%; /* Center vertically */
   left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff; /* White background */
+  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+  background-color: #fff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px #320b285d; /* Orange shadow */
+  box-shadow: 0 4px 12px #320b285d;
   z-index: 1000;
   width: 600px;
   max-width: 95%;
-  height: auto;
+  height: auto; /* Allow height to adjust */
   display: flex;
   flex-direction: column;
-  border: 1px solid #8a2be2; /* Purple border */
+  border: 1px solid #8a2be2;
+  /* Added for alignment when success message is displayed */
+  justify-content: center;
+  align-items: center;
+  min-height: 300px; /* Give some minimum height for the success message to fill */
 }
 
 .custom-heading,
@@ -33,7 +106,7 @@
   margin-bottom: 24px;
   font-size: 24px;
   font-weight: 600;
-  color: #000; /* Black heading */
+  color: #000;
   text-align: center;
 }
 
@@ -43,6 +116,7 @@
 
 .custom-form-group {
   margin-bottom: 20px;
+  width: 100%; /* Ensure form elements take full width */
 }
 
 .custom-label {
@@ -50,7 +124,7 @@
   text-align: left;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #333; /* Dark gray label */
+  color: #333;
   font-size: 1rem;
   margin-left: 10px;
 }
@@ -61,10 +135,10 @@
   width: 100%;
   padding: 10px 12px;
   border-radius: 6px;
-  border: 1px solid #8a2be2; /* Purple border */
+  border: 1px solid #8a2be2;
   font-size: 1rem;
-  background-color: #fff; /* White input background */
-  color: #000; /* Black text */
+  background-color: #fff;
+  color: #000;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -72,7 +146,7 @@
 .custom-select:focus,
 .custom-textarea:focus {
   outline: none;
-  border-color: #9400d3; /* Dark violet focus border */
+  border-color: #9400d3;
 }
 
 .custom-textarea {
@@ -91,64 +165,38 @@
   padding-right: 25px;
 }
 
-.custom-button-container {
+.custom-button-group {
   margin-top: 24px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between; /* Distribute buttons */
   gap: 10px;
+  width: 100%;
 }
 
-.custom-button {
+.custom-button,
+.custom-next-button,
+.custom-book-button,
+.custom-previous-button {
   padding: 10px 20px;
   border-radius: 6px;
-  border: 1px solid #8a2be2; /* Purple button border */
+  border: 1px solid #8a2be2;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 0 2px 4px #0d000a85; /* Orange button shadow */
+  box-shadow: 0 2px 4px #0d000a85;
   font-weight: 500;
-  color: #000; /* Black button text */
-  background-color: #fff; /* White button background */
+  color: #fff; /* Default to white text for all primary buttons */
+  background-color: #a020f0; /* Purple background for all primary buttons */
+  flex: 1; /* Make buttons take equal space */
 }
 
-.custom-button:hover {
-  opacity: 0.9;
+.custom-button:hover,
+.custom-next-button:hover,
+.custom-book-button:hover,
+.custom-previous-button:hover {
+  background-color: #9400d3; /* Darker purple on hover */
   transform: translateY(-1px);
-  box-shadow: 0 3px 6px #21001929; /* Orange hover shadow */
-}
-
-.custom-next-button {
-  background-color: #a020f0; /* Purple next button */
-  padding: 10px 20px;
-  border-radius: 6px;
-  border: 1px solid #8a2be2; /* Purple button border */
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 0 2px 4px #16011181; /* Orange button shadow */
-  font-weight: 500;
-  color: #fff; /* White next button text */
-}
-
-.custom-next-button:hover {
-  background-color: #9400d3ae; /* Dark violet next button hover */
-}
-
-.custom-book-button {
-  background-color: #a020f0; /* Purple next button */
-  padding: 10px 20px;
-  border-radius: 6px;
-  border: 1px solid #8a2be2; /* Purple button border */
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 0 2px 4px #1d011575; /* Orange button shadow */
-  font-weight: 500;
-  color: #fff; /* White next button text */
-}
-
-.custom-book-button:hover:enabled {
-  background-color: #0d010d3d; /* Magenta book button hover */
+  box-shadow: 0 3px 6px #21001929;
 }
 
 .custom-book-button:disabled {
@@ -156,105 +204,79 @@
   color: #666;
   cursor: not-allowed;
   border-color: #ccc;
-}
-
-.custom-previous-button {
-  background-color: #a020f0; /* Purple next button */
-  padding: 10px 20px;
-  border-radius: 6px;
-  border: 1px solid #8a2be2; /* Purple button border */
-  font-size: 1rem;
-  cursor: pointer;
-  margin-right: 39px;
-  transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 0 2px 4px #03000275; /* Orange button shadow */
-  font-weight: 500;
-  color: #fff; /* White next button text */}
-
-.custom-previous-button:hover {
-  background-color: #9932cc; /* Dark orchid previous button hover */
-}
-
-.custom-close-button {
-  background-color: #fff; /* White close button */
-  color: #000; /* Black close button text */
-  border-color: #0a0113; /* Ensure purple border */
-}
-
-.custom-close-button:hover {
-  background-color: #f0f0f0; /* Light gray close button hover */
+  box-shadow: none;
 }
 
 .custom-error {
-  color: #f70808; /* Orange-red error color */
-  margin-top: 5px;
-  font-size: 0.9rem;
-  margin-bottom: 5px;
+  color: #f70808;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
   font-weight: 500;
-}
-
-.custom-success {
-  color: #32cd32; /* Lime green success color */
-  margin-top: 12px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  text-align: center;
+  width: 100%;
 }
 
 .custom-confirmation {
-  background-color: #f8f8ff; /* Ghost white confirmation background */
+  background-color: #f8f8ff;
   padding: 20px;
   border-radius: 6px;
   margin-bottom: 20px;
-  border: 1px solid #8a2be2; /* Purple confirmation border */
-  box-shadow: 0 2px 4px #06000424; /* Orange confirmation shadow */
+  border: 1px solid #8a2be2;
+  box-shadow: 0 2px 4px #06000424;
+  width: 100%; /* Ensure confirmation takes full width */
+  box-sizing: border-box;
 }
 
 .custom-confirmation-heading {
   font-size: 1.9rem;
   font-weight: 600;
-  color: #000; /* Black confirmation heading */
+  color: #000;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .custom-confirmation-text {
   text-align: left;
   margin-left: 20px;
   margin-top: 10px;
-  font-size: 1.3rem;
-  color: #333; /* Dark gray confirmation text */
-  margin-bottom: 25px;
+  font-size: 1.1rem; /* Slightly smaller for better readability in lists */
+  color: #333;
+  margin-bottom: 10px; /* Reduce space between items */
 }
 
 .custom-confirmation-message {
   font-size: 1.9rem;
-  color: #555; /* Medium gray confirmation message */
+  color: #555;
   margin-top: 12px;
   font-style: italic;
 }
 
 .custom-calendar-container {
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .custom-time-selection {
   margin-top: 20px;
+  width: 100%;
 }
 
-/* Styling for the react-calendar component with white/black/purple/orange theme */
+/* React Calendar Specific Styles */
 .react-calendar {
   background-color: #fff;
   color: #000;
-  border: 1px solid #8a2be2; /* Purple calendar border */
+  border: 1px solid #8a2be2;
   border-radius: 8px;
   font-family: sans-serif;
   line-height: 1.125em;
   width: 100%;
   max-width: 100%;
-  box-shadow: 0 2px 4px #0b020922; /* Orange calendar shadow */
+  box-shadow: 0 2px 4px #0b020922;
 }
 
 .react-calendar__navigation button {
-  color: #8a2be2; /* Purple navigation buttons */
+  color: #8a2be2;
   background: none;
   border: none;
   font-size: 1em;
@@ -273,7 +295,7 @@
 }
 
 .react-calendar__month-view__weekdays {
-  color: #333; /* Dark gray weekdays */
+  color: #333;
   font-size: 0.9em;
   font-weight: bold;
 }
@@ -291,7 +313,7 @@
 }
 
 .react-calendar__month-view__days__day--weekend {
-  color: #8a2be2; /* Purple weekends */
+  color: #8a2be2;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {
@@ -304,7 +326,7 @@
 }
 
 .react-calendar__tile--now {
-  background: #ffa07a; /* Light salmon for 'now' */
+  background: #ffa07a;
   color: #fff;
 }
 
@@ -314,7 +336,7 @@
 }
 
 .react-calendar__tile--hasActive {
-  background: #b0e0e6; /* Powder blue for active state */
+  background: #b0e0e6;
   color: #000;
 }
 
@@ -324,7 +346,7 @@
 }
 
 .react-calendar__tile--active {
-  background: #8a2be2; /* Purple active day */
+  background: #8a2be2;
   color: #fff;
 }
 
@@ -333,12 +355,12 @@
   background: #9400d3;
 }
 
-.react-calendar__tile--weekend-disabled {
-  background-color: #eee; /* Light gray for disabled weekends */
+.react-calendar__tile:disabled {
+  background-color: #eee;
   color: #ccc;
   cursor: not-allowed;
 }
 
-.react-calendar__tile--weekend-disabled:hover {
+.react-calendar__tile:disabled:hover {
   background-color: #eee !important;
 }

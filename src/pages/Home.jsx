@@ -1,379 +1,196 @@
-import "../styles/Home.css";
-import React, { useState, useEffect, useRef } from "react";
-// ... other imports
-import ScanifyContent from '../pages/ScanifyDetail'; // Adjust the path as needed
-// ... rest of your imports
-import DemoBookingPopup from '../components/DemoBookingPopup';
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/Home.css'; // Custom CSS for theming and animations
 
-// Image imports for signupage slider
-import image1 from "../assets/image7.jpeg";
-import image2 from "../assets/image2.jpg";
-import image3 from "../assets/family.png";
-import image6 from "../assets/image4.jpg";
-import image5 from "../assets/image5.jpg";
-import image4 from "../assets/image8.jpeg";
+// Client Logo Imports
+import ponpureLogo from '../assets/ponpure.png';
+import tiCycleLogo from '../assets/ti-cycle.png';
+import murugappaLogo from '../assets/murugappa.png';
+import khazanaLogo from '../assets/khazana.png';
+import sharatIndustriesLogo from '../assets/sharat-industries.png';
+import dabicoLogo from '../assets/dabico.png';
+import dmccLogo from '../assets/dmcc.png';
+import aavaBrandsLogo from '../assets/aava-brands.png';
+import tiMedicallogo from '../assets/ti_medical.png';
+import Innoventure_logo from '../assets/3xper_innoventure_limited_logo.png';
+import shanthigearslogo from '../assets/shanthi-gears.png';
+import ezcloud from '../assets/ezcloud.png';
+import ionidea from '../assets/ionidea.png';
+import eastman from '../assets/eastman.png';
 
 // Icon imports for product tabs
-import icon1 from "../assets/scanifyprocess.png";
-import icon2 from "../assets/processbuilderpro.png";
-import icon3 from "../assets/rpapro.png";
-import icon4 from "../assets/docpro.png";
+import icon1 from '../assets/scanifyprocess.png';
+import icon2 from '../assets/processbuilderpro.png';
+import icon3 from '../assets/rpapro.png';
+import icon4 from '../assets/docpro.png';
 
-// Updated imports for the scrolling client logos
-// YOU MUST ENSURE THESE IMAGE FILES ARE IN YOUR 'src/assets/' FOLDER
-import ponpureLogo from "../assets/ponpure.png";
-import tiCycleLogo from "../assets/ti-cycle.png";
-import murugappaLogo from "../assets/murugappa.png";
-import khazanaLogo from "../assets/khazana.png";
-import sharatIndustriesLogo from "../assets/sharat-industries.png";
-import dabicoLogo from "../assets/dabico.png";
-import dmccLogo from "../assets/dmcc.png";
-import aavaBrandsLogo from "../assets/aava-brands.png";
-import tiMedicallogo from "../assets/ti_medical.png";
-import Innoventure_logo from "../assets/3xper_innoventure_limited_logo.png";
-import shanthigearslogo from "../assets/shanthi-gears.png";
-import ezcloud from "../assets/ezcloud.png";
-import ionidea from "../assets/ionidea.png";
-import eastman from "../assets/eastman.png";
-
-
-// Import the new Bottom component (ensure this path is correct for your project structure)
-import Bottombar from '../components/Belowbar';
-
-
-const images = [image1, image2, image3, image4, image5, image6]; // Used for signupage slider
-
-
-const products = [
-    {
-        id: 1,
-        name: "Scanify",
-        title: "Revolutionize Your Document Management",
-        description: "Leverage intelligent scanning to transform physical documents into searchable, actionable digital assets. Streamline your workflow and reduce manual data entry errors.",
-        link: "/scanify",
-        image: icon1,
-    },
-    {
-        id: 2,
-        name: "Intellidocs",
-        title: "Smart Document Processing for Enhanced Efficiency",
-        description: "Our AI-powered Intellidocs solution automates the extraction, categorization, and validation of data from various document types, ensuring accuracy and rapid processing.",
-        link: "/document",
-        image: icon2,
-    },
-    {
-        id: 3,
-        name: "Process Builder",
-        title: "Visually Design and Automate Business Processes",
-        description: "With Process Builder, you can intuitively map out, design, and automate complex business workflows. Reduce bottlenecks and achieve end-to-end process automation with ease.",
-        link: "/processbuilder",
-        image: icon4,
-    },
-    {
-        id: 4,
-        name: "RPA Automation",
-        title: "Automate Repetitive Tasks with Robotic Process Automation",
-        description: "Implement RPA bots to handle mundane, rule-based tasks across different applications. Free up your human workforce to focus on strategic initiatives and complex problem-solving.",
-        link: "/robort",
-        image: icon3,
-    },
-];
-
-// Client logos for the new scrolling section
-const originalClientLogos = [
-    ponpureLogo,
-    tiCycleLogo,
-    murugappaLogo,
-    khazanaLogo,
-    sharatIndustriesLogo,
-    dabicoLogo,
-    dmccLogo,
-    aavaBrandsLogo,
-    tiMedicallogo,
-    Innoventure_logo,
-    shanthigearslogo,
-    ezcloud,
-    ionidea,
-    eastman,
-];
-
-// Duplicate the original set multiple times for a truly seamless scrolling effect.
-// This increases the length of the content being scrolled, making the loop reset
-// less noticeable as it happens further off-screen.
-const clientLogos = [
-    ...originalClientLogos,
-    ...originalClientLogos,
-    ...originalClientLogos,
-    ...originalClientLogos,
-    ...originalClientLogos,
-    ...originalClientLogos,
-    // Add more duplicates here if you need an even longer perceived seamless scroll.
-    // The more logos in the set, the more convincing the infinite scroll will appear.
-];
-
+// Import your large hero image here
+// import heroImage from '../assets/your-large-hero-image.jpg'; // <--- YOU'LL NEED TO ADD THIS IMPORT
 
 const Home = () => {
+  const clientLogos = [
+    ponpureLogo, tiCycleLogo, murugappaLogo, khazanaLogo,
+    sharatIndustriesLogo, dabicoLogo, dmccLogo, aavaBrandsLogo,
+    tiMedicallogo, Innoventure_logo, shanthigearslogo, ezcloud,
+    ionidea, eastman
+  ];
 
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const handleOpenPopup = () => {
-        setIsPopupOpen(true);
-    };
-    const handleClosePopup = () => {
-        setIsPopupOpen(false);
-    };
+  // Array of product data for easier duplication
+  const products = [
+    { icon: icon1, title: "Scanify", description: "Scan and get structured input from invoices and other documents." },
+    { icon: icon3, title: "RPA Pro", description: "Automate repetitive tasks and assign them efficiently." },
+    { icon: icon2, title: "Process Builder", description: "Create powerful apps and workflows with drag-and-drop ease in minutes." },
+    { icon: icon4, title: "IntelliDoc", description: "Advanced document management and processing for all your needs." }
+  ];
 
-    const [currentImage, setCurrentImage] = useState(images[0]);
-    const [currentIndex, setCurrentIndex] = useState(0);
+  return (
+    <div className="home-container bg-light text-dark">
+      {/* Hero Section with Large Image Background - Full Screen */}
+      <section className="hero-section large-image-background text-white d-flex align-items-center justify-content-center text-center">
+        <div className="container">
+          <h1 className="display-3 fw-bold text-white mb-4">
+            Transform Your Business with Intelligent Automation
+          </h1>
+          <p className="lead fs-4 fw-light text-white-75 px-lg-5 mx-lg-5">
+            Unlock unprecedented efficiency, accuracy, and scalability. We deliver cutting-edge AI and RPA solutions that streamline operations, empower your workforce, and drive innovation.
+          </p>
+          <button className="btn btn-violet btn-lg mt-4 shadow-sm">Discover Our Solutions</button>
+        </div>
+      </section>
 
-    // State for active tab and its content
-    const [activeTab, setActiveTab] = useState(products[0].id); // Start with the first product tab active
-    const activeProduct = products.find(p => p.id === activeTab);
-
-    // State to store the interval ID for auto-advancement of tabs
-    const [autoAdvanceIntervalId, setAutoAdvanceIntervalId] = useState(null);
-
-    // Ref for scrolling logos - RENAMED
-    const homeScrollingLogosRef = useRef(null);
-    const [isScrollingPaused, setIsScrollingPaused] = useState(false);
-
-
-    // Effect for image slider in signupage (remains unchanged)
-    useEffect(() => {
-        const imageInterval = setInterval(() => {
-            setCurrentImage(images[(currentIndex + 1) % images.length]); 
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 5000);
-
-        return () => clearInterval(imageInterval);
-    }, [currentIndex, images]); 
-
-
-    // Effect for automatic tab advancement (remains unchanged in logic)
-   useEffect(() => {
-    let intervalId;
-
-    const startAutoAdvance = () => {
-        intervalId = setInterval(() => {
-            setActiveTab(prevTabId => {
-                const currentIdx = products.findIndex(p => p.id === prevTabId);
-                const nextIdx = (currentIdx + 1) % products.length;
-                return products[nextIdx].id;
-            });
-        }, 10000);
-    };
-
-    startAutoAdvance();
-
-    return () => {
-        if (intervalId) {
-            clearInterval(intervalId);
-        }
-    };
-}, [products.length, setActiveTab]); // Add setActiveTab to dependencies if it's defined outside the effect
-
-// Make sure setActiveTab is stable if defined outside the component,
-// otherwise, you might need to include it in the dependency array.
-// If setActiveTab is the standard useState setter, it's safe to include. // Handle manual tab clicks - clear interval and restart
-    const handleTabClick = (productId) => {
-        if (autoAdvanceIntervalId) {
-            clearInterval(autoAdvanceIntervalId);
-            setAutoAdvanceIntervalId(null);
-        }
-        setActiveTab(productId);
-    };
-
-    // Handlers for scrolling logos - RENAMED
-    const handleHomeLogosMouseEnter = () => {
-        setIsScrollingPaused(true);
-    };
-
-    const handleHomeLogosMouseLeave = () => {
-        setIsScrollingPaused(false);
-    };
-
-    // Apply/remove animation class based on hover state - UPDATED REF NAME
-    useEffect(() => {
-        if (homeScrollingLogosRef.current) {
-            if (isScrollingPaused) {
-                homeScrollingLogosRef.current.style.animationPlayState = 'paused';
-            } else {
-                homeScrollingLogosRef.current.style.animationPlayState = 'running';
-            }
-        }
-    }, [isScrollingPaused]);
-
-
-    return (
-        <div
-            id="home-main-wrapper"
-            className="homemain fade-up"
-        >
-            {/* NEW: Top Introduction Section */}
-            <div className="intro-hero-section">
-                <div className="intro-content">
-                    <div className="welcomestyle">
-                        <h1>
-                            Empowering Your Business with{" "}
-                            <span>
-                                Next-Gen Solutions 
-                            </span>
-                        </h1>
-                    </div>
-                    <p>
-                        Kodivian is at the forefront of AI and RPA technology. Our products automate tasks, optimize workflows, and deliver innovative solutions that enable businesses to thrive in an increasingly automated world.
-
+      {/* Products Section - Bigger and Vertically Movable */}
+      <section className="products-section py-5 bg-light">
+        <div className="container text-center">
+          <h2 className="text-center mb-5 display-5 fw-bold text-violet">Our Core Products</h2>
+          <div className="product-carousel-container overflow-hidden position-relative mx-auto"> {/* Added wrapper */}
+            <div className="product-carousel-track"> {/* Inner track for animation */}
+              {/* Render products once */}
+              {products.map((product, index) => (
+                <div key={`product-${index}`} className="product-carousel-item">
+                  <div className="product-card card shadow-lg border-0 text-center p-4">
+                    <img src={product.icon} alt={`${product.title} Icon`} className="product-icon mb-4 mx-auto" />
+                    <h3 className="card-title h4 text-dark mb-3">{product.title}</h3>
+                    <p className="card-text text-muted">
+                      {product.description}
                     </p>
-                     </div>
-                     <div className="top-details-container">
-                     <button className="buhome" onClick={handleOpenPopup} >Schedule Your Free Live Demo Today</button>
-                        <DemoBookingPopup  isOpen={isPopupOpen} onClose={handleClosePopup} />
-                     </div>
-            </div>
-
-            {/* Existing: Tabbed Product Section (now sits below the intro) */}
-            <div className="welcomepage-tabbed">
-                {/* Tab Navigation Bar */}
-                <div className="tab-navigation">
-                    {products.map((product) => (
-                        <div
-                            key={product.id}
-                            className={`tab-item ${activeTab === product.id ? 'active-tab' : ''}`}
-                            onClick={() => handleTabClick(product.id)}
-                        >
-                            {product.name}
-                            {/* Blue line indicator */}
-                            {activeTab === product.id && <div className="active-tab-line"></div>}
-                        </div>
-                    ))}
+                  </div>
                 </div>
+              ))}
+              {/* Duplicate products for continuous animation */}
+              {products.map((product, index) => (
+                <div key={`product-duplicate-${index}`} className="product-carousel-item">
+                  <div className="product-card card shadow-lg border-0 text-center p-4">
+                    <img src={product.icon} alt={`${product.title} Icon`} className="product-icon mb-4 mx-auto" />
+                    <h3 className="card-title h4 text-dark mb-3">{product.title}</h3>
+                    <p className="card-text text-muted">
+                      {product.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-                {/* Content Display Area for the Active Tab */}
-<div className="tab-content-display">
-    <div className="tab-content-left-full">
-        {/* Display active product's dynamic title and description */}
-        <div className="tab-content-heading">
-            <h1>
-                Accelerate your business with {" "}
-                <span>
-                    {activeProduct.name}
-                </span>
-            </h1>
+      {/* About Us Section */}
+      <section className="about-us-section py-5 bg-white">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-6 mb-4 mb-lg-0">
+              <h2 className="display-5 fw-bold text-violet mb-4">Who We Are</h2>
+              <p className="lead text-secondary">
+                Our Company is a pioneer in intelligent automation, dedicated to helping businesses navigate the complexities of the digital age. With a deep understanding of industry challenges and a passion for innovation, we craft tailored solutions that deliver measurable results.
+              </p>
+              <p className="text-muted">
+                Our team comprises experts in Artificial Intelligence, Robotic Process Automation, and advanced data analytics. We believe in building long-term partnerships, providing not just technology, but also strategic guidance to ensure your automation journey is successful and sustainable. From reducing operational costs to enhancing customer experience, we are committed to transforming your potential into performance.
+              </p>
+              <button className="btn btn-outline-violet mt-3">Learn More About Us</button>
+            </div>
+            <div className="col-lg-6">
+              {/* You can add an "About Us" image here if desired */}
+              <img src="https://via.placeholder.com/600x400/F8F9FA/6f42c1?text=About+Us+Image" alt="About Us" className="img-fluid rounded-3 shadow-lg" />
+            </div>
+          </div>
         </div>
-        <div className="tab-content-paragraph">
-            <p>{activeProduct.description}</p>
-            <Link to={activeProduct.link} className="learn-more-link">
-                Learn More <span className="arrow">&rarr;</span>
-            </Link>
+      </section>
+
+      {/* Our Process Section */}
+      <section className="process-section py-5 bg-light">
+        <div className="container">
+          <h2 className="text-center mb-5 display-5 fw-bold text-violet">Our Streamlined Process</h2>
+          <div className="row g-4 text-center">
+            <div className="col-lg-3 col-md-6">
+              <div className="process-step card h-100 shadow-sm border-0 p-4">
+                <div className="process-icon-circle mx-auto mb-3 bg-violet text-white d-flex align-items-center justify-content-center">
+                  1
+                </div>
+                <h3 className="h5 fw-bold text-dark mb-2">Enquiry & Initial Chat</h3>
+                <p className="text-muted small">
+                  We start with a friendly discussion to understand your business challenges and goals.
+                </p>
+              </div>
+            </div>
+            <div className="col-lg-3 col-md-6">
+              <div className="process-step card h-100 shadow-sm border-0 p-4">
+                <div className="process-icon-circle mx-auto mb-3 bg-violet text-white d-flex align-items-center justify-content-center">
+                  2
+                </div>
+                <h3 className="h5 fw-bold text-dark mb-2">Requirement Session</h3>
+                <p className="text-muted small">
+                  A deeper dive into your specific needs, gathering all essential details for a tailored solution.
+                </p>
+              </div>
+            </div>
+            <div className="col-lg-3 col-md-6">
+              <div className="process-step card h-100 shadow-sm border-0 p-4">
+                <div className="process-icon-circle mx-auto mb-3 bg-violet text-white d-flex align-items-center justify-content-center">
+                  3
+                </div>
+                <h3 className="h5 fw-bold text-dark mb-2">Product Building & Customization</h3>
+                <p className="text-muted small">
+                  Our experts design and develop the perfect automation solution, specifically for your operations.
+                </p>
+              </div>
+            </div>
+            <div className="col-lg-3 col-md-6">
+              <div className="process-step card h-100 shadow-sm border-0 p-4">
+                <div className="process-icon-circle mx-auto mb-3 bg-violet text-white d-flex align-items-center justify-content-center">
+                  4
+                </div>
+                <h3 className="h5 fw-bold text-dark mb-2">Go-Live & Support</h3>
+                <p className="text-muted small">
+                  Seamless deployment and ongoing support to ensure smooth, efficient operation and success.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      {/* Client Carousel Section */}
+      <section className="client-section py-5 bg-white">
+        <div className="container">
+          <h2 className="text-center mb-4 text-violet">Our Valued Clients</h2>
+          <div className="logo-carousel-container overflow-hidden position-relative">
+            <div className="logo-carousel">
+              {clientLogos.map((logo, index) => (
+                <div key={index} className="logo-item">
+                  <img src={logo} alt={`Client Logo ${index + 1}`} className="img-fluid" />
+                </div>
+              ))}
+              {/* Duplicate logos for continuous animation effect */}
+              {clientLogos.map((logo, index) => (
+                <div key={`duplicate-${index}`} className="logo-item">
+                  <img src={logo} alt={`Client Logo Duplicate ${index + 1}`} className="img-fluid" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-
-    {/* Right side content - Active Product Image (fills the screen width) */}
-    <div className="tab-content-right-full">
-        <img src={activeProduct.image} alt={activeProduct.name} className="product-display-image-full" />
-    </div>
-</div>
-            </div>
-
-            {/* NEW: Scrolling Logos Section - CLASSNAMES AND HANDLERS RENAMED */}
-            <div className="home-scrolling-logos-container">
-                <h2 className="home-framer-text">
-                    Trusted by thousands of agencies and consulting firms
-                </h2>
-                <div
-                    ref={homeScrollingLogosRef}
-                    className={`home-scrolling-logos ${isScrollingPaused ? 'paused' : ''}`}
-                    onMouseEnter={handleHomeLogosMouseEnter}
-                    onMouseLeave={handleHomeLogosMouseLeave}
-                >
-                    {/* Duplicate the logos-set for seamless scrolling */}
-                    <div className="home-logos-set">
-                        {clientLogos.map((logo, index) => (
-                            <img key={index} src={logo} alt={`Client Logo ${index}`} className="home-logo" />
-                        ))}
-                    </div>
-                    <div className="home-logos-set" aria-hidden="true"> {/* aria-hidden for accessibility */}
-                        {clientLogos.map((logo, index) => (
-                            <img key={index + clientLogos.length} src={logo} alt={`Client Logo ${index} (duplicate)`} className="home-logo" />
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* Sign Up Page Section - Remains after tabbed section */}
-            <div className="signupage">
-                <div className="page1">
-                    <h4>
-                        SIGN UP
-                    </h4>
-                    <h2>
-                        Get started with our{" "}
-                        <span>
-                            AI platform
-                        </span>
-                    </h2>
-                    <p className="welcome-text">
-                        Partner with us, work with us, or grow with us, we turn ideas into
-                        impact through intelligent innovation.
-                    </p>
-                    <button>
-                        Get Started 
-                    </button>
-                </div>
-                <div className="imagewel">
-                    <div className="imagewelcome">
-                        <img
-                            src={currentImage}
-                            alt="AI Platform"
-                            className="companyimgwel"
-                        />
-                    </div>
-                </div>
-            </div>
-            
-            {/* Process Section */}
-            <div className="process-section">
-               
-                <div className="process-header">
-                      <h4 className="process-subheading">Process</h4>
-                        <h1 className="process-main-heading">
-                           We Follow An Excellent{" "}
-                            <span>
-                                Work Process
-                            </span>
-                        </h1>
-                        <p className="process-description">
-                        Our services and solutions are always based on proven methodologies such as lean six sigma practices.
-                    </p>
-                    </div>
-                <div className="process-steps-container">
-                    <div className="process-step">
-                        <div className="step-number">1</div>
-                        <h3>Discover & Consult</h3>
-                        <p>We pre-engage well with the stake holders.</p>
-                    </div>
-                    <div className="process-step">
-                        <div className="step-number">2</div>
-                        <h3>Test & Deploy</h3>
-                        <p>Our POCs are custom tested in each environment.</p>
-                    </div>
-                    <div className="process-step">
-                        <div className="step-number">3</div>
-                        <h3>Monitor & Report</h3>
-                        <p>We continuously monitor the results and report</p>
-                    </div>
-                    <div className="process-step">
-                        <div className="step-number">4</div>
-                        <h3>Deliver & Optimize</h3>
-                        <p>We deliver and constantly improve</p>
-                    </div>
-                </div>
-            </div>
-            
-            {/* Render the new Bottom component here */}
-            <Bottombar />
-        </div>
-    );
+  );
 };
 
 export default Home;

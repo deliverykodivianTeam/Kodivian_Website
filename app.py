@@ -7,6 +7,8 @@ import json
 app = Flask(__name__)
 CORS(app)
 
+
+
 # 📧 Zoho Mail Configuration
 app.config.update(
     MAIL_SERVER='smtp.zoho.in',
@@ -18,6 +20,10 @@ app.config.update(
 )
 
 mail = Mail(app)
+
+@app.route('/')
+def home():
+    return "Flask backend is live on Render! 🚀"
 
 @app.route('/api/send-query', methods=['POST'])
 def send_query():
