@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
 import App from './App.jsx'; // Adjust the path if needed
 import LoadingPage from './components/LoadingPage.jsx'; // Make sure the path is correct
 
