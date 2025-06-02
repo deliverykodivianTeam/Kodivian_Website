@@ -384,8 +384,6 @@ const About = () => {
             ))}
         </Row>
       </Container>
-
-      <Belowbar />
     </div>
   );
 };

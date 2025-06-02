@@ -268,12 +268,6 @@ const Home = () => {
                 </Container>
                 
             </section>
-
-
-
-            {/* Render the new Belowbar component here */}
-            <Belowbar />
-
         </>
     );
 };

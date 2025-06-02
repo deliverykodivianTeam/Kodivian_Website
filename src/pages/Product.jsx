@@ -192,7 +192,6 @@ const Product = () => {
 
 
             </Container>
-            <Belowbar />
         </div>
     );
 };

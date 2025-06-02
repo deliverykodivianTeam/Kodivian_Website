@@ -292,9 +292,6 @@ const Services = () => {
                     <Button variant="outline-light" size="lg" className="w-65 px-5">Get Started</Button> {/* Changed to Bootstrap Button */}
                 </Row>
             </Container>
-
-            {/* Belowbar Component */}
-            <Belowbar />
         </div>
     );
 };

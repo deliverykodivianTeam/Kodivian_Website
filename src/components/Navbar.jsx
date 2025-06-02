@@ -8,6 +8,10 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const [activePath, setActivePath] = useState(location.pathname);
+  // New state to control navbar visibility on scroll
+  const [isVisible, setIsVisible] = useState(true);
+  // State to store the last scroll position
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     setActivePath(location.pathname);
@@ -25,6 +29,27 @@ const Navbar = () => {
     };
   }, [isMobileMenuOpen]);
 
+  // Effect for handling scroll to hide/show navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      // Only hide/show if not in mobile menu mode
+      if (!isMobileMenuOpen) {
+        if (window.scrollY > lastScrollY && window.scrollY > 100) { // Scrolling down and past a certain threshold
+          setIsVisible(false);
+        } else if (window.scrollY < lastScrollY) { // Scrolling up
+          setIsVisible(true);
+        }
+        setLastScrollY(window.scrollY);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY, isMobileMenuOpen]); // Re-run effect if lastScrollY or isMobileMenuOpen changes
+
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
     setIsMobileMenuOpen(false);
@@ -41,7 +66,11 @@ const Navbar = () => {
   return (
     <>
       {/* Main Navbar */}
-      <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50 flex items-center font-sans py-2">
+      <nav 
+        className={`fixed top-0 left-0 right-0 bg-white shadow-sm z-50 flex items-center font-sans py-2 
+                    transform transition-transform duration-300 ease-in-out
+                    ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+      >
         <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
 
           {/* Left section: Logo */}
@@ -61,7 +90,8 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/"
-                  className={`text-black font-bold no-underline px-4 py-2 rounded-full transition-colors duration-300 ease-in-out hover:text-primary-purple hover:scale-105 transform ${activePath === "/" ? "text-primary-purple" : ""}`}
+                  // Added !no-underline to ensure no underline even with higher specificity CSS rules
+                  className={`text-black font-bold no-underline hover:no-underline !no-underline px-4 py-2 rounded-full transition-colors duration-300 ease-in-out hover:text-primary-purple hover:scale-105 transform ${activePath === "/" ? "text-primary-purple" : ""}`}
                 >
                   Home
                 </Link>
@@ -69,7 +99,8 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/about"
-                  className={`text-black font-bold no-underline px-4 py-2 rounded-full transition-colors duration-300 ease-in-out hover:text-primary-purple hover:scale-105 transform ${activePath === "/about" ? "text-primary-purple" : ""}`}
+                  // Added !no-underline to ensure no underline even with higher specificity CSS rules
+                  className={`text-black font-bold no-underline hover:no-underline !no-underline px-4 py-2 rounded-full transition-colors duration-300 ease-in-out hover:text-primary-purple hover:scale-105 transform ${activePath === "/about" ? "text-primary-purple" : ""}`}
                 >
                   About
                 </Link>
@@ -77,7 +108,8 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/product"
-                  className={`text-black font-bold no-underline px-4 py-2 rounded-full transition-colors duration-300 ease-in-out hover:text-primary-purple hover:scale-105 transform ${activePath === "/product" ? "text-primary-purple" : ""}`}
+                  // Added !no-underline to ensure no underline even with higher specificity CSS rules
+                  className={`text-black font-bold no-underline hover:no-underline !no-underline px-4 py-2 rounded-full transition-colors duration-300 ease-in-out hover:text-primary-purple hover:scale-105 transform ${activePath === "/product" ? "text-primary-purple" : ""}`}
                 >
                   Product
                 </Link>
@@ -85,7 +117,8 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/services"
-                  className={`text-black font-bold no-underline px-4 py-2 rounded-full transition-colors duration-300 ease-in-out hover:text-primary-purple hover:scale-105 transform ${activePath === "/services" ? "text-primary-purple" : ""}`}
+                  // Added !no-underline to ensure no underline even with higher specificity CSS rules
+                  className={`text-black font-bold no-underline hover:no-underline !no-underline px-4 py-2 rounded-full transition-colors duration-300 ease-in-out hover:text-primary-purple hover:scale-105 transform ${activePath === "/services" ? "text-primary-purple" : ""}`}
                 >
                   Services
                 </Link>
@@ -93,7 +126,8 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/contact"
-                  className={`text-black font-bold no-underline px-4 py-2 rounded-full transition-colors duration-300 ease-in-out hover:text-primary-purple hover:scale-105 transform ${activePath === "/contact" ? "text-primary-purple" : ""}`}
+                  // Added !no-underline to ensure no underline even with higher specificity CSS rules
+                  className={`text-black font-bold no-underline hover:no-underline !no-underline px-4 py-2 rounded-full transition-colors duration-300 ease-in-out hover:text-primary-purple hover:scale-105 transform ${activePath === "/contact" ? "text-primary-purple" : ""}`}
                 >
                   Contact
                 </Link>
@@ -106,9 +140,8 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center flex-shrink-0 mt-1"> 
             <button
               onClick={handleOpenPopup}
-              className="bg-black text-white font-bold px-8 py-3 rounded-full cursor-pointer
-                         transition-all duration-300 ease-in-out
-                         hover:bg-primary-purple hover:scale-110"
+              // Now using the .demo-button class from index.css
+              className="demo-button" 
             >
               Request a Demo
             </button>
@@ -176,11 +209,12 @@ const Navbar = () => {
           </button>
         </div>
 
-        <ul className="flex flex-col items-start pt-20 px-6 space-y-6 text-xl font-bold h-full">
+        <ul className="flex flex-col items-start pt-24 px-6 space-y-6 text-xl font-bold h-full"> {/* Changed pt-12 to pt-24 */}
           <li>
             <Link
               to="/"
-              className={`text-black no-underline transition-colors duration-300 ease-in-out hover:text-primary-purple ${activePath === "/" ? "text-primary-purple" : ""}`}
+              // Added !no-underline to ensure no underline even with higher specificity CSS rules
+              className={`text-black no-underline hover:no-underline !no-underline transition-colors duration-300 ease-in-out hover:text-primary-purple ${activePath === "/" ? "text-primary-purple" : ""}`}
               onClick={toggleMobileMenu}
             >
               Home
@@ -189,7 +223,8 @@ const Navbar = () => {
           <li>
             <Link
               to="/about"
-              className={`text-black no-underline transition-colors duration-300 ease-in-out hover:text-primary-purple ${activePath === "/about" ? "text-primary-purple" : ""}`}
+              // Added !no-underline to ensure no underline even with higher specificity CSS rules
+              className={`text-black no-underline hover:no-underline !no-underline transition-colors duration-300 ease-in-out hover:text-primary-purple ${activePath === "/about" ? "text-primary-purple" : ""}`}
               onClick={toggleMobileMenu}
             >
               About
@@ -198,7 +233,8 @@ const Navbar = () => {
           <li>
             <Link
               to="/product"
-              className={`text-black no-underline transition-colors duration-300 ease-in-out hover:text-primary-purple ${activePath === "/product" ? "text-primary-purple" : ""}`}
+              // Added !no-underline to ensure no underline even with higher specificity CSS rules
+              className={`text-black no-underline hover:no-underline !no-underline transition-colors duration-300 ease-in-out hover:text-primary-purple ${activePath === "/product" ? "text-primary-purple" : ""}`}
               onClick={toggleMobileMenu}
             >
               Product
@@ -207,7 +243,8 @@ const Navbar = () => {
           <li>
             <Link
               to="/services"
-              className={`text-black no-underline transition-colors duration-300 ease-in-out hover:text-primary-purple ${activePath === "/services" ? "text-primary-purple" : ""}`}
+              // Added !no-underline to ensure no underline even with higher specificity CSS rules
+              className={`text-black no-underline hover:no-underline !no-underline transition-colors duration-300 ease-in-out hover:text-primary-purple ${activePath === "/services" ? "text-primary-purple" : ""}`}
               onClick={toggleMobileMenu}
             >
               Services
@@ -216,7 +253,8 @@ const Navbar = () => {
           <li>
             <Link
               to="/contact"
-              className={`text-black no-underline transition-colors duration-300 ease-in-out hover:text-primary-purple ${activePath === "/contact" ? "text-primary-purple" : ""}`}
+              // Added !no-underline to ensure no underline even with higher specificity CSS rules
+              className={`text-black no-underline hover:no-underline !no-underline transition-colors duration-300 ease-in-out hover:text-primary-purple ${activePath === "/contact" ? "text-primary-purple" : ""}`}
               onClick={toggleMobileMenu}
             >
               Contact
@@ -225,9 +263,8 @@ const Navbar = () => {
           <li className="mt-8">
             <button
               onClick={handleOpenPopup}
-              className="bg-black text-white font-bold px-8 py-3 rounded-full cursor-pointer
-                         transition-all duration-300 ease-in-out text-base
-                         hover:bg-primary-purple hover:scale-105"
+              // Now using the .demo-button class from index.css
+              className="demo-button" 
             >
               Request a Demo
             </button>

@@ -168,8 +168,6 @@ const Contact = () => {
           </>
         )}
       </div>
-      {/* Render the new Belowbar component here */}
-            <Belowbar />
       </div>
   );
 };

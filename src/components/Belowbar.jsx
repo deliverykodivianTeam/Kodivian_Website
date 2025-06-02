@@ -2,211 +2,262 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-    FaInstagram,
-    FaFacebook,
-    FaTwitter,
-    FaLinkedin,
-    FaLocationArrow,
-    FaPhone,
-    FaEnvelope,
+  FaInstagram,
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaLocationArrow,
+  FaPhone,
+  FaEnvelope,
 } from "react-icons/fa";
 import under from "../assets/under.png"; // Make sure the path is correct relative to Bottom.jsx
 
 const Belowbar = () => {
-    return (
-        <div className="relative w-full overflow-hidden">
-            <img
-                src={under}
-                alt="Wave Banner"
-            />
-            <div className="absolute top-0 left-0 w-full p-8 md:p-12 text-white flex flex-col md:flex-row justify-between items-start mb-2">
-                {/* Left Side Content */}
-                <div className="mb-2 top-0">
-                    <h3 className="text-xl text-white-900 hover:text-pink-400 font-bold mb-3">
-                        <p>
-                            Design better and spend less time <br />
-                            without restricting tools creative freedom.
-                        </p>
-                    </h3>
-                    <h6 className="text-white-900 hover:text-pink-400 uppercase text-xs mb-2">
-                        Sign-up to get interesting updates
-                    </h6>
-                    <div className="text-gray-900 flex flex-col sm:flex-row mb-3">
-                        <input
-                            type="email"
-                            placeholder="Enter your email"
-                            className="bg-gray-300 text-white border border-pink-700 rounded-md py-2 px-3 text-sm w-full sm:w-auto mb-2 sm:mb-0 sm:mr-2 focus:outline-none hover:bg-purple-400 focus:border-pink-500"
-                        />
-                        <button className="bg-purple-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-md text-sm transition-colors duration-300">
-                            Send
-                        </button>
-                    </div>
-                    <div className="flex space-x-4">
-                        {/* Add your social media icons/links here */}
-                        <Link
-                            to="https://www.linkedin.com/company/kodivian-technologies/posts/?feedView=all"
-                            className="bg-purple-900 hover:bg-pink-600 hover:text-white mb-3"
-                        >
-                            <FaLinkedin className="w-5 h-5 fill-current" />
-                        </Link>{" "}
-                        {/* Linkdin*/}
-                        <Link
-                            to="https://x.com/i/flow/login?redirect_after_login=%2Fkodivian_tech"
-                            className="text-white-900  hover:bg-pink-600 m hover:text-white"
-                        >
-                            <FaTwitter className="w-5 h-5 fill-current" />
-                        </Link>{" "}
-                        {/* Twitter */}
-                        <Link
-                            to="https://www.instagram.com/kodivian_tech/"
-                            className="text-white-900  hover:bg-pink-600 hover:text-white"
-                        >
-                            <FaInstagram className="w-5 h-5 fill-current" />
-                        </Link>{" "}
-                        {/*INstagram */}
-                        <Link
-                            to="https://www.facebook.com/p/Kodivian-Technology-100075879827039"
-                            className="text-white-900 hover:bg-pink-600 hover:text-white"
-                        >
-                            <FaFacebook className="w-5 h-5  fill-current" />
-                        </Link>{" "}
-                        {/* Facebook */}
-                        <br />
-                    </div>
-                    <div className="flex  bottom-0">
-                        <div className="flex flex-col bottom-0 space-y-3 pr-4 ">
-                            {" "}
-                            {/* Added pr-4 for spacing between icon and text */}
-                            <div className="flex items-center">
-                                <Link
-                                    to="https://maps.google.com/?q=Meenakshi+Towers,No.13+Rajamannar+St,T+Nagar,+Chennai,+600017" // Corrected Google Maps link
-                                    className="text-white-900 hover:bg-pink-600 hover:text-white "
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <FaLocationArrow className="w-5 h-4" />
-                                </Link>
-                            </div>
-                            <div className="flex items-center">
-                                <Link
-                                    to="tel:+918870435343" // Corrected phone number format
-                                    className="text-white-900 hover:bg-pink-600 hover:text-white"
-                                >
-                                    <FaPhone className="w-5 h-4" />
-                                </Link>
-                            </div>
-                            <div className="flex items-center">
-                                <Link
-                                    to="mailto:vijaysabari.m@kodivian.com?subject=Enquiry"
-                                    className="ttext-white-900 hover:bg-pink-600 hover:text-white"
-                                    title="Opens your default email" // Added a title attribute
-                                >
-                                    <FaEnvelope className="w-4 h-4" />
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="flex flex-col bottom-0 space-y-0  pr-4">
-                            <p className="text-white-900 hover:text-pink-400 mb-0">
-                                Meenakshi Towers, No.13 Rajamannar St, T Nagar, Chennai,
-                                600017
-                            </p>
-                            <p className="text-white-900 hover:text-pink-400">+91 8870435343</p>
-                            <p className="text-white-900 hover:text-pink-400 ">vijaysabari.m@kodivian.com</p>
-                        </div>
-                    </div>
-                </div>
+  return (
+    // Ensure Bootstrap CSS is imported in your main App.js or index.js
+    // For example: import 'bootstrap/dist/css/bootstrap.min.css';
 
-                {/* Right Side Navigation Links */}
-                <div className="flex">
-                    <div className="flex-1 flex flex-col space-y-4 space-x-4">
-                        <h3 className="text-violet-300 hover:text-white font-bold ">
-                            OVERALL
-                        </h3>
-                        <a
-                            href="#welcome"
-                            className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
-                        >
-                            Home
-                        </a>
-                        <a
-                            href="#search"
-                            className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
-                        >
-                            Search
-                        </a>
-                        <a
-                            href="#optimizeStrength"
-                            className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
-                        >
-                            Strength
-                        </a>
-                        <a
-                            href="#frame"
-                            className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
-                        >
-                            Framework
-                        </a>
-                    </div>
-                    <div className="flex-1 flex flex-col space-y-4 space-x-4">
-                        <h3 className="text-violet-300 hover:text-white font-bold ">
-                            PRODUCT
-                        </h3>
-                        <a
-                            href="#link2-1"
-                            className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
-                        >
-                            Scanify
-                        </a>
-                        <a
-                            href="#link2-2"
-                            className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
-                        >
-                            Intellidocs
-                        </a>
-                        <a
-                            href="#link2-3"
-                            className="text-white-300 hover:text-pink-200 font-semibold"
-                        >
-                            Process Builder
-                        </a>
-                        <a
-                            href="#link2-4"
-                            className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
-                        >
-                            RPA
-                        </a>
-                    </div>
-                    <div className="flex-1 flex flex-col space-y-5 space-x-0">
-                        <h3 className="text-violet-300 hover:text-white font-bold ">
-                            SERVICES
-                        </h3>
-                        <a
-                            href="#ai"
-                            className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
-                        >
-                            Artificial Intelligence
-                        </a>
-                        <a
-                            href="#bpm"
-                            className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
-                        >
-                            Business Process Management
-                        </a>
-                        <a
-                            href="#rpa"
-                            className="text-white-300 hover:text-pink-200 duration-300 font-semibold"
-                        >
-                            Robotic Process Automation
-                        </a>
-                    </div>
-                </div>
+    <div className="position-relative w-100 overflow-hidden">
+      {/* Custom styles for specific colors and hover effects that don't have direct Bootstrap equivalents */}
+      <style>
+        {`
+        /* Custom Colors (approximating Tailwind colors) */
+        .text-custom-pink-400 { color: #f06292; } /* Equivalent to Tailwind's pink-400 */
+        .text-custom-violet-300 { color: #c4b5fd; } /* Equivalent to Tailwind's violet-300 */
+        .text-custom-white-900 { color: #ffffff; } /* Assuming white-900 is pure white */
+        .text-custom-white-300 { color: #d1d5db; } /* Lighter white/gray for general links */
+
+        /* Custom Button */
+        .btn-custom-purple {
+            background-color: #8b5cf6; /* Equivalent to Tailwind's purple-500 */
+            border-color: #8b5cf6;
+            color: #fff;
+        }
+        .btn-custom-purple:hover {
+            background-color: #ec4899; /* Equivalent to Tailwind's pink-600 */
+            border-color: #ec4899;
+            color: #fff;
+        }
+
+        /* Custom Input Styling */
+        .input-custom-border-pink {
+            border-color: #db2777; /* Equivalent to Tailwind's pink-700 */
+        }
+        .input-custom-border-pink:focus {
+            border-color: #ec4899; /* Equivalent to Tailwind's pink-500 */
+            box-shadow: 0 0 0 0.25rem rgba(236, 72, 153, 0.25); /* Bootstrap-like focus ring */
+        }
+        .input-custom-hover-purple:hover {
+            background-color: #a78bfa !important; /* Equivalent to Tailwind's purple-400 */
+            color: #fff !important; /* Text color on hover */
+        }
+
+        /* Custom Social Icon Background */
+        .bg-custom-purple-900 { background-color: #5b21b6; } /* Equivalent to Tailwind's purple-900 */
+
+        /* Custom Hover Effects for text and background */
+        .hover-text-custom-pink-400:hover { color: #f06292 !important; }
+        .hover-text-white:hover { color: #ffffff !important; }
+        .hover-bg-custom-pink-600:hover { background-color: #db2777 !important; }
+        .hover-text-custom-pink-200:hover { color: #fbcfe8 !important; }
+        .hover-text-custom-pink-900:hover { color: #831843 !important; } /* A darker pink for copyright text */
+        `}
+      </style>
+
+      <img
+        src={under}
+        alt="Wave Banner"
+        className="img-fluid w-100" // `img-fluid` makes image responsive, `w-100` ensures it takes full width
+      />
+      <div className="position-absolute top-0 start-0 w-100 p-4 p-md-5 text-white d-flex flex-column flex-md-row justify-content-between align-items-start mb-2">
+        {/* Left Side Content */}
+        <div className="mb-4 col-12 col-md-5 me-md-4">
+          <h3 className="fs-4 text-custom-white-900 fw-bold mb-3 hover-text-custom-pink-400">
+            Design better and spend less time <br />
+            without restricting tools creative freedom.
+          </h3>
+          <h6 className="text-custom-white-900 text-uppercase fs-6 mb-2 hover-text-custom-pink-400">
+            Sign-up to get interesting updates
+          </h6>
+          <div className="d-flex flex-column flex-sm-row mb-3">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="form-control bg-light text-dark input-custom-border-pink rounded py-2 px-3 fs-6 w-100 w-sm-auto mb-2 mb-sm-0 me-sm-2 focus-outline-none input-custom-hover-purple"
+            />
+            <button className="btn btn-custom-purple fw-semibold py-2 px-4 rounded fs-6">
+              Send
+            </button>
+          </div>
+          <div className="d-flex gap-3 mb-3">
+            {/* Social media icons */}
+            <Link
+              to="https://www.linkedin.com/company/kodivian-technologies/posts/?feedView=all"
+              className="btn btn-sm btn-outline-light d-flex align-items-center justify-content-center bg-custom-purple-900 hover-bg-custom-pink-600 hover-text-white rounded"
+              aria-label="LinkedIn Profile"
+            >
+              <FaLinkedin className="fs-5" />
+            </Link>{" "}
+            <Link
+              to="https://x.com/i/flow/login?redirect_after_login=%2Fkodivian_tech"
+              className="btn btn-sm btn-outline-light d-flex align-items-center justify-content-center text-custom-white-900 hover-bg-custom-pink-600 hover-text-white rounded"
+              aria-label="Twitter Profile"
+            >
+              <FaTwitter className="fs-5" />
+            </Link>{" "}
+            <Link
+              to="https://www.instagram.com/kodivian_tech/"
+              className="btn btn-sm btn-outline-light d-flex align-items-center justify-content-center text-custom-white-900 hover-bg-custom-pink-600 hover-text-white rounded"
+              aria-label="Instagram Profile"
+            >
+              <FaInstagram className="fs-5" />
+            </Link>{" "}
+            <Link
+              to="https://www.facebook.com/p/Kodivian-Technology-100075879827039"
+              className="btn btn-sm btn-outline-light d-flex align-items-center justify-content-center text-custom-white-900 hover-bg-custom-pink-600 hover-text-white rounded"
+              aria-label="Facebook Page"
+            >
+              <FaFacebook className="fs-5" />
+            </Link>{" "}
+          </div>
+          <div className="d-flex align-items-start mt-4">
+            <div className="d-flex flex-column gap-3 pe-3">
+              {" "}
+              <div className="d-flex align-items-center">
+                <Link
+                  to="https://www.google.com/maps/search/Meenakshi+Towers,+No.13+Rajamannar+St,+T+Nagar,+Chennai,+600017" // More specific Google Maps search link
+                  className="text-custom-white-900 hover-bg-custom-pink-600 hover-text-white me-2 rounded"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View location on Google Maps"
+                >
+                  <FaLocationArrow className="fs-5" />
+                </Link>
+              </div>
+              <div className="d-flex align-items-center">
+                <Link
+                  to="tel:+918870435343"
+                  className="text-custom-white-900 hover-bg-custom-pink-600 hover-text-white me-2 rounded"
+                  aria-label="Call phone number"
+                >
+                  <FaPhone className="fs-5" />
+                </Link>
+              </div>
+              <div className="d-flex align-items-center">
+                <Link
+                  to="mailto:vijaysabari.m@kodivian.com?subject=Enquiry"
+                  className="text-custom-white-900 hover-bg-custom-pink-600 hover-text-white me-2 rounded"
+                  title="Opens your default email client"
+                  aria-label="Send an email"
+                >
+                  <FaEnvelope className="fs-5" />
+                </Link>
+              </div>
             </div>
-            {/* Copyright and Design Info */}
-            <div className="absolute bottom-0 font-semibold  w-full text-white hover:text-pink-900 p-1 text-center text-xs">
-                Copyright © 2025 All Right Reserved & Designed By KodivianTechnologies
+            <div className="d-flex flex-column gap-1">
+              <p className="text-custom-white-900 hover-text-custom-pink-400 mb-0">
+                Meenakshi Towers, No.13 Rajamannar St, T Nagar, Chennai, 600017
+              </p>
+              <p className="text-custom-white-900 hover-text-custom-pink-400 mb-0">+91 8870435343</p>
+              <p className="text-custom-white-900 hover-text-custom-pink-400 mb-0">vijaysabari.m@kodivian.com</p>
             </div>
+          </div>
         </div>
-    );
+
+        {/* Right Side Navigation Links */}
+        <div className="d-flex flex-wrap justify-content-around col-12 col-md-7 mt-4 mt-md-0">
+          {/* Overall */}
+          <div className="d-flex flex-column gap-3 mb-4 col-6 col-sm-4 col-md-auto">
+            <h3 className="text-custom-violet-300 fw-bold hover-text-white">
+              OVERALL
+            </h3>
+            <a
+              href="#welcome"
+              className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
+            >
+              Home
+            </a>
+            <a
+              href="#search"
+              className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
+            >
+              Search
+            </a>
+            <a
+              href="#optimizeStrength"
+              className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
+            >
+              Strength
+            </a>
+            <a
+              href="#frame"
+              className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
+            >
+              Framework
+            </a>
+          </div>
+          {/* PRODUCT */}
+          <div className="d-flex flex-column gap-3 mb-4 col-6 col-sm-4 col-md-auto">
+            <h3 className="text-custom-violet-300 fw-bold hover-text-white">
+              PRODUCT
+            </h3>
+            <a
+              href="#link2-1"
+              className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
+            >
+              Scanify
+            </a>
+            <a
+              href="#link2-2"
+              className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
+            >
+              Intellidocs
+            </a>
+            <a
+              href="#link2-3"
+              className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
+            >
+              Process Builder
+            </a>
+            <a
+              href="#link2-4"
+              className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
+            >
+              RPA
+            </a>
+          </div>
+          {/* SERVICES */}
+          <div className="d-flex flex-column gap-3 mb-4 col-12 col-sm-4 col-md-auto">
+            <h3 className="text-custom-violet-300 fw-bold hover-text-white">
+              SERVICES
+            </h3>
+            <a
+              href="#ai"
+              className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
+            >
+              Artificial Intelligence
+            </a>
+            <a
+              href="#bpm"
+              className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
+            >
+              Business Process Management
+            </a>
+            <a
+              href="#rpa"
+              className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
+            >
+              Robotic Process Automation
+            </a>
+          </div>
+        </div>
+      </div>
+      {/* Copyright and Design Info */}
+      <div className="position-absolute bottom-0 start-0 w-100 fw-semibold text-white hover-text-custom-pink-900 p-1 text-center small">
+        Copyright © 2025 All Right Reserved & Designed By KodivianTechnologies
+      </div>
+    </div>
+  );
 };
 
 export default Belowbar;

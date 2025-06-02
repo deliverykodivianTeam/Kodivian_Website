@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -12,9 +11,9 @@ import Processbuilder from './pages/Processbuilder';
 import Document from './pages/Document';
 import Robort from './pages/Robort';
 import './index.css'; // Import global styles
+import Belowbar from './components/Belowbar'; // Import the Belowbar component
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
@@ -23,7 +22,8 @@ function App() {
     <Router>
       <div className="app-container">
         <Navbar />
-        <div className="content">
+        {/* Added Bootstrap's pt-5 class to ensure content starts below the fixed Navbar */}
+        <div className="content pt-5">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -31,11 +31,12 @@ function App() {
             <Route path="/product" element={<Product />} />
             <Route path="/scanify" element={<ScanifyDetail />} />
             <Route path="/processbuilder" element={<Processbuilder />} />
-            <Route path="/document" element={<Document />  }/>
-            <Route path="/robort" element={<Robort />  }/>
-            <Route path="/contact" element={<Contact />} /> 
+            <Route path="/document" element={<Document />} />
+            <Route path="/robort" element={<Robort />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
+        <Belowbar />
       </div>
     </Router>
   );
