@@ -1,291 +1,418 @@
-.contact-page-layout {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: var(--white-color);
-  color: var(--primary-color);
-  align-items: flex-start;
-  justify-content: center;
+/* Import color variables from Services.css to ensure consistency */
+@import "./Services.css";
+
+/*
+    It's generally a good practice to define your primary colors
+    in a central place like Services.css's :root.
+    However, if you're experiencing specificity issues,
+    you can also define them here, but ensure consistency.
+    For this example, I'll assume Services.css has the :root block correctly.
+*/
+
+/* Overall page layout and font */
+.contact-page-wrapper {
+    font-family: var(--font-roboto);
+    background-color: white; /* A soft background for the page */
+    color: var(--text-dark); /* Default text color */
 }
 
-/* Hero Section Styles */
-.hero-section {
-  position: relative;
-  width: 100%;
-  margin-bottom: 20px; /* Adjust spacing below the hero */
+/* --- Hero Section Styles --- */
+.contact-hero-section {
+    position: relative; /* Essential for positioning the overlay */
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    overflow: hidden; /* Ensures content doesn't spill out */
+    color: var(--white); /* Ensure text color is white for contrast against dark gradient */
 }
 
+.hero-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Modern linear gradient - ensure this uses your violet shades */
+     opacity: 0.9; /* Adjust opacity for subtle effect */
+    z-index: 0; /* Place behind content */
+}
+
+/* Styling for the image within the hero section */
+.contact-hero-image {
+    width: 100%; /* Make image responsive within its column */
+    max-width: 600px; /* Limit max width for better visual balance */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures the whole image is visible, scales down if needed. Use 'cover' if you want it to fill the entire space and are okay with cropping. */
+    display: block; /* Removes extra space below image */
+    position: relative; /* Bring image to front of overlay */
+    z-index: 1; /* Bring image to front of overlay */
+}
+
+/* Styling for the text content box within the hero section */
 .hero-contact-info {
-  margin-left: 35px;
-  color: black;
-  height: 375px;
-  font-size: 25px;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background for the text box */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow for the text box */
+    height: 100%; /* Make sure the info box takes full height of its column */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content if box is taller */
+    position: relative; /* Ensure content is above the overlay */
+    z-index: 1; /* Ensure content is above the overlay */
 }
 
 .hero-contact-info h1 {
-  font-size: 50px;
-  font-weight: bold;
-  /* Style the "Contact Us" heading in the hero */
-  margin-bottom: 10px;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--dark-purple); /* Text color for heading, keeping dark for contrast */
 }
 
-.hero-contact-info p {
-  /* Style the introductory text in the hero */
-  margin-bottom: 15px;
-  line-height: 1.6;
+.hero-contact-info p.lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark); /* Text color for lead paragraph */
 }
 
-.hero-contact-info .flex {
-  margin-bottom: 8px;
+.hero-contact-info .contact-icon {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    color: var(--primary-purple); /* Primary purple for icons */
 }
 
-.hero-contact-info svg {
-  /* Style the icons in the hero */
-  width: 1.2em;
-  height: 1.2em;
+/* Ensure contact info text is readable */
+.hero-contact-info span {
+    color: var(--text-dark);
 }
 
-.wave-header {
-  width: 100%;
-  height: 650px; /* Adjust height as needed to fit content */
-  display: block;
-}
-
-.geometric-footer {
-  width: 100%;
-  margin-top: 20px; /* Adjust as needed */
-  display: block;
-}
-
-.contact-map {
-  height: auto; /* Adjust height to fit content */
-  flex: 1 1 45%;
-  margin-right: 75px;
-  border-radius: 15px;
-  text-align: left;
-  margin-bottom: 50px;
-}
-
-.contact-form-container {
-  height: auto; /* Adjust height to fit content */
-  flex: 1 1 45%;
-  margin-left: 75px;
-  border-radius: 15px;
-  text-align: left;
-  margin-bottom: 50px;
-}
-
-.locations-holder {
-  font-weight: bold;
-}
-
-.location-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.location-header h2 {
-  color: var(--primary-color);
-  margin-bottom: 0;
-}
-
-.location-selector label {
-  margin-right: 10px;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-.location-selector select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  background: var(--white-color);
-  color: var(--primary-color);
-}
-
-.location-selector select:hover {
-  color: var(--white-color);
-  background-color: var(--primary-color);
-}
-
-.map-container {
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.contact-form-container h1 {
-  color: var(--primary-color);
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.contact-form-container p {
-  color: var(--secondary-color);
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.contact-form {
-  background-color: transparent;
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
-  width: 100%;
-  max-width: none;
-  margin-bottom: 0;
-}
-
-.form-group {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.form-group label {
-  display: block;
-  color: var(--primary-color);
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
-.form-group textarea {
-  width: 90%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  background-color: #f9f9f9;
-  color: var(--primary-color);
-  box-sizing: border-box;
-  font-size: 1rem;
-}
-
-.form-group textarea {
-  resize: vertical;
-}
-
-.submit-button {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  border: none;
-  border-radius: 25px;
-  padding: 12px 25px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
-  width: 90%;
-}
-
-.submit-button:hover {
-  background-color: rgb(179, 1, 255);
-}
-
-@media (max-width: 768px) {
-  .contact-map,
-  .contact-form-container {
-    flex: 1 1 100%;
-    margin: 20px 0;
-    padding: 20px;
-  }
-
-  .contact-map iframe {
-    height: 400px; /* Adjust map height for smaller screens */
-  }
-
-  .hero-contact-info {
-    margin-left: -25px;
-    margin-top: 25rem;
-    margin-bottom: 50rem;
-    padding: 16px; /* Adjust padding for smaller screens */
-  }
-
-  .hero-contact-info h1 {
-    font-size: 2.5rem; /* Adjust heading size for smaller screens */
-  }
-
-  .why-contact-us ul, .why-contact-us-top ul {
-    font-size: 18px;
-  }
-
-  .why-contact-us-top p {
-    font-size: 15rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .contact-map,
-  .contact-form-container {
-    flex: 1 1 100%;
-    margin: 20px 0;
-    padding: 20px;
-  }
-
-  .contact-form {
-    margin-left: 50px;
-  }
-
-  .contact-map iframe {
-    height: 400px; /* Adjust map height for smaller screens */
-  }
-
-  .hero-contact-info {
-    margin-bottom: 50rem;
-    padding: 16px; /* Adjust padding for smaller screens */
-  }
-
-  .hero-contact-info h1 {
-    font-size: 2.5rem; /* Adjust heading size for smaller screens */
-  }
-}
-
-/* Optional styling for the "Why Contact Us?" section at the top */
 .why-contact-us-top {
-  font-size: 25px;
-  margin-left: 30rem;
-  margin-top: -325px;
-  margin-bottom: 2rem; /* Add more space below this section */
-  color: #333; /* Example text color */
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--light-gray); /* Lighter separator */
 }
 
 .why-contact-us-top p {
-  margin-bottom: 0.75rem; /* Space above the list */
-  font-size: 25px; /* Slightly larger font */
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--dark-purple);
 }
 
 .why-contact-us-top ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
+    list-style-type: none;
+    padding-left: 0;
+    color: var(--text-dark);
 }
 
 .why-contact-us-top li {
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
 }
 
-.location_pin {
-  margin-left: 80px;
-  height: 250px;
-}
-
-.why-contact-us ul,
-.why-contact-us-top ul {
-  list-style-type: none; /* Remove default bullets */
-  padding-left: 0; /* Remove default indentation */
-}
-
-.why-contact-us li::before,
 .why-contact-us-top li::before {
-  content: "✓"; /* Unicode tick symbol */
-  color: rgb(174, 0, 255); /* You can choose your tick color */
-  display: inline-block; /* Allows for spacing and alignment */
-  width: 1em; /* Adjust width for spacing */
-  margin-left: -1em; /* Move the tick to the left of the text */
-  margin-right: 0.5em; /* Add some spacing between the tick and the text */
+    content: "✓";
+    color: var(--primary-purple); /* Your primary purple tick color */
+    display: inline-block;
+    width: 1.2em;
+    margin-right: 0.5em;
+    font-weight: bold;
 }
 
-.contact_hero_page {
-  padding: 400px;
+/* --- GLOBAL BOOTSTRAP PRIMARY BUTTON OVERRIDE --- */
+/* This will change ALL buttons with variant="primary" to your violet theme */
+/* Ensure this block comes AFTER any Bootstrap CSS imports to guarantee override */
+.btn-primary {
+    background-color: var(--primary-purple);
+    border-color: var(--primary-purple);
+    color: var(--white); /* Ensure text is white on violet */
+    transition: all 0.3s ease; /* Smooth transition for all changes */
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.show {
+    background-color: var(--dark-purple); /* Darker violet on hover/focus */
+    border-color: var(--dark-purple);
+    color: var(--white);
+    box-shadow: 0 0 0 0.25rem rgba(106, 5, 127, 0.25); /* Violet shadow on focus */
+}
+
+.btn-primary:disabled {
+    background-color: var(--light-purple); /* Lighter violet for disabled state */
+    border-color: var(--light-purple);
+    opacity: 0.65;
+}
+
+
+/* --- Demo Booking Button (specific styling) --- */
+/* If this button has its own class, ensure its background and color are set explicitly */
+.demo-booking-button {
+    background-color: var(--primary-purple); /* Apply violet to this specific button */
+    border: none; /* Remove default border */
+    color: var(--white); /* Ensure text is white */
+    border-radius: 50px; /* Example: make it more rounded */
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for all changes */
+}
+
+.demo-booking-button:hover {
+    background-color: var(--dark-purple); /* Darker violet on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.demo-booking-button::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    width: 0;
+    height: 2px;
+    background-color: var(--white);
+    transition: width 0.3s ease-out, left 0.3s ease-out;
+    transform: translateX(-50%);
+}
+
+.demo-booking-button:hover::after {
+    width: calc(100% - 20px);
+}
+
+/* --- Demo Button Info --- */
+.demo-button-info {
+    font-size: 0.95rem;
+    color: var(--text-dark); /* Black text */
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+
+/* --- Contact Form Container --- */
+.contact-form-container {
+    background-color: var(--white);
+    padding: 2.5rem; /* More generous padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
+}
+
+.contact-form-container h2 {
+    color: var(--dark-purple);
+    margin-bottom: 1.5rem;
+}
+
+.contact-form-container p {
+    color: var(--secondary-purple);
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    color: var(--primary-purple);
+    font-weight: 500; /* Medium weight for labels */
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border-radius: 0.5rem; /* Slightly more rounded inputs */
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--light-purple);
+    background-color: var(--off-white);
+    color: var(--text-dark);
+}
+
+.form-control:focus {
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 0.25rem rgba(106, 5, 127, 0.25); /* Violet shadow on focus */
+    background-color: var(--white);
+}
+
+/* --- Submit Button (already using .btn-primary, so it gets the new styles) --- */
+.submit-button {
+    /* These properties are now effectively controlled by .btn-primary */
+    /* If you need additional specific styles, keep them, but ensure they don't conflict */
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem; /* Keeping font size for consistency */
+    font-weight: 600; /* Keeping font weight for consistency */
+    width: 100%;
+    /* Remove explicit background, color, border here as .btn-primary handles it */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+    /* This hover will be handled by .btn-primary:hover now, unless you want a different specific hover effect */
+    /* background-color: var(--dark-purple); */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* --- Contact Map Section --- */
+.contact-map {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.contact-map h2 {
+    color: var(--dark-purple);
+    margin-bottom: 1.5rem;
+}
+
+.location-selector label {
+    color: var(--primary-purple);
+    font-weight: 500;
+}
+
+.location-select-dropdown {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--light-purple);
+    border-radius: 0.5rem;
+    background-color: var(--off-white);
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    appearance: none; /* Hide default arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236A057F' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1.2rem;
+    cursor: pointer;
+}
+
+.location-select-dropdown:hover,
+.location-select-dropdown:focus {
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 0.25rem rgba(106, 5, 127, 0.25);
+}
+
+.map-container {
+    border: 1px solid var(--light-purple); /* Subtle border for the map iframe */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Lighter shadow for map */
+}
+
+.map-container iframe {
+    border-radius: 8px; /* Match container radius */
+}
+
+.map-placeholder {
+    font-size: 1.1rem;
+}
+
+.location-details-card {
+    background-color: var(--light-purple) !important; /* Override with theme color */
+    border: none !important;
+}
+
+.location-details-card .card-title {
+    color: var(--dark-purple);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.location-details-card .card-text {
+    color: var(--secondary-purple);
+}
+
+.location-details-card .card-text svg {
+    color: var(--primary-purple);
+    font-size: 1.1rem;
+    vertical-align: middle;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991.98px) { /* For small to medium screens (tablets) */
+    .contact-hero-section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    .contact-hero-image {
+        max-height: 400px; /* Adjusted image height for tablets */
+        margin-bottom: 2rem; /* Add space between image and text when stacked */
+    }
+
+    .hero-contact-info {
+        padding: 1.5rem;
+        text-align: center; /* Center align text on smaller screens */
+    }
+    .hero-contact-info .d-flex {
+        justify-content: center; /* Center contact icons and text */
+    }
+
+    .hero-contact-info h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-contact-info p.lead {
+        font-size: 1rem;
+    }
+
+    .contact-form-container,
+    .contact-map {
+        padding: 2rem;
+        margin-bottom: 0; /* Remove default margin-bottom, let gap handle it */
+    }
+
+    .map-container iframe {
+        height: 350px;
+    }
+
+    .location-select-dropdown {
+        width: 100%;
+    }
+
+    .why-contact-us-top {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+    }
+
+    .why-contact-us-top p {
+        font-size: 1.1rem;
+    }
+
+    .why-contact-us-top li {
+        font-size: 0.9rem;
+        justify-content: center; /* Center list items on smaller screens */
+    }
+    .why-contact-us-top ul {
+        padding-left: 0; /* Remove default list padding */
+    }
+}
+
+@media (max-width: 767.98px) { /* For extra small screens (mobile) */
+    .contact-hero-section {
+        min-height: unset; /* Remove min-height constraint for better flow */
+    }
+    .contact-hero-image {
+        max-height: 280px; /* Further adjust image height for mobile */
+    }
+
+    .hero-contact-info {
+        padding: 1.5rem;
+    }
+
+    .map-container iframe {
+        height: 300px;
+    }
+
+    /* Ensure flex-wrap works for the select dropdown */
+    .contact-map .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-map .form-group {
+        width: 100%;
+        margin-bottom: 1rem !important; /* Add space below dropdown on mobile */
+    }
+
+    .demo-booking-button {
+        width: 100%; /* Full width on mobile */
+        padding: 0.75rem 1.5rem; /* Adjust padding */
+    }
 }

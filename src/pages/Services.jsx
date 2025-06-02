@@ -134,8 +134,8 @@ const Services = () => {
                         <Image src={processImage} alt="AI Processes & Automation" fluid rounded className="shadow-lg services-section-image" />
                     </Col>
                     <Col lg={6} className="order-lg-1"> {/* Text on left for large screens */}
-                        <h2 className="display-4 fw-bold mb-3 text-dark-purple">Intelligent Automation & Development</h2>
-                        <p className="lead mb-4 text-secondary-purple">
+                        <h2 className="display-4 fw-bold mb-3 text-black">Intelligent Automation & Development</h2>
+                        <p className="lead mb-4 text-muted">
                             Harness the power of AI to transform your business processes and accelerate your digital journey.
                         </p>
                         <ul className="list-unstyled m-0 p-0">
@@ -239,43 +239,43 @@ const Services = () => {
                     </Col>
                     <Col lg={10}>
                         <h2 className="display-4 fw-bold mb-3 text-black">Comprehensive Product & Project Support</h2>
-                        <p className="lead mb-4 text-secondary-purple">
+                        <p className="lead mb-4 text-muted">
                             From initial concept to successful deployment and beyond, we provide hands-on, proactive support at every stage.
                         </p>
                         <Row className="g-3">
                             <Col md={6}>
                                 <div className="d-flex align-items-start mb-3">
-                                    <ClipboardDocumentCheckIcon className="flex-shrink-0 me-3 process-icon" />
+                                    <ClipboardDocumentCheckIcon className="flex-shrink-0 me-3 process-icon text-black" />
                                     <div>
-                                        <h5 className="fw-bold mb-1 text-primary-purple">Project Planning & Discovery</h5>
-                                        <p className="text-muted mb-0">Laying a strong foundation with detailed planning and thorough requirement gathering.</p>
+                                        <h5 className="fw-bold mb-1 text-black">Project Planning & Discovery</h5>
+                                        <p className=" text-primary-purple mb-0">Laying a strong foundation with detailed planning and thorough requirement gathering.</p>
                                     </div>
                                 </div>
                             </Col>
                             <Col md={6}>
                                 <div className="d-flex align-items-start mb-3">
-                                    <ClipboardDocumentCheckIcon className="flex-shrink-0 me-3 process-icon" />
+                                    <ClipboardDocumentCheckIcon className="flex-shrink-0 me-3 process-icon text-black" />
                                     <div>
-                                        <h5 className="fw-bold mb-1 text-primary-purple">Development & Reporting</h5>
-                                        <p className="text-muted mb-0">Iterative development with transparent progress reporting.</p>
+                                        <h5 className="fw-bold mb-1 text-black">Development & Reporting</h5>
+                                        <p className=" text-primary-purple mb-0">Iterative development with transparent progress reporting.</p>
                                     </div>
                                 </div>
                             </Col>
                             <Col md={6}>
                                 <div className="d-flex align-items-start">
-                                    <CheckCircleIcon className="flex-shrink-0 me-3 process-icon" />
+                                    <CheckCircleIcon className="flex-shrink-0 me-3 process-icon text-black" />
                                     <div>
-                                        <h5 className="fw-bold mb-1 text-primary-purple">UAT & Go-Live</h5>
-                                        <p className="text-muted mb-0">Ensuring quality through user acceptance testing and smooth product launch.</p>
+                                        <h5 className="fw-bold mb-1 text-black">UAT & Go-Live</h5>
+                                        <p className=" text-primary-purple mb-0">Ensuring quality through user acceptance testing and smooth product launch.</p>
                                     </div>
                                 </div>
                             </Col>
                             <Col md={6}>
                                 <div className="d-flex align-items-start">
-                                    <CheckCircleIcon className="flex-shrink-0 me-3 process-icon" />
+                                    <CheckCircleIcon className="flex-shrink-0 me-3 process-icon text-black" />
                                     <div>
-                                        <h5 className="fw-bold mb-1 text-primary-purple">Proactive Hands-on Support</h5>
-                                        <p className="text-muted mb-0">Continuous monitoring, maintenance, and expert assistance post-launch.</p>
+                                        <h5 className="fw-bold mb-1 text-black">Proactive Hands-on Support</h5>
+                                        <p className=" mb-0  text-primary-purple">Continuous monitoring, maintenance, and expert assistance post-launch.</p>
                                     </div>
                                 </div>
                             </Col>
@@ -285,13 +285,17 @@ const Services = () => {
             </Container>
 
             {/* Concluding Section */}
-            <Container fluid className="py-5 bg-primary-purple text-white text-center">
-                <Row className="align-items-center justify-content-center flex-column-reverse flex-lg-row">
-                    <h2 className="display-4 fw-bold">Let's Build the Future Together.</h2>
-                    <p className="lead mb-4">Ready to transform your business? Contact us today!</p>
-                    <Button variant="outline-light" size="lg" className="w-65 px-5">Get Started</Button> {/* Changed to Bootstrap Button */}
-                </Row>
-            </Container>
+        <Container fluid className="py-5 bg-primary-purple text-white text-center mb-3">
+  <Row className="align-items-center justify-content-center flex-column-reverse flex-lg-row">
+    <h2 className="display-4 fw-bold">Let's Build the Future Together.</h2>
+    <p className="lead mb-4">Ready to transform your business? Contact us today!</p>
+    <Button variant="outline-light" className="btn-small">
+      Get Started
+    </Button>
+  </Row>
+</Container>
+
+
         </div>
     );
 };

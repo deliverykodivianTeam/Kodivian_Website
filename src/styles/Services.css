@@ -119,6 +119,19 @@ body,
    
 }
 
+.tech-icon{
+ width: 60px;
+    height: 60px;   
+}
+
+/* Custom small button override */
+.btn-small {
+    padding: 6px 16px;
+    font-size: 0.875rem; /* Slightly smaller font */
+    border-radius: 4px;
+    width: auto !important;
+    max-width: 200px;
+}
 
 
 /* Specific adjustments for larger icons if needed, e.g., in cloud support */
