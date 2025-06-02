@@ -1,364 +1,213 @@
-/* Custom CSS for Home.jsx */
+/* src/styles/Home.css */
 
-/* Color Palette */
+/* Import Google Fonts - Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Define CSS variables for your primary colors */
 :root {
-  --bs-white: #ffffff;
-  --bs-dark: #343a40;
-  --bs-violet: #6f42c1; /* Bootstrap's violet color */
-  --bs-secondary: #6c757d;
-  --bs-light: #f8f9fa;
-  --bs-primary-dark: #5a369e; /* A slightly darker violet for emphasis */
+    --kodivian-violet: #6A0DAD;
+    --black-color: #000000;
+    --light-grey-bg: #f8f9fa; /* Bootstrap's bg-light default */
 }
 
-/* Custom Bootstrap Button */
-.btn-violet {
-  background-color: var(--bs-violet);
-  color: var(--bs-white);
-  border: none;
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+/* Base font for the entire application */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--black-color); /* Default text color */
 }
 
-.btn-violet:hover {
-  background-color: var(--bs-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2) !important;
-}
-
-.btn-outline-violet {
-  color: var(--bs-violet);
-  border: 2px solid var(--bs-violet);
-  background-color: transparent;
-  padding: 0.8rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-outline-violet:hover {
-  background-color: var(--bs-violet);
-  color: var(--bs-white);
-  transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
-
+/* Apply the violet color to elements with .text-violet class */
 .text-violet {
-  color: var(--bs-violet) !important;
+    color: var(--kodivian-violet) !important;
 }
 
+/* Apply the black color to elements with .text-black class */
+.text-black {
+    color: var(--black-color) !important;
+}
+
+/* Style for the button with violet background */
 .bg-violet {
-  background-color: var(--bs-violet) !important;
+    background-color: var(--kodivian-violet) !important;
 }
 
-/* General Layout */
-.home-container {
-  font-family: 'Roboto', sans-serif; /* "Robot" theme inspiration */
+/* Specific styling for the hero title in the introduction section */
+.home-intro-section .hero-title {
+    color: var(--black-color); /* Ensure hero title is black as per request */
 }
 
-/* Hero Section with Large Image Background */
-.hero-section.large-image-background {
-  min-height: 100vh; /* Ensures it covers the entire viewport height */
-  background: url('../assets/your-large-hero-image.jpg') no-repeat center center/cover; /* <--- UPDATE THIS PATH TO YOUR IMAGE */
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--bs-white);
+/* Styling for the schedule demo button */
+.home-demo-button {
+    background-color: var(--kodivian-violet);
+    border: none;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
-.hero-section.large-image-background::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Overlay to ensure text readability */
-  z-index: 1;
+.home-demo-button:hover {
+    background-color: darken(var(--kodivian-violet), 10%); /* Slightly darker on hover */
+    color: #fff;
 }
 
-.hero-section.large-image-background .container {
-  position: relative;
-  z-index: 2; /* Bring text and button above the overlay */
+/* Styling for the horizontal divider lines */
+.divider-line {
+    height: 5px;
+    background-color: var(--black-color); /* Solid black */
+    border: none;
+    margin: 0; /* Remove default margins */
 }
 
-/* About Us Section */
-.about-us-section {
-  padding: 5rem 0;
-  background-color: var(--bs-white);
+/* Product Carousel Section Styling */
+.product-carousel-section {
+    background-color: var(--light-grey-bg); /* Use the light grey background */
+    padding: 0;
+    border-bottom: 2px solid var(--kodivian-violet); /* A subtle border */
+    border-top: 2px solid var(--kodivian-violet); /* A subtle border */
 }
 
-.about-us-section img {
-  max-width: 100%;
-  height: auto;
+.product-carousel-custom .carousel-item {
+    background-color: var(--light-grey-bg);
 }
 
-/* Product Section - Simplified Layout */
-.products-section {
-  padding: 5rem 0; /* Adjusted padding, removed specific background-color */
+.product-carousel-custom .product-icon {
+    max-height: 300px;
+    max-width: 80%;
+    object-fit: contain;
 }
 
-.product-item-simple {
-  text-align: center;
-  padding: 20px;
-  /* No border, no shadow, no specific background for this simplified version */
+.product-carousel-custom .product-description {
+    max-width: 500px;
+    margin: 0 auto; /* Center text on small screens */
+    color: var(--black-color); /* Ensure product description text is black */
 }
 
-.product-icon-simple {
-  width: 150px; /* Adjust size as needed */
-  height: 150px; /* Adjust size as needed */
-  object-fit: contain;
-  filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.15)); /* Lighter shadow for simplicity */
-  transition: transform 0.3s ease-out;
+/* Custom styles for carousel indicators */
+.product-carousel-custom .carousel-indicators [data-bs-target] {
+    background-color: var(--kodivian-violet); /* Violet indicators */
+    opacity: 0.5; /* Less visible when inactive */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* Circular indicators */
+    transition: opacity 0.3s ease;
 }
 
-.product-item-simple:hover .product-icon-simple {
-  transform: translateY(-5px);
+.product-carousel-custom .carousel-indicators .active {
+    opacity: 1; /* More visible for the active indicator */
 }
 
-.product-item-simple h3 {
-  font-weight: 700;
-  font-size: 1.8rem;
-  color: var(--bs-primary-dark);
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+/* Who We Are Section */
+#who-we-are p {
+    color: var(--black-color); /* Ensure text in Who We Are section is black */
 }
 
-.product-item-simple p {
-  font-size: 1rem;
-  color: var(--bs-secondary);
-  line-height: 1.5;
+/* Solution Delivery Process Section */
+.workflow-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Our Process Section */
-.process-section {
-  padding: 6rem 0;
-  background-color: var(--bs-light);
+.workflow-card:hover {
+    transform: translateY(-5px); /* Lift card slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important; /* Stronger shadow on hover */
 }
 
-.process-step {
-  border-radius: 15px;
-  padding: 2rem;
-  background-color: var(--bs-white);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.workflow-card .bi { /* Bootstrap Icons */
+    color: var(--kodivian-violet); /* Ensure icons are violet */
 }
 
-.process-step:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.1);
+.workflow-card .card-title {
+    color: var(--black-color); /* Card titles should be black */
 }
 
-.process-icon-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--bs-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.1);
+.workflow-card .card-text {
+    color: var(--black-color); /* Card text should be black */
 }
 
-/* Client Carousel Section */
-.client-section {
-  background-color: var(--bs-white);
-  padding: 40px 0;
+/* Client Logos Track for seamless animation */
+#our-clients {
+    background-color: var(--light-grey-bg); /* Match background with carousel for consistency */
+    border-top: 2px solid var(--kodivian-violet);
+    border-bottom: 2px solid var(--kodivian-violet);
 }
 
-.logo-carousel-container {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 20px 0;
+.client-logos-track {
+    display: flex;
+    animation: scroll-left 40s linear infinite; /* Adjust duration for speed */
+    width: max-content; /* Ensure track is wide enough for all logos */
+    padding: 20px 0; /* Add some vertical padding */
+    white-space: nowrap; /* Prevent items from wrapping to the next line */
+    /* If you have a specific number of logos and want to calculate width, you can do so.
+       For a seamless loop with `transformX(-50%)`, you generally need your content duplicated. */
 }
 
-.logo-carousel {
-  display: inline-block;
-  animation: scroll-left 30s linear infinite;
-  padding-right: 50px;
+.client-logos-track:hover {
+    animation-play-state: paused; /* Pause animation on hover */
 }
 
-.logo-item {
-  display: inline-block;
-  margin-right: 60px;
-  vertical-align: middle;
+.client-logo-item {
+    flex-shrink: 0; /* Prevent logos from shrinking */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 40px; /* Space between logos */
+    opacity: 0.8; /* Slightly reduced opacity for a subtle effect */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity change */
 }
 
-.logo-item img {
-  height: 70px;
-  max-width: 160px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
+.client-logo-item:hover {
+    opacity: 1; /* Full opacity on hover */
 }
 
-.logo-item img:hover {
-  transform: scale(1.05);
+.client-logo-item img {
+    max-height: 80px; /* Max height for the logos */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures the entire image is visible within the bounds */
 }
 
-/* Animation for the logo carousel */
+/* Keyframes for the continuous scroll animation */
 @keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%); /* Scrolls exactly half the total width for a seamless loop */
+    }
 }
 
 /* Responsive adjustments */
-@media (max-width: 1200px) {
-  .hero-section.large-image-background .container h1 {
-    font-size: 3rem;
-  }
-  .hero-section.large-image-background .container p {
-    font-size: 1.2rem;
-  }
-  .products-section {
-    padding: 8rem 0; /* Adjust padding on smaller screens */
-  }
-  .product-icon-simple {
-    width: 130px;
-    height: 130px;
-  }
-  .product-item-simple h3 {
-    font-size: 1.6rem;
-  }
-  .product-item-simple p {
-    font-size: 0.95rem;
-  }
-  .process-icon-circle {
-    width: 55px;
-    height: 55px;
-    font-size: 1.6rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .hero-section.large-image-background {
-    min-height: 100vh;
-  }
-  .hero-section.large-image-background .container h1 {
-    font-size: 2.8rem;
-  }
-  .hero-section.large-image-background .container p {
-    font-size: 1.1rem;
-    padding: 0 1rem;
-    margin: 0 1rem;
-  }
-  .about-us-section {
-    padding: 4rem 0;
-  }
-  .about-us-section h2 {
-    font-size: 2.5rem;
-  }
-  .products-section {
-    padding: 6rem 0;
-  }
-  .product-icon-simple {
-    width: 110px;
-    height: 110px;
-  }
-  .product-item-simple h3 {
-    font-size: 1.4rem;
-  }
-  .product-item-simple p {
-    font-size: 0.9rem;
-  }
-  .process-step {
-    padding: 1.5rem;
-  }
-  .process-icon-circle {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-  }
-}
-
 @media (max-width: 768px) {
-  .hero-section.large-image-background {
-    min-height: 100vh;
-  }
-  .hero-section.large-image-background .container h1 {
-    font-size: 2.2rem;
-  }
-  .hero-section.large-image-background .container p {
-    font-size: 1rem;
-  }
-  .about-us-section .col-lg-6 {
-    text-align: center;
-  }
-  .about-us-section img {
-    margin-top: 1.5rem;
-  }
-  .products-section {
-    padding: 5rem 0;
-  }
-  .product-icon-simple {
-    width: 90px;
-    height: 90px;
-  }
-  .product-item-simple h3 {
-    font-size: 1.2rem;
-  }
-  .product-item-simple p {
-    font-size: 0.85rem;
-  }
-  .logo-item img {
-    height: 60px;
-  }
-  .logo-item {
-    margin-right: 40px;
-  }
-  .process-section {
-    padding: 4rem 0;
-  }
-  .process-step {
-    margin-bottom: 1.5rem;
-  }
-}
+    .product-carousel-custom .carousel-item .col-md-6 {
+        order: unset !important; /* Reset order for smaller screens */
+    }
 
-@media (max-width: 576px) {
-  .hero-section.large-image-background {
-    min-height: 100vh;
-  }
-  .hero-section.large-image-background .container h1 {
-    font-size: 1.8rem;
-  }
-  .hero-section.large-image-background .container p {
-    font-size: 0.9rem;
-    padding: 0;
-    margin: 0;
-  }
-  .btn-violet, .btn-outline-violet {
-    padding: 0.6rem 1.5rem;
-    font-size: 1rem;
-  }
-  .product-icon-simple {
-    width: 70px;
-    height: 70px;
-  }
-  .product-item-simple h3 {
-    font-size: 1.1rem;
-  }
-  .product-item-simple p {
-    font-size: 0.8rem;
-  }
-  .process-step {
-    padding: 1.2rem;
-  }
-  .process-icon-circle {
-    width: 45px;
-    height: 45px;
-    font-size: 1.3rem;
-  }
+    .product-carousel-custom .py-5 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    .product-carousel-custom .product-description {
+        text-align: center;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .product-carousel-custom .text-md-start {
+        text-align: center !important;
+    }
+
+    .product-carousel-custom .text-md-end {
+        text-align: center !important;
+    }
+
+    .client-logo-item {
+        margin: 0 20px; /* Less space between logos on smaller screens */
+    }
+
+    .client-logo-item img {
+        max-height: 60px; /* Smaller logos on mobile */
+    }
+
+    .client-logos-track {
+        animation-duration: 25s; /* Faster scroll on smaller screens */
+    }
 }

@@ -1,416 +1,208 @@
-/* About.css */
-.about-page {
-  text-align: center;
-  margin-top: 120px; /* Adjusted for better spacing on tablets */
-  background-color: var(--white-color);
-  color: var(--primary-color);
-  padding: 0 20px; /* Added side padding for tablets */
+/* In your About.css file or a global stylesheet */
+
+/* Define CSS variables for your colors. If you already have these in a global CSS file,
+   make sure they are set to your desired violet shades. */
+:root {
+  --primary-violet: #8a2be2; /* A good shade of violet */
+  --secondary-purple: #9932cc; /* A slightly different shade for hover effects */
+  --background-light: #f8f9fa; /* Light background, typical for Bootstrap's bg-light */
+  --text-color-dark: #343a40; /* Dark text for contrast */
+  --text-color-light: #6c757d; /* Lighter text for secondary info */
 }
 
-.about-page h1 {
-  color: var(--primary-color);
-  margin-bottom: 20px;
+.team-section-heading {
+  font-size: 2.25rem;
+  color: #1a1a1a;
+}
+.highlighted-leader-card {
+  background-color: #f8f9fa;
+  border-radius: 1rem;
+  overflow: hidden;
+  min-height: 280px;
 }
 
-.about-page p {
-  color: black;
-  margin-bottom: 30px;
-  max-width: 90%; /* Adjusted for better flow on tablets */
-  line-height: 1.6;
-  margin-left: auto;
-  margin-right: auto;
+.highlighted-leader-card .card-body {
+  padding: 2rem;
 }
-
-.about-stats-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.about-stat-box {
-  background-color: var(--bg-color);
-  border-radius: 15px;
-  padding: 30px;
-  margin: 15px;
-  text-align: center;
-  width: calc(50% - 30px);
-  max-width: 300px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease;
-}
-
-.about-stat-box:hover {
-  box-shadow: 0 5px 8px oklch(49.6% 0.265 301.924);
-}
-
-.stat-icon {
-  color: var(--primary-color);
-  font-size: 2rem;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-}
-
-.stat-number {
-  color: var(--primary-color);
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.stat-label {
-  color: var(--secondary-color);
-  font-size: 1rem;
-}
-
-@media (max-width: 1024px) { /* Adjust for medium screens (e.g., tablets) */
-  .about-stat-box {
-    width: calc(50% - 20px); /* Maintain two columns on larger tablets */
-  }
-
-  .about_content_image {
-    flex-direction: column; /* Stack content vertically on smaller screens */
-    align-items: center;
-    text-align: center;
-    height: auto; /* Adjust height automatically */
-    gap: 20px;
-    padding: 20px;
-  }
-
-  .about_content_image_1 {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    height: auto;
-    gap: 20px;
-    padding: 20px;
-  }
-
-  .styling_class {
-    margin-left: 50px; /* Adjust left margin */
-    height: auto; /* Adjust height automatically */
-  }
-
-  .styling_class_content {
-    margin-top: 20px; /* Adjust top margin */
-    margin-left: 50px; /* Adjust left margin */
-    padding: 20px;
-    text-align: left; /* Adjust text alignment if needed */
-  }
-
-  .about-para {
-    margin-right: auto; /* Center the paragraph */
-  }
-
-  .hero-about-info {
-    margin-top: -80px; /* Adjust top margin */
-    text-align: center; /* Center hero text on smaller screens */
-  }
-
-  .team-members-grid {
-    margin-left: 0; /* Reset left margin */
-    padding-left: 20px; /* Add some padding */
-    padding-right: 20px; /* Add some padding */
-  }
-
-  .member-name {
-    margin-right: auto; /* Reset right margin */
-  }
-
-  .member-role {
-    margin-right: auto; /* Reset right margin */
-  }
-
-  .learn-more-button {
-    margin-right: auto; /* Reset right margin */
-  }
-}
-
-@media (max-width: 768px) { /* Adjust for smaller screens (e.g., mobile) */
-  .about-stat-box {
-    width: calc(100% - 30px); /* Single column on smaller screens */
-    margin: 10px 0;
-    padding: 20px;
-  }
-
-  .styling_class {
-    margin-left: 20px; /* Further adjust left margin */
-  }
-
-  .styling_class_content {
-    margin-left: 20px; /* Further adjust left margin */
-  }
-}
-
-.scrolling-logos-container {
-  text-align: center;
-  margin-top: 40px;
-  padding: 20px;
-  overflow: hidden; /* Changed to hidden to contain the scrolling */
-}
-
-.scrolling-logos {
-  display: flex;
-  white-space: nowrap;
-  animation: scrollLogos 30s linear infinite; /* Adjusted animation duration */
-}
-
-.scrolling-logos:hover {
-  animation-play-state: paused;
-}
-
-.logos-set {
-  display: flex;
-}
-
-.logo {
-  height: 100px;
-  margin: 0 50px;
-  display: inline-block;
-}
-
-.about-para {
-  margin-right: 260px;
-}
-
-.hero-about-info {
-  margin-top: -100px;
-}
-
-.hero-about-info h1 {
-  font-size: 3.5rem;
-  line-height: 1.5;
-  margin-bottom: 0.5rem; /* Adjust spacing below the main heading */
-}
-
-.hero-about-info p {
-  font-size: 1.25rem;
-  margin-bottom: 1rem; /* Adjust spacing below the subheading */
-}
-
-.hero-about-info button {
-  font-size: 1.1rem;
-  padding: 0.8rem 1.5rem;
-}
-
-/* Increased the percentage to ensure smooth continuous scrolling */
-@keyframes scrollLogos {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.rotating-solution-text {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-  margin-top: 45px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-size: 70px;
-}
-
-.colored-solution {
-  color: var(--accent-color);
-  font-weight: bold;
-}
-
-.framer-text {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 0.1em;
-  text-align: center;
-  color: rgb(124, 124, 135);
-}
-
-.hero-services-info p {
-  color: black;
-  text-align: left; /* Change this line to align text to the left */
-}
-
-.rotating-solution-text-1 {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-  margin-top: 20px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-size: 70px;
-}
-
-.about_content_image {
-  height: 550px;
-  display: flex;
-  align-items: center;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: var(--bg-light-color);
-  gap: 60px;
-}
-
-.about_content_image_1{
-  height: 550px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: var(--bg-light-color);
-  gap: 60px;
-}
-
-.intro_about_banner {
-  margin-top: 0;
-  color: black;
-  font-size: 1.5em;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 600;
-}
-
-.intro_about_banner_1{
-  margin-top: 0;
-  color: black;
-  font-size: 1.5em;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 600;
-}
-
-.styling_class {
-  height: 300px;
-  margin-left: 150px;
-}
-
-.styling_class_content {
-  color: grey;
-  font-weight: bold;
-  font-size: 25px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  margin-top: -250px;
-  margin-left: 400px;
-  padding: 150px;
-}
-
-.team-members-grid {
-  margin-left: 0; /* Adjusted for better centering on tablets */
-  display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
-  justify-content: center; /* Center the items horizontally */
-  gap: 16px; /* Adjust the gap between items as needed */
-  padding-top: 32px; /* Adjust padding as needed */
-  padding-bottom: 32px; /* Adjust padding as needed */
+.no-side-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .team-member-card {
-  width: calc(33.33% - 16px); /* Display in 3 columns on larger tablets */
-  margin-bottom: 20px; /* Add some space below each profile */
-  text-align: center; /* Center the content within each card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Media query for desktops */
-@media (min-width: 1025px) {
-  .team-member-card {
-    width: calc(20% - 16px); /* Display in approximately 5 columns on desktops */
-  }
+.team-member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) { /* Adjust for smaller screens (e.g., mobile) */
-  .team-member-card {
-    width: calc(50% - 16px); /* Display in 2 columns on smaller tablets and phones */
-  }
-}
-
-@media (max-width: 480px) { /* Adjust for even smaller screens */
-  .team-member-card {
-    width: 100%; /* Display in a single column on small phones */
-  }
+.member-image-wrapper {
+  background-color: #f8f9fa;
 }
 
 .member-image {
-  width: 200px; /* Or any desired fixed width for the images */
-  height: 250px; /* Maintain a square aspect ratio */
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 .member-name {
-  margin-right: auto; /* Adjusted for centering on smaller screens */
-  font-weight: 600;
+  color: #212529;
 }
 
+
+
+
 .member-role {
-  margin-right: auto; /* Adjusted for centering on smaller screens */
-  font-size: 0.875rem;
-  color: #718096;
+  color: #6c757d;
 }
 
 .learn-more-button {
-  background-color: white;
-  margin-right: auto; /* Adjusted for centering on smaller screens */
-  display: inline-block;
-  margin-top: 0.5rem;
-  color: black;
-  text-decoration: none;
-  font-size: 0.875rem;
-  transition: transform 0.1s ease-in-out, background-color 0.3s ease;
+  font-weight: 500;
+  border-radius: 50px;
+}
+
+
+.member-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.member-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+}
+
+.team-member-card:hover .member-image {
+    transform: scale(1.05);
+}
+
+/* Original overlay for other members */
+.member-role-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    /* Updated gradient to use violet shades */
+    background: linear-gradient(to bottom, var(--primary-violet) 0%, rgba(138, 43, 226, 0.8) 70%, rgba(138, 43, 226, 0) 100%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 15px;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* New style to remove overlay */
+.no-overlay-card .member-role-overlay {
+    display: none; /* Hide the overlay for specific cards */
+}
+
+.overlay-role {
+    margin: 0;
+    padding: 0 10px;
+    word-wrap: break-word;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.member-name {
+    color: var(--text-color-dark);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.member-role {
+    color: var(--text-color-light);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.learn-more-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--primary-violet); /* Changed to primary-violet */
+    border-color: var(--primary-violet);     /* Changed to primary-violet */
+    color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 0.3rem;
 }
 
 .learn-more-button:hover {
-  background-color: black;
-  color: white;
+    background-color: var(--secondary-purple); /* Changed to secondary-purple */
+    border-color: var(--secondary-purple);     /* Changed to secondary-purple */
+    color: white;
+    transform: translateY(-2px);
 }
 
-@media (max-width: 1024px) {
-  /* ... other styles ... */
-
-  .intro_about_banner {
-    margin-bottom: 20px; /* Add some space below the first banner */
-  }
-
-  /* If the second banner also needs top margin */
-  .intro_about_banner_1 {
-    margin-top: 20px;
-  }
-
-  /* ... other styles ... */
+/* Fade-up animation */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s forwards;
+    animation-delay: 0.3s;
 }
 
-@media (max-width: 1024px) {
-  .about_content_image {
-    flex-direction: column; /* Keep stacking for image and overall content */
-    align-items: center;
-    text-align: center;
-    height: auto;
-    gap: 20px;
-    padding: 20px;
-  }
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-  .about_content_image > .intro_about_banner,
-  .about_content_image > .intro_about_banner_1 {
-    /* Adjust margins here if needed */
-    margin-bottom: 15px;
-    margin-top: 15px;
-  }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .rotating-solution-text {
+        font-size: 2.2rem;
+    }
+    .team-section-heading {
+        font-size: 2rem;
+    }
+    .about-stats-section .fs-1 {
+        font-size: 2.5rem !important;
+    }
+    .client-logo-item img {
+        max-height: 60px;
+    }
+}
 
-  .about_content_image_1 {
-    flex-direction: column; /* Keep stacking for image and overall content */
-    align-items: center;
-    text-align: center;
-    height: auto;
-    gap: 20px;
-    padding: 20px;
-  }
+@media (max-width: 576px) {
+    .rotating-solution-text {
+        font-size: 1.8rem;
+    }
+    .team-section-heading {
+        font-size: 1.7rem;
+    }
+    .intro_about_banner_1, .intro_about_banner {
+        font-size: 1rem;
+    }
+    .about-content-row.bg-dark {
+        padding: 2rem !important;
+    }
+}
 
-  .about_content_image_1 > .intro_about_banner,
-  .about_content_image_1 > .intro_about_banner_1 {
-    /* Adjust margins here if needed */
-    margin-bottom: 15px;
-    margin-top: 15px;
-  }
-
-  /* ... other styles ... */
+/* Specific class for the rotating solution text to ensure it's violet */
+.colored-solution {
+    color: var(--primary-violet); /* Ensures this specific span is violet */
 }

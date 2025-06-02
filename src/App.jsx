@@ -12,6 +12,10 @@ import Document from './pages/Document';
 import Robort from './pages/Robort';
 import './index.css'; // Import global styles
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 function App() {
   return (
