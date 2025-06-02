@@ -14,6 +14,20 @@
   font-size: 2.25rem;
   color: #1a1a1a;
 }
+.highlighted-leader-card {
+  background-color: #f8f9fa;
+  border-radius: 1rem;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.highlighted-leader-card .card-body {
+  padding: 2rem;
+}
+.no-side-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
 
 .team-member-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -36,6 +50,9 @@
 .member-name {
   color: #212529;
 }
+
+
+
 
 .member-role {
   color: #6c757d;

@@ -94,7 +94,6 @@ body {
 
 .product-carousel-custom .carousel-indicators .active {
     opacity: 1; /* More visible for the active indicator */
-    background-color: var(--kodivian-violet); /* Ensure active indicator is solid violet */
 }
 
 /* Who We Are Section */

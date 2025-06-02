@@ -50,7 +50,6 @@ const About = () => {
     Innoventure_logo, shanthigearslogo
   ];
 
-
   const teamMembers = [
     {
       name: "Sridhar Kamakoti",
@@ -108,7 +107,6 @@ const About = () => {
     },
   ];
 
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentSolutionIndex(
@@ -133,12 +131,13 @@ const About = () => {
 
   return (
     <div>
+      {/* Hero Section */}
       <Container fluid className="py-5 bg-white about-hero-section fade-up">
         <Row className="justify-content-center text-center">
           <Col lg={10}>
             <h1 className="display-4 fw-bold mb-4 rotating-solution-text">
               Shaping the future through innovative products{" "}
-              <span className=" colored-solution">
+              <span className="colored-solution">
                 {solutions[currentSolutionIndex]}
               </span>
             </h1>
@@ -146,11 +145,12 @@ const About = () => {
         </Row>
       </Container>
 
-      <Container className="py-5  about-stats-sections">
+      {/* Stats Section */}
+      <Container className="py-5 about-stats-sections">
         <Row className="text-center justify-content-center">
           <Col xs={6} md={3} className="mb-4">
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
-              <ClockIcon className="w-10 h-10  mb-3" />
+              <ClockIcon className="w-10 h-10 mb-3" />
               <div className="fs-1 fw-bold">4</div>
               <p className="lead mb-0">Years Experience</p>
             </div>
@@ -166,14 +166,14 @@ const About = () => {
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
               <HeartIcon className="w-10 h-10 mb-3" />
               <div className="fs-1 fw-bold">25</div>
-              <p className="lead  mb-0">Satisfied Clients</p>
+              <p className="lead mb-0">Satisfied Clients</p>
             </div>
           </Col>
           <Col xs={6} md={3} className="mb-4">
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
               <CheckCircleIcon className="w-10 h-10 y mb-3" />
               <div className="fs-1 fw-bold ">50</div>
-              <p className="lead  mb-0">Complete Projects</p>
+              <p className="lead mb-0">Complete Projects</p>
             </div>
           </Col>
         </Row>
@@ -204,6 +204,7 @@ const About = () => {
         </Container>
       </section>
 
+      {/* About Content Sections */}
       <Container className="py-5">
         {/* Section 1: Image Left, Text Right */}
         <Row className="align-items-center mb-5 about-content-row">
@@ -244,192 +245,145 @@ const About = () => {
             </p>
           </Col>
         </Row>
-
-        {/* Section 3: Image Left, Text Right (Dark Background) */}
-        <Row className="align-items-center p-4 rounded text-white bg-dark mb-5 about-content-row">
-          <Col md={6} className="text-center text-md-start mb-4 mb-md-0">
-            <img
-              src={about_intro}
-              alt="About Intro"
-              className="img-fluid rounded shadow-lg"
-            />
-          </Col>
-          <Col md={6}>
-            <p className="lead intro_about_banner">
-              Our innovation engine drives efficiency through a powerful suite of
-              intelligent automation tools. From Scannify's effortless document
-              scanning and data capture to Process Builder's intuitive no-code
-              workflow automation, RPA's ability to handle repetitive tasks, and
-              IntelliDocs' smart document lifecycle management, we offer
-              comprehensive solutions to elevate your operations.
-            </p>
-          </Col>
-        </Row>
       </Container>
-<Container className="py-5 text-center team-section">
-  <h2 className="display-5 fw-bold mb-5 team-section-heading">
-    Where vision meets execution – meet the team powering Kodivian.
-  </h2>
 
-  <Row className="justify-content-center">
-    {/* Chairman */}
-    {teamMembers
-      .filter((member) => member.role === "Chairman")
-      .map((member, index) => (
-        <Col xs={12} sm={6} md={4} lg={3} className="mb-4" key={`chairman-${index}`}>
-          <Card className="h-100 shadow-sm border-0 team-member-card leader-card">
-            <div className="member-image-wrapper rounded-top overflow-hidden">
-              <Card.Img
-                variant="top"
-                src={member.image}
-                alt={member.name}
-                className="member-image w-100"
-                style={{ objectFit: "cover", height: "300px" }}
-              />
-            </div>
-            <Card.Body className="d-flex flex-column justify-content-between">
-              <Card.Title className="h6 fw-bold member-name mb-2">
-                {member.name}
-              </Card.Title>
-              <Card.Text className="text-muted member-role small mb-3">
-               
-                {member.role}
-              </Card.Text>
-              <a
-                href={member.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm btn-outline-dark mt-auto learn-more-button"
-              >
-                <FaLinkedin size={18} className="me-1" /> Connect
-              </a>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-
-    {/* Managing Director */}
-    {teamMembers
-      .filter((member) => member.role === "Managing Director")
-      .map((member, index) => (
-        <Col xs={12} sm={6} md={4} lg={3} className="mb-4" key={`md-${index}`}>
-          <Card className="h-100 shadow-sm border-0 team-member-card leader-card">
-            <div className="member-image-wrapper rounded-top overflow-hidden">
-              <Card.Img
-                variant="top"
-                src={member.image}
-                alt={member.name}
-                className="member-image w-100"
-                style={{ objectFit: "cover", height: "300px" }}
-              />
-            </div>
-            <Card.Body className="d-flex flex-column justify-content-between">
-              <Card.Title className="h6 fw-bold member-name mb-2">
-                {member.name}
-              </Card.Title>
-              <Card.Text className="text-muted member-role small mb-3">
-                
-                {member.role}
-              </Card.Text>
-              <a
-                href={member.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm btn-outline-dark mt-auto learn-more-button"
-              >
-                <FaLinkedin size={18} className="me-1" /> Connect
-              </a>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-
-    {/* Other Managers/Directors */}
-    {teamMembers
-      .filter(
-        (member) =>
-          member.role !== "Chairman" &&
-          member.role !== "Managing Director" &&
-          (member.role.toLowerCase().includes("manager") ||
-            member.role.toLowerCase().includes("director"))
-      )
-      .map((member, index) => (
-        <Col xs={12} sm={6} md={4} lg={3} className="mb-4" key={`leader-${index}`}>
-          <Card className="h-100 shadow-sm border-0 team-member-card leader-card">
-            <div className="member-image-wrapper rounded-top overflow-hidden">
-              <Card.Img
-                variant="top"
-                src={member.image}
-                alt={member.name}
-                className="member-image w-100"
-                style={{ objectFit: "cover", height: "300px" }}
-              />
-            </div>
-            <Card.Body className="d-flex flex-column justify-content-between">
-              <Card.Title className="h6 fw-bold member-name mb-2">
-                {member.name}
-              </Card.Title>
-              <Card.Text className="text-muted member-role small mb-3">
-              
-                {member.role}
-              </Card.Text>
-              <a
-                href={member.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm btn-outline-dark mt-auto learn-more-button"
-              >
-                <FaLinkedin size={18} className="me-1" /> Connect
-              </a>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-
-    {/* All Other Employees */}
-    {teamMembers
-      .filter(
-        (member) =>
-          member.role !== "Chairman" &&
-          member.role !== "Managing Director" &&
-          !member.role.toLowerCase().includes("manager") &&
-          !member.role.toLowerCase().includes("director")
-      )
-      .map((member, index) => (
-        <Col xs={12} sm={6} md={4} lg={3} className="mb-4" key={`member-${index}`}>
-          <Card className="h-100 shadow-sm border-0 team-member-card">
-            <div className="member-image-wrapper rounded-top overflow-hidden">
-              <Card.Img
-                variant="top"
-                src={member.image}
-                alt={member.name}
-                className="member-image w-100"
-                style={{ objectFit: "cover", height: "300px" }}
-              />
-            </div>
-            <Card.Body className="d-flex flex-column justify-content-between">
-              <Card.Title className="h6 fw-bold member-name mb-2">
-                {member.name}
-              </Card.Title>
-              <Card.Text className="text-muted member-role small mb-3">
-                <FaLinkedin size={14} className="me-1 text-primary" />
-                {member.role}
-              </Card.Text>
-              <a
-                href={member.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm btn-outline-dark mt-auto learn-more-button"
-              >
-                <FaLinkedin size={18} className="me-1" /> Connect
-              </a>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
+      {/* Section 3: Image Left, Text Right (Dark Background) - IMPROVED */}
+      <Container fluid className="px-0">
+  <Row className="align-items-center text-white bg-dark mb-5 g-0">
+    <Col md={6} className="text-center text-md-start">
+      <img
+        src={about_intro}
+        alt="About Intro"
+        className="img-fluid rounded shadow-lg"
+        style={{
+          maxWidth: '75%', // 🔹 Reduce image size to 75% of its container
+          height: 'auto',
+        }}
+      />
+    </Col>
+    <Col md={6} className="py-4 px-4 text-center text-md-start">
+      <p className="lead mb-0">
+        Our innovation engine drives efficiency through a powerful suite of
+        intelligent automation tools. From Scannify's effortless document
+        scanning and data capture to Process Builder's intuitive no-code
+        workflow automation, RPA's ability to handle repetitive tasks, and
+        IntelliDocs' smart document lifecycle management, we offer
+        comprehensive solutions to elevate your operations.
+      </p>
+    </Col>
   </Row>
 </Container>
 
+      {/* Team Section */}
+      <Container fluid className="team-section no-side-padding py-5 text-center">
+        <h2 className="display-5 fw-bold mb-5 team-section-heading">
+          Where vision meets execution meet the team powering Kodivian.
+        </h2>
+
+        {/* Highlighted Leaders */}
+        <Row className="justify-content p-3 center mb-5">
+          {teamMembers
+            .filter(
+              (member) =>
+                member.name === "Sridhar Kamakoti" ||
+                member.name === "Vijay Sabari"
+            )
+            .map((member, index) => (
+              <Col xs={12} md={6} key={`highlighted-${index}`} className="mb-4">
+                <Card className="highlighted-leader-card text-start shadow-lg border-0 h-100">
+                  <Row className="g-0 align-items-center">
+                    <Col md={5}>
+                      <div style={{ width: '100%', height: '300px', overflow: 'hidden' }}>
+                        <Card.Img
+                          src={member.image}
+                          alt={member.name}
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                          }}
+                          className="rounded-start"
+                        />
+                      </div>
+                    </Col>
+                    <Col md={7}>
+                      <Card.Body>
+                        <Card.Title className="h4 fw-bold mb-2">{member.name}</Card.Title>
+                        <Card.Text className="text-muted mb-3">
+                          {member.name === "Sridhar Kamakoti"
+                            ? "Managing Director - SS Group of Companies"
+                            : member.role}
+                        </Card.Text>
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary d-inline-flex align-items-center justify-content-center gap-2 px-4 py-2 rounded-pill shadow-sm"
+                        >
+                          <FaLinkedin className="text-lg" />
+                          Learn More...
+                        </a>
+                      </Card.Body>
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
+            ))}
+        </Row>
+
+        {/* Remaining Team */}
+        <Row className="justify-content-center p-3">
+          {teamMembers
+            .filter(
+              (member) =>
+                member.name !== "Sridhar Kamakoti" && member.name !== "Vijay Sabari"
+            )
+            .map((member, index) => (
+              <Col xs={12} sm={6} md={4} lg={3} className="mb-4" key={`member-${index}`}>
+                <Card className="h-100 shadow-sm border-0 team-member-card">
+                  <div className="member-image-wrapper rounded-top overflow-hidden">
+                    <Card.Img
+                      variant="top"
+                      src={member.image}
+                      alt={member.name}
+                      className="member-image w-100"
+                      style={{ objectFit: "cover", height: "380px" }}
+                    />
+                  </div>
+                  <Card.Body className="d-flex flex-column justify-content-between">
+                    <Card.Title className="h6 fw-bold member-name mb-2">
+                      {member.name}
+                    </Card.Title>
+                    <Card.Text className="text-muted member-role small mb-3">
+                      {member.role}
+                    </Card.Text>
+                <a
+  href={member.linkedin}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="d-flex align-items-center justify-content-center"
+  style={{
+    border: '2px solid #8A2BE2', // Violet border
+    backgroundColor: '#ffffff',  // White inside
+    borderRadius: '50px',        // Rounded pill shape
+    color: '#8A2BE2',            // Violet text
+    padding: '8px 16px',
+    textDecoration: 'none',
+    fontWeight: '500',
+  }}
+>
+  <FaLinkedin size={18} style={{ color: '#0077B5', marginRight: '8px' }} />
+  Connect
+</a>
+
+
+
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+        </Row>
+      </Container>
 
       <Belowbar />
     </div>

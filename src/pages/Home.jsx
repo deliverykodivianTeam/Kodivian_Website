@@ -185,10 +185,10 @@ const Home = () => {
                 
 
             {/* Our Solution Delivery Process Section */}
-            <section id="product-workflow" className="py-5 bg-light">
+            <section id="product-workflowsed" className="py-5 bg-light">
                 <Container>
                     <h2 className="display-5 fw-bold text-center mb-5 text-violet">Our Solution Delivery Process</h2>
-                    <Row className="justify-content-center g-4">
+                    <Row className="ijustify-content-center g-4">
                         {/* Step 1: Project Target Definition */}
                         <Col md={6} lg={3}>
                             <Card className="h-100 shadow-sm border-0 text-center p-3 bg-white text-dark workflow-card">
@@ -247,7 +247,7 @@ const Home = () => {
 
 
             {/* Our Valued Clients Section */}
-            <section id="our-clients" className="py-5 bg-white overflow-hidden">
+            <section id="our-cliented" className="py-5 bg-white overflow-hidden">
                 <Container fluid>
                     <h2 className="display-5 fw-bold text-center mb-5 text-violet">Our Valued Clients</h2>
                     <div className="client-logos-track">
