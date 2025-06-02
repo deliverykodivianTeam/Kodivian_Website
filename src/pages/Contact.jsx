@@ -216,7 +216,6 @@ const Contact = () => {
                     </Col>
                 </Row>
             </Container>
-            <Belowbar /> {/* Ensure this component is imported and used if needed */}
         </div>
     );
 };
