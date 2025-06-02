@@ -1,654 +1,200 @@
-/* Services.css */
-.services-container {
-    padding: 20px;
+/* Custom styles for Services.jsx */
+
+/* Define your violet-white color palette and Roboto font */
+:root {
+    --primary-purple: #6A057F; /* A deep violet */
+    --secondary-purple: #8B5FBF; /* A lighter violet */
+    --light-purple: #F3E5F5; /* Very light purple for backgrounds */
+    --dark-purple: #4A015E; /* Even darker for strong headings */
+    --accent-purple: #BE93D4; /* For highlighting icons/elements */
+    --text-dark: #333333; /* Standard dark text */
+    --text-muted-light: #666666; /* Lighter muted text */
+    --white: #FFFFFF;
+    --off-white: #F8F8F8;
+
+    /* Specific brand colors for cloud icons (optional, but good for visual identity) */
+    --aws-orange: #FF9900;
+    --azure-blue: #0078D4;
+    --google-green: #34A853;
+    --oracle-red: #F80000;
+
+    /* Font Family */
+    --font-roboto: 'Roboto', sans-serif;
 }
 
-.service-box h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.5em;
-    font-family: "Montserrat", sans-serif; /* Apply the desired font */
-    font-weight: 600; /* You might want to adjust the font weight as well */
+/* Apply Roboto font globally or to specific sections */
+body,
+.services-page-wrapper {
+    font-family: var(--font-roboto);
+    color: var(--text-dark); /* Default text color */
 }
 
-.services-page {
-    padding: 40px 20px;
-    text-align: left;
+/* Bootstrap Overrides (Optional, but good for consistent theme) */
+.btn-primary {
+    background-color: var(--primary-purple);
+    border-color: var(--primary-purple);
+}
+.btn-primary:hover {
+    background-color: var(--dark-purple);
+    border-color: var(--dark-purple);
+}
+.btn-outline-light { /* For the "Get Started" button in the concluding section */
+    color: var(--white);
+    border-color: var(--white);
+}
+.btn-outline-light:hover {
+    background-color: var(--white);
+    color: var(--primary-purple);
 }
 
-.services-content {
-    max-width: 1200px; /* Increased max-width for wider layout */
-    margin: 0 auto;
-    text-align: left;
-}
-
-.head {
-    color: var(--primary-color);
-    margin-top: 100px;
-    font-size: 5em; /* Increased font size */
-    font-weight: bold;
-    text-align: center;
-}
-
-.process_explaination {
-    margin-left: 125px;
-    margin-top: 400px;
-}
-
-.service-us-top {
-    font-size: 25px;
-    margin-left: 30rem;
-    margin-top: 50px;
-    margin-bottom: 2rem; /* Add more space below this section */
-    color: #333; /* Example text color */
-}
-
-.service-us-top p {
-    margin-bottom: 0.75rem; /* Space above the list */
-    font-size: 25px; /* Slightly larger font */
-}
-
-.service-us-top ul {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-}
-
-.service-us-top li {
-    margin-bottom: 0.5rem;
-    position: relative; /* Needed for absolute positioning of the after pseudo-element */
-}
-
-.service-us-top ul,
-.service-us-top ul {
-    list-style-type: none; /* Remove default bullets */
-    padding-left: 0; /* Remove default indentation */
-}
-
-.service-us-top li::before,
-.service-us-top li::before {
-    content: "❮"; /* Unicode tick symbol */
-    color: rgb(174, 0, 255); /* You can choose your tick color */
-    display: inline-block; /* Allows for spacing and alignment */
-    width: 1em; /* Adjust width for spacing */
-    margin-left: -1em; /* Move the tick to the left of the text */
-    margin-right: 0.5em; /* Add some spacing between the tick and the text */
-}
-
-.service-us-top li::after {
-    content: "❯"; /* Unicode back tick symbol */
-    color: rgb(174, 0, 255); /* Match the color of the opening tick */
-    position: absolute; /* Position it relative to the li */
-    right: -1em; /* Adjust to position it at the end, you might need to tweak this */
-}
-
-.head-2 {
-    color: var(--primary-color);
-    font-size: 3em; /* Increased font size */
-    margin-bottom: 50px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.cycle {
-    color: var(--primary-color);
-
-    font-size: 3em; /* Increased font size */
-    margin-bottom: 0px;
-    font-weight: bold;
-    text-align: center;
-}
-
-
-.services-content h3 {
-    color: var(--primary-color);
-    margin-top: 25px;
-    margin-bottom: 15px;
-    font-size: 1.8em;
-}
-
-.services-content ul {
-    list-style-type: disc;
-    margin-left: 30px;
-    margin-bottom: 25px;
-}
-
-.services-content li {
-    margin-bottom: 8px;
-    line-height: 1.7;
-    font-size: 1.1em;
-}
-
-.services-content p {
-    color: var(--secondary-color);
-    line-height: 1.7;
-    margin-bottom: 30px;
-    font-size: 1.1em;
-}
-
-.services-content strong {
-    color: var(--primary-color);
-    font-weight: bold;
-}
-
-.services-boxes {
-    display: flex;
-    flex-direction: column; /* Stack boxes vertically */
-    gap: 30px;
-    margin-top: 30px;
-    /* justify-content: space-around; */ /* Removed for vertical stacking */
-}
-
-.service-box {
-    border-radius: 10px;
-    padding: 30px;
-    position: relative;
-    text-align: center;
-    width: 100%; /* Make each box take full width */
-    box-sizing: border-box; /* Include padding and border in width */
-    /* flex-basis: calc(33% - 20px); */ /* Removed for vertical stacking */
-    /* min-height: 450px; */ /* Adjust if needed for vertical stacking */
-    transition: transform 0.3s ease-in-out;
-}
-
-.service-box:hover {
-    transform: translateY(-5px);
-}
-
-@media (max-width: 1024px) {
-    .services-boxes {
-        justify-content: space-between;
-    }
-    .service-box {
-        flex-basis: calc(50% - 15px);
-    }
-}
-
-@media (max-width: 768px) {
-    .services-boxes {
-        flex-direction: column;
-    }
-    .service-box {
-        flex-basis: 100%;
-    }
-}
-
-.service-box h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.5em;
-}
-
-.service-box ul {
-    list-style-type: disc;
-    margin-left: 40px;
-    text-align: left;
-}
-
-.services-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px 20px;
-    margin-bottom: 30px;
-    background-color: var(--bg-light-color);
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.text-container {
-    flex: 1;
-}
-
-.header-image {
-    width: 45%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.content-with-image {
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-    background-color: var(--bg-light-color);
-    gap: 60px; /* Added gap for spacing between image and text */
-}
-
-.content-with-image-2 {
-    display: flex;
-    align-items: center;
-    padding: 30px;
-    margin-bottom: 100px;
-    border-radius: 10px;
-    background-color: var(--bg-light-color);
-    gap: 60px; /* Added gap for spacing between image and text */
-}
-
-.content-with-image-3 {
-    display: flex;
-    align-items: center;
-    padding: 30px;
-    margin-top: 100px;
-    border-radius: 10px;
-    background-color: var(--bg-light-color);
-    gap: 60px; /* Added gap for spacing between image and text */
-}
-
-.content-with-image-4 {
-    display: flex;
-    align-items: center;
-    padding: 30px;
-    border-radius: 10px;
-    background-color: var(--bg-light-color);
-    gap: 60px; /* Added gap for spacing between image and text */
-}
-
-.content-image {
-    max-width: 600px;
-    height: auto;
-    border-radius: 10px;
-}
-
-.content-with-image .large-text {
-    text-align: left;
-    font-size: 1.3em;
-    line-height: 1.8;
-    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transition for hover effect */
-}
-
-/* Add margin to the second image - this rule might be redundant */
-.large-text + .content-image {
-    margin-top: 0;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.5em;
-    font-family: "Montserrat", sans-serif; /* Apply the desired font */
-    font-weight: 600; /* You might want to adjust the font weight as well */
-}
-
-/* Style the bold text within the service boxes */
-.service-box strong.bold {
-    color: var(--accent-color);
-}
-
-.service-image {
-    max-width: 55%; /* Adjust the maximum width as needed */
-    height: auto;
-    border: 1px solid whites; /* Add a light border */
-    border-radius: 5px; /* Optional: add some rounded corners */
-    margin-bottom: 10px; /* Add some space below the image */
-    display: block; /* Ensure it behaves as a block-level element */
-    margin-left: auto; /* Center the image horizontally */
-    margin-right: auto;
-}
-
-.large-text {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.5em;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Apply the desired font */
-    font-weight: 600; /* You might want to adjust the font weight as well */
-}
-
-/* Front-End and Back-End Section Styles */
-.front-back-end-container {
-    background-color: #f9f9f9; /* Light background */
-    padding: 40px 20px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    text-align: center;
-}
-
-.front-back-end-content h2 {
-    color: var(--primary-color);
-    font-size: 2em;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.tech-logos {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-.tech-logo {
-    height: 50px; /* Adjust size as needed */
-    width: auto;
-}
-
-.front-back-end-text {
-    color: var(--secondary-color);
-    font-size: 1.1em;
-}
-
-.hero-services-info {
-    margin-top: 200px;
-}
-
-.hero-services-info h1 {
-    font-weight: bold;
-    font-size: 3.5rem;
-    line-height: 1.5;
-    margin-bottom: 0.2rem; /* Adjust spacing below the main heading */
-}
-
-.hero-services-info p {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem; /* Adjust spacing below the subheading */
-}
-
-.hero-services-info button {
-    font-size: 1.1rem;
-    padding: 0.8rem 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.hero-section {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
-.cloudSupportContainer {
-    background-color: white;
-    padding: 20px;
-    display: flex; /* Enable flexbox for the main container */
-    align-items: center; /* Vertically align the sections */
-    width: 100%;
-}
-
-.leftSection {
-    flex: 1; /* Take up 1 part of the available space */
-    display: flex;
-    justify-content: center; /* Center the icon grid horizontally */
-}
-
-.rightSection {
-    flex: 1; /* Take up 1 part of the available space */
-    padding-left: 20px; /* Add some spacing between the icons and text */
-    display: flex; /* Enable flexbox for vertical and horizontal centering */
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
-    text-align: center; /* Ensure text itself is centered */
-}
-
-.cloudSupportTitle {
-    color: oklch(49.6% 0.265 301.924);
-    font-size: 2.5em;
-    margin-bottom: 0;
-}
-
-.cloudProviderLogos {
-    display: grid; /* Use grid layout for the icons */
-    grid-template-columns: repeat(2, 1fr); /* Create two equal columns */
-    gap: 20px; /* Spacing between grid items */
-    width: 80%; /* Adjust width as needed */
-}
-
-.cloudProviderItem {
+/* Hero Section */
+.services-hero-section {
+    min-height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white; /* Light background for the icon boxes */
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions for hover effects */
+    color: var(--text-dark);
+    background-size: cover;
+    background-position: center;
 }
 
-.cloudProviderItem:hover {
-    transform: scale(1.05); /* Slightly scale up on hover */
-    /* Slightly increase shadow on hover */
-    cursor: pointer; /* Change cursor to indicate interactivity */
+/* Typing Effect */
+.typed-cursor {
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
 }
 
-.cloudProviderItem:hover .cloudProviderIcon {
-    color: oklch(49.6% 0.265 301.924); /* Change icon color on hover */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
-.cloudProviderIcon {
-    color: oklch(49.6% 0.265 301.924);
-    font-size: 2em; /* Adjust size as needed for the larger icons */
-    transition: color 0.2s ease-in-out; /* Smooth color transition on hover */
+/* Section Background Colors */
+.bg-light-purple {
+    background-color: var(--light-purple);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .cloudSupportContainer {
-        flex-direction: column; /* Stack sections vertically (icons on top) */
-        text-align: center;
-    }
+.bg-dark-purple {
+    background-color: var(--dark-purple);
+}
 
-    .leftSection {
-        width: 100%;
-        margin-bottom: 20px;
-    }
+.bg-primary-purple { /* Used for the concluding section */
+    background-color: var(--primary-purple);
+}
 
-    .rightSection {
-        padding-left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100px; /* Ensure it takes up some vertical space */
-    }
+.bg-secondary-purple { /* For cards within the dark section */
+    background-color: var(--secondary-purple);
+}
 
-    .cloudProviderLogos {
-        grid-template-columns: repeat(1, 1fr); /* Single column on smaller screens */
-        width: 80%;
-        margin: 0 auto; /* Center the grid */
-    }
+/* Text Colors */
+.text-dark-purple {
+    color: var(--dark-purple);
+}
+
+.text-primary-purple {
+    color: var(--primary-purple);
+}
+
+.text-secondary-purple {
+    color: var(--secondary-purple);
+}
+
+/* Specific Cloud Icon Colors (using defined CSS variables) */
+.text-orange { color: var(--aws-orange); }
+.text-azure-blue { color: var(--azure-blue); }
+.text-google-green { color: var(--google-green); }
+.text-oracle-red { color: var(--oracle-red); }
+
+
+/* Icon Sizing for consistency */
+.cloud-icon,
+.feature-icon,
+.tech-icon,
+.process-icon {
+    width: 60px;
+    height: 60px;
+   
 }
 
 
-.cloudProviderMongoDB {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white; /* Light background for the icon boxes */
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions for hover effects */
+
+/* Specific adjustments for larger icons if needed, e.g., in cloud support */
+.cloud-icon {
+    width: 80px;
+    height: 80px;
 }
 
-.cloudProviderMongoDB:hover {
-    transform: scale(1.05); /* Slightly scale up on hover */
-    /* Slightly increase shadow on hover */
-    cursor: pointer; /* Change cursor to indicate interactivity */
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    
 }
 
-.cloudProviderMongoDB:hover .cloudProviderIcon {
-    color: oklch(49.6% 0.265 301.924); /* Change icon color on hover */
+.feature-icon-no-padding {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 40px; /* Adjust icon size if needed */
+  height: 60px;
+  display: block;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
-.buildScaleGrowContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 100px;
+
+.tech-icon {
+    width: 55px;
+    height: 55px;
+    color: var(--accent-purple); /* Accent color for icons in dark sections */
 }
 
-.buildScaleGrowText {
-    color: black; /* Match the teal color */
-    font-size: 13em; /* Adjust to match the large size */
-    line-height: 0.8; /* Reduce line height to stack closer */
-    margin: 0; /* Remove default margins */
-    margin-bottom: 0.1em;
+.process-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--secondary-purple); /* A lighter shade for process icons */
 }
 
-.animated-element { /* You can apply this class to your HTML element */
-    animation: MoveLeftRight1 2s linear infinite; /* Changed animation name */
-    display: inline-block;
-    max-width: 530px;
-    height: 500px;
-    position: relative; /* Important! */
-    /* left: 125px; Remove or adjust if you want it to start at a different horizontal position */
-    top: 100px; /* Added a top position for better visibility */
+/* Card specific styling */
+.custom-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px; /* Slightly rounded corners */
 }
 
-@keyframes MoveLeftRight1 { /* Changed keyframes name to match animation */
-    0% {
-        transform: translateX(0); /* Start at the original horizontal position */
-    }
-    50% {
-        transform: translateX(-20px); /* Move 20px to the left (negative value) */
-    }
-    100% {
-        transform: translateX(0); /* Return to the original horizontal position */
-    }
+.custom-card:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.15) !important; /* Stronger shadow */
 }
 
-.animated-element-1 { /* You can apply this class to your HTML element */
-    animation: MoveLeftRight 2s linear infinite; /* Changed animation name */
-    display: inline-block;
-    max-width: 530px;
-    height: 500px;
-    position: relative; /* Important! */
-    left: 125px;
+/* Responsive Image Adjustments for sections */
+.services-section-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px; /* Match card radius */
 }
 
-@keyframes MoveLeftRight { /* Changed keyframes name to match animation */
-    0% {
-        transform: translateY(0); /* Start at the original horizontal position */
-    }
-    50% {
-        transform: translateY(-20px); /* Move 20px to the left (negative value) */
-    }
-    100% {
-        transform: translateY(0); /* Return to the original horizontal position */
-    }
+/* General text muted/secondary adjustments */
+.text-muted {
+    color: var(--text-muted-light) !important;
+}
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.75) !important; /* Adjust if needed for better contrast */
+}
+.text-white-75 {
+    color: rgba(255, 255, 255, 0.85) !important;
 }
 
-@media (max-width: 768px) {
-    .buildScaleGrowText {
-        font-size: 6em; /* Smaller font size on smaller screens */
-    }
+/* Ensures content takes full width on small screens and has max width on large screens */
+.container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.fade-up {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s ease-out forwards;
-}
-
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.services_page_info {
-    margin-top: 750px;
-}
-
-.services-container {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: white;
-    gap: 5px;
-}
-
-.service-card {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    flex: 1;
-}
-
-.service-image-wrapper {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    position: relative;
-    width: 250px;
-    height: 250px;
-    margin: 0 auto;
-}
-
-.services_floating_heading {
-    font-weight: bold;
-    color: black;
-}
-
-.service-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.service-description {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: black;
-}
-
-@media (max-width: 1024px) {
-    /* ... other tablet styles ... */
-
-    .content-with-image {
-        flex-direction: column-reverse; /* Place image above text on tablets */
-        text-align: center; /* Center text below the image */
-    }
-
-    .content-with-image-2 {
-        flex-direction: column-reverse; /* Apply to other similar sections if needed */
-        text-align: center;
-    }
-
-    .content-with-image-3 {
-        flex-direction: column-reverse; /* Apply to other similar sections if needed */
-        text-align: center;
-    }
-
-    .content-with-image-4 {
-        flex-direction: column-reverse; /* Apply to other similar sections if needed */
-        text-align: center;
-    }
-
-    .content-image {
-        max-width: 80%; /* Adjust image width on smaller screens */
-        margin-bottom: 20px; /* Add some space below the image */
-    }
-
-    .content-with-image .large-text {
-        text-align: center; /* Center the text */
-    }
-
-    .service-us-top {
-      margin-bottom: 40rem;
-    }
-}
-
-@media (max-width: 768px) {
-    /* ... other mobile styles ... */
-
-    .service-us-top {
-      margin-bottom: 50rem;
-    }
-
-    .content-with-image {
-        flex-direction: column-reverse; /* Ensure image stays above text on mobile */
-    }
-
-    .content-with-image-2 {
-        flex-direction: column-reverse; /* Ensure image stays above text on mobile */
-    }
-
-    .content-with-image-3 {
-        flex-direction: column-reverse; /* Ensure image stays above text on mobile */
-    }
-
-    .content-with-image-4 {
-        flex-direction: column-reverse; /* Ensure image stays above text on mobile */
-    }
-
-    .content-image {
-        max-width: 90%; /* Further adjust image width on smaller phones */
+@media (min-width: 992px) { /* Adjust for larger screens */
+    .w-65 {
+        width: 65%;
+        max-width: 400px; /* Prevent button from becoming too wide */
     }
 }

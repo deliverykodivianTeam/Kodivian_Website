@@ -1,253 +1,302 @@
-import React, { useState, useEffect, useRef } from "react";
-import "../styles/Services.css";
+import '@fontsource/roboto/300.css'; // Light
+import '@fontsource/roboto/400.css'; // Regular
+import '@fontsource/roboto/500.css'; // Medium
+import '@fontsource/roboto/700.css'; // Bold
 
-// Import your new images from the assets folder
-import image2 from "../assets/intro_1.png";
-import intro_2 from "../assets/intro_2.png";
-import intro_3 from "../assets/intro_3.png";
-import intro_5 from "../assets/intro_5.png";
-import circle from "../assets/circle.png";
-import tick from "../assets/tick.png";
-import square from "../assets/square.png";
-import banner_image from "../assets/banner.svg";
-// Import the new Belowbar component
-import Belowbar from "../components/Belowbar"; // Adjust the path if necessary
+import React, { useState, useEffect } from "react";
+import { Container, Row, Col, Image, Card, Button } from 'react-bootstrap'; // Added Button
+import "../styles/Services.css"; // Your custom CSS for additional styling
 
-import { FaAws } from "react-icons/fa"; // For AWS
-import { VscAzure } from "react-icons/vsc";
-import { BiLogoGoogleCloud } from "react-icons/bi";
-import { GrOracle } from "react-icons/gr";
+// Import Heroicons for a clean look
+import {
+    CloudIcon,
+    CubeTransparentIcon,
+    Cog6ToothIcon,
+    ChartBarIcon,
+    ServerStackIcon,
+    ClipboardDocumentCheckIcon,
+    CheckCircleIcon,
+    LightBulbIcon
+} from "@heroicons/react/24/outline";
 
-import { GrMysql } from "react-icons/gr";
-import { BiLogoMongodb } from "react-icons/bi";
-import { BiLogoPostgresql } from "react-icons/bi";
+// Corrected Cloud Icons (using react-icons for variety and specific logos)
+import { FaAws } from "react-icons/fa"; // For AWS (Font Awesome)
+import { VscAzure } from "react-icons/vsc"; // For Azure (VS Code Icons)
+import { SiGooglecloud } from "react-icons/si"; // For Google Cloud (Simple Icons)
+import { GrOracle } from "react-icons/gr"; // For Oracle (Grommet Icons)
+import { MdOutlineAutoAwesome } from "react-icons/md"; // MdOutlineAutoAwesome for RPA/Software Development
 
-import { FaPython } from "react-icons/fa";
-import { BiLogoJavascript } from "react-icons/bi";
-import { FaJava } from "react-icons/fa";
-import { FaHtml5 } from "react-icons/fa";
+// Import custom images (ensure these paths are correct relative to your project structure)
+// REMEMBER: You need to download and place these images in src/assets/
+import supportImage from "../assets/banner-img.png"; // Changed image names to be more generic if paths are not exact
+import processImage from "../assets/intro_2.png"; // Changed image names to be more generic if paths are not exact
+
+// Import Belowbar component (assuming it's in your components folder)
+import Belowbar from "../components/Belowbar";
 
 const Services = () => {
-  const [typingText, setTypingText] = useState("");
-  const fullText = "We simplify your infrastructure";
-  const typingSpeed = 100; // milliseconds per character
-  const [typingComplete, setTypingComplete] = useState(false);
+    // Typing effect for the hero section
+    const [typingText, setTypingText] = useState("");
+    const fullText = "Empowering Your Business Through Innovation";
+    const typingSpeed = 70; // milliseconds per character
+    const [typingComplete, setTypingComplete] = useState(false);
 
-  useEffect(() => {
-    let timer;
-    if (typingText.length < fullText.length) {
-      timer = setTimeout(() => {
-        setTypingText(fullText.substring(0, typingText.length + 1));
-      }, typingSpeed);
-    } else {
-      setTypingComplete(true);
-      clearTimeout(timer); // Ensure timer is cleared when typing is complete
-    }
-    return () => clearTimeout(timer);
-  }, [typingText, fullText]);
+    useEffect(() => {
+        let timer;
+        if (typingText.length < fullText.length) {
+            timer = setTimeout(() => {
+                setTypingText(fullText.substring(0, typingText.length + 1));
+            }, typingSpeed);
+        } else {
+            setTypingComplete(true);
+            clearTimeout(timer);
+        }
+        return () => clearTimeout(timer);
+    }, [typingText, fullText]);
 
-  return (
-    <div>
-      <div className="services-page-layout">
-        {/* Hero Section with Services Info */}
-        <div className="services_page_info">
-          <div
-            className={`absolute top-0 left-0 w-full h-full flex items-center justify-start p-8 md:p-16 text-black ${
-              typingComplete ? "typing-complete" : ""
-            }`}
-          >
-            <div className="hero-services-info fade-up">
-              <h1 className="text-3xl md:text-4xl font-bold mb-2">
-                {typingText}
-                {!typingComplete && (
-                  <span className="typed-cursor typed-cursor--blink">|</span>
-                )}
-                {typingComplete}
-              </h1>
-              <p className="mb-2">
-                so you can focus on <span className="highlight">what</span>{" "}
-                <span className="highlight">matters</span>.
-              </p>
-              <div className="service-us-top">
-                <ul>
-                  <li>Focus on simplifying complexity</li>
-                  <li>Highlighting their expertise</li>
-                  <li>Emphasizing their comprehensive approach</li>
-                  <li>Direct and benefit-oriented</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* REMOVED SLIDER SECTION */}
+    return (
+        <div className="services-page-wrapper"> {/* Added a wrapper for overall styling */}
+            {/* Hero Section */}
+            <div className="services-hero-section mt-5 text-white text-center py-5">
+                <Container>
+                    <Row className="align-items-center mt-5 justify-content-center">
+                        <Col lg={8}>
+                           <h1 className="display-3 fw-bold mb-3 text-black">
+    {typingText}
+    {!typingComplete && (
+        <span className="typed-cursor typed-cursor--blink">|</span>
+    )}
+</h1>
+<p className="lead mb-4 px-lg-5 text-black">
+    We partner with you to navigate complex challenges, streamline operations, and drive growth with cutting-edge solutions.
+</p>
 
-      <h2 className="head-2" id="learn-more">
-        Taking Your Business to the Next Level
-      </h2>
-      <div className="services-container">
-        <div className="service-card">
-          <div className="service-image-wrapper">
-            <img
-              src={circle}
-              alt="Digital Transformation Strategy"
-              className="animated-element service-image"
-            />
-          </div>
-          <h3 className="services_floating_heading">Digital Transformation Strategy</h3>
-          <p className="service-description">
-            Empowering businesses to embrace cutting-edge technology for
-            enhanced growth and efficiency.
-          </p>
-        </div>
-        <div className="service-card">
-          <div className="service-image-wrapper">
-            <img
-              src={tick}
-              alt="Cloud Integration Solutions"
-              className="animated-element service-image"
-            />
-          </div>
-          <h3 className="services_floating_heading">Cloud Integration Solutions</h3>
-          <p className="service-description">
-            Seamlessly migrate your operations to the cloud, ensuring
-            scalability, security, and optimized performance.
-          </p>
-        </div>
-        <div className="service-card">
-          <div className="service-image-wrapper">
-            <img
-              src={square}
-              alt="AI-Powered Process Automation"
-              className="animated-element service-image"
-            />
-          </div>
-          <h3 className="services_floating_heading">AI-Powered Process Automation</h3>
-          <p className="service-description">
-            Leveraging AI and automation to streamline operations, reduce manual
-            effort.
-          </p>
-        </div>
-      </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
 
-      <div className="cloudSupportContainer" id="call">
-        <div className="leftSection">
-          <p className="cloudSupportTitle">Support for every cloud.</p>
-        </div>
-        <div className="rightSection">
-          <div className="cloudProviderLogos">
-            <div className="cloudProviderItem">
-              <BiLogoGoogleCloud size={250} style={{ color: "#4285F4" }} />
-            </div>
-            <div className="cloudProviderItem">
-              <FaAws size={250} />
-            </div>
-            <div className="cloudProviderItem">
-              <GrOracle size={250} style={{ color: "#F80000" }} />
-            </div>
-            <div className="cloudProviderItem">
-              <VscAzure size={250} style={{ color: "#0078D4" }} />
-            </div>
-          </div>
-        </div>
-      </div>
+            {/* Section 1: Support Every Cloud */}
+           <Container fluid className="py-5 bg-light" id="cloud-support">
+   <Row className="gx-0 mx-0 text-center mb-5">
+  <Col lg={12} className="px-0">
+    <h2 className="display-4 fw-bold mb-3 text-primary-purple">
+      Cloud Agnostic, Your Success is Our Focus
+    </h2>
+    <p className="lead text-black">
+      Seamlessly integrate and optimize your infrastructure across major cloud providers. We're where your data thrives.
+    </p>
+  </Col>
+</Row>
 
-      <div className="content-with-image-2" style={{ background: "black" }}>
-        <img
-          src={intro_3} // Use the second imported image
-          alt="Description of image 2"
-          className="content-image"
-        />
-        <p className="large-text" style={{ color: "white" }}>
-          Our Product Engineering Services provide comprehensive support
-          throughout the entire product lifecycle. From the initial
-          Conceptualization & Design phase, where we assist in preparing
-          detailed product specifications and generating innovative ideas,
-          through Agile Development, where we build robust solutions with timely
-          delivery in mind, to rigorous Testing & Launch, ensuring thorough
-          quality assurance and on-schedule product release. We are dedicated to
-          bringing your product vision to life with expertise and efficiency.
-        </p>
-      </div>
+   <Row className="justify-content-center g-4">
+  <Col xs={6} sm={4} md={3} lg={2} className="text-center">
+    <Card className="h-100 p-3 border border-violet-600 shadow-sm custom-card">
+      <Card.Body className="d-flex flex-column align-items-center justify-content-center">
+        <FaAws size={80} className="mb-3 cloud-icon text-orange" />
+        <Card.Title className="h6 mb-0 text-black">Amazon Web Services</Card.Title>
+      </Card.Body>
+    </Card>
+  </Col>
+  <Col xs={6} sm={4} md={3} lg={2} className="text-center">
+    <Card className="h-100 p-3 border border-violet-600 shadow-sm custom-card">
+      <Card.Body className="d-flex flex-column align-items-center justify-content-center">
+        <VscAzure size={80} className="mb-3 cloud-icon text-azure-blue" />
+        <Card.Title className="h6 mb-0 text-black">Microsoft Azure</Card.Title>
+      </Card.Body>
+    </Card>
+  </Col>
+  <Col xs={6} sm={4} md={3} lg={2} className="text-center">
+    <Card className="h-100 p-3 border border-violet-600 shadow-sm custom-card">
+      <Card.Body className="d-flex flex-column align-items-center justify-content-center">
+        <SiGooglecloud size={80} className="mb-3 cloud-icon text-google-green" />
+        <Card.Title className="h6 mb-0 text-black">Google Cloud Platform</Card.Title>
+      </Card.Body>
+    </Card>
+  </Col>
+  <Col xs={6} sm={4} md={3} lg={2} className="text-center">
+    <Card className="h-100 p-3 border border-violet-600 shadow-sm custom-card">
+      <Card.Body className="d-flex flex-column align-items-center justify-content-center">
+        <GrOracle size={80} className="mb-3 cloud-icon text-oracle-red" />
+        <Card.Title className="h6 mb-0 text-black">Oracle Cloud</Card.Title>
+      </Card.Body>
+    </Card>
+  </Col>
+</Row>
 
-      <div className="content-with-image">
-        <div className="buildScaleGrowContainer">
-          <p className="buildScaleGrowText">Build.</p>
-          <p className="buildScaleGrowText">Scale.</p>
-          <p className="buildScaleGrowText">Grow.</p>
-        </div>
-        <img
-          src={banner_image} // Use the second imported image
-          alt="banner_image"
-          className="animated-element-1"
-        />
-      </div>
+</Container>
 
-      <div className="content-with-image-3">
-        <img
-          src={intro_2} // Use the second imported image
-          alt="Description of image 2"
-          className="content-image"
-        />
-        <p className="large-text">
-          Unlock the Future of Software Development with AI in the Cloud. This
-          dynamic illustration showcases the transformative power of integrating
-          Artificial Intelligence with cloud services. Imagine intelligent
-          systems seamlessly interacting with cloud infrastructure, analyzing
-          vast datasets, and automating complex development processes. From
-          AI-powered tools enhancing code creation to cloud platforms providing
-          scalable resources, this synergy is revolutionizing how software is
-          built, deployed, and managed.
-        </p>
-      </div>
 
-      <div
-        className="content-with-image-4"
-        style={{ backgroundColor: "black" }}
-      >
-        <p className="large-text" style={{ color: "white" }}>
-          Strategize Your Digital Transformation for Growth and Efficiency. This
-          visual encapsulates the key elements of a successful digital
-          transformation strategy. Picture a clear target with focused
-          objectives, alongside the financial resources and strategic leadership
-          (symbolized by the chess king) necessary to achieve them. Data-driven
-          insights, represented by the charts on the clipboard and laptop,
-          inform your decisions, while technology empowers seamless execution.
-          Embrace a future where digital tools drive efficiency, unlock new
-          opportunities, and propel your business towards its goals.
-        </p>
-        <img
-          src={intro_5} // Use the second imported image
-          alt="Description of image 2"
-          className="content-image"
-        />
-      </div>
-
-      <div className="cloudSupportContainer">
-        <div className="leftSection">
-          <p className="cloudSupportTitle">No error is the best message.</p>
-        </div>
-        <div className="rightSection">
-          <div className="cloudProviderLogos">
-            <div className="cloudProviderItem">
-              <FaPython size={250} style={{ color: "#3776AB" }} />
-            </div>
-            <div className="cloudProviderItem">
-              <FaJava size={250} style={{ color: "#007396" }} />
-            </div>
-            <div className="cloudProviderItem">
-              <BiLogoJavascript size={250} style={{ color: "#F7DF1E" }} />
-            </div>
-            <div className="cloudProviderItem">
-              <FaHtml5 size={250} style={{ color: "#E34F26" }} />
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Render the new Belowbar component here */}
-      <Belowbar />
+            {/* Section 2: Work on AI Processes, RPA, Cloud Integration, Digital Transformation, Software Development */}
+            <Container className="py-5" id="ai-processes">
+                <Row className="align-items-center justify-content-center mb-5">
+                    <Col lg={6} className="mb-4 mb-lg-0 order-lg-2"> {/* Image on right for large screens */}
+                        <Image src={processImage} alt="AI Processes & Automation" fluid rounded className="shadow-lg services-section-image" />
+                    </Col>
+                    <Col lg={6} className="order-lg-1"> {/* Text on left for large screens */}
+                        <h2 className="display-4 fw-bold mb-3 text-dark-purple">Intelligent Automation & Development</h2>
+                        <p className="lead mb-4 text-secondary-purple">
+                            Harness the power of AI to transform your business processes and accelerate your digital journey.
+                        </p>
+                        <ul className="list-unstyled m-0 p-0">
+  <li className="d-flex align-items-start mb-3">
+    <CubeTransparentIcon className="feature-icon-no-padding" />
+    <div className="ms-2">
+      <h5 className="fw-bold mb-1 text-primary-purple">AI-Powered Processes & RPA</h5>
+      <p className="text-muted mb-0">Automate repetitive tasks, improve efficiency, and reduce operational costs with intelligent Robotic Process Automation.</p>
     </div>
-  );
+  </li>
+  <li className="d-flex align-items-start mb-3">
+    <CloudIcon className="feature-icon-no-padding" />
+    <div className="ms-2">
+      <h5 className="fw-bold mb-1 text-primary-purple">Cloud Integration</h5>
+      <p className="text-muted mb-0">Seamlessly connect your applications and data across various cloud environments for a unified ecosystem.</p>
+    </div>
+  </li>
+  <li className="d-flex align-items-start mb-3">
+    <Cog6ToothIcon className="feature-icon-no-padding" />
+    <div className="ms-2">
+      <h5 className="fw-bold mb-1 text-primary-purple">Digital Transformation</h5>
+      <p className="text-muted mb-0">Reimagine your business models and customer experiences through strategic digital adoption and innovation.</p>
+    </div>
+  </li>
+  <li className="d-flex align-items-start">
+    <MdOutlineAutoAwesome className="feature-icon-no-padding" />
+    <div className="ms-2">
+      <h5 className="fw-bold mb-1 text-primary-purple">Software Development</h5>
+      <p className="text-muted mb-0">Custom-tailored software solutions, built with modern technologies and agile methodologies to meet your unique needs.</p>
+    </div>
+  </li>
+</ul>
+
+                    </Col>
+                </Row>
+            </Container>
+
+            {/* Section 3: Technology Offerings - Digital Product Engineering, Data Analytics, Cloud Interface, Enterprise Solution */}
+            <Container fluid className="py-5 bg-light-purple text-black" id="technology-offerings">
+                <Row className="justify-content-center text-center mb-5">
+                    <Col lg={8}>
+                        <h2 className="display-4 text-black fw-bold mb-3">Our Core Technology Expertise</h2>
+                        <p className="lead text-black">
+                            Leveraging cutting-edge technologies to build robust, scalable, and future-proof solutions for your business.
+                        </p>
+                    </Col>
+                </Row>
+                <Row className="justify-content-center g-4">
+                    <Col md={6} lg={3}>
+                        <Card className="h-100 bg-secondary-purple text-white border-0 shadow custom-card">
+                            <Card.Body className="text-center p-4">
+                                <LightBulbIcon className="mb-3 tech-icon text-black" />
+                                <Card.Title className="h5 fw-bold text-violet mb-2">Digital Product Engineering</Card.Title>
+                                <Card.Text className="text-black">
+                                    From concept to launch, we engineer innovative digital products that stand out.
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col md={6} lg={3}>
+                        <Card className="h-100 bg-secondary-purple text-white border-0 shadow custom-card">
+                            <Card.Body className="text-center p-4">
+                                <ChartBarIcon className="mb-3 tech-icon text-black" />
+                                <Card.Title className="h5 fw-bold text-violet mb-2">Data Analytics</Card.Title>
+                                <Card.Text className="text-black">
+                                    Transform raw data into actionable insights for smarter business decisions.
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col md={6} lg={3}>
+                        <Card className="h-100 bg-secondary-purple text-white border-0 shadow custom-card">
+                            <Card.Body className="text-center p-4">
+                                <CloudIcon className="mb-3 tech-icon text-black" />
+                                <Card.Title className="h5 fw-bold text-violet mb-2">Cloud Interface Development</Card.Title>
+                                <Card.Text className="text-black">
+                                    Intuitive and efficient interfaces for seamless interaction with cloud services.
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col md={6} lg={3}>
+                        <Card className="h-100 bg-secondary-purple text-white border-0 shadow custom-card">
+                            <Card.Body className="text-center p-4">
+                                <ServerStackIcon className="mb-3 tech-icon text-black" />
+                                <Card.Title className="h5 fw-bold text-violet mb-2">Enterprise Solutions</Card.Title>
+                                <Card.Text className="text-black">
+                                    Robust and scalable solutions to meet the complex demands of large organizations.
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
+
+            {/* Section 4: Product Support & Project Lifecycle */}
+            <Container className="py-5" id="product-support">
+                <Row className="align-items-center justify-content-center mb-5">
+                    <Col lg={2} className="mb-4 mb-lg-0">
+                        <Image src={supportImage} alt="Product Support & Project Lifecycle" fluid rounded className="shadow-lg services-section-image" />
+                    </Col>
+                    <Col lg={10}>
+                        <h2 className="display-4 fw-bold mb-3 text-black">Comprehensive Product & Project Support</h2>
+                        <p className="lead mb-4 text-secondary-purple">
+                            From initial concept to successful deployment and beyond, we provide hands-on, proactive support at every stage.
+                        </p>
+                        <Row className="g-3">
+                            <Col md={6}>
+                                <div className="d-flex align-items-start mb-3">
+                                    <ClipboardDocumentCheckIcon className="flex-shrink-0 me-3 process-icon" />
+                                    <div>
+                                        <h5 className="fw-bold mb-1 text-primary-purple">Project Planning & Discovery</h5>
+                                        <p className="text-muted mb-0">Laying a strong foundation with detailed planning and thorough requirement gathering.</p>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col md={6}>
+                                <div className="d-flex align-items-start mb-3">
+                                    <ClipboardDocumentCheckIcon className="flex-shrink-0 me-3 process-icon" />
+                                    <div>
+                                        <h5 className="fw-bold mb-1 text-primary-purple">Development & Reporting</h5>
+                                        <p className="text-muted mb-0">Iterative development with transparent progress reporting.</p>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col md={6}>
+                                <div className="d-flex align-items-start">
+                                    <CheckCircleIcon className="flex-shrink-0 me-3 process-icon" />
+                                    <div>
+                                        <h5 className="fw-bold mb-1 text-primary-purple">UAT & Go-Live</h5>
+                                        <p className="text-muted mb-0">Ensuring quality through user acceptance testing and smooth product launch.</p>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col md={6}>
+                                <div className="d-flex align-items-start">
+                                    <CheckCircleIcon className="flex-shrink-0 me-3 process-icon" />
+                                    <div>
+                                        <h5 className="fw-bold mb-1 text-primary-purple">Proactive Hands-on Support</h5>
+                                        <p className="text-muted mb-0">Continuous monitoring, maintenance, and expert assistance post-launch.</p>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
+
+            {/* Concluding Section */}
+            <Container fluid className="py-5 bg-primary-purple text-white text-center">
+                <Row className="align-items-center justify-content-center flex-column-reverse flex-lg-row">
+                    <h2 className="display-4 fw-bold">Let's Build the Future Together.</h2>
+                    <p className="lead mb-4">Ready to transform your business? Contact us today!</p>
+                    <Button variant="outline-light" size="lg" className="w-65 px-5">Get Started</Button> {/* Changed to Bootstrap Button */}
+                </Row>
+            </Container>
+
+            {/* Belowbar Component */}
+            <Belowbar />
+        </div>
+    );
 };
 
 export default Services;

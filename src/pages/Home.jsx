@@ -40,23 +40,25 @@ const Home = () => {
     return (
         <>
             {/* Introduction Section */}
-            <section className="py-5 bg-white home-intro-section"> {/* Added 'home-intro-section' for specific styling if needed */}
-                <Container>
-                    <Row className="justify-content-center text-center">
-                        <Col md={10}>
-                            <h2 className="hero-title display-4 fw-bold mb-3 text-black">
-                                KodiVian Technology: Your Trusted Partner in Digital Transformation
-                            </h2>
-                            <p className="lead text-black">
-                                We help businesses go digital with smart automation and seamless integrations.
-                                Our OCR engine accurately extracts data from scanned documents—eliminating manual input.
-                                Files are stored securely with flexible system connectivity.
-                                Use our intuitive drag-and-drop builder to create forms and applications effortlessly.
-                                Automate entire workflows with our visual builder and built-in RPA to save time and reduce errors.
-                                Partner with KodiVian to work smarter, faster, and more efficiently.
-                            </p>
-                        </Col>
-                    </Row>
+      <section className="py-5 mt-5 home-intro-section hide-under-navbar">
+
+  <Container className="py-5 mt-3">
+    <Row className="justify-content-center text-center">
+      <Col md={10}>
+        <h2 className="hero-title display-4 fw-bold mb-3 text-black">
+          KodiVian Technology: Your Trusted Partner in Digital Transformation
+        </h2>
+        <p className="lead text-black">
+          We help businesses go digital with smart automation and seamless integrations.
+          Our OCR engine accurately extracts data from scanned documents—eliminating manual input.
+          Files are stored securely with flexible system connectivity.
+          Use our intuitive drag-and-drop builder to create forms and applications effortlessly.
+          Automate entire workflows with our visual builder and built-in RPA to save time and reduce errors.
+          Partner with KodiVian to work smarter, faster, and more efficiently.
+        </p>
+      </Col>
+    </Row>
+
 
                     <Row className="mt-5 text-center">
                         <Col>

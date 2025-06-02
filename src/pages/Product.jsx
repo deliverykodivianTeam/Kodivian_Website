@@ -41,11 +41,11 @@ const Product = () => {
 
     return (
         <div>
-            <Container fluid className="product-page fade-up">
+            <Container fluid className="product-page mt-5 fade-up">
                 {/* Hero Section */}
-                <Row className="hero-section elevated bg-white py-5 text-center">
-                    <Col lg={8} className="mx-auto">
-                        <p className="hero-subtitle primary-text text-uppercase fw-bold">Explore Our Leading Solutions</p>
+                <Row className="hero-section elevated bg-white py-5 mt-3 text-center">
+                    <Col lg={8} className="mx-auto mt-3">
+                        <p className="hero-subtitle mt-4 primary-text text-uppercase fw-bold">Explore Our Leading Solutions</p>
                         <h1 className="hero-title secondary-text display-4 fw-bold mb-3">Empowering Businesses with Automation, Intelligence, Simplicity, and Speed</h1>
                         <p className="hero-description tertiary-text lead mb-4">Discover an integrated suite of smart tools designed to modernize your business, cut down manual work, and accelerate digital transformation — all without complexity.</p>
                         <Button variant="primary" size="lg" onClick={handleOpenPopup} className="hero-button">Request a Demo</Button>
