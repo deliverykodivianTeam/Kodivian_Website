@@ -140,7 +140,7 @@ body {
         position: absolute; /* Position it relative to the navbar */
         top: 100%; /* Place it right below the static part of the navbar */
         left: 0;
-        height: 600%;
+      height: calc(100vh - 60px); /* assuming your navbar height is 60px */
         width: 100%; /* Make it full screen width */
         padding: 15px; /* Add some padding inside the expanded menu */
         border-top: 1px solid rgba(0, 0, 0, 0.1); /* Optional: add a subtle border at the top */
