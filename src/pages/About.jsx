@@ -132,8 +132,8 @@ const About = () => {
   return (
     <div>
       {/* Hero Section */}
-      <Container fluid className="py-5 mt-5 bg-white about-hero-section fade-up">
-        <Row className="py-5 mt-3 justify-content-center text-center">
+      <Container fluid className="py-5 mt-0 bg-white about-hero-section fade-up">
+        <Row className="py-0 mt-2 justify-content-center text-center">
           <Col lg={10}>
             <h1 className="display-4 fw-bold mb-4 rotating-solution-text">
               Shaping the future through innovative products{" "}

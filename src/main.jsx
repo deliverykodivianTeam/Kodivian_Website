@@ -3,6 +3,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx'; // Adjust the path if needed
 import LoadingPage from './components/LoadingPage.jsx'; // Make sure the path is correct
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const root = createRoot(document.getElementById('root'));
 

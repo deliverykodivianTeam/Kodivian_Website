@@ -67,7 +67,7 @@ const Contact = () => {
   return (
     <div className="contact-page-wrapper">
       {/* Hero Section */}
-      <div className="contact-hero-section position-relative d-flex mt-5 align-items-center text-white py-5">
+      <div className="contact-hero-section position-relative d-flex mt-2 align-items-center text-white py-5">
         <div className="hero-background-overlay"></div>{" "}
         {/* Added for gradient */}
         <Container className="position-relative z-1">

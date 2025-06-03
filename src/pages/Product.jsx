@@ -41,9 +41,9 @@ const Product = () => {
 
     return (
         <div>
-            <Container fluid className="product-page mt-5 fade-up">
+            <Container fluid className="product-page mt-0 fade-up">
                 {/* Hero Section */}
-                <Row className="hero-section elevated bg-white py-5 mt-3 text-center">
+                <Row className="hero-section elevated bg-white py-2 mt-0 text-center">
                     <Col lg={8} className="mx-auto mt-3">
                         <p className="hero-subtitle mt-4 primary-text text-uppercase fw-bold">Explore Our Leading Solutions</p>
                         <h1 className="hero-title secondary-text display-4 fw-bold mb-3">Empowering Businesses with Automation, Intelligence, Simplicity, and Speed</h1>
