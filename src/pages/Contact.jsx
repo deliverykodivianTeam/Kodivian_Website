@@ -25,7 +25,7 @@ const Contact = () => {
       name: "Kodivian Technologies - Chennai",
       addressLine1: "13, Rajamannar St, T. Nagar",
       cityStateZip: "Chennai, Tamil Nadu 600017",
-      mapEmbedUrl: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.726615598858!2d80.2359423749363!3d13.056080787265146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52661c964177d9%3A0xc3b83b3e2d6b3c4!2sKodivian%20Technologies!5e0!3m2!1sen!2sin!4v1709893902319!5m2!1sen!2sin`, // Example URL
+      mapEmbedUrl: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.8765363470875!2d80.23627647507767!3d13.043529887278499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526747e162257d%3A0xe1eb3aba4fdedb1d!2sKodivian%20Technologies!5e0!3m2!1sen!2sin!4v1748862257114!5m2!1sen!2sin`, // Example URL
     },
     {
       id: "location2",
