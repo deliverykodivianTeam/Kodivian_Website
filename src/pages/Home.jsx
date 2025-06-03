@@ -40,9 +40,9 @@ const Home = () => {
     return (
         <>
             {/* Introduction Section */}
-      <section className="py-5 mt-5 home-intro-section hide-under-navbar">
+      <section className="py-0 home-intro-section ">
 
-  <Container className="py-5 mt-3">
+  <Container className="py-5 mt-0">
     <Row className="justify-content-center text-center">
       <Col md={10}>
         <h2 className="hero-title display-4 fw-bold mb-3 text-black">

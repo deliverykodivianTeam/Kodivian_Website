@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import AppNavbar from './components/AppNavbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -21,9 +21,10 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        <Navbar />
+        <AppNavbar />
+        
         {/* Added Bootstrap's pt-5 class to ensure content starts below the fixed Navbar */}
-        <div className="content pt-5">
+        <div className="content pt-0">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
