@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/DemoBookingPopup.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment-timezone';
@@ -148,102 +148,127 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
 
     return (
         <>
-            <div className="popup-overlay-blur" onClick={handleClose}></div>
-            <div className="custom-popup">
-                {/* No H2 here if success message takes over the entire popup content */}
-                {successMessage ? (
-                    <div className="custom-success-container">
-                       
-                        <p className="custom-success">{successMessage}</p>
-                    </div>
-                ) : (
-                    <>
-                        <h2 className="custom-heading">Book a Demo</h2> {/* Keep heading for form stages */}
-                        {stage === 1 && (
-                            <>
-                                <div className="custom-form-group">
-                                    <label className="custom-label">Name</label>
-                                    <input className="custom-input" value={form.name} onChange={handleInputChange('name')} />
+            {/* The primary change is adding a 'position: fixed;' to the modal style */}
+            <div
+                className="modal fade show"
+                style={{
+                    display: 'block',
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    position: 'fixed', // This makes it an overlay on top of everything
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    zIndex: 1050, // Ensure it's above other content (Bootstrap's default modal z-index)
+                    overflow: 'auto', // Allow scrolling if content is too tall
+                }}
+                onClick={handleClose}
+            >
+                {/* Prevent clicks on the modal content from closing the modal */}
+                <div className="modal-dialog modal-dialog-centered" onClick={(e) => e.stopPropagation()}>
+                    <div className="modal-content">
+                        {successMessage ? (
+                            <div className="modal-body text-center p-4">
+                                <div className="alert alert-success" role="alert">
+                                    <h4 className="alert-heading">Success!</h4>
+                                    <p className="mb-0">{successMessage}</p>
                                 </div>
-                                <div className="custom-form-group">
-                                    <label className="custom-label">Email</label>
-                                    <input className="custom-input" type="email" value={form.email} onChange={handleInputChange('email')} />
-                                </div>
-                                <div className="custom-form-group">
-                                    <label className="custom-label">Company</label>
-                                    <input className="custom-input" value={form.company} onChange={handleInputChange('company')} />
-                                </div>
-                                <div className="custom-form-group">
-                                    <label className="custom-label">Purpose</label>
-                                    <textarea className="custom-textarea" value={form.purpose} onChange={handleInputChange('purpose')} />
-                                </div>
-                                <div className="custom-form-group">
-                                    <label className="custom-label">Product</label>
-                                    <select className="custom-select" value={form.product} onChange={handleInputChange('product')}>
-                                        <option value="">-- Select --</option>
-                                        <option value="All Product">All Product</option>
-                                        <option value="Scanify">Scanify</option>
-                                        <option value="Process builder">Process builder</option>
-                                        <option value="RPA">RPA</option>
-                                        <option value="Intelli-docs">Intelli-docs</option>
-                                    </select>
-                                </div>
-                            </>
-                        )}
-
-                        {stage === 2 && (
-                            <>
-                                <h3 className="custom-calendar-heading">Select Date & Time (IST)</h3>
-                                <Calendar
-                                    className="custom-calendar-container"
-                                    value={form.date}
-                                    onChange={handleDateChange}
-                                    tileDisabled={tileDisabled}
-                                />
-                                {form.date && (
-                                    <div className="custom-form-group">
-                                        <label className="custom-label">Select Time</label>
-                                        <select className="custom-select" value={form.time} onChange={handleInputChange('time')}>
-                                            <option value="">-- Select Time --</option>
-                                            {availableTimes.map((time, idx) => (
-                                                <option key={idx} value={time}>{time}</option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                )}
-                            </>
-                        )}
-
-                        {stage === 3 && (
-                            <div className="custom-confirmation"> {/* Use a container for better styling */}
-                                <h3 className="custom-confirmation-heading">Confirm Your Booking</h3>
-                                <p className="custom-confirmation-text"><strong>Name:</strong> {form.name}</p>
-                                <p className="custom-confirmation-text"><strong>Email:</strong> {form.email}</p>
-                                <p className="custom-confirmation-text"><strong>Company:</strong> {form.company}</p>
-                                <p className="custom-confirmation-text"><strong>Purpose:</strong> {form.purpose}</p>
-                                <p className="custom-confirmation-text"><strong>Product:</strong> {form.product}</p>
-                                <p className="custom-confirmation-text"><strong>Date:</strong> {form.date ? moment(form.date).format('YYYY-MM-DD') : 'N/A'}</p>
-                                <p className="custom-confirmation-text"><strong>Time:</strong> {form.time} IST</p>
                             </div>
+                        ) : (
+                            <>
+                                <div className="modal-header">
+                                    <h5 className="modal-title">Book a Demo</h5>
+                                    <button type="button" className="btn-close" aria-label="Close" onClick={handleClose}></button>
+                                </div>
+                                <div className="modal-body">
+                                    {stage === 1 && (
+                                        <>
+                                            <div className="mb-3">
+                                                <label htmlFor="name" className="form-label">Name</label>
+                                                <input type="text" className="form-control" id="name" value={form.name} onChange={handleInputChange('name')} />
+                                            </div>
+                                            <div className="mb-3">
+                                                <label htmlFor="email" className="form-label">Email</label>
+                                                <input type="email" className="form-control" id="email" value={form.email} onChange={handleInputChange('email')} />
+                                            </div>
+                                            <div className="mb-3">
+                                                <label htmlFor="company" className="form-label">Company</label>
+                                                <input type="text" className="form-control" id="company" value={form.company} onChange={handleInputChange('company')} />
+                                            </div>
+                                            <div className="mb-3">
+                                                <label htmlFor="purpose" className="form-label">Purpose</label>
+                                                <textarea className="form-control" id="purpose" value={form.purpose} onChange={handleInputChange('purpose')} />
+                                            </div>
+                                            <div className="mb-3">
+                                                <label htmlFor="product" className="form-label">Product</label>
+                                                <select className="form-select" id="product" value={form.product} onChange={handleInputChange('product')}>
+                                                    <option value="">-- Select --</option>
+                                                    <option value="All Product">All Product</option>
+                                                    <option value="Scanify">Scanify</option>
+                                                    <option value="Process builder">Process builder</option>
+                                                    <option value="RPA">RPA</option>
+                                                    <option value="Intelli-docs">Intelli-docs</option>
+                                                </select>
+                                            </div>
+                                        </>
+                                    )}
+
+                                    {stage === 2 && (
+                                        <>
+                                            <h6 className="mb-3 text-center">Select Date & Time (IST)</h6>
+                                            <Calendar
+                                                className="w-100 mb-3"
+                                                value={form.date}
+                                                onChange={handleDateChange}
+                                                tileDisabled={tileDisabled}
+                                            />
+                                            {form.date && (
+                                                <div className="mb-3">
+                                                    <label htmlFor="time" className="form-label">Select Time</label>
+                                                    <select className="form-select" id="time" value={form.time} onChange={handleInputChange('time')}>
+                                                        <option value="">-- Select Time --</option>
+                                                        {availableTimes.map((time, idx) => (
+                                                            <option key={idx} value={time}>{time}</option>
+                                                        ))}
+                                                    </select>
+                                                </div>
+                                            )}
+                                        </>
+                                    )}
+
+                                    {stage === 3 && (
+                                        <div className="bg-light p-3 rounded">
+                                            <h5 className="mb-3 text-center">Confirm Your Booking</h5>
+                                            <p><strong>Name:</strong> {form.name}</p>
+                                            <p><strong>Email:</strong> {form.email}</p>
+                                            <p><strong>Company:</strong> {form.company}</p>
+                                            <p><strong>Purpose:</strong> {form.purpose}</p>
+                                            <p><strong>Product:</strong> {form.product}</p>
+                                            <p><strong>Date:</strong> {form.date ? moment(form.date).format('YYYY-MM-DD') : 'N/A'}</p>
+                                            <p><strong>Time:</strong> {form.time} IST</p>
+                                        </div>
+                                    )}
+
+                                    {error && <div className="alert alert-danger mt-3">{error}</div>}
+                                </div>
+                                <div className="modal-footer">
+                                    {stage > 1 && <button type="button" className="btn btn-secondary" onClick={handlePrevious}>Previous</button>}
+                                    {stage < 3 && <button type="button" className="btn btn-primary" onClick={handleNext}>Next</button>}
+                                    {stage === 3 && (
+                                        <button
+                                            type="button"
+                                            className="btn btn-success"
+                                            onClick={handleBookDemo}
+                                            disabled={isBooking}
+                                        >
+                                            {isBooking ? 'Booking...' : 'Book Demo'}
+                                        </button>
+                                    )}
+                                </div>
+                            </>
                         )}
-
-                        {error && <p className="custom-error">{error}</p>}
-
-                        <div className="custom-button-group">
-                            {stage > 1 && <button className="custom-previous-button" onClick={handlePrevious}>Previous</button>}
-                            {stage < 3 && <button className="custom-next-button" onClick={handleNext}>Next</button>}
-                            {stage === 3 && (
-                                <button
-                                    className="custom-book-button"
-                                    onClick={handleBookDemo}
-                                    disabled={isBooking} 
-                                >
-                                    {isBooking ? 'Booking...' : 'Book Demo'} {/* Change text while booking */}
-                                </button>
-                            )}
-                        </div>
-                    </>
-                )}
+                    </div>
+                </div>
             </div>
         </>
     );

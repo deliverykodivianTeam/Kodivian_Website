@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import "../styles/Contact.css";
 import "../styles/Services.css"; // Ensure this is imported for color variables
 import contact from "../assets/contact.jpg"; // Import your contact image
+import DemoBookingPopup from "../components/DemoBookingPopup"; // Adjust the path based on your file structure
 
 // Import Icons
 import { LiaPhoneSolid } from "react-icons/lia";
@@ -53,6 +54,16 @@ const Contact = () => {
   const [selectedLocationId, setSelectedLocationId] = useState(
     locationData[0].id
   );
+
+  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false);
+
+  const handleOpenDemoPopup = () => {
+  setIsDemoPopupOpen(true);
+};
+
+const handleCloseDemoPopup = () => {
+  setIsDemoPopupOpen(false);
+};
 
   const handleLocationChange = (event) => {
     setSelectedLocationId(event.target.value);
@@ -130,20 +141,18 @@ const Contact = () => {
 
       {/* --- Demo Booking Section --- */}
       <div className="demo-booking-section bg-light p-5 text-center">
-        <Button
-          type="button"
-          className="demo-booking-button px-4 py-2 fw-semibold"
-          style={{
-            backgroundColor: "#9400d3",
-            borderColor: "#9400d3",
-            color: "#fff",
-          }}
-          onClick={() =>
-            alert("Demo booking initiated! (Link to your booking system)")
-          }
-        >
-          Book a Free Demo
-        </Button>
+       <Button
+  type="button"
+  className="demo-booking-button px-4 py-2 fw-semibold"
+  style={{
+    backgroundColor: "#9400d3",
+    borderColor: "#9400d3",
+    color: "#fff",
+  }}
+  onClick={handleOpenDemoPopup} // Changed onClick to open the popup
+>
+  Book a Free Demo
+</Button>
         <div className="demo-button-info mt-2">
           Limited slots available.{" "}
           <strong>Book your personalized demo today!</strong>
@@ -294,6 +303,12 @@ const Contact = () => {
           </Col>
         </Row>
       </Container>
+
+      <DemoBookingPopup
+  isOpen={isDemoPopupOpen}
+  onClose={handleCloseDemoPopup}
+/>
+
     </div>
   );
 };

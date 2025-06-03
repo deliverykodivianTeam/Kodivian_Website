@@ -6,6 +6,7 @@ import '@fontsource/roboto/700.css'; // Bold
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image, Card, Button } from 'react-bootstrap'; // Added Button
 import "../styles/Services.css"; // Your custom CSS for additional styling
+import DemoBookingPopup from "../components/DemoBookingPopup"; // Adjust the path based on your file structure
 
 // Import Heroicons for a clean look
 import {
@@ -40,6 +41,16 @@ const Services = () => {
     const fullText = "Empowering Your Business Through Innovation";
     const typingSpeed = 70; // milliseconds per character
     const [typingComplete, setTypingComplete] = useState(false);
+
+    const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false);
+
+    const handleOpenDemoPopup = () => {
+  setIsDemoPopupOpen(true);
+};
+
+const handleCloseDemoPopup = () => {
+  setIsDemoPopupOpen(false);
+};
 
     useEffect(() => {
         let timer;
@@ -185,7 +196,7 @@ const Services = () => {
                 </Row>
                 <Row className="justify-content-center g-4">
                     <Col md={6} lg={3}>
-                        <Card className="h-100 bg-secondary-purple text-white border-0 shadow custom-card">
+                        <Card className="h-100 bg-off-white text-white border-0 shadow custom-card">
                             <Card.Body className="text-center p-4">
                                 <LightBulbIcon className="mb-3 tech-icon text-black" />
                                 <Card.Title className="h5 fw-bold text-violet mb-2">Digital Product Engineering</Card.Title>
@@ -196,7 +207,7 @@ const Services = () => {
                         </Card>
                     </Col>
                     <Col md={6} lg={3}>
-                        <Card className="h-100 bg-secondary-purple text-white border-0 shadow custom-card">
+                        <Card className="h-100 bg-off-white text-white border-0 shadow custom-card">
                             <Card.Body className="text-center p-4">
                                 <ChartBarIcon className="mb-3 tech-icon text-black" />
                                 <Card.Title className="h5 fw-bold text-violet mb-2">Data Analytics</Card.Title>
@@ -207,7 +218,7 @@ const Services = () => {
                         </Card>
                     </Col>
                     <Col md={6} lg={3}>
-                        <Card className="h-100 bg-secondary-purple text-white border-0 shadow custom-card">
+                        <Card className="h-100 bg-off-white text-white border-0 shadow custom-card">
                             <Card.Body className="text-center p-4">
                                 <CloudIcon className="mb-3 tech-icon text-black" />
                                 <Card.Title className="h5 fw-bold text-violet mb-2">Cloud Interface Development</Card.Title>
@@ -218,7 +229,7 @@ const Services = () => {
                         </Card>
                     </Col>
                     <Col md={6} lg={3}>
-                        <Card className="h-100 bg-secondary-purple text-white border-0 shadow custom-card">
+                        <Card className="h-100 bg-off-white text-white border-0 shadow custom-card">
                             <Card.Body className="text-center p-4">
                                 <ServerStackIcon className="mb-3 tech-icon text-black" />
                                 <Card.Title className="h5 fw-bold text-violet mb-2">Enterprise Solutions</Card.Title>
@@ -289,12 +300,21 @@ const Services = () => {
   <Row className="align-items-center justify-content-center flex-column-reverse flex-lg-row">
     <h2 className="display-4 fw-bold">Let's Build the Future Together.</h2>
     <p className="lead mb-4">Ready to transform your business? Contact us today!</p>
-    <Button variant="outline-light" className="btn-small">
+    <Button variant="outline-light" 
+        type="button"
+  className="btn-small"
+  onClick={handleOpenDemoPopup} // Changed onClick to open the popup
+>
+
       Get Started
     </Button>
   </Row>
 </Container>
 
+<DemoBookingPopup
+  isOpen={isDemoPopupOpen}
+  onClose={handleCloseDemoPopup}
+/>
 
         </div>
     );

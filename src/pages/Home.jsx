@@ -1,5 +1,5 @@
-import React from 'react';
-import { Carousel, Container, Row, Col, Card } from 'react-bootstrap';
+import React, { useState } from 'react'; // Import useState
+import { Carousel, Container, Row, Col, Card, Button } from 'react-bootstrap'; // Import Button
 import '../styles/Home.css'; // Import the dedicated CSS file
 
 import Belowbar from "../components/Belowbar"; // Adjust the path if necessary
@@ -9,9 +9,6 @@ import icon1 from '../assets/scanifyprocess.png';
 import icon2 from '../assets/processbuilderpro.png';
 import icon3 from '../assets/rpapro.png';
 import icon4 from '../assets/docpro.png'; // Assuming this is for IntelliDocs
-// The whoWeAreImage import was not used in the provided JSX for the Who We Are section,
-// so I'm commenting it out or suggesting to remove if it's not going to be used for consistency.
-// import whoWeAreImage from '../assets/image7.jpeg'; // New import for the Who We Are image
 
 // Client Logo Imports
 import ponpureLogo from '../assets/ponpure.png';
@@ -29,7 +26,23 @@ import ezcloud from '../assets/ezcloud.png';
 import ionidea from '../assets/ionidea.png';
 import eastman from '../assets/eastman.png';
 
+// Make sure this path is correct for your project structure
+import DemoBookingPopup from "../components/DemoBookingPopup";
+
 const Home = () => {
+    // State to control the visibility of the demo booking popup
+    const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false);
+
+    // Function to open the popup
+    const handleOpenDemoPopup = () => {
+        setIsDemoPopupOpen(true);
+    };
+
+    // Function to close the popup
+    const handleCloseDemoPopup = () => {
+        setIsDemoPopupOpen(false);
+    };
+
     // Combine all client logos into an array for easier mapping
     const clientLogos = [
         ponpureLogo, tiCycleLogo, murugappalogo, khazanaLogo, sharatIndustriesLogo,
@@ -40,37 +53,46 @@ const Home = () => {
     return (
         <>
             {/* Introduction Section */}
-      <section className="py-0 home-intro-section ">
-
-  <Container className="py-5 mt-0">
-    <Row className="justify-content-center text-center">
-      <Col md={10}>
-        <h2 className="hero-title display-4 fw-bold mb-3 text-black">
-          KodiVian Technology: Your Trusted Partner in Digital Transformation
-        </h2>
-        <p className="lead text-black">
-          We help businesses go digital with smart automation and seamless integrations.
-          Our OCR engine accurately extracts data from scanned documents—eliminating manual input.
-          Files are stored securely with flexible system connectivity.
-          Use our intuitive drag-and-drop builder to create forms and applications effortlessly.
-          Automate entire workflows with our visual builder and built-in RPA to save time and reduce errors.
-          Partner with KodiVian to work smarter, faster, and more efficiently.
-        </p>
-      </Col>
-    </Row>
-
+            <section className="py-0 home-intro-section ">
+                <Container className="py-5 mt-0">
+                    <Row className="justify-content-center text-center">
+                        <Col md={10}>
+                            <h2 className="hero-title display-4 fw-bold mb-3 text-black">
+                                KodiVian Technology: Your Trusted Partner in Digital Transformation
+                            </h2>
+                            <p className="lead text-black">
+                                We help businesses go digital with smart automation and seamless integrations.
+                                Our OCR engine accurately extracts data from scanned documents—eliminating manual input.
+                                Files are stored securely with flexible system connectivity.
+                                Use our intuitive drag-and-drop builder to create forms and applications effortlessly.
+                                Automate entire workflows with our visual builder and built-in RPA to save time and reduce errors.
+                                Partner with KodiVian to work smarter, faster, and more efficiently.
+                            </p>
+                        </Col>
+                    </Row>
 
                     <Row className="mt-5 text-center">
                         <Col>
-                            <p className="lead text-violet">
+                            <p className="lead text-violet mb-5">
                                 Ready to transform your business operations?
                             </p>
-                            <a
-                                href="#contact"
-                                className="btn btn-lg text-white bg-violet px-4 py-2 home-demo-button"
+                            {/* This is the button that will now open the DemoBookingPopup */}
+                            <Button
+                                type="button" // Use type="button" for clarity, though it's often default for Bootstrap Buttons
+                                className="btn-lg text-white bg-violet px-4 py-2 home-demo-button"
+                                // Use onClick to trigger the handleOpenDemoPopup function
+                                onClick={handleOpenDemoPopup}
+                                // You can directly apply Bootstrap variant or inline style if needed,
+                                // but your className already handles the styling
+                                // For consistency with your provided example:
+                                style={{
+                                    backgroundColor: "#9400d3", // This value is closer to "violet"
+                                    borderColor: "#9400d3",
+                                    color: "#fff",
+                                }}
                             >
-                                Schedule a Free Demo
-                            </a>
+                                Schedule a Free Demo {/* Changed text to match your original button */}
+                            </Button>
                         </Col>
                     </Row>
                 </Container>
@@ -78,7 +100,7 @@ const Home = () => {
 
 
             {/* Product Carousel Section */}
-            <section className="product-carousel-section p-0"> {/* Removed inline styles, managed by CSS */}
+            <section className="product-carousel-section p-0">
                 <Carousel controls={false} indicators={true} interval={3000} className="bg-light product-carousel-custom">
                     {/* Slide 1: Scanify */}
                     <Carousel.Item className="bg-light">
@@ -166,7 +188,7 @@ const Home = () => {
                 </Carousel>
             </section>
 
-           
+
             {/* Who We Are Section */}
             <section id="who-we-are" className="py-5 bg-white">
                 <Container>
@@ -184,13 +206,12 @@ const Home = () => {
                 </Container>
             </section>
 
-                
 
             {/* Our Solution Delivery Process Section */}
             <section id="product-workflowsed" className="py-5 bg-light">
                 <Container>
                     <h2 className="display-5 fw-bold text-center mb-5 text-violet">Our Solution Delivery Process</h2>
-                    <Row className="ijustify-content-center g-4">
+                    <Row className="justify-content-center g-4"> {/* Corrected typo: ijustify-content-center to justify-content-center */}
                         {/* Step 1: Project Target Definition */}
                         <Col md={6} lg={3}>
                             <Card className="h-100 shadow-sm border-0 text-center p-3 bg-white text-dark workflow-card">
@@ -266,8 +287,14 @@ const Home = () => {
                         ))}
                     </div>
                 </Container>
-                
+
             </section>
+
+            {/* This is where the DemoBookingPopup component is rendered */}
+            <DemoBookingPopup
+                isOpen={isDemoPopupOpen} // Pass the state variable to the popup's isOpen prop
+                onClose={handleCloseDemoPopup} // Pass the function to close the popup to its onClose prop
+            />
         </>
     );
 };

@@ -14,6 +14,7 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap'; // Import B
 const Product = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [slideIndex, setSlideIndex] = useState(0);
+    const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false);
     const products = [
         { name: "Scanify", description: "Intelligent Invoice Processing solution that automates data extraction from invoices, reducing manual effort and errors. It streamlines accounts payable workflows, improves accuracy, and accelerates processing times. Scanify integrates seamlessly with existing accounting systems for enhanced efficiency.", image: SampleImage, link: "/scanify" },
         { name: "Process Builder", description: "A No-Code Workflow Automation platform empowering businesses to design and automate workflows without writing any code. It enables seamless integration between various applications, improves operational efficiency, and provides real-time visibility into process execution. Process Builder is highly customizable and scalable to meet evolving business needs.", image: processbuilder, link: "/processbuilder" },
@@ -21,13 +22,15 @@ const Product = () => {
         { name: "IntelliDoc", description: "A Smart Document Management system that uses AI to organize, classify, and retrieve documents efficiently. It offers features like intelligent search, version control, and secure access, enhancing collaboration and compliance. IntelliDoc transforms unstructured data into actionable insights, improving decision-making and overall productivity.", image: intellidocs, link: "/document" },
     ];
 
-    const handleOpenPopup = () => {
-        setIsPopupOpen(true);
-    };
+    const handleOpenDemoPopup = () => {
+  setIsDemoPopupOpen(true);
+};
 
-    const handleClosePopup = () => {
-        setIsPopupOpen(false);
-    };
+const handleCloseDemoPopup = () => {
+  setIsDemoPopupOpen(false);
+};
+
+    
 
     const nextSlide = () => {
         setSlideIndex((prevIndex) => (prevIndex + 1) % products.length);
@@ -48,8 +51,8 @@ const Product = () => {
                         <p className="hero-subtitle mt-4 primary-text text-uppercase fw-bold">Explore Our Leading Solutions</p>
                         <h1 className="hero-title secondary-text display-4 fw-bold mb-3">Empowering Businesses with Automation, Intelligence, Simplicity, and Speed</h1>
                         <p className="hero-description tertiary-text lead mb-4">Discover an integrated suite of smart tools designed to modernize your business, cut down manual work, and accelerate digital transformation — all without complexity.</p>
-                        <Button variant="primary" size="lg" onClick={handleOpenPopup} className="hero-button">Request a Demo</Button>
-                        <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
+                        <Button variant="primary" size="lg"  onClick={handleOpenDemoPopup}  className="hero-button">Request a Demo</Button>
+                        
                     </Col>
                 </Row>
 
@@ -74,9 +77,11 @@ const Product = () => {
                 <Card.Text className="text-muted mb-4" style={{ fontSize: '1.1rem' }}>
                   {visibleProduct.description}
                 </Card.Text>
-                <Button variant="primary" onClick={handleOpenPopup} className="px-4 py-2 rounded-pill">
-                  Request a Demo
+                <Link to={visibleProduct.link}>
+                <Button variant="primary"   className="px-4 py-2 rounded-pill">
+                  Learn More About Product ...
                 </Button>
+                </Link>
               </Card.Body>
             </Col>
           </Row>
@@ -176,7 +181,18 @@ const Product = () => {
                     <Col lg={8} className="mx-auto">
                         <h2 className="cta-title  display-5 fw-bold mb-3">Ready to Transform Your Business?</h2>
                         <p className="cta-description  lead mb-4">Contact us today to learn how our AI solutions can meet your specific needs.</p>
-                        <Button variant="light" size="lg" onClick={handleOpenPopup} className="cta-button">Request a Consultation</Button>
+                     <a
+  href="https://wa.me/918870435343?text=Hi%2C%20I%20am%20Kodivian%21%20Explore%20our%204%20products.%20If%20you%20need%20any%20guidance%20or%20have%20questions%20about%20any%20concept%2C%20just%20text%20me.
+"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Button variant="light" size="lg" className="cta-button">
+    Request a Consultation
+  </Button>
+</a>
+
+
                     </Col>
                 </Row>
 
@@ -192,6 +208,10 @@ const Product = () => {
 
 
             </Container>
+            <DemoBookingPopup
+  isOpen={isDemoPopupOpen}
+  onClose={handleCloseDemoPopup}
+/>
         </div>
     );
 };

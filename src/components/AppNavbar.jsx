@@ -3,12 +3,14 @@ import { Navbar, Nav, Button, Container } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/company_logo.png';
 import '../styles/Navbar.css';
+import DemoBookingPopup from '../components/DemoBookingPopup';
 
 const AppNavbar = () => {
     // State to control the Navbar's expanded/collapsed state for mobile
     const [expanded, setExpanded] = useState(false); // Navbar starts closed
     // State to control Navbar's scroll behavior (e.g., shrink/hide)
     const [scrolled, setScrolled] = useState(false);
+    const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false);
     // State for scroll-up visibility
     const [visible, setVisible] = useState(true);
     // To keep track of the last scroll position for scroll-up detection
@@ -18,6 +20,11 @@ const AppNavbar = () => {
     const closeNavbar = () => {
         setExpanded(false);
     };
+
+    const handleDemoClick = () => {
+    setIsDemoPopupOpen(true);
+};
+
 
     // Scroll event handler
     useEffect(() => {
@@ -86,11 +93,20 @@ const AppNavbar = () => {
                     </Nav>
 
                     {/* Added ms-auto to push the button to the right if Nav doesn't have me-auto */}
-                    <Button variant="primary" as={NavLink} to="/demobooking" onClick={closeNavbar} className="ms-lg-auto">
-                        Demo Booking
-                    </Button>
+                   <Button
+    variant="primary"
+    onClick={handleDemoClick}
+    className="ms-lg-auto"
+>
+    Demo Booking
+</Button>
+
                 </Navbar.Collapse>
             </Container>
+
+            <DemoBookingPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
+
+
         </Navbar>
     );
 };

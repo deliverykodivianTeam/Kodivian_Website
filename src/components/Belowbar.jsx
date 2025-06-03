@@ -108,7 +108,7 @@ const Belowbar = () => {
               {/* Social media icons */}
               <Link
                 to="https://www.linkedin.com/company/kodivian-technologies/posts/?feedView=all"
-                className="btn btn-sm btn-outline-light d-flex align-items-center justify-content-center bg-custom-purple-900 hover-bg-custom-pink-600 hover-text-white rounded"
+                className="btn btn-sm btn-outline-light d-flex align-items-center justify-content-center text-custom-white-900 hover-bg-custom-pink-600 hover-text-white rounded"
                 aria-label="LinkedIn Profile"
               >
                 <FaLinkedin className="fs-5" />
@@ -196,28 +196,28 @@ const Belowbar = () => {
                 OVERALL
               </h3>
               <a
-                href="#welcome"
+                href="/"
                 className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
               >
                 Home
               </a>
               <a
-                href="#search"
+                href="/product"
                 className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
               >
-                Search
+                product
               </a>
               <a
-                href="#optimizeStrength"
+                href="/strength"
                 className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
               >
                 Strength
               </a>
               <a
-                href="#frame"
+                href="/contact"
                 className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
               >
-                Framework
+                contact
               </a>
             </div>
             {/* PRODUCT */}
@@ -228,19 +228,19 @@ const Belowbar = () => {
                 PRODUCT
               </h3>
               <a
-                href="#link2-1"
+                href="/scanify"
                 className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
               >
                 Scanify
               </a>
               <a
-                href="#link2-2"
+                href="/intellidocs "
                 className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
               >
                 Intellidocs
               </a>
               <a
-                href="#link2-3"
+                href="/processbuilder"
                 className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
               >
                 Process Builder
