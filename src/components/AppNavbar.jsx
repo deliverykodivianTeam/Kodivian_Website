@@ -51,8 +51,7 @@ const AppNavbar = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [lastScrollY]); // Re-run effect if lastScrollY changes
-
+    }, [lastScrollY, expanded]); 
     return (
         <Navbar
             expand="lg"
@@ -60,6 +59,7 @@ const AppNavbar = () => {
             className={`py-0 custom-navbar ${scrolled ? 'scrolled-navbar' : ''} ${visible ? 'navbar-visible' : 'navbar-hidden'}`}
             expanded={expanded}
             onToggle={() => setExpanded(!expanded)}
+            
         >
             <Container>
                 <Navbar.Brand as={NavLink} to="/" onClick={closeNavbar}>
