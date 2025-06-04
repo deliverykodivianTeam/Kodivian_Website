@@ -26,7 +26,9 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
     useEffect(() => {
         if (form.date) {
             const times = [];
+            // Set start of day in IST for the selected date, then add 9 hours 30 minutes
             const start = moment.tz(form.date, istTimeZone).startOf('day').add(9, 'hours').add(30, 'minutes');
+            // Set end of day in IST for the selected date, then add 18 hours
             const end = moment.tz(form.date, istTimeZone).startOf('day').add(18, 'hours');
             let current = start.clone();
             while (current.isBefore(end)) {
@@ -72,12 +74,14 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
 
     const handleBookDemo = async () => {
         setError('');
-        setIsBooking(true); // Disable the button immediately
+        setSuccessMessage(''); // Clear any previous success message
+        setIsBooking(true); // Disable the button and show loading state
 
         try {
             const payload = {
                 ...form,
-                date: moment(form.date).tz(istTimeZone).format('YYYY-MM-DD'),
+                // Ensure date is formatted correctly for the backend
+                date: form.date ? moment(form.date).tz(istTimeZone).format('YYYY-MM-DD') : null,
                 timezone: istTimeZone,
             };
 
@@ -92,17 +96,18 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
             if (res.ok) {
                 const data = await res.json();
                 console.log(data.message);
-                setSuccessMessage('Demo booked successfully!');
-                // Close the popup after 2 seconds
+                setSuccessMessage('Demo request sent successfully! We will be in touch shortly.');
+                // Close the popup after 2 seconds to allow user to read success message
                 setTimeout(() => handleClose(), 2000);
             } else {
-                setError('Failed to save demo data. Please try again.');
+                const errorData = await res.json();
+                setError(errorData.error || 'Failed to book demo. Please try again.');
+                setIsBooking(false); // Re-enable button on error
             }
         } catch (err) {
             console.error('Error:', err);
             setError('Something went wrong. Please check your connection and try again.');
-        } finally {
-            setIsBooking(false); // Re-enable the button if an error occurs (though in this case, the popup closes)
+            setIsBooking(false); // Re-enable button on network error
         }
     };
 
@@ -126,19 +131,24 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
     const handleDateChange = (date) => {
         const day = date.getDay();
         const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0); // Normalize today's date to start of day for comparison
 
-        if (day !== 0 && day !== 6) { // Not weekend (0 = Sunday, 6 = Saturday)
-            if (date.getTime() >= today.getTime()) { // Today or future
-                setForm({ ...form, date });
-            }
+        // Only allow selection of non-weekend days and today/future dates
+        if (day !== 0 && day !== 6 && date.getTime() >= today.getTime()) {
+            setForm({ ...form, date, time: '' }); // Reset time when date changes
+        } else {
+            // Optionally, you can add an error here if a disabled date is somehow clicked,
+            // though tileDisabled should prevent it.
+            setError('Please select a weekday today or in the future.');
+            setForm({ ...form, date: null, time: '' }); // Clear date and time if invalid
         }
     };
 
     const tileDisabled = ({ date, view }) => {
         if (view === 'month') {
             const today = new Date();
-            today.setHours(0, 0, 0, 0);
+            today.setHours(0, 0, 0, 0); // Normalize today's date for comparison
+            // Disable weekends (0 = Sunday, 6 = Saturday) and past dates
             return date.getDay() === 0 || date.getDay() === 6 || date.getTime() < today.getTime();
         }
         return false;
@@ -148,23 +158,21 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
 
     return (
         <>
-            {/* The primary change is adding a 'position: fixed;' to the modal style */}
             <div
                 className="modal fade show"
                 style={{
                     display: 'block',
                     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    position: 'fixed', // This makes it an overlay on top of everything
+                    position: 'fixed',
                     top: 0,
                     left: 0,
                     width: '100vw',
                     height: '100vh',
-                    zIndex: 1050, // Ensure it's above other content (Bootstrap's default modal z-index)
-                    overflow: 'auto', // Allow scrolling if content is too tall
+                    zIndex: 1050,
+                    overflow: 'auto',
                 }}
                 onClick={handleClose}
             >
-                {/* Prevent clicks on the modal content from closing the modal */}
                 <div className="modal-dialog modal-dialog-centered" onClick={(e) => e.stopPropagation()}>
                     <div className="modal-content">
                         {successMessage ? (
@@ -259,7 +267,7 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
                                             type="button"
                                             className="btn btn-success"
                                             onClick={handleBookDemo}
-                                            disabled={isBooking}
+                                            disabled={isBooking} // Button disabled when booking is in progress
                                         >
                                             {isBooking ? 'Booking...' : 'Book Demo'}
                                         </button>
