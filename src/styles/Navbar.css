@@ -1,186 +1,330 @@
-/* Navbar.css */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
-/* Navbar.css */
-
-/* Add Roboto font family */
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
-/* Apply Roboto to all custom navbar elements explicitly if needed, though body should cover most */
-.custom-navbar,
-.custom-navbar .nav-link-custom,
-.custom-navbar .navbar-brand,
-.custom-navbar .btn-primary {
-    font-family: 'Roboto', sans-serif;
-}
-
-
-/* --- Custom Navbar Container Styling --- */
+/* GENERAL NAVBAR STYLES */
 .custom-navbar {
-    /* Your desired light, semi-transparent background color */
-    background-color: #f2f0f5 !important;
-    /* Setting a fixed height for the navbar */
-    height: 100px;
-    /* Adjusting padding to fit within the 100px height. */
-    padding-top: 25px !important;
-    padding-bottom: 25px !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-
-    /* Add transition for height/background if you want a smooth change on scroll */
-    transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    width: 100%; /* Ensure it takes full width */
-    z-index: 1030; /* Ensure it's above other content */
-    position: fixed; /* Override sticky for scroll-up/down logic */
-    top: 0; /* Keep it at the top when visible */
-}
-
-/* Styles when scrolled past half screen height */
-.custom-navbar.scrolled-navbar {
-    height: 70px; /* Smaller height when scrolled */
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    background-color: #a390b5; /* Less transparent/more solid background when scrolled */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow when scrolled */
-}
-
-/* Navbar visibility on scroll (scroll-up/scroll-down) */
-.navbar-visible {
-    transform: translateY(0); /* Visible state */
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+    transition: top 0.3s ease-in-out;
+    height: auto;
+    z-index: 1000;
+    padding-top: 0 !important; /* Remove Bootstrap's default py-0 padding */
+    padding-bottom: 0 !important; /* Remove Bootstrap's default py-0 padding */
+    height: 90px; /* Fixed height for the entire navbar */
+    display: flex;
+    align-items: stretch; /* Stretch items to fill the height */
 }
 
 .navbar-hidden {
-    transform: translateY(-100%); /* Hidden state (moves completely off screen) */
+    top: -100px;
+    position: sticky;
+}
+
+.navbar-visible {
+    top: 0;
+    position: sticky;
+}
+
+/* BRAND LOGO */
+.logo-img {
+    height: 40px; /* Adjust as needed */
+    vertical-align: middle;
+}
+
+/* NAV LINKS STYLING */
+.nav-link-custom {
+    padding: 0 1rem; /* Adjust padding for equal spacing */
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+    border-radius: 5px;
+    display: flex;
+    align-items: center; /* Vertically align content within each nav link */
+    height: 50px; /* Make nav links fill the height of the navbar */
+}
+
+.nav-link-custom:hover,
+.nav-link-custom.active {
+    background-color: #f2f2f2;
+    color: #007bff; /* Bootstrap's primary blue */
+}
+
+/* TOGGLE BUTTON STYLING */
+.navbar-toggler {
+    border: none;
+    outline: none;
+    margin-right: auto; /* Pushes the toggler to the left */
+    height: 100%; /* Make toggler fill the height */
+    display: flex; /* Use flex to center the icon */
+    align-items: center;
+    padding-left: 1rem; /* Add padding to the left for better spacing */
+}
+
+/* CUSTOM DROPDOWN MENU */
+.custom-product-dropdown {
+    position: relative;
+    display: flex;
+    align-items: stretch; /* Stretch dropdown link to fill navbar height */
+    height: 100%;
+}
+
+.dropdown-arrow {
+    margin-left: 0.3rem;
+    transition: transform 0.2s ease;
+}
+
+.dropdown-arrow.expanded {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu-custom {
+    position: fixed; /* Changed to fixed for full-screen effect */
+    top: 60px; /* Position directly below the navbar (if navbar height is 60px) */
+    left: 0;
+    width: 100vw; /* Full width */
+    height: calc(100vh - 60px); /* Full height minus navbar height */
+    background: #ffffff; /* White background for the dropdown */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem; /* More generous padding for full screen */
+    border-radius: 0; /* No border-radius for full screen */
+    z-index: 999; /* Below the navbar, but above page content */
+    display: none; /* Hidden by default */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+    flex-direction: column; /* Use flex for vertical centering/alignment */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+.dropdown-menu-custom.show {
+    display: flex; /* Changed to flex for centering content */
+}
+
+.dropdown-product-grid {
+    display: grid;
+    /* Forces 2 items per row, regardless of screen size */
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    gap: 1.5rem; /* Increased gap for better visual separation in full screen */
+    text-align: center;
+    max-width: 800px; /* Limit the max width of the grid itself for better readability */
+    width: 100%;
+}
+
+.dropdown-product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Vertically center content */
+    text-decoration: none;
+    color: #333;
+    padding: 1.5rem; /* More generous padding for touch targets */
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    background-color: #f8f9fa; /* Light background for each item */
+    border: 1px solid #e9ecef; /* Subtle border */
+
+    /* ADDED: Ensure product touch height is at least 50px */
+    min-height: 100px; /* Adjusted from 50px as images and text will make it larger */
+}
+
+.dropdown-product-item:hover {
+    background-color: #ede9f7; /* Violet-ish light background */
+    color: #4b0082; /* Darker violet for text */
+    transform: translateY(-3px); /* Subtle lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    height: 60px; /* Larger images for full-screen dropdown */
+    margin-bottom: 1rem;
+}
+
+/* ADDED: Styling for the text within product items */
+.dropdown-product-item span {
+    font-size: 1.1rem; /* Adjust font size as needed */
+    font-weight: 600; /* Make text a bit bolder */
+    line-height: 1.2; /* Adjust line height for better spacing */
+    min-height: 20px; /* Give the text a minimum height to ensure consistent spacing */
 }
 
 
-/* --- Navigation Links Styling (for both expanded and collapsed) --- */
-.custom-navbar .nav-link-custom {
-    color: rgb(10, 0, 0) !important; /* Your desired almost black text color */
-    font-weight: 900; /* Your desired bold font weight */
-    margin-left: 15px; /* Adds horizontal spacing between navigation items */
-    margin-right: 15px;
-    text-decoration: none; /* Removes default underline from links */
-    position: relative; /* Needed for the active link's underline effect */
-
-    /* Default padding for links (will be overridden for collapsed view) */
-    padding: 8px 12px;
-    border-radius: 5px; /* Slightly rounded corners for a professional look */
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Smooth transitions */
+/* DEMO BUTTON */
+button.btn.btn-primary {
+    background-color: #4b0082; /* Dark violet */
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    height: 40px; /* Consistent height with other elements */
+    display: flex;
+    align-items: center;
 }
 
-/* Hover and Focus Effect for Navigation Links */
-.custom-navbar .nav-link-custom:hover,
-.custom-navbar .nav-link-custom:focus {
-    color: #8d0dcc !important; /* Changes link color to a violet on hover/focus */
-    background-color: rgba(138, 43, 226, 0.1); /* Subtle violet background on hover */
+button.btn.btn-primary:hover {
+    background-color: #33005a; /* Even darker violet on hover */
 }
 
-/* --- Active Page Link Styling --- */
-.custom-navbar .nav-link-custom.active {
-    color: #9202b2 !important; /* Your desired violet color for the active link */
-    font-weight: bold; /* Keeps the active link text bold */
-    background-color: rgba(138, 43, 226, 0.05); /* Very subtle background for active link */
-    /* Removed border-bottom as it might conflict with the box shape on mobile */
+/* SPECIFIC BOOTSTRAP OVERRIDES */
+.navbar-brand {
+    padding-right: 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
-/* --- Navbar Brand (Logo/Text) Styling --- */
-.custom-navbar .navbar-brand {
-    color: rgb(10, 0, 0) !important; /* Ensures any text in the brand area is your dark color */
-    font-weight: 900; /* Matches link font weight */
+.navbar-collapse {
+    flex-grow: 1;
+    display: flex; /* Ensure collapse content uses flex for alignment */
+    align-items: stretch; /* Stretch items to fill height */
 }
 
-/* --- Navbar Toggle (Hamburger Icon) Styling for Mobile --- */
-.custom-navbar .navbar-toggler-icon {
-    /* This SVG data URL sets the color of the hamburger lines to BLACK */
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+.navbar-nav {
+    height: 100%;
+    display: flex;
+    align-items: center; /* Vertically align children */
+    /* Use gap for equal spacing between NavLinks */
+    gap: 20px; /* Reset default gap */
+    margin-right: 50px; /* Push content to left if using me-auto */
 }
 
-/* Style for the border of the Navbar toggle button */
-.custom-navbar .navbar-toggler {
-    border-color: rgba(0, 0, 0, 0.5) !important; /* Dark border around the toggle button */
-}
-
-/* --- "Demo Booking" Button Styling --- */
-.custom-navbar .btn-primary {
-    background-color: #6A0DAD !important; /* Darker violet for the button background */
-    border-color: #6A0DAD !important; /* Matches button border to its background */
-    font-weight: bold; /* Makes the button text bold */
-    text-decoration: none !important; /* Ensures no underline if used with NavLink */
-    padding: 10px 20px; /* More professional button padding */
-    border-radius: 8px; /* More rounded corners */
-    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Smooth transitions */
-}
-
-/* Hover effect for the "Demo Booking" button */
-.custom-navbar .btn-primary:hover {
-    background-color: #4B0082 !important; /* Even darker violet on hover */
-    border-color: #4B0082 !important;
-}
-
-/* --- Logo Size via CSS --- */
-.navbar-brand .logo-img {
-    height: 85px; /* Your desired height for the logo */
-    width: auto; /* Maintains the aspect ratio of the logo image */
-    transition: height 0.3s ease-in-out; /* Smooth transition for logo height */
-}
-
-/* Adjust logo size when navbar is scrolled */
-.custom-navbar.scrolled-navbar .navbar-brand .logo-img {
-    height: 55px; /* Smaller logo height when scrolled */
+.navbar-nav .nav-item {
+    /* height: 100%;  */
+    /* display: flex; */
+    /* align-items: center; */
+    height: 100%;
+    /* display: flex
+; */
+    align-items: flex-start;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 
-/* --- Styling for Collapsed Navbar Links (Mobile View - "Box Shape") --- */
-/* This applies when the Navbar is collapsed and the links are stacked vertically */
-@media (max-width: 991.98px) { /* Bootstrap's 'lg' breakpoint is 992px, so max-width: 991.98px targets smaller screens */
-    /* Target the collapsed navbar content to control its background and full screen width */
-    .custom-navbar .navbar-collapse.show {
-        background-color: #f2f0f5; /* Light background for the expanded mobile menu */
-        position: absolute; /* Position it relative to the navbar */
-        top: 100%; /* Place it right below the static part of the navbar */
-        left: 0;
-      height: calc(100vh - 60px); /* assuming your navbar height is 60px */
-        width: 100%; /* Make it full screen width */
-        padding: 15px; /* Add some padding inside the expanded menu */
-        border-top: 1px solid rgba(0, 0, 0, 0.1); /* Optional: add a subtle border at the top */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a shadow */
+/* TOGGLE MENU NAV LINKS AS BUTTONS (Mobile View) */
+@media (max-width: 991.98px) {
+    .custom-navbar {
+        height: 90px; /* Allow height to adjust on mobile when expanded */
+        padding-top: 0.5rem !important; /* Add some padding back for mobile */
+        padding-bottom: 0.5rem !important;
     }
 
-    .custom-navbar .navbar-collapse .nav-link-custom {
-        display: block; /* Makes each link take full width */
-        width: 100%; /* Ensures full width */
-        text-align: center; /* Centers text within the "box" */
-        margin: 5px 0; /* Adds vertical margin between stacked links */
-        padding: 12px 15px; /* Increased padding for a more prominent "box" feel */
-        background-color: rgba(255, 255, 255, 0.8); /* Light background for each link box */
-        border: 1px solid rgba(0, 0, 0, 0.904); /* Subtle border for the box shape */
-        border-radius: 8px; /* More rounded corners for the boxes */
-    }
+   .navbar-toggler {
+  margin-right: 0 !important;
+  margin-left: auto !important;
+  padding-right: 0.75rem; /* You can adjust this if needed */
+  padding-left: 0.75rem;
+  
+  order: 1; /* ensures it appears before other elements in flex row */
+}
 
-    /* Adjust active link styling for collapsed view if needed */
-    .custom-navbar .navbar-collapse .nav-link-custom.active {
-        background-color: #9202b2 !important; /* Solid violet background for active link in collapsed view */
-        color: white !important; /* White text for active link in collapsed view */
-        border-color: #9202b2; /* Matching border color */
-    }
+   .navbar-collapse {
+  background-color: #fff;
+  padding: 1rem;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: calc(100vh - 56px); /* Adjust 56px to match your navbar height */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 
-    /* Adjust hover for collapsed links */
-    .custom-navbar .navbar-collapse .nav-link-custom:hover,
-    .custom-navbar .navbar-collapse .nav-link-custom:focus {
-        background-color: rgba(138, 43, 226, 0.2); /* Slightly darker hover for collapsed links */
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+  overflow-y: auto; /* Allows scroll if items overflow */
+  z-index: 1050; /* Ensure it stays above other elements */
+}
 
-    /* Ensure the button also looks good in collapsed view */
-    .custom-navbar .navbar-collapse .btn-primary {
-        display: block;
-        width: 100%;
-        margin: 10px 0;
-        text-align: center;
-    }
 
-    /* Adjust Navbar height for mobile collapsed view */
-    .custom-navbar.scrolled-navbar {
-        height: auto; /* Allow height to adjust for collapsed content on mobile */
-    }
+  .nav-link-custom {
+  display: block;
+  width: 395px;
+  max-width: 220vw;
+  margin: 0 auto 0.5rem auto;
+  padding: 0.75rem 1rem;
+  background-color: #f0f0f0;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: 600;
+  height: auto;
+  transition: background-color 0.3s ease;
+}
+
+.custom-product-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.custom-product-dropdown > .nav-link-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 0.5rem;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+/* The container for product buttons */
+.dropdown-menu-custom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+/* Each product button */
+.dropdown-product-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  gap: 0.75rem;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-product-item:hover {
+  background-color: #dcdcdc;
+}
+
+/* Images inside buttons */
+.dropdown-product-item img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+
+    /* Adjust button alignment for mobile */
+    button.btn.btn-primary {
+  display: block;
+  width: 395px;
+  max-width: 220vw;
+  margin: 0 auto 0.5rem auto;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: 600;
+  height: auto;
+}
+
 }

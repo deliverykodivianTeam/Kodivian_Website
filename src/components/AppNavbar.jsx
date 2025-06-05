@@ -1,114 +1,155 @@
-import React, { useState, useEffect } from 'react'; // Import useState and useEffect
+import React, { useState, useEffect, useRef } from 'react';
 import { Navbar, Nav, Button, Container } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+
 import logo from '../assets/company_logo.png';
 import '../styles/Navbar.css';
 import DemoBookingPopup from '../components/DemoBookingPopup';
 
-const AppNavbar = () => {
-    // State to control the Navbar's expanded/collapsed state for mobile
-    const [expanded, setExpanded] = useState(false); // Navbar starts closed
-    // State to control Navbar's scroll behavior (e.g., shrink/hide)
-    const [scrolled, setScrolled] = useState(false);
-    const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false);
-    // State for scroll-up visibility
-    const [visible, setVisible] = useState(true);
-    // To keep track of the last scroll position for scroll-up detection
-    const [lastScrollY, setLastScrollY] = useState(0);
+import ScanifyImage from '../assets/Scanify.png';
+import IntellidocsImage from '../assets/intellidocs.png';
+import ProcessBuilderImage from '../assets/process_builder.png';
+import RpaImage from '../assets/rpa.png';
 
-    // Function to close the Navbar
-    const closeNavbar = () => {
-        setExpanded(false);
+const AppNavbar = () => {
+  const [expanded, setExpanded] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showProductDropdown, setShowProductDropdown] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const productDropdownRef = useRef(null);
+
+  const closeAll = () => {
+    setExpanded(false);
+    setShowProductDropdown(false);
+    setIsDemoPopupOpen(false);
+  };
+
+  const handleDemoClick = () => {
+    closeAll();
+    setIsDemoPopupOpen(true);
+  };
+
+  const toggleProductDropdown = (e) => {
+    e.preventDefault();
+    if (location.pathname !== '/product') {
+      navigate('/product');
+    }
+    setShowProductDropdown((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (productDropdownRef.current && !productDropdownRef.current.contains(event.target)) {
+        setShowProductDropdown(false);
+      }
     };
 
-    const handleDemoClick = () => {
-    setIsDemoPopupOpen(true);
-};
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const halfScreenHeight = window.innerHeight / 2;
 
-    // Scroll event handler
-    useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
+      if (currentScrollY > halfScreenHeight) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
 
-            // --- Logic for 'scrolled' class (e.g., shrinking/changing background) ---
-            // Apply 'scrolled' class if scrolled past half the viewport height
-            const halfScreenHeight = window.innerHeight / 2;
-            if (currentScrollY > halfScreenHeight) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setVisible(false);
+        closeAll();
+      } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
+        setVisible(true);
+      }
 
-            // --- Logic for 'visible' on scroll-up/down ---
-            // If scrolling down AND not at the very top, hide the Navbar
-            if (currentScrollY > lastScrollY && currentScrollY > 100) { // Scroll down
-                setVisible(false);
-            }
-            // If scrolling up OR at the very top, show the Navbar
-            else if (currentScrollY < lastScrollY || currentScrollY <= 100) { // Scroll up or at top
-                setVisible(true);
-            }
+      setLastScrollY(currentScrollY);
+    };
 
-            setLastScrollY(currentScrollY);
-        };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
 
-        window.addEventListener('scroll', handleScroll);
+  return (
+    <Navbar
+      expand="lg"
+      sticky="top"
+      className={`py-0 custom-navbar ${scrolled ? 'scrolled-navbar' : ''} ${visible ? 'navbar-visible' : 'navbar-hidden'}`}
+      expanded={expanded}
+      onToggle={() => setExpanded(!expanded)}
+    >
+      <Container>
+        <Navbar.Brand as={NavLink} to="/" onClick={closeAll}>
+          <img src={logo} className="d-inline-block align-top logo-img" alt="Company Logo" />
+        </Navbar.Brand>
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [lastScrollY, expanded]); 
-    return (
-        <Navbar
-            expand="lg"
-            sticky="top" // Keep sticky top for initial positioning, but scroll logic will override visibility
-            className={`py-0 custom-navbar ${scrolled ? 'scrolled-navbar' : ''} ${visible ? 'navbar-visible' : 'navbar-hidden'}`}
-            expanded={expanded}
-            onToggle={() => setExpanded(!expanded)}
-            
-        >
-            <Container>
-                <Navbar.Brand as={NavLink} to="/" onClick={closeNavbar}>
-                    <img
-                        src={logo}
-                        className="d-inline-block align-top logo-img"
-                        alt="Company Logo"
-                    />
-                </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" aria-label="Toggle navigation" />
 
-                <Navbar.Toggle
-                    aria-controls="basic-navbar-nav"
-                    aria-label="Toggle navigation"
-                />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <NavLink to="/" className="nav-link-custom" onClick={closeAll}>Home</NavLink>
+            <NavLink to="/about" className="nav-link-custom" onClick={closeAll}>About</NavLink>
 
-                <Navbar.Collapse id="basic-navbar-nav">
-                    {/* Removed me-auto if you want less 'flex affecting' for nav links themselves */}
-                    <Nav>
-                        <NavLink to="/" className="nav-link-custom" onClick={closeNavbar}>Home</NavLink>
-                        <NavLink to="/about" className="nav-link-custom" onClick={closeNavbar}>About</NavLink>
-                        <NavLink to="/product" className="nav-link-custom" onClick={closeNavbar}>Product</NavLink>
-                        <NavLink to="/services" className="nav-link-custom" onClick={closeNavbar}>Services</NavLink>
-                        <NavLink to="/contact" className="nav-link-custom" onClick={closeNavbar}>Contact</NavLink>
-                    </Nav>
+            {/* Product Dropdown */}
+            <div className="nav-item custom-product-dropdown" ref={productDropdownRef}>
+              <NavLink
+                to="/product"
+                className={`nav-link-custom ${location.pathname.startsWith('/product') ? 'active' : ''}`}
+                onClick={toggleProductDropdown}
+              >
+                Product
+                <span className={`dropdown-arrow ${showProductDropdown ? 'expanded' : ''}`}>&#9660;</span>
+              </NavLink>
 
-                    {/* Added ms-auto to push the button to the right if Nav doesn't have me-auto */}
-                   <Button
-    variant="primary"
-    onClick={handleDemoClick}
-    className="ms-lg-auto"
->
-    Demo Booking
-</Button>
+              {showProductDropdown && (
+                <div className="dropdown-menu-custom show">
+                  <div className="dropdown-product-grid">
+                    <NavLink to="/scanify" className="dropdown-product-item" onClick={closeAll}>
+                      <img src={ScanifyImage} alt="Scanify" className="product-image" />
+                      <span>Scanify</span>
+                    </NavLink>
+                    <NavLink to="/processbuilder" className="dropdown-product-item" onClick={closeAll}>
+                      <img src={ProcessBuilderImage} alt="Process Builder" className="product-image" />
+                      <span>Process Builder</span>
+                    </NavLink>
+                    <NavLink to="/document" className="dropdown-product-item" onClick={closeAll}>
+                      <img src={IntellidocsImage} alt="Intellidocs" className="product-image" />
+                      <span>Intellidocs</span>
+                    </NavLink>
+                    <NavLink to="/robort" className="dropdown-product-item" onClick={closeAll}>
+                      <img src={RpaImage} alt="RPA" className="product-image" />
+                      <span>RPA</span>
+                    </NavLink>
+                  </div>
+                </div>
+              )}
+            </div>
 
-                </Navbar.Collapse>
-            </Container>
+            <NavLink to="/services" className="nav-link-custom" onClick={closeAll}>Services</NavLink>
+            <NavLink to="/contact" className="nav-link-custom" onClick={closeAll}>Contact</NavLink>
+          </Nav>
 
-            <DemoBookingPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
+          <Button variant="primary" onClick={handleDemoClick} className="ms-lg-auto">
+            Demo Booking
+          </Button>
+        </Navbar.Collapse>
+      </Container>
 
-
-        </Navbar>
-    );
+      <DemoBookingPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
+    </Navbar>
+  );
 };
 
 export default AppNavbar;
