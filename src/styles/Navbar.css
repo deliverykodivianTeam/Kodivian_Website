@@ -177,7 +177,7 @@ button.btn.btn-primary:hover {
 }
 
 .navbar-nav {
-    height: 100%;
+   
     display: flex;
     align-items: center; /* Vertically align children */
     /* Use gap for equal spacing between NavLinks */
@@ -189,7 +189,7 @@ button.btn.btn-primary:hover {
     /* height: 100%;  */
     /* display: flex; */
     /* align-items: center; */
-    height: 100%;
+    height: 10%;
     /* display: flex
 ; */
     align-items: flex-start;
@@ -255,7 +255,7 @@ button.btn.btn-primary:hover {
 }
 
 .custom-product-dropdown > .nav-link-custom {
-  display: flex;
+ 
   justify-content: space-between;
   align-items: center;
   width: 100%;
