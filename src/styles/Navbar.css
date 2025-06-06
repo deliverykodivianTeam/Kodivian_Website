@@ -44,7 +44,7 @@
 .nav-link-custom:hover,
 .nav-link-custom.active {
     background-color: #f2f2f2;
-    color: #007bff; /* Bootstrap's primary blue */
+    color: #8a15bcd0; /* Bootstrap's primary blue */
 }
 
 /* TOGGLE BUTTON STYLING */
@@ -77,7 +77,7 @@
 
 .dropdown-menu-custom {
     position: fixed; /* Changed to fixed for full-screen effect */
-    top: 60px; /* Position directly below the navbar (if navbar height is 60px) */
+    top: 100px; /* Position directly below the navbar (if navbar height is 60px) */
     left: 0;
     width: 100vw; /* Full width */
     height: calc(100vh - 60px); /* Full height minus navbar height */
@@ -164,34 +164,32 @@ button.btn.btn-primary:hover {
 
 /* SPECIFIC BOOTSTRAP OVERRIDES */
 .navbar-brand {
-    padding-right: 1rem;
+    
     height: 100%;
     display: flex;
     align-items: center;
 }
 
 .navbar-collapse {
-    flex-grow: 1;
+    flex-grow: -1;
     display: flex; /* Ensure collapse content uses flex for alignment */
     align-items: stretch; /* Stretch items to fill height */
 }
 
 .navbar-nav {
-   
     display: flex;
-    align-items: center; /* Vertically align children */
-    /* Use gap for equal spacing between NavLinks */
-    gap: 20px; /* Reset default gap */
-    margin-right: 50px; /* Push content to left if using me-auto */
+    align-items: center;         /* Vertically align children */
+    gap: 20px;                   /* Space between nav items */
+    margin-right: 0px;      /* Push items to the far right */
 }
+
 
 .navbar-nav .nav-item {
     /* height: 100%;  */
     /* display: flex; */
     /* align-items: center; */
     height: 10%;
-    /* display: flex
-; */
+    /* display: flex; */
     align-items: flex-start;
     align-content: center;
     flex-direction: row;

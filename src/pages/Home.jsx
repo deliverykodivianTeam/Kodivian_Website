@@ -77,22 +77,21 @@ const Home = () => {
                                 Ready to transform your business operations?
                             </p>
                             {/* This is the button that will now open the DemoBookingPopup */}
-                            <Button
-                                type="button" // Use type="button" for clarity, though it's often default for Bootstrap Buttons
-                                className="btn-lg text-white bg-violet px-4 py-2 home-demo-button"
-                                // Use onClick to trigger the handleOpenDemoPopup function
-                                onClick={handleOpenDemoPopup}
-                                // You can directly apply Bootstrap variant or inline style if needed,
-                                // but your className already handles the styling
-                                // For consistency with your provided example:
-                                style={{
-                                    backgroundColor: "#9400d3", // This value is closer to "violet"
-                                    borderColor: "#9400d3",
-                                    color: "#fff",
-                                }}
-                            >
-                                Schedule a Free Demo {/* Changed text to match your original button */}
-                            </Button>
+                           <div className="demo-button-wrapper">
+  <Button
+    type="button"
+    className="btn-lg text-white demo-schedule-button"
+    onClick={handleOpenDemoPopup}
+    style={{
+      backgroundColor: "#9400d3",
+      borderColor: "#9400d3",
+      color: "#fff",
+    }}
+  >
+    Schedule a Free Demo
+  </Button>
+</div>
+
                         </Col>
                     </Row>
                 </Container>

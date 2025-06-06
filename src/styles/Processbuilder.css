@@ -1,630 +1,357 @@
-.process-container {
-  display: flex;
-  flex-direction: column; /* Stack items vertically by default */
-  align-items: flex-start; /* Align items to the left */
-  padding: 0px;
-  background-color: none;
-  font-family: Arial, sans-serif;
-  margin: 0 auto;
-  max-width: 1400px;
+/* Custom properties for your light theme with violet accents */
+:root {
+    --pb-light-bg: #f8f9fa; /* Very light gray, Bootstrap's default body bg */
+    --pb-section-bg-alt: #ffffff; /* Pure white for alternating sections/cards */
+    --pb-text-dark: #212529; /* Bootstrap's default dark text */
+    --pb-text-muted: #6c757d; /* Bootstrap's muted text for descriptions */
+    --pb-light-violet: #8A2BE2; /* Primary violet */
+    --pb-dark-violet: #6a1bb9; /* Darker violet for hover/accents */
+    --pb-border-light: #dee2e6; /* Light grey border */
+    --pb-card-shadow: rgba(0, 0, 0, 0.1); /* Light shadow for cards */
+    --pb-button-primary-bg: #8A2BE2; /* Violet button background */
+    --pb-button-primary-hover-bg: #6a1bb9; /* Darker violet on hover */
+    --pb-accent-green: #28a745; /* Green for success/new badges */
 }
 
-.process-main-heading-top {
-  font-size: 6.0rem;
-  color: oklch(49.6% 0.265 301.924);
-  margin-bottom: 30px;
-  line-height: 1;
-  font-weight: bold;
-  text-align: left; /* Align to the left */
+/* Global body styling */
+body {
+    background-color: var(--pb-light-bg);
+    color: var(--pb-text-dark); /* Default text color is black/dark gray */
+    font-family: 'Inter', sans-serif; /* Keep a professional font */
 }
 
-.process-content-wrapper {
-  display: flex; /* Arrange left content and image horizontally */
-  width: 100%;
-  justify-content: space-between; /* Space out left content and image */
-  align-items: flex-start; /* Align items to the start vertically */
+/* Main page wrapper to ensure full background coverage */
+.pb-main-page-wrapper {
+    background-color:none;
 }
 
-.process-left1-content {
-  flex: 1; /* Take up available space */
-/* Add some spacing between text and image */
-  padding-top: 0; /* Remove top padding */
+/* --- Hero Section --- */
+.pb-hero-section {
+    background-color: var(--pb-section-bg-alt); /* White background for hero */
+    color: var(--pb-text-dark); /* Default text dark for this section */
+    padding-top: 6rem;
+    padding-bottom: 6rem;
 }
 
-.process-main-heading {
-  font-size: 6.0rem;
-  color: oklch(49.6% 0.265 301.924);
-  margin-bottom: 0.0rem;
-  line-height: 1.5;
-  font-weight: bold;
+.pb-hero-top-heading {
+    color: var(--pb-text-dark); /* Black for the top heading */
 }
 
-.process-description {
-  font-size: 1.125rem;
-  color: #000307;
-  line-height: 1.75;
-  margin-bottom: 2rem;
-  max-width: 100%;
+.pb-hero-main-heading {
+    color: var(--pb-light-violet); /* Main heading in violet */
 }
 
-.process-subdescription {
-  font-size: 1rem;
-  color: #d5b2dff6;
-  line-height: 1.5;
-  margin-bottom: 2rem;
-  max-width: 90%;
+.pb-hero-description,
+.pb-hero-sub-description {
+    color: var(--pb-text-muted); /* Muted dark for descriptions */
 }
 
-
-.process-button-group {
-  display: flex;
-  gap: 1rem;
-}
-
-.process-start-button,
-.process-explore-button {
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.375rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  font-size: 1rem;
-  border: none;
-}
-
-.process-start-button {
-  background-color: oklch(49.6% 0.265 301.924);
-  color: white;
-}
-
-.process-start-button:hover {
-  background-color: #3182ce;
-}
-
-.process-explore-button {
-  background-color: transparent;
-  color: #4a5568;
-  border: 1px solid #cbd5e0;
-}
-
-.process-explore-button:hover {
-  color: #2d3748;
-}
-
-.process-right-image {
-  flex-shrink: 0; /* Prevent image from shrinking */
-  max-width: 50%; /* Adjust as needed */
+.pb-hero-image {
+    max-height: 500px;
+    width: auto;
+    object-fit: contain;
+    box-shadow: 0 0.5rem 1rem var(--pb-card-shadow); /* Light shadow */
 }
 
-.process-builder-image {
-  max-width: 100%;
-  height: auto;
-  margin-top: -20px;
-  margin-left: 40px;
-  border-radius: 0.375rem;
+.pb-hero-start-button {
+  background-color: #8a2be2; /* Violet background */
+  color: #fff; /* White text */
+  border: none; /* Optional: remove border */
 }
 
-.process-builder-image:hover {
-  box-shadow: 0 28px 16px 1px rgba(146, 0, 244, 0.534);
+.pb-hero-start-button:hover {
+  background-color: #7a1fd1; /* Darker violet on hover */
+  color: #fff;
 }
 
-
-
-/* Freehand editor section */
-.freehand-editor-section {
-  margin-top: 70px; /* Add some space above the section */
- /* Align text to the left */
-  width: 100%; /* Make it full width */
-}
-
-.freehand-editor-heading {
-  font-size: 3.5rem; /* Adjust the font size as needed */
-  color: oklch(49.6% 0.265 301.924);
-  margin-bottom: 20px;
-  text-align: center;
-  line-height: 1.5;
-  font-weight: bold;
-}
-
-.freehand-editor-description {
-  font-size: 1.3rem;
-  color: #000307;
-  margin-left: 150px;
-  text-align: center;
-  line-height: 1.75;
-  max-width: 80%; /* Adjust max width for readability */
-}
-.freehand-editor-accordion-wrapper {
-display: flex;
-width: 80%;
-margin: 50px auto 0; /* Center the wrapper */
-align-items: flex-start; /* Align image and accordion to the top */
-flex-direction: row-reverse; /* Keep items in a row */
+.pb-hero-explore-button {
+    border-color: var(--pb-text-dark); /* Dark border for outline button */
+    color: var(--pb-text-dark); /* Dark text for outline button */
+    font-weight: 600;
 }
 
-.accordion-left-image {
-flex-shrink: 0; /* Prevent shrinking */
-max-width: 60%; /* Adjust width of the left image */
-margin-left: 110px; /* Space between image and accordion */
+.pb-hero-explore-button:hover {
+    background-color: white; /* Dark background on hover */
+    color: var(--pb-text-light); /* White text on hover */
+    border-color: var(--pb-text-dark);
 }
 
-.accordion-section-image-left {
-max-width: 100%;
-height: 40%;
-border-radius: 0.375rem;
+/* --- Freehand Editor Section --- */
+.pb-freehand-editor-section {
+    background-color: var(--pb-light-bg); /* Light background for this section */
+    color: var(--pb-text-dark); /* Dark text */
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
-.freehand-editor-accordion {
-flex: 1; /* Take remaining space */
+.pb-freehand-editor-heading {
+    color: var(--pb-light-violet); /* Heading in violet */
 }
 
-.accordion-item {
-  margin-bottom: 10px;
-  border: none;
-  border-radius: 0.375rem;
-  overflow: hidden; /* To contain the content within rounded borders */
+.pb-freehand-editor-description {
+    color: var(--pb-text-muted); /* Muted dark for descriptions */
 }
 
-.accordion-header {
-  background-color: none;
-  padding: 5px;
-  display: flex;
-  margin-top: 70px;
-  align-items: center;
-  cursor: pointer;
-  justify-content: flex-start; /* Align arrow and text to the left */
+.pb-freehand-editor-image {
+    max-height: 550px;
+    width: auto;
+    object-fit: contain;
+    box-shadow: 0 0.5rem 1rem var(--pb-card-shadow);
 }
 
-.accordion-header h2 {
-  font-size: 1.25rem;
-  align-items: center;
-  color: #333;
-  margin-left: 10px;
-  font-weight: 600;
+/* Custom Accordion Styling for light theme */
+.pb-freehand-editor-accordion .accordion-item {
+    background-color: var(--pb-section-bg-alt); /* White background for item */
+    border: 1px solid var(--pb-border-light); /* Light border */
+    margin-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0.25rem 0.5rem var(--pb-card-shadow);
 }
 
-.accordion-content {
-  padding: 15px;
-  background-color: white;
-  border-top: 1px solid #5d5454;
-  width:420px;
+.pb-freehand-editor-accordion .accordion-button {
+    background-color: var(--pb-section-bg-alt); /* White background for header */
+    color: var(--pb-text-dark); /* Dark text */
+    font-weight: 600;
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
 }
 
-.accordion-content p {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 0;
+.pb-freehand-editor-accordion .accordion-button:not(.collapsed) {
+    background-color: var(--pb-light-violet); /* Violet when expanded */
+    color: var(--pb-text-light); /* White text on violet */
+    box-shadow: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-.accordion-arrow {
-  font-size: 1.25rem;
-  color: #555;
-  margin-right: 10px;
-  transition: transform 0.2s ease-in-out; /* For smooth arrow animation if needed */
+.pb-freehand-editor-accordion .accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25); /* Violet focus ring */
 }
 
-/* Styles for the new section */
-.freehand2-editor-main-heading {
-font-size: 2.5rem; /* Adjust as needed */
-color:oklch(49.6% 0.265 301.924); /* Adjust as needed */
-text-align: center;
-margin-top: 70px;
-margin-bottom: 15px;
+.pb-freehand-editor-accordion .accordion-body {
+    background-color: var(--pb-light-bg); /* Light background for body */
+    color: var(--pb-text-dark); /* Dark text */
+    border-top: 1px solid var(--pb-border-light); /* Light separator line */
+    padding: 1.5rem;
 }
 
-.freehand2-editor-main-description {
-font-size: 1rem; /* Adjust as needed */
-color: black; /* Adjust as needed */
-text-align: center;
-margin-bottom: 30px;
-max-width: 70%;
-margin-left: auto;
-margin-right: auto;
+.pb-freehand-editor-accordion .accordion-button::after {
+    filter: none; /* Remove filter for light background caret */
+    color: var(--pb-text-dark); /* Ensure caret is dark */
 }
-
-.feature-cards-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-gap: 90px;
-width: 80%;
-margin: 0 auto;
-}
-
-.feature-card {
-background-color: #dbcad9; /* Light background for the cards */
-padding: 20px;
-height: 240px;
-border-color: #000307;
-border-radius: 25px;
-text-align: left;
-}
-
-.feature-icon {
-  margin-top: 10px;
-width: 40px;
-height: 40px;
-background-color: #e0e0e0; /* Placeholder icon background */
-border-radius: 50%;
-margin-bottom: 10px;
-margin-left: 100px;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 1.5rem; /* Adjust icon size if using text-based icons */
-color: gray; /* Adjust icon color */
-}
-
-.feature-title {
-font-size: 1.2rem;
-color: oklch(49.6% 0.265 301.924);
-margin-bottom: 5px;
-margin-top: 30px;
-font-weight: bold;
+.pb-freehand-editor-accordion .accordion-button:not(.collapsed)::after {
+    filter: invert(1); /* Invert caret color when expanded on violet */
+    color: var(--pb-text-light);
 }
 
-.feature-badge {
-background-color: #e61c1c; /* Example badge color */
-color: white;
-font-size: 0.8rem;
-padding: 2px 5px;
-border-radius: 4px;
-margin-left: 5px;
-vertical-align: middle;
-}
 
-.feature-description {
-font-size: 0.9rem;
-color: black;
-line-height: 1.5;
+/* --- Features Grid Section --- */
+.pb-features-grid-section {
+    background-color: white; /* White background */
+    color: var(--pb-text-dark); /* Dark text */
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
-.pro-section {
-background-color: none; /* Example background color */
-padding: 80px 20px; /* Example padding */
-display: flex;
-justify-content: center;
-align-items: center;
+.pb-features-grid-main-heading {
+    color: var(--pb-light-violet); /* Heading in violet */
 }
 
-.pro-content {
-text-align: center;
-max-width: 800px; /* Example maximum width */
+.pb-features-grid-description {
+    color: var(--pb-text-muted); /* Muted dark for descriptions */
 }
 
-.pro-intro {
-color: #777; /* Example text color */
-font-size: 1.1rem;
-margin-bottom: 10px;
+.pb-feature-card {
+    background-color: var(--pb-light-bg); /* Very light card background */
+    color: var(--pb-text-dark); /* Dark text */
+    border: 1px solid var(--pb-border-light); /* Light border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0.25rem 0.5rem var(--pb-card-shadow);
 }
 
-.pro-title {
-font-size: 3rem;
-font-weight: bold;
-line-height: 1.2;
-margin-bottom: 20px;
-color: #333; /* Example text color */
+.pb-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(138, 43, 226, 0.2) !important; /* Violet shadow on hover */
 }
 
-.pro-badge {
-font-size: 0.8rem;
-font-weight: bold;
-color: white;
-padding: 5px 10px;
-border-radius: 5px;
-margin-left: 10px;
+.pb-feature-icon-wrapper {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--pb-light-violet); /* Default icon color if not overridden */
 }
 
-.pro-badge.new {
-background-color: #2ecc71; /* Example "NEW" badge color */
-}
+/* Specific icon colors - keep as is, they are vibrant */
+.pb-feature-icon-brain { color: #6c757d !important; }
+.pb-feature-icon-network { color: #6c757d !important; }
+.pb-feature-icon-database { color: #6c757d !important; }
+.pb-feature-icon-link  { color: #6c757d !important; }
+.pb-feature-icon-tachometer  { color: #6c757d !important; }
+.pb-feature-icon-user-lock { color: #6c757d !important; }
 
-.pro-badge.beta {
-background-color: #f39c12; /* Example "BETA" badge color */
+.pb-feature-badge-new {
+    background-color: var(--pb-accent-green) !important;
+    color: var(--pb-text-light) !important; /* White text on green badge */
 }
 
 
-.pro-subtitle {
-color: #555; /* Example text color */
-font-size: 1.2rem;
-line-height: 1.6;
-margin-bottom: 30px;
+/* --- Projects Section --- */
+.pb-projects-section {
+    background-color: var(--pb-light-bg); /* Light background */
+    color: var(--pb-text-dark); /* Dark text */
+    padding-top: 6rem;
+    padding-bottom: 6rem;
 }
 
-.pro-buttons {
-display: flex;
-justify-content: center;
-gap: 20px;
+.pb-projects-intro {
+    color: var(--pb-light-violet) !important; /* Intro text in violet */
 }
 
-.button.primary {
-padding: 15px 30px;
-border-radius: 8px;
-font-size: 1rem;
-cursor: pointer;
-border: none;
-background-color: #007bff; /* Example primary button color */
-color: white;
+.pb-projects-main-heading {
+    color: var(--pb-text-dark); /* Main heading in black/dark */
 }
 
-.button.secondary {
-padding: 15px 30px;
-border-radius: 8px;
-font-size: 1rem;
-cursor: pointer;
-border: none;
-background-color: transparent;
-color: #007bff; /* Example secondary button color */
-border: 1px solid #007bff;
+.pb-projects-together {
+    color: var(--pb-light-violet) !important; /* "together" in violet */
 }
 
-.button.primary:hover,
-.button.secondary:hover {
-opacity: 0.9;
+.pb-projects-subtitle {
+    color: var(--pb-text-muted); /* Muted dark for subtitle */
 }
 
-/* FAQ Section Styles */
-.pro-faq-section {
-text-align: center;
-padding-left: 120px;
-padding-bottom: 60px; 
-background-color: none;
+.pb-projects-badge-new {
+    background-color: var(--pb-accent-green) !important;
+    color: var(--pb-text-light) !important;
 }
 
-.pro-faq-heading {
-font-size: 2.5rem;
-color: oklch(49.6% 0.265 301.924);
-margin-bottom: 30px;
-font-weight: bold;
+.pb-projects-badge-beta {
+    background-color: #ffc107 !important;
+    color: var(--pb-text-dark) !important;
 }
 
-.pro-faq-list {
-list-style: none;
-padding: 0;
-max-width: 800px;
-margin: 0 auto;
+.pb-projects-start-button {
+    background-color: var(--pb-button-primary-bg);
+    border-color: var(--pb-button-primary-bg);
+    color: white;
+    font-weight: 600;
 }
 
-.pro-faq-item {
-margin-bottom: 20px;
-border-bottom: 1px solid #ddd;
-padding-bottom: 20px;
+.pb-projects-start-button:hover {
+    background-color: var(--pb-button-primary-hover-bg);
+    border-color: var(--pb-button-primary-hover-bg);
+    color: var(--pb-text-light);
 }
 
-.pro-faq-item:last-child {
-border-bottom: none;
-margin-bottom: 0;
-padding-bottom: 0;
+.pb-projects-book-demo-button {
+    border-color: var(--pb-text-dark); /* Dark border for outline button */
+    color: var(--pb-text-dark); /* Dark text for outline button */
+    font-weight: 600;
 }
 
-.pro-faq-question {
-font-size: 1.2rem;
-font-weight: bold;
-color: #333;
-display: flex;
-justify-content: space-between;
-align-items: center;
-cursor: pointer;
-padding: 15px 0;
+.pb-projects-book-demo-button:hover {
+    background-color: var(--pb-text-dark);
+    color: var(--pb-text-light);
+    border-color: var(--pb-text-dark);
 }
 
-.pro-faq-question:hover {
-color: oklch(49.6% 0.265 301.924);
-}
 
-.pro-faq-toggle {
-font-size: 1.5rem;
-color: #777;
+/* --- FAQ Section --- */
+.pb-faq-section {
+    background-color: var(--pb-section-bg-alt); /* White background */
+    color: var(--pb-text-dark); /* Dark text */
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
-.pro-faq-answer {
-padding-top: 15px;
-font-size: 1rem;
-color: #555;
-line-height: 1.6;
-text-align: left;
+.pb-faq-main-heading {
+    color: var(--pb-light-violet); /* Heading in violet */
 }
 
-.pro-faq-query-container {
-margin-top: 40px;
-display: flex;
-flex-direction: column;
-align-items: center;
+.pb-faq-accordion .pb-faq-accordion-item {
+    background-color: var(--pb-light-bg); /* Very light item background */
+    border: 1px solid var(--pb-border-light); /* Light border */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 0.25rem 0.5rem var(--pb-card-shadow);
 }
 
-.pro-faq-query-button {
-background-color: oklch(49.6% 0.265 301.924);
-color: white;
-padding: 12px 25px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-font-size: 1rem;
-transition: background-color 0.3s ease;
+.pb-faq-accordion .pb-faq-accordion-header .accordion-button {
+    background-color: var(--pb-light-bg); /* Very light header background */
+    color: var(--pb-text-dark); /* Dark text */
+    font-weight: 600;
 }
 
-.pro-faq-query-button:hover {
-background-color: #bd5ab8;
+.pb-faq-accordion .pb-faq-accordion-header .accordion-button:not(.collapsed) {
+    background-color: var(--pb-light-violet); /* Violet when expanded */
+    color: var(--pb-text-light); /* White text on violet */
+    box-shadow: none;
 }
 
-.pro-faq-query-info {
-font-size: 0.9rem;
-color: #777;
-position: fixed;
-bottom: 0;
-left: 0;
-width: 100%;
-text-align: center;
-padding: 10px 0;
-background-color: none; /* Optional: Add a background color */
-z-index: 10; /* Optional: Ensure it stays above other content */
+.pb-faq-accordion .pb-faq-accordion-body {
+    background-color: var(--pb-section-bg-alt); /* White body background */
+    color: var(--pb-text-dark); /* Dark text */
+    border-top: 1px solid var(--pb-border-light);
 }
 
-/* Styles for the Query Input Area */
-.pro-query-input-area {
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 20px;
-width: 80%;
-max-width: 500px;
+.pb-faq-accordion .accordion-button::after {
+    filter: none; /* Remove filter for light background caret */
+    color: var(--pb-text-dark); /* Ensure caret is dark */
 }
-
-.pro-query-textbox {
-width: 100%;
-padding: 10px;
-margin-bottom: 10px;
-border: 1px solid #ccc;
-border-radius: 5px;
-font-size: 1rem;
-min-height: 80px;
+.pb-faq-accordion .accordion-button:not(.collapsed)::after {
+    filter: invert(1); /* Invert caret color when expanded on violet */
+    color: var(--pb-text-light);
 }
 
-.pro-query-submit-button {
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-font-size: 1rem;
-cursor: pointer;
-background-color: #4caf50;
-color: white;
-transition: opacity 0.3s ease;
-}
 
-.pro-query-submit-button:hover {
-opacity: 0.9;
+/* Query Box */
+.pb-faq-query-box {
+    background-color: var(--pb-section-bg-alt); /* White query box background */
+    color: var(--pb-text-dark); /* Dark text */
+    border: 1px solid var(--pb-border-light); /* Light border */
+    max-width: 600px;
+    position: relative
+    box-shadow: 0 0.25rem 0.5rem var(--pb-card-shadow);
 }
 
-
-/* Hide the info text when the query box is open */
-.pro-faq-query-container > p.pro-faq-query-info {
-display: block; /* Initially show */
+.pb-faq-query-textarea {
+    background-color: var(--pb-light-bg); /* Very light input background */
+    color: var(--pb-text-dark); /* Dark text */
+    border: 1px solid var(--pb-border-light);
+    resize: vertical;
 }
 
-.pro-faq-query-container.query-open > p.pro-faq-query-info {
-display: none; /* Hide when query box is open */
+.pb-faq-query-textarea::placeholder {
+    color: var(--pb-text-muted); /* Muted placeholder text */
 }
 
-/* Responsive adjustments for FAQ section */
-@media (max-width: 768px) {
-.pro-faq-heading {
-  font-size: 2rem;
+.pb-faq-query-close-button {
+    color: var(--pb-text-dark) !important; /* Close button text dark */
+    font-size: 2rem;
+    line-height: 1;
 }
 
-.pro-faq-question {
-  font-size: 1.1rem;
+.pb-faq-query-submit-button {
+    background-color: var(--pb-button-primary-bg);
+    border-color: var(--pb-button-primary-bg);
+    color: var(--pb-text-light);
+    font-weight: 600;
 }
 
-.pro-faq-answer {
-  font-size: 0.95rem;
+.pb-faq-query-submit-button:hover {
+    background-color: var(--pb-button-primary-hover-bg);
+    border-color: var(--pb-button-primary-hover-bg);
+    color: var(--pb-text-light);
 }
 
-.pro-query-input-area {
-  width: 95%;
-}
+/* --- Footer Section --- */
+.pb-footer-section {
+    background-color: var(--pb-section-bg-alt); /* White footer background */
+    color: var(--pb-text-dark); /* Dark text */
+    border-top: 1px solid var(--pb-border-light);
 }
-
-/* Styles for the Bottom CTA Section */
-
-
-
-
-
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-  .process-container {
-    padding: 10px;
-    align-items: center; /* Center items on smaller screens */
-  }
-
-  .process-main-heading-top {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-align: center; /* Center on smaller screens */
-  }
-
-  .process-content-wrapper {
-    flex-direction: column; /* Stack left content and image vertically */
-    align-items: center; /* Center items on smaller screens */
-  }
-
-  .process-left1-content {
-    padding-right: 0;
-    align-items: center; /* Center text content */
-    text-align: center;
-    margin-bottom: 30px;
-    padding-top: 0; /* Ensure no top padding on small screens as well */
-    max-width: 80%; /* Adjust max-width for better readability */
-  }
-
-  .process-main-heading {
-    font-size: 2.5rem;
-    text-align: center;
-  }
-
-  .process-description {
-    max-width: 100%;
-    margin-bottom: 0.5rem;
-    text-align: left; /* Align text to the left for better readability on smaller screens */
-  }
-
-  .process-subdescription {
-    max-width: 100%;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    text-align: left; /* Align text to the left */
-  }
-
-  .process-button-group {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .process-start-button,
-  .explore-button {
-    width: 100%;
-    padding: 1rem;
-  }
-
-  .process-right-image {
-    max-width: 80%; /* Adjust image size for smaller screens */
-    margin-bottom: 20px; /* Add space below the image */
-  }
-
-  .freehand-editor-accordion-wrapper {
-    flex-direction: column; /* Stack image and accordion */
-    width: 95%;
-    align-items: center;
-  }
-
-  .accordion-right-image {
-    max-width: 80%;
-    margin-left: 0;
-    margin-bottom: 20px;
-  }
-
-  .freehand-editor-accordion {
-    width: 100%;
-  }
-
-  .accordion-header h2 {
-    font-size: 1.1rem;
-  }
-
-  .accordion-content p {
-    font-size: 0.9rem;
-  }
-
-  .accordion-section-image-right {
-    max-width: 80%;
-  }
 
-  .freehand2-editor-section {
-    margin-top: 70px;
-    width: 100%;
-    padding: 30px 0; /* Add some vertical padding */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center the content within the section */
-  }
+.pb-footer-text {
+    color: var(--pb-text-muted); /* Muted dark for copyright */
 }

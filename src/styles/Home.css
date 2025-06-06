@@ -37,18 +37,28 @@ body {
 }
 
 /* Styling for the schedule demo button */
-.home-demo-button {
-    background-color: var(--kodivian-violet);
-    border: none;
-    border-radius: 50px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
+.demo-button-wrapper {
+  display: flex;
+  justify-content: center; /* Horizontal center */
+         /* Full screen height */
+  width: 100%;             /* Full width */
 }
 
-.home-demo-button:hover {
-    background-color: darken(var(--kodivian-violet), 10%); /* Slightly darker on hover */
-    color: #fff;
+.demo-schedule-button {
+ 
+  font-size: 18px;
+  background-color: #9400d3;
+  border: 1px solid #9400d3;
+  color: #fff;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
+
+.demo-schedule-button:hover {
+  background-color: #7a00b3;
+  border-color: #7a00b3;
+}
+
 
 /* Styling for the horizontal divider lines */
 .divider-line {
