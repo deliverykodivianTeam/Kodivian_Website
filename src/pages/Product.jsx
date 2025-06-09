@@ -47,13 +47,31 @@ const handleCloseDemoPopup = () => {
             <Container fluid className="product-page mt-0 fade-up">
                 {/* Hero Section */}
                 <Row className="hero-section elevated bg-white py-2 mt-0 text-center">
-                    <Col lg={8} className="mx-auto mt-3">
-                        <p className="hero-subtitle mt-4 primary-text text-uppercase fw-bold">Explore Our Leading Solutions</p>
-                        <h1 className="hero-title secondary-text display-4 fw-bold mb-3">Empowering Businesses with Automation, Intelligence, Simplicity, and Speed</h1>
-                        <p className="hero-description tertiary-text lead mb-4">Discover an integrated suite of smart tools designed to modernize your business, cut down manual work, and accelerate digital transformation — all without complexity.</p>
-                        <Button variant="primary" size="lg"  onClick={handleOpenDemoPopup}  className="hero-button">Request a Demo</Button>
-                        
-                    </Col>
+                   <Col lg={8} className="mx-auto mt-3">
+  <p className="hero-subtitle mt-4 primary-text text-uppercase fw-bold">
+    Explore Our Leading Solutions
+  </p>
+  <h1 className="hero-title secondary-text display-4 fw-bold mb-3">
+    Empowering Businesses with Automation, Intelligence, Simplicity, and Speed
+  </h1>
+  <p className="hero-description tertiary-text lead mb-4">
+    Discover an integrated suite of smart tools designed to modernize your business,
+    cut down manual work, and accelerate digital transformation — all without complexity.
+  </p>
+
+  {/* Center the button */}
+  <div className="d-flex justify-content-center">
+    <Button
+      variant="primary"
+      size="lg"
+      onClick={handleOpenDemoPopup}
+      className="hero-button mb-5"
+    >
+      Request a Demo
+    </Button>
+  </div>
+</Col>
+
                 </Row>
 
                 {/* Product Showcase */}
@@ -113,7 +131,8 @@ const handleCloseDemoPopup = () => {
                 {/* Product Process Flow */}
                 <section className="process-flow elevated bg-light py-5">
                     <Container>
-                        <h2 className="section-title secondary-text text-center mb-5">Our Product Process Flow</h2>
+                        <h2 className="section-title secondary-text text-center mb-5 text-dark">Our Product Process Flow</h2>
+
                         <Row className="text-center">
                             <Col md={3} className="process-step mb-4">
                                 <div className="process-icon-container mx-auto mb-3">
@@ -151,7 +170,10 @@ const handleCloseDemoPopup = () => {
                 <section className="our-products elevated bg-white py-5">
                     <Container>
                         <div className="section-heading text-center mb-5">
-                            <h2 className="section-title secondary-text">Our Range of Intelligent Solutions</h2>
+                           <h2 className="section-title secondary-text text-dark">
+  Our Range of Intelligent Solutions
+</h2>
+
                             <p className="section-description tertiary-text text-muted">Explore our suite of AI-powered products designed to drive efficiency and innovation.</p>
                         </div>
                         <Row className="product-grid justify-content-center">
@@ -187,9 +209,17 @@ const handleCloseDemoPopup = () => {
   target="_blank"
   rel="noopener noreferrer"
 >
-  <Button variant="light" size="lg" className="cta-button">
-    Request a Consultation
-  </Button>
+<Button
+  variant="light"
+  size="lg"
+  className="cta-button"
+  style={{ backgroundColor: '#7F00FF', color: 'white', border: 'none' }}
+>
+  Request a Consultation
+</Button>
+
+
+
 </a>
 
 

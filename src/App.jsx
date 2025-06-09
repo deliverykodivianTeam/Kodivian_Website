@@ -15,12 +15,14 @@ import Belowbar from './components/Belowbar'; // Import the Belowbar component
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
   return (
     <Router>
       <div className="app-container">
+        <ScrollToTop></ScrollToTop>
         <AppNavbar />
         
         {/* Added Bootstrap's pt-5 class to ensure content starts below the fixed Navbar */}

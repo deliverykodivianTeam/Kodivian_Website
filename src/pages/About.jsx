@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/About.css";
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import Belowbar from "../components/Belowbar";
+import Belowbar from "../components/Belowbar"; // Assuming this is used elsewhere in your actual component
 import {
   ClockIcon,
   UserGroupIcon,
@@ -42,6 +42,12 @@ const About = () => {
   const solutions = ["IntelliDocs", "Scanify", "RPA", "Process Builder"];
   const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0);
   const scrollingLogosRef = useRef(null);
+
+  // State for animated counters
+  const [yearsExperience, setYearsExperience] = useState(0);
+  const [teamMembersCount, setTeamMembersCount] = useState(0);
+  const [satisfiedClients, setSatisfiedClients] = useState(0);
+  const [completeProjects, setCompleteProjects] = useState(0);
 
   const clientLogos = [
     ponpureLogo, tiCycleLogo, murugappaLogo, khazanaLogo,
@@ -107,6 +113,7 @@ const About = () => {
     },
   ];
 
+  // Effect for rotating solutions text
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentSolutionIndex(
@@ -116,6 +123,36 @@ const About = () => {
 
     return () => clearInterval(intervalId);
   }, [solutions.length]);
+
+  // Effects for counting animations
+  useEffect(() => {
+    const animateCount = (setter, target, duration = 1000) => {
+      let start = 0;
+      const increment = target / (duration / 10); // Adjust 10ms for smoother animation
+      const timer = setInterval(() => {
+        start += increment;
+        if (start < target) {
+          setter(Math.ceil(start));
+        } else {
+          setter(target);
+          clearInterval(timer);
+        }
+      }, 10);
+      return () => clearInterval(timer);
+    };
+
+    const stopYears = animateCount(setYearsExperience, 4, 1500); // 4 years, 1.5 seconds
+    const stopTeam = animateCount(setTeamMembersCount, 30, 2000); // 30 members, 2 seconds
+    const stopClients = animateCount(setSatisfiedClients, 25, 1800); // 25 clients, 1.8 seconds
+    const stopProjects = animateCount(setCompleteProjects, 50, 2200); // 50 projects, 2.2 seconds
+
+    return () => {
+      stopYears();
+      stopTeam();
+      stopClients();
+      stopProjects();
+    };
+  }, []); // Run once on component mount
 
   const handleMouseEnter = () => {
     if (scrollingLogosRef.current) {
@@ -135,12 +172,14 @@ const About = () => {
       <Container fluid className="py-5 mt-0 bg-white about-hero-section fade-up">
         <Row className="py-0 mt-2 justify-content-center text-center">
           <Col lg={10}>
-            <h1 className="display-4 fw-bold mb-4 rotating-solution-text">
-              Shaping the future through innovative products{" "}
-              <span className="colored-solution">
-                {solutions[currentSolutionIndex]}
-              </span>
-            </h1>
+            <h1 className="display-4 fw-bold mb-4 rotating-solution-text text-center">
+  Shaping the future through <br />
+  innovative products{" "}
+  <span className="colored-solution">
+    {solutions[currentSolutionIndex]}
+  </span>
+</h1>
+
           </Col>
         </Row>
       </Container>
@@ -151,28 +190,29 @@ const About = () => {
           <Col xs={6} md={3} className="mb-4">
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
               <ClockIcon className="w-10 h-10 mb-3" />
-              <div className="fs-1 fw-bold">4</div>
+            <div className="fs-1 fw-bold text-violet-600">{yearsExperience}</div>
+
               <p className="lead mb-0">Years Experience</p>
             </div>
           </Col>
           <Col xs={6} md={3} className="mb-4">
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
               <UserGroupIcon className="w-10 h-10 mb-3" />
-              <div className="fs-1 fw-bold ">30</div>
+              <div className="fs-1 fw-bold text-violet-600">{teamMembersCount}</div>
               <p className="lead mb-0">Team Members</p>
             </div>
           </Col>
           <Col xs={6} md={3} className="mb-4">
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
               <HeartIcon className="w-10 h-10 mb-3" />
-              <div className="fs-1 fw-bold">25</div>
+              <div className="fs-1 fw-bold text-violet-600">{satisfiedClients}</div>
               <p className="lead mb-0">Satisfied Clients</p>
             </div>
           </Col>
           <Col xs={6} md={3} className="mb-4">
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
               <CheckCircleIcon className="w-10 h-10 y mb-3" />
-              <div className="fs-1 fw-bold ">50</div>
+              <div className="fs-1 fw-bold text-violet-600">{completeProjects}</div>
               <p className="lead mb-0">Complete Projects</p>
             </div>
           </Col>
@@ -249,30 +289,30 @@ const About = () => {
 
       {/* Section 3: Image Left, Text Right (Dark Background) - IMPROVED */}
       <Container fluid className="px-0">
-  <Row className="align-items-center text-white bg-dark mb-5 g-0">
-    <Col md={6} className="text-center text-md-start">
-      <img
-        src={about_intro}
-        alt="About Intro"
-        className="img-fluid rounded shadow-lg"
-        style={{
-          maxWidth: '75%', // 🔹 Reduce image size to 75% of its container
-          height: 'auto',
-        }}
-      />
-    </Col>
-    <Col md={6} className="py-4 px-4 text-center text-md-start">
-      <p className="lead mb-0">
-        Our innovation engine drives efficiency through a powerful suite of
-        intelligent automation tools. From Scannify's effortless document
-        scanning and data capture to Process Builder's intuitive no-code
-        workflow automation, RPA's ability to handle repetitive tasks, and
-        IntelliDocs' smart document lifecycle management, we offer
-        comprehensive solutions to elevate your operations.
-      </p>
-    </Col>
-  </Row>
-</Container>
+        <Row className="align-items-center text-white bg-dark mb-5 g-0">
+          <Col md={6} className="text-center text-md-start">
+            <img
+              src={about_intro}
+              alt="About Intro"
+              className="img-fluid rounded shadow-lg"
+              style={{
+                maxWidth: '75%', // 🔹 Reduce image size to 75% of its container
+                height: 'auto',
+              }}
+            />
+          </Col>
+          <Col md={6} className="py-4 px-4 text-center text-md-start">
+            <p className="lead mb-0 text-white">
+  Our innovation engine drives efficiency through a powerful suite of
+  intelligent automation tools. From Scannify's effortless document
+  scanning and data capture to Process Builder's intuitive no-code
+  workflow automation, RPA's ability to handle repetitive tasks, and
+  IntelliDocs' smart document lifecycle management, we offer
+  comprehensive solutions to elevate your operations.
+</p>
+          </Col>
+        </Row>
+      </Container>
 
       {/* Team Section */}
       <Container fluid className="team-section no-side-padding py-5 text-center">
@@ -357,27 +397,24 @@ const About = () => {
                     <Card.Text className="text-muted member-role small mb-3">
                       {member.role}
                     </Card.Text>
-                <a
-  href={member.linkedin}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="d-flex align-items-center justify-content-center"
-  style={{
-    border: '2px solid #8A2BE2', // Violet border
-    backgroundColor: '#ffffff',  // White inside
-    borderRadius: '50px',        // Rounded pill shape
-    color: '#8A2BE2',            // Violet text
-    padding: '8px 16px',
-    textDecoration: 'none',
-    fontWeight: '500',
-  }}
->
-  <FaLinkedin size={18} style={{ color: '#0077B5', marginRight: '8px' }} />
-  Connect
-</a>
-
-
-
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="d-flex align-items-center justify-content-center"
+                      style={{
+                        border: '2px solid #8A2BE2', // Violet border
+                        backgroundColor: '#ffffff',  // White inside
+                        borderRadius: '50px',        // Rounded pill shape
+                        color: '#8A2BE2',            // Violet text
+                        padding: '8px 16px',
+                        textDecoration: 'none',
+                        fontWeight: '500',
+                      }}
+                    >
+                      <FaLinkedin size={18} style={{ color: '#0077B5', marginRight: '8px' }} />
+                      Connect
+                    </a>
                   </Card.Body>
                 </Card>
               </Col>
