@@ -109,7 +109,7 @@ const AppNavbar = () => {
                 className={`nav-link-custom ${location.pathname.startsWith('/product') ? 'active' : ''}`}
                 onClick={toggleProductDropdown}
               >
-                Product
+                Produt
                 <span className={`dropdown-arrow ${showProductDropdown ? 'expanded' : ''}`}>&#9660;</span>
               </NavLink>
 
