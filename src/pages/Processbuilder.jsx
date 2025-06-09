@@ -337,10 +337,10 @@ const Processbuilder = () => {
             {/* FAQ Section */}
             <Container className="pb-faq-section py-5">
                 <h2 className="pb-faq-main-heading display-5 fw-bold text-center mb-5">Frequently Asked Questions</h2>
-                <Accordion activeKey={expandedQuestion} onSelect={handleQuestionClick} className="pb-faq-accordion mx-auto">
+                <Accordion activeKey={expandedQuestion} onSelect={handleQuestionClick} className="pb-faq-accordion text-center mx-auto">
                     {faqData.map((faq, index) => (
-                        <Accordion.Item eventKey={faq.question} key={`faq-${index}`} className="pb-faq-accordion-item mb-3">
-                            <Accordion.Header className="pb-faq-accordion-header">
+                        <Accordion.Item eventKey={faq.question} key={`faq-${index}`} className="pb-faq-accordion-item text-center mb-3">
+                            <Accordion.Header className="pb-faq-accordion-header text-center">
                                 {faq.question}
                             </Accordion.Header>
                             <Accordion.Body className="pb-faq-accordion-body">
@@ -355,7 +355,7 @@ const Processbuilder = () => {
     <Button
       variant="primary"
       size="lg"
-      className="query-toggle-button rounded-pill px-4 py-2"
+      className="query-toggle-button rounded-pill px-4 py-4"
       onClick={openQueryBox}
     >
       Have a Question? Send us a Query

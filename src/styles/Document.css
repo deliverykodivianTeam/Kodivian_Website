@@ -1,0 +1,443 @@
+/* Import Google Fonts - Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* --- Global Variables and Base Styles --- */
+:root {
+    --docto-white: #ffffff;
+    --docto-light-gray: #f8f9fa; /* Very light gray for subtle contrast */
+    --docto-medium-gray: #e0e0e0; /* A bit darker for borders/dividers */
+    --docto-dark-gray: #343a40; /* Dark text on light background */
+    --docto-violet: #8a2be2; /* BlueViolet - main accent */
+    --docto-light-violet: #bb86fc; /* Lighter violet for hover/accents */
+    --docto-black: #000000; /* For very dark elements if needed */
+
+    --docto-text-light: var(--docto-dark-gray); /* Default text color on light backgrounds */
+    --docto-text-muted: #6c757d; /* Muted text color */
+
+    --docto-bg-light: var(--docto-white);
+    --docto-bg-card: var(--docto-light-gray);
+    --docto-border: var(--docto-medium-gray);
+    --docto-shadow-light: rgba(0, 0, 0, 0.1); /* Lighter shadow for white background */
+    --docto-shadow-violet: rgba(138, 43, 226, 0.2); /* Violet shadow */
+
+    --docto-primary-button-bg: var(--docto-violet);
+    --docto-primary-button-hover-bg: var(--docto-light-violet);
+    --docto-outline-button-border: var(--docto-violet);
+    --docto-outline-button-hover-bg: var(--docto-violet);
+    --docto-link-color: var(--docto-violet);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--docto-bg-light); /* Main background is white */
+    color: var(--docto-text-light); /* Default text is dark gray */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    color: var(--docto-dark-gray); /* Headings dark gray */
+}
+
+p {
+    color: var(--docto-text-light);
+}
+
+a {
+    color: var(--docto-link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--docto-light-violet);
+    text-decoration: underline;
+}
+
+/* --- Utility Classes for Bootstrap Override --- */
+.btn-primary {
+    background-color: var(--docto-primary-button-bg);
+    border-color: var(--docto-primary-button-bg);
+    color: var(--docto-white); /* White text on violet button */
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--docto-primary-button-hover-bg);
+    border-color: var(--docto-primary-button-hover-bg);
+    color: var(--docto-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--docto-shadow-violet);
+}
+
+.btn-outline-dark {
+    border-color: var(--docto-outline-button-border);
+    color: var(--docto-outline-button-border);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--docto-outline-button-hover-bg);
+    color: var(--docto-white);
+    box-shadow: 0 4px 8px var(--docto-shadow-violet);
+}
+
+.form-control {
+    background-color: var(--docto-white);
+    border: 1px solid var(--docto-border);
+    color: var(--docto-dark-gray); /* Dark text in input fields */
+}
+
+.form-control::placeholder {
+    color: var(--docto-text-muted);
+}
+
+.form-control:focus {
+    background-color: var(--docto-white);
+    border-color: var(--docto-light-violet);
+    color: var(--docto-dark-gray);
+    box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25); /* Violet focus ring */
+}
+
+/* --- Main Page Wrapper --- */
+.docto-document-page {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* --- Hero Section --- */
+.docto-hero {
+    background: linear-gradient(135deg, var(--docto-white) 0%, var(--docto-light-gray) 100%);
+    color: var(--docto-text-light);
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--docto-medium-gray); /* Add a subtle divider */
+}
+
+.docto-hero-h1 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--docto-violet); /* Heading in violet */
+}
+
+.docto-hero-h2 {
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--docto-dark-gray);
+}
+
+.docto-hero-p {
+    color: var(--docto-text-muted);
+}
+
+.docto-hero-image-wrapper {
+    position: relative;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.docto-hero-image-central-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px; /* Adjust size as needed */
+    height: 150px;
+    background: var(--docto-violet); /* Violet background for icon */
+    border-radius: 50%;
+    box-shadow: 0 0 30px var(--docto-shadow-violet);
+    animation: pulse 2s infinite alternate;
+}
+
+.docto-central-icon-svg {
+    color: var(--docto-white); /* White icon on violet background */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+
+
+/* --- Why Customers Choose Us Section --- */
+.docto-why-choose-us {
+    background-color: var(--docto-white); /* White background */
+    color: var(--docto-text-light);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.docto-why-choose-us-h2 {
+    color: var(--docto-violet); /* Violet heading */
+    font-weight: 700;
+}
+
+.docto-feature-item {
+    background-color: var(--docto-bg-card); /* Light gray for cards */
+    border: 1px solid var(--docto-border);
+    border-radius: 0.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.docto-feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--docto-shadow-light);
+}
+
+.docto-feature-icon {
+    color: var(--docto-violet); /* Violet icons */
+    margin-bottom: 1rem;
+}
+
+.docto-feature-item h3 {
+    color: var(--docto-dark-gray); /* Dark text for feature titles */
+    font-weight: 500;
+}
+
+.docto-feature-item p {
+    color: var(--docto-text-muted);
+}
+
+/* --- How to Get Started Section --- */
+.docto-how-to-get-started {
+    background-color: var(--docto-light-gray); /* A bit darker light gray background */
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    border-top: 1px solid var(--docto-medium-gray);
+    border-bottom: 1px solid var(--docto-medium-gray);
+}
+
+.docto-how-to-get-started-h2 {
+    color: var(--docto-violet);
+    font-weight: 700;
+}
+
+.docto-how-to-get-started-intro {
+    color: var(--docto-dark-gray); /* Dark text on light background */
+}
+
+.docto-link {
+    color: var(--docto-link-color);
+    font-weight: 500;
+}
+.docto-link:hover {
+    text-decoration: underline !important;
+}
+
+.docto-steps-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media (min-width: 992px) { /* For large screens and up */
+    .docto-steps-layout {
+        flex-direction: row;
+    }
+}
+
+.docto-steps-sidebar {
+    flex: 0 0 250px; /* Fixed width for sidebar */
+    background-color: var(--docto-white);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px var(--docto-shadow-light);
+    border: 1px solid var(--docto-border);
+}
+
+.docto-step-sidebar-item {
+    cursor: pointer;
+    background-color: var(--docto-light-gray);
+    color: var(--docto-dark-gray);
+    border: 1px solid var(--docto-medium-gray);
+    transition: all 0.3s ease;
+}
+
+.docto-step-sidebar-item:hover {
+    background-color: var(--docto-medium-gray);
+    border-color: var(--docto-violet);
+}
+
+.docto-step-sidebar-item.docto-active {
+    background-color: var(--docto-violet);
+    color: var(--docto-white);
+    border-color: var(--docto-light-violet);
+    box-shadow: 0 0 15px var(--docto-shadow-violet);
+}
+
+.docto-step-sidebar-item h4 {
+    color: inherit; /* Inherit color from parent */
+    font-weight: 700;
+}
+
+.docto-step-sidebar-item p {
+    color: inherit; /* Inherit color from parent */
+    font-weight: 400;
+}
+
+.docto-steps-content {
+    flex-grow: 1;
+    background-color: var(--docto-bg-card);
+    border: 1px solid var(--docto-border);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 15px var(--docto-shadow-light);
+}
+
+.docto-steps-content h3 {
+    color: var(--docto-violet);
+    font-weight: 600;
+}
+
+.docto-steps-content p {
+    color: var(--docto-text-dark);
+}
+
+/* --- FAQ Section --- */
+.docto-faq-section {
+    background-color: var(--docto-white); /* White background */
+    color: var(--docto-text-light);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.docto-faq-heading {
+    color: var(--docto-violet); /* Violet heading */
+    font-weight: 700;
+}
+
+.docto-faq-accordion .accordion-item {
+    background-color: var(--docto-bg-card); /* Light gray card background */
+    border: 1px solid var(--docto-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: 0 0.25rem 0.5rem var(--docto-shadow-light);
+}
+
+.docto-faq-accordion .accordion-button {
+    background-color: var(--docto-bg-card);
+    color: var(--docto-dark-gray); /* Dark text for question header */
+    font-weight: 500;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--docto-medium-gray); /* Separator for header */
+}
+
+.docto-faq-accordion .accordion-button:not(.collapsed) {
+    background-color: var(--docto-violet); /* Violet when expanded */
+    color: var(--docto-white) !important; /* White text on violet - added !important for stronger override */
+    box-shadow: none;
+    border-color: var(--docto-light-violet);
+}
+
+.docto-faq-accordion .accordion-button::after {
+    filter: none; /* No invert needed for dark caret on light background */
+    color: var(--docto-dark-gray); /* Default dark caret */
+}
+.docto-faq-accordion .accordion-button:not(.collapsed)::after {
+    filter: invert(1); /* Invert for white caret on violet background */
+    color: var(--docto-white);
+}
+
+.docto-faq-accordion .accordion-body {
+    background-color: var(--docto-white); /* White body background */
+    color: var(--docto-text-muted);
+    padding: 1.5rem;
+    border-top: 1px solid var(--docto-medium-gray);
+}
+
+
+/* Query Box */
+.docto-faq-query-container {
+    text-align: center; /* Ensures content inside is centered */
+    margin-top: 3rem;
+    display: flex; /* Use flexbox for robust centering of children */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically if needed, but not strictly for this layout */
+}
+
+.docto-faq-query-button {
+    background-color: var(--docto-primary-button-bg);
+    border-color: var(--docto-primary-button-bg);
+    color: var(--docto-white);
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    /* Removed display: inline-block here, as flexbox on parent handles centering */
+}
+
+.docto-faq-query-button:hover {
+    background-color: var(--docto-primary-button-hover-bg);
+    border-color: var(--docto-primary-button-hover-bg);
+    box-shadow: 0 4px 10px var(--docto-shadow-violet);
+}
+
+.docto-query-input-area {
+    background-color: var(--docto-bg-card); /* Light gray background */
+    border: 1px solid var(--docto-border);
+    max-width: 600px;
+    /* Removed margin-left: auto; margin-right: auto; as flexbox will center */
+    position: relative;
+    box-shadow: 0 0.5rem 1rem var(--docto-shadow-light);
+    width: 100%; /* Ensure it takes full width up to max-width */
+}
+
+.docto-query-textbox,
+.docto-query-Emailbox {
+    background-color: var(--docto-white);
+    border: 1px solid var(--docto-medium-gray);
+    color: var(--docto-dark-gray);
+    resize: vertical;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+}
+
+.docto-query-textbox::placeholder,
+.docto-query-Emailbox::placeholder {
+    color: var(--docto-text-muted);
+}
+
+.docto-query-textbox:focus,
+.docto-query-Emailbox:focus {
+    box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+    border-color: var(--docto-light-violet);
+}
+
+.docto-query-submit-button {
+    background-color: var(--docto-primary-button-bg);
+    border-color: var(--docto-primary-button-bg);
+    color: var(--docto-white);
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+}
+
+.docto-query-submit-button:hover {
+    background-color: var(--docto-primary-button-hover-bg);
+    border-color: var(--docto-primary-button-hover-bg);
+    box-shadow: 0 4px 10px var(--docto-shadow-violet);
+}
+
+.docto-query-close-button {
+    color: var(--docto-dark-gray) !important; /* Dark X on light background */
+    font-size: 2rem;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.docto-query-close-button:hover {
+    color: var(--docto-violet) !important;
+}
+
+/* --- Footer Section --- */
+.docto-footer-section {
+    background-color: var(--docto-light-gray); /* Light gray footer */
+    color: var(--docto-text-muted);
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--docto-medium-gray);
+}
+
+.docto-footer-text {
+    font-size: 0.9rem;
+}

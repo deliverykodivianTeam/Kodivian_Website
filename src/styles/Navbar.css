@@ -77,7 +77,7 @@
 
 .dropdown-menu-custom {
     position: fixed; /* Changed to fixed for full-screen effect */
-    top: 100px; /* Position directly below the navbar (if navbar height is 60px) */
+    top: 90px; /* Position directly below the navbar (if navbar height is 60px) */
     left: 0;
     width: 100vw; /* Full width */
     height: calc(100vh - 60px); /* Full height minus navbar height */

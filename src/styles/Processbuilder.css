@@ -255,7 +255,6 @@ body {
     border-color: var(--pb-text-dark);
 }
 
-
 /* --- FAQ Section --- */
 .pb-faq-section {
     background-color: var(--pb-section-bg-alt); /* White background */
@@ -304,42 +303,54 @@ body {
     color: var(--pb-text-light);
 }
 
-
 /* Query Box */
-.pb-faq-query-box {
+.query-form-container { /* This is the div containing the button */
+    text-align: center; /* Ensures content within is centered */
+}
+
+.query-toggle-button {
+    /* Add this to ensure the button is treated as a block for centering */
+    display: inline-block; /* Or remove this line if it's already block by default, and `text-align: center` on parent will work. */
+    margin: 0 auto; /* Centers block-level elements */
+}
+
+.query-form-box {
     background-color: var(--pb-section-bg-alt); /* White query box background */
     color: var(--pb-text-dark); /* Dark text */
     border: 1px solid var(--pb-border-light); /* Light border */
     max-width: 600px;
-    position: relative
+    position: relative; /* Fixed typo: missing semicolon */
     box-shadow: 0 0.25rem 0.5rem var(--pb-card-shadow);
+    margin-left: auto; /* Centers the query box itself when it appears */
+    margin-right: auto; /* Centers the query box itself when it appears */
 }
 
-.pb-faq-query-textarea {
+
+.query-textarea {
     background-color: var(--pb-light-bg); /* Very light input background */
     color: var(--pb-text-dark); /* Dark text */
     border: 1px solid var(--pb-border-light);
     resize: vertical;
 }
 
-.pb-faq-query-textarea::placeholder {
+.query-textarea::placeholder {
     color: var(--pb-text-muted); /* Muted placeholder text */
 }
 
-.pb-faq-query-close-button {
+.close-query-button {
     color: var(--pb-text-dark) !important; /* Close button text dark */
     font-size: 2rem;
     line-height: 1;
 }
 
-.pb-faq-query-submit-button {
+.submit-query-button {
     background-color: var(--pb-button-primary-bg);
     border-color: var(--pb-button-primary-bg);
     color: var(--pb-text-light);
     font-weight: 600;
 }
 
-.pb-faq-query-submit-button:hover {
+.submit-query-button:hover {
     background-color: var(--pb-button-primary-hover-bg);
     border-color: var(--pb-button-primary-hover-bg);
     color: var(--pb-text-light);
