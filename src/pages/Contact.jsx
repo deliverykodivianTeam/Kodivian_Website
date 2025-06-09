@@ -141,18 +141,21 @@ const handleCloseDemoPopup = () => {
 
       {/* --- Demo Booking Section --- */}
       <div className="demo-booking-section bg-light p-5 text-center">
-       <Button
-  type="button"
-  className="demo-booking-button px-4 py-2 fw-semibold"
-  style={{
-    backgroundColor: "#9400d3",
-    borderColor: "#9400d3",
-    color: "#fff",
-  }}
-  onClick={handleOpenDemoPopup} // Changed onClick to open the popup
->
-  Book a Free Demo
-</Button>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Button
+    type="button"
+    className="demo-booking-button px-4 py-2 fw-semibold"
+    style={{
+      backgroundColor: "#9400d3",
+      borderColor: "#9400d3",
+      color: "#fff",
+    }}
+    onClick={handleOpenDemoPopup}
+  >
+    Book a Free Demo
+  </Button>
+</div>
+
         <div className="demo-button-info mt-2">
           Limited slots available.{" "}
           <strong>Book your personalized demo today!</strong>
