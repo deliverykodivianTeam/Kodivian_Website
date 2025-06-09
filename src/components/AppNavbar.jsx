@@ -109,7 +109,7 @@ const AppNavbar = () => {
                 className={`nav-link-custom ${location.pathname.startsWith('/product') ? 'active' : ''}`}
                 onClick={toggleProductDropdown}
               >
-                Produt
+                Product
                 <span className={`dropdown-arrow ${showProductDropdown ? 'expanded' : ''}`}>&#9660;</span>
               </NavLink>
 
@@ -117,19 +117,19 @@ const AppNavbar = () => {
                 <div className="dropdown-menu-custom show">
                   <div className="dropdown-product-grid">
                     <NavLink to="/scanify" className="dropdown-product-item" onClick={closeAll}>
-                      <img src={ScanifyImage} alt="Scanify" className="product-image" />
+                      {/* <img src={ScanifyImage} alt="Scanify" className="product-image" /> */}
                       <span>Scanify</span>
                     </NavLink>
                     <NavLink to="/processbuilder" className="dropdown-product-item" onClick={closeAll}>
-                      <img src={ProcessBuilderImage} alt="Process Builder" className="product-image" />
+                      {/* <img src={ProcessBuilderImage} alt="Process Builder" className="product-image" /> */}
                       <span>Process Builder</span>
                     </NavLink>
                     <NavLink to="/document" className="dropdown-product-item" onClick={closeAll}>
-                      <img src={IntellidocsImage} alt="Intellidocs" className="product-image" />
+                      {/* <img src={IntellidocsImage} alt="Intellidocs" className="product-image" /> */}
                       <span>Intellidocs</span>
                     </NavLink>
                     <NavLink to="/robort" className="dropdown-product-item" onClick={closeAll}>
-                      <img src={RpaImage} alt="RPA" className="product-image" />
+                      {/* <img src={RpaImage} alt="RPA" className="product-image" /> */}
                       <span>RPA</span>
                     </NavLink>
                   </div>
