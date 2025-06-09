@@ -3,7 +3,7 @@ import { Navbar, Nav, Button, Container } from 'react-bootstrap';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import logo from '../assets/company_logo.png';
-import '../styles/Navbar.css';
+import '../styles/Navbar.css'; // Make sure this path is correct
 import DemoBookingPopup from '../components/DemoBookingPopup';
 
 import ScanifyImage from '../assets/Scanify.png';
