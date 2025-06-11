@@ -2,25 +2,30 @@
 .custom-navbar {
     background-color: #ffffff;
     border-bottom: 1px solid #eee;
-    transition: top 0.3s ease-in-out;
-    height: auto;
-    z-index: 1000;
-    padding-top: 0 !important; /* Remove Bootstrap's default py-0 padding */
-    padding-bottom: 0 !important; /* Remove Bootstrap's default py-0 padding */
+    transition: transform 0.3s ease-in-out; /* CHANGE: Use transform for hiding/showing */
     height: 90px; /* Fixed height for the entire navbar */
+    z-index: 1000;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    position: fixed; /* CHANGE: Use fixed position so it moves relative to viewport */
+    width: 100%; /* Ensure it spans full width when fixed */
+    top: 0; /* Initially at the top */
+    left: 0; /* Align to the left */
     display: flex;
-    align-items: stretch; /* Stretch items to fill the height */
+    align-items: stretch;
 }
 
 .navbar-hidden {
-    top: -100px;
-    position: sticky;
+    transform: translateY(-100%); /* CHANGE: Hide by moving up fully off-screen */
+    /* top property can be removed or set to 0 if transform is handling the movement */
 }
 
 .navbar-visible {
-    top: 0;
-    position: sticky;
+    transform: translateY(0); /* CHANGE: Show by moving to its original position */
+    /* top property can be removed or set to 0 if transform is handling the movement */
 }
+
+/* Rest of your CSS remains the same */
 
 /* BRAND LOGO */
 .logo-img {
@@ -51,7 +56,6 @@
 .navbar-toggler {
     border: none;
     outline: none;
-    /* REMOVED: margin-right: auto; - Let Bootstrap handle toggler positioning or use ms-auto on brand/nav */
     height: 100%; /* Make toggler fill the height */
     display: flex; /* Use flex to center the icon */
     align-items: center;
@@ -80,7 +84,7 @@
     top: 90px; /* Position directly below the navbar (if navbar height is 60px) */
     left: 0;
     width: 100vw; /* Full width */
-    height: calc(100vh - 60px); /* Full height minus navbar height */
+    height: calc(100vh - 90px); /* Full height minus navbar height */
     background: #ffffff; /* White background for the dropdown */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     padding: 2rem; /* More generous padding for full screen */
@@ -170,7 +174,6 @@ button.btn.btn-primary:hover {
 }
 
 .navbar-collapse {
-    /* REMOVED: flex-grow: -1; - This is an invalid property value */
     display: flex; /* Ensure collapse content uses flex for alignment */
     align-items: stretch; /* Stretch items to fill height */
 }
@@ -184,11 +187,7 @@ button.btn.btn-primary:hover {
 
 
 .navbar-nav .nav-item {
-    /* height: 100%;  */
-    /* display: flex; */
-    /* align-items: center; */
     height: 10%;
-    /* display: flex; */
     align-items: flex-start;
     align-content: center;
     flex-direction: row;
@@ -216,10 +215,10 @@ button.btn.btn-primary:hover {
         background-color: #fff;
         padding: 1rem;
         width: 100%;
-        position: absolute;
-        top: 100%;
+        position: absolute; /* Keep absolute for mobile overlay */
+        top: 100%; /* Position below the navbar */
         left: 0;
-        height: calc(100vh - 56px); /* Adjust 56px to match your navbar height */
+        height: calc(100vh - 90px); /* Adjust 90px to match your navbar height */
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 
         display: flex;
@@ -232,9 +231,8 @@ button.btn.btn-primary:hover {
 
     .nav-link-custom {
         display: block;
-        /* CORRECTED: Use 100% width for mobile responsiveness */
         width: 100%;
-        max-width: 100%; /* Ensure it doesn't overflow horizontally */
+        max-width: 100%;
         margin: 0 auto 0.5rem auto;
         padding: 0.75rem 1rem;
         background-color: #f0f0f0;
@@ -311,9 +309,8 @@ button.btn.btn-primary:hover {
     /* Adjust button alignment for mobile */
     button.btn.btn-primary {
         display: block;
-        /* CORRECTED: Use 100% width for mobile responsiveness */
         width: 100%;
-        max-width: 100%; /* Ensure it doesn't overflow horizontally */
+        max-width: 100%;
         margin: 0 auto 0.5rem auto;
         padding: 0.75rem 1rem;
         text-align: center;
