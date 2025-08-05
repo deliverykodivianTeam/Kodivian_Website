@@ -11,6 +11,7 @@ const RootComponent = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+
     // Simulate loading (replace with your actual loading logic)
     const timer = setTimeout(() => {
       setIsLoading(false);
