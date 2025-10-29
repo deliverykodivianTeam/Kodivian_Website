@@ -25,6 +25,9 @@ import shanthigearslogo from '../assets/shanthi-gears.png';
 import ezcloud from '../assets/ezcloud.png';
 import ionidea from '../assets/ionidea.png';
 import eastman from '../assets/eastman.png';
+import stedmanlogo from '../assets/stedman-logo.jpeg';
+import teamlogo from '../assets/Team-logo.jpeg';
+import lifecelllogo from '../assets/Lifecell-logo.jpg';
 
 // Make sure this path is correct for your project structure
 import DemoBookingPopup from "../components/DemoBookingPopup";
@@ -47,7 +50,7 @@ const Home = () => {
     const clientLogos = [
         ponpureLogo, tiCycleLogo, murugappalogo, khazanaLogo, sharatIndustriesLogo,
         dabicoLogo, dmccLogo, aavaBrandsLogo, tiMedicallogo, Innoventure_logo,
-        shanthigearslogo, ezcloud, ionidea, eastman
+        shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo,teamlogo,lifecelllogo,
     ];
 
     return (
@@ -134,7 +137,7 @@ const Home = () => {
                                     />
                                 </Col>
                                 <Col md={6} className="text-center text-md-start px-5">
-                                    <h1 className="display-4 fw-bold text-violet">Process Builder: Intuitive Application & Workflow Design</h1>
+                                    <h1 className="display-4 fw-bold text-violet">Process Builder: Low-Code/No-Code Workflow Automation</h1>
                                     <p className="lead product-description">
                                         Uses a no-code platform that lets you drag, drop, and design customized forms effortlessly. Beyond form creation, you can build full workflows within the same interface, assign actions, automate steps, and launch entire applications in one go. It's designed for speed, simplicity, and powerful workflow automation.
                                     </p>
@@ -143,47 +146,8 @@ const Home = () => {
                         </Container>
                     </Carousel.Item>
 
-                    {/* Slide 3: RPA Pro */}
-                    <Carousel.Item className="bg-light">
-                        <Container fluid>
-                            <Row className="align-items-center py-5">
-                                <Col md={6} className="text-center">
-                                    <img
-                                        className="d-block mx-auto img-fluid product-icon"
-                                        src={icon3}
-                                        alt="RPA Pro Icon"
-                                    />
-                                </Col>
-                                <Col md={6} className="text-center text-md-start">
-                                    <h1 className="display-4 fw-bold text-violet">RPA Pro: Seamless Robotic Process Automation</h1>
-                                    <p className="lead product-description">
-                                        helps you automate repetitive tasks with ease. Whether it’s data entry, file processing, or cross-platform actions, RPA bots handle them all efficiently. You can create, assign, and execute tasks that run 24/7 reducing manual effort, eliminating errors, and speeding up your business processes. RPA turns your routine tasks into automated workflows, freeing up your team to focus on what matters most.
-                                    </p>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Carousel.Item>
+                   
 
-                    {/* Slide 4: IntelliDocs (formerly DocPro) */}
-                    <Carousel.Item className="bg-light">
-                        <Container fluid>
-                            <Row className="align-items-center py-5">
-                                <Col md={{ span: 6, order: 'last' }} className="text-center text-md-end">
-                                    <img
-                                        className="d-block mx-auto img-fluid product-icon"
-                                        src={icon4}
-                                        alt="IntelliDocs Icon"
-                                    />
-                                </Col>
-                                <Col md={{ span: 6, order: 'first' }} className="text-center text-md-start px-5">
-                                    <h1 className="display-4 fw-bold text-violet">IntelliDocs: Universal Document Management & Retrieval</h1>
-                                    <p className="lead product-description">
-                                        uses for smart document storage and management solution. It allows seamless integration with any existing system, letting you store, retrieve, and manage documents in a secure environment. With powerful search and validation features, you can find files in seconds and ensure data integrity across all stored content.
-                                    </p>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Carousel.Item>
                 </Carousel>
             </section>
 

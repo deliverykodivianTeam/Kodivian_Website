@@ -28,18 +28,22 @@ import shanthigearslogo from "../assets/shanthi-gears.png";
 import ezcloud from "../assets/ezcloud.png";
 import ionidea from "../assets/ionidea.png";
 import eastman from "../assets/eastman.png";
+import stedmanlogo from '../assets/stedman-logo.jpeg';
+import teamlogo from '../assets/Team-logo.jpeg';
+import lifecelllogo from '../assets/Lifecell-logo.jpg';
 import Chairman from "../assets/chairman.jpeg";
 import Director from "../assets/directer.jpeg";
 import Raja from "../assets/Raja.jpeg";
 import Rithish from "../assets/Rithish.jpg"
 import Anjana from "../assets/Anjana.jpeg";
 import Mothi from "../assets/Mothi.jpeg";
-import Suganthi from "../assets/Suganthi.jpeg";
 import Kaviya from "../assets/Kaviya.jpeg";
 import Preethi from "../assets/Preethi.jpeg";
+import Hari from "../assets/Hari.jpg";
+import Kavi from "../assets/kavi.jpg";
 
 const About = () => {
-  const solutions = ["IntelliDocs", "Scanify", "RPA", "Process Builder"];
+  const solutions = ["Scanify", "Process Builder"];
   const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0);
   const scrollingLogosRef = useRef(null);
 
@@ -53,7 +57,7 @@ const About = () => {
     ponpureLogo, tiCycleLogo, murugappaLogo, khazanaLogo,
     ezcloud, ionidea, eastman, sharatIndustriesLogo,
     dabicoLogo, dmccLogo, aavaBrandsLogo, tiMedicallogo,
-    Innoventure_logo, shanthigearslogo
+    Innoventure_logo, shanthigearslogo, stedmanlogo,teamlogo,lifecelllogo,
   ];
 
   const teamMembers = [
@@ -88,20 +92,14 @@ const About = () => {
       linkedin: "https://www.linkedin.com/in/mothi-kumaresan-4a435b22?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAASt5fwBURhttUBecc5ESWUM-IEWPl3iLyY&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
     },
     {
-      name: "Suganthi",
-      role: "Technical Project Manager",
-      image: Suganthi,
-      linkedin: "https://www.linkedin.com/in/suganthi-s-91410124b?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAD3GB-ABmhGB1SJlO5H721Mj7aRK61shRa0&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
-    },
-    {
-      name: "Kaviya",
+      name: "Kaviya Arivaratharaj",
       role: "Global PMO Executive",
       image: Kaviya,
       linkedin: "https://www.linkedin.com/in/kaviya-arivaratharaj-701436253?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAD6Iv3EBqYLk-gYm8vy1zSEloGtMluS_Ucw&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
     },
     {
       name: "Preethi JB",
-      role: "Technical Consultant",
+      role: "Python Developer",
       image: Preethi,
       linkedin: "https://www.linkedin.com/in/preethijb03?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAE8SmBwBxakLMoqv_Rvvr7PShOA2griketE&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
     },
@@ -110,6 +108,18 @@ const About = () => {
       role: "Software Developer",
       image: Rithish,
       linkedin: "https://www.linkedin.com/in/rithish-pg?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADkrY1gBCpFun1vpv5JXKS5mU82zUES0lMg&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
+    },
+    {
+      name: "Hari Sankar M ",
+      role: "Infra Support Engineer",
+      image: Hari,
+      linkedin: "https://www.linkedin.com/in/hari-shankar-57a081310/",
+    },
+    {
+      name: "Kaviarasan S",
+      role: "Software Developer",
+      image: Kavi,
+      linkedin: "https://www.linkedin.com/in/kaviarasan2012/",
     },
   ];
 
@@ -143,8 +153,8 @@ const About = () => {
 
     const stopYears = animateCount(setYearsExperience, 4, 1500); // 4 years, 1.5 seconds
     const stopTeam = animateCount(setTeamMembersCount, 30, 2000); // 30 members, 2 seconds
-    const stopClients = animateCount(setSatisfiedClients, 25, 1800); // 25 clients, 1.8 seconds
-    const stopProjects = animateCount(setCompleteProjects, 50, 2200); // 50 projects, 2.2 seconds
+    const stopClients = animateCount(setSatisfiedClients, 60, 1800); // 25 clients, 1.8 seconds
+    const stopProjects = animateCount(setCompleteProjects, 60, 2200); // 50 projects, 2.2 seconds
 
     return () => {
       stopYears();
@@ -259,9 +269,7 @@ const About = () => {
             <p className="lead intro_about_banner_1">
               Drive seamless operations and intelligent document management with our
               innovative automation suite. Featuring Scanify for streamlined data
-              capture, Process Builder for codeless workflow creation, RPA for task
-              automation, and IntelliDocs for dynamic document generation and
-              delivery.
+              capture, Process Builder for codeless workflow creation.
             </p>
           </Col>
         </Row>
@@ -280,8 +288,7 @@ const About = () => {
               At the heart of our innovation lies a powerful suite of intelligent
               automation products — Scanify for seamless document scanning and data
               capture, Process Builder to streamline complex workflows with no-code
-              logic, RPA to automate repetitive tasks and boost efficiency, and
-              IntelliDocs to create, manage, and deliver smart, dynamic documents.
+              logic. 
             </p>
           </Col>
         </Row>
@@ -306,9 +313,7 @@ const About = () => {
   Our innovation engine drives efficiency through a powerful suite of
   intelligent automation tools. From Scannify's effortless document
   scanning and data capture to Process Builder's intuitive no-code
-  workflow automation, RPA's ability to handle repetitive tasks, and
-  IntelliDocs' smart document lifecycle management, we offer
-  comprehensive solutions to elevate your operations.
+  workflow automation.
 </p>
           </Col>
         </Row>

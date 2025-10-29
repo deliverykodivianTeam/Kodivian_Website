@@ -233,24 +233,13 @@ const Belowbar = () => {
               >
                 Scanify
               </a>
-              <a
-                href="/intellidocs "
-                className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
-              >
-                Intellidocs
-              </a>
-              <a
+             <a
                 href="/processbuilder"
                 className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
               >
                 Process Builder
               </a>
-              <a
-                href="#link2-4"
-                className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
-              >
-                RPA
-              </a>
+              
             </div>
             {/* SERVICES */}
             <div className="d-flex flex-column gap-3 mb-4 col-12 col-sm-4 col-md-auto">

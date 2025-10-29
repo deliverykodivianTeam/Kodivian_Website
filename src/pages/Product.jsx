@@ -18,8 +18,7 @@ const Product = () => {
     const products = [
         { name: "Scanify", description: "Intelligent Invoice Processing solution that automates data extraction from invoices, reducing manual effort and errors. It streamlines accounts payable workflows, improves accuracy, and accelerates processing times. Scanify integrates seamlessly with existing accounting systems for enhanced efficiency.", image: SampleImage, link: "/scanify" },
         { name: "Process Builder", description: "A No-Code Workflow Automation platform empowering businesses to design and automate workflows without writing any code. It enables seamless integration between various applications, improves operational efficiency, and provides real-time visibility into process execution. Process Builder is highly customizable and scalable to meet evolving business needs.", image: processbuilder, link: "/processbuilder" },
-        { name: "RPA", description: "Robotic Process Automation to automate repetitive, rule-based tasks across different applications and systems. RPA bots can handle data entry, form filling, report generation, and more, freeing up human employees for higher-value activities. Our RPA solution is designed for scalability, reliability, and ease of deployment, delivering significant cost savings and improved accuracy.", image: rpa, link: "/robort" },
-        { name: "IntelliDoc", description: "A Smart Document Management system that uses AI to organize, classify, and retrieve documents efficiently. It offers features like intelligent search, version control, and secure access, enhancing collaboration and compliance. IntelliDoc transforms unstructured data into actionable insights, improving decision-making and overall productivity.", image: intellidocs, link: "/document" },
+
     ];
 
     const handleOpenDemoPopup = () => {

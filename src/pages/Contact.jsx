@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import "../styles/Contact.css";
 import "../styles/Services.css"; // Ensure this is imported for color variables
-import contact from "../assets/contact.jpg"; // Import your contact image
+import contact from "../assets/contact-pic.jpg"; // Import your contact image
 import DemoBookingPopup from "../components/DemoBookingPopup"; // Adjust the path based on your file structure
 
 // Import Icons

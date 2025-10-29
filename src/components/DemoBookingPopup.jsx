@@ -214,8 +214,7 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
                                                     <option value="All Product">All Product</option>
                                                     <option value="Scanify">Scanify</option>
                                                     <option value="Process builder">Process builder</option>
-                                                    <option value="RPA">RPA</option>
-                                                    <option value="Intelli-docs">Intelli-docs</option>
+                                                    
                                                 </select>
                                             </div>
                                         </>

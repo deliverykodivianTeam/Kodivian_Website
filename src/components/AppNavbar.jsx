@@ -186,12 +186,6 @@ const AppNavbar = () => {
                                             <NavLink to="/processbuilder" className="dropdown-product-item" onClick={() => handleProductLinkClick('/processbuilder')}>
                                                 <span>Process Builder</span>
                                             </NavLink>
-                                            <NavLink to="/document" className="dropdown-product-item" onClick={() => handleProductLinkClick('/document')}>
-                                                <span>Intellidocs</span>
-                                            </NavLink>
-                                            <NavLink to="/robort" className="dropdown-product-item" onClick={() => handleProductLinkClick('/robort')}>
-                                                <span>RPA</span>
-                                            </NavLink>
                                         </div>
                                     </div>
                                 )}
@@ -221,12 +215,7 @@ const AppNavbar = () => {
                         <NavLink to="/processbuilder" className="dropdown-product-item" onClick={() => handleProductLinkClick('/processbuilder')}>
                             <span>Process Builder</span>
                         </NavLink>
-                        <NavLink to="/document" className="dropdown-product-item" onClick={() => handleProductLinkClick('/document')}>
-                            <span>Intellidocs</span>
-                        </NavLink>
-                        <NavLink to="/robort" className="dropdown-product-item" onClick={() => handleProductLinkClick('/robort')}>
-                            <span>RPA</span>
-                        </NavLink>
+                        
                     </div>
                 </div>
             )}
