@@ -1,0 +1,223 @@
+/* src/styles/Home.css */
+
+/* Import Google Fonts - Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Define CSS variables for your primary colors */
+:root {
+    --kodivian-violet: #6A0DAD;
+    --black-color: #000000;
+    --light-grey-bg: #f8f9fa; /* Bootstrap's bg-light default */
+}
+
+/* Base font for the entire application */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--black-color); /* Default text color */
+}
+
+/* Apply the violet color to elements with .text-violet class */
+.text-violet {
+    color: var(--kodivian-violet) !important;
+}
+
+/* Apply the black color to elements with .text-black class */
+.text-black {
+    color: var(--black-color) !important;
+}
+
+/* Style for the button with violet background */
+.bg-violet {
+    background-color: var(--kodivian-violet) !important;
+}
+
+/* Specific styling for the hero title in the introduction section */
+.home-intro-section .hero-title {
+    color: var(--black-color); /* Ensure hero title is black as per request */
+}
+
+/* Styling for the schedule demo button */
+.demo-button-wrapper {
+  display: flex;
+  justify-content: center; /* Horizontal center */
+         /* Full screen height */
+  width: 100%;             /* Full width */
+}
+
+.demo-schedule-button {
+ 
+  font-size: 18px;
+  background-color: #9400d3;
+  border: 1px solid #9400d3;
+  color: #fff;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.demo-schedule-button:hover {
+  background-color: #7a00b3;
+  border-color: #7a00b3;
+}
+
+
+/* Styling for the horizontal divider lines */
+.divider-line {
+    height: 5px;
+    background-color: var(--black-color); /* Solid black */
+    border: none;
+    margin: 0; /* Remove default margins */
+}
+
+/* Product Carousel Section Styling */
+.product-carousel-section {
+    background-color: var(--light-grey-bg); /* Use the light grey background */
+    padding: 0;
+    border-bottom: 2px solid var(--kodivian-violet); /* A subtle border */
+    border-top: 2px solid var(--kodivian-violet); /* A subtle border */
+}
+
+.product-carousel-custom .carousel-item {
+    background-color: var(--light-grey-bg);
+}
+
+.product-carousel-custom .product-icon {
+    max-height: 300px;
+    max-width: 80%;
+    object-fit: contain;
+}
+
+.product-carousel-custom .product-description {
+    max-width: 500px;
+    margin: 0 auto; /* Center text on small screens */
+    color: var(--black-color); /* Ensure product description text is black */
+}
+
+/* Custom styles for carousel indicators */
+.product-carousel-custom .carousel-indicators [data-bs-target] {
+    background-color: var(--kodivian-violet); /* Violet indicators */
+    opacity: 0.5; /* Less visible when inactive */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* Circular indicators */
+    transition: opacity 0.3s ease;
+}
+
+.product-carousel-custom .carousel-indicators .active {
+    opacity: 1; /* More visible for the active indicator */
+}
+
+/* Who We Are Section */
+#who-we-are p {
+    color: var(--black-color); /* Ensure text in Who We Are section is black */
+}
+
+/* Solution Delivery Process Section */
+.workflow-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.workflow-card:hover {
+    transform: translateY(-5px); /* Lift card slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important; /* Stronger shadow on hover */
+}
+
+.workflow-card .bi { /* Bootstrap Icons */
+    color: var(--kodivian-violet); /* Ensure icons are violet */
+}
+
+.workflow-card .card-title {
+    color: var(--black-color); /* Card titles should be black */
+}
+
+.workflow-card .card-text {
+    color: var(--black-color); /* Card text should be black */
+}
+
+/* Client Logos Track for seamless animation */
+#our-clients {
+    background-color: var(--light-grey-bg); /* Match background with carousel for consistency */
+    border-top: 2px solid var(--kodivian-violet);
+    border-bottom: 2px solid var(--kodivian-violet);
+}
+
+.client-logos-track {
+    display: flex;
+    animation: scroll-left 40s linear infinite; /* Adjust duration for speed */
+    width: max-content; /* Ensure track is wide enough for all logos */
+    padding: 20px 0; /* Add some vertical padding */
+    white-space: nowrap; /* Prevent items from wrapping to the next line */
+    /* If you have a specific number of logos and want to calculate width, you can do so.
+       For a seamless loop with `transformX(-50%)`, you generally need your content duplicated. */
+}
+
+.client-logos-track:hover {
+    animation-play-state: paused; /* Pause animation on hover */
+}
+
+.client-logo-item {
+    flex-shrink: 0; /* Prevent logos from shrinking */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 40px; /* Space between logos */
+    opacity: 0.8; /* Slightly reduced opacity for a subtle effect */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity change */
+}
+
+.client-logo-item:hover {
+    opacity: 1; /* Full opacity on hover */
+}
+
+.client-logo-item img {
+    max-height: 80px; /* Max height for the logos */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures the entire image is visible within the bounds */
+}
+
+/* Keyframes for the continuous scroll animation */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%); /* Scrolls exactly half the total width for a seamless loop */
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-carousel-custom .carousel-item .col-md-6 {
+        order: unset !important; /* Reset order for smaller screens */
+    }
+
+    .product-carousel-custom .py-5 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    .product-carousel-custom .product-description {
+        text-align: center;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .product-carousel-custom .text-md-start {
+        text-align: center !important;
+    }
+
+    .product-carousel-custom .text-md-end {
+        text-align: center !important;
+    }
+
+    .client-logo-item {
+        margin: 0 20px; /* Less space between logos on smaller screens */
+    }
+
+    .client-logo-item img {
+        max-height: 60px; /* Smaller logos on mobile */
+    }
+
+    .client-logos-track {
+        animation-duration: 25s; /* Faster scroll on smaller screens */
+    }
+}

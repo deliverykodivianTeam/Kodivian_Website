@@ -1,0 +1,213 @@
+/* Custom styles for Services.jsx */
+
+/* Define your violet-white color palette and Roboto font */
+:root {
+    --primary-purple: #6A057F; /* A deep violet */
+    --secondary-purple: #8B5FBF; /* A lighter violet */
+    --light-purple: #F3E5F5; /* Very light purple for backgrounds */
+    --dark-purple: #4A015E; /* Even darker for strong headings */
+    --accent-purple: #BE93D4; /* For highlighting icons/elements */
+    --text-dark: #333333; /* Standard dark text */
+    --text-muted-light: #666666; /* Lighter muted text */
+    --white: #FFFFFF;
+    --off-white: #F8F8F8;
+
+    /* Specific brand colors for cloud icons (optional, but good for visual identity) */
+    --aws-orange: #FF9900;
+    --azure-blue: #0078D4;
+    --google-green: #34A853;
+    --oracle-red: #F80000;
+
+    /* Font Family */
+    --font-roboto: 'Roboto', sans-serif;
+}
+
+/* Apply Roboto font globally or to specific sections */
+body,
+.services-page-wrapper {
+    font-family: var(--font-roboto);
+    color: var(--text-dark); /* Default text color */
+}
+
+/* Bootstrap Overrides (Optional, but good for consistent theme) */
+.btn-primary {
+    background-color: var(--primary-purple);
+    border-color: var(--primary-purple);
+}
+.btn-primary:hover {
+    background-color: var(--dark-purple);
+    border-color: var(--dark-purple);
+}
+.btn-outline-light { /* For the "Get Started" button in the concluding section */
+    color: var(--white);
+    border-color: var(--white);
+}
+.btn-outline-light:hover {
+    background-color: var(--white);
+    color: var(--primary-purple);
+}
+
+/* Hero Section */
+.services-hero-section {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Typing Effect */
+.typed-cursor {
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Section Background Colors */
+.bg-light-purple {
+    background-color: var(--light-purple);
+}
+
+.bg-dark-purple {
+    background-color: var(--dark-purple);
+}
+
+.bg-primary-purple { /* Used for the concluding section */
+    background-color: var(--primary-purple);
+}
+
+.bg-secondary-purple { /* For cards within the dark section */
+    background-color: var(--secondary-purple);
+}
+
+/* Text Colors */
+.text-dark-purple {
+    color: var(--dark-purple);
+}
+
+.text-primary-purple {
+    color: var(--primary-purple);
+}
+
+.text-secondary-purple {
+    color: var(--secondary-purple);
+}
+
+/* Specific Cloud Icon Colors (using defined CSS variables) */
+.text-orange { color: var(--aws-orange); }
+.text-azure-blue { color: var(--azure-blue); }
+.text-google-green { color: var(--google-green); }
+.text-oracle-red { color: var(--oracle-red); }
+
+
+/* Icon Sizing for consistency */
+.cloud-icon,
+.feature-icon,
+.tech-icon,
+.process-icon {
+    width: 60px;
+    height: 60px;
+   
+}
+
+.tech-icon{
+ width: 60px;
+    height: 60px;   
+}
+
+/* Custom small button override */
+.btn-small {
+    padding: 6px 16px;
+    font-size: 0.875rem; /* Slightly smaller font */
+    border-radius: 4px;
+    width: auto !important;
+    max-width: 200px;
+}
+
+
+/* Specific adjustments for larger icons if needed, e.g., in cloud support */
+.cloud-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    
+}
+
+.feature-icon-no-padding {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 40px; /* Adjust icon size if needed */
+  height: 60px;
+  display: block;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+
+.tech-icon {
+    width: 55px;
+    height: 55px;
+    color: var(--accent-purple); /* Accent color for icons in dark sections */
+}
+
+.process-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--secondary-purple); /* A lighter shade for process icons */
+}
+
+/* Card specific styling */
+.custom-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px; /* Slightly rounded corners */
+}
+
+.custom-card:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.15) !important; /* Stronger shadow */
+}
+
+/* Responsive Image Adjustments for sections */
+.services-section-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px; /* Match card radius */
+}
+
+/* General text muted/secondary adjustments */
+.text-muted {
+    color: var(--text-muted-light) !important;
+}
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.75) !important; /* Adjust if needed for better contrast */
+}
+.text-white-75 {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Ensures content takes full width on small screens and has max width on large screens */
+.container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media (min-width: 992px) { /* Adjust for larger screens */
+    .w-65 {
+        width: 65%;
+        max-width: 400px; /* Prevent button from becoming too wide */
+    }
+}
