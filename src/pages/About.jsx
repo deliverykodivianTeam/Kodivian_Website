@@ -73,18 +73,7 @@ const About = () => {
       image: Director,
       linkedin: "https://www.linkedin.com/in/vijaysabari-mugunthan-16b57441?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAjN3uMBpbTq7jlVvOyJljD8N7eAobuAyFM&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
     },
-    {
-      name: "Raja SM",
-      role: "Business Analyst/Solution Engineer",
-      image: Raja,
-      linkedin: "https://www.linkedin.com/in/rajashanmugam3?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADeOfkgBeq5fczrDnHNTcFzKmaE0qTVIgTo&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
-    },
-    {
-      name: "Anjana",
-      role: "Marketing & Branding Strategist",
-      image: Anjana,
-      linkedin: "https://www.linkedin.com/in/anjana-subramaniam-a4610313?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAKvVhYB9qzWJjiqOW6iOYYbhUOyy603gHQ&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
-    },
+ 
     {
       name: "Mothi Kumaresan",
       role: "Business Development Manager",
