@@ -10,13 +10,14 @@ CORS(app)
 
 # 📧 Zoho Mail Configuration (Testing Mode)
 app.config.update(
-    MAIL_SERVER='smtp.zoho.in'
-    MAIL_PORT=587
-    MAIL_USE_SSL=True
+    MAIL_SERVER='smtp.zoho.in',
+    MAIL_PORT=587,
+    MAIL_USE_SSL=True,
     MAIL_USERNAME='preethi.jb@kodivian.com',
     MAIL_PASSWORD='ajRMC3TdYZrs',  # <-- paste this app password exactly (no spaces)
     MAIL_DEFAULT_SENDER='preethi.jb@kodivian.com'
 )
+
 
 
 mail = Mail(app)
