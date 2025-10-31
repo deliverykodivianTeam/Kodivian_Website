@@ -8,23 +8,22 @@ from threading import Thread
 app = Flask(__name__)
 CORS(app)
 
-# 📧 Zoho Mail Configuration
-# IMPORTANT: For production, use environment variables for MAIL_PASSWORD
-# e.g., os.environ.get('MAIL_PASSWORD')
+# 📧 Zoho Mail Configuration (Testing Mode)
 app.config.update(
     MAIL_SERVER='smtp.zoho.in',
     MAIL_PORT=587,
     MAIL_USE_TLS=True,
-    MAIL_USERNAME='preethi.jb@kodivian.com', # Ensure this sender is correctly configured in Zoho
-    MAIL_PASSWORD='ea99CHS6JNm7', # !!! REPLACE WITH ENV VAR IN PROD !!!
-    MAIL_DEFAULT_SENDER='vijaysabari.m@kodivian.com'
+    MAIL_USERNAME='preethi.jb@kodivian.com',
+    MAIL_PASSWORD='ajRMC3TdYZrs',  # <-- paste this app password exactly (no spaces)
+    MAIL_DEFAULT_SENDER='preethi.jb@kodivian.com'
 )
+
 
 mail = Mail(app)
 
-# Helper function to send emails asynchronously
+# 🔹 Helper: Send emails asynchronously
 def send_async_email(app, msg):
-    with app.app_context(): # Essential for Flask-Mail to work in a separate thread
+    with app.app_context():
         try:
             mail.send(msg)
             print(f"✅ Email sent successfully to: {msg.recipients}")
@@ -33,8 +32,9 @@ def send_async_email(app, msg):
 
 @app.route('/')
 def home():
-    return "Flask backend is live on Render! 🚀"
+    return "✅ Flask backend is live and email setup is configured!"
 
+# 🔹 FAQ Query Endpoint
 @app.route('/api/send-query', methods=['POST'])
 def send_query():
     data = request.get_json()
@@ -47,38 +47,35 @@ def send_query():
     try:
         msg = Message(
             subject="New FAQ Query from Website",
-            recipients=['vijaysabari.m@kodivian.com'],  # Or another receiver if needed
+            recipients=['preethi.jb@kodivian.com'],  # 📨 send to you
             body=f"A user submitted a query:\n\nEmail: {email}\nQuery: {query}"
         )
-        # Send query email asynchronously
         Thread(target=send_async_email, args=(app, msg)).start()
-        print("📨 Initiated FAQ query email send (async)")
+        print("📨 FAQ query email initiated.")
         return jsonify({"message": "Query initiated successfully"}), 200
-
     except Exception as e:
         print("Email send error:", str(e))
-        return jsonify({"error": "Failed to initiate email send"}), 500
+        return jsonify({"error": "Failed to send email"}), 500
 
-# ✅ Route to save data and send email
+# 🔹 Demo Booking Route
 @app.route('/save_demo_data', methods=['POST'])
 def save_demo_data():
     try:
         demo_data = request.get_json()
         print("✅ Received demo data:", demo_data)
 
-        # Save data locally
-        # Consider a more robust storage solution for production, e.g., a database
+        # Save locally
         with open('demo_data.json', 'a') as f:
             f.write(json.dumps(demo_data) + '\n')
 
         user_email = demo_data.get('email')
         user_name = demo_data.get('name')
 
-        # 📤 Internal notification email to you
+        # 📤 Internal notification email
         msg_internal = Message(
-            subject='📅 New Demo Booking Received',
-            sender='kaviya.arivaratharaj@kodivian.com',
-            recipients=['vijaysabari.m@kodivian.com', 'kaviya.arivaratharaj@kodivian.com'],
+            subject='📅 [TEST MODE] New Demo Booking Received',
+            sender='preethi.jb@kodivian.com',
+            recipients=['preethi.jb@kodivian.com'],  # send to yourself for test
             reply_to=user_email
         )
         msg_internal.body = f"""
@@ -91,41 +88,32 @@ def save_demo_data():
 🕒 Time: {demo_data.get('time')} IST
 🌐 Timezone: {demo_data.get('timezone')}
 """
-        # Send internal email asynchronously
         Thread(target=send_async_email, args=(app, msg_internal)).start()
-        print("📨 Initiated internal email send (async)")
 
-        # ✅ Automatic reply email to user
+        # 📩 Thank-you email (to you for now)
         thank_you_msg = Message(
-            subject='Thank You for Booking a Demo!',
-            sender='kaviya.arivaratharaj@kodivian.com',
-            recipients=[user_email]
-        )
-        thank_you_msg.body = f"""
+            subject='[TEST MODE] Thank You for Booking a Demo!',
+            sender='preethi.jb@kodivian.com',
+            recipients=['preethi.jb@kodivian.com'],  # send to yourself in test
+            body=f"""
 Hi {user_name},
 
-Thank you for booking a demo with Kodivian! 🎉
-
-We’ve received your request and will get in touch with you soon regarding the demo schedule.
-
-If you have any immediate questions, feel free to reply to this email.
+This is a test thank-you message confirming your booking request.
+Once live, this will go to the actual user email.
 
 Best regards,
 Team Kodivian
-📧 vijaysabari.m@kodivian.com
 """
-        # Send thank-you email asynchronously
+        )
         Thread(target=send_async_email, args=(app, thank_you_msg)).start()
-        print("📨 Initiated thank-you email send to user (async)")
 
-        # Immediately return a success response to the frontend
-        return jsonify({'message': '✅ Data saved and emails initiated!'}), 200
+        return jsonify({'message': '✅ Emails sent to preethi.jb@kodivian.com for testing'}), 200
 
     except Exception as e:
         print("❌ Error in save_demo_data:", str(e))
         return jsonify({'error': f'❌ Failed to process demo booking: {str(e)}'}), 500
 
-# ✅ Route to view saved data (for debugging/monitoring)
+# 🔹 Fetch saved demo data (debugging)
 @app.route('/get_demo_data', methods=['GET'])
 def get_demo_data():
     data = []
@@ -135,30 +123,30 @@ def get_demo_data():
                 try:
                     data.append(json.loads(line.strip()))
                 except json.JSONDecodeError:
-                    print(f"Skipping malformed JSON line in demo_data.json: {line.strip()}")
-                    pass # Skip malformed lines
+                    continue
     return jsonify(data), 200
 
-# ✅ Test Zoho SMTP
+# 🔹 SMTP Test Endpoint
 @app.route('/test_email')
 def test_email():
+    from flask_mail import Message
+    from threading import Thread
     try:
         msg = Message(
-            subject='📨 Test Email from Render',
-            sender='kaviya.arivaratharaj@kodivian.com', # Use an email configured to send from Zoho
-            recipients=['vijaysabari.m@kodivian.com'], # Your recipient for testing
-            body='✅ This is a test email from Flask on Render using Zoho SMTP. If you received this, email sending is configured!'
+            subject="Test Email from Flask (Zoho SMTP)",
+            sender="preethi.jb@kodivian.com",
+            recipients=["preethi.jb@kodivian.com"],  # send to yourself
+            body="✅ If you see this email, your Zoho SMTP setup is working correctly!"
         )
-        # Send test email asynchronously as well, for consistency
-        Thread(target=send_async_email, args=(app, msg)).start()
-        return '✅ Test email initiated! Check your inbox in a moment.'
+        mail.send(msg)
+        print("✅ Email sent successfully!")
+        return "✅ Email sent successfully! Check your inbox."
     except Exception as e:
-        return f'❌ Email test initiation failed: {str(e)}', 500
+        print("❌ Error:", e)
+        return f"❌ Error: {e}"
 
-# ✅ Run the server
+
+# 🔹 Run Flask App
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 3001))
-    # In a production setup like Render, Gunicorn or Waitress is typically used
-    # to serve the Flask app, not app.run() directly.
-    # However, for simple testing or development, this is fine.
     app.run(host="0.0.0.0", port=port)
