@@ -87,7 +87,7 @@ body {
 }
 
 .product-carousel-custom .product-description {
-    max-width: 500px;
+    max-width: 700px;
     margin: 0 auto; /* Center text on small screens */
     color: var(--black-color); /* Ensure product description text is black */
 }
@@ -165,7 +165,7 @@ body {
 }
 
 .client-logo-item:hover {
-    opacity: 1; /* Full opacity on hover */
+    opacity:1; /* Full opacity on hover */
 }
 
 .client-logo-item img {
