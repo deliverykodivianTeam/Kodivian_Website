@@ -11,7 +11,7 @@ CORS(app)
 # 📧 Zoho Mail Configuration (Testing Mode)
 app.config.update(
     MAIL_SERVER='smtp.zoho.in',
-    MAIL_PORT=587,
+    MAIL_PORT=465,
     MAIL_USE_SSL=True,
     MAIL_USERNAME='preethi.jb@kodivian.com',
     MAIL_DEFAULT_SENDER='preethi.jb@kodivian.com'
