@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
-from flask_mail import Mail, Message
 from flask_cors import CORS
 import os
 import json
+import requests
 from threading import Thread
 import traceback
 
@@ -10,31 +10,37 @@ app = Flask(__name__)
 CORS(app)
 
 # =========================================================
-# 📧 Zoho Mail Configuration (App Password Required)
+# 🔐 Brevo API Key (add your key here)
 # =========================================================
-app.config.update(
-    MAIL_SERVER='smtp.zoho.in',
-    MAIL_PORT=465,
-    MAIL_USE_SSL=True,
-    MAIL_USERNAME='preethi.jb@kodivian.com',
-    MAIL_PASSWORD='uaNk95x9H2Z8',  # ✅ Your Zoho App Password
-    MAIL_DEFAULT_SENDER='preethi.jb@kodivian.com'
-)
-
-mail = Mail(app)
+import os
+BREVO_API_KEY = os.getenv("BREVO_API_KEY")
+BREVO_URL = "https://api.brevo.com/v3/smtp/email"
+SENDER_EMAIL = "preethi.jb@kodivian.com"
+SENDER_NAME = "Team Kodivian"
 
 
 # =========================================================
-# 🔹 Helper: Send emails asynchronously
+# 🔹 Helper: Send Email via Brevo
 # =========================================================
-def send_async_email(app, msg):
-    with app.app_context():
-        try:
-            mail.send(msg)
-            print(f"✅ Email sent successfully to: {msg.recipients}")
-        except Exception as e:
-            print(f"❌ Error sending email to {msg.recipients}: {e}")
-            traceback.print_exc()
+def send_email_brevo(to_email, subject, body):
+    try:
+        payload = {
+            "sender": {"email": SENDER_EMAIL, "name": SENDER_NAME},
+            "to": [{"email": to_email}],
+            "subject": subject,
+            "textContent": body
+        }
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json",
+            "api-key": BREVO_API_KEY
+        }
+        response = requests.post(BREVO_URL, json=payload, headers=headers)
+        print(f"📨 Email to {to_email}: {response.status_code}")
+        print(response.text)
+    except Exception as e:
+        print(f"❌ Error sending email to {to_email}: {e}")
+        traceback.print_exc()
 
 
 # =========================================================
@@ -42,7 +48,7 @@ def send_async_email(app, msg):
 # =========================================================
 @app.route('/')
 def home():
-    return "✅ Flask backend is live and email setup is configured!"
+    return "✅ Flask backend is live and Brevo email setup is configured!"
 
 
 # =========================================================
@@ -58,16 +64,14 @@ def send_query():
         return jsonify({"error": "Missing email or query"}), 400
 
     try:
-        msg = Message(
-            subject="New FAQ Query from Website",
-            recipients=['preethi.jb@kodivian.com'],
-            body=f"A user submitted a query:\n\nEmail: {email}\nQuery: {query}"
-        )
-        Thread(target=send_async_email, args=(app, msg)).start()
-        print("📨 FAQ query email initiated.")
+        subject = "New FAQ Query from Website"
+        body = f"A user submitted a query:\n\nEmail: {email}\nQuery: {query}"
+
+        Thread(target=send_email_brevo, args=('preethi.jb@kodivian.com', subject, body)).start()
+        print("📨 FAQ query email sent via Brevo.")
         return jsonify({"message": "Query initiated successfully"}), 200
     except Exception as e:
-        print("❌ Error sending FAQ email:", e)
+        print("❌ Error:", e)
         traceback.print_exc()
         return jsonify({"error": "Failed to send email"}), 500
 
@@ -81,21 +85,15 @@ def save_demo_data():
         demo_data = request.get_json()
         print("✅ Received demo data:", demo_data)
 
-        # Save locally (simple log)
+        # Save locally (for record)
         with open('demo_data.json', 'a') as f:
             f.write(json.dumps(demo_data) + '\n')
 
         user_email = demo_data.get('email')
         user_name = demo_data.get('name')
 
-        # --- Internal Notification (to you) ---
-        msg_internal = Message(
-            subject='📅 New Demo Booking Received',
-            sender='preethi.jb@kodivian.com',
-            recipients=['preethi.jb@kodivian.com'],
-            reply_to=user_email
-        )
-        msg_internal.body = f"""
+        # Internal notification
+        internal_body = f"""
 👤 Name: {user_name}
 📧 Email: {user_email}
 🏢 Company: {demo_data.get('company')}
@@ -105,24 +103,19 @@ def save_demo_data():
 🕒 Time: {demo_data.get('time')} IST
 🌐 Timezone: {demo_data.get('timezone')}
 """
-        Thread(target=send_async_email, args=(app, msg_internal)).start()
+        Thread(target=send_email_brevo, args=('preethi.jb@kodivian.com', '📅 New Demo Booking Received', internal_body)).start()
 
-        # --- Thank You Email (to User) ---
-        thank_you_msg = Message(
-            subject='✅ Thank You for Booking a Demo!',
-            sender='preethi.jb@kodivian.com',
-            recipients=[user_email],
-            body=f"""
+        # Thank-you message to user
+        thank_you_body = f"""
 Hi {user_name},
 
-Thank you for booking a demo with Kodivian! 
+Thank you for booking a demo with Kodivian!
 Our team will reach out to confirm your slot soon.
 
 Best regards,  
 Team Kodivian
 """
-        )
-        Thread(target=send_async_email, args=(app, thank_you_msg)).start()
+        Thread(target=send_email_brevo, args=(user_email, '✅ Thank You for Booking a Demo!', thank_you_body)).start()
 
         return jsonify({'message': '✅ Demo booking processed and emails sent successfully.'}), 200
 
@@ -133,36 +126,15 @@ Team Kodivian
 
 
 # =========================================================
-# 🔹 Fetch saved demo data (for debugging)
-# =========================================================
-@app.route('/get_demo_data', methods=['GET'])
-def get_demo_data():
-    data = []
-    if os.path.exists('demo_data.json'):
-        with open('demo_data.json', 'r') as f:
-            for line in f:
-                try:
-                    data.append(json.loads(line.strip()))
-                except json.JSONDecodeError:
-                    continue
-    return jsonify(data), 200
-
-
-# =========================================================
-# 🔹 SMTP Test Endpoint
+# 🔹 Test Email Endpoint
 # =========================================================
 @app.route('/test_email')
 def test_email():
     try:
-        msg = Message(
-            subject="Test Email from Flask (Zoho SMTP)",
-            sender="preethi.jb@kodivian.com",
-            recipients=["preethi.jb@kodivian.com"],
-            body="✅ If you see this email, your Zoho SMTP setup is working correctly!"
-        )
-        mail.send(msg)
-        print("✅ Email sent successfully!")
-        return "✅ Email sent successfully! Check your inbox."
+        subject = "Test Email from Flask via Brevo"
+        body = "✅ If you received this, your Brevo email setup works perfectly!"
+        send_email_brevo("preethi.jb@kodivian.com", subject, body)
+        return "✅ Test email sent successfully via Brevo!"
     except Exception as e:
         print("❌ Error:", e)
         traceback.print_exc()
@@ -173,6 +145,6 @@ def test_email():
 # 🔹 Run Flask App
 # =========================================================
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # Render auto-detects this port
+    port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Starting Flask app on port {port}")
     app.run(host="0.0.0.0", port=port)
