@@ -7,7 +7,7 @@ import Belowbar from "../components/Belowbar"; // Adjust the path if necessary
 // Import product images
 import icon1 from '../assets/scanifyprocess.png';
 import icon2 from '../assets/processbuilderpro.png';
-import icon3 from  '../assets/scanify1.png';
+import icon3 from  '../assets/scanify-logo.png';
 import icon4 from  '../assets/low-code.png';
 // Client Logo Imports
 import ponpureLogo from '../assets/ponpure.png';
