@@ -5,8 +5,11 @@ from threading import Thread
 import os
 from dotenv import load_dotenv
 
+# ======================================
+# 🔹 Flask App Initialization
+# ======================================
 app = Flask(__name__)
-CORS(app)
+CORS(app)  # allow requests from your frontend (Godaddy / Render static site)
 
 # ======================================
 # ✉️ Brevo (SendinBlue) API Configuration
@@ -27,12 +30,14 @@ INTERNAL_EMAILS = [
     "kaviya.arivaratharaj@kodivian.com"
 ]
 
+
 # ======================================
-# 🔹 Root Route (for Render health check)
+# 🔹 Home route (for testing)
 # ======================================
 @app.route('/')
 def home():
-    return "✅ Kodivian Flask App is running successfully!"
+    return "✅ Flask app is running successfully on Render!"
+
 
 # ======================================
 # 🔹 Helper Function to Send Email
@@ -67,7 +72,7 @@ def save_demo_data():
     data = request.get_json()
 
     name = data.get("name")
-    email = data.get("email")
+    email = data.get("email")  # user who booked (ex: kaviya)
     company = data.get("company")
     product = data.get("product")
     date = data.get("date")
@@ -95,6 +100,7 @@ def save_demo_data():
     </html>
     """
 
+    # Send internal email to team
     Thread(target=send_email, args=(internal_subject, internal_html, INTERNAL_EMAILS)).start()
 
     # ------------------------------
@@ -118,6 +124,7 @@ def save_demo_data():
     </html>
     """
 
+    # Send thank-you email to the user who booked
     Thread(target=send_email, args=(client_subject, client_html, [email])).start()
 
     return jsonify({"message": "✅ Demo booking processed and emails sent successfully."})
@@ -135,8 +142,8 @@ def test_email():
 
 
 # ======================================
-# 🟢 Run Flask App (Render-compatible)
+# 🚀 Run Flask App (Render compatible)
 # ======================================
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5000))  # Render dynamically assigns a port
     app.run(host="0.0.0.0", port=port, debug=True)
