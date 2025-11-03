@@ -15,14 +15,14 @@ import constructionImage from "../assets/Animated-Isometric-Construction.gif";
 import about_intro from "../assets/about_intro.png";
 import about_intro1 from "../assets/about_intro1.jpg";
 import ponpureLogo from "../assets/ponpure.png";
-import tiCycleLogo from "../assets/ti-cycle.png";
+import tiCycleLogo from "../assets/tii-logo.png";
 import murugappaLogo from "../assets/murugappa.png";
 import khazanaLogo from "../assets/khazana.png";
 import sharatIndustriesLogo from "../assets/sharat-industries.png";
 import dabicoLogo from "../assets/dabico.png";
-import dmccLogo from "../assets/dmcc.png";
-import aavaBrandsLogo from "../assets/aava-brands.png";
-import tiMedicallogo from "../assets/ti_medical.png";
+import dmccLogo from "../assets/dmcc.png";   
+import aavaBrandsLogo from "../assets/aava-logo.jpeg";
+import tiMedicallogo from "../assets/ti-medical-logo.png";
 import Innoventure_logo from "../assets/3xper_innoventure_limited_logo.png";
 import shanthigearslogo from "../assets/shanthi-gears.png";
 import ezcloud from "../assets/ezcloud.png";
@@ -30,12 +30,12 @@ import ionidea from "../assets/ionidea.png";
 import eastman from "../assets/eastman.png";
 import stedmanlogo from '../assets/stedman-logo.jpeg';
 import teamlogo from '../assets/Team-logo.jpeg';
-import lifecelllogo from '../assets/Lifecell-logo.jpg';
+import lifecelllogo from '../assets/lifecell-logo.png'; 
+
+// import Kodivian Team members
 import Chairman from "../assets/chairman.jpeg";
 import Director from "../assets/directer.jpeg";
-import Raja from "../assets/Raja.jpeg";
 import Rithish from "../assets/Rithish.jpg"
-import Anjana from "../assets/Anjana.jpeg";
 import Mothi from "../assets/Mothi.jpeg";
 import Kaviya from "../assets/Kaviya.jpeg";
 import Preethi from "../assets/Preethi.jpeg";
@@ -73,18 +73,7 @@ const About = () => {
       image: Director,
       linkedin: "https://www.linkedin.com/in/vijaysabari-mugunthan-16b57441?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAjN3uMBpbTq7jlVvOyJljD8N7eAobuAyFM&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
     },
-    {
-      name: "Raja SM",
-      role: "Business Analyst/Solution Engineer",
-      image: Raja,
-      linkedin: "https://www.linkedin.com/in/rajashanmugam3?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADeOfkgBeq5fczrDnHNTcFzKmaE0qTVIgTo&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
-    },
-    {
-      name: "Anjana",
-      role: "Marketing & Branding Strategist",
-      image: Anjana,
-      linkedin: "https://www.linkedin.com/in/anjana-subramaniam-a4610313?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAKvVhYB9qzWJjiqOW6iOYYbhUOyy603gHQ&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
-    },
+ 
     {
       name: "Mothi Kumaresan",
       role: "Business Development Manager",
@@ -153,8 +142,8 @@ const About = () => {
 
     const stopYears = animateCount(setYearsExperience, 4, 1500); // 4 years, 1.5 seconds
     const stopTeam = animateCount(setTeamMembersCount, 30, 2000); // 30 members, 2 seconds
-    const stopClients = animateCount(setSatisfiedClients, 60, 1800); // 25 clients, 1.8 seconds
-    const stopProjects = animateCount(setCompleteProjects, 60, 2200); // 50 projects, 2.2 seconds
+    const stopClients = animateCount(setSatisfiedClients, 60, 1800); // 60 clients, 1.8 seconds
+    const stopProjects = animateCount(setCompleteProjects, 60, 2200); // 60 projects, 2.2 seconds
 
     return () => {
       stopYears();
@@ -242,12 +231,12 @@ const About = () => {
             {/* Render logos twice to create a seamless loop */}
             {clientLogos.map((logo, index) => (
               <div className="client-logo-item" key={`logo-1-${index}`}>
-                <img src={logo} alt={`Client Logo ${index + 1}`} className="img-fluid" />
+                <img src={logo} alt={`Client Logo ${index + 1}`} className="" />
               </div>
             ))}
             {clientLogos.map((logo, index) => (
               <div className="client-logo-item" key={`logo-2-${index}`}>
-                <img src={logo} alt={`Client Logo ${index + 1}`} className="img-fluid" />
+                <img src={logo} alt={`Client Logo ${index + 1}`} className="" />
               </div>
             ))}
           </div>

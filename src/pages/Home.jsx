@@ -7,19 +7,18 @@ import Belowbar from "../components/Belowbar"; // Adjust the path if necessary
 // Import product images
 import icon1 from '../assets/scanifyprocess.png';
 import icon2 from '../assets/processbuilderpro.png';
-import icon3 from '../assets/rpapro.png';
-import icon4 from '../assets/docpro.png'; // Assuming this is for IntelliDocs
-
+import icon3 from  '../assets/scanify1.png';
+import icon4 from  '../assets/low-code.png';
 // Client Logo Imports
 import ponpureLogo from '../assets/ponpure.png';
-import tiCycleLogo from '../assets/ti-cycle.png';
+import tiCycleLogo from '../assets/tii-logo.png'; 
 import murugappalogo from '../assets/murugappa.png';
 import khazanaLogo from '../assets/khazana.png';
 import sharatIndustriesLogo from '../assets/sharat-industries.png';
 import dabicoLogo from '../assets/dabico.png';
 import dmccLogo from '../assets/dmcc.png';
-import aavaBrandsLogo from '../assets/aava-brands.png';
-import tiMedicallogo from '../assets/ti_medical.png';
+import aavaBrandsLogo from '../assets/aava-logo.jpeg';
+import tiMedicallogo from '../assets/ti-medical-logo.png';
 import Innoventure_logo from '../assets/3xper_innoventure_limited_logo.png';
 import shanthigearslogo from '../assets/shanthi-gears.png';
 import ezcloud from '../assets/ezcloud.png';
@@ -27,7 +26,7 @@ import ionidea from '../assets/ionidea.png';
 import eastman from '../assets/eastman.png';
 import stedmanlogo from '../assets/stedman-logo.jpeg';
 import teamlogo from '../assets/Team-logo.jpeg';
-import lifecelllogo from '../assets/Lifecell-logo.jpg';
+import lifecelllogo from '../assets/lifecell-logo.png';
 
 // Make sure this path is correct for your project structure
 import DemoBookingPopup from "../components/DemoBookingPopup";
@@ -108,20 +107,28 @@ const Home = () => {
                     <Carousel.Item className="bg-light">
                         <Container fluid>
                             <Row className="align-items-center py-5">
-                                <Col md={6} className="text-center">
+                                <Col md={3} className="text-center">
+                                    <img
+                                        className="d-block mx-auto img-fluid product-icon"
+                                        src={icon3}
+                                        alt="Scanify Process Icon"
+                                    />
+                                </Col>
+                                <Col md={6} className="text-center text-md-start">
+                                    <h1 className="display-4 fw-bold text-violet text-center">Scanify: Intelligent Data Extraction via OCR</h1>
+                                    <p className="lead product-description">
+                                        Uses advanced OCR technology to scan documents and extract accurate data instantly. It eliminates the need for manual input by capturing information directly from scanned images or PDFs. Once extracted, the data can be automatically stored or sent to any connected system, making data handling faster, error-free, and efficient.
+                                    </p>
+                                </Col>
+                                 <Col md={3} className="text-center">
                                     <img
                                         className="d-block mx-auto img-fluid product-icon"
                                         src={icon1}
                                         alt="Scanify Process Icon"
                                     />
                                 </Col>
-                                <Col md={6} className="text-center text-md-start">
-                                    <h1 className="display-4 fw-bold text-violet">Scanify: Intelligent Data Extraction via OCR</h1>
-                                    <p className="lead product-description">
-                                        uses advanced OCR technology to scan documents and extract accurate data instantly. It eliminates the need for manual input by capturing information directly from scanned images or PDFs. Once extracted, the data can be automatically stored or sent to any connected system, making data handling faster, error-free, and efficient.
-                                    </p>
-                                </Col>
-                            </Row>
+                                
+                            </Row> 
                         </Container>
                     </Carousel.Item>
 
@@ -129,19 +136,28 @@ const Home = () => {
                     <Carousel.Item className="bg-light">
                         <Container fluid>
                             <Row className="align-items-center py-9">
-                                <Col md={{ span: 6, order: 'last' }} className="text-center text-md-end">
+                                 <Col md={3} className="text-center">
                                     <img
                                         className="d-block mx-auto img-fluid product-icon"
-                                        src={icon2}
-                                        alt="Process Builder Pro Icon"
+                                        src={icon4}
+                                        alt="Scanify Process Icon"
                                     />
                                 </Col>
+                                
                                 <Col md={6} className="text-center text-md-start px-5">
-                                    <h1 className="display-4 fw-bold text-violet">Process Builder: Low-Code/No-Code Workflow Automation</h1>
+                                    <h1 className="display-4 fw-bold text-violet">Process Builder: Low-Code No-Code Workflow Automation</h1>
                                     <p className="lead product-description">
                                         Uses a no-code platform that lets you drag, drop, and design customized forms effortlessly. Beyond form creation, you can build full workflows within the same interface, assign actions, automate steps, and launch entire applications in one go. It's designed for speed, simplicity, and powerful workflow automation.
                                     </p>
                                 </Col>
+                                 <Col md={3} className="text-center">
+                                    <img
+                                        className="d-block mx-auto img-fluid product-icon"
+                                        src={icon2}
+                                        alt="Scanify Process Icon"
+                                    />
+                                </Col>
+                                
                             </Row>
                         </Container>
                     </Carousel.Item>
