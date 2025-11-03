@@ -31,12 +31,6 @@ INTERNAL_EMAILS = [
 ]
 
 
-# ======================================
-# 🔹 Home route (for testing)
-# ======================================
-@app.route('/')
-def home():
-    return "✅ Flask app is running successfully on Render!"
 
 
 # ======================================
