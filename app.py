@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 import requests
 from flask_cors import CORS
 from threading import Thread
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app)
@@ -9,9 +11,6 @@ CORS(app)
 # ======================================
 # ✉️ Brevo (SendinBlue) API Configuration
 # ======================================
-import os
-from dotenv import load_dotenv
-
 load_dotenv()  # loads variables from .env
 BREVO_API_KEY = os.getenv("BREVO_API_KEY")
 
@@ -28,6 +27,12 @@ INTERNAL_EMAILS = [
     "kaviya.arivaratharaj@kodivian.com"
 ]
 
+# ======================================
+# 🔹 Root Route (for Render health check)
+# ======================================
+@app.route('/')
+def home():
+    return "✅ Kodivian Flask App is running successfully!"
 
 # ======================================
 # 🔹 Helper Function to Send Email
@@ -62,7 +67,7 @@ def save_demo_data():
     data = request.get_json()
 
     name = data.get("name")
-    email = data.get("email")  # user who booked (ex: kaviya)
+    email = data.get("email")
     company = data.get("company")
     product = data.get("product")
     date = data.get("date")
@@ -90,7 +95,6 @@ def save_demo_data():
     </html>
     """
 
-    # Send internal email to all 3 people
     Thread(target=send_email, args=(internal_subject, internal_html, INTERNAL_EMAILS)).start()
 
     # ------------------------------
@@ -114,7 +118,6 @@ def save_demo_data():
     </html>
     """
 
-    # Send thank-you email to the user who booked (like Kaviya)
     Thread(target=send_email, args=(client_subject, client_html, [email])).start()
 
     return jsonify({"message": "✅ Demo booking processed and emails sent successfully."})
@@ -132,7 +135,8 @@ def test_email():
 
 
 # ======================================
-# Run Flask App
+# 🟢 Run Flask App (Render-compatible)
 # ======================================
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
