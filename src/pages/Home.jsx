@@ -136,26 +136,26 @@ const Home = () => {
                     <Carousel.Item className="bg-light">
                         <Container fluid>
                             <Row className="align-items-center py-9">
-                                  <Col md={{ span: 3, order: 'first' }} className="text-center text-md-end">
+                                 <Col md={3} className="text-center">
                                     <img
                                         className="d-block mx-auto img-fluid product-icon"
                                         src={icon4}
-                                        alt="Process Builder Pro Icon"
-                                    />
-                                </Col>
-                                <Col md={{ span: 3, order: 'last' }} className="text-center text-md-end">
-                                    <img
-                                        className="d-block mx-auto img-fluid product-icon"
-                                        src={icon2}
-                                        alt="Process Builder Pro Icon"
+                                        alt="Scanify Process Icon"
                                     />
                                 </Col>
                                 
                                 <Col md={6} className="text-center text-md-start px-5">
-                                    <h1 className="display-4 fw-bold text-violet">Process Builder: Low-Code/No-Code Workflow Automation</h1>
+                                    <h1 className="display-4 fw-bold text-violet">Process Builder: Low-Code No-Code Workflow Automation</h1>
                                     <p className="lead product-description">
                                         Uses a no-code platform that lets you drag, drop, and design customized forms effortlessly. Beyond form creation, you can build full workflows within the same interface, assign actions, automate steps, and launch entire applications in one go. It's designed for speed, simplicity, and powerful workflow automation.
                                     </p>
+                                </Col>
+                                 <Col md={3} className="text-center">
+                                    <img
+                                        className="d-block mx-auto img-fluid product-icon"
+                                        src={icon2}
+                                        alt="Scanify Process Icon"
+                                    />
                                 </Col>
                                 
                             </Row>

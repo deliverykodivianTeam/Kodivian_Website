@@ -195,12 +195,11 @@ body {
         padding-bottom: 3rem !important;
     }
 
-    .product-carousel-custom .product-description {
-        text-align: center;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
+    .product-carousel-custom .row .col-md-6 {
+    /* Use 'px-3' (Bootstrap padding) or less for a smaller side gap on phones */
+    padding-left: 15px !important; 
+    padding-right: 15px !important;
+       }
     .product-carousel-custom .text-md-start {
         text-align: center !important;
     }
@@ -214,10 +213,19 @@ body {
     }
 
     .client-logo-item img {
-        max-height: 60px; /* Smaller logos on mobile */
+    max-height:80px; /* Smaller logos on mobile */
+    max-width:80px;
+       object-fit: contain; /* Ensures the entire image is visible within the bounds */
+                      
     }
 
     .client-logos-track {
         animation-duration: 25s; /* Faster scroll on smaller screens */
     }
+    .lead product-description {text-align:justify;}
+   
+
+
+
+
 }

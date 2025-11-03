@@ -44,7 +44,6 @@
 
 .nav-link-custom:hover,
 .nav-link-custom.active {
-    background-color: #f2f2f2;
     color: #8a15bcd0;
 }
 
@@ -250,7 +249,7 @@ button.btn.btn-primary:hover {
         top: 90px; /* Adjust based on your navbar's fixed height */
         left: 0;
         width: 100%;
-        height: calc(100vh - 90px); /* Full height minus navbar height */
+        /*height: calc(100vh - 90px); /* Full height minus navbar height */
         background-color: #fff;
         overflow: auto; /* Allow scrolling if content overflows */
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -278,6 +277,7 @@ button.btn.btn-primary:hover {
         gap: 0.5rem;
         margin-right: 0;
         align-items: stretch;
+        margin-left: auto;
     }
 
     .nav-link-custom {
@@ -286,7 +286,6 @@ button.btn.btn-primary:hover {
         max-width: 100%;
         margin: 0 auto 0.5rem auto;
         padding: 0.75rem 1rem;
-        background-color: #f0f0f0;
         text-align: center;
         border-radius: 6px;
         font-weight: 600;
