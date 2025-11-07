@@ -1,58 +1,53 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Circle, Loader2 } from 'lucide-react'; // Example icons
+import React from "react";
+import { motion } from "framer-motion";
 
 const LoadingPage = () => {
   return (
-    <div className="fixed inset-0 bg-gray-900 text-white flex flex-col items-center justify-center z-50">
-      {/* Centered Content Container */}
-      <div className="flex flex-col items-center gap-8">
-
-        {/* Logo Animation (Replace with your actual logo or brand symbol) */}
+    <motion.div
+      id="loading-screen"
+      className="fixed inset-0 flex items-center justify-center 
+                 bg-gradient-to-br from-violet-200 via-purple-300 to-fuchsia-200 
+                 text-gray-800 z-[9999]"
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1.05, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="text-center"
+      >
+        {/* Glow Circle */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="w-20 h-20 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center" // Example styling
+          className="w-24 h-24 rounded-full bg-gradient-to-r 
+                     from-violet-500 to-fuchsia-400 
+                     flex items-center justify-center mx-auto 
+                     shadow-[0_0_25px_rgba(168,85,247,0.5)]"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1, rotate: 360 }}
+          transition={{
+            duration: 0.6,
+            ease: "easeInOut",
+          }}
         >
-            {/* You can replace this with an image if you have one */}
-            <Circle className="w-12 h-12 text-white animate-spin-slow" />
+          {/* Logo / Letter */}
+          <h1 className="text-4xl font-extrabold tracking-wide text-white drop-shadow-md">
+            K
+          </h1>
         </motion.div>
 
-        {/* Loading Text */}
+        {/* Brand Text */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-4 text-lg font-medium text-gray-700 tracking-wide"
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-xl sm:text-2xl font-semibold text-gray-200"
+          transition={{ duration: 0.3, delay: 0.2 }}
         >
-        Welcome to Kodivian
+          Kodivian Technologies
         </motion.p>
-
-        {/* Progress Bar (Optional) */}
-        <motion.div
-          initial={{ width: '0%' }}
-          animate={{ width: '100%' }}
-          transition={{ duration: 2, ease: "easeInOut", delay: 1 }}
-          className="w-full max-w-md bg-gray-700 rounded-full h-2.5"
-        >
-          <div className="bg-purple-500 h-2.5 rounded-full"></div>
-        </motion.div>
-
-        {/* Loading Indicator (Optional) */}
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 2.5 }} // Appear after progress bar
-            className="flex items-center gap-2"
-        >
-            <Loader2 className="w-6 h-6 animate-spin text-gray-300" />
-            <span className="text-gray-400 text-sm">
-                Loading...
-            </span>
-        </motion.div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

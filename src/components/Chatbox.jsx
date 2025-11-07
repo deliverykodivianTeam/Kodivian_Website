@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import botImg from "../assets/bot.jpg"; // ✅ Import your bot image
 
 const Chatbox = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ const Chatbox = () => {
 
   const responses = [
     { key: ["hi", "hello", "hey"], reply: "Hello 👋 I’m Kodivian Assistant! How can I help you today?" },
-    { key: ["what is scanify","scanify" , "about scanify"], reply: "Scanify is an AI-powered automation platform that scans, extracts, validates, and pushes data into ERP systems using AI, OCR, and Machine Learning." },
+    { key: ["what is scanify", "scanify", "about scanify"], reply: "Scanify is an AI-powered automation platform that scans, extracts, validates, and pushes data into ERP systems using AI, OCR, and Machine Learning." },
     { key: ["accuracy", "accurate"], reply: "Scanify achieves 98%+ extraction accuracy using OCR + AI validation, and continuously improves with Machine Learning." },
     { key: ["cloud", "platform", "aws", "azure", "gcp"], reply: "Scanify runs on Google Cloud, Azure, and AWS for AI hosting, secure storage, and scalability." },
     { key: ["how does scanify work", "process"], reply: "Upload any document — Scanify scans, extracts data with AI, validates, and pushes it to your ERP automatically." },
@@ -39,30 +40,55 @@ const Chatbox = () => {
 
     setTimeout(() => {
       setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
-    }, 500);
+    }, 400);
 
     setInput("");
   };
 
   return (
     <>
+      {/* Floating Chat Button */}
       <button
-        className="btn btn-lg rounded-circle shadow position-fixed"
+        className="btn btn-lg rounded-circle shadow position-fixed p-0 border-0"
         style={{
           bottom: "20px",
           right: "20px",
-          backgroundColor: "#6f42c1",
-          color: "white",
+          width: "65px",
+          height: "65px",
+          backgroundColor: "transparent",
+          boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
           zIndex: 1050,
         }}
         onClick={toggleChat}
       >
-        💬
+        <img
+          src={botImg}
+          alt="Chatbot"
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            objectFit: "cover",
+            border: "3px solid #6f42c1", // 💜 Violet border
+            backgroundColor: "white",
+            transition: "transform 0.3s ease, box-shadow 0.3s ease",
+            boxShadow: "0 0 8px rgba(111, 66, 193, 0.4)",
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.transform = "scale(1.08)";
+            e.currentTarget.style.boxShadow = "0 0 15px rgba(111, 66, 193, 0.8)";
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+            e.currentTarget.style.boxShadow = "0 0 8px rgba(111, 66, 193, 0.4)";
+          }}
+        />
       </button>
 
+      {/* Chatbox Window */}
       {isOpen && (
         <div
-          className="card position-fixed shadow-lg"
+          className="card position-fixed shadow-lg border-0"
           style={{
             bottom: "90px",
             right: "20px",
@@ -71,23 +97,84 @@ const Chatbox = () => {
             zIndex: 1050,
           }}
         >
+          {/* Header with Bot Image and Close Button */}
           <div
-            className="card-header text-white text-center"
-            style={{ backgroundColor: "#6f42c1", borderTopLeftRadius: "20px", borderTopRightRadius: "20px" }}
+            className="card-header d-flex align-items-center justify-content-between text-white"
+            style={{
+              backgroundColor: "#6f42c1",
+              borderTopLeftRadius: "20px",
+              borderTopRightRadius: "20px",
+              padding: "10px 15px",
+            }}
           >
-            Kodivian Assistant
+            <div className="d-flex align-items-center">
+              <img
+                src={botImg}
+                alt="Bot"
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "50%",
+                  marginRight: "8px",
+                  backgroundColor: "white",
+                  padding: "2px",
+                }}
+              />
+              <strong>Kodivian Assistant</strong>
+            </div>
+
+            {/* ❌ Close Button */}
+            <button
+              onClick={toggleChat}
+              className="btn btn-sm text-white border-0"
+              style={{
+                background: "transparent",
+                fontSize: "20px",
+                lineHeight: "1",
+                cursor: "pointer",
+              }}
+            >
+              ×
+            </button>
           </div>
+
+          {/* Chat Body */}
           <div
             className="card-body"
-            style={{ maxHeight: "300px", overflowY: "auto", backgroundColor: "#f8f9fa" }}
+            style={{
+              maxHeight: "300px",
+              overflowY: "auto",
+              backgroundColor: "#f8f9fa",
+            }}
           >
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={`d-flex mb-2 ${msg.sender === "user" ? "justify-content-end" : "justify-content-start"}`}
+                className={`d-flex mb-2 ${
+                  msg.sender === "user"
+                    ? "justify-content-end"
+                    : "justify-content-start"
+                }`}
               >
+                {msg.sender === "bot" && (
+                  <img
+                    src={botImg}
+                    alt="Bot"
+                    style={{
+                      width: "28px",
+                      height: "28px",
+                      borderRadius: "50%",
+                      marginRight: "8px",
+                      alignSelf: "flex-end",
+                    }}
+                  />
+                )}
                 <div
-                  className={`p-2 rounded-3 ${msg.sender === "user" ? "bg-primary text-white" : "bg-light text-dark"}`}
+                  className={`p-2 rounded-3 ${
+                    msg.sender === "user"
+                      ? "bg-primary text-white"
+                      : "bg-light text-dark"
+                  }`}
                   style={{ maxWidth: "75%" }}
                 >
                   {msg.text}
@@ -95,7 +182,9 @@ const Chatbox = () => {
               </div>
             ))}
           </div>
-          <div className="card-footer d-flex">
+
+          {/* Input Footer */}
+          <div className="card-footer d-flex bg-white border-top">
             <input
               type="text"
               className="form-control me-2"
