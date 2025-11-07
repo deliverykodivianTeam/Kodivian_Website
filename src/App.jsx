@@ -17,14 +17,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import ScrollToTop from './components/ScrollToTop';
 
+// ✅ Import ChatBox Component and CSS
+import Chatbox from './components/Chatbox';
+import './styles/ChatBox.css';
 
 function App() {
   return (
     <Router>
       <div className="app-container">
-        <ScrollToTop></ScrollToTop>
+        <ScrollToTop />
         <AppNavbar />
-        
+
         {/* Added Bootstrap's pt-5 class to ensure content starts below the fixed Navbar */}
         <div className="content pt-0">
           <Routes>
@@ -39,7 +42,11 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
+
         <Belowbar />
+
+        {/* ✅ Floating ChatBox visible on all pages */}
+        <Chatbox />
       </div>
     </Router>
   );

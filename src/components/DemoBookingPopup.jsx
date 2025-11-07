@@ -22,6 +22,7 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
   const [isBooking, setIsBooking] = useState(false);
   const istTimeZone = "Asia/Kolkata";
 
+  // Generate available times dynamically when date changes
   useEffect(() => {
     if (form.date) {
       const times = [];
@@ -42,10 +43,12 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
     }
   }, [form.date]);
 
+  // Handle input changes
   const handleInputChange = (field) => (e) => {
     setForm({ ...form, [field]: e.target.value });
   };
 
+  // Validation per step
   const handleNext = () => {
     setError("");
     if (stage === 1) {
@@ -68,6 +71,12 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
     }
   };
 
+  const handlePrevious = () => {
+    setStage(stage - 1);
+    setError("");
+  };
+
+  // 🟢 Book Demo Function
   const handleBookDemo = async () => {
     setError("");
     setSuccessMessage("");
@@ -76,13 +85,11 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
     try {
       const payload = {
         ...form,
-        date: form.date
-          ? moment(form.date).tz(istTimeZone).format("YYYY-MM-DD")
-          : null,
+        date: form.date ? moment(form.date).tz(istTimeZone).format("YYYY-MM-DD") : null,
         timezone: istTimeZone,
       };
 
-      const res = await fetch("http://127.0.0.1:10000/save_demo_data", {
+      const res = await fetch("https://kodivian-website-7.onrender.com/save_demo_data", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -90,15 +97,16 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
 
       if (res.ok) {
         const data = await res.json();
-        setSuccessMessage("Demo request sent successfully! We will be in touch shortly.");
+        setSuccessMessage("✅ Demo booked successfully! Our team will contact you soon.");
         setTimeout(() => handleClose(), 2000);
       } else {
-        const errorData = await res.json();
-        setError(errorData.error || "Failed to book demo. Please try again.");
+        const errData = await res.json();
+        setError(errData.error || "Failed to book demo. Please try again.");
         setIsBooking(false);
       }
     } catch (err) {
-      setError("Something went wrong. Please check your connection.");
+      console.error("❌ Error:", err);
+      setError("Something went wrong. Please try again later.");
       setIsBooking(false);
     }
   };
@@ -120,6 +128,7 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
     onClose();
   };
 
+  // 🗓️ Date change handler (disable weekends and past)
   const handleDateChange = (date) => {
     const day = date.getDay();
     const today = new Date();
@@ -152,13 +161,14 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
       className="modal fade show"
       style={{
         display: "block",
-        backgroundColor: "rgba(0,0,0,0.5)",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
         position: "fixed",
         top: 0,
         left: 0,
         width: "100vw",
         height: "100vh",
         zIndex: 1050,
+        overflow: "auto",
       }}
       onClick={handleClose}
     >
@@ -169,41 +179,68 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
         <div className="modal-content">
           {successMessage ? (
             <div className="modal-body text-center p-4">
-              <div className="alert alert-success">
+              <div className="alert alert-success" role="alert">
                 <h4 className="alert-heading">Success!</h4>
-                <p>{successMessage}</p>
+                <p className="mb-0">{successMessage}</p>
               </div>
             </div>
           ) : (
             <>
               <div className="modal-header">
                 <h5 className="modal-title">Book a Demo</h5>
-                <button type="button" className="btn-close" onClick={handleClose}></button>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={handleClose}
+                ></button>
               </div>
               <div className="modal-body">
+                {/* Step 1 - Info */}
                 {stage === 1 && (
                   <>
                     <div className="mb-3">
                       <label>Name</label>
-                      <input type="text" className="form-control" value={form.name} onChange={handleInputChange("name")} />
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={form.name}
+                        onChange={handleInputChange("name")}
+                      />
                     </div>
                     <div className="mb-3">
                       <label>Email</label>
-                      <input type="email" className="form-control" value={form.email} onChange={handleInputChange("email")} />
+                      <input
+                        type="email"
+                        className="form-control"
+                        value={form.email}
+                        onChange={handleInputChange("email")}
+                      />
                     </div>
                     <div className="mb-3">
                       <label>Company</label>
-                      <input type="text" className="form-control" value={form.company} onChange={handleInputChange("company")} />
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={form.company}
+                        onChange={handleInputChange("company")}
+                      />
                     </div>
                     <div className="mb-3">
                       <label>Purpose</label>
-                      <textarea className="form-control" value={form.purpose} onChange={handleInputChange("purpose")} />
+                      <textarea
+                        className="form-control"
+                        value={form.purpose}
+                        onChange={handleInputChange("purpose")}
+                      />
                     </div>
                     <div className="mb-3">
                       <label>Product</label>
-                      <select className="form-select" value={form.product} onChange={handleInputChange("product")}>
-                        <option value="">-- Select --</option>
-                        <option value="All Product">All Product</option>
+                      <select
+                        className="form-select"
+                        value={form.product}
+                        onChange={handleInputChange("product")}
+                      >
+                        <option value="">-- Select Product --</option>
                         <option value="Scanify">Scanify</option>
                         <option value="Process Builder">Process Builder</option>
                       </select>
@@ -211,17 +248,28 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
                   </>
                 )}
 
+                {/* Step 2 - Date & Time */}
                 {stage === 2 && (
                   <>
                     <h6 className="text-center mb-3">Select Date & Time (IST)</h6>
-                    <Calendar value={form.date} onChange={handleDateChange} tileDisabled={tileDisabled} />
+                    <Calendar
+                      value={form.date}
+                      onChange={handleDateChange}
+                      tileDisabled={tileDisabled}
+                    />
                     {form.date && (
                       <div className="mt-3">
                         <label>Select Time</label>
-                        <select className="form-select" value={form.time} onChange={handleInputChange("time")}>
+                        <select
+                          className="form-select"
+                          value={form.time}
+                          onChange={handleInputChange("time")}
+                        >
                           <option value="">-- Select Time --</option>
                           {availableTimes.map((t, i) => (
-                            <option key={i} value={t}>{t}</option>
+                            <option key={i} value={t}>
+                              {t}
+                            </option>
                           ))}
                         </select>
                       </div>
@@ -229,6 +277,7 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
                   </>
                 )}
 
+                {/* Step 3 - Confirm */}
                 {stage === 3 && (
                   <div className="bg-light p-3 rounded">
                     <h5 className="text-center mb-3">Confirm Booking</h5>
@@ -245,9 +294,10 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
                 {error && <div className="alert alert-danger mt-3">{error}</div>}
               </div>
 
+              {/* Footer buttons */}
               <div className="modal-footer">
                 {stage > 1 && (
-                  <button className="btn btn-secondary" onClick={() => setStage(stage - 1)}>
+                  <button className="btn btn-secondary" onClick={handlePrevious}>
                     Previous
                   </button>
                 )}
@@ -257,7 +307,11 @@ const DemoBookingPopup = ({ isOpen, onClose }) => {
                   </button>
                 )}
                 {stage === 3 && (
-                  <button className="btn btn-success" onClick={handleBookDemo} disabled={isBooking}>
+                  <button
+                    className="btn btn-success"
+                    onClick={handleBookDemo}
+                    disabled={isBooking}
+                  >
                     {isBooking ? "Booking..." : "Book Demo"}
                   </button>
                 )}
