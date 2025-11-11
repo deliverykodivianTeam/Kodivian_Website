@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+
 const LoadingPage = () => {
   return (
     <motion.div
