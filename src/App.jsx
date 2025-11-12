@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import AppNavbar from "./components/AppNavbar";
@@ -21,16 +21,17 @@ import LoadingPage from "./components/LoadingPage";
 import Adminlogin from "./pages/Adminlogin";
 import VisitorDetails from "./pages/VisitorDetails";
 
-
 import "./index.css";
 import "./styles/ChatBox.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-function App() {
+// Wrapper component to conditionally render Belowbar/Chatbox
+function AppContent() {
+  const location = useLocation();
   const [showSplash, setShowSplash] = useState(true);
 
-  // 🕓 Show loading screen for 2.5 seconds
+  // Splash screen
   useEffect(() => {
     const timer = setTimeout(() => {
       const el = document.getElementById("loading-screen");
@@ -45,7 +46,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // 🌍 Track visitor once
+  // Visitor tracking
   useEffect(() => {
     const trackVisitor = async () => {
       try {
@@ -57,37 +58,44 @@ function App() {
     trackVisitor();
   }, []);
 
+  const hideFooterRoutes = ["/admin", "/visitors-list"]; // routes to hide Belowbar and Chatbox
+
+  const showFooter = !hideFooterRoutes.includes(location.pathname);
+
+  return (
+    <div className="relative min-h-screen bg-gradient-to-b from-white via-violet-50 to-purple-100 overflow-hidden">
+      {showSplash && <LoadingPage />}
+      {!showSplash && (
+        <>
+          <ScrollToTop />
+          <AppNavbar />
+          <div className="content pt-0">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/product" element={<Product />} />
+              <Route path="/scanify" element={<ScanifyDetail />} />
+              <Route path="/processbuilder" element={<Processbuilder />} />
+              <Route path="/document" element={<Document />} />
+              <Route path="/robort" element={<Robort />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/admin" element={<Adminlogin />} />
+              <Route path="/visitors-list" element={<VisitorDetails />} />
+            </Routes>
+          </div>
+          {showFooter && <Belowbar />}
+          {showFooter && <Chatbox />}
+        </>
+      )}
+    </div>
+  );
+}
+
+function App() {
   return (
     <Router>
-      <div className="relative min-h-screen bg-gradient-to-b from-white via-violet-50 to-purple-100 overflow-hidden">
-        {/* Splash screen */}
-        {showSplash && <LoadingPage />}
-
-        {/* Main Content */}
-        {!showSplash && (
-          <>
-            <ScrollToTop />
-            <AppNavbar />
-            <div className="content pt-0">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/product" element={<Product />} />
-                <Route path="/scanify" element={<ScanifyDetail />} />
-                <Route path="/processbuilder" element={<Processbuilder />} />
-                <Route path="/document" element={<Document />} />
-                <Route path="/robort" element={<Robort />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/admin" element={<Adminlogin />} />
-                <Route path="/visitors-list" element={<VisitorDetails />} />
-              </Routes>
-            </div>
-            <Belowbar />
-            <Chatbox />
-          </>
-        )}
-      </div>
+      <AppContent />
     </Router>
   );
 }

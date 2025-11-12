@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // <-- for navigation
 import axios from "axios";
 import worldMap from "../assets/world-map.png";
 import pinIcon from "../assets/location-pin.png";
@@ -22,10 +23,11 @@ function WorldMapVisitors() {
 
   useEffect(() => {
     fetchVisitors();
-    const interval = setInterval(fetchVisitors, 30000);
+    const interval = setInterval(fetchVisitors, 30000); // refresh every 30s
     return () => clearInterval(interval);
   }, []);
 
+  // Convert lat/lon to percentage for positioning on map
   const latLonToPercents = (lat, lon) => {
     lat = Math.max(-90, Math.min(90, lat));
     lon = Math.max(-180, Math.min(180, lon));
@@ -34,6 +36,7 @@ function WorldMapVisitors() {
     return { x, y };
   };
 
+  // Create curved SVG path between points
   const createArcPath = (x1, y1, x2, y2, width, height) => {
     const startX = (x1 / 100) * width;
     const startY = (y1 / 100) * height;
@@ -163,6 +166,26 @@ function WorldMapVisitors() {
             })}
         </div>
       </div>
+
+      {/* Admin Button Below Map */}
+     <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
+  <Link
+    to="/admin"
+    style={{
+      display: "inline-block",
+      padding: "10px 20px",
+      backgroundColor: "#6b21a8",
+      color: "#fff",
+      borderRadius: "8px",
+      textDecoration: "none",
+      fontWeight: "600",
+      cursor: "pointer",
+      boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+    }}
+  >
+    Go to Admin
+  </Link>
+</div>
     </div>
   );
 }

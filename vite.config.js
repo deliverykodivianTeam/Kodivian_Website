@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react()], // React plugin — correct
   server: {
     watch: {
       ignored: [
@@ -11,6 +11,6 @@ export default defineConfig({
         "**/venv/**"
       ]
     },
-    port: 5173
+    port: 5173 // dev server port — correct
   }
 });
