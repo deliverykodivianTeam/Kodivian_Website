@@ -1,68 +1,33 @@
-/* ---------------------------
+/* =====================================================
+   🌍 External Imports
+   Must come first (Leaflet map styles)
+===================================================== */
+@import "leaflet/dist/leaflet.css";
+
+/* =====================================================
    ✅ Tailwind Core Imports
---------------------------- */
+   Must follow any @import
+===================================================== */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Import Leaflet map styles (if you use maps) */
-@import "leaflet/dist/leaflet.css";
-
-
 /* =====================================================
-   🚀 Kodivian Loading Screen (Isolated Safe Styling)
-   -----------------------------------------------------
-   Uses unique `.kodi__` prefix to avoid style conflicts
+   🎨 Custom CSS Variables
 ===================================================== */
-
-.kodi__wrapper {
-  background: linear-gradient(
-    to bottom right,
-    #e9d5ff,
-    #c4b5fd,
-    #f5d0fe
-  );
-  color: #1f2937;
-  font-family: 'Inter', system-ui, sans-serif;
-}
-
-.kodi__inner {
-  position: relative;
-  z-index: 10;
-}
-
-.kodi__circle {
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
-  background: linear-gradient(to right, #8b5cf6, #f472b6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  box-shadow: 0 0 25px rgba(168, 85, 247, 0.5);
-}
-
-.kodi__logo {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-.kodi__text {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #374151;
-  letter-spacing: 0.03em;
+:root {
+  --primary-color: #333;
+  --secondary-color: #666;
+  --accent-color: #bb86fc;
+  --bg-color: #f0f0f0;
+  --white-color: #ffffff;
+  --primary-purple: #a020f0;
+  --glow-color: #a020f0;
 }
 
 /* =====================================================
-   🚀 Kodivian Loading Screen (Full Screen Safe Version)
+   🚀 Kodivian Loading Screen
 ===================================================== */
-
 .kodi__wrapper {
   position: fixed !important;
   top: 0 !important;
@@ -72,14 +37,9 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background: linear-gradient(
-    to bottom right,
-    #e9d5ff,
-    #c4b5fd,
-    #f5d0fe
-  ) !important;
+  background: linear-gradient(to bottom right, #e9d5ff, #c4b5fd, #f5d0fe) !important;
   color: #1f2937 !important;
-  font-family: "Inter", system-ui, sans-serif !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
   z-index: 99999 !important;
   overflow: hidden !important;
 }
@@ -118,69 +78,40 @@
   letter-spacing: 0.03em;
 }
 
-
-/* ---------------------------
-   🎨 Custom CSS Variables
---------------------------- */
-:root {
-  --primary-color: #333;
-  --secondary-color: #666;
-  --accent-color: #bb86fc;
-  --bg-color: #f0f0f0;
-  --white-color: #ffffff;
-  --primary-purple: #a020f0; /* Purple accent */
-  --glow-color: #a020f0; /* Glow color (same as purple) */
-}
-
-/* ---------------------------
+/* =====================================================
    🌟 Animations
---------------------------- */
+===================================================== */
 @keyframes pulse {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  70% {
-    transform: translate(-50%, -50%) scale(1.6);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  70% { transform: translate(-50%, -50%) scale(1.6); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 }
 
 @keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
   animation: fade-in 0.8s ease-out;
 }
 
-/* ---------------------------
+/* =====================================================
    📍 Map Pin Pulse Effect
---------------------------- */
+===================================================== */
 .pin-pulse {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #e11d48; /* Rose Red */
+  background: #e11d48;
   border: 2px solid #fff;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   animation: pulse 2s infinite;
 }
 
-/* ---------------------------
-   🖋️ Base Body Styles
---------------------------- */
+/* =====================================================
+   🖋 Base Body Styles
+===================================================== */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -188,22 +119,20 @@ body {
   padding: 0;
   color: var(--primary-color);
   line-height: 1.6;
-  /* ✨ Don’t set a fixed white background — 
-     allows Tailwind gradients to show properly */
 }
 
-/* ---------------------------
+/* =====================================================
    🧭 Layout Helpers
---------------------------- */
+===================================================== */
 .app-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* ---------------------------
+/* =====================================================
    💫 Card & Glow Effects
---------------------------- */
+===================================================== */
 .glow-card {
   background: white;
   border-radius: 16px;
@@ -216,9 +145,9 @@ body {
   box-shadow: 0 0 30px rgba(160, 32, 240, 0.4);
 }
 
-/* ---------------------------
-   🗑️ Delete Icon (Fix white issue)
---------------------------- */
+/* =====================================================
+   🗑️ Delete Icon
+===================================================== */
 .delete-icon {
   color: #a020f0;
   cursor: pointer;
@@ -230,9 +159,9 @@ body {
   transform: scale(1.1);
 }
 
-/* ---------------------------
+/* =====================================================
    ✨ Table Styling
---------------------------- */
+===================================================== */
 .visitor-table {
   width: 100%;
   border-collapse: collapse;
@@ -259,9 +188,9 @@ body {
   background: #faf5ff;
 }
 
-/* ---------------------------
+/* =====================================================
    💻 Responsive Design
---------------------------- */
+===================================================== */
 @media (max-width: 768px) {
   .visitor-table th,
   .visitor-table td {

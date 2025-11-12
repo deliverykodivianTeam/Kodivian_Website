@@ -49,7 +49,7 @@ function App() {
   useEffect(() => {
     const trackVisitor = async () => {
       try {
-        await axios.post("http://127.0.0.1:5000/track", { ip: "" });
+        await axios.post("https://kodivian-website-5.onrender.com/track", { ip: "" });
       } catch (err) {
         console.error("Visitor tracking failed:", err);
       }

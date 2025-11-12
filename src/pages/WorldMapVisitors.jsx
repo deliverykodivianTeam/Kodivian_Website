@@ -3,13 +3,15 @@ import axios from "axios";
 import worldMap from "../assets/world-map.png";
 import pinIcon from "../assets/location-pin.png";
 
+const BASE_URL = "https://kodivian-website-5.onrender.com";
+
 function WorldMapVisitors() {
   const [visitors, setVisitors] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchVisitors = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:5000/visitors");
+      const res = await axios.get(`${BASE_URL}/visitors`);
       setVisitors(res.data || []);
       setLoading(false);
     } catch (err) {
@@ -110,14 +112,7 @@ function WorldMapVisitors() {
             const curr = latLonToPercents(Number(v.lat), Number(v.lon));
             const prevPos = latLonToPercents(Number(prev.lat), Number(prev.lon));
 
-            const pathD = createArcPath(
-              prevPos.x,
-              prevPos.y,
-              curr.x,
-              curr.y,
-              1000,
-              500
-            );
+            const pathD = createArcPath(prevPos.x, prevPos.y, curr.x, curr.y, 1000, 500);
 
             return (
               <path
@@ -168,13 +163,8 @@ function WorldMapVisitors() {
             })}
         </div>
       </div>
-
-      {/* Visitor List */}
-      
-      </div>
- 
+    </div>
   );
 }
-
 
 export default WorldMapVisitors;
