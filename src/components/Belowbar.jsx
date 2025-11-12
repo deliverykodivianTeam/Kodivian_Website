@@ -208,7 +208,7 @@ const Belowbar = () => {
                 product
               </a>
               <a
-                href="/strength"
+                href="/services"
                 className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
               >
                 Strength
@@ -247,7 +247,7 @@ const Belowbar = () => {
                 SERVICES
               </h3>
               <a
-                href="#ai"
+                href="/scanify"
                 className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
               >
                 Artificial Intelligence
@@ -259,7 +259,7 @@ const Belowbar = () => {
                 Business Process Management
               </a>
               <a
-                href="#rpa"
+                href="/processbuilder"
                 className="text-custom-white-300 text-decoration-none fw-semibold hover-text-custom-pink-200"
               >
                 Robotic Process Automation

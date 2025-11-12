@@ -15,8 +15,12 @@ import Robort from "./pages/Robort";
 import Belowbar from "./components/Belowbar";
 import ScrollToTop from "./components/ScrollToTop";
 import Chatbox from "./components/Chatbox";
+
 import LoadingPage from "./components/LoadingPage";
-import VisitorsList from "./pages/VisitorsList";
+
+import Adminlogin from "./pages/Adminlogin";
+import VisitorDetails from "./pages/VisitorDetails";
+
 
 import "./index.css";
 import "./styles/ChatBox.css";
@@ -26,7 +30,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function App() {
   const [showSplash, setShowSplash] = useState(true);
 
-  // 🟣 Show loading screen for 2.5 seconds
+  // 🕓 Show loading screen for 2.5 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       const el = document.getElementById("loading-screen");
@@ -41,7 +45,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // 🌍 Track visitor
+  // 🌍 Track visitor once
   useEffect(() => {
     const trackVisitor = async () => {
       try {
@@ -56,7 +60,7 @@ function App() {
   return (
     <Router>
       <div className="relative min-h-screen bg-gradient-to-b from-white via-violet-50 to-purple-100 overflow-hidden">
-        {/* 🟣 Show splash only while loading */}
+        {/* Splash screen */}
         {showSplash && <LoadingPage />}
 
         {/* Main Content */}
@@ -75,7 +79,8 @@ function App() {
                 <Route path="/document" element={<Document />} />
                 <Route path="/robort" element={<Robort />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/visitors" element={<VisitorsList />} />
+                <Route path="/admin" element={<Adminlogin />} />
+                <Route path="/visitors-list" element={<VisitorDetails />} />
               </Routes>
             </div>
             <Belowbar />
