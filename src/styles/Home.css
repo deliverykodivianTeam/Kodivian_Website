@@ -81,16 +81,17 @@ body {
 }
 
 .product-carousel-custom .product-icon {
-    max-height: 300px;
+    max-height: 250px;
     max-width: 80%;
     object-fit: contain;
 }
 
 .product-carousel-custom .product-description {
-    max-width: 700px;
+    max-width: 1000px;
     margin: 0 auto; /* Center text on small screens */
     color: var(--black-color); /* Ensure product description text is black */
 }
+
 
 /* Custom styles for carousel indicators */
 .product-carousel-custom .carousel-indicators [data-bs-target] {

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import logo from "../assets/kodi logo.png"; // <-- add your image here
 
 const LoadingPage = () => {
   return (
@@ -22,11 +23,21 @@ const LoadingPage = () => {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1, rotate: 360 }}
           transition={{
-            duration: 0.6,
+            duration: 0.5,
             ease: "easeInOut",
           }}
         >
-          <h1 className="kodi__logo">K</h1>
+          <img
+            src={logo}
+            alt="Kodivian Logo"
+            className="kodi__logo-img"
+            style={{
+              width: "100px",
+              height: "100px",
+              borderRadius: "300%",
+              objectFit: "cover",
+            }}
+          />
         </motion.div>
 
         {/* ✨ Brand Text */}

@@ -2,117 +2,120 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 import json
-from datetime import datetime
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
+
+from uuid import uuid4
 
 app = Flask(__name__)
 CORS(app)
 
 VISITOR_FILE = "visitors.json"
-ADMIN_PASSWORD = "admin123"  # change this password
+ADMIN_PASSWORD = "admin123"
+
+ist = now_utc.astimezone(ZoneInfo("Asia/Kolkata"))
 
 
-# 🌍 Get location by IP
+
+# ---------- GEO LOCATION ----------
 def get_location(ip):
     try:
-        res = requests.get(f"http://ip-api.com/json/{ip}").json()
-        if res.get("status") == "success":
-            return {
-                "city": res.get("city", "Unknown"),
-                "country": res.get("country", "Unknown"),
-                "lat": res.get("lat"),
-                "lon": res.get("lon"),
-            }
-        else:
-            return {"city": "Unknown", "country": "Unknown", "lat": None, "lon": None}
-    except Exception as e:
-        print("Location error:", e)
+        TOKEN = "b797850c677468"   # 🔥 paste your token here
+
+        res = requests.get(f"https://ipinfo.io/{ip}/json?token={TOKEN}", timeout=5).json()
+
+        # "loc" returns "lat,lon"
+        loc = res.get("loc", "0,0").split(",")
+
+        return {
+            "city": res.get("city") or "Unknown",
+            "country": res.get("country") or "Unknown",
+            "lat": loc[0],
+            "lon": loc[1],
+        }
+    except:
         return {"city": "Unknown", "country": "Unknown", "lat": None, "lon": None}
 
 
-# 🧾 Track new visitor
-@app.route("/track", methods=["POST"])
-def track():
-    data = request.get_json()
-    ip = data.get("ip")
 
-    # fallback if local
-    if not ip or ip.startswith("127.") or ip == "localhost":
-        try:
-            ip = requests.get("https://api.ipify.org").text
-        except Exception:
-            ip = "127.0.0.1"
-
-    location = get_location(ip)
-    visitor = {
-        "ip": ip,
-        "city": location["city"],
-        "country": location["country"],
-        "lat": location.get("lat"),
-        "lon": location.get("lon"),
-        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-    }
-
+# ---------- READ/WRITE JSON ----------
+def load_visitors():
     try:
         with open(VISITOR_FILE, "r") as f:
-            visitors = json.load(f)
+            return json.load(f)
     except FileNotFoundError:
-        visitors = []
+        return []
 
-    visitors.append(visitor)
+
+def save_visitors(data):
     with open(VISITOR_FILE, "w") as f:
-        json.dump(visitors, f, indent=2)
+        json.dump(data, f, indent=2)
+        
+def get_ist_time():
+    return datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%Y-%m-%d %H:%M:%S")
+
+
+# ---------- TRACK VISITOR ----------
+@app.route("/track", methods=["POST"])
+def track():
+    data = request.get_json() or {}
+
+    # Use frontend geo-data if available
+    ip = data.get("ip", "0.0.0.0")
+    city = data.get("city", "Unknown")
+    region = data.get("region", "")
+    country = data.get("country", "Unknown")
+    lat = data.get("lat", None)
+    lon = data.get("lon", None)
+    timezone_str = data.get("timezone", "Asia/Kolkata")
+
+    # Correct time
+    now_utc = datetime.now(timezone.utc)
+    local_time = now_utc.astimezone(ZoneInfo(timezone_str))
+
+    visitor = {
+        "id": str(uuid4()),
+        "ip": ip,
+        "city": city,
+        "state": region,
+        "country": country,
+        "lat": lat,
+        "lon": lon,
+        "timestamp_utc": now_utc.strftime("%Y-%m-%d %H:%M:%S"),
+        "timestamp_local": local_time.strftime("%Y-%m-%d %H:%M:%S"),
+        "timezone": timezone_str
+    }
+
+    visitors = load_visitors()
+    visitors.append(visitor)
+    save_visitors(visitors)
 
     return jsonify({"status": "success", "visitor": visitor})
 
 
-# 👁️ Public GET endpoint for map
+# ---------- PUBLIC GET ----------
 @app.route("/visitors", methods=["GET"])
 def get_visitors():
-    try:
-        with open(VISITOR_FILE, "r") as f:
-            visitors = json.load(f)
-    except FileNotFoundError:
-        visitors = []
+    visitors = load_visitors()
+    visitors.sort(key=lambda x: x["timestamp_utc"], reverse=True)
     return jsonify(visitors)
 
 
-# 🔐 Admin endpoint
-@app.route("/admin/visitors", methods=["POST"])
-def admin_visitors():
-    data = request.get_json()
-    if data.get("password") != ADMIN_PASSWORD:
-        return jsonify({"error": "Invalid password"}), 401
-    try:
-        with open(VISITOR_FILE, "r") as f:
-            visitors = json.load(f)
-    except FileNotFoundError:
-        visitors = []
-    visitors.sort(key=lambda x: x["timestamp"], reverse=True)
-    return jsonify(visitors)
-
-
-# 🗑 Delete a single visitor
-@app.route("/delete/<timestamp>", methods=["DELETE"])
-def delete_visitor(timestamp):
-    try:
-        with open(VISITOR_FILE, "r") as f:
-            visitors = json.load(f)
-    except FileNotFoundError:
-        visitors = []
-
-    new_visitors = [v for v in visitors if v["timestamp"] != timestamp]
-    with open(VISITOR_FILE, "w") as f:
-        json.dump(new_visitors, f, indent=2)
+# ---------- DELETE ----------
+@app.route("/delete/<visitor_id>", methods=["DELETE"])
+def delete_visitor(visitor_id):
+    visitors = load_visitors()
+    visitors = [v for v in visitors if v["id"] != visitor_id]
+    save_visitors(visitors)
     return jsonify({"status": "deleted"})
 
 
-# 🧹 Clear all visitors
+# ---------- CLEAR ----------
 @app.route("/clear", methods=["DELETE"])
-def clear_visitors():
-    with open(VISITOR_FILE, "w") as f:
-        json.dump([], f)
+def clear_all():
+    save_visitors([])
     return jsonify({"status": "cleared"})
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)

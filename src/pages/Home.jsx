@@ -1,12 +1,12 @@
-import React, { useState } from 'react'; // Import useState
+import React, { useState, useEffect } from 'react';
+ // Import useState
 import { Carousel, Container, Row, Col, Card, Button } from 'react-bootstrap'; // Import Button
 import '../styles/Home.css'; // Import the dedicated CSS file
 
 import Belowbar from "../components/Belowbar"; // Adjust the path if necessary
 
 // Import product images
-import icon1 from '../assets/scanifyprocess.png';
-import icon2 from '../assets/processbuilderpro.png';
+
 import icon3 from  '../assets/scanify-logo.png';
 import icon4 from  '../assets/low-code.png';
 // Client Logo Imports
@@ -31,6 +31,13 @@ import lifecelllogo from '../assets/lifecell-logo.png';
 // Make sure this path is correct for your project structure
 import DemoBookingPopup from "../components/DemoBookingPopup";
 
+async function getClientIP() {
+  const res = await fetch("https://api64.ipify.org?format=json");
+  const data = await res.json();
+  return data.ip;
+}
+
+
 const Home = () => {
     // State to control the visibility of the demo booking popup
     const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false);
@@ -51,6 +58,26 @@ const Home = () => {
         dabicoLogo, dmccLogo, aavaBrandsLogo, tiMedicallogo, Innoventure_logo,
         shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo,teamlogo,lifecelllogo,
     ];
+
+    // ⭐ Track Website Visitor
+useEffect(() => {
+  const trackVisitor = async () => {
+    try {
+      const ip = await getClientIP();
+
+      await fetch("https://kodivian-website-5.onrender.com/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ip }),
+      });
+    } catch (err) {
+      console.error("Visitor tracking failed:", err);
+    }
+  };
+
+  trackVisitor();
+}, []);
+
 
     return (
         <>
@@ -107,27 +134,20 @@ const Home = () => {
                     <Carousel.Item className="bg-light">
                         <Container fluid>
                             <Row className="align-items-center py-5">
-                                <Col md={3} className="text-center">
+                                <Col md={4} className="text-center">
                                     <img
                                         className="d-block mx-auto img-fluid product-icon"
                                         src={icon3}
                                         alt="Scanify Process Icon"
                                     />
                                 </Col>
-                                <Col md={6} className="text-center text-md-start">
-                                    <h1 className="display-4 fw-bold text-violet text-center">Scanify: Intelligent Data Extraction via OCR</h1>
+
+                                <Col md={7} className="text-center text-md-start">
+                                    <h1 className="display-4 fw-bold text-violet text-center full-width-header ">Scanify: Intelligent Data Extraction via OCR</h1>
                                     <p className="lead product-description">
                                         Uses advanced OCR technology to scan documents and extract accurate data instantly. It eliminates the need for manual input by capturing information directly from scanned images or PDFs. Once extracted, the data can be automatically stored or sent to any connected system, making data handling faster, error-free, and efficient.
                                     </p>
                                 </Col>
-                                 <Col md={3} className="text-center">
-                                    <img
-                                        className="d-block mx-auto img-fluid product-icon"
-                                        src={icon1}
-                                        alt="Scanify Process Icon"
-                                    />
-                                </Col>
-                                
                             </Row> 
                         </Container>
                     </Carousel.Item>
@@ -135,8 +155,8 @@ const Home = () => {
                     {/* Slide 2: Process Builder */}
                     <Carousel.Item className="bg-light">
                         <Container fluid>
-                            <Row className="align-items-center py-9">
-                                 <Col md={3} className="text-center">
+                            <Row className="align-items-center py-5">
+                                 <Col md={4} className="text-center">
                                     <img
                                         className="d-block mx-auto img-fluid product-icon"
                                         src={icon4}
@@ -144,18 +164,11 @@ const Home = () => {
                                     />
                                 </Col>
                                 
-                                <Col md={6} className="text-center text-md-start px-5">
-                                    <h1 className="display-4 fw-bold text-violet">Process Builder: Low-Code No-Code Workflow Automation</h1>
+                                <Col md={7} className="text-center text-md-start">
+                                    <h1 className="display-4 fw-bold text-violet text-center full-width-header">Process Builder: Low-Code No-Code Workflow Automation</h1>
                                     <p className="lead product-description">
                                         Uses a no-code platform that lets you drag, drop, and design customized forms effortlessly. Beyond form creation, you can build full workflows within the same interface, assign actions, automate steps, and launch entire applications in one go. It's designed for speed, simplicity, and powerful workflow automation.
                                     </p>
-                                </Col>
-                                 <Col md={3} className="text-center">
-                                    <img
-                                        className="d-block mx-auto img-fluid product-icon"
-                                        src={icon2}
-                                        alt="Scanify Process Icon"
-                                    />
                                 </Col>
                                 
                             </Row>

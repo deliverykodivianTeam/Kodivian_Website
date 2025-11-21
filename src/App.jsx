@@ -26,6 +26,9 @@ import "./styles/ChatBox.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+const BASE_URL = "http://127.0.0.1:5000";
+
+
 // Wrapper component to conditionally render Belowbar/Chatbox
 function AppContent() {
   const location = useLocation();
@@ -47,16 +50,34 @@ function AppContent() {
   }, []);
 
   // Visitor tracking
-  useEffect(() => {
-    const trackVisitor = async () => {
-      try {
-        await axios.post("https://kodivian-website-5.onrender.com/track", { ip: "" });
-      } catch (err) {
-        console.error("Visitor tracking failed:", err);
-      }
-    };
-    trackVisitor();
-  }, []);
+useEffect(() => {
+  if (location.pathname !== "/") return;
+
+  const track = async () => {
+    try {
+      // Get FULL GEOLOCATION from ipapi
+      const res = await fetch("https://ipapi.co/json/");
+      const data = await res.json();
+
+      await axios.post(`${BASE_URL}/track`, {
+        ip: data.ip,
+        city: data.city,
+        region: data.region,
+        country: data.country_name,
+        lat: data.latitude,
+        lon: data.longitude,
+        timezone: data.timezone
+      });
+    } catch (err) {
+      console.error("Tracking failed:", err);
+    }
+  };
+
+  track();
+}, [location.pathname]);
+
+
+
 
   const hideFooterRoutes = ["/admin", "/visitors-list"]; // routes to hide Belowbar and Chatbox
 
@@ -99,5 +120,11 @@ function App() {
     </Router>
   );
 }
+async function getClientIP() {
+  const res = await fetch("https://api64.ipify.org?format=json");
+  const data = await res.json();
+  return data.ip; 
+}
+
 
 export default App;

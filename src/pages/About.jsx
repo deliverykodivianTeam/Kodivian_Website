@@ -185,8 +185,8 @@ const About = () => {
 
       {/* Stats Section */}
       <Container className="py-5 about-stats-sections">
-        <Row className="text-center justify-content-center">
-          <Col xs={6} md={3} className="mb-4">
+        <Row className="text-center justify-content-center g-4">
+          <Col xs={6} md={2} className="mb-4">
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
               <ClockIcon className="w-10 h-10 mb-3" />
             <div className="fs-1 fw-bold text-violet-600">{yearsExperience}</div>
@@ -194,21 +194,21 @@ const About = () => {
               <p className="lead mb-0">Years Experience</p>
             </div>
           </Col>
-          <Col xs={6} md={3} className="mb-4">
+          <Col xs={6} md={2} className="mb-4">
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
               <UserGroupIcon className="w-10 h-10 mb-3" />
               <div className="fs-1 fw-bold text-violet-600">{teamMembersCount}</div>
               <p className="lead mb-0">Team Members</p>
             </div>
           </Col>
-          <Col xs={6} md={3} className="mb-4">
+          <Col xs={6} md={2} className="mb-4">
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
               <HeartIcon className="w-10 h-10 mb-3" />
               <div className="fs-1 fw-bold text-violet-600">{satisfiedClients}</div>
               <p className="lead mb-0">Satisfied Clients</p>
             </div>
           </Col>
-          <Col xs={6} md={3} className="mb-4">
+          <Col xs={6} md={2} className="mb-4">
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
               <CheckCircleIcon className="w-10 h-10 y mb-3" />
               <div className="fs-1 fw-bold text-violet-600">{completeProjects}</div>
@@ -418,5 +418,11 @@ const About = () => {
     </div>
   );
 };
+async function getClientIP() {
+  const res = await fetch("https://api64.ipify.org?format=json");
+  const data = await res.json();
+  return data.ip; 
+}
+
 
 export default About;

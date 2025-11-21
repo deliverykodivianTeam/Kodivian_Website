@@ -28,13 +28,21 @@ function WorldMapVisitors() {
   }, []);
 
   // Convert lat/lon to percentage for positioning on map
-  const latLonToPercents = (lat, lon) => {
-    lat = Math.max(-90, Math.min(90, lat));
-    lon = Math.max(-180, Math.min(180, lon));
-    const x = ((lon + 180) / 360) * 100;
-    const y = ((90 - lat) / 180) * 100;
-    return { x, y };
-  };
+const latLonToPercents = (lat, lon) => {
+  // X (longitude)
+  const x = ((lon + 180) / 360) * 100;
+
+  // Clamp latitude to Mercator safe range
+  lat = Math.max(-85, Math.min(85, lat));
+
+  // Y (latitude using Mercator projection)
+  const latRad = (lat * Math.PI) / 180;
+  const mercN = Math.log(Math.tan(Math.PI / 4 + latRad / 2));
+  const y = (1 - mercN / Math.PI) * 50;
+
+  return { x, y };
+};
+
 
   // Create curved SVG path between points
   const createArcPath = (x1, y1, x2, y2, width, height) => {
@@ -167,25 +175,7 @@ function WorldMapVisitors() {
         </div>
       </div>
 
-      {/* Admin Button Below Map */}
-     <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
-  <Link
-    to="/admin"
-    style={{
-      display: "inline-block",
-      padding: "10px 20px",
-      backgroundColor: "#6b21a8",
-      color: "#fff",
-      borderRadius: "8px",
-      textDecoration: "none",
-      fontWeight: "600",
-      cursor: "pointer",
-      boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-    }}
-  >
-    Go to Admin
-  </Link>
-</div>
+   
     </div>
   );
 }
