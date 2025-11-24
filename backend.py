@@ -12,6 +12,7 @@ app = Flask(__name__)
 CORS(app)
 
 VISITOR_FILE = "visitors.json"
+ADMIN_PASSWORD = "kodi123"
 # optional: set IPINFO token as env var, fallback to None
 IPINFO_TOKEN = os.environ.get("IPINFO_TOKEN")  # set to your token if you have one
 
@@ -71,6 +72,17 @@ def get_location(ip):
     except Exception:
         return {"city": "Unknown", "region": "", "country": "Unknown", "lat": None, "lon": None, "timezone": "UTC"}
 
+@app.route("/admin/visitors", methods=["POST"])
+def admin_login():
+    data = request.get_json()
+    password = data.get("password", "")
+
+    if password != ADMIN_PASSWORD:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    visitors = load_visitors()
+    visitors.sort(key=lambda x: x.get("timestamp_utc", ""), reverse=True)
+    return jsonify(visitors), 200
 
 @app.route("/track", methods=["POST"])
 def track():
