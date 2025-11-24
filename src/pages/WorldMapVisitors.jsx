@@ -1,14 +1,46 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // <-- for navigation
+// WorldMapVisitors.jsx
+import React, { useEffect, useState, useRef } from "react";
+import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from "react-leaflet";
+import L from "leaflet";
 import axios from "axios";
-import worldMap from "../assets/world-map.png";
-import pinIcon from "../assets/location-pin.png";
+import "leaflet/dist/leaflet.css";
+import pinIconUrl from "../assets/location-pin.png"; // fallback icon; optional
 
 const BASE_URL = "https://kodivian-website-5.onrender.com";
 
-function WorldMapVisitors() {
+
+// Custom marker icon to avoid missing icon issues in CRA/Vite
+const createIcon = (size = [28, 28]) =>
+  new L.Icon({
+    iconUrl: pinIconUrl,
+    iconRetinaUrl: pinIconUrl,
+    iconSize: size,
+    iconAnchor: [size[0] / 2, size[1]],
+    popupAnchor: [0, -size[1]],
+  });
+
+function FitBoundsToMarkers({ markers }) {
+  const map = useMap();
+  useEffect(() => {
+    const pts = markers
+      .filter((m) => m.lat !== null && m.lon !== null)
+      .map((m) => [m.lat, m.lon]);
+
+    if (pts.length === 0) return;
+    if (pts.length === 1) {
+      map.setView(pts[0], 10); // zoom default
+      return;
+    }
+    const bounds = L.latLngBounds(pts);
+    map.fitBounds(bounds, { padding: [50, 50] });
+  }, [markers, map]);
+  return null;
+}
+
+export default function WorldMapVisitors() {
   const [visitors, setVisitors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const mapRef = useRef(null);
 
   const fetchVisitors = async () => {
     try {
@@ -23,161 +55,69 @@ function WorldMapVisitors() {
 
   useEffect(() => {
     fetchVisitors();
-    const interval = setInterval(fetchVisitors, 30000); // refresh every 30s
-    return () => clearInterval(interval);
+    const id = setInterval(fetchVisitors, 30000);
+    return () => clearInterval(id);
   }, []);
 
-  // Convert lat/lon to percentage for positioning on map
-const latLonToPercents = (lat, lon) => {
-  // X (longitude)
-  const x = ((lon + 180) / 360) * 100;
-
-  // Clamp latitude to Mercator safe range
-  lat = Math.max(-85, Math.min(85, lat));
-
-  // Y (latitude using Mercator projection)
-  const latRad = (lat * Math.PI) / 180;
-  const mercN = Math.log(Math.tan(Math.PI / 4 + latRad / 2));
-  const y = (1 - mercN / Math.PI) * 50;
-
-  return { x, y };
-};
-
-
-  // Create curved SVG path between points
-  const createArcPath = (x1, y1, x2, y2, width, height) => {
-    const startX = (x1 / 100) * width;
-    const startY = (y1 / 100) * height;
-    const endX = (x2 / 100) * width;
-    const endY = (y2 / 100) * height;
-
-    const curveHeight = Math.abs(endX - startX) * 0.18 + 25;
-    const controlX = (startX + endX) / 2;
-    const controlY = Math.min(startY, endY) - curveHeight;
-
-    return `M${startX},${startY} Q${controlX},${controlY} ${endX},${endY}`;
-  };
+  // draw polyline between last N visitors (most recent sequential route)
+  const polyPoints = visitors
+    .filter((v) => v.lat !== null && v.lon !== null)
+    .slice(0, 40) // show last up to 40
+    .map((v) => [v.lat, v.lon])
+    .reverse(); // reverse so oldest -> newest
 
   return (
-    <div
-      style={{
-        fontFamily: "Inter, sans-serif",
-        padding: "2rem",
-        backgroundColor: "#f8f9fa",
-        minHeight: "100vh",
-      }}
-    >
-      <h2
-        style={{
-          textAlign: "center",
-          marginBottom: "1.5rem",
-          fontWeight: "600",
-          color: "#222",
-        }}
-      >
-        🌍 Website Visitor Dashboard
-      </h2>
+    <div style={{ padding: "1.5rem", maxWidth: 1100, margin: "0 auto" }}>
+      <h2 style={{ textAlign: "center", marginBottom: 16 }}>🌍 Live Visitors</h2>
 
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          maxWidth: 1100,
-          margin: "0 auto",
-          borderRadius: 16,
-          overflow: "hidden",
-          boxShadow: "0 4px 15px rgba(0,0,0,0.15)",
-          backgroundColor: "#fff",
-        }}
-      >
-        {/* World Map Image */}
-        <img
-          src={worldMap}
-          alt="World Map"
-          style={{
-            width: "100%",
-            display: "block",
-            userSelect: "none",
-            pointerEvents: "none",
-          }}
-        />
-
-        {/* SVG Curved Lines */}
-        <svg
-          viewBox="0 0 1000 500"
-          preserveAspectRatio="xMidYMid meet"
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            pointerEvents: "none",
-          }}
+      <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 6px 20px rgba(0,0,0,0.12)" }}>
+        <MapContainer
+          center={[20, 0]}
+          zoom={2}
+          minZoom={2}
+          maxZoom={18} 
+          style={{ height: "580px", width: "100%" }}
+          whenCreated={(mapInstance) => (mapRef.current = mapInstance)}
         >
-          {visitors.map((v, i) => {
-            if (i === 0 || !v.lat || !v.lon) return null;
-            const prev = visitors[i - 1];
-            if (!prev.lat || !prev.lon) return null;
+          <TileLayer
+            attribution='© OpenStreetMap contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
 
-            const curr = latLonToPercents(Number(v.lat), Number(v.lon));
-            const prevPos = latLonToPercents(Number(prev.lat), Number(prev.lon));
+          <FitBoundsToMarkers markers={visitors} />
 
-            const pathD = createArcPath(prevPos.x, prevPos.y, curr.x, curr.y, 1000, 500);
+          {/* Polyline showing recent route */}
+          {polyPoints.length > 1 && (
+            <Polyline positions={polyPoints} weight={2} opacity={0.6} />
+          )}
 
-            return (
-              <path
-                key={i}
-                d={pathD}
-                stroke="rgba(0,0,0,0.6)"
-                strokeWidth="1.3"
-                fill="none"
-                strokeLinecap="round"
-                style={{ opacity: 0.7 }}
-              />
-            );
-          })}
-        </svg>
-
-        {/* Visitor Pins */}
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            width: "100%",
-            height: "100%",
-            pointerEvents: "none",
-          }}
-        >
+          {/* Markers */}
           {visitors
-            .filter((v) => v.lat && v.lon)
-            .map((v, i) => {
-              const pos = latLonToPercents(Number(v.lat), Number(v.lon));
-              return (
-                <img
-                  key={i}
-                  src={pinIcon}
-                  alt="pin"
-                  title={`${v.city || "Unknown"}, ${v.country || "Unknown"}`}
-                  style={{
-                    position: "absolute",
-                    left: `${pos.x}%`,
-                    top: `${pos.y}%`,
-                    width: "22px",
-                    height: "22px",
-                    transform: "translate(-50%, -100%)",
-                    zIndex: 10,
-                  }}
-                />
-              );
-            })}
-        </div>
+            .filter((v) => v.lat !== null && v.lon !== null)
+            .map((v) => (
+              <Marker
+                key={v.id}
+                position={[v.lat, v.lon]}
+                icon={createIcon([26, 26])}
+              >
+                <Popup closeButton={true} autoPan={true}>
+                  <div style={{ minWidth: 180 }}>
+                    <strong>{v.city || "Unknown"}</strong>
+                    <div>{v.state ? v.state + ", " : ""}{v.country}</div>
+                    <div style={{ fontSize: 12, color: "#666", marginTop: 6 }}>
+                      IP: {v.ip} <br />
+                      Local: {v.timestamp_local}
+                    </div>
+                  </div>
+                </Popup>
+              </Marker>
+            ))}
+        </MapContainer>
       </div>
 
-   
+      <div style={{ marginTop: 12, textAlign: "center", color: "#555" }}>
+        {loading ? "Loading visitors…" : `${visitors.length} visitor(s) recorded`}
+      </div>
     </div>
   );
 }
-
-export default WorldMapVisitors;

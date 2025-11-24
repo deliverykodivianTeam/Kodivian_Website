@@ -1,7 +1,9 @@
 /* =====================================================
    🌍 External Imports
    Must come first (Leaflet map styles)
+   
 ===================================================== */
+@import "leaflet/dist/leaflet.css";
 
 /* =====================================================
    ✅ Tailwind Core Imports

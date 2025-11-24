@@ -313,7 +313,9 @@ const handleCloseDemoPopup = () => {
   onClose={handleCloseDemoPopup}
 />
 {/* 🌍 World Map Visitors Section */}
-<WorldMapVisitors />
+<div className="mt-5">
+  <WorldMapVisitors />
+</div>
 
     </div>
   );

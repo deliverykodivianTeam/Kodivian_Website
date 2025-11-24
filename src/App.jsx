@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import axios from "axios";
 
 import AppNavbar from "./components/AppNavbar";
@@ -17,7 +22,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import Chatbox from "./components/Chatbox";
 
 import LoadingPage from "./components/LoadingPage";
-
 import Adminlogin from "./pages/Adminlogin";
 import VisitorDetails from "./pages/VisitorDetails";
 
@@ -26,10 +30,10 @@ import "./styles/ChatBox.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-const BASE_URL = "http://127.0.0.1:5000";
+// You can move this to .env later
+const BASE_URL = "https://kodivian-website-5.onrender.com";
 
 
-// Wrapper component to conditionally render Belowbar/Chatbox
 function AppContent() {
   const location = useLocation();
   const [showSplash, setShowSplash] = useState(true);
@@ -49,38 +53,69 @@ function AppContent() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Visitor tracking
-useEffect(() => {
-  if (location.pathname !== "/") return;
+  // -------------------------------
+  // ★ Visitor Tracking Logic
+  // -------------------------------
+  useEffect(() => {
+    // Track ONLY when user visits home page ("/")
+    if (location.pathname !== "/") return;
 
-  const track = async () => {
-    try {
-      // Get FULL GEOLOCATION from ipapi
-      const res = await fetch("https://ipapi.co/json/");
-      const data = await res.json();
+    const track = async () => {
+      try {
+        // 1) First get IP-based data
+        const res = await fetch("https://ipapi.co/json/");
+        const data = await res.json();
 
-      await axios.post(`${BASE_URL}/track`, {
-        ip: data.ip,
-        city: data.city,
-        region: data.region,
-        country: data.country_name,
-        lat: data.latitude,
-        lon: data.longitude,
-        timezone: data.timezone
-      });
-    } catch (err) {
-      console.error("Tracking failed:", err);
-    }
-  };
+        // 2) Try to get browser GPS for better accuracy
+        let lat = null,
+          lon = null;
 
-  track();
-}, [location.pathname]);
+        if (navigator.geolocation) {
+          const pos = await new Promise((resolve, reject) => {
+            const timer = setTimeout(
+              () => reject(new Error("geolocation timeout")),
+              3000
+            );
+            navigator.geolocation.getCurrentPosition(
+              (p) => {
+                clearTimeout(timer);
+                resolve(p);
+              },
+              () => {
+                clearTimeout(timer);
+                resolve(null);
+              },
+              { maximumAge: 60000, timeout: 3000 }
+            );
+          });
 
+          if (pos) {
+            lat = pos.coords.latitude;
+            lon = pos.coords.longitude;
+          }
+        }
 
+        // 3) Send final tracking data to backend
+        await axios.post(`${BASE_URL}/track`, {
+          ip: data.ip,
+          city: data.city,
+          region: data.region,
+          country: data.country_name,
+          lat,
+          lon,
+          timezone: data.timezone,
+        });
+      } catch (err) {
+        console.error("Tracking failed:", err);
+      }
+    };
 
+    // ❗ IMPORTANT: CALL THE FUNCTION
+    track();
+  }, [location.pathname]);
 
-  const hideFooterRoutes = ["/admin", "/visitors-list"]; // routes to hide Belowbar and Chatbox
-
+  // Hide footer on admin pages
+  const hideFooterRoutes = ["/admin", "/visitors-list"];
   const showFooter = !hideFooterRoutes.includes(location.pathname);
 
   return (
@@ -120,11 +155,5 @@ function App() {
     </Router>
   );
 }
-async function getClientIP() {
-  const res = await fetch("https://api64.ipify.org?format=json");
-  const data = await res.json();
-  return data.ip; 
-}
-
 
 export default App;
