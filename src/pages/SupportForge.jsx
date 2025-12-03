@@ -23,8 +23,8 @@ import {
 import DemoBookingPopup from '../components/DemoBookingPopup';
 
 // Reuse your existing images or update paths as needed
-import processImage from '../assets/processbuuild.png';
-import websiteImage from '../assets/website.png';
+import processImage from '../assets/ticket.png';
+import websiteImage from '../assets/system.png';
 import formImage from '../assets/form.png';
 import workflowImage from '../assets/workflow.png';
 import groupsImage from '../assets/user.png';
@@ -246,82 +246,55 @@ const SupportForge = () => {
                 </Row>
             </Container>
 
-            {/* Workflow Section */}
-            <Container fluid className="tms-workflow-section py-5">
-                <h2 className="tms-workflow-heading display-5 fw-bold text-center mb-3">
-                    Structured workflow from first click to final closure.
-                </h2>
-                <p className="tms-workflow-description lead text-center mb-5 mx-auto">
-                    A clear, step-by-step flow ensures every ticket is handled with clarity,
-                    accountability, and timely action.
-                </p>
 
-                <Row className="tms-workflow-row align-items-center justify-content-center">
-                    <Col lg={7} className="tms-workflow-img-col mb-4 mb-lg-0 text-center">
-                        <Image
-                            src={currentImg}
-                            alt="Ticketing workflow visual"
-                            fluid
-                            className="tms-workflow-image rounded shadow-lg"
-                        />
-                    </Col>
-                    <Col lg={5} className="tms-workflow-accordion-col">
-                        <Accordion
-                            activeKey={expandedSection}
-                            onSelect={handleSectionClick}
-                            className="tms-workflow-accordion"
-                        >
-                            <Accordion.Item eventKey="requestor" className="tms-accordion-item">
-                                <Accordion.Header className="tms-accordion-header">
-                                    <h2 className="tms-accordion-title">1. Requestor</h2>
-                                </Accordion.Header>
-                                <Accordion.Body className="tms-accordion-body">
-                                    <p>
-                                        Creates a ticket with all required details. If revisions are requested,
-                                        they update and resubmit for processing.
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
+{/* Workflow Section */}
+<Container fluid className="tms-workflow-section py-5">
+    <h2 className="text-center fw-bold display-5 mb-3">
+        Structured workflow from first click to final closure.
+    </h2>
 
-                            <Accordion.Item eventKey="supporting" className="tms-accordion-item">
-                                <Accordion.Header className="tms-accordion-header">
-                                    <h2 className="tms-accordion-title">2. Supporting Staff</h2>
-                                </Accordion.Header>
-                                <Accordion.Body className="tms-accordion-body">
-                                    <p>
-                                        Reviews incoming tickets, accepts or rejects requests, resolves them, or
-                                        escalates complex issues to the HOD.
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
+    <p className="text-center lead mb-5 mx-auto" style={{ maxWidth: "800px" }}>
+        Each ticket passes through clearly defined steps to ensure smooth
+        processing, accountability, and timely resolution.
+    </p>
 
-                            <Accordion.Item eventKey="hod" className="tms-accordion-item">
-                                <Accordion.Header className="tms-accordion-header">
-                                    <h2 className="tms-accordion-title">3. Department Head (HOD)</h2>
-                                </Accordion.Header>
-                                <Accordion.Body className="tms-accordion-body">
-                                    <p>
-                                        Handles escalated tickets with actions such as resolve or close, bringing
-                                        higher-level decisions into the workflow.
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
+    <Container style={{ maxWidth: "800px" }}>
 
-                            <Accordion.Item eventKey="ack" className="tms-accordion-item">
-                                <Accordion.Header className="tms-accordion-header">
-                                    <h2 className="tms-accordion-title">4. Requestor Acknowledgement</h2>
-                                </Accordion.Header>
-                                <Accordion.Body className="tms-accordion-body">
-                                    <p>
-                                        The requestor confirms the resolution, ensuring the ticket is officially
-                                        closed with full satisfaction and record.
-                                    </p>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
-                    </Col>
-                </Row>
-            </Container>
+        <div className="p-4 mb-4 border rounded-3">
+            <h4 className="fw-bold mb-2">1. Requestor</h4>
+            <p className="mb-0">
+                Creates a ticket and enters all required details. If clarifications
+                are needed, the requestor updates and resubmits the ticket.
+            </p>
+        </div>
+
+        <div className="p-4 mb-4 border rounded-3">
+            <h4 className="fw-bold mb-2">2. Supporting Staff</h4>
+            <p className="mb-0">
+                Reviews the ticket, accepts or rejects it, provides resolution, or
+                escalates it to the HOD when needed.
+            </p>
+        </div>
+
+        <div className="p-4 mb-4 border rounded-3">
+            <h4 className="fw-bold mb-2">3. Department Head (HOD)</h4>
+            <p className="mb-0">
+                Handles escalated issues, takes final actions, and ensures proper
+                closure or resolution of complex tickets.
+            </p>
+        </div>
+
+        <div className="p-4 border rounded-3">
+            <h4 className="fw-bold mb-2">4. Requestor Acknowledgement</h4>
+            <p className="mb-0">
+                The requestor confirms the resolution and officially closes the
+                ticket in the system.
+            </p>
+        </div>
+
+    </Container>
+</Container>
+
 
             {/* Key Features Grid */}
             <Container className="tms-features-grid-section py-5">
