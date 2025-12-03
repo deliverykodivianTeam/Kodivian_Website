@@ -16,6 +16,7 @@ import Contact from "./pages/Contact";
 import ScanifyDetail from "./pages/ScanifyDetail";
 import Processbuilder from "./pages/Processbuilder";
 import Document from "./pages/Document";
+import SupportForge from "./pages/SupportForge";
 import Robort from "./pages/Robort";
 import Belowbar from "./components/Belowbar";
 import ScrollToTop from "./components/ScrollToTop";
@@ -133,6 +134,7 @@ function AppContent() {
               <Route path="/product" element={<Product />} />
               <Route path="/scanify" element={<ScanifyDetail />} />
               <Route path="/processbuilder" element={<Processbuilder />} />
+              <Route path="/supportforge" element={<SupportForge />} />
               <Route path="/document" element={<Document />} />
               <Route path="/robort" element={<Robort />} />
               <Route path="/contact" element={<Contact />} />

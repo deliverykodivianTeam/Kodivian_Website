@@ -9,6 +9,7 @@ import Belowbar from "../components/Belowbar"; // Adjust the path if necessary
 
 import icon3 from  '../assets/scanify-logo.png';
 import icon4 from  '../assets/low-code.png';
+import icon5 from  '../assets/SFicon.png';
 // Client Logo Imports
 import ponpureLogo from '../assets/ponpure.png';
 import tiCycleLogo from '../assets/tii-logo.png'; 
@@ -174,7 +175,27 @@ useEffect(() => {
                             </Row>
                         </Container>
                     </Carousel.Item>
+                    {/* Slide 3: Support Forge */}
+                    <Carousel.Item className="bg-light">
+                        <Container fluid>
+                            <Row className="align-items-center py-5">
+                                <Col md={4} className="text-center">
+                                    <img
+                                        className="d-block mx-auto img-fluid product-icon"
+                                        src={icon5}
+                                        alt="Support Forge Icon"
+                                    />
+                                </Col>
 
+                                <Col md={7} className="text-center text-md-start">
+                                    <h1 className="display-4 fw-bold text-violet text-center full-width-header ">Support Forge: Ticketing Tool Management System</h1>
+                                    <p className="lead product-description">
+                                      A smart, automated platform that streamlines service requests, approvals, escalations, and resolutions across departments. It ensures faster response times, complete transparency, and seamless workflow management from ticket creation to closure.
+                                    </p>
+                                </Col>
+                            </Row> 
+                        </Container>
+                    </Carousel.Item>
                    
 
                 </Carousel>
