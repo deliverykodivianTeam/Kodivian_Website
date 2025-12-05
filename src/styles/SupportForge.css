@@ -20,6 +20,54 @@ body {
     font-family: 'Inter', sans-serif; /* Keep a professional font */
 }
 
+
+/* Reduce workflow image size (default size on all screens) */
+.tms-workflow-image {
+    max-width: 380px !important; 
+    max-height: 260px !important;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Slightly bigger on tablets */
+@media (min-width: 768px) {
+    .tms-workflow-image {
+        max-width: 420px !important;
+        max-height: 300px !important;
+    }
+}
+
+/* Desktop size (still small and neat) */
+@media (min-width: 992px) {
+    .tms-workflow-image {
+        max-width: 800px !important;
+        max-height: 400px !important;
+    }
+}
+
+/* Increase image size inside the workflow row */
+
+/* Medium size on tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+    .tms-workflow-row .tms-workflow-image {
+        width: 550px !important;
+    }
+}
+
+/* Smaller on mobile */
+@media (max-width: 767px) {
+    .tms-workflow-row .tms-workflow-image {
+        width: 95% !important;
+    }
+}
+
+
+
+
 /* Main page wrapper to ensure full background coverage */
 .pb-main-page-wrapper {
     background-color:none;
@@ -284,7 +332,7 @@ body {
 
 .pb-faq-accordion .pb-faq-accordion-header .accordion-button:not(.collapsed) {
     background-color: var(--pb-light-violet); /* Violet when expanded */
-    color: var(--pb-text-light); /* White text on violet */
+    color: white; /* White text on violet */
     box-shadow: none;
 }
 

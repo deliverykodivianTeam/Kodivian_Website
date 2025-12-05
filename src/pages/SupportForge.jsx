@@ -23,11 +23,13 @@ import {
 import DemoBookingPopup from '../components/DemoBookingPopup';
 
 // Reuse your existing images or update paths as needed
-import processImage from '../assets/ticket.png';
-import websiteImage from '../assets/system.png';
-import formImage from '../assets/form.png';
-import workflowImage from '../assets/workflow.png';
-import groupsImage from '../assets/user.png';
+import processImage from '../assets/reqack.png';
+import websiteImage from '../assets/website.gif';
+import formImage from '../assets/reqland.png';
+import workflowImage from '../assets/supportland.png';
+import groupsImage from '../assets/hodland.png';
+import SF11 from '../assets/SF11.png';
+import net from '../assets/net.png';
 
 import '../styles/SupportForge.css';
 
@@ -136,14 +138,14 @@ const SupportForge = () => {
             {/* Hero Section */}
             <Container fluid className="tms-hero-section py-5">
                 <h1 className="tms-hero-top-heading display-3 fw-bold text-center mb-3">
-                    Smart Ticketing. <br /> Faster Resolutions.
+                    Smart Ticketing.<br/>Faster Resolutions.
                 </h1>
                 <p className="tms-hero-intro lead text-center mb-4 mx-auto">
                     Kodivian Ticketing Management System (TMS) is an intelligent workflow platform
                     to manage service requests, approvals, escalations, and resolutions with
                     complete visibility.
                 </p>
-                <p className="tms-hero-sub-intro text-center mb-5 mx-auto">
+                <p className="tms-hero-sub-intro lead text-center mb-5 mx-auto">
                     From IT helpdesk and facilities to HR and admin services, every request stays
                     organized, traceable, and accountable from creation to closure.
                 </p>
@@ -177,17 +179,24 @@ const SupportForge = () => {
                                 <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
 
                                 <Button
-                                    variant="outline-dark"
-                                    size="lg"
-                                    className="tms-hero-explore-button rounded-pill px-4 py-2"
-                                >
-                                    Explore ticketing features <span className="tms-hero-explore-arrow ms-2">&rarr;</span>
-                                </Button>
+    variant="outline-dark"
+    size="lg"
+    className="tms-hero-explore-button rounded-pill px-4 py-2"
+    onClick={() => {
+        const section = document.getElementById("workflowSection");
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    }}
+>
+    Explore ticketing features <span className="tms-hero-explore-arrow ms-2">&rarr;</span>
+</Button>
+
                             </div>
                         </Col>
                         <Col lg={6} className="tms-hero-right-col text-center">
                             <Image
-                                src={processImage}
+                                src={SF11}
                                 alt="Ticketing workflow preview"
                                 fluid
                                 className="tms-hero-image rounded shadow-lg"
@@ -246,55 +255,87 @@ const SupportForge = () => {
                 </Row>
             </Container>
 
+            {/* Workflow Section */}
+            <Container fluid className="tms-workflow-section" id="workflowSection">
+    <h2 className="tms-workflow-heading display-5 fw-bold text-center">
 
-{/* Workflow Section */}
-<Container fluid className="tms-workflow-section py-5">
-    <h2 className="text-center fw-bold display-5 mb-3">
-        Structured workflow from first click to final closure.
-    </h2>
+                    Structured workflow from first click to final closure.
+                </h2>
+                <p className="tms-workflow-description lead text-center mb-5 mx-auto">
+                    A clear, step-by-step flow ensures every ticket is handled with clarity,
+                    accountability, and timely action.
+                </p>
 
-    <p className="text-center lead mb-5 mx-auto" style={{ maxWidth: "800px" }}>
-        Each ticket passes through clearly defined steps to ensure smooth
-        processing, accountability, and timely resolution.
-    </p>
+                <Row className="tms-workflow-row  ">
+                   {/* replace the Image line inside the workflow Col with this */}
+<Col lg={6} className="tms-workflow-img-col mb-2 mb-lg-0 text-center">
+  <div className="tms-workflow-img-wrapper">
+    <Image
+      src={currentImg}
+      alt="Ticketing workflow visual"
+      className="tms-workflow-image rounded shadow-lg"
+      // NOTE: intentionally NOT using `fluid`
+    />
+  </div>
+</Col>
 
-    <Container style={{ maxWidth: "800px" }}>
+                    <Col lg={6} className="tms-workflow-accordion-col">
+                        <Accordion
+                            activeKey={expandedSection}
+                            onSelect={handleSectionClick}
+                            className="tms-workflow-accordion"
+                        >
+                            <Accordion.Item eventKey="requestor" className="tms-accordion-item">
+                                <Accordion.Header className="tms-accordion-header">
+                                    <h2 className="tms-accordion-title">1. Requestor</h2>
+                                </Accordion.Header>
+                                <Accordion.Body className="tms-accordion-body">
+                                    <p>
+                                        Creates a ticket with all required details. If revisions are requested,
+                                        they update and resubmit for processing.
+                                    </p>
+                                </Accordion.Body>
+                            </Accordion.Item>
 
-        <div className="p-4 mb-4 border rounded-3">
-            <h4 className="fw-bold mb-2">1. Requestor</h4>
-            <p className="mb-0">
-                Creates a ticket and enters all required details. If clarifications
-                are needed, the requestor updates and resubmits the ticket.
-            </p>
-        </div>
+                            <Accordion.Item eventKey="supporting" className="tms-accordion-item">
+                                <Accordion.Header className="tms-accordion-header">
+                                    <h2 className="tms-accordion-title">2. Supporting Staff</h2>
+                                </Accordion.Header>
+                                <Accordion.Body className="tms-accordion-body">
+                                    <p>
+                                        Reviews incoming tickets, accepts or rejects requests, resolves them, or
+                                        escalates complex issues to the HOD.
+                                    </p>
+                                </Accordion.Body>
+                            </Accordion.Item>
 
-        <div className="p-4 mb-4 border rounded-3">
-            <h4 className="fw-bold mb-2">2. Supporting Staff</h4>
-            <p className="mb-0">
-                Reviews the ticket, accepts or rejects it, provides resolution, or
-                escalates it to the HOD when needed.
-            </p>
-        </div>
+                            <Accordion.Item eventKey="hod" className="tms-accordion-item">
+                                <Accordion.Header className="tms-accordion-header">
+                                    <h2 className="tms-accordion-title">3. Department Head (HOD)</h2>
+                                </Accordion.Header>
+                                <Accordion.Body className="tms-accordion-body">
+                                    <p>
+                                        Handles escalated tickets with actions such as resolve or close, bringing
+                                        higher-level decisions into the workflow.
+                                    </p>
+                                </Accordion.Body>
+                            </Accordion.Item>
 
-        <div className="p-4 mb-4 border rounded-3">
-            <h4 className="fw-bold mb-2">3. Department Head (HOD)</h4>
-            <p className="mb-0">
-                Handles escalated issues, takes final actions, and ensures proper
-                closure or resolution of complex tickets.
-            </p>
-        </div>
-
-        <div className="p-4 border rounded-3">
-            <h4 className="fw-bold mb-2">4. Requestor Acknowledgement</h4>
-            <p className="mb-0">
-                The requestor confirms the resolution and officially closes the
-                ticket in the system.
-            </p>
-        </div>
-
-    </Container>
-</Container>
-
+                            <Accordion.Item eventKey="ack" className="tms-accordion-item">
+                                <Accordion.Header className="tms-accordion-header">
+                                    <h2 className="tms-accordion-title">4. Requestor Acknowledgement</h2>
+                                </Accordion.Header>
+                                <Accordion.Body className="tms-accordion-body">
+                                    <p>
+                                        The requestor confirms the resolution, ensuring the ticket is officially
+                                        closed with full satisfaction and record.
+                                    </p>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
+                    </Col>
+                </Row>
+            </Container>
 
             {/* Key Features Grid */}
             <Container className="tms-features-grid-section py-5">
@@ -523,7 +564,7 @@ const SupportForge = () => {
                     </Col>
                     <Col lg={5} className="text-center">
                         <Image
-                            src={websiteImage}
+                            src={net}
                             alt="Kodivian SupportForge dashboard"
                             fluid
                             className="tms-why-image rounded shadow-lg"

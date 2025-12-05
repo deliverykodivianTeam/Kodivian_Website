@@ -21,33 +21,33 @@ import {
 
 import DemoBookingPopup from '../components/DemoBookingPopup';
 import processImage from '../assets/processbuuild.png';
-import websiteImage from '../assets/website.png'; // Default image
+import websiteImage from '../assets/website1.png'; // Default image
 import formImage from '../assets/form.png'; // Image for "Intuitive design tools"
-import workflowImage from '../assets/workflow.png'; // Image for "Familiar workflow"
+import workflowImage from '../assets/workflow.png'; // Image for "Familiar workflow".
 import groupsImage from '../assets/user.png'; // Image for "Groups and layers"
 
 import '../styles/Processbuilder.css'; // Custom styles
 
 const faqData = [
     {
-        question: 'What file types can I upload to Scanify?',
-        answer: 'You can upload PDFs, images (JPEG, PNG), and scanned invoice documents directly from your desktop and cloud storage services.',
+        question: 'What is a No-Code Platform and how does it help our business?',
+        answer: 'A No-Code platform allows you to build applications visually using drag-and-drop tools without writing code.',
     },
     {
-        question: 'Can I upload multiple invoices at once?',
-        answer: 'Yes! Our Invoice Processing allows you to upload and manage multiple invoices in a single batch.',
+        question: 'Can we customize forms, workflows, and rules according to our process?',
+        answer: 'Yes. Everything including forms, fields, dashboards, automation rules, approvals, and integrations can be fully customized to suit your unique business workflow.',
     },
     {
-        question: 'Is the invoice data extraction accurate?',
-        answer: 'Yes, Scanify uses advanced OCR and AI models to ensure high accuracy, even with multi-language support.',
+        question: 'How secure is the data on the No-Code platform?',
+        answer: 'The platform includes built-in security with role-based access, encrypted data, secure hosting, audit logs, and compliance standards like ISO / GDPR support.',
     },
     {
-        question: 'Does Scanify support automatic data transfer to ERP platforms?',
-        answer: 'Yes, invoice data can be automatically pushed to your ERP system, eliminating manual entry and saving time.',
+        question: 'Can the No-Code applications integrate with our existing systems?',
+        answer: 'Yes. Integrations are available through REST APIs, webhooks, connectors, and data import/export tools — ensuring seamless communication with ERP/CRM/HRMS or any external system.',
     },
     {
-        question: 'What can I do from the dashboard?',
-        answer: 'You can upload, view, manage, approve, and export invoices, monitor batch status, and initiate ERP data pushes—all from one smart dashboard.',
+        question: 'Can the platform scale as our business grows and requirements increase?',
+        answer: 'Yes. The platform is built to scale with your organization. You can add more users, modules, data volume, and workflows anytime without performance impact — ensuring long-term flexibility and expansion.',
     },
 ];
 
@@ -335,7 +335,7 @@ const Processbuilder = () => {
             </Container>
 
             {/* FAQ Section */}
-            <Container className="pb-faq-section py-5">
+            <Container className="pb-faq-section  py-5">
                 <h2 className="pb-faq-main-heading display-5 fw-bold text-center mb-5">Frequently Asked Questions</h2>
                 <Accordion activeKey={expandedQuestion} onSelect={handleQuestionClick} className="pb-faq-accordion text-center mx-auto">
                     {faqData.map((faq, index) => (

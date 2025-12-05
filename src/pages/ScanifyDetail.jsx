@@ -345,7 +345,7 @@ const ScanifyDetail = () => {
                                 onClick={closeQueryBox}
                                 aria-label="Close"
                             >
-                                ×
+                                
                             </button>
 
                             <Form.Group className="mb-3">

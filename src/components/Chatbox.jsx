@@ -86,6 +86,17 @@ const responses = [
     ],
     reply: "Yes! We are hiring 🎉. You can send your resume to 📧 WhatsApp: +91 8870435343. Our HR team will contact you if there's a match."
   },
+
+{
+  key: [
+    "internship", "intern", "intern openings", "student internship",
+    "apply internship", "internship available", "looking for internship"
+  ],
+  reply: "Yes! We offer internships to students and freshers 🙌. Please note: **This is an unpaid internship (no payment)**. Send your resume to WhatsApp 📧 +91 8870435343 and our HR team will contact you."
+},
+  { key: ["what is support forge", "support forge", "about support forge", "ticketing system", "ticketing tool"], 
+    reply: "Support Forge is an intelligent Ticketing Management System designed to manage service requests, approvals, escalations, and task resolutions efficiently."
+  },
   {
   key: [
     "thank", "thanks", "thank you", "thankyou",

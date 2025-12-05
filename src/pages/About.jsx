@@ -43,7 +43,7 @@ import Hari from "../assets/Hari.jpg";
 import Kavi from "../assets/kavi.jpg";
 
 const About = () => {
-  const solutions = ["Scanify", "Process Builder"];
+  const solutions = ["Scanify", "Process Builder","Support Forge"];
   const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0);
   const scrollingLogosRef = useRef(null);
 
