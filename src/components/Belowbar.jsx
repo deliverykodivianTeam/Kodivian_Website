@@ -1,3 +1,4 @@
+// src/components/Bottom.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import {
@@ -15,126 +16,169 @@ const Belowbar = () => {
   return (
     <div className="w-100 overflow-hidden">
 
-      {/* Background + Overlay */}
-      <div
-        className="container-fluid p-4 text-white position-relative"
-        style={{
-          backgroundImage: `url(${under})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div
-          className="position-absolute top-0 start-0 w-100 h-100"
-          style={{ backgroundColor: "rgba(0,0,0,0.75)" }}
-        ></div>
+      {/* INLINE CSS FIXES */}
+      <style>
+        {`
+        .contact-row {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: flex-start !important;
+          gap: 15px !important;
+          margin-top: 20px;
+        }
 
-        <div className="position-relative row justify-content-between">
+        .contact-icons {
+          display: flex;
+          flex-direction: column;
+          gap: 27px;
+          min-width: 26px;
+          color: #ffffff !important;
+        }
 
-          {/* LEFT SECTION */}
-          <div className="col-12 col-md-6 mb-4">
+        .contact-texts {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          color: #ffffff !important;
+        }
 
-            <h3 className="fw-bold mb-3">
-              Design better and spend less time <br />
-              without restricting tools creative freedom.
+        @media (max-width: 768px) {
+          .contact-row {
+            flex-direction: row !important;
+            align-items: flex-start !important;
+          }
+          .contact-texts {
+            font-size: 14px !important;
+            gap: 13px;
+            color: #ffffff !important;
+          }
+        }
+
+        .content-with-background {
+          background-image: url(${under});
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          position: relative;
+        }
+
+        .content-with-background::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7);
+          z-index: -1;
+        }
+
+        .text-custom-white-900 { color: #ffffff; }
+        .text-custom-white-300 { color: #d1d5db; }
+        .btn-custom-purple {
+          background-color: #8b5cf6;
+          border-color: #8b5cf6;
+          color: #fff;
+        }
+        `}
+      </style>
+
+      {/* MAIN FOOTER */}
+      <div className="container-fluid p-4 text-white content-with-background position-relative">
+        <div className="row justify-content-between align-items-start">
+
+          {/* LEFT SIDE */}
+          <div className="mb-4 col-12 col-md-6">
+
+            <h3 className="fs-4 text-custom-white-900 fw-bold mb-3">
+              Design better and spend less time <br /> without restricting tools creative freedom.
             </h3>
 
-            <h6 className="text-uppercase mb-2">
+            <h6 className="text-custom-white-900 text-uppercase fs-6 mb-2">
               Sign-up to get interesting updates
             </h6>
 
-            {/* FIXED: EMAIL + BUTTON MOBILE ALIGNMENT */}
-            <div className="row g-2 mb-3">
-              <div className="col-12 col-sm-8">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="form-control py-2"
-                />
-              </div>
-              <div className="col-12 col-sm-4">
-                <button className="btn w-100 py-2 text-white"
-                  style={{ backgroundColor: "#8b5cf6" }}>
-                  Send
-                </button>
-              </div>
+            <div className="d-flex flex-column flex-sm-row mb-3">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="form-control bg-light text-dark rounded py-2 px-3 fs-6 w-100 mb-2 mb-sm-0 me-sm-2"
+              />
+              <button className="btn btn-custom-purple fw-semibold py-2 px-4 rounded fs-6">
+                Send
+              </button>
             </div>
 
-            {/* FIXED: SOCIAL ICONS CENTERED IN MOBILE */}
-            <div className="d-flex gap-3 mb-3 flex-wrap">
-              <a href="#" className="btn btn-outline-light rounded-circle p-2">
-                <FaLinkedin />
-              </a>
-              <a href="#" className="btn btn-outline-light rounded-circle p-2">
-                <FaTwitter />
-              </a>
-              <a href="#" className="btn btn-outline-light rounded-circle p-2">
-                <FaInstagram />
-              </a>
-              <a href="#" className="btn btn-outline-light rounded-circle p-2">
-                <FaFacebook />
-              </a>
+            {/* SOCIAL ICONS */}
+            <div className="d-flex gap-3 mb-3">
+              <Link to="https://www.linkedin.com/company/kodivian-technologies/posts/?feedView=all" className="btn btn-sm btn-outline-light">
+                <FaLinkedin className="fs-5" />
+              </Link>
+              <Link to="https://x.com/i/flow/login?redirect_after_login=%2Fkodivian_tech" className="btn btn-sm btn-outline-light">
+                <FaTwitter className="fs-5" />
+              </Link>
+              <Link to="https://www.instagram.com/kodivian_tech/" className="btn btn-sm btn-outline-light">
+                <FaInstagram className="fs-5" />
+              </Link>
+              <Link to="https://www.facebook.com/p/Kodivian-Technology-100075879827039" className="btn btn-sm btn-outline-light">
+                <FaFacebook className="fs-5" />
+              </Link>
             </div>
 
-            {/* FIXED: ADDRESS BLOCK ALIGNMENT */}
-            <div className="d-flex mt-4">
-              <div className="me-3">
-                <p><FaLocationArrow /> </p>
-                <p><FaPhone /> </p>
-                <p><FaEnvelope /> </p>
+            {/* ⭐ CONTACT ROW FIXED ⭐ */}
+            <div className="contact-row">
+
+              <div className="contact-icons">
+                <FaLocationArrow className="fs-5" />
+                <FaPhone className="fs-5" />
+                <FaEnvelope className="fs-5" />
               </div>
 
-              <div>
-                <p className="mb-1">
-                  Meenakshi Towers, No.13 Rajamannar St, T Nagar, Chennai-600017
-                </p>
-                <p className="mb-1">+91 8870435343</p>
-                <p className="mb-1">vijaysabari.m@kodivian.com</p>
+              <div className="contact-texts">
+                <p className="mb-0 text-white">Meenakshi Towers, No.13 Rajamannar St, T Nagar, Chennai, 600017</p>
+                <p className="mb-0 text-white">+91 8870435343</p>
+                <p className="mb-0 text-white">vijaysabari.m@kodivian.com</p>
               </div>
+
             </div>
+
           </div>
 
-          {/* RIGHT SECTION (NAV LINKS) */}
-          <div className="col-12 col-md-6 mt-4 mt-md-0">
+          {/* RIGHT SIDE — MENUS */}
+          <div className="col-12 col-md-6 mt-4 mt-md-0 d-flex flex-wrap">
 
-            <div className="row">
-
-              {/* OVERALL */}
-              <div className="col-6 col-md-4 mb-4">
-                <h5 className="text-light fw-bold">OVERALL</h5>
-                <a href="/" className="d-block text-white-50">Home</a>
-                <a href="/about" className="d-block text-white-50">About</a>
-                <a href="/product" className="d-block text-white-50">Product</a>
-                <a href="/services" className="d-block text-white-50">Services</a>
-                <a href="/contact" className="d-block text-white-50">Contact</a>
-              </div>
-
-              {/* PRODUCT */}
-              <div className="col-6 col-md-4 mb-4">
-                <h5 className="text-light fw-bold">PRODUCT</h5>
-                <a href="/scanify" className="d-block text-white-50">Scanify</a>
-                <a href="/processbuilder" className="d-block text-white-50">Process Builder</a>
-                <a href="/supportforge" className="d-block text-white-50">Support Forge</a>
-              </div>
-
-              {/* SERVICES */}
-              <div className="col-12 col-md-4 mb-4">
-                <h5 className="text-light fw-bold">SERVICES</h5>
-                <a href="#" className="d-block text-white-50">Artificial Intelligence</a>
-                <a href="#" className="d-block text-white-50">Business Process Management</a>
-                <a href="#" className="d-block text-white-50">Robotic Process Automation</a>
-              </div>
-
+            <div className="col-6 col-sm-4 mb-4">
+              <h3 className="text-custom-white-900 fw-bold">OVERALL</h3>
+              <a href="/" className="text-custom-white-300 d-block">Home</a>
+              <a href="/about" className="text-custom-white-300 d-block">About</a>
+              <a href="/product" className="text-custom-white-300 d-block">Product</a>
+              <a href="/services" className="text-custom-white-300 d-block">Services</a>
+              <a href="/contact" className="text-custom-white-300 d-block">Contact</a>
             </div>
+
+            <div className="col-6 col-sm-4 mb-4">
+              <h3 className="text-custom-white-900 fw-bold">PRODUCT</h3>
+              <a href="/scanify" className="text-custom-white-300 d-block">Scanify</a>
+              <a href="/processbuilder" className="text-custom-white-300 d-block">Process Builder</a>
+              <a href="/supportforge" className="text-custom-white-300 d-block">Support Forge</a>
+            </div>
+
+            <div className="col-12 col-sm-4 mb-4">
+              <h3 className="text-custom-white-900 fw-bold">SERVICES</h3>
+              <a className="text-custom-white-300 d-block" href="/scanify">Artificial Intelligence</a>
+              <a className="text-custom-white-300 d-block"  href="/processbuilder">Business Process Management</a>
+              <a className="text-custom-white-300 d-block"  href="/services">Robotic Process Automation</a>
+            </div>
+
           </div>
 
-        </div>
+          <div className="w-100 fw-semibold text-white p-1 text-center small">
+            Copyright © 2025 All Right Reserved & Designed By Kodivian Technologies
+          </div>
 
-        {/* COPYRIGHT */}
-        <div className="text-center p-2 mt-3">
-          Copyright © 2025 Kodivian Technologies — All Rights Reserved
         </div>
       </div>
+
     </div>
   );
 };

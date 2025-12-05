@@ -125,9 +125,20 @@ const ScanifyDetail = () => {
                                 Get Started a demo
                             </Button>
                             <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
-                            <Button variant="outline-dark" size="lg" className="how-it-works-button-scan rounded-pill">
-                                How it works <span className="ms-2">→</span>
-                            </Button>
+                            <Button
+    variant="outline-dark"
+    size="lg"
+    className="how-it-works-button-scan rounded-pill px-4 py-2"
+    onClick={() => {
+        const section = document.getElementById("scanFunctionSection");
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    }}
+>
+    How it works <span className="ms-2">→</span>
+</Button>
+
                         </div>
                         <p className="trust-message-scan violet-text">
                             Trusted by 50,000+ businesses to scale outbound
@@ -186,7 +197,11 @@ const ScanifyDetail = () => {
             </Container>
 
             {/* OCR Functions Section */}
-            <Container className="ocr-functions-section-scan py-5">
+            <Container
+    className="ocr-functions-section-scan py-5"
+    id="scanFunctionSection"
+>
+
                 <h2 className="ocr-functions-heading-scan display-5 fw-bold violet-text text-center mb-5">
                     Core Functions of OCR in Invoice Processing with SCANIFY
                 </h2>

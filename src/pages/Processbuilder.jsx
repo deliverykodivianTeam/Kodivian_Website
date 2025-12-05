@@ -152,9 +152,20 @@ const Processbuilder = () => {
 </Button>
 
                                 <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
-                                <Button variant="outline-dark" size="lg" className="pb-hero-explore-button rounded-pill px-4 py-2">
-                                    Explore features <span className="pb-hero-explore-arrow ms-2">&rarr;</span>
-                                </Button>
+                               <Button
+    variant="outline-dark"
+    size="lg"
+    className="pb-hero-explore-button rounded-pill px-4 py-2"
+    onClick={() => {
+        const section = document.getElementById("pbFeaturesSection");
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    }}
+>
+    Explore features <span className="pb-hero-explore-arrow ms-2">&rarr;</span>
+</Button>
+
                             </div>
                         </Col>
                         <Col lg={6} className="pb-hero-right-col text-center">
@@ -209,7 +220,11 @@ const Processbuilder = () => {
             </Container>
 
             {/* Features Grid Section */}
-            <Container className="pb-features-grid-section py-5">
+           <Container
+    className="pb-features-grid-section py-5"
+    id="pbFeaturesSection"
+>
+
                 <h1 className="pb-features-grid-main-heading display-5 fw-bold text-center mb-3">Click. Build. Inspire. Repeat!</h1>
                 <p className="pb-features-grid-description lead text-center mb-5 mx-auto">
                     With our flexible components and powerful features, you can create any website you imagine. Whether it’s setting intelligent payment gateways, managing user authentication, or integrating third-party apps, we make it easy to bring your vision to life. Our goal is to make building a no-code website seamless and effortless for you.
@@ -323,9 +338,7 @@ const Processbuilder = () => {
                         frustration of learning Git.
                     </p>
                     <div className="pb-projects-button-group d-flex flex-column flex-md-row gap-3 justify-content-center">
-                        <Button variant="primary" size="lg" className="pb-projects-start-button rounded-pill px-4 py-2">
-                            Start building
-                        </Button>
+                        
                         <Button variant="outline-dark" size="lg" className="pb-projects-book-demo-button rounded-pill px-4 py-2" onClick={handleOpenPopup}>
                             BOOK DEMO
                         </Button>
