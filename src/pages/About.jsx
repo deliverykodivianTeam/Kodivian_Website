@@ -31,6 +31,7 @@ import eastman from "../assets/eastman.png";
 import stedmanlogo from '../assets/stedman-logo.jpeg';
 import teamlogo from '../assets/Team-logo.jpeg';
 import lifecelllogo from '../assets/lifecell-logo.png'; 
+import svr from '../assets/SV&R.png';
 
 // import Kodivian Team members
 import Chairman from "../assets/chairman.jpeg";
@@ -57,7 +58,7 @@ const About = () => {
     ponpureLogo, tiCycleLogo, murugappaLogo, khazanaLogo,
     ezcloud, ionidea, eastman, sharatIndustriesLogo,
     dabicoLogo, dmccLogo, aavaBrandsLogo, tiMedicallogo,
-    Innoventure_logo, shanthigearslogo, stedmanlogo,teamlogo,lifecelllogo,
+    Innoventure_logo, shanthigearslogo, stedmanlogo,teamlogo,lifecelllogo,svr,
   ];
 
   const teamMembers = [
@@ -219,29 +220,22 @@ const About = () => {
       </Container>
 
       {/* Our Valued Clients Section */}
-      <section id="our-client-ok" className="py-5 bg-white overflow-hidden">
-        <Container fluid> {/* Use fluid for full width */}
-          <h2 className="display-5 fw-bold text-center mb-5 ">Our Valued Clients</h2> {/* Using text-primary for violet */}
-          <div
-            className="client-logos-track"
-            ref={scrollingLogosRef}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            {/* Render logos twice to create a seamless loop */}
-            {clientLogos.map((logo, index) => (
-              <div className="client-logo-item" key={`logo-1-${index}`}>
-                <img src={logo} alt={`Client Logo ${index + 1}`} className="" />
-              </div>
-            ))}
-            {clientLogos.map((logo, index) => (
-              <div className="client-logo-item" key={`logo-2-${index}`}>
-                <img src={logo} alt={`Client Logo ${index + 1}`} className="" />
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+   <section id="our-cliented" className="py-5 bg-white overflow-hidden">
+       <Container fluid>
+           <h2 className="display-5 fw-bold text-center mb-5 text-violet">
+               Our Valued Clients
+           </h2>
+   
+           <div className="clients-grid">
+               {clientLogos.map((logo, index) => (
+                   <div className="client-logo-box center" key={index}>
+                       <img src={logo} alt={`Client ${index}`} />
+                   </div>
+               ))}
+           </div>
+       </Container>
+   </section>
+
 
       {/* About Content Sections */}
       <Container className="py-5">

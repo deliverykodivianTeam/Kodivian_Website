@@ -28,6 +28,8 @@ import eastman from '../assets/eastman.png';
 import stedmanlogo from '../assets/stedman-logo.jpeg';
 import teamlogo from '../assets/Team-logo.jpeg';
 import lifecelllogo from '../assets/lifecell-logo.png';
+import svr from '../assets/SV&R.png';
+
 
 // Make sure this path is correct for your project structure
 import DemoBookingPopup from "../components/DemoBookingPopup";
@@ -57,7 +59,7 @@ const Home = () => {
     const clientLogos = [
         ponpureLogo, tiCycleLogo, murugappalogo, khazanaLogo, sharatIndustriesLogo,
         dabicoLogo, dmccLogo, aavaBrandsLogo, tiMedicallogo, Innoventure_logo,
-        shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo,teamlogo,lifecelllogo,
+        shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo,teamlogo,lifecelllogo,svr,
     ];
 
     // ⭐ Track Website Visitor
@@ -281,27 +283,25 @@ useEffect(() => {
             </section>
 
 
-
             {/* Our Valued Clients Section */}
-            <section id="our-cliented" className="py-5 bg-white overflow-hidden">
-                <Container fluid>
-                    <h2 className="display-5 fw-bold text-center mb-5 text-violet">Our Valued Clients</h2>
-                    <div className="client-logos-track">
-                        {/* Render logos twice to create a seamless loop */}
-                        {clientLogos.map((logo, index) => (
-                            <div className="client-logo-item" key={`logo-1-${index}`}>
-                                <img src={logo} alt={`Client Logo ${index + 1}`} className="img-fluid" />
-                            </div>
-                        ))}
-                        {clientLogos.map((logo, index) => (
-                            <div className="client-logo-item" key={`logo-2-${index}`}>
-                                <img src={logo} alt={`Client Logo ${index + 1}`} className="img-fluid" />
-                            </div>
-                        ))}
-                    </div>
-                </Container>
 
-            </section>
+<section id="our-cliented" className="py-5 bg-white overflow-hidden">
+    <Container fluid>
+        <h2 className="display-5 fw-bold text-center mb-5 text-violet">
+            Our Valued Clients
+        </h2>
+
+        <div className="clients-grid">
+            {clientLogos.map((logo, index) => (
+                <div className="client-logo-box center" key={index}>
+                    <img src={logo} alt={`Client ${index}`} />
+                </div>
+            ))}
+        </div>
+    </Container>
+</section>
+
+
 
             {/* This is where the DemoBookingPopup component is rendered */}
             <DemoBookingPopup
