@@ -28,6 +28,7 @@ import eastman from '../assets/eastman.png';
 import stedmanlogo from '../assets/stedman-logo.jpeg';
 import teamlogo from '../assets/Team-logo.jpeg';
 import lifecelllogo from '../assets/lifecell-logo.png';
+import jkf from '../assets/JKF.png';
 import svr from '../assets/SV&R.png';
 
 
@@ -59,7 +60,7 @@ const Home = () => {
     const clientLogos = [
         ponpureLogo, tiCycleLogo, murugappalogo, khazanaLogo, sharatIndustriesLogo,
         dabicoLogo, dmccLogo, aavaBrandsLogo, tiMedicallogo, Innoventure_logo,
-        shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo,teamlogo,lifecelllogo,svr,
+        shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo,teamlogo,lifecelllogo,svr,jkf
     ];
 
     // ⭐ Track Website Visitor
@@ -292,12 +293,21 @@ useEffect(() => {
         </h2>
 
         <div className="clients-grid">
-            {clientLogos.map((logo, index) => (
-                <div className="client-logo-box center" key={index}>
-                    <img src={logo} alt={`Client ${index}`} />
-                </div>
-            ))}
-        </div>
+  {clientLogos.map((logo, index) => {
+    const isLastSingle =
+      clientLogos.length % 3 === 1 &&
+      index === clientLogos.length - 1;
+
+    return (
+      <div
+        key={index}
+        className={`client-logo-box ${isLastSingle ? "center-last-logo" : ""}`}
+      >
+        <img src={logo} alt={`Client ${index + 1}`} />
+      </div>
+    );
+  })}
+</div>
     </Container>
 </section>
 

@@ -164,12 +164,16 @@ body {
 /* FINAL DESKTOP FIX — Reduce Gap */
 @media (min-width: 993px) {
     .clients-grid {
-        grid-template-columns: repeat(6, 1fr) !important;
+        grid-template-columns: repeat(5, 1fr) !important;
         gap: 8px 5px !important; /* row-gap column-gap */
         /* Example:
             40px = vertical gap
             20px = horizontal gap
         */
+    }
+     .center-last-logo {
+    grid-column: 4 / span 1
+    ; /* center column in 3-col grid */
     }
 
     .client-logo-box {
@@ -217,7 +221,10 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-    }
+    } 
+    .center-last-logo {
+    grid-column: 2 / span 1; /* center column in 3-col grid */
+   }
 
     .client-logo-box img {
         max-width: 70px !important;

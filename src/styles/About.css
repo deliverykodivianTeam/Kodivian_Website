@@ -241,6 +241,9 @@
         height: 50px;
         margin: 0 10px;
     }
+    .center-last-logo {
+    grid-column: 2 / span 1; /* center column in 3-col grid */
+   }
     .client-logo-item img {
         /* This line overrides the one you had that used max-height */
         max-height:100%;

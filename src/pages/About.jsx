@@ -32,6 +32,7 @@ import stedmanlogo from '../assets/stedman-logo.jpeg';
 import teamlogo from '../assets/Team-logo.jpeg';
 import lifecelllogo from '../assets/lifecell-logo.png'; 
 import svr from '../assets/SV&R.png';
+import jkf from '../assets/JKF.png';
 
 // import Kodivian Team members
 import Chairman from "../assets/chairman.jpeg";
@@ -58,7 +59,7 @@ const About = () => {
     ponpureLogo, tiCycleLogo, murugappaLogo, khazanaLogo,
     ezcloud, ionidea, eastman, sharatIndustriesLogo,
     dabicoLogo, dmccLogo, aavaBrandsLogo, tiMedicallogo,
-    Innoventure_logo, shanthigearslogo, stedmanlogo,teamlogo,lifecelllogo,svr,
+    Innoventure_logo, shanthigearslogo, stedmanlogo,teamlogo,lifecelllogo,svr,jkf
   ];
 
   const teamMembers = [
@@ -225,14 +226,22 @@ const About = () => {
            <h2 className="display-5 fw-bold text-center mb-5 text-violet">
                Our Valued Clients
            </h2>
-   
-           <div className="clients-grid">
-               {clientLogos.map((logo, index) => (
-                   <div className="client-logo-box center" key={index}>
-                       <img src={logo} alt={`Client ${index}`} />
-                   </div>
-               ))}
-           </div>
+            <div className="clients-grid">
+  {clientLogos.map((logo, index) => {
+    const isLastSingle =
+      clientLogos.length % 3 === 1 &&
+      index === clientLogos.length - 1;
+
+    return (
+      <div
+        key={index}
+        className={`client-logo-box ${isLastSingle ? "center-last-logo" : ""}`}
+      >
+        <img src={logo} alt={`Client ${index + 1}`} />
+      </div>
+    );
+  })}
+</div>
        </Container>
    </section>
 
