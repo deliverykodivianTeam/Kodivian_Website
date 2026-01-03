@@ -16,7 +16,6 @@ import tiCycleLogo from '../assets/tii-logo.png';
 import murugappalogo from '../assets/murugappa.png';
 import khazanaLogo from '../assets/khazana.png';
 import sharatIndustriesLogo from '../assets/sharat-industries.png';
-import dabicoLogo from '../assets/dabico.png';
 import dmccLogo from '../assets/dmcc.png';
 import aavaBrandsLogo from '../assets/aava-logo.jpeg';
 import tiMedicallogo from '../assets/ti-medical-logo.png';
@@ -59,7 +58,7 @@ const Home = () => {
     // Combine all client logos into an array for easier mapping
     const clientLogos = [
         ponpureLogo, tiCycleLogo, murugappalogo, khazanaLogo, sharatIndustriesLogo,
-        dabicoLogo, dmccLogo, aavaBrandsLogo, tiMedicallogo, Innoventure_logo,
+         dmccLogo, aavaBrandsLogo, tiMedicallogo, Innoventure_logo,
         shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo,teamlogo,lifecelllogo,svr,jkf
     ];
 

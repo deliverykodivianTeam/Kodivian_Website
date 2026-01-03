@@ -52,6 +52,8 @@ const faqData = [
 const ScanifyDetail = () => {
     const [isQueryOpen, setIsQueryOpen] = useState(false);
     const [queryText, setQueryText] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userPhone, setUserPhone] = useState('');
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [showImageHighlight, setShowImageHighlight] = useState(false);
 
@@ -62,17 +64,40 @@ const ScanifyDetail = () => {
         setQueryText(event.target.value);
     };
 
-    const handleSendQuery = () => {
-        if (queryText.trim()) {
-            alert(`Your query "${queryText}" has been noted. We will get back to you via email.`);
+    const handleSendQuery = async () => {
+    if (!queryText.trim()) {
+        alert("Please enter your query.");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:5000/send_query", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                query: queryText,
+                page: "Scanify",
+            }),
+        });
+
+        const data = await response.json(); // 👈 IMPORTANT LINE
+
+        if (response.ok) {
+            alert("Query sent successfully. Our team will contact you.");
+            setQueryText("");
             setIsQueryOpen(false);
-            setQueryText('');
-            // In a real scenario, you would use an API call here:
-            // fetch('/api/send-query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: queryText }) });
         } else {
-            alert('Please enter your query.');
+            alert(data.error || "Something went wrong");
         }
-    };
+    } catch (error) {
+        console.error(error);
+        alert("Server not reachable");
+    }
+};
+
+
 
     const handleOpenPopup = () => {
         setIsPopupOpen(true);
@@ -363,16 +388,39 @@ const ScanifyDetail = () => {
                                 
                             </button>
 
-                            <Form.Group className="mb-3">
-                                <Form.Control
-                                    as="textarea"
-                                    rows={4}
-                                    className="query-textarea"
-                                    placeholder="Enter your query here..."
-                                    value={queryText}
-                                    onChange={handleQueryChange}
-                                />
-                            </Form.Group>
+                           <Form.Group className="mb-3">
+                         <Form.Control
+                         type="email"
+                        placeholder="Your Email"
+                         value={userEmail}
+                      onChange={(e) => setUserEmail(e.target.value)}
+        required
+    />
+</Form.Group>
+
+<Form.Group className="mb-3">
+    <Form.Control
+        type="tel"
+        placeholder="Your Phone Number"
+        value={userPhone}
+        onChange={(e) => setUserPhone(e.target.value)}
+        required
+    />
+</Form.Group>
+
+<Form.Group className="mb-3">
+    <Form.Control
+        as="textarea"
+        rows={4}
+        className="query-textarea"
+        placeholder="Enter your query here..."
+        value={queryText}
+        onChange={handleQueryChange}
+        required
+    />
+</Form.Group>
+
+
 
                             <Button
                                 variant="primary"
@@ -386,6 +434,7 @@ const ScanifyDetail = () => {
                 </div>
 
             </Container>
+            
 
             {/* Bottom Section */}
             <div className="bottom-cta-section-scan text-center py-4">

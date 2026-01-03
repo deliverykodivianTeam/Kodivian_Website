@@ -123,6 +123,45 @@ def save_demo_data():
 
     return jsonify({"message": "✅ Demo booking processed and emails sent successfully."})
 
+# ======================================
+# ❓ Website Query Endpoint (Scanify)
+# ======================================
+@app.route("/send_query", methods=["POST"])
+def send_query():
+    data = request.get_json()
+
+    query_text = data.get("query")
+    page = data.get("page", "Website")
+    user_email = data.get("email", "Not provided")
+
+    if not query_text:
+        return jsonify({"error": "Query is required"}), 400
+
+    # ------------------------------
+    # 📨 Internal Team Email
+    # ------------------------------
+    subject = f"❓ New Website Query - {page}"
+
+    html_content = f"""
+    <html>
+    <body style="font-family:Arial,sans-serif;">
+        <h2>New Query Received</h2>
+        <table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
+            <tr><td><b>Page</b></td><td>{page}</td></tr>
+            <tr><td><b>User Email</b></td><td>{user_email}</td></tr>
+            <tr><td><b>Query</b></td><td>{query_text}</td></tr>
+        </table>
+        <p style="margin-top:15px;">📩 Sent from Kodivian website (Scanify)</p>
+    </body>
+    </html>
+    """
+
+    Thread(
+        target=send_email,
+        args=(subject, html_content, INTERNAL_EMAILS)
+    ).start()
+
+    return jsonify({"message": "✅ Query sent successfully"})
 
 # ======================================
 # 🚀 Test Email Route

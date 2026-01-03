@@ -210,7 +210,7 @@
 /* Client Logos Grid */
 .clients-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 columns */
+    grid-template-columns: repeat(6, 1fr); /* Desktop: 4 columns */
     gap: 35px;
     justify-items: center;
     padding: 10px 20px;
