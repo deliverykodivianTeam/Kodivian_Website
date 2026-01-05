@@ -52,6 +52,9 @@ const faqData = [
 const ScanifyDetail = () => {
     const [isQueryOpen, setIsQueryOpen] = useState(false);
     const [queryText, setQueryText] = useState('');
+    const [userName, setUserName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userPhone, setUserPhone] = useState('');
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [showImageHighlight, setShowImageHighlight] = useState(false);
 
@@ -62,17 +65,43 @@ const ScanifyDetail = () => {
         setQueryText(event.target.value);
     };
 
-    const handleSendQuery = () => {
-        if (queryText.trim()) {
-            alert(`Your query "${queryText}" has been noted. We will get back to you via email.`);
+    const handleSendQuery = async () => {
+    if (!queryText.trim()) {
+        alert("Please enter your query.");
+        return;
+    }
+
+    try {
+        const response = await fetch("https://kodivian-website-7.onrender.com/send_query", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: userName,
+                email:userEmail,
+                phone:userPhone,
+                query: queryText,
+                page: "Scanify",
+            }),
+        });
+
+        const data = await response.json(); // 👈 IMPORTANT LINE
+
+        if (response.ok) {
+            alert("Query sent successfully. Our team will contact you.");
+            setQueryText("");
             setIsQueryOpen(false);
-            setQueryText('');
-            // In a real scenario, you would use an API call here:
-            // fetch('/api/send-query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: queryText }) });
         } else {
-            alert('Please enter your query.');
+            alert(data.error || "Something went wrong");
         }
-    };
+    } catch (error) {
+        console.error(error);
+        alert("Server not reachable");
+    }
+};
+
+
 
     const handleOpenPopup = () => {
         setIsPopupOpen(true);
@@ -125,9 +154,20 @@ const ScanifyDetail = () => {
                                 Get Started a demo
                             </Button>
                             <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
-                            <Button variant="outline-dark" size="lg" className="how-it-works-button-scan rounded-pill">
-                                How it works <span className="ms-2">→</span>
-                            </Button>
+                            <Button
+    variant="outline-dark"
+    size="lg"
+    className="how-it-works-button-scan rounded-pill px-4 py-2"
+    onClick={() => {
+        const section = document.getElementById("scanFunctionSection");
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    }}
+>
+    How it works <span className="ms-2">→</span>
+</Button>
+
                         </div>
                         <p className="trust-message-scan violet-text">
                             Trusted by 50,000+ businesses to scale outbound
@@ -186,7 +226,11 @@ const ScanifyDetail = () => {
             </Container>
 
             {/* OCR Functions Section */}
-            <Container className="ocr-functions-section-scan py-5">
+            <Container
+    className="ocr-functions-section-scan py-5"
+    id="scanFunctionSection"
+>
+
                 <h2 className="ocr-functions-heading-scan display-5 fw-bold violet-text text-center mb-5">
                     Core Functions of OCR in Invoice Processing with SCANIFY
                 </h2>
@@ -345,19 +389,51 @@ const ScanifyDetail = () => {
                                 onClick={closeQueryBox}
                                 aria-label="Close"
                             >
-                                ×
+                                
                             </button>
 
                             <Form.Group className="mb-3">
-                                <Form.Control
-                                    as="textarea"
-                                    rows={4}
-                                    className="query-textarea"
-                                    placeholder="Enter your query here..."
-                                    value={queryText}
-                                    onChange={handleQueryChange}
+                              <Form.Control
+                              type="text"
+                              placeholder="Your Name"
+                              value={userName}
+                              onChange={(e) => setUserName(e.target.value)}
+                              required
+                              />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                               <Form.Control
+                               type="email"
+                               placeholder="Your Email"
+                               value={userEmail}
+                               onChange={(e) => setUserEmail(e.target.value)}
+                               required
                                 />
                             </Form.Group>
+
+<Form.Group className="mb-3">
+    <Form.Control
+        type="tel"
+        placeholder="Your Phone Number"
+        value={userPhone}
+        onChange={(e) => setUserPhone(e.target.value)}
+        required
+    />
+</Form.Group>
+
+<Form.Group className="mb-3">
+    <Form.Control
+        as="textarea"
+        rows={4}
+        className="query-textarea"
+        placeholder="Enter your query here..."
+        value={queryText}
+        onChange={handleQueryChange}
+        required
+    />
+</Form.Group>
+
+
 
                             <Button
                                 variant="primary"
@@ -371,6 +447,7 @@ const ScanifyDetail = () => {
                 </div>
 
             </Container>
+            
 
             {/* Bottom Section */}
             <div className="bottom-cta-section-scan text-center py-4">

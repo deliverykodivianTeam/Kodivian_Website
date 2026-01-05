@@ -21,33 +21,33 @@ import {
 
 import DemoBookingPopup from '../components/DemoBookingPopup';
 import processImage from '../assets/processbuuild.png';
-import websiteImage from '../assets/website.png'; // Default image
+import websiteImage from '../assets/website1.png'; // Default image
 import formImage from '../assets/form.png'; // Image for "Intuitive design tools"
-import workflowImage from '../assets/workflow.png'; // Image for "Familiar workflow"
+import workflowImage from '../assets/workflow.png'; // Image for "Familiar workflow".
 import groupsImage from '../assets/user.png'; // Image for "Groups and layers"
 
 import '../styles/Processbuilder.css'; // Custom styles
 
 const faqData = [
     {
-        question: 'What file types can I upload to Scanify?',
-        answer: 'You can upload PDFs, images (JPEG, PNG), and scanned invoice documents directly from your desktop and cloud storage services.',
+        question: 'What is a No-Code Platform and how does it help our business?',
+        answer: 'A No-Code platform allows you to build applications visually using drag-and-drop tools without writing code.',
     },
     {
-        question: 'Can I upload multiple invoices at once?',
-        answer: 'Yes! Our Invoice Processing allows you to upload and manage multiple invoices in a single batch.',
+        question: 'Can we customize forms, workflows, and rules according to our process?',
+        answer: 'Yes. Everything including forms, fields, dashboards, automation rules, approvals, and integrations can be fully customized to suit your unique business workflow.',
     },
     {
-        question: 'Is the invoice data extraction accurate?',
-        answer: 'Yes, Scanify uses advanced OCR and AI models to ensure high accuracy, even with multi-language support.',
+        question: 'How secure is the data on the No-Code platform?',
+        answer: 'The platform includes built-in security with role-based access, encrypted data, secure hosting, audit logs, and compliance standards like ISO / GDPR support.',
     },
     {
-        question: 'Does Scanify support automatic data transfer to ERP platforms?',
-        answer: 'Yes, invoice data can be automatically pushed to your ERP system, eliminating manual entry and saving time.',
+        question: 'Can the No-Code applications integrate with our existing systems?',
+        answer: 'Yes. Integrations are available through REST APIs, webhooks, connectors, and data import/export tools — ensuring seamless communication with ERP/CRM/HRMS or any external system.',
     },
     {
-        question: 'What can I do from the dashboard?',
-        answer: 'You can upload, view, manage, approve, and export invoices, monitor batch status, and initiate ERP data pushes—all from one smart dashboard.',
+        question: 'Can the platform scale as our business grows and requirements increase?',
+        answer: 'Yes. The platform is built to scale with your organization. You can add more users, modules, data volume, and workflows anytime without performance impact — ensuring long-term flexibility and expansion.',
     },
 ];
 
@@ -56,6 +56,9 @@ const Processbuilder = () => {
     const [expandedQuestion, setExpandedQuestion] = useState(null);
     const [isQueryOpen, setIsQueryOpen] = useState(false);
     const [queryText, setQueryText] = useState('');
+    const [userName, setUserName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userPhone, setUserPhone] = useState('');
 
     const handleOpenPopup = () => setIsPopupOpen(true);
     const handleClosePopup = () => setIsPopupOpen(false);
@@ -71,34 +74,47 @@ const Processbuilder = () => {
         setQueryText(event.target.value);
     };
 
-    const handleSendQuery = async () => {
-        if (queryText.trim()) {
-            try {
-                // In a real application, replace this with your actual API endpoint
-                const response = await fetch('http://localhost:5173/processbuilder', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ query: queryText }),
-                });
+   const handleSendQuery = async () => {
+    if (!queryText.trim()) {
+        alert("Please enter your query.");
+        return;
+    }
 
-                if (response.ok) {
-                    alert('Your query has been sent. We will get back to you via email.');
-                    setIsQueryOpen(false);
-                    setQueryText('');
-                } else {
-                    alert('Failed to send your query. Please try again later.');
-                    console.error('Error sending query:', response.status);
-                }
-            } catch (error) {
-                alert('An error occurred while sending your query.');
-                console.error('Fetch error:', error);
-            }
+    try {
+        const response = await fetch("https://kodivian-website-7.onrender.com/send_query", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: userName || "Not Provided",
+                email: userEmail || "Not Provided",
+                phone: userPhone || "Not Provided",
+                query: queryText,
+                page: "Process Builder",
+            }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Query sent successfully. Our team will contact you.");
+            setQueryText("");
+            setUserName("");
+            setUserEmail("");
+            setUserPhone("");
+            setIsQueryOpen(false);
         } else {
-            alert('Please enter your query.');
+            alert(data.error || "Something went wrong");
         }
-    };
+    } catch (error) {
+        console.error(error);
+        alert("Server not reachable");
+    }
+};
+
+
+   
 
     const [expandedSection, setExpandedSection] = useState('intuitive'); // Initialize with 'intuitive' open
     const [currentImg, setCurrentImg] = useState(formImage); // Initialize with the corresponding image
@@ -152,9 +168,20 @@ const Processbuilder = () => {
 </Button>
 
                                 <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
-                                <Button variant="outline-dark" size="lg" className="pb-hero-explore-button rounded-pill px-4 py-2">
-                                    Explore features <span className="pb-hero-explore-arrow ms-2">&rarr;</span>
-                                </Button>
+                               <Button
+    variant="outline-dark"
+    size="lg"
+    className="pb-hero-explore-button rounded-pill px-4 py-2"
+    onClick={() => {
+        const section = document.getElementById("pbFeaturesSection");
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    }}
+>
+    Explore features <span className="pb-hero-explore-arrow ms-2">&rarr;</span>
+</Button>
+
                             </div>
                         </Col>
                         <Col lg={6} className="pb-hero-right-col text-center">
@@ -209,7 +236,11 @@ const Processbuilder = () => {
             </Container>
 
             {/* Features Grid Section */}
-            <Container className="pb-features-grid-section py-5">
+           <Container
+    className="pb-features-grid-section py-5"
+    id="pbFeaturesSection"
+>
+
                 <h1 className="pb-features-grid-main-heading display-5 fw-bold text-center mb-3">Click. Build. Inspire. Repeat!</h1>
                 <p className="pb-features-grid-description lead text-center mb-5 mx-auto">
                     With our flexible components and powerful features, you can create any website you imagine. Whether it’s setting intelligent payment gateways, managing user authentication, or integrating third-party apps, we make it easy to bring your vision to life. Our goal is to make building a no-code website seamless and effortless for you.
@@ -323,9 +354,7 @@ const Processbuilder = () => {
                         frustration of learning Git.
                     </p>
                     <div className="pb-projects-button-group d-flex flex-column flex-md-row gap-3 justify-content-center">
-                        <Button variant="primary" size="lg" className="pb-projects-start-button rounded-pill px-4 py-2">
-                            Start building
-                        </Button>
+                        
                         <Button variant="outline-dark" size="lg" className="pb-projects-book-demo-button rounded-pill px-4 py-2" onClick={handleOpenPopup}>
                             BOOK DEMO
                         </Button>
@@ -335,7 +364,7 @@ const Processbuilder = () => {
             </Container>
 
             {/* FAQ Section */}
-            <Container className="pb-faq-section py-5">
+            <Container className="pb-faq-section  py-5">
                 <h2 className="pb-faq-main-heading display-5 fw-bold text-center mb-5">Frequently Asked Questions</h2>
                 <Accordion activeKey={expandedQuestion} onSelect={handleQuestionClick} className="pb-faq-accordion text-center mx-auto">
                     {faqData.map((faq, index) => (
@@ -371,16 +400,51 @@ const Processbuilder = () => {
         &times;
       </Button>
 
-      <Form.Group className="mb-3">
-        <Form.Control
-          as="textarea"
-          rows={4}
-          className="query-textarea form-control"
-          placeholder="Enter your query here..."
-          value={queryText}
-          onChange={handleQueryChange}
-        />
-      </Form.Group>
+     
+
+                          <Form.Group className="mb-3">
+                              <Form.Control
+                              type="text"
+                              placeholder="Your Name"
+                              value={userName}
+                              onChange={(e) => setUserName(e.target.value)}
+                              required
+                              />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                               <Form.Control
+                               type="email"
+                               placeholder="Your Email"
+                               value={userEmail}
+                               onChange={(e) => setUserEmail(e.target.value)}
+                               required
+                                />
+                            </Form.Group>
+
+<Form.Group className="mb-3">
+    <Form.Control
+        type="tel"
+        placeholder="Your Phone Number"
+        value={userPhone}
+        onChange={(e) => setUserPhone(e.target.value)}
+        required
+    />
+</Form.Group>
+
+<Form.Group className="mb-3">
+    <Form.Control
+        as="textarea"
+        rows={4}
+        className="query-textarea"
+        placeholder="Enter your query here..."
+        value={queryText}
+        onChange={handleQueryChange}
+        required
+    />
+</Form.Group>
+
+      
+      
 
       <Button
         variant="primary"

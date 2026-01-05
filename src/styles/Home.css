@@ -81,16 +81,17 @@ body {
 }
 
 .product-carousel-custom .product-icon {
-    max-height: 300px;
+    max-height: 250px;
     max-width: 80%;
     object-fit: contain;
 }
 
 .product-carousel-custom .product-description {
-    max-width: 500px;
+    max-width: 1000px;
     margin: 0 auto; /* Center text on small screens */
     color: var(--black-color); /* Ensure product description text is black */
 }
+
 
 /* Custom styles for carousel indicators */
 .product-carousel-custom .carousel-indicators [data-bs-target] {
@@ -133,91 +134,101 @@ body {
     color: var(--black-color); /* Card text should be black */
 }
 
-/* Client Logos Track for seamless animation */
-#our-clients {
-    background-color: var(--light-grey-bg); /* Match background with carousel for consistency */
-    border-top: 2px solid var(--kodivian-violet);
-    border-bottom: 2px solid var(--kodivian-violet);
+/* Client Logos Grid */
+/* Desktop Default (≥ 1200px) */
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    justify-items: center;
+    padding: 20px 40px;
 }
 
-.client-logos-track {
+.client-logo-box {
+    width: 180px;
+    height: 110px;
     display: flex;
-    animation: scroll-left 40s linear infinite; /* Adjust duration for speed */
-    width: max-content; /* Ensure track is wide enough for all logos */
-    padding: 20px 0; /* Add some vertical padding */
-    white-space: nowrap; /* Prevent items from wrapping to the next line */
-    /* If you have a specific number of logos and want to calculate width, you can do so.
-       For a seamless loop with `transformX(-50%)`, you generally need your content duplicated. */
-}
-
-.client-logos-track:hover {
-    animation-play-state: paused; /* Pause animation on hover */
-}
-
-.client-logo-item {
-    flex-shrink: 0; /* Prevent logos from shrinking */
-    display: flex;
-    align-items: center;
     justify-content: center;
-    margin: 0 40px; /* Space between logos */
-    opacity: 0.8; /* Slightly reduced opacity for a subtle effect */
-    transition: opacity 0.3s ease; /* Smooth transition for opacity change */
+    align-items: center;
 }
 
-.client-logo-item:hover {
-    opacity: 1; /* Full opacity on hover */
+.client-logo-box img {
+    max-width: 150px;
+    max-height: 80px;
 }
 
-.client-logo-item img {
-    max-height: 80px; /* Max height for the logos */
-    width: auto; /* Maintain aspect ratio */
-    object-fit: contain; /* Ensures the entire image is visible within the bounds */
-}
 
-/* Keyframes for the continuous scroll animation */
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0%);
+
+
+/* ---------------- MOBILE BREAKPOINTS ---------------- */
+/* FINAL DESKTOP FIX — Reduce Gap */
+@media (min-width: 993px) {
+    .clients-grid {
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 8px 5px !important; /* row-gap column-gap */
+        /* Example:
+            40px = vertical gap
+            20px = horizontal gap
+        */
     }
-    100% {
-        transform: translateX(-50%); /* Scrolls exactly half the total width for a seamless loop */
+     .center-last-logo {
+    grid-column: 4 / span 1
+    ; /* center column in 3-col grid */
+    }
+
+    .client-logo-box {
+        width: 160px !important;
+        height: 100px !important;
+    }
+
+    .client-logo-box img {
+        max-width: 130px !important;
+        max-height: 75px !important;
     }
 }
-
-/* Responsive adjustments */
+/* --------------------------------------------------- */
+/* LARGE MOBILE (≤ 768px) → 3 columns                  */
 @media (max-width: 768px) {
-    .product-carousel-custom .carousel-item .col-md-6 {
-        order: unset !important; /* Reset order for smaller screens */
+    .clients-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 20px !important;
     }
 
-    .product-carousel-custom .py-5 {
-        padding-top: 3rem !important;
-        padding-bottom: 3rem !important;
+    .client-logo-box {
+        width: 110px !important;
+        height: 90px !important;
     }
 
-    .product-carousel-custom .product-description {
-        text-align: center;
-        padding-left: 15px;
-        padding-right: 15px;
+    .client-logo-box img {
+        max-width: 100px !important;
+        max-height: 70px !important;
+    }
+}
+
+
+/* SMALL MOBILE (≤ 420px) → 4 columns (your original)  */
+/* --------------------------------------------------- */
+@media (max-width: 420px) {
+    .clients-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+        justify-items: center;
     }
 
-    .product-carousel-custom .text-md-start {
-        text-align: center !important;
-    }
+    .client-logo-box {
+        width: 60px !important;
+        height: 60px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } 
+    .center-last-logo {
+    grid-column: 2 / span 1; /* center column in 3-col grid */
+   }
 
-    .product-carousel-custom .text-md-end {
-        text-align: center !important;
-    }
-
-    .client-logo-item {
-        margin: 0 20px; /* Less space between logos on smaller screens */
-    }
-
-    .client-logo-item img {
-        max-height: 60px; /* Smaller logos on mobile */
-    }
-
-    .client-logos-track {
-        animation-duration: 25s; /* Faster scroll on smaller screens */
+    .client-logo-box img {
+        max-width: 70px !important;
+        max-height: 55px !important;
+        object-fit: contain;
     }
 }

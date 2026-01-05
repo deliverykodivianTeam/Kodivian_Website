@@ -52,8 +52,6 @@
 }
 
 
-
-
 .member-role {
   color: #6c757d;
 }
@@ -205,4 +203,49 @@
 /* Specific class for the rotating solution text to ensure it's violet */
 .colored-solution {
     color: var(--primary-violet); /* Ensures this specific span is violet */
+}
+
+/* 1. Set a fixed, uniform size for the container of each logo */
+
+/* Client Logos Grid */
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Desktop: 4 columns */
+    gap: 35px;
+    justify-items: center;
+    padding: 10px 20px;
+}
+
+.client-logo-box {
+    width: 150px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.client-logo-box img {
+    max-width: 110px;
+    max-height: 80px;
+    object-fit: contain;
+} 
+
+
+
+/* --- UPDATE: Ensure the media query respects the new item size --- */
+@media (max-width: 768px) {
+    /* Existing media query code... */
+    .client-logo-item {
+        /* Reduce the size on smaller screens */
+        width: 100px;
+        height: 50px;
+        margin: 0 10px;
+    }
+    .center-last-logo {
+    grid-column: 2 / span 1; /* center column in 3-col grid */
+   }
+    .client-logo-item img {
+        /* This line overrides the one you had that used max-height */
+        max-height:100%;
+    }
 }

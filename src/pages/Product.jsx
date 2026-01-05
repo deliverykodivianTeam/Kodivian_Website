@@ -1,8 +1,7 @@
 import "../styles/Product.css";
 import SampleImage from '../assets/Scanify.png';
-import intellidocs from '../assets/intellidocs.png';
 import processbuilder from '../assets/process_builder.png';
-import rpa from '../assets/rpa.png';
+import SupportForge from '../assets/SF.png';
 import DemoBookingPopup from '../components/DemoBookingPopup';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -18,7 +17,7 @@ const Product = () => {
     const products = [
         { name: "Scanify", description: "Intelligent Invoice Processing solution that automates data extraction from invoices, reducing manual effort and errors. It streamlines accounts payable workflows, improves accuracy, and accelerates processing times. Scanify integrates seamlessly with existing accounting systems for enhanced efficiency.", image: SampleImage, link: "/scanify" },
         { name: "Process Builder", description: "A No-Code Workflow Automation platform empowering businesses to design and automate workflows without writing any code. It enables seamless integration between various applications, improves operational efficiency, and provides real-time visibility into process execution. Process Builder is highly customizable and scalable to meet evolving business needs.", image: processbuilder, link: "/processbuilder" },
-
+        { name: "Support Forge", description: " A smart, automated platform that streamlines service requests, approvals, escalations, and resolutions across departments. It ensures faster response times, complete transparency, and seamless workflow management from ticket creation to closure.", image: SupportForge, link: "/SupportForge" },
     ];
 
     const handleOpenDemoPopup = () => {

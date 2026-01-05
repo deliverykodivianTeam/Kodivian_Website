@@ -1,25 +1,24 @@
-import React, { useState } from 'react'; // Import useState
+import React, { useState, useEffect } from 'react';
+ // Import useState
 import { Carousel, Container, Row, Col, Card, Button } from 'react-bootstrap'; // Import Button
 import '../styles/Home.css'; // Import the dedicated CSS file
 
 import Belowbar from "../components/Belowbar"; // Adjust the path if necessary
 
 // Import product images
-import icon1 from '../assets/scanifyprocess.png';
-import icon2 from '../assets/processbuilderpro.png';
-import icon3 from '../assets/rpapro.png';
-import icon4 from '../assets/docpro.png'; // Assuming this is for IntelliDocs
 
+import icon3 from  '../assets/scanify-logo.png';
+import icon4 from  '../assets/low-code.png';
+import icon5 from  '../assets/SFicon.png';
 // Client Logo Imports
 import ponpureLogo from '../assets/ponpure.png';
-import tiCycleLogo from '../assets/ti-cycle.png';
+import tiCycleLogo from '../assets/tii-logo.png'; 
 import murugappalogo from '../assets/murugappa.png';
 import khazanaLogo from '../assets/khazana.png';
 import sharatIndustriesLogo from '../assets/sharat-industries.png';
-import dabicoLogo from '../assets/dabico.png';
 import dmccLogo from '../assets/dmcc.png';
-import aavaBrandsLogo from '../assets/aava-brands.png';
-import tiMedicallogo from '../assets/ti_medical.png';
+import aavaBrandsLogo from '../assets/aava-logo.jpeg';
+import tiMedicallogo from '../assets/ti-medical-logo.png';
 import Innoventure_logo from '../assets/3xper_innoventure_limited_logo.png';
 import shanthigearslogo from '../assets/shanthi-gears.png';
 import ezcloud from '../assets/ezcloud.png';
@@ -27,10 +26,20 @@ import ionidea from '../assets/ionidea.png';
 import eastman from '../assets/eastman.png';
 import stedmanlogo from '../assets/stedman-logo.jpeg';
 import teamlogo from '../assets/Team-logo.jpeg';
-import lifecelllogo from '../assets/Lifecell-logo.jpg';
+import lifecelllogo from '../assets/lifecell-logo.png';
+import jkf from '../assets/JKF.png';
+import svr from '../assets/SV&R.png';
+
 
 // Make sure this path is correct for your project structure
 import DemoBookingPopup from "../components/DemoBookingPopup";
+
+async function getClientIP() {
+  const res = await fetch("https://api64.ipify.org?format=json");
+  const data = await res.json();
+  return data.ip;
+}
+
 
 const Home = () => {
     // State to control the visibility of the demo booking popup
@@ -49,9 +58,29 @@ const Home = () => {
     // Combine all client logos into an array for easier mapping
     const clientLogos = [
         ponpureLogo, tiCycleLogo, murugappalogo, khazanaLogo, sharatIndustriesLogo,
-        dabicoLogo, dmccLogo, aavaBrandsLogo, tiMedicallogo, Innoventure_logo,
-        shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo,teamlogo,lifecelllogo,
+         dmccLogo, aavaBrandsLogo, tiMedicallogo, Innoventure_logo,
+        shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo,teamlogo,lifecelllogo,svr,jkf
     ];
+
+    // ⭐ Track Website Visitor
+useEffect(() => {
+  const trackVisitor = async () => {
+    try {
+      const ip = await getClientIP();
+
+      await fetch("https://kodivian-website-5.onrender.com/track", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ip }),
+      });
+    } catch (err) {
+      console.error("Visitor tracking failed:", err);
+    }
+  };
+
+  trackVisitor();
+}, []);
+
 
     return (
         <>
@@ -108,44 +137,67 @@ const Home = () => {
                     <Carousel.Item className="bg-light">
                         <Container fluid>
                             <Row className="align-items-center py-5">
-                                <Col md={6} className="text-center">
+                                <Col md={4} className="text-center">
                                     <img
                                         className="d-block mx-auto img-fluid product-icon"
-                                        src={icon1}
+                                        src={icon3}
                                         alt="Scanify Process Icon"
                                     />
                                 </Col>
-                                <Col md={6} className="text-center text-md-start">
-                                    <h1 className="display-4 fw-bold text-violet">Scanify: Intelligent Data Extraction via OCR</h1>
+
+                                <Col md={7} className="text-center text-md-start">
+                                    <h1 className="display-4 fw-bold text-violet text-center full-width-header ">Scanify: Intelligent Data Extraction via OCR</h1>
                                     <p className="lead product-description">
-                                        uses advanced OCR technology to scan documents and extract accurate data instantly. It eliminates the need for manual input by capturing information directly from scanned images or PDFs. Once extracted, the data can be automatically stored or sent to any connected system, making data handling faster, error-free, and efficient.
+                                        Uses advanced OCR technology to scan documents and extract accurate data instantly. It eliminates the need for manual input by capturing information directly from scanned images or PDFs. Once extracted, the data can be automatically stored or sent to any connected system, making data handling faster, error-free, and efficient.
                                     </p>
                                 </Col>
-                            </Row>
+                            </Row> 
                         </Container>
                     </Carousel.Item>
 
                     {/* Slide 2: Process Builder */}
                     <Carousel.Item className="bg-light">
                         <Container fluid>
-                            <Row className="align-items-center py-9">
-                                <Col md={{ span: 6, order: 'last' }} className="text-center text-md-end">
+                            <Row className="align-items-center py-5">
+                                 <Col md={4} className="text-center">
                                     <img
                                         className="d-block mx-auto img-fluid product-icon"
-                                        src={icon2}
-                                        alt="Process Builder Pro Icon"
+                                        src={icon4}
+                                        alt="Scanify Process Icon"
                                     />
                                 </Col>
-                                <Col md={6} className="text-center text-md-start px-5">
-                                    <h1 className="display-4 fw-bold text-violet">Process Builder: Low-Code/No-Code Workflow Automation</h1>
+                                
+                                <Col md={7} className="text-center text-md-start">
+                                    <h1 className="display-4 fw-bold text-violet text-center full-width-header">Process Builder: Low-Code No-Code Workflow Automation</h1>
                                     <p className="lead product-description">
                                         Uses a no-code platform that lets you drag, drop, and design customized forms effortlessly. Beyond form creation, you can build full workflows within the same interface, assign actions, automate steps, and launch entire applications in one go. It's designed for speed, simplicity, and powerful workflow automation.
                                     </p>
                                 </Col>
+                                
                             </Row>
                         </Container>
                     </Carousel.Item>
+                    {/* Slide 3: Support Forge */}
+                    <Carousel.Item className="bg-light">
+                        <Container fluid>
+                            <Row className="align-items-center py-5">
+                                <Col md={4} className="text-center">
+                                    <img
+                                        className="d-block mx-auto img-fluid product-icon"
+                                        src={icon5}
+                                        alt="Support Forge Icon"
+                                    />
+                                </Col>
 
+                                <Col md={7} className="text-center text-md-start">
+                                    <h1 className="display-4 fw-bold text-violet text-center full-width-header ">Support Forge: Ticketing Tool Management System</h1>
+                                    <p className="lead product-description">
+                                      A smart, automated platform that streamlines service requests, approvals, escalations, and resolutions across departments. It ensures faster response times, complete transparency, and seamless workflow management from ticket creation to closure.
+                                    </p>
+                                </Col>
+                            </Row> 
+                        </Container>
+                    </Carousel.Item>
                    
 
                 </Carousel>
@@ -231,27 +283,34 @@ const Home = () => {
             </section>
 
 
-
             {/* Our Valued Clients Section */}
-            <section id="our-cliented" className="py-5 bg-white overflow-hidden">
-                <Container fluid>
-                    <h2 className="display-5 fw-bold text-center mb-5 text-violet">Our Valued Clients</h2>
-                    <div className="client-logos-track">
-                        {/* Render logos twice to create a seamless loop */}
-                        {clientLogos.map((logo, index) => (
-                            <div className="client-logo-item" key={`logo-1-${index}`}>
-                                <img src={logo} alt={`Client Logo ${index + 1}`} className="img-fluid" />
-                            </div>
-                        ))}
-                        {clientLogos.map((logo, index) => (
-                            <div className="client-logo-item" key={`logo-2-${index}`}>
-                                <img src={logo} alt={`Client Logo ${index + 1}`} className="img-fluid" />
-                            </div>
-                        ))}
-                    </div>
-                </Container>
 
-            </section>
+<section id="our-cliented" className="py-5 bg-white overflow-hidden">
+    <Container fluid>
+        <h2 className="display-5 fw-bold text-center mb-5 text-violet">
+            Our Valued Clients
+        </h2>
+
+        <div className="clients-grid">
+  {clientLogos.map((logo, index) => {
+    const isLastSingle =
+      clientLogos.length % 3 === 1 &&
+      index === clientLogos.length - 1;
+
+    return (
+      <div
+        key={index}
+        className={`client-logo-box ${isLastSingle ? "center-last-logo" : ""}`}
+      >
+        <img src={logo} alt={`Client ${index + 1}`} />
+      </div>
+    );
+  })}
+</div>
+    </Container>
+</section>
+
+
 
             {/* This is where the DemoBookingPopup component is rendered */}
             <DemoBookingPopup

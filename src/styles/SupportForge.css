@@ -1,0 +1,416 @@
+/* Custom properties for your light theme with violet accents */
+:root {
+    --pb-light-bg: #f8f9fa; /* Very light gray, Bootstrap's default body bg */
+    --pb-section-bg-alt: #ffffff; /* Pure white for alternating sections/cards */
+    --pb-text-dark: #212529; /* Bootstrap's default dark text */
+    --pb-text-muted: #6c757d; /* Bootstrap's muted text for descriptions */
+    --pb-light-violet: #8A2BE2; /* Primary violet */
+    --pb-dark-violet: #6a1bb9; /* Darker violet for hover/accents */
+    --pb-border-light: #dee2e6; /* Light grey border */
+    --pb-card-shadow: rgba(0, 0, 0, 0.1); /* Light shadow for cards */
+    --pb-button-primary-bg: #8A2BE2; /* Violet button background */
+    --pb-button-primary-hover-bg: #6a1bb9; /* Darker violet on hover */
+    --pb-accent-green: #28a745; /* Green for success/new badges */
+}
+
+/* Global body styling */
+body {
+    background-color: var(--pb-light-bg);
+    color: var(--pb-text-dark); /* Default text color is black/dark gray */
+    font-family: 'Inter', sans-serif; /* Keep a professional font */
+}
+
+
+/* Reduce workflow image size (default size on all screens) */
+.tms-workflow-image {
+    max-width: 380px !important; 
+    max-height: 260px !important;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Slightly bigger on tablets */
+@media (min-width: 768px) {
+    .tms-workflow-image {
+        max-width: 420px !important;
+        max-height: 300px !important;
+    }
+}
+
+/* Desktop size (still small and neat) */
+@media (min-width: 992px) {
+    .tms-workflow-image {
+        max-width: 800px !important;
+        max-height: 400px !important;
+    }
+}
+
+/* Increase image size inside the workflow row */
+
+/* Medium size on tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+    .tms-workflow-row .tms-workflow-image {
+        width: 550px !important;
+    }
+}
+
+/* Smaller on mobile */
+@media (max-width: 767px) {
+    .tms-workflow-row .tms-workflow-image {
+        width: 95% !important;
+    }
+}
+
+
+
+
+/* Main page wrapper to ensure full background coverage */
+.pb-main-page-wrapper {
+    background-color:none;
+}
+
+/* --- Hero Section --- */
+.pb-hero-section {
+    background-color: var(--pb-section-bg-alt); /* White background for hero */
+    color: var(--pb-text-dark); /* Default text dark for this section */
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.pb-hero-top-heading {
+    color: var(--pb-text-dark); /* Black for the top heading */
+}
+
+.pb-hero-main-heading {
+    color: var(--pb-light-violet); /* Main heading in violet */
+}
+
+.pb-hero-description,
+.pb-hero-sub-description {
+    color: var(--pb-text-muted); /* Muted dark for descriptions */
+}
+
+.pb-hero-image {
+    max-height: 500px;
+    width: auto;
+    object-fit: contain;
+    box-shadow: 0 0.5rem 1rem var(--pb-card-shadow); /* Light shadow */
+}
+
+.pb-hero-start-button {
+  background-color: #8a2be2; /* Violet background */
+  color: #fff; /* White text */
+  border: none; /* Optional: remove border */
+}
+
+.pb-hero-start-button:hover {
+  background-color: #7a1fd1; /* Darker violet on hover */
+  color: #fff;
+}
+
+.pb-hero-explore-button {
+    border-color: var(--pb-text-dark); /* Dark border for outline button */
+    color: var(--pb-text-dark); /* Dark text for outline button */
+    font-weight: 600;
+}
+
+.pb-hero-explore-button:hover {
+    background-color: white; /* Dark background on hover */
+    color: var(--pb-text-light); /* White text on hover */
+    border-color: var(--pb-text-dark);
+}
+
+/* --- Freehand Editor Section --- */
+.pb-freehand-editor-section {
+    background-color: var(--pb-light-bg); /* Light background for this section */
+    color: var(--pb-text-dark); /* Dark text */
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.pb-freehand-editor-heading {
+    color: var(--pb-light-violet); /* Heading in violet */
+}
+
+.pb-freehand-editor-description {
+    color: var(--pb-text-muted); /* Muted dark for descriptions */
+}
+
+.pb-freehand-editor-image {
+    max-height: 550px;
+    width: auto;
+    object-fit: contain;
+    box-shadow: 0 0.5rem 1rem var(--pb-card-shadow);
+}
+
+/* Custom Accordion Styling for light theme */
+.pb-freehand-editor-accordion .accordion-item {
+    background-color: var(--pb-section-bg-alt); /* White background for item */
+    border: 1px solid var(--pb-border-light); /* Light border */
+    margin-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0.25rem 0.5rem var(--pb-card-shadow);
+}
+
+.pb-freehand-editor-accordion .accordion-button {
+    background-color: var(--pb-section-bg-alt); /* White background for header */
+    color: var(--pb-text-dark); /* Dark text */
+    font-weight: 600;
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.pb-freehand-editor-accordion .accordion-button:not(.collapsed) {
+    background-color: var(--pb-light-violet); /* Violet when expanded */
+    color: var(--pb-text-light); /* White text on violet */
+    box-shadow: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.pb-freehand-editor-accordion .accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25); /* Violet focus ring */
+}
+
+.pb-freehand-editor-accordion .accordion-body {
+    background-color: var(--pb-light-bg); /* Light background for body */
+    color: var(--pb-text-dark); /* Dark text */
+    border-top: 1px solid var(--pb-border-light); /* Light separator line */
+    padding: 1.5rem;
+}
+
+.pb-freehand-editor-accordion .accordion-button::after {
+    filter: none; /* Remove filter for light background caret */
+    color: var(--pb-text-dark); /* Ensure caret is dark */
+}
+.pb-freehand-editor-accordion .accordion-button:not(.collapsed)::after {
+    filter: invert(1); /* Invert caret color when expanded on violet */
+    color: var(--pb-text-light);
+}
+
+
+/* --- Features Grid Section --- */
+.pb-features-grid-section {
+    background-color: white; /* White background */
+    color: var(--pb-text-dark); /* Dark text */
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.pb-features-grid-main-heading {
+    color: var(--pb-light-violet); /* Heading in violet */
+}
+
+.pb-features-grid-description {
+    color: var(--pb-text-muted); /* Muted dark for descriptions */
+}
+
+.pb-feature-card {
+    background-color: var(--pb-light-bg); /* Very light card background */
+    color: var(--pb-text-dark); /* Dark text */
+    border: 1px solid var(--pb-border-light); /* Light border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0.25rem 0.5rem var(--pb-card-shadow);
+}
+
+.pb-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(138, 43, 226, 0.2) !important; /* Violet shadow on hover */
+}
+
+.pb-feature-icon-wrapper {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--pb-light-violet); /* Default icon color if not overridden */
+}
+
+/* Specific icon colors - keep as is, they are vibrant */
+.pb-feature-icon-brain { color: #6c757d !important; }
+.pb-feature-icon-network { color: #6c757d !important; }
+.pb-feature-icon-database { color: #6c757d !important; }
+.pb-feature-icon-link  { color: #6c757d !important; }
+.pb-feature-icon-tachometer  { color: #6c757d !important; }
+.pb-feature-icon-user-lock { color: #6c757d !important; }
+
+.pb-feature-badge-new {
+    background-color: var(--pb-accent-green) !important;
+    color: var(--pb-text-light) !important; /* White text on green badge */
+}
+
+
+/* --- Projects Section --- */
+.pb-projects-section {
+    background-color: var(--pb-light-bg); /* Light background */
+    color: var(--pb-text-dark); /* Dark text */
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.pb-projects-intro {
+    color: var(--pb-light-violet) !important; /* Intro text in violet */
+}
+
+.pb-projects-main-heading {
+    color: var(--pb-text-dark); /* Main heading in black/dark */
+}
+
+.pb-projects-together {
+    color: var(--pb-light-violet) !important; /* "together" in violet */
+}
+
+.pb-projects-subtitle {
+    color: var(--pb-text-muted); /* Muted dark for subtitle */
+}
+
+.pb-projects-badge-new {
+    background-color: var(--pb-accent-green) !important;
+    color: var(--pb-text-light) !important;
+}
+
+.pb-projects-badge-beta {
+    background-color: #ffc107 !important;
+    color: var(--pb-text-dark) !important;
+}
+
+.pb-projects-start-button {
+    background-color: var(--pb-button-primary-bg);
+    border-color: var(--pb-button-primary-bg);
+    color: white;
+    font-weight: 600;
+}
+
+.pb-projects-start-button:hover {
+    background-color: var(--pb-button-primary-hover-bg);
+    border-color: var(--pb-button-primary-hover-bg);
+    color: var(--pb-text-light);
+}
+
+.pb-projects-book-demo-button {
+    border-color: var(--pb-text-dark); /* Dark border for outline button */
+    color: var(--pb-text-dark); /* Dark text for outline button */
+    font-weight: 600;
+}
+
+.pb-projects-book-demo-button:hover {
+    background-color: var(--pb-text-dark);
+    color: var(--pb-text-light);
+    border-color: var(--pb-text-dark);
+}
+
+/* --- FAQ Section --- */
+.pb-faq-section {
+    background-color: var(--pb-section-bg-alt); /* White background */
+    color: var(--pb-text-dark); /* Dark text */
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.pb-faq-main-heading {
+    color: var(--pb-light-violet); /* Heading in violet */
+}
+
+.pb-faq-accordion .pb-faq-accordion-item {
+    background-color: var(--pb-light-bg); /* Very light item background */
+    border: 1px solid var(--pb-border-light); /* Light border */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 0.25rem 0.5rem var(--pb-card-shadow);
+}
+
+.pb-faq-accordion .pb-faq-accordion-header .accordion-button {
+    background-color: var(--pb-light-bg); /* Very light header background */
+    color: var(--pb-text-dark); /* Dark text */
+    font-weight: 600;
+}
+
+.pb-faq-accordion .pb-faq-accordion-header .accordion-button:not(.collapsed) {
+    background-color: var(--pb-light-violet); /* Violet when expanded */
+    color: white; /* White text on violet */
+    box-shadow: none;
+}
+
+.pb-faq-accordion .pb-faq-accordion-body {
+    background-color: var(--pb-section-bg-alt); /* White body background */
+    color: var(--pb-text-dark); /* Dark text */
+    border-top: 1px solid var(--pb-border-light);
+}
+
+.pb-faq-accordion .accordion-button::after {
+    filter: none; /* Remove filter for light background caret */
+    color: var(--pb-text-dark); /* Ensure caret is dark */
+}
+.pb-faq-accordion .accordion-button:not(.collapsed)::after {
+    filter: invert(1); /* Invert caret color when expanded on violet */
+    color: var(--pb-text-light);
+}
+
+/* Query Box */
+.query-form-container { /* This is the div containing the button */
+    text-align: center; /* Ensures content within is centered */
+}
+
+.query-toggle-button {
+    /* Add this to ensure the button is treated as a block for centering */
+    display: inline-block; /* Or remove this line if it's already block by default, and `text-align: center` on parent will work. */
+    margin: 0 auto; /* Centers block-level elements */
+}
+
+.query-form-box {
+    background-color: var(--pb-section-bg-alt); /* White query box background */
+    color: var(--pb-text-dark); /* Dark text */
+    border: 1px solid var(--pb-border-light); /* Light border */
+    max-width: 600px;
+    position: relative; /* Fixed typo: missing semicolon */
+    box-shadow: 0 0.25rem 0.5rem var(--pb-card-shadow);
+    margin-left: auto; /* Centers the query box itself when it appears */
+    margin-right: auto; /* Centers the query box itself when it appears */
+}
+
+
+.query-textarea {
+    background-color: var(--pb-light-bg); /* Very light input background */
+    color: var(--pb-text-dark); /* Dark text */
+    border: 1px solid var(--pb-border-light);
+    resize: vertical;
+}
+
+.query-textarea::placeholder {
+    color: var(--pb-text-muted); /* Muted placeholder text */
+}
+
+.close-query-button {
+    color: var(--pb-text-dark) !important; /* Close button text dark */
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.submit-query-button {
+    background-color: var(--pb-button-primary-bg);
+    border-color: var(--pb-button-primary-bg);
+    color: var(--pb-text-light);
+    font-weight: 600;
+}
+
+.submit-query-button:hover {
+    background-color: var(--pb-button-primary-hover-bg);
+    border-color: var(--pb-button-primary-hover-bg);
+    color: var(--pb-text-light);
+}
+
+/* --- Footer Section --- */
+.pb-footer-section {
+    background-color: var(--pb-section-bg-alt); /* White footer background */
+    color: var(--pb-text-dark); /* Dark text */
+    border-top: 1px solid var(--pb-border-light);
+}
+
+.pb-footer-text {
+    color: var(--pb-text-muted); /* Muted dark for copyright */
+}
