@@ -52,6 +52,7 @@ const faqData = [
 const ScanifyDetail = () => {
     const [isQueryOpen, setIsQueryOpen] = useState(false);
     const [queryText, setQueryText] = useState('');
+    const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPhone, setUserPhone] = useState('');
     const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -71,12 +72,15 @@ const ScanifyDetail = () => {
     }
 
     try {
-        const response = await fetch("http://localhost:5000/send_query", {
+        const response = await fetch("https://kodivian-website-7.onrender.com/send_query", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                name: userName,
+                email:userEmail,
+                phone:userPhone,
                 query: queryText,
                 page: "Scanify",
             }),
@@ -388,15 +392,24 @@ const ScanifyDetail = () => {
                                 
                             </button>
 
-                           <Form.Group className="mb-3">
-                         <Form.Control
-                         type="email"
-                        placeholder="Your Email"
-                         value={userEmail}
-                      onChange={(e) => setUserEmail(e.target.value)}
-        required
-    />
-</Form.Group>
+                            <Form.Group className="mb-3">
+                              <Form.Control
+                              type="text"
+                              placeholder="Your Name"
+                              value={userName}
+                              onChange={(e) => setUserName(e.target.value)}
+                              required
+                              />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                               <Form.Control
+                               type="email"
+                               placeholder="Your Email"
+                               value={userEmail}
+                               onChange={(e) => setUserEmail(e.target.value)}
+                               required
+                                />
+                            </Form.Group>
 
 <Form.Group className="mb-3">
     <Form.Control

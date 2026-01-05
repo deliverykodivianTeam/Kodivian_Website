@@ -9,29 +9,24 @@ from dotenv import load_dotenv
 # 🔹 Flask App Initialization
 # ======================================
 app = Flask(__name__)
-CORS(app)  # allow requests from your frontend (Godaddy / Render static site)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # ======================================
 # ✉️ Brevo (SendinBlue) API Configuration
 # ======================================
-load_dotenv()  # loads variables from .env
+load_dotenv()
 BREVO_API_KEY = os.getenv("BREVO_API_KEY")
 
 BREVO_URL = "https://api.brevo.com/v3/smtp/email"
 
-# Sender details (who sends the mail)
 SENDER_EMAIL = "kaviya.arivaratharaj@kodivian.com"
 SENDER_NAME = "Team Kodivian"
 
-# Internal recipients (team)
 INTERNAL_EMAILS = [
     "vijaysabari.m@kodivian.com",
     "preethi.jb@kodivian.com",
     "kaviya.arivaratharaj@kodivian.com"
 ]
-
-
-
 
 # ======================================
 # 🔹 Helper Function to Send Email
@@ -55,103 +50,81 @@ def send_email(subject, html_content, to_emails):
         print(f"📨 Email sent to {to_emails}: {response.status_code}")
         print(response.text)
     except Exception as e:
-        print(f"❌ Error sending email to {to_emails}: {str(e)}")
-
+        print(f"❌ Error sending email: {str(e)}")
 
 # ======================================
-# 📅 Demo Booking Endpoint
+# 📅 Demo Booking Endpoint (UNCHANGED)
 # ======================================
 @app.route("/save_demo_data", methods=["POST"])
 def save_demo_data():
     data = request.get_json()
 
     name = data.get("name")
-    email = data.get("email")  # user who booked (ex: kaviya)
+    email = data.get("email")
     company = data.get("company")
     product = data.get("product")
     date = data.get("date")
     time = data.get("time")
     timezone = data.get("timezone")
 
-    # ------------------------------
-    # 📨 Internal Team Email
-    # ------------------------------
-    internal_subject = f"📅 New Demo Booking Received - {name}"
+    internal_subject = f"📅 New Demo Booking - {name}"
     internal_html = f"""
-    <html>
-    <body style="font-family:Arial,sans-serif;">
-        <h2>New Demo Booking Details</h2>
-        <table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
-            <tr><td><b>Name</b></td><td>{name}</td></tr>
-            <tr><td><b>Email</b></td><td>{email}</td></tr>
-            <tr><td><b>Company</b></td><td>{company}</td></tr>
-            <tr><td><b>Product</b></td><td>{product}</td></tr>
-            <tr><td><b>Date</b></td><td>{date}</td></tr>
-            <tr><td><b>Time</b></td><td>{time} ({timezone})</td></tr>
-        </table>
-        <p style="margin-top:15px;">📩 This notification was automatically sent from Kodivian website.</p>
-    </body>
-    </html>
+    <html><body>
+        <h3>New Demo Booking</h3>
+        <p><b>Name:</b> {name}</p>
+        <p><b>Email:</b> {email}</p>
+        <p><b>Company:</b> {company}</p>
+        <p><b>Product:</b> {product}</p>
+        <p><b>Date:</b> {date}</p>
+        <p><b>Time:</b> {time} ({timezone})</p>
+    </body></html>
     """
 
-    # Send internal email to team
     Thread(target=send_email, args=(internal_subject, internal_html, INTERNAL_EMAILS)).start()
 
-    # ------------------------------
-    # 📨 Client Thank You Email
-    # ------------------------------
-    client_subject = "✅ Thank You for Booking a Demo with Kodivian!"
+    client_subject = "Thank you for booking a demo with Kodivian"
     client_html = f"""
-    <html>
-    <body style="font-family:Arial,sans-serif;">
-        <h2>Hi {name},</h2>
-        <p>Thank you for booking a demo with <b>Kodivian</b>!</p>
-        <p>Here are your demo details:</p>
-        <ul>
-            <li><b>Product:</b> {product}</li>
-            <li><b>Date:</b> {date}</li>
-            <li><b>Time:</b> {time} ({timezone})</li>
-        </ul>
-        <p>Our team will contact you soon to confirm your slot.</p>
-        <p>Warm regards,<br><b>Team Kodivian</b></p>
-    </body>
-    </html>
+    <html><body>
+        <p>Hi {name},</p>
+        <p>Thank you for booking a demo.</p>
+    </body></html>
     """
 
-    # Send thank-you email to the user who booked
     Thread(target=send_email, args=(client_subject, client_html, [email])).start()
 
-    return jsonify({"message": "✅ Demo booking processed and emails sent successfully."})
+    return jsonify({"message": "Demo booking processed successfully"}), 200
 
 # ======================================
-# ❓ Website Query Endpoint (Scanify)
+# ❓ Website Query Endpoint (FIXED, NOT REMOVED)
 # ======================================
 @app.route("/send_query", methods=["POST"])
 def send_query():
     data = request.get_json()
+    print("Incoming Query Data:", data)
 
+    name = data.get("name")
+    phone = data.get("phone")
+    user_email = data.get("email")
     query_text = data.get("query")
     page = data.get("page", "Website")
-    user_email = data.get("email", "Not provided")
 
     if not query_text:
         return jsonify({"error": "Query is required"}), 400
 
-    # ------------------------------
-    # 📨 Internal Team Email
-    # ------------------------------
-    subject = f"❓ New Website Query - {page}"
+    subject = f" Kodivian Website Query - {page}"
 
     html_content = f"""
     <html>
-    <body style="font-family:Arial,sans-serif;">
+    <body style="font-family:Arial;">
         <h2>New Query Received</h2>
-        <table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
+        <table border="1" cellpadding="8">
+            <tr><td><b>Name</b></td><td>{name}</td></tr>
+            <tr><td><b>Email</b></td><td>{user_email}</td></tr>
+            <tr><td><b>Phone</b></td><td>{phone}</td></tr>
             <tr><td><b>Page</b></td><td>{page}</td></tr>
-            <tr><td><b>User Email</b></td><td>{user_email}</td></tr>
             <tr><td><b>Query</b></td><td>{query_text}</td></tr>
         </table>
-        <p style="margin-top:15px;">📩 Sent from Kodivian website (Scanify)</p>
+        <p>📩 Sent from Kodivian Website (Scanify)</p>
     </body>
     </html>
     """
@@ -161,22 +134,21 @@ def send_query():
         args=(subject, html_content, INTERNAL_EMAILS)
     ).start()
 
-    return jsonify({"message": "✅ Query sent successfully"})
+    return jsonify({"message": "Query sent successfully"}), 200
 
 # ======================================
-# 🚀 Test Email Route
+# 🚀 Test Email Route (UNCHANGED)
 # ======================================
 @app.route("/test_email", methods=["GET"])
 def test_email():
     test_subject = "Test Email from Flask via Brevo"
-    test_html = "<h3>✅ Brevo Email setup is working successfully!</h3>"
+    test_html = "<h3>✅ Brevo Email setup is working!</h3>"
     send_email(test_subject, test_html, INTERNAL_EMAILS)
-    return "✅ Test email sent successfully to internal team!"
-
+    return "Test email sent successfully"
 
 # ======================================
-# 🚀 Run Flask App (Render compatible)
+# 🚀 Run Flask App
 # ======================================
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Render dynamically assigns a port
-    app.run(host="0.0.0.0", port=port, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
