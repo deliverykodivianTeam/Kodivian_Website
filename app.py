@@ -27,9 +27,8 @@ SENDER_NAME = "Team Kodivian"
 INTERNAL_EMAILS = [
     "vijaysabari.m@kodivian.com",
     "preethi.jb@kodivian.com",
-    "kaviya.arivaratharaj@kodivian.com"
+    "kaviya.arivaratharaj@kodivian.com" 
 ]
-
 
 
 

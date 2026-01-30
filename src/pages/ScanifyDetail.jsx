@@ -54,6 +54,7 @@ const ScanifyDetail = () => {
     const [queryText, setQueryText] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPhone, setUserPhone] = useState('');
+    const [userName, setUserName] = useState('');
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [showImageHighlight, setShowImageHighlight] = useState(false);
 
@@ -77,8 +78,11 @@ const ScanifyDetail = () => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                name: userName,
+                email: userEmail,
+                phone: userPhone,
                 query: queryText,
-                page: "Scanify",
+                page: "Scanify"
             }),
         });
 
@@ -387,38 +391,48 @@ const ScanifyDetail = () => {
                             >
                                 
                             </button>
+                            <Form.Group className="mb-3">
+                                <Form.Control
+                                type="text"
+                                placeholder="Your Name"
+                                value={userName}
+                                onChange={(e) => setUserName(e.target.value)}
+                                 required
+                                 />
+                             </Form.Group>
 
-                           <Form.Group className="mb-3">
-                         <Form.Control
-                         type="email"
-                        placeholder="Your Email"
-                         value={userEmail}
-                      onChange={(e) => setUserEmail(e.target.value)}
-        required
-    />
-</Form.Group>
 
-<Form.Group className="mb-3">
-    <Form.Control
-        type="tel"
-        placeholder="Your Phone Number"
-        value={userPhone}
-        onChange={(e) => setUserPhone(e.target.value)}
-        required
-    />
-</Form.Group>
+                             <Form.Group className="mb-3">
+                                 <Form.Control
+                                 type="email"
+                                 placeholder="Your Email"
+                                 value={userEmail}
+                                 onChange={(e) => setUserEmail(e.target.value)}
+                                 required
+                                  />
+                             </Form.Group>
 
-<Form.Group className="mb-3">
-    <Form.Control
-        as="textarea"
-        rows={4}
-        className="query-textarea"
-        placeholder="Enter your query here..."
-        value={queryText}
-        onChange={handleQueryChange}
-        required
-    />
-</Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Control
+                                type="tel"
+                                placeholder="Your Phone Number"
+                                value={userPhone}
+                                onChange={(e) => setUserPhone(e.target.value)}
+                                required
+                                 />
+                               </Form.Group>
+
+                            <Form.Group className="mb-3">
+                               <Form.Control
+                               as="textarea"
+                               rows={4}
+                               className="query-textarea"
+                               placeholder="Enter your query here..."
+                               value={queryText}
+                               onChange={handleQueryChange}
+                               required
+                                 />
+                             </Form.Group>
 
 
 
