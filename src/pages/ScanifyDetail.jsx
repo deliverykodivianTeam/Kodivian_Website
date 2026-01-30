@@ -55,7 +55,6 @@ const ScanifyDetail = () => {
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPhone, setUserPhone] = useState('');
-    const [userName, setUserName] = useState('');
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [showImageHighlight, setShowImageHighlight] = useState(false);
 
@@ -80,13 +79,10 @@ const ScanifyDetail = () => {
             },
             body: JSON.stringify({
                 name: userName,
-<<<<<<< HEAD
                 email: userEmail,
                 phone: userPhone,
-=======
-                email:userEmail,
-                phone:userPhone,
->>>>>>> d3a15afbd1d802fc1ccf4049503060adb05bc8ff
+                
+
                 query: queryText,
                 page: "Scanify"
             }),
@@ -405,10 +401,7 @@ const ScanifyDetail = () => {
                                 onChange={(e) => setUserName(e.target.value)}
                                  required
                                  />
-                             </Form.Group>
-
-<<<<<<< HEAD
-=======
+                            </Form.Group>
                             <Form.Group className="mb-3">
                               <Form.Control
                               type="text"
@@ -426,9 +419,7 @@ const ScanifyDetail = () => {
                                onChange={(e) => setUserEmail(e.target.value)}
                                required
                                 />
-                            </Form.Group>
->>>>>>> d3a15afbd1d802fc1ccf4049503060adb05bc8ff
-
+                             </Form.Group>
                              <Form.Group className="mb-3">
                                  <Form.Control
                                  type="email"
@@ -437,8 +428,7 @@ const ScanifyDetail = () => {
                                  onChange={(e) => setUserEmail(e.target.value)}
                                  required
                                   />
-                             </Form.Group>
-
+                            </Form.Group>
                             <Form.Group className="mb-3">
                                 <Form.Control
                                 type="tel"
