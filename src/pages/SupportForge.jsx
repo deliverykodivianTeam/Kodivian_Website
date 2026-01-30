@@ -61,6 +61,9 @@ const SupportForge = () => {
     const [expandedQuestion, setExpandedQuestion] = useState(null);
     const [isQueryOpen, setIsQueryOpen] = useState(false);
     const [queryText, setQueryText] = useState('');
+    const [userName, setUserName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userPhone, setUserPhone] = useState('');
 
     const handleOpenPopup = () => setIsPopupOpen(true);
     const handleClosePopup = () => setIsPopupOpen(false);
@@ -77,33 +80,44 @@ const SupportForge = () => {
     };
 
     const handleSendQuery = async () => {
-        if (queryText.trim()) {
-            try {
-                // Update endpoint as per your backend route
-                const response = await fetch('http://localhost:5173/SupportForge', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ query: queryText }),
-                });
+    if (!queryText.trim()) {
+        alert("Please enter your query.");
+        return;
+    }
 
-                if (response.ok) {
-                    alert('Your query has been sent. We will get back to you via email.');
-                    setIsQueryOpen(false);
-                    setQueryText('');
-                } else {
-                    alert('Failed to send your query. Please try again later.');
-                    console.error('Error sending query:', response.status);
-                }
-            } catch (error) {
-                alert('An error occurred while sending your query.');
-                console.error('Fetch error:', error);
-            }
+    try {
+        const response = await fetch("https://kodivian-website-7.onrender.com/send_query", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: userName || "Not Provided",
+                email: userEmail || "Not Provided",
+                phone: userPhone || "Not Provided",
+                query: queryText,
+                page: "Support Forge",
+            }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Query sent successfully. Our team will contact you.");
+            setQueryText("");
+            setUserName("");
+            setUserEmail("");
+            setUserPhone("");
+            setIsQueryOpen(false);
         } else {
-            alert('Please enter your query.');
+            alert(data.error || "Something went wrong");
         }
-    };
+    } catch (error) {
+        console.error(error);
+        alert("Server not reachable");
+    }
+};
+
 
     const [expandedSection, setExpandedSection] = useState('requestor');
     const [currentImg, setCurrentImg] = useState(formImage);
@@ -631,16 +645,47 @@ const SupportForge = () => {
                                 &times;
                             </Button>
 
+                                                        <Form.Group className="mb-3">
+                                                         <Form.Control
+                                                          type="text"
+                                                          placeholder="Your Name"
+                                                          value={userName}
+                                                          onChange={(e) => setUserName(e.target.value)}
+                                                          required
+                                                          />
+                                                        </Form.Group>
+                                                        <Form.Group className="mb-3">
+                                                           <Form.Control
+                                                           type="email"
+                                                           placeholder="Your Email"
+                                                           value={userEmail}
+                                                           onChange={(e) => setUserEmail(e.target.value)}
+                                                           required
+                                                            />
+                                                        </Form.Group>
+                            
+                            <Form.Group className="mb-3">
+                                <Form.Control
+                                    type="tel"
+                                    placeholder="Your Phone Number"
+                                    value={userPhone}
+                                    onChange={(e) => setUserPhone(e.target.value)}
+                                    required
+                                />
+                            </Form.Group>
+                            
                             <Form.Group className="mb-3">
                                 <Form.Control
                                     as="textarea"
                                     rows={4}
-                                    className="tms-query-textarea form-control"
+                                    className="query-textarea"
                                     placeholder="Enter your query here..."
                                     value={queryText}
                                     onChange={handleQueryChange}
+                                    required
                                 />
                             </Form.Group>
+                            
 
                             <Button
                                 variant="primary"
