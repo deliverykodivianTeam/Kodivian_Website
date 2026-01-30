@@ -28,11 +28,7 @@ INTERNAL_EMAILS = [
     "kaviya.arivaratharaj@kodivian.com" 
 ]
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> d3a15afbd1d802fc1ccf4049503060adb05bc8ff
 # ======================================
 # 🔹 Helper Function to Send Email
 # ======================================
