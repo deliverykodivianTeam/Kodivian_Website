@@ -164,7 +164,7 @@ body {
 /* FINAL DESKTOP FIX — Reduce Gap */
 @media (min-width: 993px) {
     .clients-grid {
-        grid-template-columns: repeat(6, 1fr) !important;
+        grid-template-columns: repeat(5, 1fr) !important;
         gap: 8px 5px !important; /* row-gap column-gap */
         /* Example:
             40px = vertical gap

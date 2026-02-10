@@ -32,6 +32,7 @@ import teamlogo from '../assets/Team-logo.jpeg';
 import lifecelllogo from '../assets/lifecell-logo.png'; 
 import svr from '../assets/SV&R.png';
 import jkf from '../assets/JKF.png';
+import tafe from '../assets/TAFE.svg';
 
 // import Kodivian Team members
 import Chairman from "../assets/chairman.jpeg";
@@ -58,7 +59,7 @@ const About = () => {
     ponpureLogo, tiCycleLogo, murugappaLogo, khazanaLogo,
     ezcloud, ionidea, eastman, sharatIndustriesLogo,
      dmccLogo, aavaBrandsLogo, tiMedicallogo,
-    Innoventure_logo, shanthigearslogo, stedmanlogo,teamlogo,lifecelllogo,svr,jkf
+    Innoventure_logo, shanthigearslogo, stedmanlogo,teamlogo,lifecelllogo,svr,jkf,tafe
   ];
 
   const teamMembers = [
