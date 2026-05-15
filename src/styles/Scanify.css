@@ -1,20 +1,29 @@
 /* src/index.css or src/custom-colors.css */
 :root {
-  --bs-body-bg: #f8f9fa; /* Default Bootstrap body background */
-  --bs-body-color: #212529; /* Default Bootstrap body text color */
+  --bs-body-bg: #f8f9fa;
+  /* Default Bootstrap body background */
+  --bs-body-color: #212529;
+  /* Default Bootstrap body text color */
 
   /* Custom Colors */
   --scanify-violet-black: #2A2333;
-  --scanify-robport-accent: #4A9088; /* Muted Teal/Blue-Green */
-  --scanify-light-grey: #e9ecef; /* For backgrounds like the query box */
-  --scanify-text-light: #f8f9fa; /* For text on dark backgrounds */
-  --scanify-text-dark: #212529; /* For text on light backgrounds */
-  --scanify-primary-button: #4A9088; /* Example for main CTA */
-  --scanify-secondary: #a635e7; /* Example for secondary buttons */
+  --scanify-robport-accent: #4A9088;
+  /* Muted Teal/Blue-Green */
+  --scanify-light-grey: #e9ecef;
+  /* For backgrounds like the query box */
+  --scanify-text-light: #f8f9fa;
+  /* For text on dark backgrounds */
+  --scanify-text-dark: #212529;
+  /* For text on light backgrounds */
+  --scanify-primary-button: #4A9088;
+  /* Example for main CTA */
+  --scanify-secondary: #a635e7;
+  /* Example for secondary buttons */
 }
 
 .violet-text {
-  color: #8A2BE2; /* Violet */
+  color: #8A2BE2;
+  /* Violet */
 }
 
 
@@ -104,20 +113,283 @@ body {
 .submit-query-button:hover {
   background-color: #6a1bb9;
 }
+
 .fa-list-custom .accordion-button {
-  color: #0a0117; /* Violet text */
-  background-color: white; /* Keep background white or change as you want */
-  border: 1px solid #8a2be2; /* Violet border */
+  color: #0a0117;
+  /* Violet text */
+  background-color: white;
+  /* Keep background white or change as you want */
+  border: 1px solid #8a2be2;
+  /* Violet border */
 }
 
 .fa-list-custom .accordion-button:not(.collapsed) {
-  background-color: #8a2be2; /* Violet background when expanded */
-  color: white; /* White text on violet background */
+  background-color: #8a2be2;
+  /* Violet background when expanded */
+  color: white;
+  /* White text on violet background */
   box-shadow: none;
 }
 
 .fa-list-custom .accordion-item {
-  border: 1px solid #8a2be2; /* Violet border around each item */
-  border-radius: 0.375rem; /* Rounded corners (optional) */
+  border: 1px solid #8a2be2;
+  /* Violet border around each item */
+  border-radius: 0.375rem;
+  /* Rounded corners (optional) */
   margin-bottom: 0.75rem;
 }
+
+/* ROI SECTION - Professional Light Purple Theme */
+.roi-section {
+  padding: 30px 0; /* Further reduced from 40px */
+  background-color: #f5f3ff;
+}
+
+.roi-card {
+  width: 100%;
+  max-width: 850px;
+  background: #ffffff;
+  padding: 15px 25px; /* Further reduced vertical padding from 20px to 15px */
+  border-radius: 18px;
+  border: 1px solid #e9d5ff;
+  box-shadow: 0 12px 25px -10px rgba(124, 58, 237, 0.1);
+  margin: 0 auto;
+}
+
+.roi-title {
+  text-align: center;
+  font-weight: 800;
+  color: #5b21b6;
+  margin-bottom: 12px; /* Further reduced from 20px */
+  font-size: 1.5rem; /* Slightly smaller title */
+}
+
+/* TOGGLE */
+.roi-toggle {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 15px;
+  background: #f3f4f6;
+  padding: 3px;
+  border-radius: 8px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #e9d5ff;
+}
+
+.roi-toggle button {
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-weight: 700; /* Bold */
+  transition: all 0.2s ease;
+  font-size: 0.75rem;
+}
+
+.roi-toggle button.active {
+  background: #7c3aed; /* Purple background */
+  color: #333333; /* Light black / Dark charcoal */
+  font-weight: 800; /* Extra bold */
+  box-shadow: 0 2px 4px rgba(124, 58, 237, 0.2);
+}
+
+
+
+/* FIELD */
+.roi-field {
+  margin-bottom: 10px; /* Further reduced from 15px */
+  padding: 10px 15px; /* Further reduced from 12px */
+  background: #fafafa;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.roi-field label {
+  font-weight: 700;
+  font-size: 0.8rem; /* Slightly smaller */
+  color: #1f2937;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px; /* Further reduced from 8px */
+}
+
+.roi-field .value {
+  color: #7c3aed;
+  font-size: 0.95rem;
+}
+
+/* SLIDER */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 3px; /* Reduced from 4px */
+  background: #e5e7eb;
+  border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px; /* Reduced from 16px */
+  height: 14px;
+  background: #7c3aed;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* RIGHT SIDE */
+.roi-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+  border-left: 1px solid #f3f4f6;
+}
+
+.roi-monthly p {
+  font-size: 0.7rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.roi-monthly h4 {
+  font-size: 1.35rem; /* Reduced from 1.5rem */
+  font-weight: 800;
+  color: #000000;
+}
+
+/* ANNUAL BOX */
+.roi-annual {
+  margin-top: 8px; /* Further reduced from 10px */
+  padding: 12px; /* Further reduced padding */
+  border-radius: 12px;
+  background: #f5f3ff;
+  border: 1px solid #e9d5ff;
+  color: #000000;
+  text-align: center;
+}
+
+.roi-annual p {
+  font-size: 0.75rem;
+  color: #000000;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.roi-annual h2 {
+  font-size: 1.75rem; /* Reduced from 2rem */
+  font-weight: 900;
+  color: #000000;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .roi-right {
+    padding-left: 0;
+    border-left: none;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f3f4f6;
+  }
+}
+
+/* INTEGRATIONS SECTION - Professional ERP Connect Concept */
+.integrations-section {
+  padding: 80px 0;
+  background-color: #ffffff;
+}
+
+.integrations-label {
+  display: block;
+  text-align: center;
+  color: #3b82f6;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.integrations-heading {
+  text-align: center;
+  font-weight: 800;
+  font-size: 2.75rem;
+  color: #111827;
+  margin-bottom: 60px;
+}
+
+.integrations-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.integration-card {
+  background: #ffffff;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+}
+
+.integration-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.1), 0 10px 10px -5px rgba(124, 58, 237, 0.04);
+  border-color: #ddd6fe;
+}
+
+.integration-logo {
+  width: 90%;
+  height: 90%;
+  max-height: 110px;
+  object-fit: contain;
+  filter: none; /* Removed grayscale */
+  opacity: 1; /* Full opacity */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.integration-card:hover .integration-logo {
+  transform: scale(1.1); /* Keep the scale effect */
+}
+
+
+
+.integration-text-only {
+  font-size: 0.95rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+  .integrations-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .integrations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .integrations-heading {
+    font-size: 2rem;
+  }
+}
+
+
+
+

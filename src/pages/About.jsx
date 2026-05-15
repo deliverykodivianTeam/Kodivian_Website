@@ -19,7 +19,7 @@ import tiCycleLogo from "../assets/tii-logo.png";
 import murugappaLogo from "../assets/murugappa.png";
 import khazanaLogo from "../assets/khazana.png";
 import sharatIndustriesLogo from "../assets/sharat-industries.png";
-import dmccLogo from "../assets/dmcc.png";   
+import dmccLogo from "../assets/dmcc.png";
 import aavaBrandsLogo from "../assets/aava-logo.jpeg";
 import tiMedicallogo from "../assets/ti-medical-logo.png";
 import Innoventure_logo from "../assets/3xper_innoventure_limited_logo.png";
@@ -29,7 +29,7 @@ import ionidea from "../assets/ionidea.png";
 import eastman from "../assets/eastman.png";
 import stedmanlogo from '../assets/stedman-logo.jpeg';
 import teamlogo from '../assets/Team-logo.jpeg';
-import lifecelllogo from '../assets/lifecell-logo.png'; 
+import lifecelllogo from '../assets/lifecell-logo.png';
 import svr from '../assets/SV&R.png';
 import jkf from '../assets/JKF.png';
 import tafe from '../assets/TAFE.svg';
@@ -37,15 +37,16 @@ import tafe from '../assets/TAFE.svg';
 // import Kodivian Team members
 import Chairman from "../assets/chairman.jpeg";
 import Director from "../assets/directer.jpeg";
-import Rithish from "../assets/Rithish.jpg"
 import Mothi from "../assets/Mothi.jpeg";
 import Kaviya from "../assets/Kaviya.jpeg";
 import Preethi from "../assets/Preethi.jpeg";
 import Hari from "../assets/Hari.jpg";
 import Kavi from "../assets/kavi.jpg";
+import Ramanan from "../assets/Ramanan.jpg";
+import Manoranjan from "../assets/Manoranjan.jpeg"
 
 const About = () => {
-  const solutions = ["Scanify", "Process Builder","Support Forge"];
+  const solutions = ["Scanify", "Process Builder", "Support Forge"];
   const [currentSolutionIndex, setCurrentSolutionIndex] = useState(0);
   const scrollingLogosRef = useRef(null);
 
@@ -58,8 +59,8 @@ const About = () => {
   const clientLogos = [
     ponpureLogo, tiCycleLogo, murugappaLogo, khazanaLogo,
     ezcloud, ionidea, eastman, sharatIndustriesLogo,
-     dmccLogo, aavaBrandsLogo, tiMedicallogo,
-    Innoventure_logo, shanthigearslogo, stedmanlogo,teamlogo,lifecelllogo,svr,jkf,tafe
+    dmccLogo, aavaBrandsLogo, tiMedicallogo,
+    Innoventure_logo, shanthigearslogo, stedmanlogo, teamlogo, lifecelllogo, svr, jkf, tafe
   ];
 
   const teamMembers = [
@@ -75,7 +76,7 @@ const About = () => {
       image: Director,
       linkedin: "https://www.linkedin.com/in/vijaysabari-mugunthan-16b57441?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAjN3uMBpbTq7jlVvOyJljD8N7eAobuAyFM&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
     },
- 
+
     {
       name: "Mothi Kumaresan",
       role: "Business Development Manager",
@@ -94,12 +95,7 @@ const About = () => {
       image: Preethi,
       linkedin: "https://www.linkedin.com/in/preethijb03?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAE8SmBwBxakLMoqv_Rvvr7PShOA2griketE&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
     },
-    {
-      name: "Rithish PG",
-      role: "Software Developer",
-      image: Rithish,
-      linkedin: "https://www.linkedin.com/in/rithish-pg?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAADkrY1gBCpFun1vpv5JXKS5mU82zUES0lMg&lipi=urn%3Ali%3Apage%3Acompanies_company_people_index%3B5747f2ad-23de-4df0-9690-11093ad7c7fe",
-    },
+
     {
       name: "Hari Sankar M ",
       role: "Infra Support Engineer",
@@ -112,6 +108,20 @@ const About = () => {
       image: Kavi,
       linkedin: "https://www.linkedin.com/in/kaviarasan2012/",
     },
+    {
+      name: "Ramanan D",
+      role: "Software Developer",
+      image: Ramanan,
+      linkedin: "https://www.linkedin.com/in/ramanan2904/",
+    },
+    {
+      name: "Manoranjan.KS",
+      role: "Business Analyst",
+      image: Manoranjan,
+      linkedin: "https://www.linkedin.com/in/manoranjan-k-s-137b47242?utm",
+    },
+
+
   ];
 
   // Effect for rotating solutions text
@@ -174,12 +184,12 @@ const About = () => {
         <Row className="py-0 mt-2 justify-content-center text-center">
           <Col lg={10}>
             <h1 className="display-4 fw-bold mb-4 rotating-solution-text text-center">
-  Shaping the future through <br />
-  innovative products{" "}
-  <span className="colored-solution">
-    {solutions[currentSolutionIndex]}
-  </span>
-</h1>
+              Shaping the future through <br />
+              innovative products{" "}
+              <span className="colored-solution">
+                {solutions[currentSolutionIndex]}
+              </span>
+            </h1>
 
           </Col>
         </Row>
@@ -191,7 +201,7 @@ const About = () => {
           <Col xs={6} md={2} className="mb-4">
             <div className="p-4 bg-light rounded shadow-sm h-100 d-flex flex-column align-items-center justify-content-center">
               <ClockIcon className="w-10 h-10 mb-3" />
-            <div className="fs-1 fw-bold text-violet-600">{yearsExperience}</div>
+              <div className="fs-1 fw-bold text-violet-600">{yearsExperience}</div>
 
               <p className="lead mb-0">Years Experience</p>
             </div>
@@ -221,29 +231,29 @@ const About = () => {
       </Container>
 
       {/* Our Valued Clients Section */}
-   <section id="our-cliented" className="py-5 bg-white overflow-hidden">
-       <Container fluid>
-           <h2 className="display-5 fw-bold text-center mb-5 text-violet">
-               Our Valued Clients
-           </h2>
-            <div className="clients-grid">
-  {clientLogos.map((logo, index) => {
-    const isLastSingle =
-      clientLogos.length % 3 === 1 &&
-      index === clientLogos.length - 1;
+      <section id="our-cliented" className="py-5 bg-white overflow-hidden">
+        <Container fluid>
+          <h2 className="display-5 fw-bold text-center mb-5 text-violet">
+            Our Valued Clients
+          </h2>
+          <div className="clients-grid">
+            {clientLogos.map((logo, index) => {
+              const isLastSingle =
+                clientLogos.length % 3 === 1 &&
+                index === clientLogos.length - 1;
 
-    return (
-      <div
-        key={index}
-        className={`client-logo-box ${isLastSingle ? "center-last-logo" : ""}`}
-      >
-        <img src={logo} alt={`Client ${index + 1}`} />
-      </div>
-    );
-  })}
-</div>
-       </Container>
-   </section>
+              return (
+                <div
+                  key={index}
+                  className={`client-logo-box ${isLastSingle ? "center-last-logo" : ""}`}
+                >
+                  <img src={logo} alt={`Client ${index + 1}`} />
+                </div>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
 
 
       {/* About Content Sections */}
@@ -280,7 +290,7 @@ const About = () => {
               At the heart of our innovation lies a powerful suite of intelligent
               automation products — Scanify for seamless document scanning and data
               capture, Process Builder to streamline complex workflows with no-code
-              logic. 
+              logic.
             </p>
           </Col>
         </Row>
@@ -302,11 +312,11 @@ const About = () => {
           </Col>
           <Col md={6} className="py-4 px-4 text-center text-md-start">
             <p className="lead mb-0 text-white">
-  Our innovation engine drives efficiency through a powerful suite of
-  intelligent automation tools. From Scannify's effortless document
-  scanning and data capture to Process Builder's intuitive no-code
-  workflow automation.
-</p>
+              Our innovation engine drives efficiency through a powerful suite of
+              intelligent automation tools. From Scannify's effortless document
+              scanning and data capture to Process Builder's intuitive no-code
+              workflow automation.
+            </p>
           </Col>
         </Row>
       </Container>
@@ -424,7 +434,7 @@ const About = () => {
 async function getClientIP() {
   const res = await fetch("https://api64.ipify.org?format=json");
   const data = await res.json();
-  return data.ip; 
+  return data.ip;
 }
 
 
