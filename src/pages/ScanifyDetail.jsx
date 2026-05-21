@@ -157,7 +157,7 @@ const ScanifyDetail = () => {
             <Container className="hero-secondary-scan text-center py-5">
                 <h3 className="secondary-tagline-scan violet-text pt-5 fw-bold mb-2">Comprehensive</h3>
                 <h1 className="secondary-heading-scan display-3 fw-bold mb-4">
-                    Smart Invoice Extraction Platform Starts with SCANIFY
+                    Smart Invoice / Purchase Order / Payment Advice  Extraction Platform Starts with SCANIFY AI
                 </h1>
                 <p className="secondary-description-scan grey-text lead mx-auto" style={{ maxWidth: '800px' }}>
                     Effortlessly streamline your document workflow with advanced OCR extraction, seamless SAP integration, and JSON-based invoice data.
@@ -382,7 +382,7 @@ const ScanifyDetail = () => {
                             <div className="roi-field">
                                 <label>
                                     <span className="d-flex align-items-center gap-2">
-                                        <FaFileInvoiceDollar className="violet-text" /> Monthly Invoices
+                                        <FaFileInvoiceDollar className="violet-text" /> Monthly Invoice / Purchase Order / Payment Advice
                                     </span>
                                     <span className="value">{Number(invoices).toLocaleString()}</span>
                                 </label>
