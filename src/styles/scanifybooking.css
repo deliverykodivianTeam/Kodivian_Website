@@ -1,0 +1,1223 @@
+/* ═══════════════════════════════════════════════════════════
+   SCANIFY AI · DEMO BOOKING · PAGE STYLING
+   Ported & Scoped for Kodivian Website Page Route
+   Font: Sora (headings) + Outfit (body) — Google Fonts
+ ═══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap');
+
+:root {
+    /* Blue palette */
+    --blue-950: #03082e;
+    --blue-900: #0a1545;
+    --blue-800: #0e2270;
+    --blue-700: #1435a8;
+    --blue-600: #1d4ed8;
+    --blue-500: #2563eb;
+    --blue-400: #3b82f6;
+    --blue-300: #93c5fd;
+    --blue-200: #bfdbfe;
+    --blue-100: #dbeafe;
+    --blue-50: #eff6ff;
+
+    /* Neutral */
+    --gray-900: #0f172a;
+    --gray-800: #1e293b;
+    --gray-700: #334155;
+    --gray-600: #475569;
+    --gray-500: #64748b;
+    --gray-400: #94a3b8;
+    --gray-300: #cbd5e1;
+    --gray-200: #e2e8f0;
+    --gray-100: #f1f5f9;
+    --gray-50: #f8fafc;
+
+    --white: #ffffff;
+    --green: #16a34a;
+    --red: #dc2626;
+
+    /* Typography */
+    --font-head: 'Sora', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+
+    /* Radii */
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 14px;
+    --r-xl: 20px;
+    --r-full: 999px;
+}
+
+/* ── Page Container ── */
+.scanifyAiDemo-page {
+    font-family: var(--font-body);
+    background: #e8eef8;
+    color: var(--gray-900);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 3vw, 2.5rem);
+    box-sizing: border-box;
+}
+
+/* ── Shell ── */
+.scanifyAiDemo-page .scanifyAiDemo-shell {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    width: 100%;
+    max-width: 980px;
+    background: var(--white);
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(37, 99, 235, 0.1),
+        0 20px 60px rgba(37, 99, 235, 0.14),
+        0 4px 12px rgba(0, 0, 0, 0.06);
+    min-height: 640px;
+    box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════════
+   SIDEBAR
+   ══════════════════════════════════════════ */
+.scanifyAiDemo-page .scanifyAiDemo-sidebar {
+    background: linear-gradient(175deg, #1435a8 0%, #0e2270 55%, #03082e 100%);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* mesh blobs */
+.scanifyAiDemo-page .scanifyAiDemo-sidebar::before {
+    content: '';
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 65%);
+    top: -60px;
+    right: -60px;
+    pointer-events: none;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sidebar::after {
+    content: '';
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(147, 197, 253, 0.12) 0%, transparent 65%);
+    bottom: 60px;
+    left: -40px;
+    pointer-events: none;
+}
+
+/* Brand */
+.scanifyAiDemo-page .scanifyAiDemo-sb-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    position: relative;
+    z-index: 1;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-name {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    text-align: left;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-tagline {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 2px;
+    font-weight: 400;
+    text-align: left;
+}
+
+/* ── Scanning animation panel ── */
+.scanifyAiDemo-page .scanifyAiDemo-scan-panel {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--r-lg);
+    padding: 16px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-doc {
+    position: relative;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: var(--r-md);
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    overflow: hidden;
+    min-height: 110px;
+}
+
+/* animated scan beam */
+.scanifyAiDemo-page .scanifyAiDemo-scan-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--blue-300) 30%, #7dd3fc 50%, var(--blue-300) 70%, transparent 100%);
+    box-shadow: 0 0 10px rgba(147, 197, 253, 0.7);
+    animation: scan 2.6s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-row {
+    display: flex;
+    gap: 8px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-field {
+    height: 7px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    animation: pulse 2.6s ease-in-out infinite;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-field.scanifyAiDemo-wide {
+    flex: 1;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-field.scanifyAiDemo-med {
+    flex: 0 0 42%;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-field.scanifyAiDemo-short {
+    flex: 0 0 28%;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.35;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* corner brackets */
+.scanifyAiDemo-page .scanifyAiDemo-scan-corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: var(--blue-300);
+    border-style: solid;
+    opacity: 0.7;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-corner.scanifyAiDemo-tl {
+    top: 4px;
+    left: 4px;
+    border-width: 2px 0 0 2px;
+    border-radius: 2px 0 0 0;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-corner.scanifyAiDemo-tr {
+    top: 4px;
+    right: 4px;
+    border-width: 2px 2px 0 0;
+    border-radius: 0 2px 0 0;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-corner.scanifyAiDemo-bl {
+    bottom: 4px;
+    left: 4px;
+    border-width: 0 0 2px 2px;
+    border-radius: 0 0 0 2px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-corner.scanifyAiDemo-br {
+    bottom: 4px;
+    right: 4px;
+    border-width: 0 2px 2px 0;
+    border-radius: 0 0 2px 0;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-badge {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 10px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--blue-300);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-scan-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 6px rgba(74, 222, 128, 0.7);
+    animation: blink 1.3s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* Stats */
+.scanifyAiDemo-page .scanifyAiDemo-sb-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-stat {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--r-md);
+    padding: 10px 6px;
+    text-align: center;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-sv {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 19px;
+    font-weight: 800;
+    color: #7dd3fc;
+    letter-spacing: -0.03em;
+    margin-bottom: 3px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-sl {
+    display: block;
+    font-size: 9px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+}
+
+/* Integrations */
+.scanifyAiDemo-page .scanifyAiDemo-sb-ints {
+    position: relative;
+    z-index: 1;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-int-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-int-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-pill {
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--r-full);
+    padding: 4px 11px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Contact card */
+.scanifyAiDemo-page .scanifyAiDemo-sb-contact {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    position: relative;
+    z-index: 1;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(125, 211, 252, 0.18);
+    border: 1.5px solid rgba(125, 211, 252, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 700;
+    color: #7dd3fc;
+    flex-shrink: 0;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-contact-name {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+    text-align: left;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-contact-role {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.4;
+    text-align: left;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-contact-email {
+    font-size: 10.5px;
+    color: #7dd3fc;
+    text-decoration: none;
+    margin-top: 2px;
+    word-break: break-all;
+    transition: color 0.15s;
+    text-align: left;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sb-contact-email:hover {
+    color: #bfdbfe;
+    text-decoration: underline;
+}
+
+/* ══════════════════════════════════════════
+   FORM PANEL
+   ══════════════════════════════════════════ */
+.scanifyAiDemo-page .scanifyAiDemo-form-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 2.25rem 2.25rem 1.5rem;
+    background: var(--white);
+    text-align: left;
+    box-sizing: border-box;
+}
+
+/* Header */
+.scanifyAiDemo-page .scanifyAiDemo-fp-header {
+    margin-bottom: 1.5rem;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-fp-title-row {
+    margin-bottom: 1.25rem;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-demo-logo {
+    height: 36px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-fp-title {
+    font-family: var(--font-head);
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 800;
+    color: var(--gray-900);
+    letter-spacing: -0.025em;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-fp-sub {
+    font-size: 13.5px;
+    color: var(--gray-500);
+    line-height: 1.55;
+    font-weight: 400;
+    text-align: left;
+}
+
+/* Stepper */
+.scanifyAiDemo-page .scanifyAiDemo-stepper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-st-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-st-bubble {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--blue-50);
+    border: 2px solid var(--blue-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--blue-400);
+    transition: all 0.22s ease;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-st-item.scanifyAiDemo-active .scanifyAiDemo-st-bubble {
+    background: var(--blue-600);
+    border-color: var(--blue-600);
+    color: var(--white);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-st-item.scanifyAiDemo-done .scanifyAiDemo-st-bubble {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--white);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-st-lbl {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-400);
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-st-item.scanifyAiDemo-active .scanifyAiDemo-st-lbl,
+.scanifyAiDemo-page .scanifyAiDemo-st-item.scanifyAiDemo-done .scanifyAiDemo-st-lbl {
+    color: var(--gray-800);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-st-line {
+    flex: 1;
+    height: 2px;
+    background: var(--blue-100);
+    margin: 0 8px;
+    transition: background 0.3s;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-st-line.scanifyAiDemo-done {
+    background: var(--green);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-progress-track {
+    height: 4px;
+    background: var(--blue-100);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-progress-fill {
+    height: 100%;
+    background: var(--blue-600);
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* Step intro */
+.scanifyAiDemo-page .scanifyAiDemo-step-body {
+    flex: 1;
+    animation: fadeUp 0.22s ease;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-step-intro {
+    margin-bottom: 1.5rem;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-step-h {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.018em;
+    margin-bottom: 4px;
+    text-align: left;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-step-p {
+    font-size: 13px;
+    color: var(--gray-500);
+    line-height: 1.55;
+    text-align: left;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Form layout grid ── */
+.scanifyAiDemo-page .scanifyAiDemo-form-row {
+    display: grid;
+    gap: 16px 20px;
+    margin-bottom: 18px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-form-row.scanifyAiDemo-col-1 {
+    grid-template-columns: 1fr;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-form-row.scanifyAiDemo-col-2 {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Field */
+.scanifyAiDemo-page .scanifyAiDemo-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-field-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 6px;
+    letter-spacing: 0.005em;
+    display: block;
+    text-align: left;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-req {
+    color: var(--red);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-opt {
+    color: var(--gray-400);
+    font-weight: 400;
+    font-size: 11.5px;
+}
+
+/* Input */
+.scanifyAiDemo-page .scanifyAiDemo-input {
+    width: 100%;
+    height: 44px;
+    background: var(--gray-50);
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--r-md);
+    padding: 0 14px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    color: var(--gray-900);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    -webkit-appearance: none;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-input::placeholder {
+    color: var(--gray-400);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-input:hover {
+    border-color: var(--blue-300);
+    background: var(--white);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-input:focus {
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    background: var(--white);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-input[type="date"] {
+    color: var(--gray-900);
+}
+
+/* Select */
+.scanifyAiDemo-page .scanifyAiDemo-select-wrap {
+    position: relative;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-select {
+    width: 100%;
+    height: 44px;
+    background: var(--gray-50);
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--r-md);
+    padding: 0 34px 0 14px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    color: var(--gray-900);
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-select:hover {
+    border-color: var(--blue-300);
+    background: var(--white);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-select:focus {
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    background: var(--white);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sel-chevron {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: var(--gray-400);
+    pointer-events: none;
+    line-height: 1;
+}
+
+/* Chips */
+.scanifyAiDemo-page .scanifyAiDemo-chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-chip {
+    height: 34px;
+    padding: 0 14px;
+    border-radius: var(--r-full);
+    border: 1.5px solid var(--gray-200);
+    background: var(--gray-50);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: all 0.14s ease;
+    white-space: nowrap;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-chip:hover {
+    border-color: var(--blue-400);
+    background: var(--blue-50);
+    color: var(--blue-700);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-chip-on {
+    background: var(--blue-600);
+    border-color: var(--blue-600);
+    color: var(--white);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-chip-on:hover {
+    background: var(--blue-700);
+    border-color: var(--blue-700);
+}
+
+/* Summary card */
+.scanifyAiDemo-page .scanifyAiDemo-summary-card {
+    background: var(--blue-50);
+    border: 1.5px solid var(--blue-200);
+    border-radius: var(--r-lg);
+    padding: 18px 20px;
+    margin-top: 4px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sum-title {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--blue-500);
+    margin-bottom: 14px;
+    font-family: var(--font-head);
+    text-align: left;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sum-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    row-gap: 10px;
+    column-gap: 20px;
+    align-items: baseline;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sum-key {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-500);
+    white-space: nowrap;
+    text-align: left;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sum-val {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--gray-900);
+    word-break: break-word;
+    text-align: left;
+}
+
+/* ── Footer ── */
+.scanifyAiDemo-page .scanifyAiDemo-form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.25rem;
+    border-top: 1.5px solid var(--gray-100);
+    margin-top: auto;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-footer-l {
+    min-width: 80px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-footer-r {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-submit-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Buttons */
+.scanifyAiDemo-page .scanifyAiDemo-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 42px;
+    padding: 0 16px;
+    background: var(--white);
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--r-md);
+    font-size: 13.5px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: all 0.14s;
+    white-space: nowrap;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-btn-ghost:hover {
+    border-color: var(--blue-300);
+    background: var(--blue-50);
+    color: var(--blue-700);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-btn-ghost:active {
+    transform: scale(0.97);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-btn-ghost:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 44px;
+    padding: 0 24px;
+    background: var(--blue-600);
+    border: none;
+    border-radius: var(--r-md);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--font-head);
+    color: var(--white);
+    cursor: pointer;
+    transition: background 0.14s, transform 0.1s;
+    min-width: 130px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-btn-primary:hover {
+    background: var(--blue-700);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-btn-primary:active {
+    transform: scale(0.97);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-btn-primary:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-spinner {
+    width: 17px;
+    height: 17px;
+    border: 2.5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-copyright {
+    font-size: 11px;
+    color: var(--gray-400);
+    text-align: center;
+    padding-top: 1.25rem;
+    font-weight: 400;
+}
+
+/* ── SUCCESS SCREEN ── */
+.scanifyAiDemo-page .scanifyAiDemo-success-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 550px;
+    padding: 2rem;
+    width: 100%;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-success-card {
+    background: var(--white);
+    border: 1.5px solid var(--blue-200);
+    border-radius: var(--r-xl);
+    padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 5vw, 2.5rem);
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 12px 50px rgba(37, 99, 235, 0.12);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-success-check {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: var(--blue-50);
+    border: 2px solid var(--blue-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--blue-600);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-success-h {
+    font-family: var(--font-head);
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--gray-900);
+    letter-spacing: -0.025em;
+    margin-bottom: 7px;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-success-p {
+    font-size: 14px;
+    color: var(--gray-500);
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-success-meta {
+    background: var(--blue-50);
+    border: 1.5px solid var(--blue-200);
+    border-radius: var(--r-lg);
+    padding: 16px 20px;
+    margin-bottom: 1.75rem;
+    text-align: left;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-smeta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-smeta-hr {
+    border: none;
+    border-top: 1px solid var(--blue-200);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-smeta-k {
+    font-size: 12px;
+    color: var(--gray-500);
+    font-weight: 500;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-smeta-v {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--gray-900);
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-smeta-v.scanifyAiDemo-mono {
+    font-family: 'Courier New', monospace;
+    font-size: 12.5px;
+    color: var(--blue-600);
+    letter-spacing: 0.03em;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-success-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ── RESPONSIVE ── */
+
+/* Tablet landscape → 860px */
+@media (max-width: 860px) {
+    .scanifyAiDemo-page .scanifyAiDemo-shell {
+        grid-template-columns: 280px 1fr;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-form-panel {
+        padding: 2rem 1.75rem 1.5rem;
+    }
+}
+
+/* Tablet portrait → 720px: stack panels */
+@media (max-width: 720px) {
+    .scanifyAiDemo-page .scanifyAiDemo-shell {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+        min-height: unset;
+        border-radius: var(--r-xl);
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-sidebar {
+        padding: 1.75rem 1.5rem;
+        gap: 1.4rem;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-sb-contact {
+        display: none;
+    }
+
+    /* shown in form panel on mobile */
+    .scanifyAiDemo-page .scanifyAiDemo-form-panel {
+        padding: 1.75rem 1.5rem 1.5rem;
+    }
+}
+
+/* Mobile → 560px */
+@media (max-width: 560px) {
+    .scanifyAiDemo-page {
+        padding: 10px;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-shell {
+        border-radius: var(--r-xl);
+        box-shadow: none;
+        max-width: 100%;
+        min-height: calc(100vh - 20px);
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-sidebar {
+        padding: 1.5rem 1.25rem;
+        gap: 1.2rem;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-sb-stats {
+        gap: 6px;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-sb-sv {
+        font-size: 17px;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-form-panel {
+        padding: 1.5rem 1.25rem 1.25rem;
+    }
+
+    /* All col-2 rows collapse to single column on mobile */
+    .scanifyAiDemo-page .scanifyAiDemo-form-row.scanifyAiDemo-col-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+        row-gap: 0;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-form-row.scanifyAiDemo-col-2 .scanifyAiDemo-field {
+        margin-bottom: 16px;
+    }
+
+    /* Submit buttons stack */
+    .scanifyAiDemo-page .scanifyAiDemo-submit-row {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-btn-primary,
+    .scanifyAiDemo-page .scanifyAiDemo-btn-ghost {
+        width: 100%;
+        min-width: unset;
+        justify-content: center;
+    }
+
+    /* Hide step labels on very narrow */
+    .scanifyAiDemo-page .scanifyAiDemo-st-lbl {
+        display: none;
+    }
+
+    /* Summary grid stays readable */
+    .scanifyAiDemo-page .scanifyAiDemo-sum-grid {
+        grid-template-columns: 1fr;
+        row-gap: 6px;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-sum-key {
+        color: var(--blue-500);
+        font-size: 11px;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-sum-val {
+        margin-bottom: 6px;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-success-actions {
+        flex-direction: column;
+    }
+}
+
+/* Small phones: iPhone SE → 375px */
+@media (max-width: 390px) {
+    .scanifyAiDemo-page .scanifyAiDemo-sidebar {
+        padding: 1.25rem 1rem;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-form-panel {
+        padding: 1.25rem 1rem 1rem;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-sb-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-sb-stat:last-child {
+        grid-column: span 2;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-chip {
+        font-size: 12px;
+        padding: 0 11px;
+        height: 32px;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-fp-title {
+        font-size: 17px;
+    }
+}
+
+/* Large screens: 1200px+ */
+@media (min-width: 1200px) {
+    .scanifyAiDemo-page .scanifyAiDemo-shell {
+        max-width: 1080px;
+        grid-template-columns: 360px 1fr;
+    }
+}
+
+/* Fix input width issue */
+.scanifyAiDemo-page .scanifyAiDemo-field {
+    width: 100%;
+    min-width: 0;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-input,
+.scanifyAiDemo-page .scanifyAiDemo-select,
+.scanifyAiDemo-page .scanifyAiDemo-select-wrap {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-form-row.scanifyAiDemo-col-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.scanifyAiDemo-page input {
+    min-width: 0;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-input {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-demo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-demo-top-right-logo {
+    height: 150px;
+    width: auto;
+    object-fit: contain;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-sidebar-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}

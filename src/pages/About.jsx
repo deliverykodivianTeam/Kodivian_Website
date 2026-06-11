@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import "../styles/About.css";
+import "../styles/Certifications.css";
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import { ISO9001Badge, ISO27001Badge } from "./Certifications";
 import Belowbar from "../components/Belowbar"; // Assuming this is used elsewhere in your actual component
 import {
   ClockIcon,
@@ -426,6 +429,53 @@ const About = () => {
                 </Card>
               </Col>
             ))}
+        </Row>
+      </Container>
+
+      {/* Certifications & Compliance Section */}
+      <Container className="py-5 certifications-section border-top border-light-purple" id="certifications">
+        <div className="text-center mb-5">
+          <h2 className="display-5 fw-bold text-violet">Certifications & Compliance</h2>
+          <div className="section-heading-under" />
+          <p className="lead text-muted max-w-2xl mx-auto">
+            Our commitment to international quality, data security, and cyber defense standards.
+          </p>
+        </div>
+        <Row className="justify-content-center g-4 py-3">
+          <Col lg={5} md={6}>
+            <div className="certification-card iso-9001">
+              <div>
+                <div className="cert-badge-wrapper">
+                  <ISO9001Badge />
+                </div>
+                <div className="cert-card-subtitle">ISO 9001:2015</div>
+                <h3 className="cert-card-title">Quality Management System</h3>
+                <p className="cert-card-desc">
+                  Demonstrating our commitment to quality excellence, customer satisfaction, operational consistency, and continual improvement.
+                </p>
+              </div>
+              <Link to="/certifications/iso-9001" className="cert-card-btn text-decoration-none">
+                View Details
+              </Link>
+            </div>
+          </Col>
+          <Col lg={5} md={6}>
+            <div className="certification-card iso-27001">
+              <div>
+                <div className="cert-badge-wrapper">
+                  <ISO27001Badge />
+                </div>
+                <div className="cert-card-subtitle">ISO/IEC 27001:2022</div>
+                <h3 className="cert-card-title">Information Security Management System</h3>
+                <p className="cert-card-desc">
+                  Ensuring the highest standards of information security, cybersecurity resilience, data protection, and risk management.
+                </p>
+              </div>
+              <Link to="/certifications/iso-27001" className="cert-card-btn text-decoration-none">
+                View Details
+              </Link>
+            </div>
+          </Col>
         </Row>
       </Container>
     </div>

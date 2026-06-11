@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
     Container,
     Row,
@@ -70,6 +71,7 @@ const faqData = [
 ];
 
 const ScanifyDetail = () => {
+    const navigate = useNavigate();
     const [isQueryOpen, setIsQueryOpen] = useState(false);
     const [queryText, setQueryText] = useState('');
     const [userName, setUserName] = useState('');
@@ -184,7 +186,7 @@ const ScanifyDetail = () => {
                             Customize your business journey effortlessly with our dashboard backed by a suite of powerful tools at your fingertips.
                         </p>
                         <div className="hero-buttons-scan d-flex flex-column flex-md-row justify-content-center justify-content-lg-start gap-4 mb-5">
-                            <Button variant="primary" size="lg" className="get-started-button-scan rounded-pill px-5 py-3" onClick={handleOpenPopup}>
+                            <Button variant="primary" size="lg" className="get-started-button-scan rounded-pill px-5 py-3" onClick={() => navigate('/scanify-booking')}>
                                 Get Started a demo
                             </Button>
                             <DemoBookingPopup isOpen={isPopupOpen} onClose={handleClosePopup} />
@@ -192,12 +194,7 @@ const ScanifyDetail = () => {
                                 variant="outline-light"
                                 size="lg"
                                 className="how-it-works-button-scan rounded-pill px-5 py-3"
-                                onClick={() => {
-                                    const section = document.getElementById("scanFunctionSection");
-                                    if (section) {
-                                        section.scrollIntoView({ behavior: "smooth" });
-                                    }
-                                }}
+                                onClick={() => navigate('/scanify-booking')}
                             >
                                 How it works <span className="ms-2">→</span>
                             </Button>

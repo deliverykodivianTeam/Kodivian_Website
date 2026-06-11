@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
  // Import useState
 import { Carousel, Container, Row, Col, Card, Button } from 'react-bootstrap'; // Import Button
 import '../styles/Home.css'; // Import the dedicated CSS file
@@ -43,12 +44,13 @@ async function getClientIP() {
 
 
 const Home = () => {
+    const navigate = useNavigate();
     // State to control the visibility of the demo booking popup
     const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false);
 
-    // Function to open the popup
+    // Function to open the booking page
     const handleOpenDemoPopup = () => {
-        setIsDemoPopupOpen(true);
+        navigate('/scanify-booking');
     };
 
     // Function to close the popup

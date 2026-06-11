@@ -43,7 +43,7 @@ const AppNavbar = () => {
     // Handler for the Demo Booking button click
     const handleDemoClick = () => {
         closeAll(); // Close any other open menus first
-        setIsDemoPopupOpen(true); // Open the demo booking popup
+        navigate('/scanify-booking');
     };
 
     // Toggles the product dropdown visibility (desktop) or mobile overlay
@@ -199,7 +199,7 @@ const AppNavbar = () => {
                         </Nav>
 
                         <Button variant="primary" onClick={handleDemoClick} className="ms-lg-auto">
-                            Demo Booking
+                            Schedule a Free Demo
                         </Button>
                     </div>
                 </Container>

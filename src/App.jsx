@@ -18,6 +18,7 @@ import Processbuilder from "./pages/Processbuilder";
 import Document from "./pages/Document";
 import SupportForge from "./pages/SupportForge";
 import Robort from "./pages/Robort";
+import ScanifyBookingPage from "./pages/ScanifyBookingPage";
 import Belowbar from "./components/Belowbar";
 import ScrollToTop from "./components/ScrollToTop";
 import Chatbox from "./components/Chatbox";
@@ -116,7 +117,7 @@ function AppContent() {
   }, [location.pathname]);
 
   // Hide footer on admin pages
-  const hideFooterRoutes = ["/admin", "/visitors-list"];
+  const hideFooterRoutes = ["/admin", "/visitors-list", "/scanify-booking"];
   const showFooter = !hideFooterRoutes.includes(location.pathname);
 
   return (
@@ -131,6 +132,7 @@ function AppContent() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/scanify-booking" element={<ScanifyBookingPage />} />
               <Route path="/product" element={<Product />} />
               <Route path="/scanify" element={<ScanifyDetail />} />
               <Route path="/processbuilder" element={<Processbuilder />} />
