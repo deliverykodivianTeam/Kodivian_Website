@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
- // Import useState
+// Import useState
 import { Carousel, Container, Row, Col, Card, Button } from 'react-bootstrap'; // Import Button
 import '../styles/Home.css'; // Import the dedicated CSS file
 
@@ -8,12 +8,12 @@ import Belowbar from "../components/Belowbar"; // Adjust the path if necessary
 
 // Import product images
 
-import icon3 from  '../assets/scanify-logo.png';
-import icon4 from  '../assets/low-code.png';
-import icon5 from  '../assets/SFicon.png';
+import icon3 from '../assets/scanify-logo.png';
+import icon4 from '../assets/low-code.png';
+import icon5 from '../assets/SFicon.png';
 // Client Logo Imports
 import ponpureLogo from '../assets/ponpure.png';
-import tiCycleLogo from '../assets/tii-logo.png'; 
+import tiCycleLogo from '../assets/tii-logo.png';
 import murugappalogo from '../assets/murugappa.png';
 import khazanaLogo from '../assets/khazana.png';
 import sharatIndustriesLogo from '../assets/sharat-industries.png';
@@ -37,9 +37,9 @@ import tafe from '../assets/TAFE.svg';
 import DemoBookingPopup from "../components/DemoBookingPopup";
 
 async function getClientIP() {
-  const res = await fetch("https://api64.ipify.org?format=json");
-  const data = await res.json();
-  return data.ip;
+    const res = await fetch("https://api64.ipify.org?format=json");
+    const data = await res.json();
+    return data.ip;
 }
 
 
@@ -61,28 +61,28 @@ const Home = () => {
     // Combine all client logos into an array for easier mapping
     const clientLogos = [
         ponpureLogo, tiCycleLogo, murugappalogo, khazanaLogo, sharatIndustriesLogo,
-         dmccLogo, aavaBrandsLogo, tiMedicallogo, Innoventure_logo,
-        shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo,teamlogo,lifecelllogo,svr,jkf,tafe
+        dmccLogo, aavaBrandsLogo, tiMedicallogo, Innoventure_logo,
+        shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo, teamlogo, lifecelllogo, svr, jkf, tafe
     ];
 
     // ⭐ Track Website Visitor
-useEffect(() => {
-  const trackVisitor = async () => {
-    try {
-      const ip = await getClientIP();
+    useEffect(() => {
+        const trackVisitor = async () => {
+            try {
+                const ip = await getClientIP();
 
-      await fetch("https://kodivian-website-5.onrender.com/track", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ip }),
-      });
-    } catch (err) {
-      console.error("Visitor tracking failed:", err);
-    }
-  };
+                await fetch("https://kodivian-website-5.onrender.com/track", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ ip }),
+                });
+            } catch (err) {
+                console.error("Visitor tracking failed:", err);
+            }
+        };
 
-  trackVisitor();
-}, []);
+        trackVisitor();
+    }, []);
 
 
     return (
@@ -112,20 +112,20 @@ useEffect(() => {
                                 Ready to transform your business operations?
                             </p>
                             {/* This is the button that will now open the DemoBookingPopup */}
-                           <div className="demo-button-wrapper">
-  <Button
-    type="button"
-    className="btn-lg text-white demo-schedule-button"
-    onClick={handleOpenDemoPopup}
-    style={{
-      backgroundColor: "#9400d3",
-      borderColor: "#9400d3",
-      color: "#fff",
-    }}
-  >
-    Schedule a Free Demo
-  </Button>
-</div>
+                            <div className="demo-button-wrapper">
+                                <Button
+                                    type="button"
+                                    className="btn-lg text-white demo-schedule-button"
+                                    onClick={handleOpenDemoPopup}
+                                    style={{
+                                        backgroundColor: "#9400d3",
+                                        borderColor: "#9400d3",
+                                        color: "#fff",
+                                    }}
+                                >
+                                    SCANIFY AI DEMO
+                                </Button>
+                            </div>
 
                         </Col>
                     </Row>
@@ -154,7 +154,7 @@ useEffect(() => {
                                         Uses advanced OCR technology to scan documents and extract accurate data instantly. It eliminates the need for manual input by capturing information directly from scanned images or PDFs. Once extracted, the data can be automatically stored or sent to any connected system, making data handling faster, error-free, and efficient.
                                     </p>
                                 </Col>
-                            </Row> 
+                            </Row>
                         </Container>
                     </Carousel.Item>
 
@@ -162,21 +162,21 @@ useEffect(() => {
                     <Carousel.Item className="bg-light">
                         <Container fluid>
                             <Row className="align-items-center py-5">
-                                 <Col md={4} className="text-center">
+                                <Col md={4} className="text-center">
                                     <img
                                         className="d-block mx-auto img-fluid product-icon"
                                         src={icon4}
                                         alt="Scanify Process Icon"
                                     />
                                 </Col>
-                                
+
                                 <Col md={7} className="text-center text-md-start">
                                     <h1 className="display-4 fw-bold text-violet text-center full-width-header">Process Builder: Low-Code No-Code Workflow Automation</h1>
                                     <p className="lead product-description">
                                         Uses a no-code platform that lets you drag, drop, and design customized forms effortlessly. Beyond form creation, you can build full workflows within the same interface, assign actions, automate steps, and launch entire applications in one go. It's designed for speed, simplicity, and powerful workflow automation.
                                     </p>
                                 </Col>
-                                
+
                             </Row>
                         </Container>
                     </Carousel.Item>
@@ -195,13 +195,13 @@ useEffect(() => {
                                 <Col md={7} className="text-center text-md-start">
                                     <h1 className="display-4 fw-bold text-violet text-center full-width-header ">Support Forge: Ticketing Tool Management System</h1>
                                     <p className="lead product-description">
-                                      A smart, automated platform that streamlines service requests, approvals, escalations, and resolutions across departments. It ensures faster response times, complete transparency, and seamless workflow management from ticket creation to closure.
+                                        A smart, automated platform that streamlines service requests, approvals, escalations, and resolutions across departments. It ensures faster response times, complete transparency, and seamless workflow management from ticket creation to closure.
                                     </p>
                                 </Col>
-                            </Row> 
+                            </Row>
                         </Container>
                     </Carousel.Item>
-                   
+
 
                 </Carousel>
             </section>
@@ -288,30 +288,30 @@ useEffect(() => {
 
             {/* Our Valued Clients Section */}
 
-<section id="our-cliented" className="py-5 bg-white overflow-hidden">
-    <Container fluid>
-        <h2 className="display-5 fw-bold text-center mb-5 text-violet">
-            Our Valued Clients
-        </h2>
+            <section id="our-cliented" className="py-5 bg-white overflow-hidden">
+                <Container fluid>
+                    <h2 className="display-5 fw-bold text-center mb-5 text-violet">
+                        Our Valued Clients
+                    </h2>
 
-        <div className="clients-grid">
-  {clientLogos.map((logo, index) => {
-    const isLastSingle =
-      clientLogos.length % 3 === 1 &&
-      index === clientLogos.length - 1;
+                    <div className="clients-grid">
+                        {clientLogos.map((logo, index) => {
+                            const isLastSingle =
+                                clientLogos.length % 3 === 1 &&
+                                index === clientLogos.length - 1;
 
-    return (
-      <div
-        key={index}
-        className={`client-logo-box ${isLastSingle ? "center-last-logo" : ""}`}
-      >
-        <img src={logo} alt={`Client ${index + 1}`} />
-      </div>
-    );
-  })}
-</div>
-    </Container>
-</section>
+                            return (
+                                <div
+                                    key={index}
+                                    className={`client-logo-box ${isLastSingle ? "center-last-logo" : ""}`}
+                                >
+                                    <img src={logo} alt={`Client ${index + 1}`} />
+                                </div>
+                            );
+                        })}
+                    </div>
+                </Container>
+            </section>
 
 
 
