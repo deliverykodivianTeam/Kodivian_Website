@@ -62,6 +62,14 @@ export default function ScanifyBookingPage() {
       alert("Please fill in Name, Company Name and Mobile Number.");
       return;
     }
+    if (!/^[6-9]\d{9}$/.test(form.mobile_number)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.corporate_email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
     setStep(s => Math.min(3, s + 1));
   };
   const prev = () => setStep(s => Math.max(1, s - 1));
@@ -247,8 +255,13 @@ export default function ScanifyBookingPage() {
                     onChange={e => set("full_name", e.target.value)} placeholder="e.g. Kaviya Arivaratharaj" />
                 </Field>
                 <Field label="Mobile Number" required>
-                  <input className="scanifyAiDemo-input" value={form.mobile_number}
-                    onChange={e => set("mobile_number", e.target.value)} placeholder="+91 98765 43210" />
+                  <input
+                    className="scanifyAiDemo-input"
+                    value={form.mobile_number}
+                    onChange={e => set("mobile_number", e.target.value)}
+                    placeholder="+91 98765 43210"
+                    maxLength={10}
+                  />
                 </Field>
               </div>
 
@@ -256,7 +269,7 @@ export default function ScanifyBookingPage() {
               <div className="scanifyAiDemo-form-row scanifyAiDemo-col-2">
                 <Field label="Company Name" required>
                   <input className="scanifyAiDemo-input" value={form.company_name}
-                    onChange={e => set("company_name", e.target.value)} placeholder="e.g. Kodivian Tetchnologies" />
+                    onChange={e => set("company_name", e.target.value)} placeholder="e.g. Kodivian Technologies" />
                 </Field>
                 <Field label="Designation" optional>
                   <input className="scanifyAiDemo-input" value={form.designation}
