@@ -11,7 +11,8 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import under from "../assets/under.png";
-
+import iso9001 from "../assets/ISO-9001-2015-Certification.png";
+import iso27001 from "../assets/ISO-27001-certification.png";
 const Belowbar = () => {
   return (
     <div className="w-100 overflow-hidden">
@@ -94,19 +95,15 @@ const Belowbar = () => {
               Design better and spend less time <br /> without restricting tools creative freedom.
             </h3>
 
-            <h6 className="text-custom-white-900 text-uppercase fs-6 mb-2">
-              Sign-up to get interesting updates
-            </h6>
-
             <div className="d-flex flex-column flex-sm-row mb-3">
-              <input
+              {/* <input
                 type="email"
                 placeholder="Enter your email"
                 className="form-control bg-light text-dark rounded py-2 px-3 fs-6 w-100 mb-2 mb-sm-0 me-sm-2"
               />
               <button className="btn btn-custom-purple fw-semibold py-2 px-4 rounded fs-6">
                 Send
-              </button>
+              </button> */}
             </div>
 
             {/* SOCIAL ICONS */}
@@ -142,6 +139,7 @@ const Belowbar = () => {
 
             </div>
 
+
           </div>
 
           {/* RIGHT SIDE — MENUS */}
@@ -166,8 +164,29 @@ const Belowbar = () => {
             <div className="col-12 col-sm-4 mb-4">
               <h3 className="text-custom-white-900 fw-bold">SERVICES</h3>
               <a className="text-custom-white-300 d-block" href="/scanify">Artificial Intelligence</a>
-              <a className="text-custom-white-300 d-block"  href="/processbuilder">Business Process Management</a>
-              <a className="text-custom-white-300 d-block"  href="/services">Robotic Process Automation</a>
+              <a className="text-custom-white-300 d-block" href="/processbuilder">Business Process Management</a>
+              <a className="text-custom-white-300 d-block" href="/services">Robotic Process Automation</a>
+            </div>
+
+            {/* Certifications (ISO 9001 & ISO 27001) */}
+            <div className="col-12 d-flex gap-4 mt-4 mb-2 justify-content-start justify-content-md-end align-items-center w-100 pe-md-5">
+              <Link to="/certifications/iso-9001">
+                <img
+                  src={iso9001}
+                  alt="ISO 9001"
+                  className="img-fluid"
+                  style={{ maxWidth: "125px", height: "auto" }}
+                />
+              </Link>
+
+              <Link to="/certifications/iso-27001">
+                <img
+                  src={iso27001}
+                  alt="ISO 27001"
+                  className="img-fluid"
+                  style={{ maxWidth: "125px", height: "auto" }}
+                />
+              </Link>
             </div>
 
           </div>

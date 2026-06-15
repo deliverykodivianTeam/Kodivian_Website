@@ -26,6 +26,9 @@ import Chatbox from "./components/Chatbox";
 import LoadingPage from "./components/LoadingPage";
 import Adminlogin from "./pages/Adminlogin";
 import VisitorDetails from "./pages/VisitorDetails";
+import Certifications from "./pages/Certifications";
+import Iso9001 from "./pages/Iso9001";
+import Iso27001 from "./pages/Iso27001";
 
 import "./index.css";
 import "./styles/ChatBox.css";
@@ -131,6 +134,9 @@ function AppContent() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/certifications" element={<Certifications />} />
+              <Route path="/certifications/iso-9001" element={<Iso9001 />} />
+              <Route path="/certifications/iso-27001" element={<Iso27001 />} />
               <Route path="/services" element={<Services />} />
               <Route path="/scanify-booking" element={<ScanifyBookingPage />} />
               <Route path="/product" element={<Product />} />

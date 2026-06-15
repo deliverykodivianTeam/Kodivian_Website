@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
-import { 
-  ShieldCheck, 
-  Lock, 
-  Key, 
-  AlertTriangle, 
-  EyeOff, 
-  CheckSquare, 
-  Activity, 
-  Code, 
-  UserCheck, 
-  Zap, 
-  RefreshCw, 
+import {
+  ShieldCheck,
+  Lock,
+  Key,
+  AlertTriangle,
+  EyeOff,
+  CheckSquare,
+  Activity,
+  Code,
+  UserCheck,
+  Zap,
+  RefreshCw,
   FileCheck
 } from "lucide-react";
 import { ISO27001Badge } from "./Certifications";
@@ -26,8 +26,8 @@ const WaxSeal = () => (
     <path d="M50 70 L48 97 L53 97 L50 70" fill="#7a1414" />
     <circle cx="50" cy="50" r="38" fill="#b22222" filter="drop-shadow(1px 2px 3px rgba(0,0,0,0.3))" />
     <circle cx="50" cy="50" r="35" fill="none" stroke="#a31d1d" strokeWidth="1" />
-    <path d="M 50 12 A 38 38 0 0 1 85 35 A 38 38 0 0 1 80 65 A 38 38 0 0 1 50 88 A 38 38 0 0 1 15 60 A 38 38 0 0 1 50 12" 
-          fill="none" stroke="#8b0000" strokeWidth="2" strokeDasharray="5 2" />
+    <path d="M 50 12 A 38 38 0 0 1 85 35 A 38 38 0 0 1 80 65 A 38 38 0 0 1 50 88 A 38 38 0 0 1 15 60 A 38 38 0 0 1 50 12"
+      fill="none" stroke="#8b0000" strokeWidth="2" strokeDasharray="5 2" />
     <circle cx="50" cy="50" r="28" fill="#8b0000" />
     <circle cx="50" cy="50" r="26" fill="none" stroke="#ff4d4d" strokeWidth="0.5" opacity="0.4" />
     <text x="50" y="44" fill="#ffb3b3" fontSize="6.5" fontWeight="bold" textAnchor="middle" letterSpacing="0.5">APPROVED</text>
@@ -145,10 +145,7 @@ const Iso27001 = () => {
       title: "Information Security Governance",
       content: "At Kodivian Technologies, we maintain a robust Information Security Governance framework. This aligns cybersecurity strategies with corporate objectives, defining clear lines of responsibility, asset ownership, security leadership, and policy audits.",
     },
-    {
-      title: "Cybersecurity Framework",
-      content: "Our unified cybersecurity framework is structured around the ISO/IEC 27001 guidelines. We integrate threat hunting, endpoint protection, firewall management, and real-time vulnerability detection to protect our infrastructure from modern vectors.",
-    },
+
     {
       title: "Risk Assessment Methodology",
       content: "We implement a continuous risk assessment methodology that identifies vulnerabilities, evaluates threat impacts, and assigns risk indices. This data enables us to prioritize resource allocation for immediate threat mitigation.",
@@ -165,34 +162,8 @@ const Iso27001 = () => {
       title: "Integrity Assurance",
       content: "To guarantee data remains unaltered, we enforce checksum verifications, transactional logging, file-integrity monitoring, and role-restricted database writing operations across all products.",
     },
-    {
-      title: "Availability Management",
-      content: "We deploy our solutions on cloud architectures with automated load balancing, multiregional redundancy, and server monitoring, securing a 99.9% uptime rate for our software products.",
-    },
-    {
-      title: "Secure Software Development",
-      content: "Our engineering guidelines incorporate secure coding practices. We perform static code analysis, library vulnerability patching, and sandboxed sandbox executions to isolate dependency vulnerabilities.",
-    },
-    {
-      title: "Access Control Policies",
-      content: "We follow the principle of least privilege. Using Multi-Factor Authentication (MFA), role-based access control (RBAC), and active directory controls, we ensure that only authorized users access target resources.",
-    },
-    {
-      title: "Incident Response Procedures",
-      content: "Our incident response playbook outlines precise steps to detect, contain, eliminate, and document security anomalies, minimizing target system impacts.",
-    },
-    {
-      title: "Business Continuity Planning",
-      content: "We secure continuous operational capabilities through robust business continuity plans. Regularly audited automated backups, system replication, and secondary recovery centers protect clients during disruptions.",
-    },
-    {
-      title: "Regulatory Compliance",
-      content: "We map security controls to verify compliance with GDPR, HIPAA, CCPA, and other global data privacy regulations, keeping client data legally insulated.",
-    },
-    {
-      title: "Security Awareness Programs",
-      content: "Our workforce undergoes periodic security training. By covering topics like social engineering, phishing awareness, and credential hygiene, we build an active human firewall.",
-    },
+
+
   ];
 
   return (
@@ -212,9 +183,9 @@ const Iso27001 = () => {
                 Ensuring the highest standards of information security, cybersecurity resilience, data protection, and risk management.
               </p>
               <div className="d-flex gap-3 flex-wrap">
-                <Button 
+                <Button
                   onClick={() => setShowCertificate(!showCertificate)}
-                  variant="outline-light" 
+                  variant="outline-light"
                   className="px-4 py-2 rounded-pill fw-bold"
                   style={{ border: "2px solid #ffffff" }}
                 >
@@ -293,7 +264,7 @@ const Iso27001 = () => {
                   <p className="lead text-muted mb-4">
                     Kodivian Technologies deploys a highly systematic, layered compliance shield to block security threats.
                   </p>
-                  
+
                   {details.map((d, i) => (
                     <div key={i} className="mb-4 pb-3 border-bottom border-light">
                       <h4 className="fw-bold text-violet mb-2" style={{ fontSize: "1.25rem" }}>

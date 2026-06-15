@@ -8,7 +8,7 @@ import Belowbar from "../components/Belowbar"; // Adjust the path if necessary
 
 // Import product images
 
-import icon3 from '../assets/scanify-logo.png';
+import icon3 from '../assets/scanifykodivianlogo.png';
 import icon4 from '../assets/low-code.png';
 import icon5 from '../assets/SFicon.png';
 // Client Logo Imports

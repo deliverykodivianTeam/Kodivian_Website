@@ -166,30 +166,12 @@ const Iso9001 = () => {
       title: "Process Optimization",
       content: "Our automation suite, featuring Scanify AI and Process Builder, is engineered to optimize complex workflows. By standardizing process executions and stripping out manual dependencies, we dramatically reduce project cycle times and human errors.",
     },
-    {
-      title: "Standardized Operating Procedures",
-      content: "Every team at Kodivian adheres to well-defined Standard Operating Procedures (SOPs). From engineering practices and cloud operations to customer onboarding and code deployments, these standards ensure predictability and structural reliability.",
-    },
+
     {
       title: "Quality Assurance Framework",
       content: "We implement an integrated Quality Assurance (QA) framework that covers automated testing, manual sanity runs, performance stress audits, and peer code reviews. This ensures that only clean, robust, and optimized software gets deployed to production.",
     },
-    {
-      title: "Performance Monitoring",
-      content: "We utilize real-time monitoring tools, dashboards, and analytical pipelines to observe critical system parameters. These insights help us analyze server performance, application response times, and project velocity metrics, keeping stakeholders fully aligned.",
-    },
-    {
-      title: "Compliance Management",
-      content: "Our dedicated compliance team continuously monitors regulatory updates, security standards, and statutory codes. This guarantees that Kodivian's products and consulting services comply fully with international and regional compliance mandates.",
-    },
-    {
-      title: "Risk-Based Thinking",
-      content: "We embed risk assessment in our project management and operational planning. By identifying risks early, calculating impact probabilities, and establishing preemptive mitigation paths, we secure uninterrupted business continuity for our clients.",
-    },
-    {
-      title: "Operational Excellence",
-      content: "Our ultimate goal is absolute operational excellence. By bringing together skilled engineers, optimized automation tools, and rigorous international quality standards, we deliver scalable enterprise solutions that accelerate client growth.",
-    },
+
   ];
 
   return (

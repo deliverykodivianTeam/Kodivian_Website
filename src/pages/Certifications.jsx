@@ -73,9 +73,11 @@ const Certifications = () => {
             >
               <div className="certification-card iso-9001">
                 <div>
-                  <div className="cert-badge-wrapper">
-                    <ISO9001Badge />
-                  </div>
+                  <Link to="/certifications/iso-9001">
+                    <div className="cert-badge-wrapper">
+                      <ISO9001Badge />
+                    </div>
+                  </Link>
                   <div className="cert-card-subtitle">ISO 9001:2015</div>
                   <h3 className="cert-card-title">Quality Management System</h3>
                   <p className="cert-card-desc">
@@ -99,9 +101,11 @@ const Certifications = () => {
             >
               <div className="certification-card iso-27001">
                 <div>
-                  <div className="cert-badge-wrapper">
-                    <ISO27001Badge />
-                  </div>
+                  <Link to="/certifications/iso-27001">
+                    <div className="cert-badge-wrapper">
+                      <ISO27001Badge />
+                    </div>
+                  </Link>
                   <div className="cert-card-subtitle">ISO/IEC 27001:2022</div>
                   <h3 className="cert-card-title">Information Security Management</h3>
                   <p className="cert-card-desc">
