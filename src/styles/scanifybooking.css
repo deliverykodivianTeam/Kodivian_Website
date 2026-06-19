@@ -65,9 +65,9 @@
 /* ── Shell ── */
 .scanifyAiDemo-page .scanifyAiDemo-shell {
     display: grid;
-    grid-template-columns: 320px 1fr;
-    width: 100%;
-    max-width: 980px;
+    grid-template-columns: 280px 1fr;
+    width: 95%;
+    max-width: 1800px;
     background: var(--white);
     border-radius: var(--r-xl);
     overflow: hidden;
@@ -448,6 +448,9 @@
     background: var(--white);
     text-align: left;
     box-sizing: border-box;
+  overflow:visible;
+  max-height:none;
+padding: 40px;
 }
 
 /* Header */
@@ -622,17 +625,19 @@
 /* Field */
 .scanifyAiDemo-page .scanifyAiDemo-field {
     display: flex;
+    margin-bottom:32px;
     flex-direction: column;
 }
 
 .scanifyAiDemo-page .scanifyAiDemo-field-label {
-    font-size: 12.5px;
-    font-weight: 600;
     color: var(--gray-700);
-    margin-bottom: 6px;
     letter-spacing: 0.005em;
     display: block;
     text-align: left;
+  font-size:15px;
+  font-weight:600;
+  line-height:1.5;
+  margin-bottom:10px;
 }
 
 .scanifyAiDemo-page .scanifyAiDemo-req {
@@ -1096,7 +1101,7 @@
     }
 
     .scanifyAiDemo-page .scanifyAiDemo-form-row.scanifyAiDemo-col-2 .scanifyAiDemo-field {
-        margin-bottom: 16px;
+         margin-bottom:24px;
     }
 
     /* Submit buttons stack */
@@ -1167,18 +1172,18 @@
     }
 }
 
-/* Large screens: 1200px+ */
 @media (min-width: 1200px) {
     .scanifyAiDemo-page .scanifyAiDemo-shell {
-        max-width: 1080px;
-        grid-template-columns: 360px 1fr;
+        width: 95%;
+        max-width: none;
+        grid-template-columns: 280px 1fr;
     }
 }
 
 /* Fix input width issue */
 .scanifyAiDemo-page .scanifyAiDemo-field {
-    width: 100%;
-    min-width: 0;
+      margin-bottom:12px;
+  display:block;
 }
 
 .scanifyAiDemo-page .scanifyAiDemo-input,
@@ -1220,4 +1225,59 @@
     height: 50px;
     width: auto;
     object-fit: contain;
+}
+
+.scanifyAiDemo-textarea {
+  border: 1px solid #d1d5db;
+  resize: vertical;
+  margin-top: 5px;
+  min-height:120px;
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+}
+
+.scanifyAiDemo-textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.scanifyAiDemo-option-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px 30px;
+  margin-top:14px;
+}
+
+.scanifyAiDemo-option-grid label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  line-height:1.5;
+}
+
+.scanifyAiDemo-page .scanifyAiDemo-fp-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#fff;
+  padding-bottom:12px;
+}
+
+@media (max-width: 768px){
+
+  .scanifyAiDemo-page .scanifyAiDemo-sidebar{
+    display:none !important;
+  }
+
+  .scanifyAiDemo-option-grid{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .scanifyAiDemo-page .scanifyAiDemo-shell{
+    grid-template-columns:1fr !important;
+    max-width:100% !important;
+  }
+
 }

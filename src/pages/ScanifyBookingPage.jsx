@@ -5,21 +5,39 @@ import scanifyKodivianLogo from "../assets/scanifykodivianlogo.png";
 
 const API_URL = import.meta.env.VITE_API_URL || "https://scanify-booking.onrender.com";
 
-const DOCUMENT_OPTIONS = ["Invoice", "Purchase Order", "GRN", "Receipt", "Vendor Invoice", "Delivery Challan"];
-const ERP_OPTIONS = ["SAP", "Oracle", "Tally", "Microsoft Dynamics", "Zoho", "Other"];
-const PROCESS_OPTIONS = ["Manual Entry", "Excel Upload", "OCR + Validation", "ERP Direct Entry"];
-const APPROVAL_OPTIONS = ["No Approval", "Single Level", "Two Level", "Multi Level"];
-const VOLUME_OPTIONS = ["0–500", "500–2000", "2000–5000", "5000+"];
-const TIME_SLOTS = [
-  "09:00 AM – 10:00 AM", "10:00 AM – 11:00 AM", "11:00 AM – 12:00 PM",
-  "02:00 PM – 03:00 PM", "03:00 PM – 04:00 PM", "04:00 PM – 05:00 PM",
-];
 
 const EMPTY_FORM = {
-  full_name: "", designation: "", company_name: "", corporate_email: "",
-  mobile_number: "", documents_required: [], erp_system: "",
-  current_process: "", approval_workflow: "", document_volume: "",
-  preferred_demo_date: "", preferred_time_slot: "",
+  full_name: "",
+  designation: "",
+  company_name: "",
+  corporate_email: "",
+  mobile_number: "",
+
+  q1_current_process: "",
+  q2_document_volume: "",
+  q3_processing_time: "",
+  q4_errors: "",
+
+  q5_team_size: "",
+  q5_effort_per_document: "",
+
+  q6_erp_system: "",
+
+  q7_document_formats: "",
+
+  q8_pain_points: "",
+
+  q9_business_impact: "",
+
+  q10_automation_readiness: "",
+
+  q11_validation_process: "",
+
+  q12_erp_entry_method: "",
+
+  q13_mapping_template: "",
+
+  q14_approval_workflow: ""
 };
 
 /* ── tiny Field wrapper ── */
@@ -44,18 +62,21 @@ export default function ScanifyBookingPage() {
   const formRef = useRef(null);
   const [form, setForm] = useState({ ...EMPTY_FORM });
 
+  const [showQ1Other, setShowQ1Other] = useState(false);
+const [showQ6Other, setShowQ6Other] = useState(false);
+const [showQ7Other, setShowQ7Other] = useState(false);
+const [showQ8Other, setShowQ8Other] = useState(false);
+const [showQ9Other, setShowQ9Other] = useState(false);
+const [showQ10Other, setShowQ10Other] = useState(false);
+const [showQ12Other, setShowQ12Other] = useState(false);
+const [showQ14Other, setShowQ14Other] = useState(false);
+
   useEffect(() => {
     const el = formRef.current?.querySelector("input,select");
     el?.focus();
   }, [step]);
 
   const set = (k, v) => setForm(p => ({ ...p, [k]: v }));
-  const toggle = doc => setForm(p => ({
-    ...p,
-    documents_required: p.documents_required.includes(doc)
-      ? p.documents_required.filter(d => d !== doc)
-      : [...p.documents_required, doc],
-  }));
 
   const next = () => {
     if (step === 1 && (!form.full_name.trim() || !form.company_name.trim() || !form.mobile_number.trim())) {
@@ -70,7 +91,7 @@ export default function ScanifyBookingPage() {
       alert("Please enter a valid email address.");
       return;
     }
-    setStep(s => Math.min(3, s + 1));
+    setStep(s => Math.min(2, s + 1));
   };
   const prev = () => setStep(s => Math.max(1, s - 1));
 
@@ -102,25 +123,16 @@ export default function ScanifyBookingPage() {
               <path d="M5 14l6 6L23 8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
-          <h2 className="scanifyAiDemo-success-h">Demo Request Confirmed</h2>
-          <p className="scanifyAiDemo-success-p">Our team will contact you within 24 hours to confirm your slot.</p>
-          <div className="scanifyAiDemo-success-meta">
-            <div className="scanifyAiDemo-smeta-row"><span className="scanifyAiDemo-smeta-k">Booking ref</span><span className="scanifyAiDemo-smeta-v scanifyAiDemo-mono">{bookingRef || "—"}</span></div>
-            <hr className="scanifyAiDemo-smeta-hr" />
-            <div className="scanifyAiDemo-smeta-row"><span className="scanifyAiDemo-smeta-k">Date</span><span className="scanifyAiDemo-smeta-v">{form.preferred_demo_date || "Not specified"}</span></div>
-            <hr className="scanifyAiDemo-smeta-hr" />
-            <div className="scanifyAiDemo-smeta-row"><span className="scanifyAiDemo-smeta-k">Time</span><span className="scanifyAiDemo-smeta-v">{form.preferred_time_slot || "Not specified"}</span></div>
-          </div>
-          <div className="scanifyAiDemo-success-actions">
-            <button className="scanifyAiDemo-btn-ghost" onClick={reset}>Book another demo</button>
-            <button className="scanifyAiDemo-btn-primary" onClick={() => window.location.replace("/")}>Done</button>
-          </div>
+          <h2 className="scanifyAiDemo-success-h">
+  Requirement Submitted Successfully
+</h2>
+          <p className="scanifyAiDemo-success-p">Our team will review your requirements and contact you shortly for a personalized Scanify AI demonstration.</p>
         </div>
       </div>
     </div>
   );
 
-  const pct = ((step - 1) / 2) * 100;
+  const pct = ((step - 1) / 1) * 100;
 
   /* ────────── MAIN ────────── */
   return (
@@ -216,7 +228,7 @@ export default function ScanifyBookingPage() {
 
             {/* stepper */}
             <div className="scanifyAiDemo-stepper">
-              {["Contact", "Requirements", "Schedule"].map((lbl, i) => {
+              {["Contact", "Requirements"].map((lbl, i) => {
                 const n = i + 1;
                 const done = step > n;
                 const active = step === n;
@@ -230,7 +242,7 @@ export default function ScanifyBookingPage() {
                       </div>
                       <span className="scanifyAiDemo-st-lbl">{lbl}</span>
                     </div>
-                    {i < 2 && <div className={`scanifyAiDemo-st-line${done ? " scanifyAiDemo-done" : ""}`} />}
+                    {i < 1 && <div className={`scanifyAiDemo-st-line${done ? " scanifyAiDemo-done" : ""}`} />}
                   </React.Fragment>
                 );
               })}
@@ -240,167 +252,461 @@ export default function ScanifyBookingPage() {
 
           {/* ── STEP 1 ── */}
           {step === 1 && (
-            <div className="scanifyAiDemo-step-body">
-              <div className="scanifyAiDemo-step-intro">
-                <h2 className="scanifyAiDemo-step-h">Contact Details</h2>
-                <p className="scanifyAiDemo-step-p">Tell us who you are — we'll personalise the demo around you.</p>
-              </div>
+  <div className="scanifyAiDemo-step-body">
+    <div className="scanifyAiDemo-step-intro">
+      <h2 className="scanifyAiDemo-step-h">Contact Details</h2>
+      <p className="scanifyAiDemo-step-p">
+        Please provide your details before proceeding.
+      </p>
+    </div>
 
+    <div className="scanifyAiDemo-form-row scanifyAiDemo-col-2">
+      <Field label="Full Name" required>
+        <input
+          className="scanifyAiDemo-input"
+          value={form.full_name}
+          onChange={(e) => set("full_name", e.target.value)}
+        />
+      </Field>
 
+      <Field label="Mobile Number" required>
+        <input
+          className="scanifyAiDemo-input"
+          value={form.mobile_number}
+          onChange={(e) => set("mobile_number", e.target.value)}
+        />
+      </Field>
+    </div>
 
-              {/* ROW: full name | mobile */}
-              <div className="scanifyAiDemo-form-row scanifyAiDemo-col-2">
-                <Field label="Full Name" required>
-                  <input className="scanifyAiDemo-input" value={form.full_name}
-                    onChange={e => set("full_name", e.target.value)} placeholder="e.g. Kaviya Arivaratharaj" />
-                </Field>
-                <Field label="Mobile Number" required>
-                  <input
-                    className="scanifyAiDemo-input"
-                    value={form.mobile_number}
-                    onChange={e => set("mobile_number", e.target.value)}
-                    placeholder="+91 98765 43210"
-                    maxLength={10}
-                  />
-                </Field>
-              </div>
+    <div className="scanifyAiDemo-form-row scanifyAiDemo-col-2">
+      <Field label="Company Name" required>
+        <input
+          className="scanifyAiDemo-input"
+          value={form.company_name}
+          onChange={(e) => set("company_name", e.target.value)}
+        />
+      </Field>
 
-              {/* ROW: company | designation */}
-              <div className="scanifyAiDemo-form-row scanifyAiDemo-col-2">
-                <Field label="Company Name" required>
-                  <input className="scanifyAiDemo-input" value={form.company_name}
-                    onChange={e => set("company_name", e.target.value)} placeholder="e.g. Kodivian Technologies" />
-                </Field>
-                <Field label="Designation" optional>
-                  <input className="scanifyAiDemo-input" value={form.designation}
-                    onChange={e => set("designation", e.target.value)} placeholder="e.g. Head of Finance" />
-                </Field>
-              </div>
+      <Field label="Designation">
+        <input
+          className="scanifyAiDemo-input"
+          value={form.designation}
+          onChange={(e) => set("designation", e.target.value)}
+        />
+      </Field>
+    </div>
 
-              {/* ROW: email full-width */}
-              <div className="scanifyAiDemo-form-row scanifyAiDemo-col-1">
-                <Field label="Corporate Email" required>
-                  <input className="scanifyAiDemo-input" type="email" value={form.corporate_email}
-                    onChange={e => set("corporate_email", e.target.value)} placeholder="name@Kodivian.com" />
-                </Field>
-              </div>
-            </div>
-          )}
+    <Field label="Email ID" required>
+      <input
+        type="email"
+        className="scanifyAiDemo-input"
+        value={form.corporate_email}
+        onChange={(e) => set("corporate_email", e.target.value)}
+      />
+    </Field>
+  </div>
+)}
 
           {/* ── STEP 2 ── */}
-          {step === 2 && (
-            <div className="scanifyAiDemo-step-body">
-              <div className="scanifyAiDemo-step-intro">
-                <h2 className="scanifyAiDemo-step-h">Your Requirements</h2>
-                <p className="scanifyAiDemo-step-p">Help us understand your document automation needs.</p>
-              </div>
+{step === 2 && (
+  <div className="scanifyAiDemo-step-body">
 
-              {/* ROW: documents full-width */}
-              <div className="scanifyAiDemo-form-row scanifyAiDemo-col-1">
-                <Field label="Documents to Automate">
-                  <div className="scanifyAiDemo-chip-grid">
-                    {DOCUMENT_OPTIONS.map(d => (
-                      <button key={d} type="button"
-                        className={`scanifyAiDemo-chip${form.documents_required.includes(d) ? " scanifyAiDemo-chip-on" : ""}`}
-                        onClick={() => toggle(d)}>{d}</button>
-                    ))}
-                  </div>
-                </Field>
-              </div>
+    <div className="scanifyAiDemo-step-intro">
+      <h2 className="scanifyAiDemo-step-h">
+        Requirement Gathering
+      </h2>
+      <p className="scanifyAiDemo-step-p">
+        Help us understand your current document processing workflow.
+      </p>
+    </div>
 
-              {/* ROW: erp | process */}
-              <div className="scanifyAiDemo-form-row scanifyAiDemo-col-2">
-                <Field label="ERP System">
-                  <div className="scanifyAiDemo-select-wrap">
-                    <select className="scanifyAiDemo-select" value={form.erp_system} onChange={e => set("erp_system", e.target.value)}>
-                      <option value="">Select ERP</option>
-                      {ERP_OPTIONS.map(o => <option key={o} value={o}>{o}</option>)}
-                    </select>
-                    <span className="scanifyAiDemo-sel-chevron" aria-hidden>▾</span>
-                  </div>
-                </Field>
-                <Field label="Current Process">
-                  <div className="scanifyAiDemo-select-wrap">
-                    <select className="scanifyAiDemo-select" value={form.current_process} onChange={e => set("current_process", e.target.value)}>
-                      <option value="">Select process</option>
-                      {PROCESS_OPTIONS.map(o => <option key={o} value={o}>{o}</option>)}
-                    </select>
-                    <span className="scanifyAiDemo-sel-chevron" aria-hidden>▾</span>
-                  </div>
-                </Field>
-              </div>
+    {/* Q1 */}
+<Field label="1. How are you currently processing documents like invoices, POs, or GRNs?">
+  <div className="scanifyAiDemo-option-grid">
+    <label><input type="checkbox" /> Invoice Processing</label>
+    <label><input type="checkbox" /> Purchase Order (PO) Processing</label>
+    <label><input type="checkbox" /> GRN Processing</label>
+    <label><input type="checkbox" /> Delivery Challan Processing</label>
+    <label><input type="checkbox" /> Receipt Processing</label>
+    <label><input type="checkbox" /> Vendor Invoice Processing</label>
 
-              {/* ROW: approval | volume */}
-              <div className="scanifyAiDemo-form-row scanifyAiDemo-col-2">
-                <Field label="Approval Workflow">
-                  <div className="scanifyAiDemo-select-wrap">
-                    <select className="scanifyAiDemo-select" value={form.approval_workflow} onChange={e => set("approval_workflow", e.target.value)}>
-                      <option value="">Select workflow</option>
-                      {APPROVAL_OPTIONS.map(o => <option key={o} value={o}>{o}</option>)}
-                    </select>
-                    <span className="scanifyAiDemo-sel-chevron" aria-hidden>▾</span>
-                  </div>
-                </Field>
-                <Field label="Monthly Document Volume">
-                  <div className="scanifyAiDemo-select-wrap">
-                    <select className="scanifyAiDemo-select" value={form.document_volume} onChange={e => set("document_volume", e.target.value)}>
-                      <option value="">Select range</option>
-                      {VOLUME_OPTIONS.map(o => <option key={o} value={o}>{o}</option>)}
-                    </select>
-                    <span className="scanifyAiDemo-sel-chevron" aria-hidden>▾</span>
-                  </div>
-                </Field>
-              </div>
-            </div>
-          )}
+    <label>
+      <input
+        type="checkbox"
+        onChange={(e) => setShowQ1Other(e.target.checked)}
+      />
+      Other
+    </label>
+  </div>
 
-          {/* ── STEP 3 ── */}
-          {step === 3 && (
-            <div className="scanifyAiDemo-step-body">
-              <div className="scanifyAiDemo-step-intro">
-                <h2 className="scanifyAiDemo-step-h">Schedule Your Demo</h2>
-                <p className="scanifyAiDemo-step-p">Pick a preferred slot or skip — we'll confirm timing directly.</p>
-              </div>
+  {showQ1Other && (
+    <input
+      className="scanifyAiDemo-input"
+      placeholder="Please Specify"
+      style={{ marginTop: "8px" }}
+    />
+  )}
+</Field>
+<div className="scanifyAiDemo-form-row scanifyAiDemo-col-2">
+    {/* Q2 */}
+    <Field label="2. What is your average monthly document volume (Invoices, POs, etc.)?">
+<select
+  className="scanifyAiDemo-select"
+  value={form.q2_document_volume}
+  onChange={(e) => set("q2_document_volume", e.target.value)}
+>
+  <option value="">Select Volume</option>
+  <option>0 - 500 Documents</option>
+  <option>500 - 2,000 Documents</option>
+  <option>2,000 - 5,000 Documents</option>
+</select>
+    </Field>
 
-              {/* ROW: date | time */}
-              <div className="scanifyAiDemo-form-row scanifyAiDemo-col-2">
-                <Field label="Preferred Date">
-                  <input className="scanifyAiDemo-input" type="date" value={form.preferred_demo_date}
-                    onChange={e => set("preferred_demo_date", e.target.value)}
-                    min={new Date().toISOString().split("T")[0]} />
-                </Field>
-                <Field label="Preferred Time Slot">
-                  <div className="scanifyAiDemo-select-wrap">
-                    <select className="scanifyAiDemo-select" value={form.preferred_time_slot} onChange={e => set("preferred_time_slot", e.target.value)}>
-                      <option value="">Select time</option>
-                      {TIME_SLOTS.map(t => <option key={t} value={t}>{t}</option>)}
-                    </select>
-                    <span className="scanifyAiDemo-sel-chevron" aria-hidden>▾</span>
-                  </div>
-                </Field>
-              </div>
+    {/* Q3 */}
+    <Field label="3. How long does it take from document receipt to final entry in your system?">
+      <select
+  className="scanifyAiDemo-select"
+  value={form.q3_processing_time}
+  onChange={(e) => set("q3_processing_time", e.target.value)}
+>
+        <option>Select Processing Time</option>
+        <option>Less than 30 Minutes</option>
+        <option>30 Minutes - 1 Hour</option>
+        <option>1 - 4 Hours</option>
+        <option>4 - 8 Hours</option>
+        <option>More than 1 Day</option>
+      </select>
+    </Field>
+</div>
 
-              {/* Summary */}
-              <div className="scanifyAiDemo-summary-card">
-                <p className="scanifyAiDemo-sum-title">Booking Summary</p>
-                <div className="scanifyAiDemo-sum-grid">
-                  {[
-                    ["Full Name", form.full_name || "—"],
-                    ["Company", form.company_name || "—"],
-                    ["Mobile", form.mobile_number || "—"],
-                    form.erp_system && ["ERP System", form.erp_system],
-                    form.documents_required.length > 0 && ["Documents", form.documents_required.join(", ")],
-                  ].filter(Boolean).map(([k, v]) => (
-                    <React.Fragment key={k}>
-                      <span className="scanifyAiDemo-sum-key">{k}</span>
-                      <span className="scanifyAiDemo-sum-val">{v}</span>
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
+    {/* Q4 */}
+    <Field label="4. What kind of errors or mismatches do you face during data entry or validation?">
+      <textarea
+  className="scanifyAiDemo-textarea"
+  value={form.q4_errors}
+  onChange={(e) => set("q4_errors", e.target.value)}
+/>
+    </Field>
 
+    {/* Q5 */}
+    <Field label="5. How many people are involved in this process, and what is the approximate effort per document?">
+  <select
+    className="scanifyAiDemo-select"
+    value={form.q5_team_size}
+    onChange={(e) => set("q5_team_size", e.target.value)}
+  >
+    <option value="">Select Team Size</option>
+    <option>1 - 2 Users</option>
+    <option>3 - 5 Users</option>
+    <option>6 - 10 Users</option>
+    <option>11 - 20 Users</option>
+    <option>20+ Users</option>
+  </select>
+
+  <input
+    className="scanifyAiDemo-input"
+    placeholder="Approximate Effort Per Document"
+    value={form.q5_effort_per_document}
+    onChange={(e) => set("q5_effort_per_document", e.target.value)}
+    style={{ marginTop: "10px" }}
+  />
+</Field>
+
+    {/* Q6 */}
+<Field label="6. Which ERP or accounting systems are you currently using?">
+  <select
+  className="scanifyAiDemo-select"
+  value={form.q6_erp_system}
+  onChange={(e) => {
+    set("q6_erp_system", e.target.value);
+    setShowQ6Other(e.target.value === "Other");
+  }}
+>
+    <option>Select ERP</option>
+    <option>SAP ECC</option>
+    <option>SAP S/4HANA</option>
+    <option>SAP Business One</option>
+    <option>Oracle EBS</option>
+    <option>Oracle Fusion</option>
+    <option>Microsoft Dynamics 365</option>
+    <option>Tally</option>
+    <option>Zoho</option>
+    <option>ERPNext</option>
+    <option>Other</option>
+  </select>
+
+  {showQ6Other && (
+    <input
+      className="scanifyAiDemo-input"
+      placeholder="Please Specify"
+      style={{ marginTop: "8px" }}
+    />
+  )}
+</Field>
+
+    {/* Q7 */}
+<Field label="7. What formats do your documents come in?">
+  <div className="scanifyAiDemo-option-grid">
+    <label><input type="checkbox" /> PDF</label>
+    <label><input type="checkbox" /> Scanned PDF</label>
+    <label><input type="checkbox" /> JPG</label>
+    <label><input type="checkbox" /> PNG</label>
+    <label><input type="checkbox" /> Email Body</label>
+    <label><input type="checkbox" /> Excel</label>
+    <label><input type="checkbox" /> Handwritten Documents</label>
+
+    <label>
+      <input
+        type="checkbox"
+        onChange={(e) => setShowQ7Other(e.target.checked)}
+      />
+      Other
+    </label>
+  </div>
+
+  {showQ7Other && (
+    <input
+      className="scanifyAiDemo-input"
+      placeholder="Please Specify"
+      style={{ marginTop: "8px" }}
+    />
+  )}
+</Field>
+
+    {/* Q8 */}
+   <Field label="8. What are the top 3 challenges you face in your current document processing workflow?">
+  <textarea
+    className="scanifyAiDemo-textarea"
+    value={form.q8_pain_points}
+    onChange={(e) => set("q8_pain_points", e.target.value)}
+    placeholder="Describe your top challenges"
+  />
+</Field>
+
+    {/* Q9 */}
+<Field label="9. How do these inefficiencies impact your business?">
+  <div className="scanifyAiDemo-option-grid">
+    <label><input type="checkbox" /> Delayed Payments</label>
+    <label><input type="checkbox" /> Delayed Order Processing</label>
+    <label><input type="checkbox" /> Compliance Risks</label>
+    <label><input type="checkbox" /> Vendor Issues</label>
+    <label><input type="checkbox" /> Customer Complaints</label>
+    <label><input type="checkbox" /> Increased Operational Cost</label>
+    <label><input type="checkbox" /> Revenue Impact</label>
+
+    <label>
+      <input
+        type="checkbox"
+        onChange={(e) => setShowQ9Other(e.target.checked)}
+      />
+      Other
+    </label>
+  </div>
+
+  {showQ9Other && (
+    <input
+      className="scanifyAiDemo-input"
+      placeholder="Please Specify"
+      style={{ marginTop: "8px" }}
+    />
+  )}
+</Field>
+
+    {/* Q10 */}
+<Field label="10. Have you explored automation or OCR solutions before? What worked or didn't?">
+
+  <label>
+    <input
+      type="radio"
+      name="ocr"
+      value="Never Evaluated"
+      checked={form.q10_automation_readiness === "Never Evaluated"}
+      onChange={(e) => set("q10_automation_readiness", e.target.value)}
+    />
+    Never Evaluated
+  </label>
+  <br />
+
+  <label>
+    <input
+      type="radio"
+      name="ocr"
+      value="Evaluated OCR Solutions"
+      checked={form.q10_automation_readiness === "Evaluated OCR Solutions"}
+      onChange={(e) => set("q10_automation_readiness", e.target.value)}
+    />
+    Evaluated OCR Solutions
+  </label>
+  <br />
+
+  <label>
+    <input
+      type="radio"
+      name="ocr"
+      value="Currently Using OCR"
+      checked={form.q10_automation_readiness === "Currently Using OCR"}
+      onChange={(e) => set("q10_automation_readiness", e.target.value)}
+    />
+    Currently Using OCR
+  </label>
+  <br />
+
+  <label>
+    <input
+      type="radio"
+      name="ocr"
+      value="Currently Using OCR + Workflow Automation"
+      checked={form.q10_automation_readiness === "Currently Using OCR + Workflow Automation"}
+      onChange={(e) => set("q10_automation_readiness", e.target.value)}
+    />
+    Currently Using OCR + Workflow Automation
+  </label>
+  <br />
+
+  <label>
+    <input
+      type="radio"
+      name="ocr"
+      value="Other"
+      checked={form.q10_automation_readiness === "Other"}
+      onChange={() => {
+        set("q10_automation_readiness", "Other");
+        setShowQ10Other(true);
+      }}
+    />
+    Other
+  </label>
+
+  {showQ10Other && (
+    <input
+      className="scanifyAiDemo-input"
+      placeholder="Please Specify"
+      style={{ marginTop: "8px" }}
+    />
+  )}
+</Field>
+
+    {/* Q11 */}
+    <Field label="11. How do you currently verify extracted data accuracy before posting to ERP?">
+      <textarea
+  className="scanifyAiDemo-textarea"
+  value={form.q11_validation_process}
+  onChange={(e) => set("q11_validation_process", e.target.value)}
+/>
+    </Field>
+
+    {/* Q12 */}
+<Field label="12. How are documents currently entered into ERP - manual entry, upload, or API integration?">
+
+  <label>
+    <input
+      type="radio"
+      name="erpentry"
+      value="Manual Entry"
+      checked={form.q12_erp_entry_method === "Manual Entry"}
+      onChange={(e) => set("q12_erp_entry_method", e.target.value)}
+    />
+    Manual Entry
+  </label>
+  <br />
+
+  <label>
+    <input
+      type="radio"
+      name="erpentry"
+      value="Excel Upload"
+      checked={form.q12_erp_entry_method === "Excel Upload"}
+      onChange={(e) => set("q12_erp_entry_method", e.target.value)}
+    />
+    Excel Upload
+  </label>
+  <br />
+
+  <label>
+    <input
+      type="radio"
+      name="erpentry"
+      value="API Integration"
+      checked={form.q12_erp_entry_method === "API Integration"}
+      onChange={(e) => set("q12_erp_entry_method", e.target.value)}
+    />
+    API Integration
+  </label>
+  <br />
+
+  <label>
+    <input
+      type="radio"
+      name="erpentry"
+      value="Middleware Integration"
+      checked={form.q12_erp_entry_method === "Middleware Integration"}
+      onChange={(e) => set("q12_erp_entry_method", e.target.value)}
+    />
+    Middleware Integration
+  </label>
+  <br />
+
+  <label>
+    <input
+      type="radio"
+      name="erpentry"
+      value="Other"
+      checked={form.q12_erp_entry_method === "Other"}
+      onChange={() => {
+        set("q12_erp_entry_method", "Other");
+        setShowQ12Other(true);
+      }}
+    />
+    Other
+  </label>
+
+  {showQ12Other && (
+    <input
+      className="scanifyAiDemo-input"
+      placeholder="Please Specify"
+      style={{ marginTop: "8px" }}
+    />
+  )}
+</Field>
+
+    {/* Q13 */}
+    <Field label="13. Can you share the mapping template or format required for ERP upload?">
+      <textarea
+  className="scanifyAiDemo-textarea"
+  value={form.q13_mapping_template}
+  onChange={(e) => set("q13_mapping_template", e.target.value)}
+/>    </Field>
+
+    {/* Q14 */}
+<Field label="14. Is there an approval workflow configured in ERP before final posting?">
+  <select
+  className="scanifyAiDemo-select"
+  value={form.q14_approval_workflow}
+  onChange={(e) => {
+    set("q14_approval_workflow", e.target.value);
+    setShowQ14Other(e.target.value === "Other");
+  }}
+>
+    <option>Select Workflow</option>
+    <option>No Approval Workflow</option>
+    <option>Single Level Approval</option>
+    <option>Two Level Approval</option>
+    <option>Three Level Approval</option>
+    <option>Multi Level Approval</option>
+    <option>Other</option>
+  </select>
+
+  {showQ14Other && (
+    <input
+      className="scanifyAiDemo-input"
+      placeholder="Please Specify"
+      style={{ marginTop: "8px" }}
+    />
+  )}
+</Field>
+
+  </div>
+)}
           {/* ── Footer Actions ── */}
           <div className="scanifyAiDemo-form-footer">
             <div className="scanifyAiDemo-footer-l">
@@ -412,17 +718,14 @@ export default function ScanifyBookingPage() {
               )}
             </div>
             <div className="scanifyAiDemo-footer-r">
-              {step < 3
+              {step < 2
                 ? <button className="scanifyAiDemo-btn-primary" onClick={next}>
                   Continue
                   <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M5 3l5 4.5L5 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 </button>
                 : <div className="scanifyAiDemo-submit-row">
-                  <button className="scanifyAiDemo-btn-ghost" onClick={() => submit({ preferred_demo_date: "", preferred_time_slot: "" })} disabled={loading}>
-                    {loading ? "Processing…" : "Skip & Submit"}
-                  </button>
                   <button className="scanifyAiDemo-btn-primary" onClick={() => submit()} disabled={loading}>
-                    {loading ? <span className="scanifyAiDemo-spinner" /> : <>Confirm Booking <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M5 3l5 4.5L5 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg></>}
+                    {loading ? <span className="scanifyAiDemo-spinner" /> : <>Submit Requirements <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M5 3l5 4.5L5 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg></>}
                   </button>
                 </div>
               }
