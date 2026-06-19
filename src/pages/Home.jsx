@@ -123,7 +123,7 @@ const Home = () => {
                                         color: "#fff",
                                     }}
                                 >
-                                    SCANIFY AI DEMO
+                                    Start Requirement Assessment
                                 </Button>
                             </div>
 

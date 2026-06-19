@@ -1,12 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap');
+
 /* ═══════════════════════════════════════════════════════════
    SCANIFY AI · DEMO BOOKING · PAGE STYLING
    Ported & Scoped for Kodivian Website Page Route
    Font: Sora (headings) + Outfit (body) — Google Fonts
  ═══════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap');
+/* =========================================
+   SCANIFY PAGE ISOLATION
+   ========================================= */
 
-:root {
+.scanifyAiDemo-page,
+.scanifyAiDemo-page * {
+    box-sizing: border-box;
+}
+
+.scanifyAiDemo-page {
+    font-family: 'Outfit', sans-serif !important;
+}
+
+.scanifyAiDemo-page h1,
+.scanifyAiDemo-page h2,
+.scanifyAiDemo-page h3,
+.scanifyAiDemo-page h4,
+.scanifyAiDemo-page h5,
+.scanifyAiDemo-page h6 {
+    font-family: 'Sora', sans-serif !important;
+}
+
+
+.scanifyAiDemo-page {
     /* Blue palette */
     --blue-950: #03082e;
     --blue-900: #0a1545;
@@ -448,9 +471,9 @@
     background: var(--white);
     text-align: left;
     box-sizing: border-box;
-  overflow:visible;
-  max-height:none;
-padding: 40px;
+    overflow: visible;
+    max-height: none;
+    padding: 40px;
 }
 
 /* Header */
@@ -625,7 +648,7 @@ padding: 40px;
 /* Field */
 .scanifyAiDemo-page .scanifyAiDemo-field {
     display: flex;
-    margin-bottom:32px;
+    margin-bottom: 32px;
     flex-direction: column;
 }
 
@@ -634,10 +657,10 @@ padding: 40px;
     letter-spacing: 0.005em;
     display: block;
     text-align: left;
-  font-size:15px;
-  font-weight:600;
-  line-height:1.5;
-  margin-bottom:10px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 10px;
 }
 
 .scanifyAiDemo-page .scanifyAiDemo-req {
@@ -1101,7 +1124,7 @@ padding: 40px;
     }
 
     .scanifyAiDemo-page .scanifyAiDemo-form-row.scanifyAiDemo-col-2 .scanifyAiDemo-field {
-         margin-bottom:24px;
+        margin-bottom: 24px;
     }
 
     /* Submit buttons stack */
@@ -1182,8 +1205,8 @@ padding: 40px;
 
 /* Fix input width issue */
 .scanifyAiDemo-page .scanifyAiDemo-field {
-      margin-bottom:12px;
-  display:block;
+    margin-bottom: 12px;
+    display: block;
 }
 
 .scanifyAiDemo-page .scanifyAiDemo-input,
@@ -1227,57 +1250,57 @@ padding: 40px;
     object-fit: contain;
 }
 
-.scanifyAiDemo-textarea {
-  border: 1px solid #d1d5db;
-  resize: vertical;
-  margin-top: 5px;
-  min-height:120px;
-  width:100%;
-  padding:12px;
-  border-radius:10px;
+.scanifyAiDemo-page .scanifyAiDemo-textarea {
+    border: 1px solid #d1d5db;
+    resize: vertical;
+    margin-top: 5px;
+    min-height: 120px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
 }
 
-.scanifyAiDemo-textarea:focus {
+.scanifyAiDemo-page .scanifyAiDemo-textarea:focus {
     outline: none;
     border-color: #2563eb;
 }
 
-.scanifyAiDemo-option-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px 30px;
-  margin-top:14px;
+.scanifyAiDemo-page .scanifyAiDemo-option-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 30px;
+    margin-top: 14px;
 }
 
-.scanifyAiDemo-option-grid label{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  line-height:1.5;
+.scanifyAiDemo-page .scanifyAiDemo-option-grid label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.5;
 }
 
-.scanifyAiDemo-page .scanifyAiDemo-fp-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:#fff;
-  padding-bottom:12px;
+.scanifyAiDemo-page .scanifyAiDemo-fp-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    padding-bottom: 12px;
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
 
-  .scanifyAiDemo-page .scanifyAiDemo-sidebar{
-    display:none !important;
-  }
+    .scanifyAiDemo-page .scanifyAiDemo-sidebar {
+        display: none !important;
+    }
 
-  .scanifyAiDemo-option-grid{
-    grid-template-columns:1fr;
-    gap:10px;
-  }
+    .scanifyAiDemo-page .scanifyAiDemo-option-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
 
-  .scanifyAiDemo-page .scanifyAiDemo-shell{
-    grid-template-columns:1fr !important;
-    max-width:100% !important;
-  }
+    .scanifyAiDemo-page .scanifyAiDemo-shell {
+        grid-template-columns: 1fr !important;
+        max-width: 100% !important;
+    }
 
 }
