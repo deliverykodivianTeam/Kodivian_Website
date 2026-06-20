@@ -86,13 +86,21 @@ q10_automation_readiness VARCHAR(255),
 
 q11_validation_process TEXT,
 
-q13_erp_entry_method VARCHAR(255),
+q12_erp_entry_method VARCHAR(255),
 
-q14_mapping_template TEXT,
+q13_mapping_template TEXT,
 
-q15_approval_workflow VARCHAR(255), 
+q14_approval_workflow VARCHAR(255),
 
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+q1_other TEXT,
+q6_other TEXT,
+q7_other TEXT,
+q9_other TEXT,
+q10_other TEXT,
+q12_other TEXT,
+q14_other TEXT,
+
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     """)
 
@@ -142,6 +150,13 @@ class DemoBooking(BaseModel):
 
     q14_approval_workflow: Optional[str] = ""
 
+    q1_other: Optional[str] = ""
+    q6_other: Optional[str] = ""
+    q7_other: Optional[str] = ""
+    q9_other: Optional[str] = ""
+    q10_other: Optional[str] = ""
+    q12_other: Optional[str] = ""
+    q14_other: Optional[str] = ""
 # ------------------------------------------------------------------
 # Brevo Configuration
 # ------------------------------------------------------------------
@@ -394,9 +409,31 @@ q12_erp_entry_method,
 
 q13_mapping_template,
 
-q14_approval_workflow
-            )
-            VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+q14_approval_workflow,
+
+q1_other,
+q6_other,
+q7_other,
+q9_other,
+q10_other,
+q12_other,
+q14_other
+)
+VALUES(
+%s,%s,%s,%s,%s,%s,
+%s,%s,%s,%s,
+%s,%s,
+%s,
+%s,
+%s,
+%s,
+%s,
+%s,
+%s,
+%s,
+%s,
+%s,%s,%s,%s,%s,%s,%s
+)
             """,
 (
     booking_ref,
@@ -430,7 +467,15 @@ q14_approval_workflow
 
     booking.q13_mapping_template,
 
-    booking.q14_approval_workflow
+    booking.q14_approval_workflow,
+
+booking.q1_other,
+booking.q6_other,
+booking.q7_other,
+booking.q9_other,
+booking.q10_other,
+booking.q12_other,
+booking.q14_other
 )
         )
 

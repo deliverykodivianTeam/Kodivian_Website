@@ -71,12 +71,30 @@ const [showQ10Other, setShowQ10Other] = useState(false);
 const [showQ12Other, setShowQ12Other] = useState(false);
 const [showQ14Other, setShowQ14Other] = useState(false);
 
+const set = (k, v) => setForm(p => ({ ...p, [k]: v }));
+
+const handleCheckboxChange = (field, value, checked) => {
+  const current = form[field]
+    ? form[field].split(", ")
+    : [];
+
+  let updated;
+
+  if (checked) {
+    updated = [...current, value];
+  } else {
+    updated = current.filter(item => item !== value);
+  }
+
+  set(field, updated.join(", "));
+};
+
   useEffect(() => {
     const el = formRef.current?.querySelector("input,select");
     el?.focus();
   }, [step]);
 
-  const set = (k, v) => setForm(p => ({ ...p, [k]: v }));
+
 
   const next = () => {
     if (step === 1 && (!form.full_name.trim() || !form.company_name.trim() || !form.mobile_number.trim())) {
@@ -363,31 +381,53 @@ if (missingFields.length > 0) {
     </div>
 
     {/* Q1 */}
-<Field label="1. How are you currently processing documents like invoices, POs, or GRNs?" requi>
+<Field label="1. How are you currently processing documents like invoices, POs, or GRNs?" required>
   <div className="scanifyAiDemo-option-grid">
-    <label><input type="checkbox" /> Invoice Processing</label>
-    <label><input type="checkbox" /> Purchase Order (PO) Processing</label>
-    <label><input type="checkbox" /> GRN Processing</label>
-    <label><input type="checkbox" /> Delivery Challan Processing</label>
-    <label><input type="checkbox" /> Receipt Processing</label>
-    <label><input type="checkbox" /> Vendor Invoice Processing</label>
+
+    {[
+      "Invoice Processing",
+      "Purchase Order (PO) Processing",
+      "GRN Processing",
+      "Delivery Challan Processing",
+      "Receipt Processing",
+      "Vendor Invoice Processing"
+    ].map((item) => (
+      <label key={item}>
+        <input
+          type="checkbox"
+          checked={form.q1_current_process?.includes(item)}
+          onChange={(e) =>
+            handleCheckboxChange(
+              "q1_current_process",
+              item,
+              e.target.checked
+            )
+          }
+        />
+        {item}
+      </label>
+    ))}
 
     <label>
       <input
         type="checkbox"
+        checked={showQ1Other}
         onChange={(e) => setShowQ1Other(e.target.checked)}
       />
       Other
     </label>
+
   </div>
 
   {showQ1Other && (
-    <input
-      className="scanifyAiDemo-input"
-      placeholder="Please Specify"
-      style={{ marginTop: "8px" }}
-    />
-  )}
+  <input
+    className="scanifyAiDemo-input"
+    placeholder="Please Specify"
+    value={form.q1_other}
+    onChange={(e) => set("q1_other", e.target.value)}
+    style={{ marginTop: "8px" }}
+  />
+)}
 </Field>
 <div className="scanifyAiDemo-form-row scanifyAiDemo-col-2">
     {/* Q2 */}
@@ -411,7 +451,7 @@ if (missingFields.length > 0) {
   value={form.q3_processing_time}
   onChange={(e) => set("q3_processing_time", e.target.value)}
 >
-        <option>Select Processing Time</option>
+        <option value="">Select Processing Time</option>
         <option>Less than 30 Minutes</option>
         <option>30 Minutes - 1 Hour</option>
         <option>1 - 4 Hours</option>
@@ -464,7 +504,7 @@ if (missingFields.length > 0) {
     setShowQ6Other(e.target.value === "Other");
   }}
 >
-    <option>Select ERP</option>
+    <option value="">Select ERP</option>
     <option>SAP ECC</option>
     <option>SAP S/4HANA</option>
     <option>SAP Business One</option>
@@ -478,41 +518,65 @@ if (missingFields.length > 0) {
   </select>
 
   {showQ6Other && (
-    <input
-      className="scanifyAiDemo-input"
-      placeholder="Please Specify"
-      style={{ marginTop: "8px" }}
-    />
-  )}
+  <input
+    className="scanifyAiDemo-input"
+    placeholder="Please Specify"
+    value={form.q6_other}
+    onChange={(e) => set("q6_other", e.target.value)}
+    style={{ marginTop: "8px" }}
+  />
+)}
 </Field>
 
     {/* Q7 */}
 <Field label="7. What formats do your documents come in?" required>
   <div className="scanifyAiDemo-option-grid">
-    <label><input type="checkbox" /> PDF</label>
-    <label><input type="checkbox" /> Scanned PDF</label>
-    <label><input type="checkbox" /> JPG</label>
-    <label><input type="checkbox" /> PNG</label>
-    <label><input type="checkbox" /> Email Body</label>
-    <label><input type="checkbox" /> Excel</label>
-    <label><input type="checkbox" /> Handwritten Documents</label>
+
+    {[
+      "PDF",
+      "Scanned PDF",
+      "JPG",
+      "PNG",
+      "Email Body",
+      "Excel",
+      "Handwritten Documents"
+    ].map((item) => (
+      <label key={item}>
+        <input
+          type="checkbox"
+          checked={form.q7_document_formats?.includes(item)}
+          onChange={(e) =>
+            handleCheckboxChange(
+              "q7_document_formats",
+              item,
+              e.target.checked
+            )
+          }
+        />
+        {item}
+      </label>
+    ))}
 
     <label>
       <input
         type="checkbox"
+        checked={showQ7Other}
         onChange={(e) => setShowQ7Other(e.target.checked)}
       />
       Other
     </label>
+
   </div>
 
   {showQ7Other && (
-    <input
-      className="scanifyAiDemo-input"
-      placeholder="Please Specify"
-      style={{ marginTop: "8px" }}
-    />
-  )}
+  <input
+    className="scanifyAiDemo-input"
+    placeholder="Please Specify"
+    value={form.q7_other}
+    onChange={(e) => set("q7_other", e.target.value)}
+    style={{ marginTop: "8px" }}
+  />
+)}
 </Field>
 
     {/* Q8 */}
@@ -528,30 +592,52 @@ if (missingFields.length > 0) {
     {/* Q9 */}
 <Field label="9. How do these inefficiencies impact your business?" required>
   <div className="scanifyAiDemo-option-grid">
-    <label><input type="checkbox" /> Delayed Payments</label>
-    <label><input type="checkbox" /> Delayed Order Processing</label>
-    <label><input type="checkbox" /> Compliance Risks</label>
-    <label><input type="checkbox" /> Vendor Issues</label>
-    <label><input type="checkbox" /> Customer Complaints</label>
-    <label><input type="checkbox" /> Increased Operational Cost</label>
-    <label><input type="checkbox" /> Revenue Impact</label>
+
+    {[
+      "Delayed Payments",
+      "Delayed Order Processing",
+      "Compliance Risks",
+      "Vendor Issues",
+      "Customer Complaints",
+      "Increased Operational Cost",
+      "Revenue Impact"
+    ].map((item) => (
+      <label key={item}>
+        <input
+          type="checkbox"
+          checked={form.q9_business_impact?.includes(item)}
+          onChange={(e) =>
+            handleCheckboxChange(
+              "q9_business_impact",
+              item,
+              e.target.checked
+            )
+          }
+        />
+        {item}
+      </label>
+    ))}
 
     <label>
       <input
         type="checkbox"
+        checked={showQ9Other}
         onChange={(e) => setShowQ9Other(e.target.checked)}
       />
       Other
     </label>
+
   </div>
 
   {showQ9Other && (
-    <input
-      className="scanifyAiDemo-input"
-      placeholder="Please Specify"
-      style={{ marginTop: "8px" }}
-    />
-  )}
+  <input
+    className="scanifyAiDemo-input"
+    placeholder="Please Specify"
+    value={form.q9_other}
+    onChange={(e) => set("q9_other", e.target.value)}
+    style={{ marginTop: "8px" }}
+  />
+)}
 </Field>
 
     {/* Q10 */}
@@ -620,12 +706,14 @@ if (missingFields.length > 0) {
   </label>
 
   {showQ10Other && (
-    <input
-      className="scanifyAiDemo-input"
-      placeholder="Please Specify"
-      style={{ marginTop: "8px" }}
-    />
-  )}
+  <input
+    className="scanifyAiDemo-input"
+    placeholder="Please Specify"
+    value={form.q10_other}
+    onChange={(e) => set("q10_other", e.target.value)}
+    style={{ marginTop: "8px" }}
+  />
+)}
 </Field>
 
     {/* Q11 */}
@@ -703,12 +791,14 @@ if (missingFields.length > 0) {
   </label>
 
   {showQ12Other && (
-    <input
-      className="scanifyAiDemo-input"
-      placeholder="Please Specify"
-      style={{ marginTop: "8px" }}
-    />
-  )}
+  <input
+    className="scanifyAiDemo-input"
+    placeholder="Please Specify"
+    value={form.q12_other}
+    onChange={(e) => set("q12_other", e.target.value)}
+    style={{ marginTop: "8px" }}
+  />
+)}
 </Field>
 
     {/* Q13 */}
@@ -729,7 +819,7 @@ if (missingFields.length > 0) {
     setShowQ14Other(e.target.value === "Other");
   }}
 >
-    <option>Select Workflow</option>
+    <option value="">Select Workflow</option>
     <option>No Approval Workflow</option>
     <option>Single Level Approval</option>
     <option>Two Level Approval</option>
@@ -739,12 +829,14 @@ if (missingFields.length > 0) {
   </select>
 
   {showQ14Other && (
-    <input
-      className="scanifyAiDemo-input"
-      placeholder="Please Specify"
-      style={{ marginTop: "8px" }}
-    />
-  )}
+  <input
+    className="scanifyAiDemo-input"
+    placeholder="Please Specify"
+    value={form.q14_other}
+    onChange={(e) => set("q14_other", e.target.value)}
+    style={{ marginTop: "8px" }}
+  />
+)}
 </Field>
 
   </div>
