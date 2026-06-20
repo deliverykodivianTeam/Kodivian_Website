@@ -3,7 +3,7 @@ import "../styles/ScanifyBooking.css";
 import scanifyKodivianLogo from "../assets/scanifykodivianlogo.png";
 
 
-const API_URL = import.meta.env.VITE_API_URL || "https://scanify-booking.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "https://kodivian-website-8.onrender.com";
 
 
 const EMPTY_FORM = {
@@ -96,7 +96,49 @@ const [showQ14Other, setShowQ14Other] = useState(false);
   const prev = () => setStep(s => Math.max(1, s - 1));
 
   const submit = async (overrides = {}) => {
-    try {
+
+const missingFields = [];
+
+if (!form.q2_document_volume)
+  missingFields.push("2. Monthly Document Volume");
+
+if (!form.q3_processing_time)
+  missingFields.push("3. Processing Time");
+
+if (!form.q4_errors)
+  missingFields.push("4. Errors / Mismatches");
+
+if (!form.q5_team_size)
+  missingFields.push("5. Team Size");
+
+if (!form.q6_erp_system)
+  missingFields.push("6. ERP System");
+
+if (!form.q10_automation_readiness)
+  missingFields.push("10. Automation Readiness");
+
+if (!form.q11_validation_process)
+  missingFields.push("11. Validation Process");
+
+if (!form.q12_erp_entry_method)
+  missingFields.push("12. ERP Entry Method");
+
+if (!form.q13_mapping_template)
+  missingFields.push("13. Mapping Template");
+
+if (!form.q14_approval_workflow)
+  missingFields.push("14. Approval Workflow");
+
+if (missingFields.length > 0) {
+  alert(
+    "Please complete the following questions:\n\n" +
+    missingFields.join("\n")
+  );
+  return;
+}
+
+
+        try {
       setLoading(true);
       const res = await fetch(`${API_URL}/api/book-demo`, {
         method: "POST",
@@ -321,7 +363,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
     </div>
 
     {/* Q1 */}
-<Field label="1. How are you currently processing documents like invoices, POs, or GRNs?">
+<Field label="1. How are you currently processing documents like invoices, POs, or GRNs?" requi>
   <div className="scanifyAiDemo-option-grid">
     <label><input type="checkbox" /> Invoice Processing</label>
     <label><input type="checkbox" /> Purchase Order (PO) Processing</label>
@@ -349,7 +391,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
 </Field>
 <div className="scanifyAiDemo-form-row scanifyAiDemo-col-2">
     {/* Q2 */}
-    <Field label="2. What is your average monthly document volume (Invoices, POs, etc.)?">
+    <Field label="2. What is your average monthly document volume (Invoices, POs, etc.)?" required>
 <select
   className="scanifyAiDemo-select"
   value={form.q2_document_volume}
@@ -363,7 +405,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
     </Field>
 
     {/* Q3 */}
-    <Field label="3. How long does it take from document receipt to final entry in your system?">
+    <Field label="3. How long does it take from document receipt to final entry in your system?" required>
       <select
   className="scanifyAiDemo-select"
   value={form.q3_processing_time}
@@ -380,7 +422,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
 </div>
 
     {/* Q4 */}
-    <Field label="4. What kind of errors or mismatches do you face during data entry or validation?">
+    <Field label="4. What kind of errors or mismatches do you face during data entry or validation?" required>
       <textarea
   className="scanifyAiDemo-textarea"
   value={form.q4_errors}
@@ -389,7 +431,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
     </Field>
 
     {/* Q5 */}
-    <Field label="5. How many people are involved in this process, and what is the approximate effort per document?">
+    <Field label="5. How many people are involved in this process, and what is the approximate effort per document?" required>
   <select
     className="scanifyAiDemo-select"
     value={form.q5_team_size}
@@ -413,7 +455,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
 </Field>
 
     {/* Q6 */}
-<Field label="6. Which ERP or accounting systems are you currently using?">
+<Field label="6. Which ERP or accounting systems are you currently using?" required>
   <select
   className="scanifyAiDemo-select"
   value={form.q6_erp_system}
@@ -445,7 +487,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
 </Field>
 
     {/* Q7 */}
-<Field label="7. What formats do your documents come in?">
+<Field label="7. What formats do your documents come in?" required>
   <div className="scanifyAiDemo-option-grid">
     <label><input type="checkbox" /> PDF</label>
     <label><input type="checkbox" /> Scanned PDF</label>
@@ -484,7 +526,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
 </Field>
 
     {/* Q9 */}
-<Field label="9. How do these inefficiencies impact your business?">
+<Field label="9. How do these inefficiencies impact your business?" required>
   <div className="scanifyAiDemo-option-grid">
     <label><input type="checkbox" /> Delayed Payments</label>
     <label><input type="checkbox" /> Delayed Order Processing</label>
@@ -513,7 +555,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
 </Field>
 
     {/* Q10 */}
-<Field label="10. Have you explored automation or OCR solutions before? What worked or didn't?">
+<Field label="10. Have you explored automation or OCR solutions before? What worked or didn't?" required>
 
   <label>
     <input
@@ -587,7 +629,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
 </Field>
 
     {/* Q11 */}
-    <Field label="11. How do you currently verify extracted data accuracy before posting to ERP?">
+    <Field label="11. How do you currently verify extracted data accuracy before posting to ERP?" required>
       <textarea
   className="scanifyAiDemo-textarea"
   value={form.q11_validation_process}
@@ -596,7 +638,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
     </Field>
 
     {/* Q12 */}
-<Field label="12. How are documents currently entered into ERP - manual entry, upload, or API integration?">
+    <Field label="12. How are documents currently entered into ERP - manual entry, upload, or API integration?" required>
 
   <label>
     <input
@@ -670,7 +712,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
 </Field>
 
     {/* Q13 */}
-    <Field label="13. Can you share the mapping template or format required for ERP upload?">
+    <Field label="13. Do we have any mapping template or format that needs to be followed for ERP upload?" required>
       <textarea
   className="scanifyAiDemo-textarea"
   value={form.q13_mapping_template}
@@ -678,7 +720,7 @@ const [showQ14Other, setShowQ14Other] = useState(false);
 />    </Field>
 
     {/* Q14 */}
-<Field label="14. Is there an approval workflow configured in ERP before final posting?">
+<Field label="14. Is there an approval workflow configured in ERP before final posting?" required>
   <select
   className="scanifyAiDemo-select"
   value={form.q14_approval_workflow}
