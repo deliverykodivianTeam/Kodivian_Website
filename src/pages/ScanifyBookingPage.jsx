@@ -37,9 +37,16 @@ const EMPTY_FORM = {
 
   q13_mapping_template: "",
 
-  q14_approval_workflow: ""
-};
+  q14_approval_workflow: "",
 
+  q1_other: "",
+  q6_other: "",
+  q7_other: "",
+  q9_other: "",
+  q10_other: "",
+  q12_other: "",
+  q14_other: ""
+};
 /* ── tiny Field wrapper ── */
 function Field({ label, required, optional, children }) {
   return (

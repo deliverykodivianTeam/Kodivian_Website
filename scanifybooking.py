@@ -55,53 +55,51 @@ def init_db():
 
     cur.execute("""
     CREATE TABLE IF NOT EXISTS demo_bookings (
-        id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
+    booking_reference VARCHAR(100),
 
-        booking_reference VARCHAR(100),
+    full_name VARCHAR(255),
+    designation VARCHAR(255),
+    company_name VARCHAR(255),
+    corporate_email VARCHAR(255),
+    mobile_number VARCHAR(50),
 
-        full_name VARCHAR(255),
-        designation VARCHAR(255),
-        company_name VARCHAR(255),
+    q1_current_process TEXT,
+    q1_other TEXT,
 
-        corporate_email VARCHAR(255),
-        mobile_number VARCHAR(50),
-                
-                q1_current_process TEXT,
-q2_document_volume VARCHAR(255),
-q3_processing_time VARCHAR(255),
-q4_errors TEXT,
+    q2_document_volume TEXT,
+    q3_processing_time TEXT,
+    q4_errors TEXT,
 
-q5_team_size VARCHAR(255),
-q5_effort_per_document TEXT,
+    q5_team_size TEXT,
+    q5_effort_per_document TEXT,
 
-q6_erp_system VARCHAR(255),
+    q6_erp_system TEXT,
+    q6_other TEXT,
 
-q7_document_formats TEXT,
+    q7_document_formats TEXT,
+    q7_other TEXT,
 
-q8_pain_points TEXT,
+    q8_pain_points TEXT,
 
-q9_business_impact TEXT,
+    q9_business_impact TEXT,
+    q9_other TEXT,
 
-q10_automation_readiness VARCHAR(255),
+    q10_automation_readiness TEXT,
+    q10_other TEXT,
 
-q11_validation_process TEXT,
+    q11_validation_process TEXT,
 
-q12_erp_entry_method VARCHAR(255),
+    q12_erp_entry_method TEXT,
+    q12_other TEXT,
 
-q13_mapping_template TEXT,
+    q13_mapping_template TEXT,
 
-q14_approval_workflow VARCHAR(255),
+    q14_approval_workflow TEXT,
+    q14_other TEXT,
 
-q1_other TEXT,
-q6_other TEXT,
-q7_other TEXT,
-q9_other TEXT,
-q10_other TEXT,
-q12_other TEXT,
-q14_other TEXT,
-
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
     """)
 
     conn.commit()
@@ -167,7 +165,8 @@ SENDER_NAME = "Kodivian Technologies"
 INTERNAL_EMAILS = [
     "vijaysabari.m@kodivian.com",
     "preethi.jb@kodivian.com",
-    "kaviya.arivaratharaj@kodivian.com"
+    "kaviya.arivaratharaj@kodivian.com",
+    "manoranjan.ks@kodivian.com"
 ]
 
 # ------------------------------------------------------------------
@@ -248,21 +247,35 @@ def send_internal_notification(
 
 <h3>Requirement Details</h3>
 
-<p><b>Q1:</b> {booking.q1_current_process}</p>
-<p><b>Q2:</b> {booking.q2_document_volume}</p>
-<p><b>Q3:</b> {booking.q3_processing_time}</p>
-<p><b>Q4:</b> {booking.q4_errors}</p>
-<p><b>Q5 Team Size:</b> {booking.q5_team_size}</p>
-<p><b>Q5 Effort:</b> {booking.q5_effort_per_document}</p>
-<p><b>Q6 ERP:</b> {booking.q6_erp_system}</p>
-<p><b>Q7 Formats:</b> {booking.q7_document_formats}</p>
-<p><b>Q8 Pain Points:</b> {booking.q8_pain_points}</p>
-<p><b>Q9 Business Impact:</b> {booking.q9_business_impact}</p>
-<p><b>Q10 Automation:</b> {booking.q10_automation_readiness}</p>
-<p><b>Q11 Validation:</b> {booking.q11_validation_process}</p>
-<p><b>Q12 ERP Entry:</b> {booking.q12_erp_entry_method}</p>
-<p><b>Q13 Mapping:</b> {booking.q13_mapping_template}</p>
-<p><b>Q14 Workflow:</b> {booking.q14_approval_workflow}</p>
+<p><b>1. How are you currently processing documents like invoices, POs, or GRNs?</b><br />{booking.q1_current_process}</p>
+
+<p><b>2. What is your average monthly document volume?</b><br />{booking.q2_document_volume}</p>
+
+<p><b>3. How much time does it currently take to process a document?</b><br />{booking.q3_processing_time}</p>
+
+<p><b>4. What is your estimated error rate in document processing?</b><br />{booking.q4_errors}</p>
+
+<p><b>5. How many team members are involved in document processing?</b><br />{booking.q5_team_size}</p>
+
+<p><b>5.1 How much effort is spent per document?</b><br />{booking.q5_effort_per_document}</p>
+
+<p><b>6. Which ERP or accounting system are you currently using?</b><br />{booking.q6_erp_system}</p>
+
+<p><b>7. What formats do your documents come in?</b><br />{booking.q7_document_formats}</p>
+
+<p><b>8. What are the biggest challenges in your current document processing workflow?</b><br />{booking.q8_pain_points}</p>
+
+<p><b>9. How do these inefficiencies impact your business?</b><br />{booking.q9_business_impact}</p>
+
+<p><b>10. How ready is your organization to automate document processing?</b><br />{booking.q10_automation_readiness}</p>
+
+<p><b>11. How do you currently verify extracted data before posting into ERP?</b><br />{booking.q11_validation_process}</p>
+
+<p><b>12. How are documents currently entered into ERP – manual entry, upload, or API integration?</b><br />{booking.q12_erp_entry_method}</p>
+
+<p><b>13. Do you have any mapping template or format that needs to be followed for ERP upload?</b><br />{booking.q13_mapping_template}</p>
+
+<p><b>14. Is there an approval workflow configured in ERP before final posting?</b><br />{booking.q14_approval_workflow}</p>
 
 </body>
 </html>
@@ -313,27 +326,11 @@ and schedule a personalized Scanify AI product demonstration.
 <td>{booking_ref}</td>
 </tr>
 
-<tr>
-<td><b>Company Name</b></td>
-<td>{booking.company_name}</td>
-</tr>
-
-<tr>
-<td><b>Contact Person</b></td>
-<td>{booking.full_name}</td>
-</tr>
-
-<tr>
-<td><b>Email</b></td>
-<td>{booking.corporate_email}</td>
-</tr>
-
-<tr>
-<td><b>Mobile Number</b></td>
-<td>{booking.mobile_number}</td>
-</tr>
-
 </table>
+
+<p>
+To help us better understand your document structure and business process, kindly share 2–3 sample documents (Invoices, Purchase Orders, GRNs, Receipts, Delivery Challans, or any relevant documents) along with any field mapping templates or ERP import formats currently in use. This will enable our team to prepare a more accurate and effective demonstration tailored to your requirements.
+</p>
 
 <br>
 
