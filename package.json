@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:backend": "python backend.py",
+    "dev:app": "python app.py",
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist -b deploy"

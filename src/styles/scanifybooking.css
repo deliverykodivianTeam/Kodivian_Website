@@ -1303,4 +1303,29 @@
         max-width: 100% !important;
     }
 
+    .scanifyAiDemo-page .scanifyAiDemo-form-row.scanifyAiDemo-col-2 {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-demo-header {
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-demo-top-right-logo {
+        height: 70px;
+        margin-bottom: 8px;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-fp-title {
+        text-align: center;
+    }
+
+    .scanifyAiDemo-page .scanifyAiDemo-fp-sub {
+        text-align: center;
+    }
+
 }

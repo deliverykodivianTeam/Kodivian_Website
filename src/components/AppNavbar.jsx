@@ -186,9 +186,9 @@ const AppNavbar = () => {
                                             <NavLink to="/processbuilder" className="dropdown-product-item" onClick={() => handleProductLinkClick('/processbuilder')}>
                                                 <span>Process Builder</span>
                                             </NavLink>
-                                            <NavLink to="/SupportForge" className="dropdown-product-item" onClick={() => handleProductLinkClick('/SupportForge')}>
+                                            {/* <NavLink to="/SupportForge" className="dropdown-product-item" onClick={() => handleProductLinkClick('/SupportForge')}>
                                                 <span>Support Forge</span>
-                                            </NavLink>
+                                            </NavLink> */}
                                         </div>
                                     </div>
                                 )}
