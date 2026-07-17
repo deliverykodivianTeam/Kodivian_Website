@@ -31,6 +31,7 @@ import lifecelllogo from '../assets/lifecell-logo.png';
 import jkf from '../assets/JKF.png';
 import svr from '../assets/SV&R.png';
 import tafe from '../assets/TAFE.svg';
+import tvs from '../assets/TVS.png';
 
 
 // Make sure this path is correct for your project structure
@@ -62,7 +63,7 @@ const Home = () => {
     const clientLogos = [
         ponpureLogo, tiCycleLogo, murugappalogo, khazanaLogo, sharatIndustriesLogo,
         dmccLogo, aavaBrandsLogo, tiMedicallogo, Innoventure_logo,
-        shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo, teamlogo, lifecelllogo, svr, jkf, tafe
+        shanthigearslogo, ezcloud, ionidea, eastman, stedmanlogo, teamlogo, lifecelllogo, svr, jkf, tafe, tvs
     ];
 
     // ⭐ Track Website Visitor
@@ -299,13 +300,18 @@ const Home = () => {
                             const isLastSingle =
                                 clientLogos.length % 3 === 1 &&
                                 index === clientLogos.length - 1;
+                            const isTVS = logo && logo.includes('TVS');
 
                             return (
                                 <div
                                     key={index}
                                     className={`client-logo-box ${isLastSingle ? "center-last-logo" : ""}`}
                                 >
-                                    <img src={logo} alt={`Client ${index + 1}`} />
+                                    <img 
+                                        src={logo} 
+                                        alt={`Client ${index + 1}`} 
+                                        className={isTVS ? "tvs-logo" : ""} 
+                                    />
                                 </div>
                             );
                         })}

@@ -157,6 +157,11 @@ body {
     max-height: 80px;
 }
 
+.client-logo-box img.tvs-logo {
+    max-width: 90px !important;
+    max-height: 55px !important;
+}
+
 
 
 
