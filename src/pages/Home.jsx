@@ -136,7 +136,7 @@ const Home = () => {
 
             {/* Product Carousel Section */}
             <section className="product-carousel-section p-0">
-                <Carousel controls={false} indicators={true} interval={3000} className="bg-light product-carousel-custom">
+                <Carousel className="bg-light product-carousel-custom">
                     {/* Slide 1: Scanify */}
                     <Carousel.Item className="bg-light">
                         <Container fluid>
@@ -181,28 +181,6 @@ const Home = () => {
                             </Row>
                         </Container>
                     </Carousel.Item>
-                    {/* Slide 3: Support Forge */}
-                    <Carousel.Item className="bg-light">
-                        <Container fluid>
-                            <Row className="align-items-center py-5">
-                                <Col md={4} className="text-center">
-                                    <img
-                                        className="d-block mx-auto img-fluid product-icon"
-                                        src={icon5}
-                                        alt="Support Forge Icon"
-                                    />
-                                </Col>
-
-                                <Col md={7} className="text-center text-md-start">
-                                    <h1 className="display-4 fw-bold text-violet text-center full-width-header ">Support Forge: Ticketing Tool Management System</h1>
-                                    <p className="lead product-description">
-                                        A smart, automated platform that streamlines service requests, approvals, escalations, and resolutions across departments. It ensures faster response times, complete transparency, and seamless workflow management from ticket creation to closure.
-                                    </p>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Carousel.Item>
-
 
                 </Carousel>
             </section>
@@ -307,10 +285,10 @@ const Home = () => {
                                     key={index}
                                     className={`client-logo-box ${isLastSingle ? "center-last-logo" : ""}`}
                                 >
-                                    <img 
-                                        src={logo} 
-                                        alt={`Client ${index + 1}`} 
-                                        className={isTVS ? "tvs-logo" : ""} 
+                                    <img
+                                        src={logo}
+                                        alt={`Client ${index + 1}`}
+                                        className={isTVS ? "tvs-logo" : ""}
                                     />
                                 </div>
                             );

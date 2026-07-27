@@ -2,7 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  plugins: [react()], // React plugin — correct
+  plugins: [react()],
+  assetsInclude: ["**/*.JPG"],
   server: {
     watch: {
       ignored: [

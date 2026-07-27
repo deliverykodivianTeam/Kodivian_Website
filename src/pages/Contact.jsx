@@ -4,7 +4,6 @@ import "../styles/Contact.css";
 import "../styles/Services.css"; // Ensure this is imported for color variables
 import contact from "../assets/contact-pic.jpg"; // Import your contact image
 import DemoBookingPopup from "../components/DemoBookingPopup"; // Adjust the path based on your file structure
-import WorldMapVisitors from "../pages/WorldMapVisitors";
 
 // Import Icons
 import { LiaPhoneSolid } from "react-icons/lia";
@@ -312,10 +311,7 @@ const handleCloseDemoPopup = () => {
   isOpen={isDemoPopupOpen}
   onClose={handleCloseDemoPopup}
 />
-{/* 🌍 World Map Visitors Section */}
-<div className="mt-5">
-  <WorldMapVisitors />
-</div>
+
 
     </div>
   );

@@ -11,6 +11,7 @@ import AppNavbar from "./components/AppNavbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import Blog from "./pages/Blog";
 import Product from "./pages/Product";
 import Contact from "./pages/Contact";
 import ScanifyDetail from "./pages/ScanifyDetail";
@@ -71,34 +72,9 @@ function AppContent() {
         const res = await fetch("https://ipapi.co/json/");
         const data = await res.json();
 
-        // 2) Try to get browser GPS for better accuracy
-        let lat = null,
-          lon = null;
-
-        if (navigator.geolocation) {
-          const pos = await new Promise((resolve, reject) => {
-            const timer = setTimeout(
-              () => reject(new Error("geolocation timeout")),
-              3000
-            );
-            navigator.geolocation.getCurrentPosition(
-              (p) => {
-                clearTimeout(timer);
-                resolve(p);
-              },
-              () => {
-                clearTimeout(timer);
-                resolve(null);
-              },
-              { maximumAge: 60000, timeout: 3000 }
-            );
-          });
-
-          if (pos) {
-            lat = pos.coords.latitude;
-            lon = pos.coords.longitude;
-          }
-        }
+        // 2) Use IP-based coordinates to avoid prompting the user for location permission
+        const lat = data.latitude || null;
+        const lon = data.longitude || null;
 
         // 3) Send final tracking data to backend
         await axios.post(`${BASE_URL}/track`, {
@@ -138,6 +114,7 @@ function AppContent() {
               <Route path="/certifications/iso-9001" element={<Iso9001 />} />
               <Route path="/certifications/iso-27001" element={<Iso27001 />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/blog" element={<Blog />} />
               <Route path="/scanify-booking" element={<ScanifyBookingPage />} />
               <Route path="/product" element={<Product />} />
               <Route path="/scanify" element={<ScanifyDetail />} />

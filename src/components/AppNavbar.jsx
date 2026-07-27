@@ -195,6 +195,7 @@ const AppNavbar = () => {
                             </div>
 
                             <NavLink to="/services" className="nav-link-custom" onClick={closeAll}>Services</NavLink>
+                            <NavLink to="/blog" className="nav-link-custom" onClick={closeAll}>Blog</NavLink>
                             <NavLink to="/contact" className="nav-link-custom" onClick={closeAll}>Contact</NavLink>
                         </Nav>
 
