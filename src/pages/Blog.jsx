@@ -35,11 +35,12 @@ import event_4L1A2241 from "../assets/4L1A2241.JPG";
 import event_4L1A2745 from "../assets/4L1A2745.JPG";
 import event_4L1A2779 from "../assets/4L1A2779.JPG";
 import event_4L1A2163 from "../assets/4L1A2163.JPG";
-import event_4L1A2174 from "../assets/4L1A2174.JPG";
 import event_4L1A2689 from "../assets/4L1A2689.JPG";
 import event_4L1A2204 from "../assets/4L1A2204.JPG";
 import event_4L1A1979 from "../assets/4L1A1979.JPG";
 import event_4L1A2231 from "../assets/4L1A2231.JPG";
+import bctBanner from "../assets/bct-partnership-banner.png";
+import bctBan from "../assets/bct-partnership-post.png";
 
 
 
@@ -61,7 +62,6 @@ const initialPhotos = [
     { id: 37, url: event_4L1A2745, title: "Innovative Brainstorming", category: "Events", date: "Jul 2026" },
     { id: 38, url: event_4L1A2779, title: "Team Achievement Discussion", category: "Events", date: "Jul 2026" },
     { id: 39, url: event_4L1A2163, title: "Kodivian Meetup", category: "Events", date: "Jul 2026" },
-    { id: 40, url: event_4L1A2174, title: "Group Session", category: "Events", date: "Jul 2026" },
     { id: 41, url: event_4L1A2689, title: "Office Presentation", category: "Events", date: "Jul 2026" },
     { id: 42, url: event_4L1A2204, title: "Corporate Seminar Meet", category: "Events", date: "Jul 2026" },
     { id: 43, url: event_4L1A1979, title: "Kodivian Interactive Meet", category: "Events", date: "Jul 2026" },
@@ -70,6 +70,29 @@ const initialPhotos = [
 
 // Events Data
 const eventsData = [
+    {
+        id: "bahwan-cybertek-partnership",
+        title: "Strategic Reseller Partnership: Kodivian Technologies & Bahwan CyberTek",
+        subtitle: "Bahwan CyberTek is now an Authorized Reseller of Kodivian Scanify AI",
+        date: "August 26, 2026",
+        category: "Partnerships",
+        summary: "Kodivian Technologies announces a strategic reseller partnership with Bahwan CyberTek to offer Scanify AI, helping enterprises globally accelerate digital transformation and automate document-intensive processes.",
+        description: "We are delighted to announce a strategic reseller partnership between Kodivian Technologies and Bahwan CyberTek. Through this collaboration, Bahwan CyberTek will offer Kodivian Scanify AI, our intelligent document processing platform, to help enterprises accelerate digital transformation and automate document-intensive business processes.\n\nThis partnership combines Bahwan CyberTek’s global enterprise reach with Kodivian’s AI-driven document intelligence platform, enabling organizations to modernize finance, procurement, HR, legal, and operations with speed, accuracy, and confidence. We look forward to delivering innovative AI solutions that create measurable business value for enterprises across industries.",
+        deliverables: [
+            "AI-Powered Document Processing",
+            "Intelligent Data Extraction",
+            "Invoice & Document Digitization",
+            "Workflow Automation",
+            "ERP Integration (SAP, Oracle, Microsoft Dynamics & more)",
+            "Fraud Detection & Compliance Checks",
+            "High-Accuracy OCR powered by AI"
+        ],
+        mainImage: bctBanner,
+        photos: [
+            bctBanner,
+            bctBan
+        ]
+    },
     {
         id: "cfo-event",
         title: "Kodivian Goes Gold : Empowering CFOs at the 45th CFO Summit 2026",
@@ -158,7 +181,7 @@ const Blog = () => {
     const [lightboxImage, setLightboxImage] = useState(null);
 
     // Filter categories for the main photo gallery
-    const categories = ["All", "Events", "Celebrations"];
+    const categories = ["All", "Events", "Celebrations", "Partnerships", "Case Studies"];
 
     const filteredPhotos = selectedCategory === "All"
         ? initialPhotos
@@ -230,7 +253,7 @@ const Blog = () => {
                                         <img
                                             src={eventsData[0].mainImage}
                                             alt={eventsData[0].title}
-                                            className="w-100 h-100 object-fit-cover event-img"
+                                            className={`w-100 h-100 event-img ${eventsData[0].id === "bahwan-cybertek-partnership" ? "object-fit-contain bg-white" : "object-fit-cover"}`}
                                             style={{ transition: "transform 0.4s ease" }}
                                         />
                                         <div className="position-absolute bottom-0 end-0 bg-dark text-white px-3 py-1 m-3 rounded-2 opacity-75">
