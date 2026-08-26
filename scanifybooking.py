@@ -125,6 +125,15 @@ def init_db():
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
         """)
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS contact_messages (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(255),
+            email VARCHAR(255),
+            message TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+        """)
         conn.commit()
         cur.close()
         conn.close()
@@ -1174,6 +1183,75 @@ async def book_short_demo(booking: ShortDemoBooking, background_tasks: Backgroun
     booking_ref = f"SD-{uuid.uuid4().hex[:8].upper()}"
     background_tasks.add_task(background_short_demo, booking, booking_ref)
     return {"message": "Success", "reference": booking_ref}
+
+# ------------------------------------------------------------------
+# Contact Message Endpoint
+# ------------------------------------------------------------------
+
+class ContactMessage(BaseModel):
+    name: str
+    email: str
+    message: str
+
+@app.post("/api/contact-message")
+async def contact_message(msg: ContactMessage, background_tasks: BackgroundTasks):
+    
+    # 1. Save to Database
+    conn = get_db()
+    if conn:
+        try:
+            cur = conn.cursor()
+            cur.execute(
+                "INSERT INTO contact_messages (name, email, message) VALUES (%s, %s, %s)",
+                (msg.name, msg.email, msg.message)
+            )
+            conn.commit()
+            cur.close()
+            conn.close()
+        except Exception as e:
+            print(f"[DB] Error saving contact message: {e}")
+            if conn:
+                conn.close()
+
+    # 2. Send Emails
+    html_content = f"""
+    <html>
+    <body style="font-family: Arial, sans-serif; padding: 24px; background: #f9f9f9;">
+        <div style="max-width:600px; margin:auto; background:#fff; border-radius:12px; padding:32px; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+            <h2 style="color:#082154; margin-bottom:4px;">New Website Message</h2>
+            <p style="color:#888; font-size:13px; margin-top:0;">Received from the Kodivian Technologies contact page</p>
+            <hr style="border:none; border-top:1px solid #eee; margin:20px 0;" />
+            <table style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <td style="padding:10px 12px; font-weight:bold; color:#444; width:120px;">Name:</td>
+                    <td style="padding:10px 12px; color:#222;">{msg.name}</td>
+                </tr>
+                <tr style="background:#f5f5f5;">
+                    <td style="padding:10px 12px; font-weight:bold; color:#444;">Email:</td>
+                    <td style="padding:10px 12px; color:#222;">{msg.email}</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 12px; font-weight:bold; color:#444; vertical-align:top;">Message:</td>
+                    <td style="padding:10px 12px; color:#222; white-space:pre-line;">{msg.message}</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    </html>
+    """
+    
+    def send_internal_emails():
+        for internal_email in INTERNAL_EMAILS:
+            send_email_brevo(
+                to_email=internal_email,
+                to_name="Kodivian Team",
+                subject=f"Website Message from {msg.name}",
+                html_content=html_content
+            )
+            
+    background_tasks.add_task(send_internal_emails)
+    
+    return {"message": "Sent"}
 
 # ------------------------------------------------------------------
 # Run Local

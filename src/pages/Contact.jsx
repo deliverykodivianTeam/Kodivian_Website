@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import "../styles/Contact.css";
 import "../styles/Services.css"; // Ensure this is imported for color variables
 import contact from "../assets/contact-pic.jpg"; // Import your contact image
-import DemoBookingPopup from "../components/DemoBookingPopup"; // Adjust the path based on your file structure
 
 // Import Icons
 import { LiaPhoneSolid } from "react-icons/lia";
@@ -55,15 +55,28 @@ const Contact = () => {
     locationData[0].id
   );
 
-  const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false);
+  const navigate = useNavigate();
+  const [msgForm, setMsgForm] = useState({ name: "", email: "", message: "" });
+  const [msgSubmitting, setMsgSubmitting] = useState(false);
 
-  const handleOpenDemoPopup = () => {
-  setIsDemoPopupOpen(true);
-};
+  const handleMsgChange = (e) =>
+    setMsgForm({ ...msgForm, [e.target.name]: e.target.value });
 
-const handleCloseDemoPopup = () => {
-  setIsDemoPopupOpen(false);
-};
+  const handleMsgSubmit = async (e) => {
+    e.preventDefault();
+    setMsgSubmitting(true);
+    try {
+      await fetch("/api/contact-message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(msgForm),
+      });
+    } catch (err) {
+      console.error(err);
+    }
+    setMsgSubmitting(false);
+    setMsgForm({ name: "", email: "", message: "" });
+  };
 
   const handleLocationChange = (event) => {
     setSelectedLocationId(event.target.value);
@@ -74,6 +87,7 @@ const handleCloseDemoPopup = () => {
   );
 
   const currentMapEmbedUrl = currentLocation ? currentLocation.mapEmbedUrl : "";
+
 
   return (
     <div className="contact-page-wrapper">
@@ -140,7 +154,7 @@ const handleCloseDemoPopup = () => {
       </div>
 
       {/* --- Demo Booking Section --- */}
-      <div className="demo-booking-section bg-light p-5 text-center">
+      <div className="demo-booking-section bg-light py-3 text-center">
       <div style={{ display: 'flex', justifyContent: 'center' }}>
   <Button
     type="button"
@@ -150,7 +164,7 @@ const handleCloseDemoPopup = () => {
       borderColor: "#9400d3",
       color: "#fff",
     }}
-    onClick={handleOpenDemoPopup}
+    onClick={() => navigate('/demo')}
   >
     Book a Free Demo
   </Button>
@@ -162,82 +176,63 @@ const handleCloseDemoPopup = () => {
         </div>
       </div>
 
-      {/* Contact Form & Map Section */}
-      <Container className="py-5">
-        {/* Added gap-5 for spacing between columns and gx-md-5 for horizontal spacing on medium+ screens */}
-        <Row className="justify-content-center gap-5 gx-md-5">
-          {/* Contact Form Column */}
-          <Col
-            lg={4}
-            className="contact-form-container bg-light p-4 shadow-sm rounded-3"
-          >
-            {" "}
-            {/* Adjusted lg size */}
-            <h2 className="text-center fw-bold mb-4 text-dark-purple">
-              Send Us a Message
-            </h2>
-            <p className="text-center mb-4 text-secondary-purple">
-              We'd love to hear from you! Please fill out the form below.
+      {/* Form + Map — full width, no gap, flush columns */}
+      <div className="contact-bottom-wrap">
+        <div className="contact-form-panel">
+          <div className="cfp-inner">
+            <h3 className="cfp-title">Send Us a Message</h3>
+            <p className="cfp-desc">
+              Whether it's a <strong>job enquiry</strong>, a <strong>partnership opportunity</strong>,
+              or a general question — fill in your details below and our team
+              will get back to you promptly.
             </p>
-            <Form className="contact-form">
-              <Form.Group className="mb-3" controlId="formName">
-                <Form.Label>Name:</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter your name"
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formEmail">
-                <Form.Label>Email:</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter your email"
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formPhone">
-                <Form.Label>Phone Number (Optional):</Form.Label>
-                <Form.Control
-                  type="tel"
-                  placeholder="Enter your phone number"
-                />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formSubject">
-                <Form.Label>Subject:</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter subject"
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-4" controlId="formMessage">
-                <Form.Label>Message:</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={5}
-                  placeholder="Your message here..."
-                  required
-                />
-              </Form.Group>
-              {/* This button should now be violet due to the .btn-primary override */}
-              <Button
-                variant="primary"
-                type="submit"
-                className="w-100 submit-button"
-                style={{
-                  backgroundColor: "#9400d3",
-                  borderColor: "#9400d3",
-                  color: "#fff",
-                }}
-              >
-                Send Message
-              </Button>
-            </Form>
-          </Col>
 
-          {/* Map Section Column */}
-          <Col lg={7} className="contact-map p-4 shadow-sm rounded-3">
+            <form onSubmit={handleMsgSubmit} className="cfp-form">
+              <div className="cfp-group">
+                <label className="cfp-label">Full Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  className="cfp-input"
+                  placeholder="Your full name"
+                  value={msgForm.name}
+                  onChange={handleMsgChange}
+                  required
+                />
+              </div>
+              <div className="cfp-group">
+                <label className="cfp-label">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  className="cfp-input"
+                  placeholder="you@example.com"
+                  value={msgForm.email}
+                  onChange={handleMsgChange}
+                  required
+                />
+              </div>
+              <div className="cfp-group">
+                <label className="cfp-label">Message</label>
+                <textarea
+                  name="message"
+                  className="cfp-input cfp-textarea"
+                  placeholder="Tell us how we can help — job role, partnership idea, or any question..."
+                  value={msgForm.message}
+                  onChange={handleMsgChange}
+                  rows={6}
+                  required
+                />
+              </div>
+              <button type="submit" className="cfp-btn" disabled={msgSubmitting}>
+                {msgSubmitting ? "Sending..." : "Send Message →"}
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div className="contact-map-panel">
+
             {" "}
             {/* Adjusted lg size */}
             <h2 className="text-center fw-bold mb-4 text-dark-purple">
@@ -303,15 +298,8 @@ const handleCloseDemoPopup = () => {
                 </Card.Body>
               </Card>
             )}
-          </Col>
-        </Row>
-      </Container>
-
-      <DemoBookingPopup
-  isOpen={isDemoPopupOpen}
-  onClose={handleCloseDemoPopup}
-/>
-
+        </div>{/* contact-map-panel */}
+      </div>{/* contact-bottom-wrap */}
 
     </div>
   );
