@@ -4,15 +4,12 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import logo from '../assets/company_logo.png'; // Make sure this path is correct
 import '../styles/Navbar.css'; // Make sure this path is correct
-import DemoBookingPopup from '../components/DemoBookingPopup'; // Make sure this path is correct
 
 const AppNavbar = () => {
     // State to control if the mobile navigation menu is expanded
     const [expanded, setExpanded] = useState(false);
     // State to control if the navbar has been scrolled past a certain point
     const [scrolled, setScrolled] = useState(false);
-    // State to control the visibility of the Demo Booking popup
-    const [isDemoPopupOpen, setIsDemoPopupOpen] = useState(false);
     // State to control the overall visibility of the navbar (for scroll-hide effect)
     const [visible, setVisible] = useState(true);
     // State to keep track of the last scroll position for hide/show on scroll
@@ -36,14 +33,13 @@ const AppNavbar = () => {
     const closeAll = () => {
         setExpanded(false); // Close the main mobile menu
         setShowProductDropdown(false); // Close the desktop product dropdown
-        setIsDemoPopupOpen(false); // Close the demo booking popup
         setShowMobileProductOverlay(false); // Close the mobile product overlay
     };
 
     // Handler for the Demo Booking button click
     const handleDemoClick = () => {
         closeAll(); // Close any other open menus first
-        setIsDemoPopupOpen(true); // Open the demo booking popup
+        navigate('/demo'); // Navigate to the new demo booking page
     };
 
     // Toggles the product dropdown visibility (desktop) or mobile overlay
@@ -112,40 +108,25 @@ const AppNavbar = () => {
         };
     }, [expanded, showProductDropdown, showMobileProductOverlay]);
 
-    // Effect for scroll handling: hide navbar on scroll down, show on scroll up
+    // Effect for scroll handling: apply subtle shadow when scrolled, never hide navbar
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-            const halfScreenHeight = window.innerHeight / 2;
-
-            if (currentScrollY > halfScreenHeight) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-
-            if (currentScrollY > lastScrollY && currentScrollY > 90) {
-                setVisible(false);
-                closeAll();
-            } else if (currentScrollY < lastScrollY) {
-                setVisible(true);
-            }
-
-            setLastScrollY(currentScrollY);
+            setScrolled(currentScrollY > 20);
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [lastScrollY]);
+    }, []);
 
     return (
         <>
             <Navbar
                 expand="lg"
-                sticky="top"
-                className={`py-0 custom-navbar ${scrolled ? 'scrolled-navbar' : ''} ${visible ? 'navbar-visible' : 'navbar-hidden'}`}
+                fixed="top"
+                className={`py-0 custom-navbar ${scrolled ? 'scrolled-navbar' : ''} navbar-visible`}
                 expanded={expanded}
                 onToggle={() => setExpanded(!expanded)}
             >
@@ -226,8 +207,6 @@ const AppNavbar = () => {
                     </div>
                 </div>
             )}
-
-            <DemoBookingPopup isOpen={isDemoPopupOpen} onClose={() => setIsDemoPopupOpen(false)} />
         </>
     );
 };

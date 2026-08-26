@@ -25,7 +25,8 @@ SENDER_NAME = "Team Kodivian"
 INTERNAL_EMAILS = [
     "vijaysabari.m@kodivian.com",
     "preethi.jb@kodivian.com",
-    "kaviya.arivaratharaj@kodivian.com" 
+    "kaviya.arivaratharaj@kodivian.com",
+    "manoranjan.ks@kodivian.com"
 ]
 
 
@@ -68,27 +69,88 @@ def save_demo_data():
     time = data.get("time")
     timezone = data.get("timezone")
 
-    internal_subject = f"📅 New Demo Booking - {name}"
+    internal_subject = f"📅 New Demo Booking - {name} ({company or 'Corporate'})"
     internal_html = f"""
-    <html><body>
-        <h3>New Demo Booking</h3>
-        <p><b>Name:</b> {name}</p>
-        <p><b>Email:</b> {email}</p>
-        <p><b>Company:</b> {company}</p>
-        <p><b>Product:</b> {product}</p>
-        <p><b>Date:</b> {date}</p>
-        <p><b>Time:</b> {time} ({timezone})</p>
-    </body></html>
+    <!DOCTYPE html>
+    <html>
+    <body style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f2f8; padding: 20px; color: #1e293b;">
+      <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e9d5ff; box-shadow: 0 4px 20px rgba(106, 5, 127, 0.08);">
+        <div style="background: linear-gradient(135deg, #4A015E 0%, #6A057F 100%); padding: 24px; color: #ffffff;">
+          <h2 style="margin: 0; font-size: 20px; color: #ffffff;">📅 New Demo Booking Request</h2>
+          <p style="margin: 4px 0 0 0; font-size: 13px; color: #e9d5ff;">Kodivian Website Portal</p>
+        </div>
+        <div style="padding: 24px;">
+          <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse: collapse; font-size: 13.5px;">
+            <tr style="background-color: #FAF5FF;"><td width="35%" style="font-weight: 600; color: #6A057F;">Full Name:</td><td style="font-weight: 700;">{name}</td></tr>
+            <tr><td style="font-weight: 600; color: #6A057F;">Corporate Email:</td><td><a href="mailto:{email}" style="color: #6A057F;">{email}</a></td></tr>
+            <tr style="background-color: #FAF5FF;"><td style="font-weight: 600; color: #6A057F;">Company Name:</td><td><strong>{company or 'Not Specified'}</strong></td></tr>
+            <tr><td style="font-weight: 600; color: #6A057F;">Product Interest:</td><td><strong>{product or 'Scanify AI'}</strong></td></tr>
+            <tr style="background-color: #FAF5FF;"><td style="font-weight: 600; color: #6A057F;">Preferred Date:</td><td>{date}</td></tr>
+            <tr><td style="font-weight: 600; color: #6A057F;">Preferred Time:</td><td>{time} ({timezone})</td></tr>
+          </table>
+        </div>
+      </div>
+    </body>
+    </html>
     """
 
     Thread(target=send_email, args=(internal_subject, internal_html, INTERNAL_EMAILS)).start()
 
-    client_subject = "Thank you for booking a demo with Kodivian"
+    client_subject = "✨ Thank You for Booking a Demo with Kodivian"
     client_html = f"""
-    <html><body>
-        <p>Hi {name},</p>
-        <p>Thank you for booking a demo.</p>
-    </body></html>
+    <!DOCTYPE html>
+    <html>
+    <body style="margin: 0; padding: 0; background-color: #f7f5fa; font-family: 'Segoe UI', Arial, sans-serif; color: #1e293b; line-height: 1.65;">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #f7f5fa; padding: 25px 15px;">
+        <tr>
+          <td align="center">
+            <table width="600" border="0" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 30px rgba(106, 5, 127, 0.08); border: 1px solid #e9d5ff;">
+              <tr>
+                <td style="background: linear-gradient(135deg, #6A057F 0%, #4A015E 100%); padding: 30px 32px; color: #ffffff;">
+                  <div style="font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #e9d5ff; margin-bottom: 6px;">Kodivian Technologies</div>
+                  <h1 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff;">Demo Request Confirmed</h1>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 30px 32px;">
+                  <p style="font-size: 15px; color: #1e293b; margin: 0 0 14px 0;">Dear <strong>{name}</strong>,</p>
+                  <p style="font-size: 14px; color: #334155; margin: 0 0 14px 0; line-height: 1.6;">
+                    Thank you for your interest in <strong>{product or 'Scanify AI'}</strong>. We have received your demonstration request for <strong>{company or 'your organization'}</strong>.
+                  </p>
+                  <p style="font-size: 14px; color: #334155; margin: 0 0 20px 0; line-height: 1.6;">
+                    Our solution architecture team will showcase a live product demonstration tailored to your exact requirements and workflows. Our team will follow up with you shortly regarding the next action and confirm the meeting schedule.
+                  </p>
+
+                  <div style="background-color: #FAF5FF; border: 1.5px solid #e9d5ff; border-radius: 10px; padding: 16px 18px; margin-bottom: 24px;">
+                    <div style="font-size: 13.5px; font-weight: 700; color: #4A015E; margin-bottom: 8px;">Requested Demo Schedule:</div>
+                    <div style="font-size: 13px; color: #475569;">📅 <strong>Date:</strong> {date}</div>
+                    <div style="font-size: 13px; color: #475569;">⏰ <strong>Time:</strong> {time} ({timezone})</div>
+                  </div>
+
+                  <hr style="border: none; border-top: 1px solid #f1e4fa; margin: 24px 0 20px 0;">
+
+                  <!-- Signature -->
+                  <div style="font-size: 14px; color: #64748b; margin-bottom: 4px;">Warm regards,</div>
+                  <div style="font-size: 16px; font-weight: 700; color: #4A015E;">Manoranjan KS</div>
+                  <div style="font-size: 13px; font-weight: 600; color: #6A057F;">Business Analyst | Enterprise Solutions</div>
+                  <div style="font-size: 13px; font-weight: 600; color: #1e293b; margin-bottom: 6px;">Kodivian Technologies LLP</div>
+                  <div style="font-size: 12.5px; color: #475569;">
+                    ✉️ Email: <a href="mailto:manoranjan.ks@kodivian.com" style="color: #6A057F; font-weight: 600; text-decoration: none;">manoranjan.ks@kodivian.com</a><br>
+                    🌐 Web: <a href="https://kodivian.com" style="color: #6A057F; font-weight: 600; text-decoration: none;">www.kodivian.com</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="background-color: #FAF5FF; border-top: 1px solid #e9d5ff; padding: 16px; text-align: center; font-size: 11.5px; color: #7e22ce;">
+                  © 2026 Kodivian Technologies LLP · All rights reserved.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </body>
+    </html>
     """
 
     Thread(target=send_email, args=(client_subject, client_html, [email])).start()

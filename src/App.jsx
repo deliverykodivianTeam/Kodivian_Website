@@ -20,6 +20,7 @@ import Document from "./pages/Document";
 import SupportForge from "./pages/SupportForge";
 import Robort from "./pages/Robort";
 import ScanifyBookingPage from "./pages/ScanifyBookingPage";
+import ShortDemoPage from "./pages/ShortDemoPage";
 import Belowbar from "./components/Belowbar";
 import ScrollToTop from "./components/ScrollToTop";
 import Chatbox from "./components/Chatbox";
@@ -95,18 +96,18 @@ function AppContent() {
     track();
   }, [location.pathname]);
 
-  // Hide footer on admin pages
-  const hideFooterRoutes = ["/admin", "/visitors-list", "/scanify-booking"];
-  const showFooter = !hideFooterRoutes.includes(location.pathname);
+  // Hide footer on specific pages
+  const hideFooterRoutes = ["/admin", "/visitors-list", "/scanify-booking", "/demo"];
+  const showFooter = !hideFooterRoutes.some(route => location.pathname.startsWith(route));
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-white via-violet-50 to-purple-100 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-b from-white via-violet-50 to-purple-100">
       {showSplash && <LoadingPage />}
       {!showSplash && (
         <>
           <ScrollToTop />
           <AppNavbar />
-          <div className="content pt-0">
+          <div className="content" style={{ paddingTop: location.pathname === "/scanify-booking" ? "0px" : "90px" }}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
@@ -115,6 +116,7 @@ function AppContent() {
               <Route path="/certifications/iso-27001" element={<Iso27001 />} />
               <Route path="/services" element={<Services />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/demo" element={<ShortDemoPage />} />
               <Route path="/scanify-booking" element={<ScanifyBookingPage />} />
               <Route path="/product" element={<Product />} />
               <Route path="/scanify" element={<ScanifyDetail />} />
