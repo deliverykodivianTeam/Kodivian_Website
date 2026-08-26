@@ -62,11 +62,13 @@ const Contact = () => {
   const handleMsgChange = (e) =>
     setMsgForm({ ...msgForm, [e.target.name]: e.target.value });
 
+  const API_URL = import.meta.env.VITE_API_URL || "https://kodivian-website-8.onrender.com";
+
   const handleMsgSubmit = async (e) => {
     e.preventDefault();
     setMsgSubmitting(true);
     try {
-      await fetch("/api/contact-message", {
+      await fetch(`${API_URL}/api/contact-message`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(msgForm),
