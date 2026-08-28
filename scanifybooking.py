@@ -280,6 +280,9 @@ def send_internal_notification(
     html_content = f"""<!DOCTYPE html>
 <html>
 <head>
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Scanify AI Requirement &amp; Demo Lead</title>
@@ -291,23 +294,23 @@ def send_internal_notification(
       <td align="center">
 
         <!-- Main Card Container -->
-        <table width="700" border="0" cellpadding="0" cellspacing="0" style="max-width: 700px; width: 100%; background-color: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(106, 5, 127, 0.1); border: 1.5px solid #e9d5ff;">
+        <table width="700" border="0" cellpadding="0" cellspacing="0" style="max-width: 700px; width: 100%; background-color: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(106, 5, 127, 0.1); border: 1.5px solid #BFDBFE;">
 
           <!-- ═══════ TOP BRAND HEADER BANNER ═══════ -->
           <tr>
-            <td style="background: linear-gradient(135deg, #4A015E 0%, #6A057F 60%, #8B5FBF 100%); padding: 28px 32px; color: #ffffff; text-align: left;">
+            <td style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #3B82F6 100%); padding: 28px 32px; color: #ffffff; text-align: left;">
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>
-                    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #e9d5ff; margin-bottom: 4px;">🚀 New Enterprise Demo Lead</div>
+                    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #BFDBFE; margin-bottom: 4px;">🚀 New Enterprise Demo Lead</div>
                     <h1 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff; line-height: 1.3;">Scanify AI · Requirement Blueprint</h1>
-                    <p style="margin: 6px 0 0 0; font-size: 13.5px; color: #f3e8ff;">
+                    <p style="margin: 6px 0 0 0; font-size: 13.5px; color: #EFF6FF;">
                       Lead: <strong>{booking.full_name}</strong> &nbsp;|&nbsp; Company: <strong>{booking.company_name}</strong>
                     </p>
                   </td>
                   <td align="right" style="vertical-align: top;">
                     <div style="display: inline-block; background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 8px; padding: 6px 12px; text-align: center;">
-                      <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #f3e8ff;">Ref ID</div>
+                      <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #EFF6FF;">Ref ID</div>
                       <div style="font-size: 13px; font-weight: 700; color: #ffffff; font-family: monospace;">{booking_ref}</div>
                     </div>
                   </td>
@@ -323,33 +326,33 @@ def send_internal_notification(
               <!-- ────── CONTACT & CORPORATE PROFILE ────── -->
               <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 28px;">
                 <tr>
-                  <td style="background: linear-gradient(135deg, #4A015E 0%, #6A057F 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
+                  <td style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
                     <span style="font-size: 14px; font-weight: 700; color: #ffffff;">👤 Contact &amp; Corporate Profile</span>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding: 0;">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #e9d5ff; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
-                      <tr style="background-color: #FAF5FF;">
-                        <td width="35%" style="padding: 10px 16px; font-size: 13px; font-weight: 600; color: #6A057F; border-bottom: 1px solid #f1e4fa;">Full Name</td>
-                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 700; color: #1e293b; border-bottom: 1px solid #f1e4fa;">{booking.full_name}</td>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #BFDBFE; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
+                      <tr style="background-color: #EFF6FF;">
+                        <td width="35%" style="padding: 10px 16px; font-size: 13px; font-weight: 600; color: #2563EB; border-bottom: 1px solid #BFDBFE;">Full Name</td>
+                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 700; color: #1e293b; border-bottom: 1px solid #BFDBFE;">{booking.full_name}</td>
                       </tr>
                       <tr>
-                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 600; color: #6A057F; border-bottom: 1px solid #f1e4fa;">Designation / Role</td>
-                        <td style="padding: 10px 16px; font-size: 13px; color: #334155; border-bottom: 1px solid #f1e4fa;">{booking.designation or 'Not Specified'}</td>
+                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 600; color: #2563EB; border-bottom: 1px solid #BFDBFE;">Designation / Role</td>
+                        <td style="padding: 10px 16px; font-size: 13px; color: #334155; border-bottom: 1px solid #BFDBFE;">{booking.designation or 'Not Specified'}</td>
                       </tr>
-                      <tr style="background-color: #FAF5FF;">
-                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 600; color: #6A057F; border-bottom: 1px solid #f1e4fa;">Company / Organization</td>
-                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 700; color: #4A015E; border-bottom: 1px solid #f1e4fa;">{booking.company_name}</td>
+                      <tr style="background-color: #EFF6FF;">
+                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 600; color: #2563EB; border-bottom: 1px solid #BFDBFE;">Company / Organization</td>
+                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 700; color: #1E3A8A; border-bottom: 1px solid #BFDBFE;">{booking.company_name}</td>
                       </tr>
                       <tr>
-                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 600; color: #6A057F; border-bottom: 1px solid #f1e4fa;">Corporate Email ID</td>
-                        <td style="padding: 10px 16px; font-size: 13px; border-bottom: 1px solid #f1e4fa;">
-                          <a href="mailto:{booking.corporate_email}" style="color: #6A057F; font-weight: 600; text-decoration: underline;">{booking.corporate_email}</a>
+                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 600; color: #2563EB; border-bottom: 1px solid #BFDBFE;">Corporate Email ID</td>
+                        <td style="padding: 10px 16px; font-size: 13px; border-bottom: 1px solid #BFDBFE;">
+                          <a href="mailto:{booking.corporate_email}" style="color: #2563EB; font-weight: 600; text-decoration: underline;">{booking.corporate_email}</a>
                         </td>
                       </tr>
-                      <tr style="background-color: #FAF5FF;">
-                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 600; color: #6A057F;">Direct Mobile / Phone</td>
+                      <tr style="background-color: #EFF6FF;">
+                        <td style="padding: 10px 16px; font-size: 13px; font-weight: 600; color: #2563EB;">Direct Mobile / Phone</td>
                         <td style="padding: 10px 16px; font-size: 13px; font-weight: 600; color: #1e293b;">
                           <a href="tel:{booking.mobile_number}" style="color: #1e293b; text-decoration: none;">{booking.mobile_number}</a>
                         </td>
@@ -364,7 +367,7 @@ def send_internal_notification(
               <!-- ────── SECTION 01: Document Scope & Characteristics ────── -->
               <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
                 <tr>
-                  <td style="background: linear-gradient(135deg, #4A015E 0%, #6A057F 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
+                  <td style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td>
@@ -377,17 +380,17 @@ def send_internal_notification(
                 </tr>
                 <tr>
                   <td style="padding: 0;">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #e9d5ff; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
-                      <tr style="background-color: #FAF5FF;">
-                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #6A057F; border-bottom: 1px solid #f1e4fa; vertical-align: top;">Q1. Which document types need to be processed?</td>
-                        <td style="padding: 10px 16px; font-size: 13px; color: #1e293b; border-bottom: 1px solid #f1e4fa; vertical-align: top; font-weight: 600;">{doc_types}</td>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #BFDBFE; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
+                      <tr style="background-color: #EFF6FF;">
+                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #2563EB; border-bottom: 1px solid #BFDBFE; vertical-align: top;">Q1. Which document types need to be processed?</td>
+                        <td style="padding: 10px 16px; font-size: 13px; color: #1e293b; border-bottom: 1px solid #BFDBFE; vertical-align: top; font-weight: 600;">{doc_types}</td>
                       </tr>
                       <tr>
-                        <td style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #6A057F; border-bottom: 1px solid #f1e4fa; vertical-align: top;">Q2. Document Source – In what formats are documents received from the source?</td>
-                        <td style="padding: 10px 16px; font-size: 13px; color: #334155; border-bottom: 1px solid #f1e4fa; vertical-align: top;">{doc_formats}</td>
+                        <td style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #2563EB; border-bottom: 1px solid #BFDBFE; vertical-align: top;">Q2. Document Source – In what formats are documents received from the source?</td>
+                        <td style="padding: 10px 16px; font-size: 13px; color: #334155; border-bottom: 1px solid #BFDBFE; vertical-align: top;">{doc_formats}</td>
                       </tr>
-                      <tr style="background-color: #FAF5FF;">
-                        <td style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #6A057F; vertical-align: top;">Q3. Are documents received in multiple languages?</td>
+                      <tr style="background-color: #EFF6FF;">
+                        <td style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #2563EB; vertical-align: top;">Q3. Are documents received in multiple languages?</td>
                         <td style="padding: 10px 16px; font-size: 13px; color: #334155; vertical-align: top;">{multilingual}</td>
                       </tr>
                     </table>
@@ -398,7 +401,7 @@ def send_internal_notification(
               <!-- ────── SECTION 02: Volume & Frequency ────── -->
               <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
                 <tr>
-                  <td style="background: linear-gradient(135deg, #4A015E 0%, #6A057F 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
+                  <td style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td>
@@ -411,10 +414,10 @@ def send_internal_notification(
                 </tr>
                 <tr>
                   <td style="padding: 0;">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #e9d5ff; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
-                      <tr style="background-color: #FAF5FF;">
-                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #6A057F; vertical-align: top;">Q. How many documents are processed per month?</td>
-                        <td style="padding: 10px 16px; font-size: 13px; color: #4A015E; vertical-align: top; font-weight: 700;">{volume}</td>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #BFDBFE; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
+                      <tr style="background-color: #EFF6FF;">
+                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #2563EB; vertical-align: top;">Q. How many documents are processed per month?</td>
+                        <td style="padding: 10px 16px; font-size: 13px; color: #1E3A8A; vertical-align: top; font-weight: 700;">{volume}</td>
                       </tr>
                     </table>
                   </td>
@@ -424,7 +427,7 @@ def send_internal_notification(
               <!-- ────── SECTION 03: Data Sources & Intake Channels ────── -->
               <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
                 <tr>
-                  <td style="background: linear-gradient(135deg, #4A015E 0%, #6A057F 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
+                  <td style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td>
@@ -437,9 +440,9 @@ def send_internal_notification(
                 </tr>
                 <tr>
                   <td style="padding: 0;">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #e9d5ff; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
-                      <tr style="background-color: #FAF5FF;">
-                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #6A057F; vertical-align: top;">Q. How do documents currently enter your system?</td>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #BFDBFE; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
+                      <tr style="background-color: #EFF6FF;">
+                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #2563EB; vertical-align: top;">Q. How do documents currently enter your system?</td>
                         <td style="padding: 10px 16px; font-size: 13px; color: #334155; vertical-align: top; font-weight: 600;">{intake}</td>
                       </tr>
                     </table>
@@ -450,7 +453,7 @@ def send_internal_notification(
               <!-- ────── SECTION 04: Validation & Business Rules ────── -->
               <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
                 <tr>
-                  <td style="background: linear-gradient(135deg, #4A015E 0%, #6A057F 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
+                  <td style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td>
@@ -463,9 +466,9 @@ def send_internal_notification(
                 </tr>
                 <tr>
                   <td style="padding: 0;">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #e9d5ff; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
-                      <tr style="background-color: #FAF5FF;">
-                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #6A057F; vertical-align: top;">Q. What rules are applied to validate extracted data?</td>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #BFDBFE; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
+                      <tr style="background-color: #EFF6FF;">
+                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #2563EB; vertical-align: top;">Q. What rules are applied to validate extracted data?</td>
                         <td style="padding: 10px 16px; font-size: 13px; color: #334155; vertical-align: top;">{validation}</td>
                       </tr>
                     </table>
@@ -476,7 +479,7 @@ def send_internal_notification(
               <!-- ────── SECTION 05: ERP & System Integration ────── -->
               <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
                 <tr>
-                  <td style="background: linear-gradient(135deg, #4A015E 0%, #6A057F 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
+                  <td style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td>
@@ -489,10 +492,10 @@ def send_internal_notification(
                 </tr>
                 <tr>
                   <td style="padding: 0;">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #e9d5ff; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
-                      <tr style="background-color: #FAF5FF;">
-                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #6A057F; vertical-align: top;">Q. Existing ERP Platform – Which ERP solution is currently being used in your organization?</td>
-                        <td style="padding: 10px 16px; font-size: 13px; color: #4A015E; vertical-align: top; font-weight: 700;">{erp}</td>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #BFDBFE; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
+                      <tr style="background-color: #EFF6FF;">
+                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #2563EB; vertical-align: top;">Q. Existing ERP Platform – Which ERP solution is currently being used in your organization?</td>
+                        <td style="padding: 10px 16px; font-size: 13px; color: #1E3A8A; vertical-align: top; font-weight: 700;">{erp}</td>
                       </tr>
                     </table>
                   </td>
@@ -502,7 +505,7 @@ def send_internal_notification(
               <!-- ────── SECTION 06: Workflows & Approvals ────── -->
               <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
                 <tr>
-                  <td style="background: linear-gradient(135deg, #4A015E 0%, #6A057F 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
+                  <td style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td>
@@ -515,9 +518,9 @@ def send_internal_notification(
                 </tr>
                 <tr>
                   <td style="padding: 0;">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #e9d5ff; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
-                      <tr style="background-color: #FAF5FF;">
-                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #6A057F; vertical-align: top;">Q. What approval hierarchy, exception routing, or escalation process is needed?</td>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #BFDBFE; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
+                      <tr style="background-color: #EFF6FF;">
+                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #2563EB; vertical-align: top;">Q. What approval hierarchy, exception routing, or escalation process is needed?</td>
                         <td style="padding: 10px 16px; font-size: 13px; color: #334155; vertical-align: top;">{workflows}</td>
                       </tr>
                     </table>
@@ -528,7 +531,7 @@ def send_internal_notification(
               <!-- ────── SECTION 07: Deployment Preference ────── -->
               <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
                 <tr>
-                  <td style="background: linear-gradient(135deg, #4A015E 0%, #6A057F 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
+                  <td style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td>
@@ -541,10 +544,10 @@ def send_internal_notification(
                 </tr>
                 <tr>
                   <td style="padding: 0;">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #e9d5ff; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
-                      <tr style="background-color: #FAF5FF;">
-                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #6A057F; vertical-align: top;">Q. What is the preferred hosting model?</td>
-                        <td style="padding: 10px 16px; font-size: 13px; color: #4A015E; vertical-align: top; font-weight: 700;">{deployment}</td>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #BFDBFE; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
+                      <tr style="background-color: #EFF6FF;">
+                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #2563EB; vertical-align: top;">Q. What is the preferred hosting model?</td>
+                        <td style="padding: 10px 16px; font-size: 13px; color: #1E3A8A; vertical-align: top; font-weight: 700;">{deployment}</td>
                       </tr>
                     </table>
                   </td>
@@ -554,7 +557,7 @@ def send_internal_notification(
               <!-- ────── SECTION 08: Reporting & KPI Tracking ────── -->
               <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 24px;">
                 <tr>
-                  <td style="background: linear-gradient(135deg, #4A015E 0%, #6A057F 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
+                  <td style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); padding: 10px 16px; border-radius: 8px 8px 0 0;">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td>
@@ -567,9 +570,9 @@ def send_internal_notification(
                 </tr>
                 <tr>
                   <td style="padding: 0;">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #e9d5ff; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
-                      <tr style="background-color: #FAF5FF;">
-                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #6A057F; vertical-align: top;">Q. What analytics, SLA tracking, or dashboards are needed?</td>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1.5px solid #BFDBFE; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden;">
+                      <tr style="background-color: #EFF6FF;">
+                        <td width="40%" style="padding: 10px 16px; font-size: 12.5px; font-weight: 600; color: #2563EB; vertical-align: top;">Q. What analytics, SLA tracking, or dashboards are needed?</td>
                         <td style="padding: 10px 16px; font-size: 13px; color: #334155; vertical-align: top;">{reporting}</td>
                       </tr>
                     </table>
@@ -584,7 +587,7 @@ def send_internal_notification(
 
           <!-- ═══════ FOOTER ═══════ -->
           <tr>
-            <td style="background-color: #FAF5FF; border-top: 1px solid #e9d5ff; padding: 18px 32px; text-align: center; font-size: 11.5px; color: #7e22ce;">
+            <td style="background-color: #EFF6FF; border-top: 1px solid #BFDBFE; padding: 18px 32px; text-align: center; font-size: 11.5px; color: #2563EB;">
               <strong>Kodivian Technologies LLP</strong> · Scanify AI Document Intelligence Platform<br>
               Automated sales lead notification dispatched from the live booking portal.
             </td>
@@ -616,125 +619,83 @@ def send_customer_acknowledgement(
     booking: DemoBooking,
     booking_ref: str
 ):
-    doc_types = booking.document_types or booking.q1_current_process or "Enterprise Documents"
-    doc_formats = booking.document_formats or booking.q7_document_formats or "Standard Formats"
-    multilingual = booking.multilingual_docs or booking.q3_processing_time or "Standard"
-    volume = booking.monthly_volume or booking.q2_document_volume or "Tailored Capacity"
-    intake = booking.intake_channels or booking.q8_pain_points or "Enterprise Intake"
-    validation = booking.validation_rules or booking.q11_validation_process or "Configured Rules"
-    erp = booking.erp_platform or booking.q6_erp_system or "Ecosystem Connectors"
-    workflows = booking.workflow_approval or booking.q14_approval_workflow or "Standard Automation"
-    deployment = booking.deployment_model or booking.q5_team_size or "Tailored Architecture"
-    reporting = booking.reporting_analytics or booking.q9_business_impact or "Enabled"
-
     html_content = f"""<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You for Booking a Demo with Scanify AI</title>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank you from Kodivian</title>
 </head>
-<body style="margin: 0; padding: 0; background-color: #f7f5fa; font-family: 'Segoe UI', Arial, sans-serif; color: #1e293b; line-height: 1.65;">
+<body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: 'Segoe UI', Arial, sans-serif; color: #1e293b; line-height: 1.65;">
 
-  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #f7f5fa; padding: 30px 15px;">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #f8fafc; padding: 40px 20px;">
     <tr>
       <td align="center">
 
         <!-- Main Card Container -->
-        <table width="650" border="0" cellpadding="0" cellspacing="0" style="max-width: 650px; width: 100%; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 36px rgba(106, 5, 127, 0.08); border: 1.5px solid #e9d5ff;">
+        <table width="600" border="0" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 8px;">
 
           <!-- ═══════ TOP BRAND HEADER ═══════ -->
           <tr>
-            <td style="background: linear-gradient(135deg, #6A057F 0%, #4A015E 70%, #1a0022 100%); padding: 32px 34px; text-align: left; color: #ffffff;">
-              <div style="display: inline-block; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 20px; padding: 4px 14px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #e9d5ff; margin-bottom: 10px;">
-                Kodivian Technologies
-              </div>
-              <h1 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: -0.5px;">
-                Scanify AI Demo Request Confirmed
+            <td style="padding: 40px 40px 20px 40px; text-align: center;">
+              <h1 style="margin: 0; font-size: 24px; font-weight: 700; color: #1E3A8A; letter-spacing: -0.5px;">
+                Thank you from Kodivian
               </h1>
-              <p style="margin: 6px 0 0 0; font-size: 13px; color: #E9D5FF; font-weight: 400;">
-                Enterprise Document Intelligence &amp; End-to-End Workflow Automation
+              <p style="margin: 8px 0 0 0; font-size: 14px; color: #64748b; font-weight: 500;">
+                Scanify AI Demo Request Confirmed
               </p>
             </td>
           </tr>
 
           <!-- ═══════ BODY CONTENT ═══════ -->
           <tr>
-            <td style="padding: 30px 34px;">
+            <td style="padding: 20px 40px 40px 40px;">
 
-              <p style="font-size: 15px; color: #1e293b; margin: 0 0 14px 0;">
+              <p style="font-size: 16px; color: #1e293b; margin: 0 0 16px 0;">
                 Dear <strong>{booking.full_name}</strong>,
               </p>
 
-              <p style="font-size: 13.5px; color: #334155; margin: 0 0 14px 0; line-height: 1.65;">
+              <p style="font-size: 15px; color: #334155; margin: 0 0 24px 0; line-height: 1.7;">
                 Thank you for your interest in <strong>Scanify AI</strong> and for sharing your document workflow requirements with us. We have successfully logged your demo session request for <strong>{booking.company_name}</strong>.
               </p>
 
+              <p style="font-size: 15px; color: #334155; margin: 0 0 24px 0; line-height: 1.7;">
+                <strong>📅 Next Action &amp; Schedule:</strong><br>
+                Our team will follow up directly with you for the next action to schedule your tailored live demonstration.
+              </p>
 
-              <!-- ═══════ NEXT ACTION BOX ═══════ -->
-              <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #FAF5FF 0%, #F5EEFD 100%); border-left: 4px solid #6A057F; border-radius: 0 10px 10px 0; padding: 14px 18px; margin-bottom: 22px;">
-                <tr>
-                  <td>
-                    <div style="font-size: 13.5px; font-weight: 700; color: #4A015E; margin-bottom: 3px;">📅 Next Action &amp; Schedule:</div>
-                    <div style="font-size: 13px; color: #475569; line-height: 1.55;">
-                      Our team will follow up directly with you for the next action to schedule your tailored live demonstration.
-                    </div>
-                  </td>
-                </tr>
-              </table>
-
-              <!-- Sample Documents Callout -->
-              <div style="background-color: #ffffff; border: 1px dashed #cbd5e1; border-radius: 10px; padding: 13px 16px; margin-bottom: 24px;">
-                <p style="font-size: 12.5px; color: #475569; margin: 0; line-height: 1.55;">
-                  💡 <strong>Want to test with your sample files?</strong><br>
-                  Feel free to reply directly to this email with 2–3 sample files (redacting any sensitive information) so we can configure them for your demo session.
-                </p>
-              </div>
-
-              <hr style="border: none; border-top: 1px solid #f1e4fa; margin: 20px 0 18px 0;">
+              <p style="font-size: 15px; color: #334155; margin: 0 0 32px 0; line-height: 1.7;">
+                💡 <strong>Want to test with your sample files?</strong><br>
+                Feel free to reply directly to this email with 2–3 sample files (redacting any sensitive information) so we can configure them for your demo session.
+              </p>
 
               <!-- ═══════ SIGNATURE BLOCK ═══════ -->
-              <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td>
-                    <div style="font-size: 13.5px; color: #64748b; margin-bottom: 6px;">Warm regards,</div>
-                    <div style="font-size: 15.5px; font-weight: 700; color: #4A015E; margin-bottom: 2px;">Manoranjan KS</div>
-                    <div style="font-size: 13px; font-weight: 600; color: #6A057F; margin-bottom: 2px;">Business Analyst | Enterprise Solution Architecture</div>
-                    <div style="font-size: 13px; font-weight: 600; color: #1e293b; margin-bottom: 8px;">Kodivian Technologies LLP</div>
-
-                    <table border="0" cellpadding="0" cellspacing="0" style="font-size: 12.5px; color: #475569;">
-                      <tr>
-                        <td style="padding: 2px 0;">
-                          ✉️ Email: <a href="mailto:manoranjan.ks@kodivian.com" style="color: #6A057F; font-weight: 600; text-decoration: none;">manoranjan.ks@kodivian.com</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding: 2px 0;">
-                          🌐 Website: <a href="https://www.kodivian.com" style="color: #6A057F; font-weight: 600; text-decoration: none;">www.kodivian.com</a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-
+              <p style="font-size: 15px; color: #64748b; margin: 0 0 8px 0;">Warm regards,</p>
+              <p style="font-size: 16px; font-weight: 700; color: #1E3A8A; margin: 0 0 2px 0;">Manoranjan KS</p>
+              <p style="font-size: 14px; color: #2563EB; margin: 0 0 2px 0;">Business Analyst | Enterprise Solution Architecture</p>
+              <p style="font-size: 14px; font-weight: 600; color: #1e293b; margin: 0 0 12px 0;">Kodivian Technologies LLP</p>
+              
+              <p style="font-size: 13.5px; color: #475569; margin: 0;">
+                ✉️ Email: <a href="mailto:manoranjan.ks@kodivian.com" style="color: #2563EB; font-weight: 600; text-decoration: none;">manoranjan.ks@kodivian.com</a><br>
+                🌐 Website: <a href="https://www.kodivian.com" style="color: #2563EB; font-weight: 600; text-decoration: none;">www.kodivian.com</a>
+              </p>
             </td>
           </tr>
 
           <!-- ═══════ FOOTER ═══════ -->
           <tr>
-            <td style="background-color: #FAF5FF; border-top: 1px solid #e9d5ff; padding: 16px 34px; text-align: center; font-size: 11.5px; color: #7e22ce;">
+            <td style="padding: 24px 40px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9;">
               <strong>Kodivian Technologies LLP</strong> · Scanify AI Document Intelligence Platform<br>
-              Chennai, India · <a href="https://www.kodivian.com" style="color: #6A057F; text-decoration: underline;">www.kodivian.com</a>
+              Chennai, India · <a href="https://www.kodivian.com" style="color: #94a3b8; text-decoration: underline;">www.kodivian.com</a>
             </td>
           </tr>
 
         </table>
-
       </td>
     </tr>
   </table>
-
 </body>
 </html>
 """
@@ -742,7 +703,7 @@ def send_customer_acknowledgement(
     send_email_brevo(
         booking.corporate_email,
         booking.full_name,
-        f"Scanify AI Demo Request Confirmed [{booking_ref}] - Kodivian Technologies",
+        "Thank you from Kodivian - Scanify AI Demo Confirmed",
         html_content
     )
 
@@ -1081,9 +1042,16 @@ class ShortDemoBooking(BaseModel):
 
 def send_short_demo_internal(booking: ShortDemoBooking, booking_ref: str):
     html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+</head>
+    <body>
     <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f9;">
         <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <div style="background-color: #6A057F; color: #ffffff; padding: 20px; text-align: center;">
+            <div style="background-color: #2563EB; color: #ffffff; padding: 20px; text-align: center;">
                 <h2 style="margin: 0; font-size: 24px;">New Demo Request</h2>
                 <p style="margin: 5px 0 0; font-size: 14px; opacity: 0.8;">Ref: {booking_ref}</p>
             </div>
@@ -1092,7 +1060,7 @@ def send_short_demo_internal(booking: ShortDemoBooking, booking_ref: str):
                     <tr><td style="padding: 10px; border-bottom: 1px solid #eeeeee; width: 35%; color: #666;"><strong>Name</strong></td><td style="padding: 10px; border-bottom: 1px solid #eeeeee; font-weight: bold;">{booking.fullName}</td></tr>
                     <tr><td style="padding: 10px; border-bottom: 1px solid #eeeeee; color: #666;"><strong>Company</strong></td><td style="padding: 10px; border-bottom: 1px solid #eeeeee;">{booking.company}</td></tr>
                     <tr><td style="padding: 10px; border-bottom: 1px solid #eeeeee; color: #666;"><strong>Designation</strong></td><td style="padding: 10px; border-bottom: 1px solid #eeeeee;">{booking.designation}</td></tr>
-                    <tr><td style="padding: 10px; border-bottom: 1px solid #eeeeee; color: #666;"><strong>Email</strong></td><td style="padding: 10px; border-bottom: 1px solid #eeeeee;"><a href="mailto:{booking.email}" style="color: #6A057F;">{booking.email}</a></td></tr>
+                    <tr><td style="padding: 10px; border-bottom: 1px solid #eeeeee; color: #666;"><strong>Email</strong></td><td style="padding: 10px; border-bottom: 1px solid #eeeeee;"><a href="mailto:{booking.email}" style="color: #2563EB;">{booking.email}</a></td></tr>
                     <tr><td style="padding: 10px; border-bottom: 1px solid #eeeeee; color: #666;"><strong>Phone</strong></td><td style="padding: 10px; border-bottom: 1px solid #eeeeee;">{booking.phone}</td></tr>
                     <tr><td style="padding: 10px; color: #666; vertical-align: top;"><strong>Comments</strong></td><td style="padding: 10px;">{booking.comment or '<em>None</em>'}</td></tr>
                 </table>
@@ -1112,14 +1080,21 @@ def send_short_demo_internal(booking: ShortDemoBooking, booking_ref: str):
         )
 
 def send_short_demo_customer(booking: ShortDemoBooking, booking_ref: str):
-    link = "http://localhost:5173/scanify-booking"
+    link = "https://kodivian.com/scanify-booking"
     html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+</head>
+    <body>
     <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; padding: 40px 20px;">
         <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
             
-            <div style="background: linear-gradient(135deg, #3b0764 0%, #6b21a8 50%, #9333ea 100%); padding: 40px 30px; text-align: center;">
+            <div style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #3B82F6 100%); padding: 40px 30px; text-align: center;">
                 <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700; letter-spacing: 0.5px;">Scanify AI</h1>
-                <p style="color: #e9d5ff; margin: 10px 0 0; font-size: 16px;">Automated Document Extraction</p>
+                <p style="color: #BFDBFE; margin: 10px 0 0; font-size: 16px;">Automated Document Extraction</p>
             </div>
             
             <div style="padding: 40px 30px; color: #334155; line-height: 1.6;">
@@ -1130,7 +1105,7 @@ def send_short_demo_customer(booking: ShortDemoBooking, booking_ref: str):
                 <p style="font-size: 16px;">To help us prepare a personalized demonstration tailored exactly to your document workflows and ERP systems, please take 2 minutes to provide your technical requirements.</p>
                 
                 <div style="text-align: center; margin: 35px 0;">
-                    <a href="{link}" style="display: inline-block; background-color: #7e22ce; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(126, 34, 206, 0.3);">
+                    <a href="{link}" style="display: inline-block; background-color: #2563EB; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(126, 34, 206, 0.3);">
                         Book Personalized Demo Session
                     </a>
                 </div>
@@ -1216,6 +1191,10 @@ async def contact_message(msg: ContactMessage, background_tasks: BackgroundTasks
     # 2. Send Emails
     html_content = f"""
     <html>
+<head>
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+</head>
     <body style="font-family: Arial, sans-serif; padding: 24px; background: #f9f9f9;">
         <div style="max-width:600px; margin:auto; background:#fff; border-radius:12px; padding:32px; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
             <h2 style="color:#082154; margin-bottom:4px;">New Website Message</h2>
