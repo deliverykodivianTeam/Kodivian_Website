@@ -156,7 +156,7 @@ const About = () => {
       return () => clearInterval(timer);
     };
 
-    const stopYears = animateCount(setYearsExperience, 4, 1500); // 4 years, 1.5 seconds
+    const stopYears = animateCount(setYearsExperience, 5, 1500); // 5 years, 1.5 seconds
     const stopTeam = animateCount(setTeamMembersCount, 30, 2000); // 30 members, 2 seconds
     const stopClients = animateCount(setSatisfiedClients, 60, 1800); // 60 clients, 1.8 seconds
     const stopProjects = animateCount(setCompleteProjects, 60, 2200); // 60 projects, 2.2 seconds
