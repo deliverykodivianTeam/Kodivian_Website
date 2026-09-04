@@ -4,7 +4,8 @@ import '@fontsource/roboto/500.css'; // Medium
 import '@fontsource/roboto/700.css'; // Bold
 
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Image, Card, Button } from 'react-bootstrap'; // Added Button
+import { Container, Row, Col, Image, Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import "../styles/Services.css"; // Your custom CSS for additional styling
 import DemoBookingPopup from "../components/DemoBookingPopup"; // Adjust the path based on your file structure
 
@@ -36,6 +37,7 @@ import processImage from "../assets/intro_2.png"; // Changed image names to be m
 import Belowbar from "../components/Belowbar";
 
 const Services = () => {
+    const navigate = useNavigate();
     // Typing effect for the hero section
     const [typingText, setTypingText] = useState("");
     const fullText = "Empowering Your Business Through Innovation";
@@ -88,7 +90,7 @@ const handleCloseDemoPopup = () => {
             </div>
 
             {/* Section 1: Support Every Cloud */}
-           <Container fluid className="py-5 bg-light" id="cloud-support">
+           <Container fluid className="py-5 bg-white" id="cloud-support">
    <Row className="gx-0 mx-0 text-center mb-5">
   <Col lg={12} className="px-0">
     <h2 className="display-4 fw-bold mb-3 text-primary-purple">
@@ -245,10 +247,10 @@ const handleCloseDemoPopup = () => {
             {/* Section 4: Product Support & Project Lifecycle */}
             <Container className="py-5" id="product-support">
                 <Row className="align-items-center justify-content-center mb-5">
-                    <Col lg={2} className="mb-4 mb-lg-0">
-                        <Image src={supportImage} alt="Product Support & Project Lifecycle" fluid rounded className="shadow-lg services-section-image" />
+                    <Col lg={5} className="mb-4 mb-lg-0">
+                        <Image src={supportImage} alt="Product Support & Project Lifecycle" fluid className="w-100 services-section-image" style={{ mixBlendMode: 'multiply' }} />
                     </Col>
-                    <Col lg={10}>
+                    <Col lg={7}>
                         <h2 className="display-4 fw-bold mb-3 text-black">Comprehensive Product & Project Support</h2>
                         <p className="lead mb-4 text-muted">
                             From initial concept to successful deployment and beyond, we provide hands-on, proactive support at every stage.
@@ -298,12 +300,12 @@ const handleCloseDemoPopup = () => {
             {/* Concluding Section */}
         <Container fluid className="py-5 bg-primary-purple text-white text-center mb-3">
   <Row className="align-items-center justify-content-center flex-column-reverse flex-lg-row">
-    <h2 className="display-4 fw-bold">Let's Build the Future Together.</h2>
-    <p className="lead mb-4">Ready to transform your business? Contact us today!</p>
+    <h2 className="display-4 fw-bold text-white">Let's Build the Future Together.</h2>
+    <p className="lead mb-4 fw-bold text-white fs-4">Ready to transform your business? Contact us today!</p>
     <Button variant="outline-light" 
         type="button"
   className="btn-small"
-  onClick={handleOpenDemoPopup} // Changed onClick to open the popup
+  onClick={() => navigate('/demo')} 
 >
 
       Get Started

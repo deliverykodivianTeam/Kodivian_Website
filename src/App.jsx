@@ -26,6 +26,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Chatbox from "./components/Chatbox";
 
 import LoadingPage from "./components/LoadingPage";
+import AnniversaryPopup from "./components/AnniversaryPopup";
 import Adminlogin from "./pages/Adminlogin";
 import VisitorDetails from "./pages/VisitorDetails";
 import Certifications from "./pages/Certifications";
@@ -56,7 +57,7 @@ function AppContent() {
       } else {
         setShowSplash(false);
       }
-    }, 2500);
+    }, 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -100,11 +101,15 @@ function AppContent() {
   const hideFooterRoutes = ["/admin", "/visitors-list", "/scanify-booking", "/demo"];
   const showFooter = !hideFooterRoutes.some(route => location.pathname.startsWith(route));
 
+  // Global toggle for Anniversary banner
+  const ENABLE_ANNIVERSARY = true;
+
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-white via-violet-50 to-purple-100">
       {showSplash && <LoadingPage />}
       {!showSplash && (
         <>
+          {ENABLE_ANNIVERSARY && <AnniversaryPopup />}
           <ScrollToTop />
           <AppNavbar />
           <div className="content" style={{ paddingTop: location.pathname === "/scanify-booking" ? "0px" : "90px" }}>

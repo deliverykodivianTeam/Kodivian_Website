@@ -1,7 +1,6 @@
 import "../styles/Product.css";
 import SampleImage from '../assets/Scanify.png';
 import processbuilder from '../assets/process_builder.png';
-import SupportForge from '../assets/SF.png';
 import DemoBookingPopup from '../components/DemoBookingPopup';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -17,7 +16,6 @@ const Product = () => {
     const products = [
         { name: "Scanify", description: "Intelligent Invoice Processing solution that automates data extraction from invoices, reducing manual effort and errors. It streamlines accounts payable workflows, improves accuracy, and accelerates processing times. Scanify integrates seamlessly with existing accounting systems for enhanced efficiency.", image: SampleImage, link: "/scanify" },
         { name: "Process Builder", description: "A No-Code Workflow Automation platform empowering businesses to design and automate workflows without writing any code. It enables seamless integration between various applications, improves operational efficiency, and provides real-time visibility into process execution. Process Builder is highly customizable and scalable to meet evolving business needs.", image: processbuilder, link: "/processbuilder" },
-        { name: "Support Forge", description: " A smart, automated platform that streamlines service requests, approvals, escalations, and resolutions across departments. It ensures faster response times, complete transparency, and seamless workflow management from ticket creation to closure.", image: SupportForge, link: "/SupportForge" },
     ];
 
     const handleOpenDemoPopup = () => {
@@ -42,7 +40,7 @@ const handleCloseDemoPopup = () => {
 
     return (
         <div>
-            <Container fluid className="product-page mt-0 fade-up">
+            <Container fluid className="product-page p-0 mt-0 fade-up">
                 {/* Hero Section */}
                 <Row className="hero-section elevated bg-white py-2 mt-0 text-center">
                    <Col lg={8} className="mx-auto mt-3">
@@ -73,8 +71,8 @@ const handleCloseDemoPopup = () => {
                 </Row>
 
                 {/* Product Showcase */}
-                <section className="product-showcase-redesigned bg-white py-5" style={{ fontFamily: 'Roboto, sans-serif' }}>
-  <Container>
+                <section className="product-showcase-redesigned bg-white pt-0 pb-5" style={{ fontFamily: 'Roboto, sans-serif' }}>
+  <Container fluid className="px-0">
     <div className="featured-solution-container position-relative">
       {visibleProduct && (
         <Card className="featured-product shadow border-0 rounded-4 overflow-hidden">
@@ -197,13 +195,12 @@ const handleCloseDemoPopup = () => {
 
 
                 {/* Call to Action */}
-                <Row className="call-to-action elevated  text-white py-5 text-center">
+                <Row className="call-to-action elevated text-dark py-5 text-center mx-0">
                     <Col lg={8} className="mx-auto">
-                        <h2 className="cta-title  display-5 fw-bold mb-3">Ready to Transform Your Business?</h2>
-                        <p className="cta-description  lead mb-4">Contact us today to learn how our AI solutions can meet your specific needs.</p>
+                        <h2 className="display-5 fw-bold mb-3 text-dark">Ready to Transform Your Business?</h2>
+                        <p className="lead mb-4 text-dark">Contact us today to learn how our AI solutions can meet your specific needs.</p>
                      <a
-  href="https://wa.me/918870435343?text=Hi%2C%20I%20am%20Kodivian%21%20Explore%20our%204%20products.%20If%20you%20need%20any%20guidance%20or%20have%20questions%20about%20any%20concept%2C%20just%20text%20me.
-"
+  href="https://wa.me/918870435343?text=Hi%20vijay%2C%0A%0AI%20am%20interested%20in%20your%20services%20and%20would%20like%20to%20know%20more%20details.%20Please%20get%20in%20touch%20with%20me."
   target="_blank"
   rel="noopener noreferrer"
 >

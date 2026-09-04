@@ -45,7 +45,7 @@ import Mothi from "../assets/Mothi.jpeg";
 import Kaviya from "../assets/Kaviya.jpeg";
 import Preethi from "../assets/Preethi.jpeg";
 import Hari from "../assets/Hari.jpg";
-import Kavi from "../assets/kavi.jpg";
+import Kavi from "../assets/kaviarasan_s.jpg";
 import Ramanan from "../assets/Ramanan.jpg";
 import Manoranjan from "../assets/Manoranjan.jpeg"
 
@@ -439,7 +439,7 @@ const About = () => {
       </Container>
 
       {/* Certifications & Compliance Section */}
-      <Container className="py-5 certifications-section border-top border-light-purple" id="certifications">
+      <Container fluid className="py-5 certifications-section border-top border-light-purple" id="certifications">
         <div className="text-center mb-5">
           <h2 className="display-5 fw-bold text-violet">Certifications & Compliance</h2>
           <div className="section-heading-under" />

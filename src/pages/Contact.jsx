@@ -180,7 +180,7 @@ const Contact = () => {
 
       {/* Form + Map — full width, no gap, flush columns */}
       <div className="contact-bottom-wrap">
-        <div className="contact-form-panel">
+        <div className="contact-form-panel" id="contact-form">
           <div className="cfp-inner">
             <h3 className="cfp-title">Send Us a Message</h3>
             <p className="cfp-desc">

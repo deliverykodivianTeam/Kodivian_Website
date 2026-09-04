@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import '../styles/Blog.css';
 import blogjkf from "../assets/blogjkf.png";
@@ -41,31 +41,47 @@ import event_4L1A1979 from "../assets/4L1A1979.JPG";
 import event_4L1A2231 from "../assets/4L1A2231.JPG";
 import bctBanner from "../assets/bct-partnership-banner.png";
 import bctBan from "../assets/bct-partnership-post.png";
-
+import teamAward from "../assets/team_award.jpg";
+import teamLunch from "../assets/team_lunch.jpg";
 
 
 
 // Initial Mock Photos (24 Photos for the main gallery grid)
 const initialPhotos = [
-    { id: 25, url: office1, title: "Kodivian Workspace", category: "Celebrations", date: "Apr 2026" },
-    { id: 26, url: office2, title: "Collaborative Coding", category: "Celebrations", date: "Jun 2026" },
-    { id: 27, url: event_4L1A2506, title: "Kodivian Event Moment", category: "Events", date: "Jul 2026" },
-    { id: 28, url: event_4L1A2777, title: "Team Gathering", category: "Events", date: "Jul 2026" },
-    { id: 29, url: event_4L1A2183, title: "Kodivian Summit", category: "Events", date: "Jul 2026" },
-    { id: 30, url: event_4L1A2212, title: "Event Collaboration", category: "Events", date: "Jul 2026" },
-    { id: 31, url: event_4L1A2488, title: "Special Gathering", category: "Events", date: "Jul 2026" },
-    { id: 32, url: event_4L1A2699, title: "Keynote Discussion", category: "Events", date: "Jul 2026" },
-    { id: 33, url: event_4L1A2159, title: "Corporate Seminar", category: "Events", date: "Jul 2026" },
-    { id: 34, url: event_4L1A2179, title: "Interaction Session", category: "Events", date: "Jul 2026" },
-    { id: 35, url: event_4L1A2235, title: "Workshop & Summit", category: "Events", date: "Jul 2026" },
-    { id: 36, url: event_4L1A2241, title: "Panel Discussion", category: "Events", date: "Jul 2026" },
-    { id: 37, url: event_4L1A2745, title: "Innovative Brainstorming", category: "Events", date: "Jul 2026" },
-    { id: 38, url: event_4L1A2779, title: "Team Achievement Discussion", category: "Events", date: "Jul 2026" },
-    { id: 39, url: event_4L1A2163, title: "Kodivian Meetup", category: "Events", date: "Jul 2026" },
-    { id: 41, url: event_4L1A2689, title: "Office Presentation", category: "Events", date: "Jul 2026" },
-    { id: 42, url: event_4L1A2204, title: "Corporate Seminar Meet", category: "Events", date: "Jul 2026" },
-    { id: 43, url: event_4L1A1979, title: "Kodivian Interactive Meet", category: "Events", date: "Jul 2026" },
-    { id: 44, url: event_4L1A2231, title: "Kodivian Workshop Session", category: "Events", date: "Jul 2026" }
+    { id: 27, url: event_4L1A2506, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 28, url: event_4L1A2777, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 29, url: event_4L1A2183, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 30, url: event_4L1A2212, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 31, url: event_4L1A2488, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 32, url: event_4L1A2699, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 33, url: event_4L1A2159, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 34, url: event_4L1A2179, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 35, url: event_4L1A2235, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 36, url: event_4L1A2241, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 37, url: event_4L1A2745, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 38, url: event_4L1A2779, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 39, url: event_4L1A2163, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 41, url: event_4L1A2689, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 42, url: event_4L1A2204, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 43, url: event_4L1A1979, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+    { id: 44, url: event_4L1A2231, title: "Annual Day", category: "Diwali Celebration", date: "Nov 2025" },
+
+    { id: 101, url: svg_0070, title: "Kodivian Goes Gold", category: "CFO Event", date: "June 2026" },
+    { id: 102, url: svg_0001, title: "Kodivian Goes Gold", category: "CFO Event", date: "June 2026" },
+    { id: 103, url: svg_0002, title: "Kodivian Goes Gold", category: "CFO Event", date: "June 2026" },
+    { id: 104, url: svg_0003, title: "Kodivian Goes Gold", category: "CFO Event", date: "June 2026" },
+    { id: 105, url: svg_0004, title: "Kodivian Goes Gold", category: "CFO Event", date: "June 2026" },
+    { id: 106, url: svc0004, title: "Kodivian Goes Gold", category: "CFO Event", date: "June 2026" },
+    { id: 107, url: svg_0060, title: "Kodivian Goes Gold", category: "CFO Event", date: "June 2026" },
+    { id: 108, url: svg_0225, title: "Kodivian Goes Gold", category: "CFO Event", date: "June 2026" },
+    { id: 109, url: svg_0296, title: "Kodivian Goes Gold", category: "CFO Event", date: "June 2026" },
+    { id: 110, url: svg_0322, title: "Kodivian Goes Gold", category: "CFO Event", date: "June 2026" },
+
+    { id: 201, url: bctBanner, title: "Strategic Reseller Partnership", category: "Partnership", date: "Aug 2026" },
+    { id: 202, url: bctBan, title: "Strategic Reseller Partnership", category: "Partnership", date: "Aug 2026" },
+
+    { id: 301, url: teamAward, title: "Kaizen Best Team Work Award", category: "Team", date: "April 2026" },
+    { id: 302, url: teamLunch, title: "Team Outing Lunch", category: "Team", date: "Dec 2026" }
 ];
 
 // Events Data
@@ -178,14 +194,53 @@ const eventsData = [
 const Blog = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [activeEvent, setActiveEvent] = useState(null);
-    const [lightboxImage, setLightboxImage] = useState(null);
+    const [lightboxData, setLightboxData] = useState({ isOpen: false, currentIndex: 0, items: [] });
+    const [pageIndex, setPageIndex] = useState(0);
+
+    useEffect(() => {
+        const handleHashChange = () => {
+            if (window.location.hash === "#partnership-gallery") {
+                setSelectedCategory("Partnership");
+                setTimeout(() => {
+                    const el = document.getElementById("moments-gallery");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                }, 300);
+            }
+        };
+
+        // Run once on mount
+        handleHashChange();
+
+        // Listen for hash changes if already on the page
+        window.addEventListener('hashchange', handleHashChange);
+        return () => window.removeEventListener('hashchange', handleHashChange);
+    }, []);
 
     // Filter categories for the main photo gallery
-    const categories = ["All", "Events", "Celebrations", "Partnerships", "Case Studies"];
+    const categories = ["All", "Diwali Celebration", "CFO Event", "Team", "Partnership"];
 
     const filteredPhotos = selectedCategory === "All"
         ? initialPhotos
         : initialPhotos.filter(photo => photo.category === selectedCategory);
+
+    // Auto-pagination logic for 'All' category
+    useEffect(() => {
+        if (selectedCategory !== "All") {
+            setPageIndex(0);
+            return;
+        }
+        const interval = setInterval(() => {
+            setPageIndex(prev => {
+                const nextIndex = prev + 8;
+                return nextIndex >= initialPhotos.length ? 0 : nextIndex;
+            });
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [selectedCategory, initialPhotos.length]);
+
+    const displayedPhotos = selectedCategory === "All" 
+        ? filteredPhotos.slice(pageIndex, pageIndex + 8) 
+        : filteredPhotos;
 
     // Open single event details popup modal
     const handleOpenEventModal = (event) => {
@@ -199,14 +254,30 @@ const Blog = () => {
         document.body.style.overflow = "unset";
     };
 
-    // Open lightbox Zoom view
-    const handleOpenLightbox = (photoUrl, photoTitle, photoMeta = "") => {
-        setLightboxImage({ url: photoUrl, title: photoTitle, meta: photoMeta });
+    // Open lightbox Zoom view with array of items
+    const handleOpenLightbox = (itemsArray, startIndex) => {
+        setLightboxData({ isOpen: true, currentIndex: startIndex, items: itemsArray });
     };
 
     // Close lightbox Zoom view
     const handleCloseLightbox = () => {
-        setLightboxImage(null);
+        setLightboxData({ isOpen: false, currentIndex: 0, items: [] });
+    };
+
+    const nextLightboxImage = (e) => {
+        e.stopPropagation();
+        setLightboxData(prev => ({
+            ...prev,
+            currentIndex: (prev.currentIndex + 1) % prev.items.length
+        }));
+    };
+
+    const prevLightboxImage = (e) => {
+        e.stopPropagation();
+        setLightboxData(prev => ({
+            ...prev,
+            currentIndex: (prev.currentIndex - 1 + prev.items.length) % prev.items.length
+        }));
     };
 
     return (
@@ -304,7 +375,7 @@ const Blog = () => {
             </Container>
 
             {/* General Filterable Photo Gallery */}
-            <Container className="py-5 bg-white rounded-5 shadow-sm mb-5">
+            <Container fluid className="py-5 bg-white mb-5" id="moments-gallery">
                 <div className="text-center mb-5">
                     <h2 className="fw-bold text-dark-purple">Kodivian Moments Gallery</h2>
                     <p className="text-muted">High-resolution glimpses into our office lifestyle, celebrations, and conferences</p>
@@ -325,11 +396,14 @@ const Blog = () => {
 
                 {/* Photo Grid */}
                 <Row className="g-4">
-                    {filteredPhotos.map(photo => (
+                    {displayedPhotos.map(photo => (
                         <Col sm={6} md={4} lg={3} key={photo.id}>
                             <div
                                 className="gallery-item-wrapper"
-                                onClick={() => handleOpenLightbox(photo.url, photo.title, `${photo.category} | ${photo.date}`)}
+                                onClick={() => handleOpenLightbox(
+                                    filteredPhotos.map(p => ({ url: p.url, title: p.title, meta: `${p.category} | ${p.date}` })),
+                                    filteredPhotos.findIndex(p => p.id === photo.id)
+                                )}
                             >
                                 <img
                                     src={photo.url}
@@ -399,7 +473,10 @@ const Blog = () => {
                                     <div
                                         key={idx}
                                         className="event-modal-grid-item"
-                                        onClick={() => handleOpenLightbox(photoUrl, `${activeEvent.title} - Photo ${idx + 1}`, `${activeEvent.category} | ${activeEvent.date}`)}
+                                        onClick={() => handleOpenLightbox(
+                                            activeEvent.photos.map((url, i) => ({ url, title: `${activeEvent.title} - Photo ${i + 1}`, meta: `${activeEvent.category} | ${activeEvent.date}` })),
+                                            idx
+                                        )}
                                     >
                                         <img src={photoUrl} alt={`Event photo ${idx + 1}`} loading="lazy" />
                                     </div>
@@ -411,17 +488,33 @@ const Blog = () => {
             )}
 
             {/* Full-Screen Lightbox Zoom View */}
-            {lightboxImage && (
+            {lightboxData.isOpen && lightboxData.items.length > 0 && (
                 <div className="lightbox-backdrop" onClick={handleCloseLightbox}>
                     <button className="lightbox-close-btn" onClick={handleCloseLightbox}>
                         &times;
                     </button>
+                    {lightboxData.items.length > 1 && (
+                        <>
+                            <button className="lightbox-nav-btn lightbox-prev" onClick={prevLightboxImage}>
+                                <i className="bi bi-chevron-left"></i>
+                            </button>
+                            <button className="lightbox-nav-btn lightbox-next" onClick={nextLightboxImage}>
+                                <i className="bi bi-chevron-right"></i>
+                            </button>
+                        </>
+                    )}
                     <div className="lightbox-img-wrapper" onClick={e => e.stopPropagation()}>
-                        <img src={lightboxImage.url} alt={lightboxImage.title} className="lightbox-img" />
+                        <img 
+                            src={lightboxData.items[lightboxData.currentIndex].url} 
+                            alt={lightboxData.items[lightboxData.currentIndex].title} 
+                            className="lightbox-img" 
+                        />
                     </div>
                     <div className="lightbox-caption">
-                        {lightboxImage.title}
-                        {lightboxImage.meta && <div className="lightbox-meta">{lightboxImage.meta}</div>}
+                        {lightboxData.items[lightboxData.currentIndex].title}
+                        {lightboxData.items[lightboxData.currentIndex].meta && (
+                            <div className="lightbox-meta">{lightboxData.items[lightboxData.currentIndex].meta}</div>
+                        )}
                     </div>
                 </div>
             )}

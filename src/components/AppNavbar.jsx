@@ -113,6 +113,10 @@ const AppNavbar = () => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             setScrolled(currentScrollY > 20);
+            if (currentScrollY > 20) {
+                setShowProductDropdown(false);
+                setShowMobileProductOverlay(false);
+            }
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -199,9 +203,6 @@ const AppNavbar = () => {
                         </NavLink>
                         <NavLink to="/processbuilder" className="dropdown-product-item" onClick={() => handleProductLinkClick('/processbuilder')}>
                             <span>Process Builder</span>
-                        </NavLink>
-                        <NavLink to="/SupportForge" className="dropdown-product-item" onClick={() => handleProductLinkClick('/SupportForge')}>
-                            <span>Support Forge</span>
                         </NavLink>
 
                     </div>

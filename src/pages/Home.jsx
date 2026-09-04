@@ -267,7 +267,7 @@ const Home = () => {
 
             {/* Our Valued Clients Section */}
 
-            <section id="our-cliented" className="py-5 bg-white overflow-hidden">
+            <section id="our-cliented" className="pt-5 pb-2 bg-white overflow-hidden">
                 <Container fluid>
                     <h2 className="display-5 fw-bold text-center mb-5 text-violet">
                         Our Valued Clients

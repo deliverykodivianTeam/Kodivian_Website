@@ -1,6 +1,6 @@
 // src/components/Bottom.jsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaInstagram,
   FaFacebook,
@@ -14,6 +14,25 @@ import under from "../assets/under.png";
 import iso9001 from "../assets/ISO-9001-2015-Certification.png";
 import iso27001 from "../assets/ISO-27001-certification.png";
 const Belowbar = () => {
+  const navigate = useNavigate();
+
+  const handleScrollToHash = (e, targetPath, hashId) => {
+    e.preventDefault();
+    if (window.location.pathname !== targetPath) {
+      navigate(`${targetPath}#${hashId}`);
+      setTimeout(() => {
+        const el = document.getElementById(hashId) || document.getElementById('moments-gallery');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+    } else {
+      navigate(`${targetPath}#${hashId}`);
+      const el = document.getElementById(hashId) || document.getElementById('moments-gallery');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      // Dispatch hashchange so if we are already on the page, the useEffect or listener can catch it
+      window.dispatchEvent(new Event('hashchange'));
+    }
+  };
+
   return (
     <div className="w-100 overflow-hidden">
 
@@ -85,11 +104,11 @@ const Belowbar = () => {
       </style>
 
       {/* MAIN FOOTER */}
-      <div className="container-fluid p-4 text-white content-with-background position-relative">
+      <div className="container-fluid py-3 px-4 text-white content-with-background position-relative">
         <div className="row justify-content-between align-items-start">
 
           {/* LEFT SIDE */}
-          <div className="mb-4 col-12 col-md-6">
+          <div className="col-12 col-lg-4 mb-4 mb-lg-0">
 
             <h3 className="fs-4 text-custom-white-900 fw-bold mb-3">
               Design better and spend less time <br /> without restricting tools creative freedom.
@@ -143,33 +162,45 @@ const Belowbar = () => {
           </div>
 
           {/* RIGHT SIDE — MENUS */}
-          <div className="col-12 col-md-6 mt-4 mt-md-0 d-flex flex-wrap">
+          <div className="col-12 col-lg-8 mt-4 mt-lg-0 d-flex flex-wrap gap-2 gap-lg-0">
 
-            <div className="col-6 col-sm-4 mb-4">
-              <h3 className="text-custom-white-900 fw-bold">OVERALL</h3>
+            <div className="col-6 col-sm-4 col-lg mb-4">
+              <h5 className="text-custom-white-900 fw-bold mb-3">OVERALL</h5>
               <a href="/" className="text-custom-white-300 d-block">Home</a>
               <a href="/about" className="text-custom-white-300 d-block">About</a>
               <a href="/product" className="text-custom-white-300 d-block">Product</a>
               <a href="/services" className="text-custom-white-300 d-block">Services</a>
               <a href="/contact" className="text-custom-white-300 d-block">Contact</a>
+              <a href="/blog" className="text-custom-white-300 d-block">Blog</a>
             </div>
 
-            <div className="col-6 col-sm-4 mb-4">
-              <h3 className="text-custom-white-900 fw-bold">PRODUCT</h3>
+            <div className="col-6 col-sm-4 col-lg mb-4">
+              <h5 className="text-custom-white-900 fw-bold mb-3">PRODUCT</h5>
               <a href="/scanify" className="text-custom-white-300 d-block">Scanify</a>
               <a href="/processbuilder" className="text-custom-white-300 d-block">Process Builder</a>
-              <a href="/supportforge" className="text-custom-white-300 d-block">Support Forge</a>
             </div>
 
-            <div className="col-12 col-sm-4 mb-4">
-              <h3 className="text-custom-white-900 fw-bold">SERVICES</h3>
+            <div className="col-6 col-sm-4 col-lg mb-4">
+              <h5 className="text-custom-white-900 fw-bold mb-3">SERVICES</h5>
               <a className="text-custom-white-300 d-block" href="/scanify">Artificial Intelligence</a>
               <a className="text-custom-white-300 d-block" href="/processbuilder">Business Process Management</a>
               <a className="text-custom-white-300 d-block" href="/services">Robotic Process Automation</a>
             </div>
 
+            <div className="col-6 col-sm-4 col-lg mb-4">
+              <h5 className="text-custom-white-900 fw-bold mb-3">CLIENT / PARTNER</h5>
+              <a href="/#our-cliented" onClick={(e) => handleScrollToHash(e, '/', 'our-cliented')} className="text-custom-white-300 d-block">Clients</a>
+              <a href="/blog#partnership-gallery" onClick={(e) => handleScrollToHash(e, '/blog', 'partnership-gallery')} className="text-custom-white-300 d-block">Partner</a>
+            </div>
+
+            <div className="col-6 col-sm-4 col-lg mb-4">
+              <h5 className="text-custom-white-900 fw-bold mb-3">CAREER</h5>
+              <a href="/contact#contact-form" onClick={(e) => handleScrollToHash(e, '/contact', 'contact-form')} className="text-custom-white-300 d-block">Job Opportunity</a>
+              <a href="/contact#contact-form" onClick={(e) => handleScrollToHash(e, '/contact', 'contact-form')} className="text-custom-white-300 d-block">Partnership Enroll</a>
+            </div>
+
             {/* Certifications (ISO 9001 & ISO 27001) */}
-            <div className="col-12 d-flex gap-4 mt-4 mb-2 justify-content-start justify-content-md-end align-items-center w-100 pe-md-5">
+            <div className="col-12 d-flex gap-4 mt-0 mb-2 justify-content-start justify-content-md-end align-items-center w-100 pe-md-5">
               <Link to="/certifications/iso-9001">
                 <img
                   src={iso9001}
