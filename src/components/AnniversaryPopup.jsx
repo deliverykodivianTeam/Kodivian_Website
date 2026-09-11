@@ -8,8 +8,16 @@ const AnniversaryPopup = () => {
     // We do NOT use sessionStorage here as requested: "when was refresh screen again it shown"
     
     const today = new Date();
-    setAnniversaryYear(today.getFullYear() - 2021);
-    setShow(true);
+    const currentMonth = today.getMonth(); // 8 is September
+    const currentDate = today.getDate();
+
+    // Only show banner between September 3rd and September 8th (inclusive)
+    if (currentMonth === 8 && currentDate >= 3 && currentDate <= 8) {
+      setAnniversaryYear(today.getFullYear() - 2021);
+      setShow(true);
+    } else {
+      setShow(false);
+    }
   }, []);
 
   useEffect(() => {

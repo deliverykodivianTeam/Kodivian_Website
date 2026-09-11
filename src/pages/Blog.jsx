@@ -88,8 +88,8 @@ const initialPhotos = [
 const eventsData = [
     {
         id: "bahwan-cybertek-partnership",
-        title: "Strategic Reseller Partnership: Kodivian Technologies & Bahwan CyberTek",
-        subtitle: "Bahwan CyberTek is now an Authorized Reseller of Kodivian Scanify AI",
+        title: "Strategic Reseller Partnership: Kodivian Technologies & Bahwan Cybertek",
+        subtitle: "Bahwan Cybertek is now an Authorized Reseller of Kodivian Scanify AI",
         date: "August 26, 2026",
         category: "Partnerships",
         summary: "Kodivian Technologies announces a strategic reseller partnership with Bahwan CyberTek to offer Scanify AI, helping enterprises globally accelerate digital transformation and automate document-intensive processes.",
@@ -238,8 +238,8 @@ const Blog = () => {
         return () => clearInterval(interval);
     }, [selectedCategory, initialPhotos.length]);
 
-    const displayedPhotos = selectedCategory === "All" 
-        ? filteredPhotos.slice(pageIndex, pageIndex + 8) 
+    const displayedPhotos = selectedCategory === "All"
+        ? filteredPhotos.slice(pageIndex, pageIndex + 8)
         : filteredPhotos;
 
     // Open single event details popup modal
@@ -504,10 +504,10 @@ const Blog = () => {
                         </>
                     )}
                     <div className="lightbox-img-wrapper" onClick={e => e.stopPropagation()}>
-                        <img 
-                            src={lightboxData.items[lightboxData.currentIndex].url} 
-                            alt={lightboxData.items[lightboxData.currentIndex].title} 
-                            className="lightbox-img" 
+                        <img
+                            src={lightboxData.items[lightboxData.currentIndex].url}
+                            alt={lightboxData.items[lightboxData.currentIndex].title}
+                            className="lightbox-img"
                         />
                     </div>
                     <div className="lightbox-caption">

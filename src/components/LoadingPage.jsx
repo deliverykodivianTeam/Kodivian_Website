@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const BAR_COLORS = [
-  "#F2A93B", "#F6C453", "#B7B9BC", "#5B85E0", 
+  "#F2A93B", "#F6C453", "#B7B9BC", "#5B85E0",
   "#2FB4A6", "#E23FA0", "#7A5FC7", "#79D0E8",
 ];
 
@@ -90,7 +90,7 @@ export default function LoadingPage() {
             </div>
             <div style={styles.footRow}>
               <span>ISO 27001</span>
-              <span>a 5S GROUP</span>
+              <span>SS GROUP</span>
               <span>www.kodivian.com</span>
             </div>
           </div>
