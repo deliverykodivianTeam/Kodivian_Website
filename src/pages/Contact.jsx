@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { prewarmBackend, submitFormData } from "../utils/api";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import "../styles/Contact.css";
 import "../styles/Services.css"; // Ensure this is imported for color variables
@@ -58,26 +59,34 @@ const Contact = () => {
   const navigate = useNavigate();
   const [msgForm, setMsgForm] = useState({ name: "", email: "", message: "" });
   const [msgSubmitting, setMsgSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submittedName, setSubmittedName] = useState("");
+  const [submitError, setSubmitError] = useState("");
+
+  useEffect(() => {
+    // Proactively pre-warm backend container
+    prewarmBackend();
+  }, []);
 
   const handleMsgChange = (e) =>
     setMsgForm({ ...msgForm, [e.target.name]: e.target.value });
 
-  const API_URL = import.meta.env.VITE_API_URL || "https://kodivian-website-8.onrender.com";
-
   const handleMsgSubmit = async (e) => {
     e.preventDefault();
     setMsgSubmitting(true);
+    setSubmitError("");
+    const currentName = msgForm.name;
     try {
-      await fetch(`${API_URL}/api/contact-message`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(msgForm),
-      });
+      await submitFormData("/api/contact-message", msgForm);
+      setSubmittedName(currentName);
+      setIsSubmitted(true);
+      setMsgForm({ name: "", email: "", message: "" });
     } catch (err) {
-      console.error(err);
+      console.error("Message send error:", err);
+      setSubmitError(err.message || "Unable to send message right now. Please try again.");
+    } finally {
+      setMsgSubmitting(false);
     }
-    setMsgSubmitting(false);
-    setMsgForm({ name: "", email: "", message: "" });
   };
 
   const handleLocationChange = (event) => {
@@ -189,47 +198,75 @@ const Contact = () => {
               will get back to you promptly.
             </p>
 
-            <form onSubmit={handleMsgSubmit} className="cfp-form">
-              <div className="cfp-group">
-                <label className="cfp-label">Full Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  className="cfp-input"
-                  placeholder="Your full name"
-                  value={msgForm.name}
-                  onChange={handleMsgChange}
-                  required
-                />
+            {isSubmitted ? (
+              <div className="cfp-success-card">
+                <div className="cfp-success-icon">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                </div>
+                <h3 className="cfp-success-title">Message Received!</h3>
+                <p className="cfp-success-desc">
+                  Thank you, <strong>{submittedName || "Friend"}</strong>. Your message has been stored safely and sent to our team. We have also emailed an acknowledgement to you.
+                </p>
+                <button
+                  type="button"
+                  className="cfp-btn"
+                  onClick={() => setIsSubmitted(false)}
+                  style={{ alignSelf: "center", marginTop: "1.25rem" }}
+                >
+                  Send Another Message
+                </button>
               </div>
-              <div className="cfp-group">
-                <label className="cfp-label">Email Address</label>
-                <input
-                  type="email"
-                  name="email"
-                  className="cfp-input"
-                  placeholder="you@example.com"
-                  value={msgForm.email}
-                  onChange={handleMsgChange}
-                  required
-                />
-              </div>
-              <div className="cfp-group">
-                <label className="cfp-label">Message</label>
-                <textarea
-                  name="message"
-                  className="cfp-input cfp-textarea"
-                  placeholder="Tell us how we can help — job role, partnership idea, or any question..."
-                  value={msgForm.message}
-                  onChange={handleMsgChange}
-                  rows={6}
-                  required
-                />
-              </div>
-              <button type="submit" className="cfp-btn" disabled={msgSubmitting}>
-                {msgSubmitting ? "Sending..." : "Send Message →"}
-              </button>
-            </form>
+            ) : (
+              <form onSubmit={handleMsgSubmit} className="cfp-form">
+                {submitError && (
+                  <div style={{ color: "#dc2626", background: "#fef2f2", padding: "10px 14px", borderRadius: "8px", fontSize: "0.9rem", border: "1px solid #fecaca" }}>
+                    {submitError}
+                  </div>
+                )}
+                <div className="cfp-group">
+                  <label className="cfp-label">Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    className="cfp-input"
+                    placeholder="Your full name"
+                    value={msgForm.name}
+                    onChange={handleMsgChange}
+                    required
+                  />
+                </div>
+                <div className="cfp-group">
+                  <label className="cfp-label">Email Address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    className="cfp-input"
+                    placeholder="you@example.com"
+                    value={msgForm.email}
+                    onChange={handleMsgChange}
+                    required
+                  />
+                </div>
+                <div className="cfp-group">
+                  <label className="cfp-label">Message</label>
+                  <textarea
+                    name="message"
+                    className="cfp-input cfp-textarea"
+                    placeholder="Tell us how we can help — job role, partnership idea, or any question..."
+                    value={msgForm.message}
+                    onChange={handleMsgChange}
+                    rows={6}
+                    required
+                  />
+                </div>
+                <button type="submit" className="cfp-btn" disabled={msgSubmitting}>
+                  {msgSubmitting ? "Saving & Sending..." : "Send Message →"}
+                </button>
+              </form>
+            )}
           </div>
         </div>
 

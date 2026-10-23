@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../styles/scanifybooking.css";
 import scanifyKodivianLogo from "../assets/scanifykodivianlogo.png";
-
-const API_URL = import.meta.env.VITE_API_URL || "https://kodivian-website-8.onrender.com";
+import { prewarmBackend, submitFormData } from "../utils/api";
 
 const INITIAL_FORM = {
   // Step 1: Contact
@@ -98,6 +97,11 @@ export default function ScanifyBookingPage() {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    // Proactively pre-warm backend so submission takes < 300ms
+    prewarmBackend();
+  }, []);
   const [bookingRef, setBookingRef] = useState("");
   const [validationModal, setValidationModal] = useState({ open: false, title: "", errors: [] });
   const formRef = useRef(null);
@@ -269,13 +273,7 @@ export default function ScanifyBookingPage() {
 
     try {
       setLoading(true);
-      const res = await fetch(`${API_URL}/api/book-demo`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.detail || "Submission failed");
+      const data = await submitFormData("/api/book-demo", payload);
       setBookingRef(data.booking_reference || "SCAN-" + Math.floor(100000 + Math.random() * 900000));
       setSubmitted(true);
     } catch (e) {

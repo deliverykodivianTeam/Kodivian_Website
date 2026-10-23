@@ -44,20 +44,41 @@ app.add_middleware(
 # ------------------------------------------------------------------
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-BREVO_API_KEY = os.getenv("BREVO_API_KEY")
+BREVO_API_KEY = (os.getenv("BREVO_API_KEY") or "").strip()
 
 # ------------------------------------------------------------------
-# Database (Safe Fallback for Local Dev)
+# Database (Safe Fallback for Local Dev & Serverless Retries)
 # ------------------------------------------------------------------
 
 def get_db():
     if not DATABASE_URL:
         return None
+    for attempt in range(2):
+        try:
+            return psycopg2.connect(DATABASE_URL, connect_timeout=5)
+        except Exception as e:
+            print(f"[DB] Connection Attempt {attempt + 1} Warning: {e}")
+            if attempt == 1:
+                return None
+    return None
+
+def save_fallback_log(filename: str, data: dict):
+    """
+    Zero-Data-Loss safety net: ensures local JSON snapshot is preserved.
+    """
     try:
-        return psycopg2.connect(DATABASE_URL)
+        existing = []
+        if os.path.exists(filename):
+            try:
+                with open(filename, "r", encoding="utf-8") as f:
+                    existing = json.load(f)
+            except Exception:
+                existing = []
+        existing.append(data)
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(existing, f, indent=2, ensure_ascii=False)
     except Exception as e:
-        print(f"[DB] Connection Warning: {e}")
-        return None
+        print(f"[Fallback Log Warning] {filename}: {e}")
 
 def init_db():
     if not DATABASE_URL:
@@ -215,16 +236,19 @@ def send_email_brevo(
     to_email: str,
     to_name: str,
     subject: str,
-    html_content: str
+    html_content: str,
+    reply_to: dict = None
 ):
-    if not BREVO_API_KEY:
+    key = (os.getenv("BREVO_API_KEY") or BREVO_API_KEY or "").strip()
+    if not key:
+        print(f"[BREVO ERROR] Cannot send email to {to_email}: BREVO_API_KEY is missing or empty.")
         return False
 
     url = "https://api.brevo.com/v3/smtp/email"
 
     headers = {
         "accept": "application/json",
-        "api-key": BREVO_API_KEY,
+        "api-key": key,
         "content-type": "application/json"
     }
 
@@ -236,23 +260,77 @@ def send_email_brevo(
         "to": [
             {
                 "email": to_email,
-                "name": to_name
+                "name": to_name or to_email
             }
         ],
         "subject": subject,
         "htmlContent": html_content
     }
+    if reply_to:
+        payload["replyTo"] = reply_to
 
-    response = requests.post(
-        url,
-        json=payload,
-        headers=headers
-    )
+    try:
+        response = requests.post(
+            url,
+            json=payload,
+            headers=headers,
+            timeout=15
+        )
+        safe_sub = subject.encode('ascii', 'replace').decode('ascii')
+        print(f"[BREVO] Email to {to_email} ('{safe_sub}') -> Status: {response.status_code}")
+        if response.status_code not in [200, 201, 202]:
+            print(f"[BREVO ERROR] Response: {response.text}")
+        return response.status_code in [200, 201, 202]
+    except Exception as e:
+        print(f"[BREVO EXCEPTION] Error sending email to {to_email}: {str(e)}")
+        return False
 
-    print("BREVO STATUS:", response.status_code)
-    print("BREVO RESPONSE:", response.text)
+def send_email_brevo_batch(
+    to_list: list,
+    subject: str,
+    html_content: str,
+    reply_to: dict = None
+):
+    key = (os.getenv("BREVO_API_KEY") or BREVO_API_KEY or "").strip()
+    if not key:
+        print(f"[BREVO ERROR] Cannot send batch email: BREVO_API_KEY is missing or empty.")
+        return False
 
-    return response.status_code in [200, 201, 202]
+    url = "https://api.brevo.com/v3/smtp/email"
+
+    headers = {
+        "accept": "application/json",
+        "api-key": key,
+        "content-type": "application/json"
+    }
+
+    payload = {
+        "sender": {
+            "name": SENDER_NAME,
+            "email": SENDER_EMAIL
+        },
+        "to": to_list,
+        "subject": subject,
+        "htmlContent": html_content
+    }
+    if reply_to:
+        payload["replyTo"] = reply_to
+
+    try:
+        response = requests.post(
+            url,
+            json=payload,
+            headers=headers,
+            timeout=15
+        )
+        safe_sub = subject.encode('ascii', 'replace').decode('ascii')
+        print(f"[BREVO BATCH] Email to {len(to_list)} recipients ('{safe_sub}') -> Status: {response.status_code}")
+        if response.status_code not in [200, 201, 202]:
+            print(f"[BREVO BATCH ERROR] Response: {response.text}")
+        return response.status_code in [200, 201, 202]
+    except Exception as e:
+        print(f"[BREVO BATCH EXCEPTION] Error sending batch email: {str(e)}")
+        return False
 
 # ------------------------------------------------------------------
 # Internal Sales Notification
@@ -603,13 +681,13 @@ def send_internal_notification(
 </html>
 """
 
-    for email in INTERNAL_EMAILS:
-        send_email_brevo(
-            email,
-            "Kodivian Solution Team",
-            f"🚀 [NEW DEMO LEAD] Scanify AI Requirement - {booking.company_name} [{booking_ref}]",
-            html_content
-        )
+    team_recipients = [{"email": email, "name": "Kodivian Solution Team"} for email in INTERNAL_EMAILS]
+    send_email_brevo_batch(
+        team_recipients,
+        f"🚀 [NEW DEMO LEAD] Scanify AI Requirement - {booking.company_name} [{booking_ref}]",
+        html_content,
+        reply_to={"email": booking.corporate_email, "name": booking.full_name}
+    )
 
 # ------------------------------------------------------------------
 # Customer Acknowledgement Email (To Booked Person)
@@ -711,133 +789,110 @@ def send_customer_acknowledgement(
 # Background Worker: DB Insert + Email Dispatch
 # ------------------------------------------------------------------
 
-def background_process_booking(booking: DemoBooking, booking_ref: str):
-    """
-    Handles ALL slow I/O in the background after instant client response:
-      1. Database INSERT (remote Postgres — the main bottleneck)
-      2. Internal team notification emails
-      3. Customer acknowledgement email
-    
-    Zero data loss guarantee: local JSON is already persisted synchronously
-    before this background task runs.
-    """
-
-    # ── 1. Database Insert (if available) ──
+def insert_demo_booking_to_db(booking: DemoBooking, booking_ref: str) -> bool:
     conn = get_db()
-    if conn:
-        try:
-            cur = conn.cursor()
-            cur.execute(
-                """
-                INSERT INTO demo_bookings
-                (
-                  booking_reference,
-                  full_name, designation, company_name, corporate_email, mobile_number,
-                  document_types, document_formats, multilingual_docs, monthly_volume,
-                  intake_channels, validation_rules, erp_platform, workflow_approval,
-                  deployment_model, reporting_analytics,
-                  q1_current_process, q2_document_volume, q3_processing_time, q4_errors,
-                  q5_team_size, q5_effort_per_document,
-                  q6_erp_system, q7_document_formats, q8_pain_points,
-                  q9_business_impact, q10_automation_readiness,
-                  q11_validation_process, q12_erp_entry_method,
-                  q13_mapping_template, q14_approval_workflow,
-                  q1_other, q6_other, q7_other, q9_other, q10_other, q12_other, q14_other
-                )
-                VALUES (
-                  %s,%s,%s,%s,%s,%s,
-                  %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,
-                  %s,%s,%s,%s,
-                  %s,%s,
-                  %s,%s,%s,
-                  %s,%s,
-                  %s,%s,
-                  %s,%s,
-                  %s,%s,%s,%s,%s,%s,%s
-                )
-                """,
-                (
-                    booking_ref,
-                    booking.full_name, booking.designation,
-                    booking.company_name, booking.corporate_email, booking.mobile_number,
-                    booking.document_types, booking.document_formats, booking.multilingual_docs, booking.monthly_volume,
-                    booking.intake_channels, booking.validation_rules, booking.erp_platform, booking.workflow_approval,
-                    booking.deployment_model, booking.reporting_analytics,
-                    booking.q1_current_process, booking.q2_document_volume,
-                    booking.q3_processing_time, booking.q4_errors,
-                    booking.q5_team_size, booking.q5_effort_per_document,
-                    booking.q6_erp_system, booking.q7_document_formats,
-                    booking.q8_pain_points, booking.q9_business_impact,
-                    booking.q10_automation_readiness, booking.q11_validation_process,
-                    booking.q12_erp_entry_method, booking.q13_mapping_template,
-                    booking.q14_approval_workflow,
-                    booking.q1_other, booking.q6_other, booking.q7_other,
-                    booking.q9_other, booking.q10_other, booking.q12_other, booking.q14_other
-                )
+    if not conn:
+        print(f"[DB Warning] Could not obtain DB connection for {booking_ref}")
+        return False
+    try:
+        cur = conn.cursor()
+        cur.execute(
+            """
+            INSERT INTO demo_bookings
+            (
+              booking_reference,
+              full_name, designation, company_name, corporate_email, mobile_number,
+              document_types, document_formats, multilingual_docs, monthly_volume,
+              intake_channels, validation_rules, erp_platform, workflow_approval,
+              deployment_model, reporting_analytics,
+              q1_current_process, q2_document_volume, q3_processing_time, q4_errors,
+              q5_team_size, q5_effort_per_document,
+              q6_erp_system, q7_document_formats, q8_pain_points,
+              q9_business_impact, q10_automation_readiness,
+              q11_validation_process, q12_erp_entry_method,
+              q13_mapping_template, q14_approval_workflow,
+              q1_other, q6_other, q7_other, q9_other, q10_other, q12_other, q14_other
             )
-            conn.commit()
-            cur.close()
+            VALUES (
+              %s,%s,%s,%s,%s,%s,
+              %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,
+              %s,%s,%s,%s,
+              %s,%s,
+              %s,%s,%s,
+              %s,%s,
+              %s,%s,
+              %s,%s,
+              %s,%s,%s,%s,%s,%s,%s
+            )
+            """,
+            (
+                booking_ref,
+                booking.full_name, booking.designation,
+                booking.company_name, booking.corporate_email, booking.mobile_number,
+                booking.document_types, booking.document_formats, booking.multilingual_docs, booking.monthly_volume,
+                booking.intake_channels, booking.validation_rules, booking.erp_platform, booking.workflow_approval,
+                booking.deployment_model, booking.reporting_analytics,
+                booking.q1_current_process, booking.q2_document_volume,
+                booking.q3_processing_time, booking.q4_errors,
+                booking.q5_team_size, booking.q5_effort_per_document,
+                booking.q6_erp_system, booking.q7_document_formats,
+                booking.q8_pain_points, booking.q9_business_impact,
+                booking.q10_automation_readiness, booking.q11_validation_process,
+                booking.q12_erp_entry_method, booking.q13_mapping_template,
+                booking.q14_approval_workflow,
+                booking.q1_other, booking.q6_other, booking.q7_other,
+                booking.q9_other, booking.q10_other, booking.q12_other, booking.q14_other
+            )
+        )
+        conn.commit()
+        cur.close()
+        conn.close()
+        print(f"[DB] Booking {booking_ref} inserted successfully into Neon DB")
+        return True
+    except Exception as e:
+        print(f"[DB Insert Warning] for {booking_ref}: {e}")
+        try:
             conn.close()
-            print(f"[DB] Booking {booking_ref} inserted successfully")
-        except Exception as e:
-            print(f"[DB] Insert Warning for {booking_ref}: {e}")
-            try:
-                conn.close()
-            except Exception:
-                pass
+        except Exception:
+            pass
+        return False
 
-    # ── 2. Internal Team Notification Emails ──
+def background_dispatch_booking_emails(booking: DemoBooking, booking_ref: str):
     try:
         send_internal_notification(booking, booking_ref)
     except Exception as e:
         print(f"[Email] Internal notification error for {booking_ref}: {e}")
-
-    # ── 3. Customer Acknowledgement Email ──
     try:
         send_customer_acknowledgement(booking, booking_ref)
     except Exception as e:
         print(f"[Email] Customer acknowledgement error for {booking_ref}: {e}")
 
-    print(f"[Background] All processing complete for {booking_ref}")
-
-
 # ------------------------------------------------------------------
-# Create Booking API (Instant Response < 15ms + Zero Data Loss)
+# Create Booking API (Instant Response + Neon Persistence)
 # ------------------------------------------------------------------
 @app.post("/api/book-demo")
 def book_demo(booking: DemoBooking, background_tasks: BackgroundTasks):
-
     booking_ref = f"SCAN-{uuid.uuid4().hex[:8].upper()}"
 
-    # ── SYNCHRONOUS: Local JSON persistence (instant, ~1ms) ──
-    # This is the zero-data-loss safety net — written BEFORE responding.
-    try:
-        log_entry = {
-            "booking_reference": booking_ref,
-            "timestamp": datetime.now().isoformat(),
-            **booking.dict()
-        }
-        log_file = "demo_bookings_log.json"
-        existing = []
-        if os.path.exists(log_file):
-            try:
-                with open(log_file, "r", encoding="utf-8") as f:
-                    existing = json.load(f)
-            except Exception:
-                existing = []
-        existing.append(log_entry)
-        with open(log_file, "w", encoding="utf-8") as f:
-            json.dump(existing, f, indent=2)
-    except Exception as e:
-        print(f"[Log] Local persistence warning: {e}")
+    # 1. IMMEDIATE SYNCHRONOUS NEON DB PERSISTENCE
+    db_saved = insert_demo_booking_to_db(booking, booking_ref)
 
-    # ── BACKGROUND: DB insert + all emails (offloaded, non-blocking) ──
-    background_tasks.add_task(background_process_booking, booking, booking_ref)
+    # 2. ZERO-DATA-LOSS FALLBACK LOG
+    save_fallback_log("demo_bookings_log.json", {
+        "booking_reference": booking_ref,
+        "timestamp": datetime.now().isoformat(),
+        "db_saved": db_saved,
+        **booking.dict()
+    })
 
-    # ── INSTANT RETURN to client ──
+    # 3. BACKGROUND EMAIL DISPATCH (Non-blocking)
+    background_tasks.add_task(background_dispatch_booking_emails, booking, booking_ref)
+
+    # 4. INSTANT RETURN to client
     return {
         "success": True,
-        "booking_reference": booking_ref
+        "booking_reference": booking_ref,
+        "db_saved": db_saved
     }
 # ------------------------------------------------------------------
 # Get All Bookings
@@ -956,31 +1011,61 @@ def root():
 
 @app.get("/api/health")
 def health():
-
+    db_status = "unknown"
     try:
-
         conn = get_db()
-
-        cur = conn.cursor()
-
-        cur.execute("SELECT 1")
-
-        cur.fetchone()
-
-        cur.close()
-        conn.close()
-
-        return {
-            "status": "ok",
-            "database": "connected"
-        }
-
+        if conn:
+            cur = conn.cursor()
+            cur.execute("SELECT 1")
+            cur.fetchone()
+            cur.close()
+            conn.close()
+            db_status = "connected"
+        else:
+            db_status = "disconnected"
     except Exception as e:
+        db_status = f"error: {str(e)}"
 
+    key = (os.getenv("BREVO_API_KEY") or BREVO_API_KEY or "").strip()
+    brevo_status = "configured" if key else "missing_key"
+
+    return {
+        "status": "ok" if db_status == "connected" else "degraded",
+        "database": db_status,
+        "brevo": brevo_status
+    }
+
+@app.get("/api/test-email")
+def test_email(to: Optional[str] = "preethi.jb@kodivian.com"):
+    """
+    Diagnostic endpoint to test Brevo transactional email sending.
+    """
+    key = (os.getenv("BREVO_API_KEY") or BREVO_API_KEY or "").strip()
+    if not key:
         return {
-            "status": "error",
-            "database": str(e)
+            "success": False,
+            "error": "BREVO_API_KEY is not configured",
+            "brevo_key_present": False
         }
+    
+    test_html = """
+    <div style="font-family: sans-serif; padding: 20px;">
+        <h2 style="color: #2563EB;">Brevo Email Integration Test</h2>
+        <p>This is a verified test email from the Scanify AI Backend.</p>
+        <p><strong>Status:</strong> All email systems are operating normally.</p>
+    </div>
+    """
+    sent = send_email_brevo(
+        to_email=to,
+        to_name="Kodivian Tester",
+        subject="Brevo Email Diagnostic Test",
+        html_content=test_html
+    )
+    return {
+        "success": sent,
+        "recipient": to,
+        "brevo_key_present": True
+    }
 
 # ------------------------------------------------------------------
 # Dashboard Summary
@@ -1071,13 +1156,13 @@ def send_short_demo_internal(booking: ShortDemoBooking, booking_ref: str):
         </div>
     </div>
     """
-    for email in INTERNAL_EMAILS:
-        send_email_brevo(
-            email,
-            "Kodivian Solution Team",
-            f"🚀 [SHORT DEMO] Lead - {booking.company}",
-            html_content
-        )
+    recipients = [{"email": email, "name": "Kodivian Solution Team"} for email in INTERNAL_EMAILS]
+    send_email_brevo_batch(
+        recipients,
+        f"🚀 [SHORT DEMO] Lead - {booking.company}",
+        html_content,
+        reply_to={"email": booking.email, "name": booking.fullName}
+    )
 
 def send_short_demo_customer(booking: ShortDemoBooking, booking_ref: str):
     link = "https://kodivian.com/scanify-booking"
@@ -1085,9 +1170,9 @@ def send_short_demo_customer(booking: ShortDemoBooking, booking_ref: str):
     <!DOCTYPE html>
     <html>
     <head>
-<meta name="color-scheme" content="light only">
-<meta name="supported-color-schemes" content="light">
-</head>
+    <meta name="color-scheme" content="light only">
+    <meta name="supported-color-schemes" content="light">
+    </head>
     <body>
     <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; padding: 40px 20px;">
         <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
@@ -1105,7 +1190,7 @@ def send_short_demo_customer(booking: ShortDemoBooking, booking_ref: str):
                 <p style="font-size: 16px;">To help us prepare a personalized demonstration tailored exactly to your document workflows and ERP systems, please take 2 minutes to provide your technical requirements.</p>
                 
                 <div style="text-align: center; margin: 35px 0;">
-                    <a href="{link}" style="display: inline-block; background-color: #2563EB; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(126, 34, 206, 0.3);">
+                    <a href="{link}" style="display: inline-block; background-color: #2563EB; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);">
                         Book Personalized Demo Session
                     </a>
                 </div>
@@ -1119,6 +1204,8 @@ def send_short_demo_customer(booking: ShortDemoBooking, booking_ref: str):
             
         </div>
     </div>
+    </body>
+    </html>
     """
     send_email_brevo(
         booking.email,
@@ -1127,37 +1214,69 @@ def send_short_demo_customer(booking: ShortDemoBooking, booking_ref: str):
         html_content
     )
 
-def background_short_demo(booking: ShortDemoBooking, booking_ref: str):
-    print(f"[Short Demo] Processing {booking_ref}")
-    
-    # Insert to DB
+def insert_short_demo_to_db(booking: ShortDemoBooking, booking_ref: str) -> bool:
     conn = get_db()
-    if conn:
+    if not conn:
+        print(f"[DB Warning] Could not obtain DB connection for short demo {booking_ref}")
+        return False
+    try:
+        cur = conn.cursor()
+        cur.execute(
+            """
+            INSERT INTO short_demo_bookings
+            (booking_reference, full_name, phone, company, designation, email, comment)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            """,
+            (booking_ref, booking.fullName, booking.phone, booking.company, booking.designation, booking.email, booking.comment)
+        )
+        conn.commit()
+        cur.close()
+        conn.close()
+        print(f"[Short Demo] DB insert success for {booking_ref}")
+        return True
+    except Exception as e:
+        print(f"[Short Demo DB Insert Error] {e}")
         try:
-            cur = conn.cursor()
-            cur.execute(
-                """
-                INSERT INTO short_demo_bookings
-                (booking_reference, full_name, phone, company, designation, email, comment)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
-                """,
-                (booking_ref, booking.fullName, booking.phone, booking.company, booking.designation, booking.email, booking.comment)
-            )
-            conn.commit()
-            cur.close()
             conn.close()
-        except Exception as e:
-            print(f"[Short Demo DB Insert Error] {e}")
+        except Exception:
+            pass
+        return False
 
-    send_short_demo_internal(booking, booking_ref)
-    send_short_demo_customer(booking, booking_ref)
-    print(f"[Short Demo] Complete {booking_ref}")
+def background_dispatch_short_demo_emails(booking: ShortDemoBooking, booking_ref: str):
+    try:
+        send_short_demo_internal(booking, booking_ref)
+    except Exception as e:
+        print(f"[Email] Short demo internal error: {e}")
+    try:
+        send_short_demo_customer(booking, booking_ref)
+    except Exception as e:
+        print(f"[Email] Short demo customer error: {e}")
 
 @app.post("/api/short-demo")
 async def book_short_demo(booking: ShortDemoBooking, background_tasks: BackgroundTasks):
     booking_ref = f"SD-{uuid.uuid4().hex[:8].upper()}"
-    background_tasks.add_task(background_short_demo, booking, booking_ref)
-    return {"message": "Success", "reference": booking_ref}
+
+    # 1. IMMEDIATE SYNCHRONOUS NEON DB PERSISTENCE
+    db_saved = insert_short_demo_to_db(booking, booking_ref)
+
+    # 2. ZERO-DATA-LOSS FALLBACK LOG
+    save_fallback_log("short_demo_bookings_log.json", {
+        "booking_reference": booking_ref,
+        "timestamp": datetime.now().isoformat(),
+        "db_saved": db_saved,
+        **booking.dict()
+    })
+
+    # 3. BACKGROUND EMAIL DISPATCH (Non-blocking)
+    background_tasks.add_task(background_dispatch_short_demo_emails, booking, booking_ref)
+
+    # 4. INSTANT RETURN TO CLIENT
+    return {
+        "success": True,
+        "message": "Demo booked successfully",
+        "reference": booking_ref,
+        "db_saved": db_saved
+    }
 
 # ------------------------------------------------------------------
 # Contact Message Endpoint
@@ -1168,78 +1287,211 @@ class ContactMessage(BaseModel):
     email: str
     message: str
 
-@app.post("/api/contact-message")
-async def contact_message(msg: ContactMessage, background_tasks: BackgroundTasks):
-    
-    # 1. Save to Database
+def insert_contact_message_to_db(msg: ContactMessage) -> bool:
     conn = get_db()
-    if conn:
+    if not conn:
+        print(f"[DB Warning] Could not obtain DB connection for contact message from {msg.name}")
+        return False
+    try:
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO contact_messages (name, email, message) VALUES (%s, %s, %s)",
+            (msg.name, msg.email, msg.message)
+        )
+        conn.commit()
+        cur.close()
+        conn.close()
+        print(f"[Contact] DB insert success for {msg.name}")
+        return True
+    except Exception as e:
+        print(f"[DB] Error saving contact message: {e}")
         try:
-            cur = conn.cursor()
-            cur.execute(
-                "INSERT INTO contact_messages (name, email, message) VALUES (%s, %s, %s)",
-                (msg.name, msg.email, msg.message)
-            )
-            conn.commit()
-            cur.close()
             conn.close()
-        except Exception as e:
-            print(f"[DB] Error saving contact message: {e}")
-            if conn:
-                conn.close()
+        except Exception:
+            pass
+        return False
 
-    # 2. Send Emails
-    html_content = f"""
+def background_dispatch_contact_emails(msg: ContactMessage):
+    # 1. Internal Team Email (Batch)
+    internal_html = f"""
+    <!DOCTYPE html>
     <html>
-<head>
-<meta name="color-scheme" content="light only">
-<meta name="supported-color-schemes" content="light">
-</head>
-    <body style="font-family: Arial, sans-serif; padding: 24px; background: #f9f9f9;">
-        <div style="max-width:600px; margin:auto; background:#fff; border-radius:12px; padding:32px; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
-            <h2 style="color:#082154; margin-bottom:4px;">New Website Message</h2>
-            <p style="color:#888; font-size:13px; margin-top:0;">Received from the Kodivian Technologies contact page</p>
+    <head>
+    <meta name="color-scheme" content="light only">
+    <meta name="supported-color-schemes" content="light">
+    </head>
+    <body style="font-family: Arial, sans-serif; padding: 24px; background: #f9f9f9; color: #1e293b;">
+        <div style="max-width:600px; margin:auto; background:#fff; border-radius:12px; padding:32px; box-shadow:0 4px 16px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
+            <h2 style="color:#1E3A8A; margin-bottom:4px;">New Website Message</h2>
+            <p style="color:#64748b; font-size:13px; margin-top:0;">Received from the Kodivian Technologies contact portal</p>
             <hr style="border:none; border-top:1px solid #eee; margin:20px 0;" />
-            <table style="width:100%; border-collapse:collapse;">
+            <table style="width:100%; border-collapse:collapse; font-size: 14px;">
                 <tr>
-                    <td style="padding:10px 12px; font-weight:bold; color:#444; width:120px;">Name:</td>
-                    <td style="padding:10px 12px; color:#222;">{msg.name}</td>
+                    <td style="padding:10px 12px; font-weight:bold; color:#2563EB; width:120px;">Name:</td>
+                    <td style="padding:10px 12px; font-weight: 700; color:#1e293b;">{msg.name}</td>
                 </tr>
-                <tr style="background:#f5f5f5;">
-                    <td style="padding:10px 12px; font-weight:bold; color:#444;">Email:</td>
-                    <td style="padding:10px 12px; color:#222;">{msg.email}</td>
+                <tr style="background:#f8fafc;">
+                    <td style="padding:10px 12px; font-weight:bold; color:#2563EB;">Email:</td>
+                    <td style="padding:10px 12px; color:#1e293b;"><a href="mailto:{msg.email}" style="color: #2563EB;">{msg.email}</a></td>
                 </tr>
                 <tr>
-                    <td style="padding:10px 12px; font-weight:bold; color:#444; vertical-align:top;">Message:</td>
-                    <td style="padding:10px 12px; color:#222; white-space:pre-line;">{msg.message}</td>
+                    <td style="padding:10px 12px; font-weight:bold; color:#2563EB; vertical-align:top;">Message:</td>
+                    <td style="padding:10px 12px; color:#334155; white-space:pre-line; line-height: 1.6;">{msg.message}</td>
                 </tr>
             </table>
         </div>
     </body>
     </html>
     """
-    
-    def send_internal_emails():
-        for internal_email in INTERNAL_EMAILS:
-            send_email_brevo(
-                to_email=internal_email,
-                to_name="Kodivian Team",
-                subject=f"Website Message from {msg.name}",
-                html_content=html_content
+    recipients = [{"email": e, "name": "Kodivian Team"} for e in INTERNAL_EMAILS]
+    send_email_brevo_batch(
+        recipients,
+        f"📩 [WEBSITE MESSAGE] From {msg.name}",
+        internal_html,
+        reply_to={"email": msg.email, "name": msg.name}
+    )
+
+    # 2. Customer Confirmation Email
+    customer_html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta name="color-scheme" content="light only">
+    </head>
+    <body style="font-family: Arial, sans-serif; background-color: #f8fafc; padding: 30px 15px; color: #1e293b;">
+      <div style="max-width: 560px; margin: 0 auto; background: #ffffff; border-radius: 12px; padding: 32px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <h2 style="color: #1E3A8A; margin-top: 0;">Thank you for contacting Kodivian!</h2>
+        <p style="font-size: 15px; line-height: 1.6; color: #334155;">
+          Dear <strong>{msg.name}</strong>,
+        </p>
+        <p style="font-size: 15px; line-height: 1.6; color: #334155;">
+          We have received your message and our team will get back to you promptly.
+        </p>
+        <div style="background: #f1f5f9; padding: 14px 18px; border-left: 4px solid #2563EB; border-radius: 4px; font-style: italic; color: #475569; margin: 16px 0; font-size: 14px;">
+          "{msg.message}"
+        </div>
+        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
+        <p style="font-size: 13px; color: #64748b; margin: 0;">
+          Warm regards,<br>
+          <strong>Kodivian Technologies LLP</strong><br>
+          <a href="https://kodivian.com" style="color: #2563EB; text-decoration: none;">www.kodivian.com</a>
+        </p>
+      </div>
+    </body>
+    </html>
+    """
+    send_email_brevo(
+        msg.email,
+        msg.name,
+        "We have received your message - Kodivian Technologies",
+        customer_html
+    )
+
+@app.post("/api/contact-message")
+async def contact_message(msg: ContactMessage, background_tasks: BackgroundTasks):
+    # 1. IMMEDIATE SYNCHRONOUS NEON DB PERSISTENCE
+    db_saved = insert_contact_message_to_db(msg)
+
+    # 2. ZERO-DATA-LOSS FALLBACK LOG
+    save_fallback_log("contact_messages_log.json", {
+        "timestamp": datetime.now().isoformat(),
+        "db_saved": db_saved,
+        **msg.dict()
+    })
+
+    # 3. BACKGROUND EMAIL DISPATCH (Non-blocking)
+    background_tasks.add_task(background_dispatch_contact_emails, msg)
+
+    # 4. INSTANT RETURN TO CLIENT
+    return {
+        "success": True,
+        "message": "Message sent successfully",
+        "db_saved": db_saved
+    }
+
+# ------------------------------------------------------------------
+# Backward Compatibility Endpoints (Legacy Popups & Pages)
+# ------------------------------------------------------------------
+
+class LegacyDemoData(BaseModel):
+    name: Optional[str] = ""
+    email: Optional[str] = ""
+    company: Optional[str] = ""
+    product: Optional[str] = "Scanify AI"
+    date: Optional[str] = ""
+    time: Optional[str] = ""
+    timezone: Optional[str] = "Asia/Kolkata"
+
+@app.post("/save_demo_data")
+def save_demo_data(data: LegacyDemoData, background_tasks: BackgroundTasks):
+    booking_ref = f"POP-{uuid.uuid4().hex[:8].upper()}"
+    conn = get_db()
+    if conn:
+        try:
+            cur = conn.cursor()
+            comment_str = f"Product: {data.product} | Date: {data.date} {data.time} ({data.timezone})"
+            cur.execute(
+                """
+                INSERT INTO short_demo_bookings
+                (booking_reference, full_name, phone, company, designation, email, comment)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+                """,
+                (booking_ref, data.name, "", data.company, "General Demo Popup", data.email, comment_str)
             )
-            
-    background_tasks.add_task(send_internal_emails)
-    
-    return {"message": "Sent"}
+            conn.commit()
+            cur.close()
+            conn.close()
+        except Exception as e:
+            print(f"[Legacy Demo DB Insert Error] {e}")
+
+    def send_legacy_emails():
+        subject = f"📅 New Demo Booking - {data.name} ({data.company or 'Corporate'})"
+        html = f"""<p><b>Name:</b> {data.name}</p><p><b>Email:</b> {data.email}</p><p><b>Company:</b> {data.company}</p><p><b>Product:</b> {data.product}</p><p><b>Date:</b> {data.date} {data.time} ({data.timezone})</p>"""
+        recipients = [{"email": e, "name": "Kodivian Team"} for e in INTERNAL_EMAILS]
+        send_email_brevo_batch(recipients, subject, html, reply_to={"email": data.email, "name": data.name})
+
+    background_tasks.add_task(send_legacy_emails)
+    return {"message": "Demo booking processed successfully", "success": True, "reference": booking_ref}
+
+class LegacyQueryData(BaseModel):
+    name: Optional[str] = ""
+    email: Optional[str] = ""
+    phone: Optional[str] = ""
+    query: Optional[str] = ""
+    page: Optional[str] = "Website"
+
+@app.post("/send_query")
+def send_query(data: LegacyQueryData, background_tasks: BackgroundTasks):
+    conn = get_db()
+    if conn:
+        try:
+            cur = conn.cursor()
+            msg_content = f"Page: {data.page} | Phone: {data.phone} | Query: {data.query}"
+            cur.execute(
+                "INSERT INTO contact_messages (name, email, message) VALUES (%s, %s, %s)",
+                (data.name, data.email, msg_content)
+            )
+            conn.commit()
+            cur.close()
+            conn.close()
+        except Exception as e:
+            print(f"[Legacy Query DB Insert Error] {e}")
+
+    def send_query_emails():
+        subject = f"Kodivian Website Query - {data.page}"
+        html = f"""<p><b>Name:</b> {data.name}</p><p><b>Email:</b> {data.email}</p><p><b>Phone:</b> {data.phone}</p><p><b>Page:</b> {data.page}</p><p><b>Query:</b> {data.query}</p>"""
+        recipients = [{"email": e, "name": "Kodivian Team"} for e in INTERNAL_EMAILS]
+        send_email_brevo_batch(recipients, subject, html, reply_to={"email": data.email, "name": data.name})
+
+    background_tasks.add_task(send_query_emails)
+    return {"message": "Query sent successfully", "success": True}
 
 # ------------------------------------------------------------------
 # Run Local
 # ------------------------------------------------------------------
 
 if __name__ == "__main__":
-
     import uvicorn
-
     uvicorn.run(
         "scanifybooking:app",
         host="0.0.0.0",

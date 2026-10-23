@@ -20,9 +20,14 @@ const STATUS_COPY = {
   done: "Synced to ERP",
 };
 
-const API_URL = import.meta.env.VITE_API_URL || "https://kodivian-website-8.onrender.com";
+import { prewarmBackend, submitFormData } from "../utils/api";
 
 const ShortDemoPage = () => {
+  useEffect(() => {
+    // Proactively pre-warm backend so submission takes < 300ms
+    prewarmBackend();
+  }, []);
+
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -46,12 +51,12 @@ const ShortDemoPage = () => {
     setStatus("loading");
     setErrorMessage("");
     try {
-      await axios.post(`${API_URL}/api/short-demo`, formData);
+      await submitFormData("/api/short-demo", formData);
       setStatus("success");
     } catch (err) {
-      console.error(err);
+      console.error("Short demo submit error:", err);
       setStatus("error");
-      setErrorMessage("Something went wrong. Please try again.");
+      setErrorMessage(err.message || "Something went wrong. Please try again.");
     }
   };
 
