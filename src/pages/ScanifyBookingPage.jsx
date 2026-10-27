@@ -101,6 +101,29 @@ export default function ScanifyBookingPage() {
   useEffect(() => {
     // Proactively pre-warm backend so submission takes < 300ms
     prewarmBackend();
+
+    // Auto-populate contact fields if passed in URL (e.g. from Zoho Campaigns)
+    try {
+      const sp = new URLSearchParams(window.location.search);
+      const email = sp.get("email") || sp.get("corporate_email") || "";
+      const name = sp.get("name") || sp.get("full_name") || sp.get("fullName") || "";
+      const company = sp.get("company") || sp.get("company_name") || "";
+      const phone = sp.get("phone") || sp.get("mobile") || sp.get("mobile_number") || "";
+      const designation = sp.get("designation") || sp.get("role") || "";
+
+      if (email || name || company || phone || designation) {
+        setForm(p => ({
+          ...p,
+          ...(name && { full_name: name.trim() }),
+          ...(email && { corporate_email: email.trim() }),
+          ...(company && { company_name: company.trim() }),
+          ...(phone && { mobile_number: phone.trim() }),
+          ...(designation && { designation: designation.trim() }),
+        }));
+      }
+    } catch (e) {
+      // Ignore URL parsing errors
+    }
   }, []);
   const [bookingRef, setBookingRef] = useState("");
   const [validationModal, setValidationModal] = useState({ open: false, title: "", errors: [] });

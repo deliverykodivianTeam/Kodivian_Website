@@ -3,12 +3,9 @@
 export const API_URL = import.meta.env.VITE_API_URL || "https://kodivian-website-8.onrender.com";
 export const FALLBACK_URL = "https://kodivian-website-8.onrender.com";
 
-// Silent pre-warming ping so the Render container wakes up while the user is filling the form
+// Silent pre-warming ping so the Render container wakes up while the user is viewing or filling the form
 let hasPrewarmed = false;
 export const prewarmBackend = () => {
-  if (hasPrewarmed) return;
-  hasPrewarmed = true;
-
   try {
     const urls = [API_URL];
     if (API_URL !== FALLBACK_URL) {
@@ -27,15 +24,25 @@ export const prewarmBackend = () => {
   } catch (e) {
     // Ignore pre-warm errors
   }
+
+  if (hasPrewarmed) return;
+  hasPrewarmed = true;
+
+  // Re-ping every 8 minutes while page is kept open so container never sleeps
+  if (typeof window !== "undefined") {
+    setInterval(() => {
+      prewarmBackend();
+    }, 8 * 60 * 1000);
+  }
 };
 
 /**
  * Resilient submit handler:
- * - Attempts primary API URL
- * - If local development / connection refused, smoothly falls back to production Render backend
- * - Guarantees the form never hangs indefinitely
+ * - 50s timeout (allows cold-start containers to wake up safely)
+ * - Automatic 1-time retry on network hiccups or cold wakeups
+ * - Attempts primary API URL with smooth fallback
  */
-export const submitFormData = async (endpoint, data, timeoutMs = 25000) => {
+export const submitFormData = async (endpoint, data, timeoutMs = 50000) => {
   const primaryUrl = API_URL;
   const isLocal = primaryUrl.includes("localhost") || primaryUrl.includes("127.0.0.1");
 
@@ -72,6 +79,14 @@ export const submitFormData = async (endpoint, data, timeoutMs = 25000) => {
       console.warn(`[API] Primary (${primaryUrl}) unreachable, falling back to ${FALLBACK_URL}`);
       return await sendWithTimeout(FALLBACK_URL);
     }
-    throw primaryErr;
+
+    // Auto-retry once: if the container was cold-waking on the first attempt, the retry will succeed
+    try {
+      console.warn(`[API] Initial request failed (${primaryErr.message}), auto-retrying...`);
+      return await sendWithTimeout(primaryUrl);
+    } catch (retryErr) {
+      throw retryErr;
+    }
   }
 };
+

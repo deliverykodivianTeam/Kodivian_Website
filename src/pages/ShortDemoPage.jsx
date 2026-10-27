@@ -26,6 +26,29 @@ const ShortDemoPage = () => {
   useEffect(() => {
     // Proactively pre-warm backend so submission takes < 300ms
     prewarmBackend();
+
+    // Auto-populate fields if passed in URL (e.g. from Zoho Campaigns)
+    try {
+      const sp = new URLSearchParams(window.location.search);
+      const email = sp.get("email") || "";
+      const name = sp.get("name") || sp.get("fullName") || sp.get("full_name") || "";
+      const company = sp.get("company") || sp.get("company_name") || "";
+      const phone = sp.get("phone") || sp.get("mobile") || "";
+      const designation = sp.get("designation") || sp.get("role") || "";
+
+      if (email || name || company || phone || designation) {
+        setFormData(prev => ({
+          ...prev,
+          ...(name && { fullName: name.trim() }),
+          ...(email && { email: email.trim() }),
+          ...(company && { company: company.trim() }),
+          ...(phone && { phone: phone.trim() }),
+          ...(designation && { designation: designation.trim() }),
+        }));
+      }
+    } catch (e) {
+      // Ignore URL parsing errors
+    }
   }, []);
 
   const [formData, setFormData] = useState({
@@ -50,6 +73,14 @@ const ShortDemoPage = () => {
     e.preventDefault();
     setStatus("loading");
     setErrorMessage("");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      setStatus("error");
+      setErrorMessage("Please enter a valid corporate email address with a domain (e.g. name@company.com).");
+      return;
+    }
+
     try {
       await submitFormData("/api/short-demo", formData);
       setStatus("success");
