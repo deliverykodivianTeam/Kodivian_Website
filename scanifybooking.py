@@ -229,8 +229,15 @@ INTERNAL_EMAILS = [
 ]
 
 # ------------------------------------------------------------------
-# Email Helper
+# Email Helper & Validation
 # ------------------------------------------------------------------
+
+import re
+
+def is_valid_email(email: str) -> bool:
+    if not email or not isinstance(email, str):
+        return False
+    return bool(re.match(r"^[^\s@]+@[^\s@]+\.[^\s@]{2,}$", email.strip()))
 
 def send_email_brevo(
     to_email: str,
@@ -242,6 +249,11 @@ def send_email_brevo(
     key = (os.getenv("BREVO_API_KEY") or BREVO_API_KEY or "").strip()
     if not key:
         print(f"[BREVO ERROR] Cannot send email to {to_email}: BREVO_API_KEY is missing or empty.")
+        return False
+
+    clean_to = (to_email or "").strip()
+    if not is_valid_email(clean_to):
+        print(f"[BREVO ERROR] Cannot send email: recipient '{clean_to}' is not a valid email address.")
         return False
 
     url = "https://api.brevo.com/v3/smtp/email"
@@ -259,14 +271,14 @@ def send_email_brevo(
         },
         "to": [
             {
-                "email": to_email,
-                "name": to_name or to_email
+                "email": clean_to,
+                "name": to_name or clean_to
             }
         ],
         "subject": subject,
         "htmlContent": html_content
     }
-    if reply_to:
+    if reply_to and isinstance(reply_to, dict) and is_valid_email(reply_to.get("email", "")):
         payload["replyTo"] = reply_to
 
     try:
@@ -277,12 +289,12 @@ def send_email_brevo(
             timeout=15
         )
         safe_sub = subject.encode('ascii', 'replace').decode('ascii')
-        print(f"[BREVO] Email to {to_email} ('{safe_sub}') -> Status: {response.status_code}")
+        print(f"[BREVO] Email to {clean_to} ('{safe_sub}') -> Status: {response.status_code}")
         if response.status_code not in [200, 201, 202]:
             print(f"[BREVO ERROR] Response: {response.text}")
         return response.status_code in [200, 201, 202]
     except Exception as e:
-        print(f"[BREVO EXCEPTION] Error sending email to {to_email}: {str(e)}")
+        print(f"[BREVO EXCEPTION] Error sending email to {clean_to}: {str(e)}")
         return False
 
 def send_email_brevo_batch(
@@ -294,6 +306,11 @@ def send_email_brevo_batch(
     key = (os.getenv("BREVO_API_KEY") or BREVO_API_KEY or "").strip()
     if not key:
         print(f"[BREVO ERROR] Cannot send batch email: BREVO_API_KEY is missing or empty.")
+        return False
+
+    valid_recipients = [r for r in to_list if is_valid_email(r.get("email", ""))]
+    if not valid_recipients:
+        print(f"[BREVO ERROR] Cannot send batch email: No valid recipient emails found in {to_list}.")
         return False
 
     url = "https://api.brevo.com/v3/smtp/email"
@@ -309,11 +326,11 @@ def send_email_brevo_batch(
             "name": SENDER_NAME,
             "email": SENDER_EMAIL
         },
-        "to": to_list,
+        "to": valid_recipients,
         "subject": subject,
         "htmlContent": html_content
     }
-    if reply_to:
+    if reply_to and isinstance(reply_to, dict) and is_valid_email(reply_to.get("email", "")):
         payload["replyTo"] = reply_to
 
     try:
@@ -324,7 +341,7 @@ def send_email_brevo_batch(
             timeout=15
         )
         safe_sub = subject.encode('ascii', 'replace').decode('ascii')
-        print(f"[BREVO BATCH] Email to {len(to_list)} recipients ('{safe_sub}') -> Status: {response.status_code}")
+        print(f"[BREVO BATCH] Email to {len(valid_recipients)} recipients ('{safe_sub}') -> Status: {response.status_code}")
         if response.status_code not in [200, 201, 202]:
             print(f"[BREVO BATCH ERROR] Response: {response.text}")
         return response.status_code in [200, 201, 202]
@@ -1036,36 +1053,102 @@ def health():
     }
 
 @app.get("/api/test-email")
-def test_email(to: Optional[str] = "preethi.jb@kodivian.com"):
+def test_email(to: Optional[str] = "preethi.jb@kodivian.com", team: Optional[bool] = False):
     """
-    Diagnostic endpoint to test Brevo transactional email sending.
+    Diagnostic endpoint to test Brevo transactional email sending with detailed diagnostics.
+    Usage:
+      GET /api/test-email
+      GET /api/test-email?to=your_email@example.com
+      GET /api/test-email?to=your_email@example.com&team=true
     """
     key = (os.getenv("BREVO_API_KEY") or BREVO_API_KEY or "").strip()
     if not key:
         return {
             "success": False,
-            "error": "BREVO_API_KEY is not configured",
+            "error": "BREVO_API_KEY is not configured in environment variables",
             "brevo_key_present": False
         }
-    
-    test_html = """
-    <div style="font-family: sans-serif; padding: 20px;">
-        <h2 style="color: #2563EB;">Brevo Email Integration Test</h2>
-        <p>This is a verified test email from the Scanify AI Backend.</p>
-        <p><strong>Status:</strong> All email systems are operating normally.</p>
+
+    clean_target = (to or "preethi.jb@kodivian.com").strip()
+    if not is_valid_email(clean_target):
+        return {
+            "success": False,
+            "error": f"Invalid recipient email address: '{clean_target}'",
+            "brevo_key_present": True
+        }
+
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    test_html = f"""<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; padding: 25px; background: #f8fafc; color: #1e293b;">
+    <div style="max-width: 550px; margin: auto; background: #ffffff; border-radius: 10px; padding: 30px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+        <div style="background: linear-gradient(135deg, #1E3A8A, #2563EB); color: #ffffff; padding: 16px 20px; border-radius: 6px; margin-bottom: 20px;">
+            <h2 style="margin: 0; font-size: 20px; color: #ffffff;">Brevo Email Integration Live Test</h2>
+            <p style="margin: 4px 0 0 0; font-size: 13px; color: #BFDBFE;">Scanify AI Production Backend Verification</p>
+        </div>
+        <p><strong>Status:</strong> &#9989; Brevo API Key Authorized &amp; Email Service Operational!</p>
+        <p><strong>Recipient:</strong> {clean_target}</p>
+        <p><strong>Sender:</strong> {SENDER_NAME} &lt;{SENDER_EMAIL}&gt;</p>
+        <p><strong>Timestamp:</strong> {now_str}</p>
+        <p style="font-size: 13px; color: #64748b; margin-top: 20px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+            This test verifies that incoming demo bookings, website contact messages, and lead notifications dispatch automatically and reliably.
+        </p>
     </div>
-    """
-    sent = send_email_brevo(
-        to_email=to,
-        to_name="Kodivian Tester",
-        subject="Brevo Email Diagnostic Test",
-        html_content=test_html
-    )
-    return {
-        "success": sent,
-        "recipient": to,
-        "brevo_key_present": True
+</body>
+</html>"""
+
+    url = "https://api.brevo.com/v3/smtp/email"
+    headers = {
+        "accept": "application/json",
+        "api-key": key,
+        "content-type": "application/json"
     }
+    payload = {
+        "sender": {
+            "name": SENDER_NAME,
+            "email": SENDER_EMAIL
+        },
+        "to": [
+            {
+                "email": clean_target,
+                "name": "Kodivian Tester"
+            }
+        ],
+        "subject": f"Brevo Live Email Test [{now_str}]",
+        "htmlContent": test_html
+    }
+
+    try:
+        response = requests.post(url, json=payload, headers=headers, timeout=15)
+        is_ok = response.status_code in [200, 201, 202]
+        resp_data = response.json() if is_ok else response.text
+
+        team_status = None
+        if team:
+            team_recipients = [{"email": email, "name": "Kodivian Team"} for email in INTERNAL_EMAILS]
+            batch_sent = send_email_brevo_batch(
+                team_recipients,
+                f"Brevo Team Batch Test [{now_str}]",
+                test_html
+            )
+            team_status = {"dispatched": batch_sent, "recipients": [e["email"] for e in team_recipients]}
+
+        return {
+            "success": is_ok,
+            "status_code": response.status_code,
+            "brevo_response": resp_data,
+            "recipient": clean_target,
+            "sender": f"{SENDER_NAME} <{SENDER_EMAIL}>",
+            "timestamp": now_str,
+            "team_batch_test": team_status,
+            "message": "Email sent successfully via Brevo!" if is_ok else "Brevo rejected the request."
+        }
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e),
+            "recipient": clean_target
+        }
 
 # ------------------------------------------------------------------
 # Dashboard Summary
