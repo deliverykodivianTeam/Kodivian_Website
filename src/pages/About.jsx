@@ -43,11 +43,13 @@ import Chairman from "../assets/chairman.jpeg";
 import Director from "../assets/directer.jpeg";
 import Mothi from "../assets/Mothi.jpeg";
 import Kaviya from "../assets/Kaviya.jpeg";
-import Preethi from "../assets/Preethi.jpeg";
-import Hari from "../assets/Hari.jpg";
+import Preethi from "../assets/Preethi.png";
+import Hari from "../assets/Hari.png";
 import Kavi from "../assets/kaviarasan_s.jpg";
-import Ramanan from "../assets/Ramanan.jpg";
-import Manoranjan from "../assets/Manoranjan.jpeg"
+import Ramanan from "../assets/Ramanan.png";
+import Manoranjan from "../assets/Manoranjan.jpeg";
+import Ponmaniselvan from "../assets/Ponmaniselvan.jpeg";
+
 
 const About = () => {
   const solutions = ["Scanify", "Process Builder", "Support Forge"];
@@ -123,6 +125,12 @@ const About = () => {
       role: "Business Analyst",
       image: Manoranjan,
       linkedin: "https://www.linkedin.com/in/manoranjan-k-s-137b47242?utm",
+    },
+    {
+      name: "Ponmaniselvan",
+      role: "ERP Functional Analyst",
+      image: Ponmaniselvan,
+      linkedin: "https://www.linkedin.com/in/ponmaniselvan-s-undefined-81b004273/?isSelfProfile=true",
     },
 
 
@@ -252,10 +260,10 @@ const About = () => {
                   key={index}
                   className={`client-logo-box ${isLastSingle ? "center-last-logo" : ""}`}
                 >
-                  <img 
-                    src={logo} 
-                    alt={`Client ${index + 1}`} 
-                    className={isTVS ? "tvs-logo" : ""} 
+                  <img
+                    src={logo}
+                    alt={`Client ${index + 1}`}
+                    className={isTVS ? "tvs-logo" : ""}
                   />
                 </div>
               );
